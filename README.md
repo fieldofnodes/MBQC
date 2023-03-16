@@ -1,6 +1,9 @@
 # Measurement Based Quantum Computation  (MBQC)
 
+
 Buisling an MBQC simulator. This page will be the landing page for building the MBQC simulator. Links, requirments, user stories, etc will be placed here.
+
+Repository documentation can be found [here](https://ediparquantum.github.io/MBQC/).
 
 From a quick google search there are very few examples of MBQC simmulators. The goal here is to take a 
 
