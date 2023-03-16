@@ -11,6 +11,21 @@ From a quick google search there are very few examples of MBQC simmulators. The 
 2. [QuEST Documentation](https://quest-kit.github.io/QuEST/index.html)
 
 
+
+## Plan for MBQC Development
+1. Arbitrary size "linear cluster", like ()-()-()----() for N vertices.
+2. Analysis on the linear cluster.
+3. Arbitrary size "grid cluster"
+4. Analysis on grid cluster
+5. Develop brickwork state
+    + Universal resource for BQP under X-Y plane measurements
+    + Useful to encode arbitrary computations blindly. 
+    + [Brickwork graphs](https://arxiv.org/abs/0807.4154)
+6. Arbitrary graph cluster
+7. Analysis on graph cluster
+
+
+
 ## Links for a google search of "MBQC software"
 
 1. [Graphix: optimizing and simulating measurement-based quantum computation on local-Clifford decorated graph](https://arxiv.org/abs/2212.11975)
