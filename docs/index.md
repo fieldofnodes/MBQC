@@ -134,9 +134,3 @@ vector<int> get_open_neighbour_set_linear_cluster(vector<int> linear_cluster ,in
   return neighbours;
 }
 ```
-
-
-
-
-
-
