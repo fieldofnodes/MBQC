@@ -20,6 +20,7 @@ From a quick google search there are very few examples of MBQC simmulators. The 
 ## Plan for MBQC Development
 1. Arbitrary size "linear cluster", like ()-()-()----() for N vertices.
 2. Analysis on the linear cluster.
+
 3. Arbitrary size "grid cluster"
 4. Analysis on grid cluster
 5. Develop brickwork state
@@ -27,8 +28,11 @@ From a quick google search there are very few examples of MBQC simmulators. The 
     + Useful to encode arbitrary computations blindly. 
     + [Brickwork graphs](https://arxiv.org/abs/0807.4154)
 6. Arbitrary graph cluster
+
 7. Analysis on graph cluster
 
+### Linear Cluster example figure
+![linear_cluster](https://user-images.githubusercontent.com/19248072/225726167-6cf3710d-db2c-479c-be50-f8f9ce9ed101.png)
 
 
 ## Links for a google search of "MBQC software"
