@@ -1,4 +1,7 @@
-# Measurement Based Quantum Computation  (MBQC)
+(MBQC)![mbqc_logo_idea](https://user-images.githubusercontent.com/19248072/225727493-def23a0b-96e3-4310-aa9b-5f27fb0c6f2a.png)
+
+# Measurement Based Quantum Computation  
+
 
 **This code is ran inside of [QuEST](https://quest.qtechtheory.org/download/) Documentation to follow in future for implementation.l**
 
