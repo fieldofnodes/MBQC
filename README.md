@@ -87,4 +87,11 @@ From a quick google search there are very few examples of MBQC simmulators. The 
 9. [https://pennylane.ai/qml/demos/tutorial_mbqc.html](https://pennylane.ai/qml/demos/tutorial_mbqc.html)
 10. [https://oxfordre.com/physics/display/10.1093/acrefore/9780190871994.001.0001/acrefore-9780190871994-e-31;jsessionid=F048084B725DF72127D45A588315A515](https://oxfordre.com/physics/display/10.1093/acrefore/9780190871994.001.0001/acrefore-9780190871994-e-31;jsessionid=F048084B725DF72127D45A588315A515)
 11. [https://www.uibk.ac.at/th-physik/mbqc2022/](https://www.uibk.ac.at/th-physik/mbqc2022/)
-12. 
+
+
+## To use in C++ Cmake
+
+```cpp
+# Use C++11
+set(CMAKE_CXX_STANDARD 11)
+```
