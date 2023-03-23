@@ -12,64 +12,9 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include "20230314_Functions_V1.hpp"
 using namespace std;
 
-
-void print(std::vector<int> const &input)
-{
-    for (int i = 0; i < input.size(); i++) {
-        std::cout << input.at(i) << ' ';
-    }
-}
-
-
-int get_future_qubit_linear_cluster(int current_qubit){
-  int new_qubit;
-  new_qubit = current_qubit + 1;
-
-  return new_qubit;
-}
-
-int get_past_qubit_linear_cluster(int current_qubit){
-  int new_qubit;
-  new_qubit = current_qubit - 1;
-
-  return new_qubit;
-}
-
-int get_size_neighbour_set_linear_cluster(int current_qubit,int number_of_qubits){
-  int number_qubits;
-  // Logic for getting nieghbors
-  if (current_qubit == 0) { // qubit is first
-    number_qubits = 1;
-  } else if (current_qubit == number_of_qubits-1) { // qubit is last
-    number_qubits = 1;
-  } else { // all else
-    number_qubits = 2;
-  }
-
-  return number_qubits;
-}
-
-vector<int> get_open_neighbour_set_linear_cluster(int current_qubit,int number_of_qubits){
-  vector<int> neighbours;
-  
-  
-  if (current_qubit == 0) { // qubit is first in graph
-    int first_qubit = current_qubit + 1;
-    neighbours.push_back(first_qubit);
-  } else if (current_qubit == number_of_qubits-1) { // qubit is last in graph
-    int first_qubit = current_qubit - 1;
-    neighbours.push_back(first_qubit);
-  } else { // all else
-    int qubit_before = current_qubit - 1;
-    int qubit_after = current_qubit + 1;
-    neighbours.push_back(qubit_before);
-    neighbours.push_back(qubit_after);
-  }
-
-  return neighbours;
-}
 
 
 int main() {
@@ -213,7 +158,6 @@ int main() {
     
   
 }
-
 
 
 

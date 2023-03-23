@@ -105,7 +105,41 @@ int main() {
         assert(neighbours.size() == 2 && "Neighbour set shoud be size 2");
     }
 
- 
+
+    printf("\n");
+    // Iterate over path graph cluster p_10
+    int NewNumberQubits = 10;
+    // Create a vector representing a linear cluster graph
+    vector<int> NewLinearCluster = get_linear_cluster_on_n_qubits(NewNumberQubits);
+
+    // Iterate over all vertices, return neighbours
+    
+    // Iterate over the path cluster
+    for (int q: NewLinearCluster)
+    {
+        cout << "Qubit: " << q << "\n";
+        vector<int> neighbours = 
+            get_open_neighbour_set_linear_cluster(
+                NewLinearCluster ,q);
+        cout << "Neighbours: ";
+        // Get the future qubit using linear_cluster and current qubit
+        int FutureQubit = get_future_qubit_linear_cluster_vec(NewLinearCluster ,q);
+        printf("Current qubit: %d future qubit: %d\n",q,FutureQubit);
+        // Get the past qubit using linear_cluster and current qubit
+        int PastQubit = get_past_qubit_linear_cluster_vec(NewLinearCluster ,q);
+        printf("Current qubit: %d past qubit: %d\n",q,FutureQubit);
+        for (int n: neighbours)
+        {
+            cout << n << ' ';
+        }
+        printf("\n");
+        
+    }
+
+
+
+    
+
 }
 
 

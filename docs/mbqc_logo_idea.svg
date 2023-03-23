@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg2391"
+   inkscape:version="1.2.2 (b0a84865, 2022-12-01)"
+   sodipodi:docname="mbqc_logo_idea.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview2393"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.88667628"
+     inkscape:cx="96.427526"
+     inkscape:cy="45.676197"
+     inkscape:window-width="1728"
+     inkscape:window-height="993"
+     inkscape:window-x="0"
+     inkscape:window-y="414"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2388" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3079"
+       inkscape:export-filename="mbqc_logo_idea.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <circle
+         style="fill:#127d3c;fill-opacity:1;stroke:#2a1e1f;stroke-width:1.365;stroke-dasharray:none;stroke-opacity:1"
+         id="path866"
+         cx="-98.526581"
+         cy="41.425266"
+         r="8.9392195" />
+      <circle
+         style="fill:#447dd3;fill-opacity:1;stroke:#2a1e1f;stroke-width:1.365;stroke-dasharray:none;stroke-opacity:1"
+         id="path866-8"
+         cx="-29.546837"
+         cy="-50.481632"
+         r="8.9392195" />
+      <circle
+         style="fill:#ce133c;fill-opacity:1;stroke:#2a1e1f;stroke-width:1.365;stroke-dasharray:none;stroke-opacity:1"
+         id="path866-8-4"
+         cx="26.303337"
+         cy="53.659626"
+         r="8.9392195" />
+      <circle
+         style="fill:#5632e7;fill-opacity:1;stroke:#2a1e1f;stroke-width:1.365;stroke-dasharray:none;stroke-opacity:1"
+         id="path866-8-4-0"
+         cx="95.879883"
+         cy="-71.071159"
+         r="8.9392195" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#363351;stroke-width:1.965;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+         d="m -93.160682,34.275876 58.247946,-77.608118"
+         id="path2313"
+         inkscape:connector-type="polyline"
+         inkscape:connector-curvature="0"
+         inkscape:connection-start="#path866"
+         inkscape:connection-end="#path866-8"
+         inkscape:export-filename="linear_cluster.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#363351;stroke-width:1.965;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         d="M -25.322039,-42.603845 22.078539,45.781839"
+         id="path2315"
+         inkscape:connector-type="polyline"
+         inkscape:connector-curvature="0"
+         inkscape:connection-start="#path866-8"
+         inkscape:connection-end="#path866-8-4" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#363351;stroke-width:1.965;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+         d="M 30.657989,45.852984 91.525231,-63.264517"
+         id="path2317"
+         inkscape:connector-type="polyline"
+         inkscape:connector-curvature="0"
+         inkscape:export-filename="linear_cluster.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96"
+         inkscape:connection-end="#path866-8-4-0"
+         inkscape:connection-start="#path866-8-4" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:46.7034px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1e3247;fill-opacity:1;stroke:none;stroke-width:6.84581;stroke-dasharray:none;stroke-opacity:1"
+         x="-79.692329"
+         y="11.507722"
+         id="text3018"><tspan
+           sodipodi:role="line"
+           id="tspan3016"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:46.7034px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#1e3247;fill-opacity:1;stroke:none;stroke-width:6.84581"
+           x="-79.692329"
+           y="11.507722">MBQC</tspan></text>
+    </g>
+  </g>
+</svg>

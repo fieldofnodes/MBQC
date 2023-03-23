@@ -51,7 +51,7 @@ int get_future_qubit_linear_cluster_vec(vector<int> linear_cluster ,int current_
 int future_qubit;
 auto cluster_size = linear_cluster.size();
 if (current_qubit == linear_cluster[cluster_size-1]) {
-    assert(current_qubit != linear_cluster[cluster_size-1] && "No past qubit here, re-check your program");
+    future_qubit = current_qubit;
 } else {
   future_qubit = get_future_qubit_linear_cluster(current_qubit);
 }
@@ -69,7 +69,7 @@ int get_past_qubit_linear_cluster_vec(vector<int> linear_cluster ,int current_qu
 int past_qubit;
 
 if (current_qubit == linear_cluster[0]) {
-  assert(current_qubit != linear_cluster[0] && "No past qubit here, re-check your program");
+  past_qubit = current_qubit;
 
 } else {
   past_qubit = get_past_qubit_linear_cluster(current_qubit);
