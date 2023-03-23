@@ -1,6 +1,15 @@
-# Measurement Based Quantum Computation  (MBQC)
+<img src="https://user-images.githubusercontent.com/19248072/225727493-def23a0b-96e3-4310-aa9b-5f27fb0c6f2a.png"  width="300" height="200">
+
+
+# Measurement Based Quantum Computation  
+
+
+**This code is ran inside of [QuEST](https://quest.qtechtheory.org/download/) Documentation to follow in future for implementation.l**
+
 
 Building an MBQC simulator. This page will be the landing page for building the MBQC simulator. Links, requirments, user stories, etc will be placed here.
+
+Repository documentation can be found [here](https://ediparquantum.github.io/MBQC/).
 
 From a quick google search there are very few examples of MBQC simmulators. The goal here is to take a 
 
@@ -9,6 +18,44 @@ From a quick google search there are very few examples of MBQC simmulators. The 
 
 1. [C++ Best practices for projects](https://micro-os-plus.github.io/develop/sutter-101/)
 2. [QuEST Documentation](https://quest-kit.github.io/QuEST/index.html)
+
+
+
+## Plan for MBQC Development
+1. Arbitrary size "linear cluster", like ()-()-()----() for N vertices.
+2. Analysis on the linear cluster.
+
+3. Arbitrary size "grid cluster"
+4. Analysis on grid cluster
+5. Develop brickwork state
+    + Universal resource for BQP under X-Y plane measurements
+    + Useful to encode arbitrary computations blindly. 
+    + [Brickwork graphs](https://arxiv.org/abs/0807.4154)
+6. Arbitrary graph cluster
+
+7. Analysis on graph cluster
+
+### Linear Cluster example figure
+![linear_cluster](https://user-images.githubusercontent.com/19248072/225726167-6cf3710d-db2c-479c-be50-f8f9ce9ed101.png)
+
+### Some testing options for linear cluster state
+
+
+1. The easiest thing one could do would be all zero angles (0,0,...). For an odd total number of qubits, this should always give the outcome 0 of the last qubit.
+   + [Circuit](https://algassert.com/quirk#circuit={%22cols%22:[[%22H%22,%22H%22,%22H%22,%22H%22,%22H%22],[%22%E2%80%A2%22,%22Z%22],[1,%22%E2%80%A2%22,%22Z%22],[1,1,%22%E2%80%A2%22,%22Z%22],[1,1,1,%22%E2%80%A2%22,%22Z%22],[%22%E2%80%A6%22],[%22H%22],[%22|0%E2%9F%A9%E2%9F%A80|%22],[1,%22H%22],[1,%22|0%E2%9F%A9%E2%9F%A80|%22],[1,1,%22H%22],[1,1,%22|0%E2%9F%A9%E2%9F%A80|%22],[1,1,1,%22H%22],[1,1,1,%22|0%E2%9F%A9%E2%9F%A80|%22],[1,1,1,1,%22H%22],[1,1,1,1,%22Measure%22]]})
+2. Another thing that one could do on 2 qubits are angles (pi/2, pi/2). This should always give a 0 outcome of the second qubit.
+    + [Circuit](https://algassert.com/quirk#circuit={%22cols%22:[[%22H%22,%22H%22],[%22%E2%80%A2%22,%22Z%22],[%22%E2%80%A6%22],[%22Z^-%C2%BD%22],[%22H%22],[%22|0%E2%9F%A9%E2%9F%A80|%22],[1,%22Z^-%C2%BD%22],[1,%22H%22],[1,%22Measure%22]]})
+3. One more thing that one could do, would be to set every second angle to 0: (alpha_1, 0, alpha_3, 0, alpha_5, 0, ...). If the total number of qubits is odd, and all angles add up to a multiple of 2*pi, then the last measurement outcome should always be 0. If the total number of qubits is odd, and all angles add up to (a multiple of 2*pi) + pi, then the last measurement outcome should always be 1.
+    + [Circuit](https://algassert.com/quirk#circuit={%22cols%22:[[%22H%22,%22H%22,%22H%22,%22H%22,%22H%22],[%22%E2%80%A2%22,%22Z%22],[1,%22%E2%80%A2%22,%22Z%22],[1,1,%22%E2%80%A2%22,%22Z%22],[1,1,1,%22%E2%80%A2%22,%22Z%22],[%22%E2%80%A6%22],[%22Z%22],[%22Z^-%C2%BC%22],[%22H%22],[%22|0%E2%9F%A9%E2%9F%A80|%22],[1,%22H%22],[1,%22|0%E2%9F%A9%E2%9F%A80|%22],[1,1,%22Z^-%C2%BD%22],[1,1,%22H%22],[1,1,%22|0%E2%9F%A9%E2%9F%A80|%22],[1,1,1,%22H%22],[1,1,1,%22|0%E2%9F%A9%E2%9F%A80|%22],[1,1,1,1,%22Z^-%C2%BC%22],[1,1,1,1,%22H%22],[1,1,1,1,%22Measure%22]]})
+
+#### Comments on links
+
+1. Instead of actual measurements, postselected for the 0 outcome. This avoids the need of corrections. In your code, you should use actual measurements and corrections, which should yield the same results.
+    + T-gate = pi/4-rotation around Z-axis
+    + S-gate = pi/2-rotation around Z-axis
+    + Z-gate = pi-rotation around Z-axis
+    + The example circuit from 3.) uses angles (5*pi/4, 0, pi/2, 0, pi/4).
+
 
 
 ## Links for a google search of "MBQC software"
@@ -40,4 +87,11 @@ From a quick google search there are very few examples of MBQC simmulators. The 
 9. [https://pennylane.ai/qml/demos/tutorial_mbqc.html](https://pennylane.ai/qml/demos/tutorial_mbqc.html)
 10. [https://oxfordre.com/physics/display/10.1093/acrefore/9780190871994.001.0001/acrefore-9780190871994-e-31;jsessionid=F048084B725DF72127D45A588315A515](https://oxfordre.com/physics/display/10.1093/acrefore/9780190871994.001.0001/acrefore-9780190871994-e-31;jsessionid=F048084B725DF72127D45A588315A515)
 11. [https://www.uibk.ac.at/th-physik/mbqc2022/](https://www.uibk.ac.at/th-physik/mbqc2022/)
-12. 
+
+
+## To use in C++ Cmake
+
+```cpp
+# Use C++11
+set(CMAKE_CXX_STANDARD 11)
+```
