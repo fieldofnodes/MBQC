@@ -128,8 +128,47 @@ vector<int> get_open_neighbour_set_linear_cluster(vector<int> linear_cluster ,in
 }
 
 
+  qreal ComputeXCorrectionAngle(
+      vector<int> LinearCluster, 
+      vector<int> MeasuredQubitsOutcomes,
+      vector<qreal> QubitAngles,
+      int CurrentQubit)
+  {
+      qreal xCorrectionAngle;
+      int PastQubit;
+      PastQubit = get_past_qubit_linear_cluster_vec(LinearCluster,CurrentQubit);
+      int InverseFlowQubitOutcome = MeasuredQubitsOutcomes[PastQubit];
+      xCorrectionAngle = pow(-1, InverseFlowQubitOutcome)*QubitAngles[CurrentQubit];
+
+      return xCorrectionAngle;
+  }
 
 
 
+  qreal ComputeZCorrectionAngle(
+      vector<int> LinearCluster, 
+      vector<int> MeasuredQubitsOutcomes,
+      int CurrentQubit)
+  {   
+      qreal zCorrectionAngle;
+      
+      int PastQubit;
+      int PastPastQubit;
+      int InverseFlowQubitOutcome;
+      PastQubit = get_past_qubit_linear_cluster_vec(LinearCluster,CurrentQubit);
+      PastPastQubit = get_past_qubit_linear_cluster_vec(LinearCluster,PastQubit);
+      InverseFlowQubitOutcome = MeasuredQubitsOutcomes[PastPastQubit];
+      zCorrectionAngle = M_PI*InverseFlowQubitOutcome;
+              
+      return zCorrectionAngle;
+  }
 
-
+int countElements(vector<int> v, int element) {
+    int count = 0;
+    for (auto it = v.begin(); it != v.end(); ++it) {
+        if (*it == element) {
+            ++count;
+        }
+    }
+    return count;
+}

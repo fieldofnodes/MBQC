@@ -6,47 +6,10 @@
 #include "20230314_Functions_V1.hpp"
 using namespace std;
 
-    qreal ComputeXCorrectionAngle(
-        vector<int> LinearCluster, 
-        vector<int> MeasuredQubitsOutcomes,
-        vector<qreal> QubitAngles,
-        int CurrentQubit)
-    {
-        qreal xCorrectionAngle;
-        int PastQubit;
-        PastQubit = get_past_qubit_linear_cluster_vec(LinearCluster,CurrentQubit);
-        int InverseFlowQubitOutcome = MeasuredQubitsOutcomes[PastQubit];
-        xCorrectionAngle = pow(-1, InverseFlowQubitOutcome)*QubitAngles[CurrentQubit];
-
-        return xCorrectionAngle;
-    }
-
-
-
-    qreal ComputeZCorrectionAngle(
-        vector<int> LinearCluster, 
-        vector<int> MeasuredQubitsOutcomes,
-        int CurrentQubit)
-    {   
-        qreal zCorrectionAngle;
-        
-        int PastQubit;
-        int PastPastQubit;
-        int InverseFlowQubitOutcome;
-        PastQubit = get_past_qubit_linear_cluster_vec(LinearCluster,CurrentQubit);
-        PastPastQubit = get_past_qubit_linear_cluster_vec(LinearCluster,PastQubit);
-        InverseFlowQubitOutcome = MeasuredQubitsOutcomes[PastPastQubit];
-        zCorrectionAngle = M_PI*InverseFlowQubitOutcome;
-               
-        return zCorrectionAngle;
-    }
-
-
-
 
 
 int main() {
-   
+     
     QuESTEnv env = createQuESTEnv();
     // set parameters
     int NumberQubits = 5;
@@ -107,38 +70,39 @@ int main() {
     cout << "Qubit: " << SecondQubitIndex << " Outcome: " << MeasuredQubitsOutcomes[SecondQubitIndex] << " Updated angle: " << UpdatedQubitAngles[SecondQubitIndex] << "\n"; 
     
 
-for(int CurrentQubit=2;CurrentQubit<NumberQubits;CurrentQubit++)
-{       
-    qreal X;
-    qreal Z;
-    qreal phi;
-    qreal phi_prime;
-    int outcome;
+    for(int CurrentQubit=2;CurrentQubit<NumberQubits;CurrentQubit++)
+    {       
+        qreal X;
+        qreal Z;
+        qreal phi;
+        qreal phi_prime;
+        int outcome;
 
-    
-    X = ComputeXCorrectionAngle(
-            LinearCluster, 
-            MeasuredQubitsOutcomes,
-            QubitAngles,
-            CurrentQubit);
-    Z = ComputeZCorrectionAngle(
-            LinearCluster, 
-            MeasuredQubitsOutcomes,
-            CurrentQubit);
-    phi_prime = X+Z;
-    
-    rotateZ(qureg,CurrentQubit, (-1)*phi_prime);
-    hadamard(qureg,CurrentQubit);
-    outcome = measure(qureg,CurrentQubit);
-    
-    XCorrectionAngle.push_back(X);
-    ZCorrectionAngle.push_back(Z);
-    UpdatedQubitAngles.push_back(phi_prime);
-    MeasuredQubitsOutcomes.push_back(outcome);
-    cout << "Qubit: " << CurrentQubit << " Outcome: " << outcome << " Updated angle: " << phi_prime << "\n"; 
+        
+        X = ComputeXCorrectionAngle(
+                LinearCluster, 
+                MeasuredQubitsOutcomes,
+                QubitAngles,
+                CurrentQubit);
+        Z = ComputeZCorrectionAngle(
+                LinearCluster, 
+                MeasuredQubitsOutcomes,
+                CurrentQubit);
+        phi_prime = X+Z;
+        
+        rotateZ(qureg,CurrentQubit, (-1)*phi_prime);
+        hadamard(qureg,CurrentQubit);
+        outcome = measure(qureg,CurrentQubit);
+        
+        XCorrectionAngle.push_back(X);
+        ZCorrectionAngle.push_back(Z);
+        UpdatedQubitAngles.push_back(phi_prime);
+        MeasuredQubitsOutcomes.push_back(outcome);
+        cout << "Qubit: " << CurrentQubit << " Outcome: " << outcome << " Updated angle: " << phi_prime << "\n"; 
+    }
+
 }
 
 
-}
 
 
