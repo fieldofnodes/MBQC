@@ -20,40 +20,40 @@ int main() {
     {  
         QuESTEnv env = createQuESTEnv();
         // set parameters
-        int NumberQubits = numberQubits;//11;
+        int numberQubits = numberQubits;//11;
             // prepare our register
-        Qureg qureg = createQureg(NumberQubits, env);
+        Qureg qureg = createQureg(numberQubits, env);
         // qureg -> |+><+|
         initPlusState(qureg);  
 
 
         // Create a vector representing a linear cluster graph
-        vector<int> LinearCluster = get_linear_cluster_on_n_qubits(NumberQubits); 
-        vector<int> MeasuredQubitsOutcomes;
-        vector<qreal> QubitAngles;
-        vector<qreal> UpdatedQubitAngles;
+        vector<int> pathGraph = getPathGraph(numberQubits); 
+        vector<int> measuredQubitsOutcomes;
+        vector<qreal> qubitAngles;
+        vector<qreal> updatedQubitAngles;
         
 
         // apply CZ gate to entangle the circuit
-        for(std::vector<int>::size_type q = 0; q != LinearCluster.size()-1; q++) 
+        for(std::vector<int>::size_type q = 0; q != pathGraph.size()-1; q++) 
         {    
             controlledPhaseFlip(qureg,q,q+1);
         }
 
 
         // set initial angles
-        for(int i=0;i<NumberQubits;i++)
+        for(int i=0;i<numberQubits;i++)
         {
-            QubitAngles.push_back(M_PI/2); 
+            qubitAngles.push_back(M_PI/2); 
         }   
         
         // Run MBQC
         // measure first qubit
-        int FirstQubitIndex=0;
-        UpdatedQubitAngles.push_back(QubitAngles[FirstQubitIndex]);
-        rotateZ(qureg,FirstQubitIndex, (-1)*UpdatedQubitAngles[FirstQubitIndex]);
-        hadamard(qureg,FirstQubitIndex);
-        MeasuredQubitsOutcomes.push_back(measure(qureg,FirstQubitIndex));
+        int firstQubitIndex=0;
+        updatedQubitAngles.push_back(qubitAngles[firstQubitIndex]);
+        rotateZ(qureg,firstQubitIndex, (-1)*updatedQubitAngles[firstQubitIndex]);
+        hadamard(qureg,firstQubitIndex);
+        measuredQubitsOutcomes.push_back(measure(qureg,firstQubitIndex));
         
         
         
@@ -63,15 +63,15 @@ int main() {
         // measure second qubit
         qreal X1;
         //qreal Z1;
-        int SecondQubitIndex=1;
-        X1 = pow((-1),MeasuredQubitsOutcomes[FirstQubitIndex])*QubitAngles[SecondQubitIndex];
-        UpdatedQubitAngles[SecondQubitIndex] = X1;
-        rotateZ(qureg,SecondQubitIndex, (-1)*UpdatedQubitAngles[SecondQubitIndex]);
-        hadamard(qureg,SecondQubitIndex);
-        MeasuredQubitsOutcomes.push_back(measure(qureg,SecondQubitIndex));
+        int secondQubitIndex=1;
+        X1 = pow((-1),measuredQubitsOutcomes[firstQubitIndex])*qubitAngles[secondQubitIndex];
+        updatedQubitAngles[secondQubitIndex] = X1;
+        rotateZ(qureg,secondQubitIndex, (-1)*updatedQubitAngles[secondQubitIndex]);
+        hadamard(qureg,secondQubitIndex);
+        measuredQubitsOutcomes.push_back(measure(qureg,secondQubitIndex));
         
-        //vectUpdatedAngles.push_back(UpdatedQubitAngles);
-        lastQubitOutcome.push_back(MeasuredQubitsOutcomes.back());
+        //vectUpdatedAngles.push_back(updatedQubitAngles);
+        lastQubitOutcome.push_back(measuredQubitsOutcomes.back());
     }
 
     

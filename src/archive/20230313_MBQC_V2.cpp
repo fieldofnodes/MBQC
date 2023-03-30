@@ -23,26 +23,26 @@ void print(std::vector<int> const &input)
 }
 
 
-int get_future_qubit_linear_cluster(int current_qubit){
+int getFutureQubit(int currentQubit){
   int new_qubit;
-  new_qubit = current_qubit + 1;
+  new_qubit = currentQubit + 1;
 
   return new_qubit;
 }
 
-int get_past_qubit_linear_cluster(int current_qubit){
+int getPastQubit(int currentQubit){
   int new_qubit;
-  new_qubit = current_qubit - 1;
+  new_qubit = currentQubit - 1;
 
   return new_qubit;
 }
 
-int get_size_neighbour_set_linear_cluster(int current_qubit,int number_of_qubits){
+int getOpenNeighbourhoodSizePathGraph(int currentQubit,int numberQubits){
   int number_qubits;
   // Logic for getting nieghbors
-  if (current_qubit == 0) { // qubit is first
+  if (currentQubit == 0) { // qubit is first
     number_qubits = 1;
-  } else if (current_qubit == number_of_qubits-1) { // qubit is last
+  } else if (currentQubit == numberQubits-1) { // qubit is last
     number_qubits = 1;
   } else { // all else
     number_qubits = 2;
@@ -51,21 +51,21 @@ int get_size_neighbour_set_linear_cluster(int current_qubit,int number_of_qubits
   return number_qubits;
 }
 
-vector<int> get_open_neighbour_set_linear_cluster(int current_qubit,int number_of_qubits){
+vector<int> getOpenNeighbourhoodPathGraph(int currentQubit,int numberQubits){
   vector<int> neighbours;
   
   
-  if (current_qubit == 0) { // qubit is first in graph
-    int first_qubit = current_qubit + 1;
-    neighbours.push_back(first_qubit);
-  } else if (current_qubit == number_of_qubits-1) { // qubit is last in graph
-    int first_qubit = current_qubit - 1;
-    neighbours.push_back(first_qubit);
+  if (currentQubit == 0) { // qubit is first in graph
+    int firstQubit = currentQubit + 1;
+    neighbours.push_back(firstQubit);
+  } else if (currentQubit == numberQubits-1) { // qubit is last in graph
+    int firstQubit = currentQubit - 1;
+    neighbours.push_back(firstQubit);
   } else { // all else
-    int qubit_before = current_qubit - 1;
-    int qubit_after = current_qubit + 1;
-    neighbours.push_back(qubit_before);
-    neighbours.push_back(qubit_after);
+    int pastQubit = currentQubit - 1;
+    int futureQubit = currentQubit + 1;
+    neighbours.push_back(pastQubit);
+    neighbours.push_back(futureQubit);
   }
 
   return neighbours;
@@ -78,23 +78,23 @@ int main() {
     QuESTEnv env = createQuESTEnv();
     
     // set parameters
-    int number_of_qubits = 3;
-	  qreal angles[number_of_qubits]; 
-    qreal x_corrections[number_of_qubits];
-    qreal z_corrections[number_of_qubits];
-    qreal updated_angles[number_of_qubits]; 
-    int measured_qubits[number_of_qubits];
+    int numberQubits = 3;
+	  qreal angles[numberQubits]; 
+    qreal x_corrections[numberQubits];
+    qreal z_corrections[numberQubits];
+    qreal updated_angles[numberQubits]; 
+    int measured_qubits[numberQubits];
     
     
     // set initial angles
-	for(int i=0;i<number_of_qubits;i++)
+	for(int i=0;i<numberQubits;i++)
 	    angles[i] = M_PI / 4; 
 	
     // Set first updated angle to match first original angle
     updated_angles[0] = angles[0];
 
     // prepare our register
-    Qureg qureg = createQureg(number_of_qubits, env);
+    Qureg qureg = createQureg(numberQubits, env);
 
 
     // qureg -> |+><+|
@@ -150,60 +150,60 @@ int main() {
 
     // Print data to screen
     printf("Original angles: ");
-    for(int i = 0; i < number_of_qubits; i++)
+    for(int i = 0; i < numberQubits; i++)
     {
       printf("%f ", angles[i]);
     }
 
     printf("\nUpdated angles: ");
-    for(int i = 0; i < number_of_qubits; i++)
+    for(int i = 0; i < numberQubits; i++)
     {
       printf("%f ", updated_angles[i]);
     }
 
     printf("\nMeasured array: ");
-    for(int i = 0; i < number_of_qubits; i++)
+    for(int i = 0; i < numberQubits; i++)
     {
       printf("%d ", measured_qubits[i]);
     }
 
     printf("\nProbability of each outcome: ");
-    for (int i = 0; i < number_of_qubits; i++)
+    for (int i = 0; i < numberQubits; i++)
     {
         qreal prob = calcProbOfOutcome(qureg,i,0);
         printf("%f ", prob);
     }
 
     printf("\nX corection: ");
-    for (int i = 0; i < number_of_qubits; i++)
+    for (int i = 0; i < numberQubits; i++)
     {
         printf("%f ", x_corrections[i]);
     }
 
 
     printf("\nZ corection: ");
-    for (int i = 0; i < number_of_qubits; i++)
+    for (int i = 0; i < numberQubits; i++)
     {
         printf("%f ", z_corrections[i]);
     }
  
-    int current_qubit = 0;
-    int future_qubit = get_future_qubit_linear_cluster(current_qubit);
-    int past_qubit = get_past_qubit_linear_cluster(current_qubit);
+    int currentQubit = 0;
+    int futureQubit = getFutureQubit(currentQubit);
+    int pastQubit = getPastQubit(currentQubit);
 
-    printf("\nPast qubit is %d\n",past_qubit);
-    printf("Current qubit is %d\n",current_qubit);
-    printf("Future qubit is %d\n",future_qubit);
+    printf("\nPast qubit is %d\n",pastQubit);
+    printf("Current qubit is %d\n",currentQubit);
+    printf("Future qubit is %d\n",futureQubit);
 
     
     int size_neighbour_set;
-    size_neighbour_set = get_size_neighbour_set_linear_cluster(current_qubit,number_of_qubits);
+    size_neighbour_set = getOpenNeighbourhoodSizePathGraph(currentQubit,numberQubits);
     printf("Size of neighbour set: %d\n",size_neighbour_set);  
 
     vector<int> neighbours;
-    neighbours = get_open_neighbour_set_linear_cluster(current_qubit,number_of_qubits);
+    neighbours = getOpenNeighbourhoodPathGraph(currentQubit,numberQubits);
 
-    printf("For current qubit, %d, the neighbours are ",current_qubit);
+    printf("For current qubit, %d, the neighbours are ",currentQubit);
     
     for (int i: neighbours)
     {

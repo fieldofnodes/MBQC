@@ -12,31 +12,31 @@ int main() {
      
     QuESTEnv env = createQuESTEnv();
     // set parameters
-    int NumberQubits = 5;
+    int numberQubits = 5;
         // prepare our register
-    Qureg qureg = createQureg(NumberQubits, env);
+    Qureg qureg = createQureg(numberQubits, env);
     // qureg -> |+><+|
     initPlusState(qureg);  
 
 
     // Create a vector representing a linear cluster graph
-    vector<int> LinearCluster = get_linear_cluster_on_n_qubits(NumberQubits); 
-    vector<int> MeasuredQubitsOutcomes;
-    vector<qreal> QubitAngles;
-    vector<qreal> UpdatedQubitAngles;
+    vector<int> pathGraph = getPathGraph(numberQubits); 
+    vector<int> measuredQubitsOutcomes;
+    vector<qreal> qubitAngles;
+    vector<qreal> updatedQubitAngles;
     vector<qreal> XCorrectionAngle;
     vector<qreal> ZCorrectionAngle;
 
     // apply CZ gate to entangle the circuit
-    for(std::vector<int>::size_type q = 0; q != LinearCluster.size()-1; q++) 
+    for(std::vector<int>::size_type q = 0; q != pathGraph.size()-1; q++) 
     {    
         controlledPhaseFlip(qureg,q,q+1);
     }
 
     
     // set initial angles
-	for(int i=0;i<NumberQubits;i++)
-	    QubitAngles.push_back(0.0); 
+	for(int i=0;i<numberQubits;i++)
+	    qubitAngles.push_back(0.0); 
 	
 
 
@@ -46,59 +46,59 @@ int main() {
     // measure first qubit
     qreal X0 = 0.0;
     qreal Z0 = 0.0;
-    int FirstQubitIndex=0;
-    UpdatedQubitAngles.push_back(QubitAngles[FirstQubitIndex]);
-    rotateZ(qureg,FirstQubitIndex, (-1)*UpdatedQubitAngles[FirstQubitIndex]);
-    hadamard(qureg,FirstQubitIndex);
-    MeasuredQubitsOutcomes.push_back(measure(qureg,FirstQubitIndex));
+    int firstQubitIndex=0;
+    updatedQubitAngles.push_back(qubitAngles[firstQubitIndex]);
+    rotateZ(qureg,firstQubitIndex, (-1)*updatedQubitAngles[firstQubitIndex]);
+    hadamard(qureg,firstQubitIndex);
+    measuredQubitsOutcomes.push_back(measure(qureg,firstQubitIndex));
     XCorrectionAngle.push_back(X0);
     ZCorrectionAngle.push_back(Z0);
     
-    cout << "Qubit: " << FirstQubitIndex << " Outcome: " << MeasuredQubitsOutcomes[FirstQubitIndex] << " Updated angle: " << UpdatedQubitAngles[FirstQubitIndex] << "\n"; 
+    cout << "Qubit: " << firstQubitIndex << " Outcome: " << measuredQubitsOutcomes[firstQubitIndex] << " Updated angle: " << updatedQubitAngles[firstQubitIndex] << "\n"; 
     // measure second qubit
     qreal X1;
     qreal Z1;
-    int SecondQubitIndex=1;
-    X1 = pow((-1),MeasuredQubitsOutcomes[SecondQubitIndex])*QubitAngles[SecondQubitIndex];
-    UpdatedQubitAngles[SecondQubitIndex] = X1;
-    rotateZ(qureg,SecondQubitIndex, (-1)*UpdatedQubitAngles[SecondQubitIndex]);
-    hadamard(qureg,SecondQubitIndex);
-    MeasuredQubitsOutcomes.push_back(measure(qureg,SecondQubitIndex));
+    int secondQubitIndex=1;
+    X1 = pow((-1),measuredQubitsOutcomes[secondQubitIndex])*qubitAngles[secondQubitIndex];
+    updatedQubitAngles[secondQubitIndex] = X1;
+    rotateZ(qureg,secondQubitIndex, (-1)*updatedQubitAngles[secondQubitIndex]);
+    hadamard(qureg,secondQubitIndex);
+    measuredQubitsOutcomes.push_back(measure(qureg,secondQubitIndex));
     XCorrectionAngle.push_back(X1);
     ZCorrectionAngle.push_back(0.0);
 
-    cout << "Qubit: " << SecondQubitIndex << " Outcome: " << MeasuredQubitsOutcomes[SecondQubitIndex] << " Updated angle: " << UpdatedQubitAngles[SecondQubitIndex] << "\n"; 
+    cout << "Qubit: " << secondQubitIndex << " Outcome: " << measuredQubitsOutcomes[secondQubitIndex] << " Updated angle: " << updatedQubitAngles[secondQubitIndex] << "\n"; 
     
 
-    for(int CurrentQubit=2;CurrentQubit<NumberQubits;CurrentQubit++)
+    for(int currentQubit=2;currentQubit<numberQubits;currentQubit++)
     {       
         qreal X;
         qreal Z;
         qreal phi;
-        qreal phi_prime;
+        qreal phiPrime;
         int outcome;
 
         
-        X = ComputeXCorrectionAngle(
-                LinearCluster, 
-                MeasuredQubitsOutcomes,
-                QubitAngles,
-                CurrentQubit);
-        Z = ComputeZCorrectionAngle(
-                LinearCluster, 
-                MeasuredQubitsOutcomes,
-                CurrentQubit);
-        phi_prime = X+Z;
+        X = computeXCorrectionAnglePathGraph(
+                pathGraph, 
+                measuredQubitsOutcomes,
+                qubitAngles,
+                currentQubit);
+        Z = computeZCorrectionAnglePathGraph(
+                pathGraph, 
+                measuredQubitsOutcomes,
+                currentQubit);
+        phiPrime = X+Z;
         
-        rotateZ(qureg,CurrentQubit, (-1)*phi_prime);
-        hadamard(qureg,CurrentQubit);
-        outcome = measure(qureg,CurrentQubit);
+        rotateZ(qureg,currentQubit, (-1)*phiPrime);
+        hadamard(qureg,currentQubit);
+        outcome = measure(qureg,currentQubit);
         
         XCorrectionAngle.push_back(X);
         ZCorrectionAngle.push_back(Z);
-        UpdatedQubitAngles.push_back(phi_prime);
-        MeasuredQubitsOutcomes.push_back(outcome);
-        cout << "Qubit: " << CurrentQubit << " Outcome: " << outcome << " Updated angle: " << phi_prime << "\n"; 
+        updatedQubitAngles.push_back(phiPrime);
+        measuredQubitsOutcomes.push_back(outcome);
+        cout << "Qubit: " << currentQubit << " Outcome: " << outcome << " Updated angle: " << phiPrime << "\n"; 
     }
 
 }

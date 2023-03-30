@@ -14,9 +14,8 @@ int main() {
     vector<int> lastQubitOutcome;
     vector<int> allLastQubitZero;
     int numberRealisations = 1;
-    int k = 3;
-    int qubitNumber=2*k + 1;
-    double angleNumerator = 2.0*k;
+    int qubitNumber=5;
+
     
 
     
@@ -24,102 +23,110 @@ int main() {
         {  
             QuESTEnv env = createQuESTEnv();
             // set parameters
-            int NumberQubits = qubitNumber;//11;
+            int numberQubits = qubitNumber;//11;
                 // prepare our register
-            Qureg qureg = createQureg(NumberQubits, env);
+            Qureg qureg = createQureg(numberQubits, env);
             // qureg -> |+><+|
             initPlusState(qureg);  
 
 
             // Create a vector representing a linear cluster graph
-            vector<int> LinearCluster = get_linear_cluster_on_n_qubits(NumberQubits); 
-            vector<int> MeasuredQubitsOutcomes;
-            vector<qreal> QubitAngles;
-            vector<qreal> UpdatedQubitAngles;
+            vector<int> pathGraph = getPathGraph(numberQubits); 
+            vector<int> measuredQubitsOutcomes;
+            vector<qreal> qubitAngles;
+            vector<qreal> updatedQubitAngles;
             
 
             // apply CZ gate to entangle the circuit
-            for(std::vector<int>::size_type q = 0; q != LinearCluster.size()-1; q++) 
+            for(std::vector<int>::size_type q = 0; q != pathGraph.size()-1; q++) 
             {    
                     controlledPhaseFlip(qureg,q,q+1);
             }
             
 
             // set initial angles
-            for(int i=0;i<NumberQubits;i++){
+            for(int i=0;i<numberQubits;i++){
                 if(i % 2 == 0){
-                    double angle;
-                     angle = M_PI*angleNumerator/qubitNumber;
-                    QubitAngles.push_back(angle);
+                    qubitAngles.push_back(2*M_PI);
                 } else {
-                    QubitAngles.push_back(0.0); 
+                    qubitAngles.push_back(0.0); 
                 }
             }
             
+
+
+
             // Run MBQC
             // measure first qubit
-            int FirstQubitIndex=0;
-            UpdatedQubitAngles.push_back(QubitAngles[FirstQubitIndex]);
-            rotateZ(qureg,FirstQubitIndex, (-1)*UpdatedQubitAngles[FirstQubitIndex]);
-            hadamard(qureg,FirstQubitIndex);
-            MeasuredQubitsOutcomes.push_back(measure(qureg,FirstQubitIndex));
+            int firstQubitIndex=0;
+            updatedQubitAngles.push_back(qubitAngles[firstQubitIndex]);
+            rotateZ(qureg,firstQubitIndex, (-1)*updatedQubitAngles[firstQubitIndex]);
+            hadamard(qureg,firstQubitIndex);
+            measuredQubitsOutcomes.push_back(measure(qureg,firstQubitIndex));
             
             // measure second qubit
             qreal X1;
             //qreal Z1;
-            int SecondQubitIndex=1;
-            X1 = pow((-1),MeasuredQubitsOutcomes[FirstQubitIndex])*QubitAngles[SecondQubitIndex];
-            UpdatedQubitAngles[SecondQubitIndex] = X1;
-            rotateZ(qureg,SecondQubitIndex, (-1)*UpdatedQubitAngles[SecondQubitIndex]);
-            hadamard(qureg,SecondQubitIndex);
-            MeasuredQubitsOutcomes.push_back(measure(qureg,SecondQubitIndex));
+            int secondQubitIndex=1;
+            X1 = pow((-1),measuredQubitsOutcomes[firstQubitIndex])*qubitAngles[secondQubitIndex];
+            updatedQubitAngles[secondQubitIndex] = X1;
+            rotateZ(qureg,secondQubitIndex, (-1)*updatedQubitAngles[secondQubitIndex]);
+            hadamard(qureg,secondQubitIndex);
+            measuredQubitsOutcomes.push_back(measure(qureg,secondQubitIndex));
             
             
-            for(int CurrentQubit=2;CurrentQubit<NumberQubits;CurrentQubit++)
+            for(int currentQubit=2;currentQubit<numberQubits;currentQubit++)
                 {       
                     qreal X;
                     qreal Z;
                     //qreal phi;
-                    qreal phi_prime;
+                    qreal phiPrime;
                     int outcome;
 
                     
-                    X = ComputeXCorrectionAngle(
-                            LinearCluster, 
-                            MeasuredQubitsOutcomes,
-                            QubitAngles,
-                            CurrentQubit);
-                    Z = ComputeZCorrectionAngle(
-                            LinearCluster, 
-                            MeasuredQubitsOutcomes,
-                            CurrentQubit);
-                    phi_prime = X+Z;
+                    X = computeXCorrectionAnglePathGraph(
+                            pathGraph, 
+                            measuredQubitsOutcomes,
+                            qubitAngles,
+                            currentQubit);
+                    Z = computeZCorrectionAnglePathGraph(
+                            pathGraph, 
+                            measuredQubitsOutcomes,
+                            currentQubit);
+                    phiPrime = X+Z;
                     
-                    rotateZ(qureg,CurrentQubit, (-1)*phi_prime);
-                    hadamard(qureg,CurrentQubit);
-                    outcome = measure(qureg,CurrentQubit);
+                    rotateZ(qureg,currentQubit, (-1)*phiPrime);
+                    hadamard(qureg,currentQubit);
+                    outcome = measure(qureg,currentQubit);
                     
-                    MeasuredQubitsOutcomes.push_back(outcome);
+                    measuredQubitsOutcomes.push_back(outcome);
                     
                 }
 
-            lastQubitOutcome.push_back(MeasuredQubitsOutcomes.back());
+            lastQubitOutcome.push_back(measuredQubitsOutcomes.back());
             
         }
 /*
+        for(int i:lastQubitOutcome){
+            cout << i << " ";
+        } */
+
         // Confirm all of the last qubits are 0
         if ( std::all_of(
                 lastQubitOutcome.begin(), 
                 lastQubitOutcome.end(), 
                 [](int i){return i==0;}))
                 {
-                    std::cout << "All the elements on " << qubitNumber << " qubits are 0.\n";
+                    std::cout << "All the elements on " << qubitNumber << " qubits are 1.\n";
                     allLastQubitZero.push_back(1);
                 }
-  */      
+      
 }
 
 
   
-
+someType runMbqcPathGraph(
+    Qureg qureg,
+    vector<int> pathGraph,
+    vector<qreal> qubitAngles)
 

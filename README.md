@@ -36,7 +36,7 @@ From a quick google search there are very few examples of MBQC simmulators. The 
 7. Analysis on graph cluster
 
 ### Linear Cluster example figure
-![linear_cluster](https://user-images.githubusercontent.com/19248072/225726167-6cf3710d-db2c-479c-be50-f8f9ce9ed101.png)
+![pathGraph](https://user-images.githubusercontent.com/19248072/225726167-6cf3710d-db2c-479c-be50-f8f9ce9ed101.png)
 
 ### Some testing options for linear cluster state
 

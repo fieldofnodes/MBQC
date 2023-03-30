@@ -11,34 +11,34 @@ using namespace std;
   To represent the a line of nodes connected by one 
   edge ()-()-()- - - -() (1,2,3,...,N)
 */
-vector<int> get_linear_cluster_on_n_qubits(int number_of_qubits)
+vector<int> getPathGraph(int numberQubits)
 {
-  vector<int> linear_cluster;
-  for (int i = 0; i < number_of_qubits; i++ )
+  vector<int> pathGraph;
+  for (int i = 0; i < numberQubits; i++ )
   {
-    linear_cluster.push_back(i);  
+    pathGraph.push_back(i);  
   }
-  return linear_cluster;
+  return pathGraph;
 }
 
 /*
   Linear flow, f(i) = i + 1
 */
-int get_future_qubit_linear_cluster(int current_qubit){
-  int future_qubit;
-  future_qubit = current_qubit + 1;
+int getFutureQubit(int currentQubit){
+  int futureQubit;
+  futureQubit = currentQubit + 1;
 
-  return future_qubit;
+  return futureQubit;
 }
 
 /*
   Linear flow, f^{-1}(i) = i - 1
 */
-int get_past_qubit_linear_cluster(int current_qubit){
-  int past_qubit;
-  past_qubit = current_qubit - 1;
+int getPastQubit(int currentQubit){
+  int pastQubit;
+  pastQubit = currentQubit - 1;
 
-  return past_qubit;
+  return pastQubit;
 }
 
 /*
@@ -46,16 +46,16 @@ int get_past_qubit_linear_cluster(int current_qubit){
   f(i) = i + 1, if i is last element of vector, then
   throw error.
 */
-int get_future_qubit_linear_cluster_vec(vector<int> linear_cluster ,int current_qubit)
+int getFutureQubitPathGraph(vector<int> pathGraph ,int currentQubit)
 {
-int future_qubit;
-auto cluster_size = linear_cluster.size();
-if (current_qubit == linear_cluster[cluster_size-1]) {
-    future_qubit = current_qubit;
+int futureQubit;
+auto graphSize = pathGraph.size();
+if (currentQubit == pathGraph[graphSize-1]) {
+    futureQubit = currentQubit;
 } else {
-  future_qubit = get_future_qubit_linear_cluster(current_qubit);
+  futureQubit = getFutureQubit(currentQubit);
 }
-  return future_qubit;
+  return futureQubit;
 }
 
 
@@ -64,17 +64,17 @@ if (current_qubit == linear_cluster[cluster_size-1]) {
   f^{-1}(i) = i - 1, if i is first element of vector, then
   throw error.
 */
-int get_past_qubit_linear_cluster_vec(vector<int> linear_cluster ,int current_qubit)
+int getPastQubitPathGraph(vector<int> pathGraph ,int currentQubit)
 {
-int past_qubit;
+int pastQubit;
 
-if (current_qubit == linear_cluster[0]) {
-  past_qubit = current_qubit;
+if (currentQubit == pathGraph[0]) {
+  pastQubit = currentQubit;
 
 } else {
-  past_qubit = get_past_qubit_linear_cluster(current_qubit);
+  pastQubit = getPastQubit(currentQubit);
 }
-  return past_qubit;
+  return pastQubit;
 }
 
 
@@ -85,80 +85,80 @@ if (current_qubit == linear_cluster[0]) {
   current qubit based on the qubit position in the
   linear cluster
 */
-int get_size_neighbour_set_linear_cluster(vector<int> linear_cluster ,int current_qubit){
-  auto cluster_size = linear_cluster.size();
-  int neighbour_size;
+int getOpenNeighbourhoodSizePathGraph(vector<int> pathGraph ,int currentQubit){
+  auto graphSize = pathGraph.size();
+  int neighbourhoodSize;
   // Logic for getting nieghbors
-  if (current_qubit == 0) { // qubit is first
-    neighbour_size = 1;
-  } else if (current_qubit == linear_cluster[cluster_size-1]) { // qubit is last
-    neighbour_size = 1;
+  if (currentQubit == 0) { // qubit is first
+    neighbourhoodSize = 1;
+  } else if (currentQubit == pathGraph[graphSize-1]) { // qubit is last
+    neighbourhoodSize = 1;
   } else { // all else
-    neighbour_size = 2;
+    neighbourhoodSize = 2;
   }
 
-  return neighbour_size;
+  return neighbourhoodSize;
 }
 
 /*
   Get the neighbourhood of the qubit based on the linear cluster and the 
   qubits
 */
-vector<int> get_open_neighbour_set_linear_cluster(vector<int> linear_cluster ,int current_qubit){
+vector<int> getOpenNeighbourhoodPathGraph(vector<int> pathGraph ,int currentQubit){
   vector<int> neighbours;
-  auto cluster_size = linear_cluster.size();
-  int first_qubit;
-  int qubit_before;
-  int qubit_after;
+  auto graphSize = pathGraph.size();
+  int firstQubit;
+  int pastQubit;
+  int futureQubit;
 
-  if (current_qubit == linear_cluster[0]) { // qubit is first in graph
-    first_qubit = current_qubit + 1;
-    neighbours.push_back(first_qubit);
-  } else if (current_qubit == linear_cluster[cluster_size-1]) { // qubit is last in graph
-    first_qubit = current_qubit - 1;
-    neighbours.push_back(first_qubit);
+  if (currentQubit == pathGraph[0]) { // qubit is first in graph
+    firstQubit = currentQubit + 1;
+    neighbours.push_back(firstQubit);
+  } else if (currentQubit == pathGraph[graphSize-1]) { // qubit is last in graph
+    firstQubit = currentQubit - 1;
+    neighbours.push_back(firstQubit);
   } else { // all else
-    qubit_before = current_qubit - 1;
-    qubit_after = current_qubit + 1;
-    neighbours.push_back(qubit_before);
-    neighbours.push_back(qubit_after);
+    pastQubit = currentQubit - 1;
+    futureQubit = currentQubit + 1;
+    neighbours.push_back(pastQubit);
+    neighbours.push_back(futureQubit);
   }
 
   return neighbours;
 }
 
 
-  qreal ComputeXCorrectionAngle(
-      vector<int> LinearCluster, 
-      vector<int> MeasuredQubitsOutcomes,
-      vector<qreal> QubitAngles,
-      int CurrentQubit)
+  qreal computeXCorrectionAnglePathGraph(
+      vector<int> pathGraph, 
+      vector<int> measuredQubitsOutcomes,
+      vector<qreal> qubitAngles,
+      int currentQubit)
   {
       qreal xCorrectionAngle;
-      int PastQubit;
-      PastQubit = get_past_qubit_linear_cluster_vec(LinearCluster,CurrentQubit);
-      int InverseFlowQubitOutcome = MeasuredQubitsOutcomes[PastQubit];
-      xCorrectionAngle = pow(-1, InverseFlowQubitOutcome)*QubitAngles[CurrentQubit];
+      int pastQubit;
+      pastQubit = getPastQubitPathGraph(pathGraph,currentQubit);
+      int inverseFlowQubitOutcome = measuredQubitsOutcomes[pastQubit];
+      xCorrectionAngle = pow(-1, inverseFlowQubitOutcome)*qubitAngles[currentQubit];
 
       return xCorrectionAngle;
   }
 
 
 
-  qreal ComputeZCorrectionAngle(
-      vector<int> LinearCluster, 
-      vector<int> MeasuredQubitsOutcomes,
-      int CurrentQubit)
+  qreal computeZCorrectionAnglePathGraph(
+      vector<int> pathGraph, 
+      vector<int> measuredQubitsOutcomes,
+      int currentQubit)
   {   
       qreal zCorrectionAngle;
       
-      int PastQubit;
-      int PastPastQubit;
-      int InverseFlowQubitOutcome;
-      PastQubit = get_past_qubit_linear_cluster_vec(LinearCluster,CurrentQubit);
-      PastPastQubit = get_past_qubit_linear_cluster_vec(LinearCluster,PastQubit);
-      InverseFlowQubitOutcome = MeasuredQubitsOutcomes[PastPastQubit];
-      zCorrectionAngle = M_PI*InverseFlowQubitOutcome;
+      int pastQubit;
+      int pastPastQubit;
+      int inverseFlowQubitOutcome;
+      pastQubit = getPastQubitPathGraph(pathGraph,currentQubit);
+      pastPastQubit = getPastQubitPathGraph(pathGraph,pastQubit);
+      inverseFlowQubitOutcome = measuredQubitsOutcomes[pastPastQubit];
+      zCorrectionAngle = M_PI*inverseFlowQubitOutcome;
               
       return zCorrectionAngle;
   }
@@ -171,4 +171,60 @@ int countElements(vector<int> v, int element) {
         }
     }
     return count;
+}
+
+vector<int> runMbqcPathGraph(
+        Qureg qureg,
+        vector<int> pathGraph,
+        vector<qreal> qubitAngles){
+
+
+    vector<qreal> updatedQubitAngles;
+    vector<int> measuredQubitsOutcomes;
+    int numberQubits = pathGraph.size();
+    qreal X1;
+    int firstQubitIndex=0;
+    int secondQubitIndex=1;
+    
+
+    // Measure first qubit and update angle
+    updatedQubitAngles.push_back(qubitAngles[firstQubitIndex]);
+    rotateZ(qureg,firstQubitIndex, (-1)*updatedQubitAngles[firstQubitIndex]);
+    hadamard(qureg,firstQubitIndex);
+    measuredQubitsOutcomes.push_back(measure(qureg,firstQubitIndex));
+
+    // measure second qubit
+    X1 = pow((-1),measuredQubitsOutcomes[firstQubitIndex])*qubitAngles[secondQubitIndex];
+    updatedQubitAngles[secondQubitIndex] = X1;
+    rotateZ(qureg,secondQubitIndex, (-1)*updatedQubitAngles[secondQubitIndex]);
+    hadamard(qureg,secondQubitIndex);
+    measuredQubitsOutcomes.push_back(measure(qureg,secondQubitIndex));
+                
+
+    for(int currentQubit=2;currentQubit<numberQubits;currentQubit++)
+        {       
+            qreal X;
+            qreal Z;
+            qreal phiPrime;
+            int outcome;
+
+            X = computeXCorrectionAnglePathGraph(
+                    pathGraph, 
+                    measuredQubitsOutcomes,
+                    qubitAngles,
+                    currentQubit);
+            Z = computeZCorrectionAnglePathGraph(
+                    pathGraph, 
+                    measuredQubitsOutcomes,
+                    currentQubit);
+            phiPrime = X+Z;
+            
+            rotateZ(qureg,currentQubit, (-1)*phiPrime);
+            hadamard(qureg,currentQubit);
+            outcome = measure(qureg,currentQubit);
+            
+            measuredQubitsOutcomes.push_back(outcome);
+        }
+
+            return measuredQubitsOutcomes;
 }

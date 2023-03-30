@@ -23,30 +23,30 @@ int main() {
     
   
     // set parameters
-    int number_of_qubits = 5;
+    int numberQubits = 5;
     
     // Select a qubit index
-    int current_qubit = 3;
+    int currentQubit = 3;
 
     // Create a vector representing a linear cluster graph
-    vector<int> linear_cluster = get_linear_cluster_on_n_qubits(number_of_qubits);
+    vector<int> pathGraph = getPathGraph(numberQubits);
 
-    // Get the future qubit using linear_cluster and current qubit
-    int future_qubit_linear_cluster = get_future_qubit_linear_cluster_vec(linear_cluster ,current_qubit);
+    // Get the future qubit using pathGraph and current qubit
+    int future_qubit_linear_cluster = getFutureQubitPathGraph(pathGraph ,currentQubit);
 
-    // Get the past qubit using linear_cluster and current qubit
-    int past_qubit_linear_cluster = get_past_qubit_linear_cluster_vec(linear_cluster ,current_qubit);
+    // Get the past qubit using pathGraph and current qubit
+    int qubitBefore_linear_cluster = getPastQubitPathGraph(pathGraph ,currentQubit);
 
     // Get the neighbourhood size
-    int size_neighbour_set = get_size_neighbour_set_linear_cluster(linear_cluster ,current_qubit);
+    int size_neighbour_set = getOpenNeighbourhoodSizePathGraph(pathGraph ,currentQubit);
     
     // Ger neighbours
-    vector<int> neighbours = get_open_neighbour_set_linear_cluster(linear_cluster ,current_qubit);
+    vector<int> neighbours = getOpenNeighbourhoodPathGraph(pathGraph ,currentQubit);
 
 
-    printf("The number of qubits is: %d\n", number_of_qubits);
-    printf("The current qubit is: %d\n",current_qubit);
-    printf("The Past qubit is: %d\n",past_qubit_linear_cluster);
+    printf("The number of qubits is: %d\n", numberQubits);
+    printf("The current qubit is: %d\n",currentQubit);
+    printf("The Past qubit is: %d\n",qubitBefore_linear_cluster);
     printf("The future qubit is: %d\n",future_qubit_linear_cluster);
     printf("Size of neighbour set: %d\n",size_neighbour_set);  
     printf("The neighbourhoods are: ");
@@ -59,33 +59,33 @@ int main() {
     printf("\n");
     
     printf("The linear cluster is written out as: \n");
-    for (int i: linear_cluster)
+    for (int i: pathGraph)
     {
         cout << i << ' ';
     }
 
 
     // Assert that the future qubit is equivalent to the current qubit +1
-    assert(future_qubit_linear_cluster == current_qubit + 1 && "Incorrect future qubit");
+    assert(future_qubit_linear_cluster == currentQubit + 1 && "Incorrect future qubit");
 
     // Assert that the future qubit is equivalent to the current qubit -1
-    assert(past_qubit_linear_cluster == current_qubit - 1 && "Incorrect past qubit");
+    assert(qubitBefore_linear_cluster == currentQubit - 1 && "Incorrect past qubit");
 
     /* 
         Assert that the number of qubits initialised is equivalent to the 
         size of the linear cluster vector
     */
-    assert(number_of_qubits == linear_cluster.size() && "The linear cluster is not the same size as the number of qubits initialised.");
+    assert(numberQubits == pathGraph.size() && "The linear cluster is not the same size as the number of qubits initialised.");
 
 
     /*
         Test that the size of the neighbours is equivalent to the
         function output based on the qubit location in the vector
     */
-    if (current_qubit == linear_cluster[0])
+    if (currentQubit == pathGraph[0])
     {
         assert(size_neighbour_set == 1 && "Neighbour set shoud be size 1");
-    } else if (current_qubit == linear_cluster[linear_cluster.size()-1]){
+    } else if (currentQubit == pathGraph[pathGraph.size()-1]){
         assert(size_neighbour_set == 1 && "Neighbour set shoud be size 1");
     } else {
         assert(size_neighbour_set == 2 && "Neighbour set shoud be size 2");
@@ -96,10 +96,10 @@ int main() {
         function output based on the qubit location in the vector and
         the size of the size of the neighbours vector.
     */
-    if (current_qubit == linear_cluster[0])
+    if (currentQubit == pathGraph[0])
     {
         assert(neighbours.size() == 1 && "Neighbour set shoud be size 1");
-    } else if (current_qubit == linear_cluster[linear_cluster.size()-1]){
+    } else if (currentQubit == pathGraph[pathGraph.size()-1]){
         assert(neighbours.size() == 1 && "Neighbour set shoud be size 1");
     } else {
         assert(neighbours.size() == 2 && "Neighbour set shoud be size 2");
@@ -110,7 +110,7 @@ int main() {
     // Iterate over path graph cluster p_10
     int NewNumberQubits = 10;
     // Create a vector representing a linear cluster graph
-    vector<int> NewLinearCluster = get_linear_cluster_on_n_qubits(NewNumberQubits);
+    vector<int> NewLinearCluster = getPathGraph(NewNumberQubits);
 
     // Iterate over all vertices, return neighbours
     
@@ -119,14 +119,14 @@ int main() {
     {
         cout << "Qubit: " << q << "\n";
         vector<int> neighbours = 
-            get_open_neighbour_set_linear_cluster(
+            getOpenNeighbourhoodPathGraph(
                 NewLinearCluster ,q);
         cout << "Neighbours: ";
-        // Get the future qubit using linear_cluster and current qubit
-        int FutureQubit = get_future_qubit_linear_cluster_vec(NewLinearCluster ,q);
+        // Get the future qubit using pathGraph and current qubit
+        int FutureQubit = getFutureQubitPathGraph(NewLinearCluster ,q);
         printf("Current qubit: %d future qubit: %d\n",q,FutureQubit);
-        // Get the past qubit using linear_cluster and current qubit
-        int PastQubit = get_past_qubit_linear_cluster_vec(NewLinearCluster ,q);
+        // Get the past qubit using pathGraph and current qubit
+        int pastQubit = getPastQubitPathGraph(NewLinearCluster ,q);
         printf("Current qubit: %d past qubit: %d\n",q,FutureQubit);
         for (int n: neighbours)
         {

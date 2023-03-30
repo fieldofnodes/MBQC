@@ -76,7 +76,7 @@
          inkscape:connector-curvature="0"
          inkscape:connection-start="#path866"
          inkscape:connection-end="#path866-8"
-         inkscape:export-filename="linear_cluster.png"
+         inkscape:export-filename="pathGraph.png"
          inkscape:export-xdpi="96"
          inkscape:export-ydpi="96" />
       <path
@@ -93,7 +93,7 @@
          id="path2317"
          inkscape:connector-type="polyline"
          inkscape:connector-curvature="0"
-         inkscape:export-filename="linear_cluster.png"
+         inkscape:export-filename="pathGraph.png"
          inkscape:export-xdpi="96"
          inkscape:export-ydpi="96"
          inkscape:connection-end="#path866-8-4-0"
