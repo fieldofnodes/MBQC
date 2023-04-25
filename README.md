@@ -6,6 +6,52 @@
 
 **This code is ran inside of [QuEST](https://quest.qtechtheory.org/download/) Documentation to follow in future for implementation.l**
 
+## Ideas for codebase folder structure
+In implementation an MBQC scheme requires the usage of tools from graph theory. Consider the folder tree structure. 
+
+```
+MBQC/
+├─ src/
+│  ├─ genericHelperFunctions
+│  │  ├─ generalAssertFunctions.hpp
+│  ├─ graphs/
+│  │  ├─ graphConstructions.hpp
+│  │  ├─ graphTraversalFlows.hpp
+│  ├─ quantum_graphs/
+│  │  ├─ stateConstruction.hpp
+│  │  ├─ angleConstruction.hpp
+│  │  ├─ quantumGraphClusterStates.hpp
+│  │  ├─ circuitBasedGraphActions.hpp
+│  │  ├─ flowMeasurements.hpp
+│  ├─ testFunctions/
+│  │  ├─ graphAssertFunctions.hpp
+│  │  ├─ generalAssertFunctions.hpp
+│  ├─ filesToGoThrough/
+│  │  ├─ 2023028_TwoQubitsEachPiOn2Angle.cpp
+│  │  ├─ 20230314_Functions_V1.hpp
+│  │  ├─ 20230328_OddPathGraph0AnglesLastQubitOutcome.cpp
+│  │  ├─ 20230328_OddPathGraphEveryOtherAngleZero.cpp
+│  │  ├─ 20230330_CreatingMbqcFunction.cpp
+│  │  ├─ PrepareMeasureSingleQubit.c
+│  │  ├─ copyQureqState.cpp
+│  │  ├─ createGraph.hpp
+│  │  ├─ createLatticeGraph.cpp
+│  │  ├─ createMbqcGraph.cpp
+│  │  ├─ createPathGraph.cpp
+│  │  ├─ directedGraphExample.cpp
+│  │  ├─ edgeWeightUndirectedGraphExample.cpp
+│  │  ├─ findDijkstraSshortestPathExample.cpp
+│  │  ├─ findMinimalSpanningTreeKruskalExample.cpp
+│  │  ├─ sample.cpp
+│  │  ├─ traverseGraph.cpp
+│  │  ├─ undirectedGraphExample.cpp
+├─ tests/
+│  ├─ testGraphProperties.cpp
+│  ├─ verification scripts with known results/
+
+
+
+```
 
 Building an MBQC simulator. This page will be the landing page for building the MBQC simulator. Links, requirments, user stories, etc will be placed here.
 
