@@ -17,7 +17,7 @@ MBQC/
 │  ├─ graphs/
 │  │  ├─ graphConstructions.hpp
 │  │  ├─ graphTraversalFlows.hpp
-│  ├─ quantum_graphs/
+│  ├─ quantumGraphs/
 │  │  ├─ stateConstruction.hpp
 │  │  ├─ angleConstruction.hpp
 │  │  ├─ quantumGraphClusterStates.hpp
