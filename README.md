@@ -48,10 +48,10 @@ MBQC/
 ├─ tests/
 │  ├─ testGraphProperties.cpp
 │  ├─ verification scripts with known results/
-
-
-
 ```
+
+here the folders `genericHelperFunctions`, `graphs`, `quantumGraphs`, `testFunctions` and `test` are the working technology used to perform MBQC. **The work is not complete, but will follow this structure.** The folder `filesToGoThrough` contains files the need to be curated.
+
 
 Building an MBQC simulator. This page will be the landing page for building the MBQC simulator. Links, requirments, user stories, etc will be placed here.
 
