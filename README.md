@@ -4,7 +4,7 @@
 # Measurement Based Quantum Computation  
 
 
-**This code is ran inside of [QuEST](https://quest.qtechtheory.org/download/) Documentation to follow in future for implementation.l**
+**This code is ran inside of [QuEST](https://quest.qtechtheory.org/download/). Documentation to follow in future for implementation.**
 
 ## Ideas for codebase folder structure
 In implementation an MBQC scheme requires the usage of tools from graph theory. Consider the folder tree structure. 
