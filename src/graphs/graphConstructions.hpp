@@ -1,3 +1,11 @@
+/////////////////////////////////////////////////////////////
+// Title  : graphConstructions.hpp                         //
+// Author : Jonathan Miller                                //
+// Date   : 20230425                                       //
+// Aim    : Construct graphs                               //
+//        : As graph types grow in number, separate tests  //
+//        : across multiple files                          //
+/////////////////////////////////////////////////////////////
 #include <iostream>
 #include <algorithm>
 #include <iterator>
@@ -24,7 +32,7 @@ typedef boost::graph_traits<UndirectedGraph>::vertex_iterator vertex_iterator;
 
 
 /*
-  create a lattice graph with n x m vertices
+  create a 2D lattice graph with n rows, m columns and nxm vertices
 */
 UndirectedGraph createLatticeGraph(int n, int m) { 
   UndirectedGraph g(n * m);

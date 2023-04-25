@@ -1,34 +1,23 @@
-/*
-#include <boost/graph/adjacency_list.hpp>
-#include <iostream>
-typedef boost::adjacency_list<boost::setS, boost::vecS, boost::undirectedS> Graph;
+/////////////////////////////////////////////////////////////
+// Title  : testGraphProperties.cpp                        //
+// Author : Jonathan Miller                                //
+// Date   : 20230425                                       //
+// Aim    : Build graphs and test properties of graphs.    //
+//        : As graph types grow in number, separate tests  //
+//        : across multiple files                          //
+/////////////////////////////////////////////////////////////
 
-int main() {
-    Graph g;
-    boost::add_vertex(g); // Add a vertex with ID 0
-    boost::add_vertex(g); // Add a vertex with ID 1
-    boost::add_vertex(g); // Add a vertex with ID 2
-    boost::add_edge(0, 1, g); // Add an edge between vertices 0 and 1
-    boost::add_edge(1, 2, g); // Add an edge between vertices 1 and 2
-    
-    Graph::vertex_descriptor v = boost::vertex(1, g); // Get vertex descriptor for vertex with ID 1
-    
-    std::cout << "Number of edges connected to vertex " << v << ": " << boost::degree(v, g) << std::endl;
-    
-    return 0;
-}
-
-
-*/
 #include <iostream>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/container/vector.hpp>
 #include <vector>
 #include <numeric>
 #include <algorithm>
-#include "createGraph.hpp"
-using namespace boost;
+#include "src/genericHelperFunctions/generalAssertFunctions.hpp"
+#include "src/graphs/graphConstructions.hpp"
+#include "src/testFunctions/graphAssertFunctions.hpp"
 
+using namespace boost;
 
 typedef boost::adjacency_list<boost::vecS, boost::vecS,boost::undirectedS> UndirectedGraph;
 typedef boost::graph_traits<UndirectedGraph>::edge_iterator edge_iterator;
@@ -78,7 +67,6 @@ int main(){
 
     // Test that the total degree is equivalent to 
     // 2 times the number of edges
-    assertHandShakeLemma(pathGraph);
     assertHandShakeLemma(pathGraph);
     assertHandShakeLemma(latticeGraph);
 

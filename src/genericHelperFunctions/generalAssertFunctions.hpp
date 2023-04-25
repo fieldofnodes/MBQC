@@ -1,3 +1,9 @@
+/////////////////////////////////////////////////////////////
+// Title  : generalAssertFunctions.hpp                     //
+// Author : Jonathan Miller                                //
+// Date   : 20230425                                       //
+// Aim    : Construct general functions                    //
+/////////////////////////////////////////////////////////////
 #include <iostream>
 #include <algorithm>
 #include <iterator>
