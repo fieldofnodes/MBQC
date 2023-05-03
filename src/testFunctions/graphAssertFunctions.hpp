@@ -36,7 +36,7 @@
 #include <boost/range/algorithm.hpp>
 #include <boost/range/adaptor/filtered.hpp>
 #include <boost/range/adaptor/transformed.hpp>
-#include "generalAssertFunctions.hpp"
+
 
 
 
@@ -44,9 +44,9 @@
 using namespace boost;
 
 
-typedef boost::adjacency_list<boost::vecS, boost::vecS,boost::undirectedS> UndirectedGraph;
-typedef boost::graph_traits<UndirectedGraph>::edge_iterator edge_iterator;
-typedef boost::graph_traits<UndirectedGraph>::vertex_iterator vertex_iterator;
+typedef boost::adjacency_list<boost::vecS, boost::vecS,boost::undirectedS> undirectedGraph;
+typedef boost::graph_traits<undirectedGraph>::edge_iterator edge_iterator;
+typedef boost::graph_traits<undirectedGraph>::vertex_iterator vertex_iterator;
 
 
 
@@ -54,14 +54,14 @@ typedef boost::graph_traits<UndirectedGraph>::vertex_iterator vertex_iterator;
   inthe hand shake lemma stipulates that the total degree of a graph G,
   is equivalent to 2 times the number of edges
 */
-void assertHandShakeLemma(const UndirectedGraph& graph) {
+void assertHandShakeLemma(const undirectedGraph& graph) {
     
     int num_vertices = boost::num_vertices(graph);
     boost::container::vector<int> degree_vector;
 
     // Call the function and print the adjacent vertices of vertex 0
     for (int i = 0; i < num_vertices; i++) {
-      UndirectedGraph::vertex_descriptor v;
+      undirectedGraph::vertex_descriptor v;
       v = boost::vertex(i, graph); 
       degree_vector.push_back(boost::degree(v, graph));        
     }
@@ -77,14 +77,14 @@ void assertHandShakeLemma(const UndirectedGraph& graph) {
   inthe hand shake lemma stipulates that the total degree of a graph G,
   is equivalent to 2 times the number of edges
 */
-void assertPathGraphMinMaxDegrees(const UndirectedGraph& graph) {
+void assertPathGraphMinMaxDegrees(const undirectedGraph& graph) {
     
     int num_vertices = boost::num_vertices(graph);
     boost::container::vector<int> degree_vector;
 
     // Call the function and print the adjacent vertices of vertex 0
     for (int i = 0; i < num_vertices; i++) {
-      UndirectedGraph::vertex_descriptor v;
+      undirectedGraph::vertex_descriptor v;
       v = boost::vertex(i, graph); 
       degree_vector.push_back(boost::degree(v, graph));        
     }
@@ -102,14 +102,14 @@ void assertPathGraphMinMaxDegrees(const UndirectedGraph& graph) {
   inthe hand shake lemma stipulates that the total degree of a graph G,
   is equivalent to 2 times the number of edges
 */
-void assertDegreeSetLatticeGraph(const UndirectedGraph& graph) {
+void assertDegreeSetLatticeGraph(const undirectedGraph& graph) {
     
     int num_vertices = boost::num_vertices(graph);
     std::vector<int> degree_vector;
     std::vector<int> required_deg_vector = {2,3,4};
     // Call the function and print the adjacent vertices of vertex 0
     for (int i = 0; i < num_vertices; i++) {
-      UndirectedGraph::vertex_descriptor v;
+      undirectedGraph::vertex_descriptor v;
       v = boost::vertex(i, graph); 
       int d = boost::degree(v, graph);
       degree_vector.push_back(d);        
@@ -135,7 +135,7 @@ void assertDegreeSetLatticeGraph(const UndirectedGraph& graph) {
 /*
   Assert that the number of vertices in a graph matches expected input 
 */
-void assertGraphNumVertices(const UndirectedGraph& graph, int numVertices){
+void assertGraphNumVertices(const undirectedGraph& graph, int numVertices){
   int num_vertices = boost::num_vertices(graph);
   assert("Number of vertices in graph must equal input" && numVertices == num_vertices);
 }

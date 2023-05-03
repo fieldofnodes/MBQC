@@ -2,12 +2,12 @@
 #include <iostream>
  
 typedef boost::property<boost::edge_weight_t, int> EdgeWeightProperty;
-typedef boost::adjacency_list<boost::listS, boost::vecS,boost::undirectedS,boost::no_property,EdgeWeightProperty> UndirectedGraph;
-typedef boost::graph_traits<UndirectedGraph>::edge_iterator edge_iterator;
+typedef boost::adjacency_list<boost::listS, boost::vecS,boost::undirectedS,boost::no_property,EdgeWeightProperty> undirectedGraph;
+typedef boost::graph_traits<undirectedGraph>::edge_iterator edge_iterator;
  
 int main()
 {
-    UndirectedGraph g;
+    undirectedGraph g;
  
     boost::add_edge (0, 1, 8, g);
     boost::add_edge (0, 3, 18, g);

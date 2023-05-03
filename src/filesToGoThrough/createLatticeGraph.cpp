@@ -4,14 +4,14 @@
 using namespace boost;
 
 typedef boost::property<boost::edge_weight_t, int> EdgeWeightProperty;
-typedef boost::adjacency_list<boost::listS, boost::vecS,boost::undirectedS,boost::no_property,EdgeWeightProperty> UndirectedGraph;
-typedef boost::graph_traits<UndirectedGraph>::edge_iterator edge_iterator;
-typedef boost::graph_traits<UndirectedGraph>::vertex_iterator vertex_iterator;
+typedef boost::adjacency_list<boost::listS, boost::vecS,boost::undirectedS,boost::no_property,EdgeWeightProperty> undirectedGraph;
+typedef boost::graph_traits<undirectedGraph>::edge_iterator edge_iterator;
+typedef boost::graph_traits<undirectedGraph>::vertex_iterator vertex_iterator;
     
 
 
-UndirectedGraph create_grid_lattice_graph(int n, int m) { // create a grid lattice graph with n x m vertices
-  UndirectedGraph g(n * m);
+undirectedGraph create_grid_lattice_graph(int n, int m) { // create a grid lattice graph with n x m vertices
+  undirectedGraph g(n * m);
 
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < m; j++) {
@@ -28,7 +28,7 @@ UndirectedGraph create_grid_lattice_graph(int n, int m) { // create a grid latti
 
 int main() {
   int n = 4, m = 3;
-  UndirectedGraph g = create_grid_lattice_graph(n, m); // create a 3 x 4 grid lattice graph
+  undirectedGraph g = create_grid_lattice_graph(n, m); // create a 3 x 4 grid lattice graph
 
     std::pair<edge_iterator, edge_iterator> ei = edges(g);
  

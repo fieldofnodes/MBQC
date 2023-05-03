@@ -4,15 +4,15 @@
 using namespace boost;
 
 typedef boost::property<boost::edge_weight_t, int> EdgeWeightProperty;
-typedef boost::adjacency_list<boost::listS, boost::vecS,boost::undirectedS,boost::no_property,EdgeWeightProperty> UndirectedGraph;
-typedef boost::graph_traits<UndirectedGraph>::edge_iterator edge_iterator;
-typedef boost::graph_traits<UndirectedGraph>::vertex_iterator vertex_iterator;
+typedef boost::adjacency_list<boost::listS, boost::vecS,boost::undirectedS,boost::no_property,EdgeWeightProperty> undirectedGraph;
+typedef boost::graph_traits<undirectedGraph>::edge_iterator edge_iterator;
+typedef boost::graph_traits<undirectedGraph>::vertex_iterator vertex_iterator;
 
 
 
 // create a 1D path graph on 1xn vertices
-UndirectedGraph createPathGraph(int n) { 
-  UndirectedGraph g(n);
+undirectedGraph createPathGraph(int n) { 
+  undirectedGraph g(n);
 
   for (int i = 0; i < n-1; i++) {  // add edges to create a path graph
     add_edge(i, i+1, g);
@@ -22,8 +22,8 @@ UndirectedGraph createPathGraph(int n) {
 }
 
 // create a 2D lattice graph with n x m vertices
-UndirectedGraph createLatticeGraph(int n, int m) { 
-  UndirectedGraph g(n * m);
+undirectedGraph createLatticeGraph(int n, int m) { 
+  undirectedGraph g(n * m);
 
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < m; j++) {
@@ -37,10 +37,10 @@ UndirectedGraph createLatticeGraph(int n, int m) {
 
 
 
-std::vector<UndirectedGraph::vertex_descriptor> get_adjacent_vertices(const UndirectedGraph& g, const UndirectedGraph::vertex_descriptor v)
+std::vector<undirectedGraph::vertex_descriptor> get_adjacent_vertices(const undirectedGraph& g, const undirectedGraph::vertex_descriptor v)
 {
-    std::vector<UndirectedGraph::vertex_descriptor> adjacent_vertices;
-    UndirectedGraph::adjacency_iterator ai, ai_end;
+    std::vector<undirectedGraph::vertex_descriptor> adjacent_vertices;
+    undirectedGraph::adjacency_iterator ai, ai_end;
     for (boost::tie(ai, ai_end) = boost::adjacent_vertices(v, g); ai != ai_end; ++ai)
     {
         adjacent_vertices.push_back(*ai);

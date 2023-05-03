@@ -25,9 +25,9 @@
 using namespace boost;
 
 
-typedef boost::adjacency_list<boost::vecS, boost::vecS,boost::undirectedS> UndirectedGraph;
-typedef boost::graph_traits<UndirectedGraph>::edge_iterator edge_iterator;
-typedef boost::graph_traits<UndirectedGraph>::vertex_iterator vertex_iterator;
+typedef boost::adjacency_list<boost::vecS, boost::vecS,boost::undirectedS> undirectedGraph;
+typedef boost::graph_traits<undirectedGraph>::edge_iterator edge_iterator;
+typedef boost::graph_traits<undirectedGraph>::vertex_iterator vertex_iterator;
 
 
 

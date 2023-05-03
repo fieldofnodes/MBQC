@@ -4,14 +4,14 @@
 using namespace boost;
 
 typedef boost::property<boost::edge_weight_t, int> EdgeWeightProperty;
-typedef boost::adjacency_list<boost::listS, boost::vecS,boost::undirectedS,boost::no_property,EdgeWeightProperty> UndirectedGraph;
-typedef boost::graph_traits<UndirectedGraph>::edge_iterator edge_iterator;
+typedef boost::adjacency_list<boost::listS, boost::vecS,boost::undirectedS,boost::no_property,EdgeWeightProperty> undirectedGraph;
+typedef boost::graph_traits<undirectedGraph>::edge_iterator edge_iterator;
 
 //typedef adjacency_list<vecS, vecS, undirectedS> Graph; // define the graph type
-//typedef boost::graph_traits<UndirectedGraph>::edge_iterator edge_iterator; // define an edge iterator
+//typedef boost::graph_traits<undirectedGraph>::edge_iterator edge_iterator; // define an edge iterator
 
-UndirectedGraph create_path_graph(int n) {  // create a path graph with n vertices
-  UndirectedGraph g(n);
+undirectedGraph create_path_graph(int n) {  // create a path graph with n vertices
+  undirectedGraph g(n);
 
   for (int i = 0; i < n-1; i++) {  // add edges to create a path graph
     add_edge(i, i+1, g);
@@ -22,7 +22,7 @@ UndirectedGraph create_path_graph(int n) {  // create a path graph with n vertic
 
 int main() {
     int n = 100;
-    UndirectedGraph g = create_path_graph(n); // create a path graph with 5 vertices
+    undirectedGraph g = create_path_graph(n); // create a path graph with 5 vertices
 
     std::pair<edge_iterator, edge_iterator> ei = edges(g);
  

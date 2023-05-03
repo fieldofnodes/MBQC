@@ -24,9 +24,9 @@
 using namespace boost;
 
 
-typedef boost::adjacency_list<boost::vecS, boost::vecS,boost::undirectedS> UndirectedGraph;
-typedef boost::graph_traits<UndirectedGraph>::edge_iterator edge_iterator;
-typedef boost::graph_traits<UndirectedGraph>::vertex_iterator vertex_iterator;
+typedef boost::adjacency_list<boost::vecS, boost::vecS,boost::undirectedS> undirectedGraph;
+typedef boost::graph_traits<undirectedGraph>::edge_iterator edge_iterator;
+typedef boost::graph_traits<undirectedGraph>::vertex_iterator vertex_iterator;
 
 
 
@@ -34,8 +34,8 @@ typedef boost::graph_traits<UndirectedGraph>::vertex_iterator vertex_iterator;
 /*
   create a 2D lattice graph with n rows, m columns and nxm vertices
 */
-UndirectedGraph createLatticeGraph(int n, int m) { 
-  UndirectedGraph g(n * m);
+undirectedGraph createLatticeGraph(int n, int m) { 
+  undirectedGraph g(n * m);
 
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < m; j++) {

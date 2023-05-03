@@ -39,7 +39,7 @@ MBQC/
 │  │  ├─ createMbqcGraph.cpp
 │  │  ├─ createPathGraph.cpp
 │  │  ├─ directedGraphExample.cpp
-│  │  ├─ edgeWeightUndirectedGraphExample.cpp
+│  │  ├─ edgeWeightundirectedGraphExample.cpp
 │  │  ├─ findDijkstraSshortestPathExample.cpp
 │  │  ├─ findMinimalSpanningTreeKruskalExample.cpp
 │  │  ├─ sample.cpp

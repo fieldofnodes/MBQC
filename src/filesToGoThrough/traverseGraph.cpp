@@ -6,9 +6,9 @@
 using namespace boost;
 
 typedef boost::property<boost::edge_weight_t, int> EdgeWeightProperty;
-typedef boost::adjacency_list<boost::listS, boost::vecS,boost::undirectedS,boost::no_property,EdgeWeightProperty> UndirectedGraph;
-typedef boost::graph_traits<UndirectedGraph>::edge_iterator edge_iterator;
-typedef boost::graph_traits<UndirectedGraph>::vertex_iterator vertex_iterator;
+typedef boost::adjacency_list<boost::listS, boost::vecS,boost::undirectedS,boost::no_property,EdgeWeightProperty> undirectedGraph;
+typedef boost::graph_traits<undirectedGraph>::edge_iterator edge_iterator;
+typedef boost::graph_traits<undirectedGraph>::vertex_iterator vertex_iterator;
 
 
 
@@ -16,8 +16,8 @@ int main(){
     int rows;
     int cols;
     int pathVertices;
-    UndirectedGraph pathGraph;
-    UndirectedGraph latticeGraph;
+    undirectedGraph pathGraph;
+    undirectedGraph latticeGraph;
     
     rows = 100;
     cols = 100;
@@ -30,7 +30,7 @@ int main(){
     // Call the function and print the adjacent vertices of vertex 0
     for (int i=0;i<pathVertices;i++)
     {
-        std::vector<UndirectedGraph::vertex_descriptor> adj_vertices = get_adjacent_vertices(pathGraph, i);
+        std::vector<undirectedGraph::vertex_descriptor> adj_vertices = get_adjacent_vertices(pathGraph, i);
         for (auto v : adj_vertices)
         {
             std::cout << v << " ";
