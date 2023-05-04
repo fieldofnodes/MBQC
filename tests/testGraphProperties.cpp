@@ -8,11 +8,11 @@
 /////////////////////////////////////////////////////////////
 
 #include <iostream>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/container/vector.hpp>
 #include <vector>
 #include <numeric>
 #include <algorithm>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/container/vector.hpp>
 #include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalAssertFunctions.hpp"
 #include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp"
 #include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp"
