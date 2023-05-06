@@ -13,13 +13,15 @@
 #include <vector>
 #include <set>
 #include <numeric>
+#include <cmath>
+#include <QuEST.h>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/graph_utility.hpp>
 #include <boost/container/vector.hpp>
 #include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalAssertFunctions.hpp"
 #include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp"
 #include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp"
-
+#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp"
 using namespace boost;
 
 typedef boost::adjacency_list<boost::vecS, boost::vecS,boost::undirectedS> undirectedGraph;
@@ -71,6 +73,8 @@ std::vector<int> getVertexNeighbours(const undirectedGraph& graph,int vertex){
 }
 
 int getLattice2DFutureVertexGraph(const undirectedGraph& graph,int vertex,int numRows){
+    int size_graph = boost::num_vertices(graph);
+    assert("The vertex inputted needs to be less than the number of vertices - the number of the rows, but it is not" && vertex < (size_graph - numRows));
     std::vector<int> vertexNeighbours = getVertexNeighbours(graph,vertex);
     int futureVertex = getLattice2DFutureVertex(vertex,numRows);
     auto it = std::find(vertexNeighbours.begin(), vertexNeighbours.end(), futureVertex);
@@ -80,21 +84,74 @@ int getLattice2DFutureVertexGraph(const undirectedGraph& graph,int vertex,int nu
 }
 
 int getLattice2DPastVertexGraph(const undirectedGraph& graph,int vertex,int numRows){
+    assert(("The inputted vertex needs to be greater than or equal to the number of rows." && vertex >= numRows));
     std::vector<int> vertexNeighbours = getVertexNeighbours(graph,vertex);
     int pastVertex = getLattice2DPastVertex(vertex,numRows);
-    auto it = std::find(vertexNeighbours.begin(), vertexNeighbours.end(), pastVertex);
-    assert(("flow function produced a vertex not in the input v neighbourhodd" && it != vertexNeighbours.end()));
-    
+    std::vector<int>::iterator it = std::find(vertexNeighbours.begin(), vertexNeighbours.end(), pastVertex);
+    assert(("flow function produced a vertex not in the input vertex neighbourhodd" && it != vertexNeighbours.end()));
     return pastVertex;
 }
 
+qreal getVerticesForCorrections(
+    const undirectedGraph& graph,
+    std::vector<int> measuredOutcomes, 
+    int vertex,
+    int numRows, 
+    qreal angle){
 
+    std::vector<int> neighbourhood = getVertexNeighbours(graph,vertex);
+    int xCorrectionVertex;
+    std::vector<int> zCorrectionVertices;
+    qreal updatedAngle;
+
+    if (vertex < numRows){ // First column - no x correction no z correction
+        updatedAngle = angle;
+    } else if (vertex >= numRows){ // ensure we are in second column
+        xCorrectionVertex = getLattice2DPastVertexGraph(graph,vertex,numRows);
+        for (int i: neighbourhood){
+            int past;
+            if(i >= numRows){
+                past = getLattice2DPastVertexGraph(graph,i,numRows);
+            } else{
+                continue;
+            }
+            zCorrectionVertices.push_back(past);
+        }        
+
+        // Remove vertex in neigbourhood if it is the vertrex
+        // we want to measure
+        zCorrectionVertices.erase(
+                std::remove(
+                    zCorrectionVertices.begin(), 
+                    zCorrectionVertices.end(), vertex), 
+                zCorrectionVertices.end());
+        
+        int exponent = measuredOutcomes[xCorrectionVertex];
+        
+        //std::cout << "f-1(j): " << xCorrectionVertex << std::endl;
+        //std::cout << "s_f-1(j): " << exponent << std::endl;
+        qreal xAngle = std::pow((-1), exponent)*angle;
+
+        std::vector<int> outcomesForZ;
+        for (int i:zCorrectionVertices){
+            outcomesForZ.push_back(measuredOutcomes[i]);
+        }
+
+        int sum = std::accumulate(outcomesForZ.begin(), outcomesForZ.end(), 0);
+        qreal zAngle = M_PI*sum;
+        updatedAngle = xAngle + zAngle;
+
+        }
+
+        return updatedAngle;
+        
+}
 
 
 int main(){
-    int presentVertex = 4;
-    int numRows = 3;
-    int numCols = 3;
+    int presentVertex = 19;
+    int numRows = 5;
+    int numCols = 5;
     int totalVertices;
     int computedFutureVertex;
     int computedPastVertex;
@@ -117,32 +174,80 @@ int main(){
 
 
     latticeGraph = createLatticeGraph(numRows, numCols);
-    print_graph(latticeGraph);
-    std::cout << "Sets of neighbours per vertex:" << std::endl;
-    for (int i=0;i<totalVertices;i++){
-        std::cout << "Vertex " << i << " :";
-        std::vector<int> neighbourVectorFunctionBased;
-        neighbourVectorFunctionBased = getVertexNeighbours(latticeGraph,i);
-        int size_neigh = neighbourVectorFunctionBased.size();
-        for (int n=0; n<size_neigh;n++){
-            std::cout << neighbourVectorFunctionBased[n] << " " ;    
-        }
-        std::cout << std::endl;
-        
-    }
-
-    
-
+    std::string fileDir = "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/figs";
+    std::string graphName = "lattice2DGraph";
+    std::string format = "png";
+    printGraphToFile(latticeGraph,fileDir,graphName,format);
 
 
     int graphFutureVertex = getLattice2DFutureVertexGraph(latticeGraph,presentVertex,numRows);
     int graphPastVertex = getLattice2DPastVertexGraph(latticeGraph,presentVertex,numRows);
 
-    assert((graphFutureVertex==expectedFutureVertex));
-    assert((graphPastVertex==expectedPastVertex));
+    assert(("Flow forward vertex based on graph does not match expected" && graphFutureVertex==expectedFutureVertex));
+    assert(("Flow backward vertex based on graph does not match expected" && graphPastVertex==expectedPastVertex));
 
-    //getLattice2DPastVertex(presentVertex,numRows)
 
+    // Need to write tests that comfirm the angle updates
+    // Select some corner vertices,edge vertices and middle vertices.
+    std::vector<int> fakeResults = {0,1,0,0,0,0};
+    int vertex = 6;
+    qreal angle = M_PI;
+    qreal newAngle = getVerticesForCorrections(
+        latticeGraph,
+        fakeResults, 
+        vertex,
+        numRows,
+        angle);
+    
+    assert(("New angle and original angle do not match" && newAngle == (-1)*angle));
+
+    std::cout << newAngle << std::endl;
+
+    /*
+
+    // current vertex to be measured
+    int currentVertexToMeasure = 9;
+    
+    // get vertex for X correction
+    int graphPastVertexXCorrection = getLattice2DPastVertexGraph(latticeGraph,currentVertexToMeasure,numRows);
+    std::cout << "Vertex needed for X correction: " << graphPastVertexXCorrection << std::endl;
+
+
+
+    // get vertex for Z correction
+    std::vector<int> pastVerticesZCorrection;
+    std::vector<int> graphVertexZCorrectionNeighs = getVertexNeighbours(latticeGraph,currentVertexToMeasure);
+
+    std::cout << "Neighbours of vertex " << currentVertexToMeasure << " : " << std::endl;
+    for (int i: graphVertexZCorrectionNeighs){
+        int past;
+        if(i >= numRows){
+            past = getLattice2DPastVertexGraph(latticeGraph,i,numRows);
+        } else{
+            continue;
+        }
+        pastVerticesZCorrection.push_back(past);        
+
+        std::cout << "current vertex: " << i << " has past vertex :" << past << " " << std::endl;
+
+        // need to remove past vertex that is the same as current vertrex -- as that is x correction
+        // need to remove future non measured vertices
+    }
+    std::cout << std::endl;
+
+    
+    pastVerticesZCorrection.erase(
+        std::remove(
+            pastVerticesZCorrection.begin(), 
+            pastVerticesZCorrection.end(), currentVertexToMeasure), 
+        pastVerticesZCorrection.end());
+    
+    
+    for (int n : pastVerticesZCorrection) {
+        std::cout << n << " ";
+    }
+    std::cout << std::endl;
+*/
     return 0;
 }
 
