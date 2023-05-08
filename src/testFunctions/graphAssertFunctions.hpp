@@ -139,3 +139,70 @@ void assertGraphNumVertices(const undirectedGraph& graph, int numVertices){
   int num_vertices = boost::num_vertices(graph);
   assert("Number of vertices in graph must equal input" && numVertices == num_vertices);
 }
+
+
+/*
+  Test for all flow on vertices
+  Iterate over the vertices of the graph
+*/
+void assertFlowFunctionsPerformExpected(const undirectedGraph& graph,int numRows){
+    undirectedGraph::vertex_iterator vi, vi_end;
+    int size_graph = boost::num_vertices(graph);
+
+    for (boost::tie(vi, vi_end) = boost::vertices(graph); vi != vi_end; ++vi) {
+        // skip vertices that are in the first column
+        if(*vi >= numRows){
+            int computedVi = getLattice2DPastVertexGraph(graph,*vi,numRows);
+            int expectedVi = *vi - numRows;
+            assert(("Expected vertex does not match computed vertex from getLattice2DPastVertexGraph function",(expectedVi == computedVi)));
+        }
+    }
+    
+    for (boost::tie(vi, vi_end) = boost::vertices(graph); vi != vi_end; ++vi) {
+        // skip vertices that are in the first column
+        if(*vi < (size_graph-numRows)){
+            int computedVi = getLattice2DFutureVertexGraph(graph,*vi,numRows);
+            int expectedVi = *vi + numRows;
+            assert(("Expected vertex does not match computed vertex from getLattice2DPastVertexGraph function",(expectedVi == computedVi)));
+        }
+    }
+    return ;
+}
+
+/*
+  Assert each vertex neighbour has a matchin neighbour to the input
+*/
+void assertNieghbours(const undirectedGraph& graph,std::vector<std::vector<int>> expectedNeighbourhood){        
+    int size_graph = boost::num_vertices(graph);
+    for (int vertexIter = 0; vertexIter < size_graph; vertexIter++){
+        std::vector<int> computedNeighbours = getVertexNeighbours(graph,vertexIter);
+        std::vector<int> expectedNeighbours;
+        expectedNeighbours = expectedNeighbourhood[vertexIter];
+    
+        std::sort(expectedNeighbours.begin(), expectedNeighbours.end());
+        std::sort(computedNeighbours.begin(), computedNeighbours.end());
+        assert(expectedNeighbours.size() == computedNeighbours.size() && std::equal(expectedNeighbours.begin(), expectedNeighbours.end(), computedNeighbours.begin()));
+    }
+    return;
+}
+
+/*
+  Assert the correction angle is the same as the inputted correction angle
+*/
+void assertCorrection(
+    const undirectedGraph& graph,
+    std::vector<int> outcomeVector, 
+    int vertex,
+    int numRows,
+    qreal inputAngle,
+    qreal expectedCorrectedAngle){
+        
+        qreal computedCorrectedAngle = computeCorrectedAngle(
+            graph,
+            outcomeVector, 
+            vertex,
+            numRows,
+            inputAngle);
+        
+        assert(("New angle and original angle do not match" && computedCorrectedAngle == expectedCorrectedAngle));
+}

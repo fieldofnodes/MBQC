@@ -7,16 +7,22 @@
 //        :                                                //
 /////////////////////////////////////////////////////////////
 
-#include <QuEST.h>
 #include <iostream>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/container/vector.hpp>
-#include <vector>
-#include <numeric>
 #include <algorithm>
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalAssertFunctions.hpp"
+#include <iterator>
+#include <vector>
+#include <set>
+#include <numeric>
+#include <cmath>
+#include <QuEST.h>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/graph_utility.hpp>
+#include <boost/container/vector.hpp>
 #include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp"
+#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp"
+#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalAssertFunctions.hpp"
 #include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp"
+#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp"
 
 
 using namespace boost;
@@ -28,20 +34,22 @@ typedef boost::graph_traits<undirectedGraph>::vertex_iterator vertexIterator;
 // Set up the main function
 int main() {
   // create graph - lets do a lattice graph
-  int rows;
-  int cols;
+  int numRows;
+  int numCols;
   int numVertices;
   
   undirectedGraph latticeGraph;
   
-  rows = 5;
-  cols = 5;
-  numVertices = rows*cols;
-    
-  latticeGraph = createLatticeGraph(rows,cols);
+  numRows = 1;
+  numCols = 5;
+  
+  
+  latticeGraph = createLatticeGraph(numRows,numCols);
+  numVertices = boost::num_vertices(latticeGraph);
   
   // angle list
-  //std::vector<qreal> qubitAngles; // input angles in  = {a1,a2,a3,...,an}
+  // For initialise all to 0
+  std::vector<qreal> qubitAngles(numVertices,0.0); // input angles in  = {a1,a2,a3,...,an}
   
   int numEdges;
 
@@ -58,16 +66,7 @@ int main() {
   // initialise in the plus state
   initPlusState(qureg);
 
-  // if non vanilla MBQC add angle
-  // apply phase shift with corresponding angle to qubit
-  //for(int qubitIter=0; qubitIter<numQubits; qubitIter++){
-  //  phaseShift (qureg,qubitIter,qubitAngles[qubitIter]);   
-  //}
-
-  // traverse graph to entangle circuit according to neighbours of 
-  // each qubit is connected to its neighbour with CZ gate
-
-
+  // entangle qureg according to the graph with CZ gates
   edgeIterator ei, ei_end;
   for (boost::tie(ei, ei_end) = edges(latticeGraph); ei != ei_end; ++ei) {
       auto source = boost::source(*ei, latticeGraph);
@@ -77,19 +76,42 @@ int main() {
 
   
   
-  
-  // 
-  
-  // apply flow to measure qubits according to neighbours
-  // and flow
-  // store qubit is appropriate container
-  // vector/matrix -> pure/mix states
+  // iterate over graph
+  std::vector<int> measuredQubitsOutcomes;
+  undirectedGraph::vertex_iterator vi, vi_end;
+  for (boost::tie(vi, vi_end) = boost::vertices(latticeGraph); vi != vi_end; ++vi) {
+      // skip vertices that are in the first column
+      if(*vi < numRows){
+        rotateZ(qureg,*vi, (-1)*qubitAngles[*vi]);
+        hadamard(qureg,*vi);
+        int m = measure(qureg,*vi);
+        measuredQubitsOutcomes.push_back(m);
+      }else if(*vi >= numRows){
+        qreal correctedAngle;
+        correctedAngle = computeCorrectedAngle(latticeGraph,measuredQubitsOutcomes,*vi,numRows,qubitAngles[*vi]);
+        rotateZ(qureg,*vi, (-1)*correctedAngle);
+        hadamard(qureg,*vi);
+        int m = measure(qureg,*vi);
+        measuredQubitsOutcomes.push_back(m);
+      } else {
+        std::cout << "attempting to measure nothing?";
+      }
+  }
+
+  std::cout << "Measured outcome vector is " << measuredQubitsOutcomes.size() << " and the measurements are: ";
+  for(int i:measuredQubitsOutcomes){
+    std::cout << i << " ";
+  }
+  std::cout << std::endl;
+
+
 
   // unload QuEST
   destroyQureg(qureg, env); 
   destroyQuESTEnv(env);
   return 0;
 }
+
 
 
 
