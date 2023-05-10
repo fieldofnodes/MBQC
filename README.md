@@ -3,6 +3,12 @@
 
 # Measurement Based Quantum Computation  
 
+## Quick and dirty file run in QuEST library
+
+```
+cmake .. -DUSER_SOURCE="QuEST/projects/MBQC/src/executableName.cpp" -DOUTPUT_EXE="executableName" && make && ./executableName
+```
+
 
 **This code is ran inside of [QuEST](https://quest.qtechtheory.org/download/). Documentation to follow in future for implementation.**
 

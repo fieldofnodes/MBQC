@@ -43,8 +43,18 @@ int main() {
   numRows = 1;
   numCols = 5;
   
-  
+  // Create graph (lattice in this case)
   latticeGraph = createLatticeGraph(numRows,numCols);
+
+
+
+  // Print graph to file
+  std::string fileDir = "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/figs";
+  std::string graphName = "lattice2DGraph";
+  std::string format = "png";
+  printGraphToFile(latticeGraph,fileDir,graphName,format);
+
+
   numVertices = boost::num_vertices(latticeGraph);
   
   // angle list

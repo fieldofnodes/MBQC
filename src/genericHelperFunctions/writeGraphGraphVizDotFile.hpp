@@ -59,7 +59,7 @@ std::string updateTextFile(std::string inputPath){
     // Close the files
     infile.close();
     outfile.close();
-
+    
     return outputPath;
 }
 
@@ -70,7 +70,11 @@ void printGraphToFile(const undirectedGraph& graph,std::string fileDir,std::stri
     // Create a Graphviz output stream
     std::stringstream outputFile;
     outputFile << fileDir << "/" << graphName;
+    
+
     std::ofstream dot_file(outputFile.str()+".dot");
+    
+
     
     // Write to file
     boost::write_graphviz(
@@ -78,7 +82,8 @@ void printGraphToFile(const undirectedGraph& graph,std::string fileDir,std::stri
         graph);
     
     std::string updatedDotFile = updateTextFile(outputFile.str()+".dot");
-    
+
+
     if(format == "png"){
         // Convert the DOT file to PNG
         std::stringstream dotPath; 
