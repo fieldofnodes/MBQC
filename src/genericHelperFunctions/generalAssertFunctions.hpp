@@ -68,3 +68,12 @@ int getMax(const boost::container::vector<int>& vec) {
 
     return max_val;
 }
+
+
+
+/*
+  Check if an element Int is in a vector std::vector<int>
+*/
+bool isIntInVector(int value, const std::vector<int>& vec) {
+    return std::find(vec.begin(), vec.end(), value) != vec.end();
+}

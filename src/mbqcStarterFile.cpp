@@ -3,8 +3,10 @@
 // Author : Jonathan Miller                                //
 // Date   : 20230503                                       //
 // Aim    : Basic start file to run mbqc                   //
-//        :                                                //
-//        :                                                //
+//        : Current implementation can only do square      //
+//        : graph repeatedly. Will branch repo to make     //
+//        : use different way to create graph by           //
+//        : adjacency                                      //
 /////////////////////////////////////////////////////////////
 
 #include <iostream>
@@ -16,6 +18,12 @@
 #include <cmath>
 #include <QuEST.h>
 #include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/grid_graph.hpp>
+#include <boost/graph/graphviz.hpp>
+#include <boost/array.hpp>
+
+
+
 #include <boost/graph/graph_utility.hpp>
 #include <boost/container/vector.hpp>
 #include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp"
@@ -26,6 +34,7 @@
 
 
 using namespace boost;
+
 
 typedef boost::adjacency_list<boost::vecS, boost::vecS,boost::undirectedS> undirectedGraph;
 typedef boost::graph_traits<undirectedGraph>::edge_iterator edgeIterator;
@@ -40,13 +49,19 @@ int main() {
   
   undirectedGraph latticeGraph;
   
-  numRows = 1;
-  numCols = 5;
   
+  numRows = 4;
+  numCols = 4;
+  assert((numRows == numCols && "As of 20220511 lattice graphs need to have equality in number of rows and columns. Fix"));
+
+  
+  
+
+
   // Create graph (lattice in this case)
   latticeGraph = createLatticeGraph(numRows,numCols);
 
-
+  print_graph(latticeGraph);
 
   // Print graph to file
   std::string fileDir = "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/figs";
@@ -54,7 +69,7 @@ int main() {
   std::string format = "png";
   printGraphToFile(latticeGraph,fileDir,graphName,format);
 
-
+  //numVertices = boost::num_vertices(graph);
   numVertices = boost::num_vertices(latticeGraph);
   
   // angle list
@@ -85,12 +100,13 @@ int main() {
   }
 
   
-  
+  std::cout << "Vertex being measured: ";
   // iterate over graph
   std::vector<int> measuredQubitsOutcomes;
   undirectedGraph::vertex_iterator vi, vi_end;
-  for (boost::tie(vi, vi_end) = boost::vertices(latticeGraph); vi != vi_end; ++vi) {
+  for (boost::tie(vi, vi_end) = boost::vertices(latticeGraph); vi != vi_end; vi++) {
       // skip vertices that are in the first column
+      std::cout << *vi << " ";
       if(*vi < numRows){
         rotateZ(qureg,*vi, (-1)*qubitAngles[*vi]);
         hadamard(qureg,*vi);
@@ -108,6 +124,7 @@ int main() {
       }
   }
 
+  std::cout << std::endl;
   std::cout << "Measured outcome vector is " << measuredQubitsOutcomes.size() << " and the measurements are: ";
   for(int i:measuredQubitsOutcomes){
     std::cout << i << " ";

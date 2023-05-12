@@ -6,9 +6,14 @@
 ## Quick and dirty file run in QuEST library
 
 ```
-cmake .. -DUSER_SOURCE="QuEST/projects/MBQC/src/executableName.cpp" -DOUTPUT_EXE="executableName" && make && ./executableName
+cmake .. -DUSER_SOURCE="QuEST/projects/MBQC/src/mbqcStarterFile.cpp" -DOUTPUT_EXE="mbqcStarterFile" && make && ./mbqcStarterFile
 ```
 
+
+template <std::size_t Dimensions,
+          typename VertexIndex = std::size_t,
+          typename EdgeIndex = VertexIndex>
+  class grid_graph;
 
 **This code is ran inside of [QuEST](https://quest.qtechtheory.org/download/). Documentation to follow in future for implementation.**
 
