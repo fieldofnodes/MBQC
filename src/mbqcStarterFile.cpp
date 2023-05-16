@@ -16,14 +16,12 @@
 #include <set>
 #include <numeric>
 #include <cmath>
+#include <random>
 #include <QuEST.h>
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/grid_graph.hpp>
 #include <boost/graph/graphviz.hpp>
 #include <boost/array.hpp>
-
-
-
 #include <boost/graph/graph_utility.hpp>
 #include <boost/container/vector.hpp>
 #include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp"
@@ -31,7 +29,7 @@
 #include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalAssertFunctions.hpp"
 #include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp"
 #include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp"
-
+#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/flowMeasurements.hpp"
 
 using namespace boost;
 
@@ -50,19 +48,19 @@ int main() {
   undirectedGraph latticeGraph;
   
   
-  numRows = 4;
-  numCols = 4;
-  assert((numRows == numCols && "As of 20220511 lattice graphs need to have equality in number of rows and columns. Fix"));
-
+  numRows = 3;
+  numCols = 6;
   
   
-
 
   // Create graph (lattice in this case)
   latticeGraph = createLatticeGraph(numRows,numCols);
 
+  std::cout << "The graph has adjacency list:" << std::endl;
+  
   print_graph(latticeGraph);
-
+  std::cout << std::endl;
+  std::cout << std::endl;
   // Print graph to file
   std::string fileDir = "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/figs";
   std::string graphName = "lattice2DGraph";
@@ -125,12 +123,65 @@ int main() {
   }
 
   std::cout << std::endl;
-  std::cout << "Measured outcome vector is " << measuredQubitsOutcomes.size() << " and the measurements are: ";
+  std::cout << std::endl;
+  std::cout << "Measured outcome vector has " << measuredQubitsOutcomes.size() << " qubits."  << std::endl; 
+  std::cout << "The measurements are: ";
   for(int i:measuredQubitsOutcomes){
     std::cout << i << " ";
   }
   std::cout << std::endl;
+  std::cout << std::endl;
 
+
+std::cout << "Measured outcome lattice: " << std::endl;
+  std::vector<std::vector<int>> latticeOutcomes = 
+    returnMeasQubitOutcomesLattice(measuredQubitsOutcomes,numRows,numCols);
+
+  for (const auto& row : latticeOutcomes) {
+            for (int number : row) {
+                std::cout << number << ' ';
+            }
+            std::cout << '\n';
+        }
+
+
+
+  // Random number
+  std::cout << std::endl;
+  std::cout << std::endl;
+  std::cout << "Random numbers: " << std::endl;
+  // Create a random number generator engine
+  std::random_device rd;                   // Obtain a random seed from the hardware
+  std::mt19937 generator(rd());             // Standard mersenne_twister_engine seeded with rd
+
+  // Define the range for the random integer
+  int min = 0;
+  int max = 7;
+
+  // Create a uniform distribution for the range
+  std::uniform_int_distribution<int> distribution(min, max);
+
+  // Generate a random integer
+  std::vector<int> randomNumeratorVector(numVertices);
+  for (int i = 0; i < numVertices-1; i++){
+    int randomInt = distribution(generator);
+    randomNumeratorVector.push_back(randomInt);
+  }
+
+  
+
+  // Print the random integer
+  std::cout << "Random integer: ";
+  for(auto i: randomNumeratorVector){
+    std::cout << i <<  " ";
+  }
+  std::cout << std::endl;
+
+  int total = std::accumulate(randomNumeratorVector.begin(), randomNumeratorVector.end(), 0);
+  int totalMod8 = (total % 8);
+  std::cout << "Total value of from random vector = " << total << std::endl;
+  std::cout << "Total mod 8 = " << totalMod8 << std::endl;
+  std::cout << "Total both values mod 8 = " << ((total+totalMod8) % 8) << std::endl;
 
 
   // unload QuEST
