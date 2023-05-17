@@ -57,6 +57,7 @@ typedef boost::graph_traits<undirectedGraph>::vertex_iterator vertexIterator;
 
 // Set up the main function
 int main() {
+  
   // Initialise variable names and types
   int numRows;
   int numCols;
@@ -65,14 +66,12 @@ int main() {
   std::vector<qreal> qubitAngles;
   std::vector<int> measuredQubitsOutcomes;
   
+  
   // Set values to variables
   numRows = 2;
   numCols = 3;
   latticeGraph = createLatticeGraph(numRows,numCols);
   numVertices = boost::num_vertices(latticeGraph);
-  
-
-  
   
   
   // Print graph to file
@@ -89,15 +88,23 @@ int main() {
   // create a quantum register
   Qureg qureg = createQureg(numVertices, env);
   
+  
+  //qubitAngles = initRandomPiOnNAnglesMod2kPi(numVertices, 4);
+  qubitAngles = initRandomPiOnNAnglesMod2kPiPlusPi(numVertices, 4);
+ 
+
   // initialise in the plus state
   initPlusState(qureg);
 
-  //qubitAngles = initRandomPiOnNAnglesMod2kPi(numVertices, 4);
-  qubitAngles = initRandomPiOnNAnglesMod2kPiPlusPi(numVertices, 4);
   
+  // add angles to the qubits
+  addAngleRotateZgate(qureg,qubitAngles);
+  
+   
   // entangle graph
   entangleGraph(qureg,latticeGraph);
-    
+
+
   // measure graph
   measuredQubitsOutcomes = measureGraph(
         qureg,
@@ -106,11 +113,8 @@ int main() {
         numRows);
 
     
-
-
   // print results to screen
   printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);
-
 
 
   // unload QuEST

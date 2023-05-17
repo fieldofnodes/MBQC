@@ -138,4 +138,10 @@ std::vector<qreal> initRandomPiOnNAnglesMod2kPiPlusPi(int numQubits, int piDenom
 }
 
 
+void addAngleRotateZgate(Qureg qureg, std::vector<qreal> qubitAngles){
+    for (int i =0; i < qureg.numQubitsRepresented; i++){
+        rotateZ (qureg, i, qubitAngles[i]);
+    }
+}
+
 
