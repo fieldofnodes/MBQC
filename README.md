@@ -3,6 +3,10 @@
 
 # Measurement Based Quantum Computation  
 
+## To Do
+1. Add angle to states after initialised to |+> state.
+
+
 ## Quick and dirty file run in QuEST library
 
 ```
