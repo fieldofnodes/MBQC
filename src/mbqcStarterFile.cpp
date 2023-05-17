@@ -9,6 +9,7 @@
 //        : adjacency                                      //
 /////////////////////////////////////////////////////////////
 
+// Standard libraries
 #include <iostream>
 #include <algorithm>
 #include <iterator>
@@ -17,13 +18,21 @@
 #include <numeric>
 #include <cmath>
 #include <random>
+#include <filesystem>
+
+
+
+// QuEST
 #include <QuEST.h>
+
+// Boost
 #include <boost/graph/adjacency_list.hpp>
 #include <boost/graph/grid_graph.hpp>
 #include <boost/graph/graphviz.hpp>
 #include <boost/array.hpp>
 #include <boost/graph/graph_utility.hpp>
 #include <boost/container/vector.hpp>
+
 
 // Helper functions
 #include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp"
@@ -47,8 +56,6 @@
 
 
 using namespace boost;
-
-
 typedef boost::adjacency_list<boost::vecS, boost::vecS,boost::undirectedS> undirectedGraph;
 typedef boost::graph_traits<undirectedGraph>::edge_iterator edgeIterator;
 typedef boost::graph_traits<undirectedGraph>::vertex_iterator vertexIterator;
@@ -74,7 +81,9 @@ int main() {
   numVertices = boost::num_vertices(latticeGraph);
   
   
+  
   // Print graph to file
+  // Update with desired directory to view graph.
   std::string fileDir = "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/figs";
   std::string graphName = "lattice2DGraph";
   std::string format = "png";
