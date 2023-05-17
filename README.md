@@ -3,11 +3,19 @@
 
 # Measurement Based Quantum Computation  
 
+## To Do
+1. Add angle to states after initialised to |+> state.
+
+
 ## Quick and dirty file run in QuEST library
 
 ```
 cmake .. -DUSER_SOURCE="QuEST/projects/MBQC/src/mbqcStarterFile.cpp" -DOUTPUT_EXE="mbqcStarterFile" && make && ./mbqcStarterFile
 ```
+
+
+
+
 
 
 template <std::size_t Dimensions,
