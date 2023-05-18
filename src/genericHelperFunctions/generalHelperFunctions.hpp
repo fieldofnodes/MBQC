@@ -24,3 +24,46 @@ int drawRandomUniformInteger(int min, int max){
     int randomInt = distribution(generator);
     return randomInt;
 }
+
+/*
+  Print vector to screen
+*/
+template<typename T>
+void printVector(const std::vector<T>& vec) {
+    for (const T& element : vec) {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+}
+
+
+
+
+
+/*
+  Get ratio columns in matrix equal to 1
+*/
+
+std::vector<double> calculateColumnRatios(const std::vector<std::vector<int>>& matrix) {
+    std::vector<double> ratios;
+
+    if (matrix.empty() || matrix[0].empty()) {
+        return ratios;  // Empty matrix, return empty ratios vector
+    }
+
+    const int numRows = matrix.size();
+    const int numCols = matrix[0].size();
+
+    for (int col = 0; col < numCols; col++) {
+        int count = 0;
+        for (int row = 0; row < numRows; row++) {
+            if (matrix[row][col] == 1) {
+                count++;
+            }
+        }
+        double ratio = static_cast<double>(count) / numRows;
+        ratios.push_back(ratio);
+    }
+
+    return ratios;
+}
