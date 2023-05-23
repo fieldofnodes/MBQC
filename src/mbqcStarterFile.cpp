@@ -89,10 +89,8 @@ int main() {
   std::string format = "png";
   printGraphToFile(latticeGraph,fileDir,graphName,format);
 
-
   // load QuEST environment
   QuESTEnv env = createQuESTEnv();
-  
   
   // create a quantum register
   Qureg qureg = createQureg(numVertices, env);

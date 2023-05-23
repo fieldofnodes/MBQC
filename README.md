@@ -4,8 +4,9 @@
 # Measurement Based Quantum Computation  
 
 ## To Do
-1. Add angle to states after initialised to |+> state.
 
+1. Run numerical simulation from first principles to validated the MBQC software
+2. Create quantum state matrix 
 
 ## Quick and dirty file run in QuEST library
 
