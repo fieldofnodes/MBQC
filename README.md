@@ -3,12 +3,12 @@
 
 # Measurement Based Quantum Computation  
 
-## To Do
+Measurement based quantum computation (MBQC) is an alternative computational model to the circuit based quantum computational (CBQC) model. Many if not most quantum computing simulators (Qiskit-aer, Pyquill-qvm, QuEST) are based around the CBQC model. QuEST is on such CBQC simulator, but offers a great deal of flexibility, such as mid-circuit measurement and the ability to perfom feed-forward action, such as adaptice basis measurements for future qubits. Using this property in conjunction with the Boost Graph Library ([BGL](https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/index.html)) developed under the [Boost](https://www.boost.org/) library in C++ this repository aims to simulate a general MBQC framework. As more and more verification protocols rely on MBQC then such a repository will prove to be very useful.
 
-1. Run numerical simulation from first principles to validated the MBQC software
-2. Create quantum state matrix 
 
-## Quick and dirty file run in QuEST library
+## Quick and dirty file run within QuEST library
+
+The MBQC starter file can be seen as the go to file to run a simple 2D lattice model on a feed forward flow which measures all qubits. 
 
 ```
 cmake .. \
@@ -19,19 +19,9 @@ cmake .. \
 ```
 
 
-
-
-
-
-
-template <std::size_t Dimensions,
-          typename VertexIndex = std::size_t,
-          typename EdgeIndex = VertexIndex>
-  class grid_graph;
-
 **This code is ran inside of [QuEST](https://quest.qtechtheory.org/download/). Documentation to follow in future for implementation.**
 
-## Ideas for codebase folder structure
+## Ideas for codebase folder structure [needs to be updated]
 In implementation an MBQC scheme requires the usage of tools from graph theory. Consider the folder tree structure. 
 
 ```
