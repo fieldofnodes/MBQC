@@ -61,6 +61,13 @@ typedef boost::graph_traits<undirectedGraph>::edge_iterator edgeIterator;
 typedef boost::graph_traits<undirectedGraph>::vertex_iterator vertexIterator;
 
  
+ std::vector<qreal> outcomeProbabilitiesSingleQubit(Qureg qureg,int qubit){
+    qreal prob_0 = calcProbOfOutcome(qureg,0,0);
+    qreal prob_1 = calcProbOfOutcome(qureg,0,1);
+    return {prob_0,prob_1};
+ }
+    
+    
 
 
 
@@ -71,7 +78,27 @@ int main(){
     QuESTEnv env = createQuESTEnv();
   
     // create a quantum register
-    Qureg qureg = createQureg(3, env);
+    Qureg qureg = createQureg(1, env);
+    int qubit = 0;
+    std::cout << "Probability outcomes single qubit: " << std::endl; 
+    std::cout << "Initialised at 0: " << std::endl; 
+    std::vector<qreal> init_probs = outcomeProbabilitiesSingleQubit(qureg,qubit);
+
+    printVector(init_probs);
+
+    std::cout << "Pauli X gate applied: " << std::endl;
+    pauliX(qureg,0);
+    
+    std::vector<qreal> init_probs_gate = outcomeProbabilitiesSingleQubit(qureg,qubit);
+    printVector(init_probs_gate);
+
+    std::cout << "Pauli X gate applied: " << std::endl;
+    pauliX(qureg,0);
+    
+    std::vector<qreal> init_probs_gate_1 = outcomeProbabilitiesSingleQubit(qureg,qubit);
+    printVector(init_probs_gate_1);
+
+    /*
 
     // Apply Hadamard and test probability
     hadamard(qureg,0);
@@ -95,7 +122,7 @@ int main(){
 
     int m1 = measure(qureg,0);
 
-
+*/
 
     destroyQureg(qureg, env); 
     destroyQuESTEnv(env);

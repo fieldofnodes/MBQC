@@ -67,3 +67,4 @@ std::vector<double> calculateColumnRatios(const std::vector<std::vector<int>>& m
 
     return ratios;
 }
+
