@@ -11,7 +11,11 @@
 ## Quick and dirty file run in QuEST library
 
 ```
-cmake .. -DUSER_SOURCE="QuEST/projects/MBQC/src/mbqcStarterFile.cpp" -DOUTPUT_EXE="mbqcStarterFile" && make && ./mbqcStarterFile
+cmake .. \
+  -DUSER_SOURCE="QuEST/projects/MBQC/src/mbqcStarterFile.cpp" \
+  -DOUTPUT_EXE="mbqcStarterFile" && \
+  make && \
+  ./mbqcStarterFile
 ```
 
 
