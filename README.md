@@ -9,7 +9,9 @@ By combining QuEST's capabilities with the power of the Boost Graph Library, thi
 
 ### What is MBQC
 
-Some brief MBQC overview content
+
+**<span style="color:red">TODO: Some brief MBQC overview content</span>**
+
 
 ## Project status
 
