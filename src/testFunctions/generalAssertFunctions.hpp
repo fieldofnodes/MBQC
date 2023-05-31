@@ -4,16 +4,7 @@
 // Date   : 20230425                                       //
 // Aim    : Construct general functions                    //
 /////////////////////////////////////////////////////////////
-#include <iostream>
-#include <algorithm>
-#include <iterator>
-#include <vector>
-#include <set>
-#include <boost/container/vector.hpp>
-#include <boost/range/algorithm/unique.hpp>
-#include <boost/range/algorithm.hpp>
-#include <boost/range/adaptor/filtered.hpp>
-#include <boost/range/adaptor/transformed.hpp>
+
 
 
 

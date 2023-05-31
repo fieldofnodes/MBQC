@@ -154,7 +154,7 @@ void assertFlowFunctionsPerformExpected(const undirectedGraph& graph,int numRows
         if(*vi >= numRows){
             int computedVi = getLattice2DPastVertexGraph(graph,*vi,numRows);
             int expectedVi = *vi - numRows;
-            assert(("Expected vertex does not match computed vertex from getLattice2DPastVertexGraph function",(expectedVi == computedVi)));
+            assert(((expectedVi == computedVi) && "Expected vertex does not match computed vertex from getLattice2DPastVertexGraph function"));
         }
     }
     
@@ -163,7 +163,7 @@ void assertFlowFunctionsPerformExpected(const undirectedGraph& graph,int numRows
         if(*vi < (size_graph-numRows)){
             int computedVi = getLattice2DFutureVertexGraph(graph,*vi,numRows);
             int expectedVi = *vi + numRows;
-            assert(("Expected vertex does not match computed vertex from getLattice2DPastVertexGraph function",(expectedVi == computedVi)));
+            assert(((expectedVi == computedVi) && "Expected vertex does not match computed vertex from getLattice2DPastVertexGraph function"));
         }
     }
     return ;

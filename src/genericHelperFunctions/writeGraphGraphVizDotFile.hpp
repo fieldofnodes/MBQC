@@ -7,20 +7,6 @@
 //        : across multiple files                          //
 /////////////////////////////////////////////////////////////
 
-#include <iostream>
-#include <algorithm>
-#include <iterator>
-#include <vector>
-#include <set>
-#include <numeric>
-#include <cstdlib> // For std::system
-#include <sstream> // For std::stringstream
-
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/graph_utility.hpp>
-#include <boost/container/vector.hpp>
-#include <boost/graph/graphviz.hpp>
-
 
 typedef boost::adjacency_list<boost::vecS, boost::vecS,boost::undirectedS> undirectedGraph;
 

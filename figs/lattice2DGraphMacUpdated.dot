@@ -1,0 +1,16 @@
+graph G {
+graph [layout = neato]
+node [shape = circle,
+style = filled,
+style = filled,
+color = lightblue]
+edge [color = silver]
+0;
+1;
+2;
+3;
+0--1 ;
+0--2 ;
+2--3 ;
+1--3 ;
+}

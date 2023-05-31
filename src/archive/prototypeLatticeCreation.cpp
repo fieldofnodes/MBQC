@@ -23,11 +23,11 @@
 #include <boost/array.hpp>
 #include <boost/graph/graph_utility.hpp>
 #include <boost/container/vector.hpp>
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp"
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp"
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalAssertFunctions.hpp"
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp"
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp"
+#include "/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp"
+#include "/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp"
+#include "/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalAssertFunctions.hpp"
+#include "/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp"
+#include "/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp"
 
 
 // Define the lattice creation function (same as before)
@@ -94,7 +94,7 @@ int main() {
     print_graph(graph);
 
     // Print graph to file
-    std::string fileDir = "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/figs";
+    std::string fileDir = "/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs";
     std::string graphName = "lattice2DArrayGraph";
     std::string format = "png";
     printGraphToFile(graph,fileDir,graphName,format);

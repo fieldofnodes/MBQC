@@ -8,58 +8,8 @@
 //        : use different way to create graph by           //
 //        : adjacency                                      //
 /////////////////////////////////////////////////////////////
-
-// Standard libraries
-#include <iostream>
-#include <algorithm>
-#include <iterator>
-#include <vector>
-#include <set>
-#include <numeric>
-#include <cmath>
-#include <random>
-#include <filesystem>
-
-
-
-// QuEST
-#include <QuEST.h>
-
-// Boost
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/graph/grid_graph.hpp>
-#include <boost/graph/graphviz.hpp>
-#include <boost/array.hpp>
-#include <boost/graph/graph_utility.hpp>
-#include <boost/container/vector.hpp>
-
-
-// Helper functions
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp"
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp"
-
-// Graph functions
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp"
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp"
-
-// Quantum functions
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/flowMeasurements.hpp"
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/angleConstruction.hpp"
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/quantumGraphClusterStates.hpp"
-
-// Assert functions
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/generalAssertFunctions.hpp"
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp"
-
-
-
-
-
-using namespace boost;
-typedef boost::adjacency_list<boost::vecS, boost::vecS,boost::undirectedS> undirectedGraph;
-typedef boost::graph_traits<undirectedGraph>::edge_iterator edgeIterator;
-typedef boost::graph_traits<undirectedGraph>::vertex_iterator vertexIterator;
-
+// Include package header file
+#include "packages.hpp"
 
 
 // Set up the main function
@@ -76,7 +26,7 @@ int main() {
   
   // Set values to variables
   numRows = 2;
-  numCols = 3;
+  numCols = 2;
   latticeGraph = createLatticeGraph(numRows,numCols);
   numVertices = boost::num_vertices(latticeGraph);
   
@@ -84,10 +34,10 @@ int main() {
   
   // Print graph to file
   // Update with desired directory to view graph.
-  std::string fileDir = "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/figs";
-  std::string graphName = "lattice2DGraph";
+  std::string figsDir = MBQC_FIGS_DIR;
+  std::string graphName = "lattice2DGraphCmake";
   std::string format = "png";
-  printGraphToFile(latticeGraph,fileDir,graphName,format);
+  printGraphToFile(latticeGraph,figsDir,graphName,format);
 
   // load QuEST environment
   QuESTEnv env = createQuESTEnv();
@@ -123,7 +73,8 @@ int main() {
   // print results to screen
   printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);
 
-
+  
+  
   // unload QuEST
   destroyQureg(qureg, env); 
   destroyQuESTEnv(env);

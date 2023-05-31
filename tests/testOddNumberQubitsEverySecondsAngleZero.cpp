@@ -42,21 +42,21 @@
 
 
 // Helper functions
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp"
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp"
+#include "/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp"
+#include "/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp"
 
 // Graph functions
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp"
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp"
+#include "/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp"
+#include "/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp"
 
 // Quantum functions
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/flowMeasurements.hpp"
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/angleConstruction.hpp"
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/quantumGraphClusterStates.hpp"
+#include "/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/flowMeasurements.hpp"
+#include "/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/angleConstruction.hpp"
+#include "/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/quantumGraphClusterStates.hpp"
 
 // Assert functions
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/generalAssertFunctions.hpp"
-#include "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp"
+#include "/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/generalAssertFunctions.hpp"
+#include "/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp"
 
 
 
@@ -94,7 +94,7 @@ void testEveryOtherAnlgeZeroResults(int assertValue,int piDenominator,int number
 
     // Print graph to file
     // Update with desired directory to view graph.
-    //std::string fileDir = "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/figs";
+    //std::string fileDir = "/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs";
     //std::string graphName = "1DLatticeOddQubitsAnglesEveryOther0And2PiMultiple";
     //std::string format = "png";
     //printGraphToFile(latticeGraph,fileDir,graphName,format);
@@ -193,7 +193,7 @@ int main() {
 
     // Print graph to file
     // Update with desired directory to view graph.
-    std::string fileDir = "/home/fieldofnodes/Projects/QuEST/QuEST/projects/MBQC/figs";
+    std::string fileDir = "/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs";
     std::string graphName = "1DLatticeOddQubitsAnglesEveryOther0And2PiMultiple";
     std::string format = "png";
     printGraphToFile(latticeGraph,fileDir,graphName,format);
