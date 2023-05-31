@@ -1,1 +1,2 @@
 #define MBQC_FIGS_DIR "@MBQC_FIGURE_DIR@"
+#define PNG_FORMAT "png"

@@ -25,8 +25,8 @@ int main() {
   
   
   // Set values to variables
-  numRows = 2;
-  numCols = 2;
+  numRows = 4;
+  numCols = 4;
   latticeGraph = createLatticeGraph(numRows,numCols);
   numVertices = boost::num_vertices(latticeGraph);
   
@@ -35,8 +35,8 @@ int main() {
   // Print graph to file
   // Update with desired directory to view graph.
   std::string figsDir = MBQC_FIGS_DIR;
-  std::string graphName = "lattice2DGraphCmake";
-  std::string format = "png";
+  std::string graphName = "lattice2DGraphCmakeV2";
+  std::string format = PNG_FORMAT;
   printGraphToFile(latticeGraph,figsDir,graphName,format);
 
   // load QuEST environment
