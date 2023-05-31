@@ -11,19 +11,22 @@
 #######################################################################################
 #######################################################################################
 
-# Starting message to show in cmake ..
-message(STATUS "Running MBQC")
-message(STATUS "Finish writing code for graphFlowDefinition")
-message(STATUS "Test graphFlowDefinition as written")
 
 
 # Stipulate minimum cmake version
 cmake_minimum_required(VERSION 3.12)
 
 # Set project name
-project(MBQC)
-
-
+project(MBQC VERSION 0.1)
+# Starting message to show in cmake ..
+message(STATUS "Running MBQC")
+# Convey message in cmake
+message(STATUS "Project version: ${PROJECT_VERSION}")
+message(STATUS "To do:")
+message(STATUS "")
+message(STATUS "1. Finish writing code for graphFlowDefinition")
+message(STATUS "2. Test graphFlowDefinition as written")
+message(STATUS "")
 
 
 
