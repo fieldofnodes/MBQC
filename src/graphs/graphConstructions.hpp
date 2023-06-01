@@ -12,9 +12,15 @@ typedef boost::graph_traits<undirectedGraph>::edge_iterator edge_iterator;
 typedef boost::graph_traits<undirectedGraph>::vertex_iterator vertex_iterator;
 
 
-/*
-  Create lattice 
-*/
+/**
+ * @brief Creates a lattice graph from two integers
+ *
+ * This function takes two integers as parameters and returns a littice graph with them as parameters
+ *
+ * @param numRows The number of rows.
+ * @param numCols The number of columns.
+ * @return A lattice graph.
+ */
 std::vector<std::vector<int>> create_lattice(int numRows, int numCols) {
     int numVertices = numRows * numCols;
     std::vector<std::vector<int>> lattice(numRows, std::vector<int>(numCols, -1));
