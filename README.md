@@ -25,13 +25,16 @@ Along with the standard C/C++ libraries there are two additional external librar
     1. Boost graph library: https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/index.html
     2. Download: https://www.boost.org/users/download/
     3. Homebrew: https://formulae.brew.sh/formula/boost
-2. QuEST: https://quest.qtechtheory.org/
+4. GraphViz
+    1. Page: https://graphviz.org/
+    2. Downloads: https://graphviz.org/download/ 
+6. QuEST: https://quest.qtechtheory.org/
     1. Download page: https://quest.qtechtheory.org/download/
     2. Github: https://github.com/QuEST-Kit/QuEST
     3. Github organisation: https://github.com/QuEST-Kit
     4. Documentation: https://quest-kit.github.io/QuEST/modules.html
 
-These (Boost and QuEST) are both REQUIRED to run this MBQC.
+These (Boost and QuEST) are both REQUIRED to run this MBQC. GraphViz is required to print graphs to file.
 
 1. Download boost, the `CMakeLists.txt` file in the root of this repository attempts to find Boost. For any trouble with this step please open and issue and we will respond as soon as possible.
 2. Download the QuEST repository from GitHub and save the folder to `$HOME/Projects/QuEST/` and `CMakeLists.txt` should be able to load it. For any trouble with this step please open and issue and we will respond as soon as possible. (Note that `$HOME` is used in Linux to represent the home directory such as `/home/username/`
