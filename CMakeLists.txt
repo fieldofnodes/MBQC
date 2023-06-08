@@ -29,6 +29,7 @@ message(STATUS "2. Test graphFlowDefinition as written")
 message(STATUS "")
 
 
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
 #######################################################################################
 #######################################################################################
@@ -50,18 +51,8 @@ set(HOME_DIR $ENV{HOME})
 # Set projects home folder
 set(PROJECTS_DIR ${HOME_DIR}/Projects)
 
-# Set the path to the QuEST library source directory
-set(QuEST_SOURCE_DIR ${PROJECTS_DIR}/QuEST)
-
-# Set the path to the QuEST library binary directory
-set(QuEST_BINARY_DIR ${QuEST_SOURCE_DIR}/build)
-
-# Add the QuEST library as a subdirectory
-add_subdirectory(
-    ${QuEST_SOURCE_DIR} 
-    ${QuEST_BINARY_DIR})
-
 # Find Boost
+<<<<<<< HEAD
 find_package(Boost 1.81 REQUIRED)
 
 if(Boost_FOUND)
@@ -75,7 +66,12 @@ else()
 endif()
 
 
+=======
+find_package(Boost 1.81 REQUIRED COMPONENTS graph)
+>>>>>>> 2993f1d85fc09998a84a587ef461c3cc04e23a53
 
+# Find QuEST
+find_package(QuEST REQUIRED)
 
 #######################################################################################
 #######################################################################################
@@ -140,6 +136,22 @@ include_directories(
 # Configure the header file
 configure_file(${MBQC_CONFIG_DIR}/config.h.in ${MBQC_CONFIG_DIR}/config.h)
 
+<<<<<<< HEAD
+=======
+# Add your source files and executable targets here
+add_executable(mbqcStarterFile ${MBQC_STARTER_FILE})
+
+# Include the configured header file
+target_include_directories(mbqcStarterFile PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+
+# Link the QuEST library and Boost to your executable
+target_link_libraries(mbqcStarterFile PRIVATE QuEST::QuEST ${Boost_LIBRARIES})
+
+
+
+
+
+>>>>>>> 2993f1d85fc09998a84a587ef461c3cc04e23a53
 
 # Set up mbqcStarterFile
 #add_executable(mbqcStarterFile ${MBQC_STARTER_FILE})
