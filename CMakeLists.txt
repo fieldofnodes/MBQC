@@ -64,6 +64,16 @@ add_subdirectory(
 # Find Boost
 find_package(Boost 1.81 REQUIRED)
 
+if(Boost_FOUND)
+    # Code to be executed if the Boost package is found
+    message("Boost package found!")
+    # Additional actions for when the package is found
+else()
+    # Code to be executed if the Boost package is not found
+    message("Boost package not found!")
+    # Additional actions for when the package is not found
+endif()
+
 
 
 
@@ -84,7 +94,7 @@ set(MBQC_FIGURE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/figs)
 set(MBQC_CONFIG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/config)
 
 # Set the config code directory variable
-set(MBQC_TEST_DIR ${CMAKE_CURRENT_SOURCE_DIR}/test)
+set(MBQC_TEST_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 
 # Set generic helper functions folder
 set(MBQC_HELPER_FUNC_DIR ${MBQC_SOURCE_DIR}/genericHelperFunctions)
@@ -100,6 +110,8 @@ set(MBQC_TEST_FUNCTIONS_DIR ${MBQC_SOURCE_DIR}/testFunctions)
     
 # Create variable to executables to run
 set(MBQC_STARTER_FILE ${MBQC_SOURCE_DIR}/mbqcStarterFile.cpp)
+set(TEST_QUEST_NOISE_MODELS_FILE ${MBQC_TEST_DIR}/testNoiseModelsQuEST.cpp)
+
 
 
 
@@ -128,18 +140,13 @@ include_directories(
 # Configure the header file
 configure_file(${MBQC_CONFIG_DIR}/config.h.in ${MBQC_CONFIG_DIR}/config.h)
 
-# Add your source files and executable targets here
-add_executable(mbqcStarterFile ${MBQC_STARTER_FILE})
 
-# Include the configured header file
-target_include_directories(mbqcStarterFile PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+# Set up mbqcStarterFile
+#add_executable(mbqcStarterFile ${MBQC_STARTER_FILE})
+#target_include_directories(mbqcStarterFile PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+#target_link_libraries(mbqcStarterFile PRIVATE QuEST ${Boost_LIBRARIES})
 
-# Link the QuEST library and Boost to your executable
-target_link_libraries(mbqcStarterFile PRIVATE QuEST ${Boost_LIBRARIES})
-
-
-
-
-
-
-
+# Set up testNoiseModelsQuEST
+add_executable(testNoiseModelsQuEST ${TEST_QUEST_NOISE_MODELS_FILE})
+target_include_directories(testNoiseModelsQuEST PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+target_link_libraries(testNoiseModelsQuEST PRIVATE QuEST ${Boost_LIBRARIES})

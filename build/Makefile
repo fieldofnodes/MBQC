@@ -117,17 +117,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named mbqcStarterFile
+# Target rules for targets named testNoiseModelsQuEST
 
 # Build rule for target.
-mbqcStarterFile: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mbqcStarterFile
-.PHONY : mbqcStarterFile
+testNoiseModelsQuEST: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 testNoiseModelsQuEST
+.PHONY : testNoiseModelsQuEST
 
 # fast build rule for target.
-mbqcStarterFile/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/build
-.PHONY : mbqcStarterFile/fast
+testNoiseModelsQuEST/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testNoiseModelsQuEST.dir/build.make CMakeFiles/testNoiseModelsQuEST.dir/build
+.PHONY : testNoiseModelsQuEST/fast
 
 #=============================================================================
 # Target rules for targets named demo
@@ -155,29 +155,29 @@ QuEST/fast:
 	$(MAKE) $(MAKESILENT) -f /Users/jmille15/Projects/QuEST/build/QuEST/CMakeFiles/QuEST.dir/build.make /Users/jmille15/Projects/QuEST/build/QuEST/CMakeFiles/QuEST.dir/build
 .PHONY : QuEST/fast
 
-src/mbqcStarterFile.o: src/mbqcStarterFile.cpp.o
-.PHONY : src/mbqcStarterFile.o
+tests/testNoiseModelsQuEST.o: tests/testNoiseModelsQuEST.cpp.o
+.PHONY : tests/testNoiseModelsQuEST.o
 
 # target to build an object file
-src/mbqcStarterFile.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/src/mbqcStarterFile.cpp.o
-.PHONY : src/mbqcStarterFile.cpp.o
+tests/testNoiseModelsQuEST.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testNoiseModelsQuEST.dir/build.make CMakeFiles/testNoiseModelsQuEST.dir/tests/testNoiseModelsQuEST.cpp.o
+.PHONY : tests/testNoiseModelsQuEST.cpp.o
 
-src/mbqcStarterFile.i: src/mbqcStarterFile.cpp.i
-.PHONY : src/mbqcStarterFile.i
+tests/testNoiseModelsQuEST.i: tests/testNoiseModelsQuEST.cpp.i
+.PHONY : tests/testNoiseModelsQuEST.i
 
 # target to preprocess a source file
-src/mbqcStarterFile.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/src/mbqcStarterFile.cpp.i
-.PHONY : src/mbqcStarterFile.cpp.i
+tests/testNoiseModelsQuEST.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testNoiseModelsQuEST.dir/build.make CMakeFiles/testNoiseModelsQuEST.dir/tests/testNoiseModelsQuEST.cpp.i
+.PHONY : tests/testNoiseModelsQuEST.cpp.i
 
-src/mbqcStarterFile.s: src/mbqcStarterFile.cpp.s
-.PHONY : src/mbqcStarterFile.s
+tests/testNoiseModelsQuEST.s: tests/testNoiseModelsQuEST.cpp.s
+.PHONY : tests/testNoiseModelsQuEST.s
 
 # target to generate assembly for a file
-src/mbqcStarterFile.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/src/mbqcStarterFile.cpp.s
-.PHONY : src/mbqcStarterFile.cpp.s
+tests/testNoiseModelsQuEST.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testNoiseModelsQuEST.dir/build.make CMakeFiles/testNoiseModelsQuEST.dir/tests/testNoiseModelsQuEST.cpp.s
+.PHONY : tests/testNoiseModelsQuEST.cpp.s
 
 # Help Target
 help:
@@ -189,10 +189,10 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... QuEST"
 	@echo "... demo"
-	@echo "... mbqcStarterFile"
-	@echo "... src/mbqcStarterFile.o"
-	@echo "... src/mbqcStarterFile.i"
-	@echo "... src/mbqcStarterFile.s"
+	@echo "... testNoiseModelsQuEST"
+	@echo "... tests/testNoiseModelsQuEST.o"
+	@echo "... tests/testNoiseModelsQuEST.i"
+	@echo "... tests/testNoiseModelsQuEST.s"
 .PHONY : help
 
 

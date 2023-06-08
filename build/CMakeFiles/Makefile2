@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /Users/jmille15/Projects/MBQC/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/mbqcStarterFile.dir/all
+all: CMakeFiles/testNoiseModelsQuEST.dir/all
 all: /Users/jmille15/Projects/QuEST/build/all
 .PHONY : all
 
@@ -72,7 +72,7 @@ preinstall: /Users/jmille15/Projects/QuEST/build/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/mbqcStarterFile.dir/clean
+clean: CMakeFiles/testNoiseModelsQuEST.dir/clean
 clean: /Users/jmille15/Projects/QuEST/build/clean
 .PHONY : clean
 
@@ -141,30 +141,30 @@ clean: /Users/jmille15/Projects/QuEST/build/clean
 .PHONY : /Users/jmille15/Projects/QuEST/build/QuEST/src/CPU/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/mbqcStarterFile.dir
+# Target rules for target CMakeFiles/testNoiseModelsQuEST.dir
 
 # All Build rule for target.
-CMakeFiles/mbqcStarterFile.dir/all: /Users/jmille15/Projects/QuEST/build/QuEST/CMakeFiles/QuEST.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jmille15/Projects/MBQC/build/CMakeFiles --progress-num=11,12 "Built target mbqcStarterFile"
-.PHONY : CMakeFiles/mbqcStarterFile.dir/all
+CMakeFiles/testNoiseModelsQuEST.dir/all: /Users/jmille15/Projects/QuEST/build/QuEST/CMakeFiles/QuEST.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testNoiseModelsQuEST.dir/build.make CMakeFiles/testNoiseModelsQuEST.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testNoiseModelsQuEST.dir/build.make CMakeFiles/testNoiseModelsQuEST.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jmille15/Projects/MBQC/build/CMakeFiles --progress-num=11,12 "Built target testNoiseModelsQuEST"
+.PHONY : CMakeFiles/testNoiseModelsQuEST.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/mbqcStarterFile.dir/rule: cmake_check_build_system
+CMakeFiles/testNoiseModelsQuEST.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jmille15/Projects/MBQC/build/CMakeFiles 10
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/mbqcStarterFile.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/testNoiseModelsQuEST.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jmille15/Projects/MBQC/build/CMakeFiles 0
-.PHONY : CMakeFiles/mbqcStarterFile.dir/rule
+.PHONY : CMakeFiles/testNoiseModelsQuEST.dir/rule
 
 # Convenience name for target.
-mbqcStarterFile: CMakeFiles/mbqcStarterFile.dir/rule
-.PHONY : mbqcStarterFile
+testNoiseModelsQuEST: CMakeFiles/testNoiseModelsQuEST.dir/rule
+.PHONY : testNoiseModelsQuEST
 
 # clean rule for target.
-CMakeFiles/mbqcStarterFile.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/clean
-.PHONY : CMakeFiles/mbqcStarterFile.dir/clean
+CMakeFiles/testNoiseModelsQuEST.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testNoiseModelsQuEST.dir/build.make CMakeFiles/testNoiseModelsQuEST.dir/clean
+.PHONY : CMakeFiles/testNoiseModelsQuEST.dir/clean
 
 #=============================================================================
 # Target rules for target /Users/jmille15/Projects/QuEST/build/CMakeFiles/demo.dir

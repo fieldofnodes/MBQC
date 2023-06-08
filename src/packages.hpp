@@ -17,8 +17,10 @@
 #include <filesystem>
 #include <functional>
 #include "config.h"
-
-
+#include <fstream>
+#include <cstdio>
+#include <string>
+#include <ranges>
 
 // QuEST
 #include <QuEST.h>

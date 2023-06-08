@@ -66,7 +66,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/mbqcStarterFile.dir/DependInfo.cmake"
+  "CMakeFiles/testNoiseModelsQuEST.dir/DependInfo.cmake"
   "/Users/jmille15/Projects/QuEST/build/CMakeFiles/demo.dir/DependInfo.cmake"
   "/Users/jmille15/Projects/QuEST/build/QuEST/CMakeFiles/QuEST.dir/DependInfo.cmake"
   )
