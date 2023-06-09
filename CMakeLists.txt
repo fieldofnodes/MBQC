@@ -51,8 +51,17 @@ set(HOME_DIR $ENV{HOME})
 # Set projects home folder
 set(PROJECTS_DIR ${HOME_DIR}/Projects)
 
+# Set the path to the QuEST library source directory
+set(QUEST_DIR ${PROJECTS_DIR}/QuEST)
+
+
+# Set the path to the QuEST library binary directory
+set(QUEST_LIB_DIR ${QUEST_DIR}/build)
+
+
+
+
 # Find Boost
-<<<<<<< HEAD
 find_package(Boost 1.81 REQUIRED)
 
 if(Boost_FOUND)
@@ -66,9 +75,8 @@ else()
 endif()
 
 
-=======
-find_package(Boost 1.81 REQUIRED COMPONENTS graph)
->>>>>>> 2993f1d85fc09998a84a587ef461c3cc04e23a53
+
+
 
 # Find QuEST
 find_package(QuEST REQUIRED)
@@ -136,8 +144,6 @@ include_directories(
 # Configure the header file
 configure_file(${MBQC_CONFIG_DIR}/config.h.in ${MBQC_CONFIG_DIR}/config.h)
 
-<<<<<<< HEAD
-=======
 # Add your source files and executable targets here
 add_executable(mbqcStarterFile ${MBQC_STARTER_FILE})
 
@@ -151,7 +157,6 @@ target_link_libraries(mbqcStarterFile PRIVATE QuEST::QuEST ${Boost_LIBRARIES})
 
 
 
->>>>>>> 2993f1d85fc09998a84a587ef461c3cc04e23a53
 
 # Set up mbqcStarterFile
 #add_executable(mbqcStarterFile ${MBQC_STARTER_FILE})

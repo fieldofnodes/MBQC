@@ -126,14 +126,29 @@ void applyMixDampingOnSingleQubitPauliX(qreal prob){
 }
 
 int main(){
-    applySingleQubitPauliX();
-    qreal prob = 0.1;
-    applyMixDampingOnSingleQubitPauliX(prob);
+    //applySingleQubitPauliX();
+    //qreal prob = 0.1;
+    //applyMixDampingOnSingleQubitPauliX(prob);
+
+    const char* homeDir = std::getenv("HOME");
+    if (homeDir != nullptr) {
+        std::cout << "Home directory: " << homeDir << std::endl;
+    } else {
+        std::cout << "Home directory not found" << std::endl;
+    }
 
     return 0;
+
+
+
 }
 
 
 
+
+
+
+
+    
 
 

@@ -21,6 +21,7 @@
 #include <cstdio>
 #include <string>
 #include <ranges>
+#include <cstdlib>
 
 // QuEST
 #include <QuEST.h>

@@ -19,7 +19,6 @@ Libraries needed to link to PETSc.
 Location of libraries need to link to PETSc.
 
 #]=======================================================================]
-
 include(FindPackageHandleStandardArgs)
 
 # QuEST is by default only built in place, and provides no install target, so no sense
@@ -44,16 +43,26 @@ find_path(QUEST_INCLUDE_DIRS
     ${QUEST_DIR}/QuEST/include
 )
 
+
 # search for library
 find_path(QUEST_LIBRARY_DIRS
-  NAMES libQuEST.so
+  NAMES
+    QuEST.dll
+    libQuEST.dylib
+    libQuEST.so
   PATHS
     ${QUEST_LIB_DIR}
     ${QUEST_DIR}/build/QuEST
 )
 
 if (QUEST_LIBRARY_DIRS)
-  set(QUEST_LIBRARIES "QuEST")
+  if (APPLE)
+    set(QUEST_LIBRARIES "QuEST.dylib")
+  elseif (UNIX)
+    set(QUEST_LIBRARIES "QuEST.so")
+  else()
+    set(QUEST_LIBRARIES "QuEST.dll")
+  endif()
 endif()
 
 find_package_handle_standard_args(QuEST
