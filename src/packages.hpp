@@ -22,6 +22,9 @@
 #include <string>
 #include <ranges>
 #include <cstdlib>
+#include <functional>
+#include <cxxabi.h>
+
 
 // QuEST
 #include <QuEST.h>
@@ -56,6 +59,8 @@
 // Assert functions
 #include "generalAssertFunctions.hpp"
 #include "graphAssertFunctions.hpp"
+#include "probabilitiesAmplitudesNoNoiseCircuits.hpp"
+#include "probabilitiesAmplitudesDampingCircuits.hpp"
 
 using namespace boost;
 

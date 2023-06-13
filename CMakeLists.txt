@@ -114,12 +114,8 @@ set(MBQC_TEST_FUNCTIONS_DIR ${MBQC_SOURCE_DIR}/testFunctions)
     
 # Create variable to executables to run
 set(MBQC_STARTER_FILE ${MBQC_SOURCE_DIR}/mbqcStarterFile.cpp)
-set(TEST_QUEST_NOISE_MODELS_FILE ${MBQC_TEST_DIR}/testNoiseModelsQuEST.cpp)
-
-
-
-
-
+set(TEST_NO_NOISE_SIMPLE_CIRCUITS_QUEST_FILE ${MBQC_TEST_DIR}/testNoNoiseSimpleCircuitsQuEST.cpp)
+set(TEST_DAMPING_SIMPLE_CIRCUITS_QUEST_FILE ${MBQC_TEST_DIR}/testDampingSimpleCircuitsQuEST.cpp)
 
 #######################################################################################
 #######################################################################################
@@ -144,26 +140,28 @@ include_directories(
 # Configure the header file
 configure_file(${MBQC_CONFIG_DIR}/config.h.in ${MBQC_CONFIG_DIR}/config.h)
 
-# Add your source files and executable targets here
-add_executable(mbqcStarterFile ${MBQC_STARTER_FILE})
 
-# Include the configured header file
-target_include_directories(mbqcStarterFile PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+if(FALSE)
+    # Add your source files and executable targets here
+    add_executable(mbqcStarterFile ${MBQC_STARTER_FILE})
+    target_include_directories(mbqcStarterFile PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+    target_link_libraries(mbqcStarterFile PRIVATE QuEST::QuEST ${Boost_LIBRARIES})
+endif()
 
-# Link the QuEST library and Boost to your executable
-target_link_libraries(mbqcStarterFile PRIVATE QuEST::QuEST ${Boost_LIBRARIES})
+if(FALSE)
+    # Set up testNoNoiseSimpleCircuitsQuEST
+    add_executable(testNoNoiseSimpleCircuitsQuEST ${TEST_NO_NOISE_SIMPLE_CIRCUITS_QUEST_FILE})
+    target_include_directories(testNoNoiseSimpleCircuitsQuEST PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+    target_link_libraries(testNoNoiseSimpleCircuitsQuEST PRIVATE QuEST::QuEST  ${Boost_LIBRARIES})
+endif()
+
+if(FALSE)
+    # Set up testNoNoiseSimpleCircuitsQuEST
+    add_executable(testDampingSimpleCircuitsQuEST ${TEST_DAMPING_SIMPLE_CIRCUITS_QUEST_FILE})
+    target_include_directories(testDampingSimpleCircuitsQuEST PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+    target_link_libraries(testDampingSimpleCircuitsQuEST PRIVATE QuEST::QuEST  ${Boost_LIBRARIES})
+endif()
 
 
 
 
-
-
-# Set up mbqcStarterFile
-#add_executable(mbqcStarterFile ${MBQC_STARTER_FILE})
-#target_include_directories(mbqcStarterFile PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
-#target_link_libraries(mbqcStarterFile PRIVATE QuEST ${Boost_LIBRARIES})
-
-# Set up testNoiseModelsQuEST
-add_executable(testNoiseModelsQuEST ${TEST_QUEST_NOISE_MODELS_FILE})
-target_include_directories(testNoiseModelsQuEST PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
-target_link_libraries(testNoiseModelsQuEST PRIVATE QuEST ${Boost_LIBRARIES})

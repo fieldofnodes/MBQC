@@ -117,78 +117,78 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named mbqcStarterFile
+# Target rules for targets named testNoNoiseSimpleCircuitsQuEST
 
 # Build rule for target.
-mbqcStarterFile: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mbqcStarterFile
-.PHONY : mbqcStarterFile
+testNoNoiseSimpleCircuitsQuEST: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 testNoNoiseSimpleCircuitsQuEST
+.PHONY : testNoNoiseSimpleCircuitsQuEST
 
 # fast build rule for target.
-mbqcStarterFile/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/build
-.PHONY : mbqcStarterFile/fast
+testNoNoiseSimpleCircuitsQuEST/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir/build.make CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir/build
+.PHONY : testNoNoiseSimpleCircuitsQuEST/fast
 
 #=============================================================================
-# Target rules for targets named testNoiseModelsQuEST
+# Target rules for targets named testDampingSimpleCircuitsQuEST
 
 # Build rule for target.
-testNoiseModelsQuEST: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 testNoiseModelsQuEST
-.PHONY : testNoiseModelsQuEST
+testDampingSimpleCircuitsQuEST: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 testDampingSimpleCircuitsQuEST
+.PHONY : testDampingSimpleCircuitsQuEST
 
 # fast build rule for target.
-testNoiseModelsQuEST/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testNoiseModelsQuEST.dir/build.make CMakeFiles/testNoiseModelsQuEST.dir/build
-.PHONY : testNoiseModelsQuEST/fast
+testDampingSimpleCircuitsQuEST/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDampingSimpleCircuitsQuEST.dir/build.make CMakeFiles/testDampingSimpleCircuitsQuEST.dir/build
+.PHONY : testDampingSimpleCircuitsQuEST/fast
 
-src/mbqcStarterFile.o: src/mbqcStarterFile.cpp.o
-.PHONY : src/mbqcStarterFile.o
-
-# target to build an object file
-src/mbqcStarterFile.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/src/mbqcStarterFile.cpp.o
-.PHONY : src/mbqcStarterFile.cpp.o
-
-src/mbqcStarterFile.i: src/mbqcStarterFile.cpp.i
-.PHONY : src/mbqcStarterFile.i
-
-# target to preprocess a source file
-src/mbqcStarterFile.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/src/mbqcStarterFile.cpp.i
-.PHONY : src/mbqcStarterFile.cpp.i
-
-src/mbqcStarterFile.s: src/mbqcStarterFile.cpp.s
-.PHONY : src/mbqcStarterFile.s
-
-# target to generate assembly for a file
-src/mbqcStarterFile.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/src/mbqcStarterFile.cpp.s
-.PHONY : src/mbqcStarterFile.cpp.s
-
-tests/testNoiseModelsQuEST.o: tests/testNoiseModelsQuEST.cpp.o
-.PHONY : tests/testNoiseModelsQuEST.o
+tests/testDampingSimpleCircuitsQuEST.o: tests/testDampingSimpleCircuitsQuEST.cpp.o
+.PHONY : tests/testDampingSimpleCircuitsQuEST.o
 
 # target to build an object file
-tests/testNoiseModelsQuEST.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testNoiseModelsQuEST.dir/build.make CMakeFiles/testNoiseModelsQuEST.dir/tests/testNoiseModelsQuEST.cpp.o
-.PHONY : tests/testNoiseModelsQuEST.cpp.o
+tests/testDampingSimpleCircuitsQuEST.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDampingSimpleCircuitsQuEST.dir/build.make CMakeFiles/testDampingSimpleCircuitsQuEST.dir/tests/testDampingSimpleCircuitsQuEST.cpp.o
+.PHONY : tests/testDampingSimpleCircuitsQuEST.cpp.o
 
-tests/testNoiseModelsQuEST.i: tests/testNoiseModelsQuEST.cpp.i
-.PHONY : tests/testNoiseModelsQuEST.i
+tests/testDampingSimpleCircuitsQuEST.i: tests/testDampingSimpleCircuitsQuEST.cpp.i
+.PHONY : tests/testDampingSimpleCircuitsQuEST.i
 
 # target to preprocess a source file
-tests/testNoiseModelsQuEST.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testNoiseModelsQuEST.dir/build.make CMakeFiles/testNoiseModelsQuEST.dir/tests/testNoiseModelsQuEST.cpp.i
-.PHONY : tests/testNoiseModelsQuEST.cpp.i
+tests/testDampingSimpleCircuitsQuEST.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDampingSimpleCircuitsQuEST.dir/build.make CMakeFiles/testDampingSimpleCircuitsQuEST.dir/tests/testDampingSimpleCircuitsQuEST.cpp.i
+.PHONY : tests/testDampingSimpleCircuitsQuEST.cpp.i
 
-tests/testNoiseModelsQuEST.s: tests/testNoiseModelsQuEST.cpp.s
-.PHONY : tests/testNoiseModelsQuEST.s
+tests/testDampingSimpleCircuitsQuEST.s: tests/testDampingSimpleCircuitsQuEST.cpp.s
+.PHONY : tests/testDampingSimpleCircuitsQuEST.s
 
 # target to generate assembly for a file
-tests/testNoiseModelsQuEST.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testNoiseModelsQuEST.dir/build.make CMakeFiles/testNoiseModelsQuEST.dir/tests/testNoiseModelsQuEST.cpp.s
-.PHONY : tests/testNoiseModelsQuEST.cpp.s
+tests/testDampingSimpleCircuitsQuEST.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDampingSimpleCircuitsQuEST.dir/build.make CMakeFiles/testDampingSimpleCircuitsQuEST.dir/tests/testDampingSimpleCircuitsQuEST.cpp.s
+.PHONY : tests/testDampingSimpleCircuitsQuEST.cpp.s
+
+tests/testNoNoiseSimpleCircuitsQuEST.o: tests/testNoNoiseSimpleCircuitsQuEST.cpp.o
+.PHONY : tests/testNoNoiseSimpleCircuitsQuEST.o
+
+# target to build an object file
+tests/testNoNoiseSimpleCircuitsQuEST.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir/build.make CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir/tests/testNoNoiseSimpleCircuitsQuEST.cpp.o
+.PHONY : tests/testNoNoiseSimpleCircuitsQuEST.cpp.o
+
+tests/testNoNoiseSimpleCircuitsQuEST.i: tests/testNoNoiseSimpleCircuitsQuEST.cpp.i
+.PHONY : tests/testNoNoiseSimpleCircuitsQuEST.i
+
+# target to preprocess a source file
+tests/testNoNoiseSimpleCircuitsQuEST.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir/build.make CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir/tests/testNoNoiseSimpleCircuitsQuEST.cpp.i
+.PHONY : tests/testNoNoiseSimpleCircuitsQuEST.cpp.i
+
+tests/testNoNoiseSimpleCircuitsQuEST.s: tests/testNoNoiseSimpleCircuitsQuEST.cpp.s
+.PHONY : tests/testNoNoiseSimpleCircuitsQuEST.s
+
+# target to generate assembly for a file
+tests/testNoNoiseSimpleCircuitsQuEST.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir/build.make CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir/tests/testNoNoiseSimpleCircuitsQuEST.cpp.s
+.PHONY : tests/testNoNoiseSimpleCircuitsQuEST.cpp.s
 
 # Help Target
 help:
@@ -198,14 +198,14 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... mbqcStarterFile"
-	@echo "... testNoiseModelsQuEST"
-	@echo "... src/mbqcStarterFile.o"
-	@echo "... src/mbqcStarterFile.i"
-	@echo "... src/mbqcStarterFile.s"
-	@echo "... tests/testNoiseModelsQuEST.o"
-	@echo "... tests/testNoiseModelsQuEST.i"
-	@echo "... tests/testNoiseModelsQuEST.s"
+	@echo "... testDampingSimpleCircuitsQuEST"
+	@echo "... testNoNoiseSimpleCircuitsQuEST"
+	@echo "... tests/testDampingSimpleCircuitsQuEST.o"
+	@echo "... tests/testDampingSimpleCircuitsQuEST.i"
+	@echo "... tests/testDampingSimpleCircuitsQuEST.s"
+	@echo "... tests/testNoNoiseSimpleCircuitsQuEST.o"
+	@echo "... tests/testNoNoiseSimpleCircuitsQuEST.i"
+	@echo "... tests/testNoNoiseSimpleCircuitsQuEST.s"
 .PHONY : help
 
 
