@@ -1,13 +1,31 @@
-/////////////////////////////////////////////////////////////
-// Title  : mbqcStarterFile.cpp                            //
-// Author : Jonathan Miller                                //
-// Date   : 20230503                                       //
-// Aim    : Basic start file to run mbqc                   //
-//        : Current implementation can only do square      //
-//        : graph repeatedly. Will branch repo to make     //
-//        : use different way to create graph by           //
-//        : adjacency                                      //
-/////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+// Filename  : mbqcStarterFile.cpp
+// Author    : Jonathan Miller
+// Date      : 2023-06-19
+// Aim       : aim_script
+//           : Lattice graph NxM
+//           : Flow: same row -> column (i+num_rows)
+//           : Script overview:
+//           :    + It includes the necessary package header file.
+//           :    + The main() function serves as the entry point for the program.
+//           :    + Several variables of different types are declared and initialized.
+//           :    + The program creates a lattice graph based on the specified number of rows and columns.
+//           :    + The graph is printed to a file.
+//           :    + The QuEST environment is initialized.
+//           :    + A quantum register is created with the specified number of vertices.
+//           :    + Random angles in the range of π on N angles are initialized and assigned to the qubitAngles vector.
+//           :    + The quantum register is initialized in the plus state.
+//           :    + Angle rotations around the Z-axis are applied to the qubits based on the qubitAngles vector.
+//           :    + The graph is entangled using the entangleGraph function.
+//           :    + The graph is measured, and the outcomes are stored in the measuredQubitsOutcomes vector.
+//           :    + The results are printed to the screen.
+//           :    + The QuEST environment and the quantum register are deallocated.
+//           :    + The program returns 0 to indicate successful execution.
+///////////////////////////////////////////////////////////////
+
+
+
+
 // Include package header file
 #include "packages.hpp"
 

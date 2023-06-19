@@ -63,6 +63,7 @@ CMAKE_BINARY_DIR = /Users/jmille15/Projects/MBQC/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/mbqcStarterFile.dir/all
 all: CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir/all
 all: CMakeFiles/testDampingSimpleCircuitsQuEST.dir/all
 .PHONY : all
@@ -72,9 +73,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/mbqcStarterFile.dir/clean
 clean: CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir/clean
 clean: CMakeFiles/testDampingSimpleCircuitsQuEST.dir/clean
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/mbqcStarterFile.dir
+
+# All Build rule for target.
+CMakeFiles/mbqcStarterFile.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jmille15/Projects/MBQC/build/CMakeFiles --progress-num=1,2 "Built target mbqcStarterFile"
+.PHONY : CMakeFiles/mbqcStarterFile.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/mbqcStarterFile.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jmille15/Projects/MBQC/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/mbqcStarterFile.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jmille15/Projects/MBQC/build/CMakeFiles 0
+.PHONY : CMakeFiles/mbqcStarterFile.dir/rule
+
+# Convenience name for target.
+mbqcStarterFile: CMakeFiles/mbqcStarterFile.dir/rule
+.PHONY : mbqcStarterFile
+
+# clean rule for target.
+CMakeFiles/mbqcStarterFile.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/clean
+.PHONY : CMakeFiles/mbqcStarterFile.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir
@@ -83,7 +111,7 @@ clean: CMakeFiles/testDampingSimpleCircuitsQuEST.dir/clean
 CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir/build.make CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir/build.make CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jmille15/Projects/MBQC/build/CMakeFiles --progress-num=3,4 "Built target testNoNoiseSimpleCircuitsQuEST"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jmille15/Projects/MBQC/build/CMakeFiles --progress-num=5,6 "Built target testNoNoiseSimpleCircuitsQuEST"
 .PHONY : CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir/all
 
 # Build rule for subdir invocation for target.
@@ -109,7 +137,7 @@ CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir/clean:
 CMakeFiles/testDampingSimpleCircuitsQuEST.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDampingSimpleCircuitsQuEST.dir/build.make CMakeFiles/testDampingSimpleCircuitsQuEST.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDampingSimpleCircuitsQuEST.dir/build.make CMakeFiles/testDampingSimpleCircuitsQuEST.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jmille15/Projects/MBQC/build/CMakeFiles --progress-num=1,2 "Built target testDampingSimpleCircuitsQuEST"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jmille15/Projects/MBQC/build/CMakeFiles --progress-num=3,4 "Built target testDampingSimpleCircuitsQuEST"
 .PHONY : CMakeFiles/testDampingSimpleCircuitsQuEST.dir/all
 
 # Build rule for subdir invocation for target.

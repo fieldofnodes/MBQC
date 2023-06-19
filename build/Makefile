@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named mbqcStarterFile
+
+# Build rule for target.
+mbqcStarterFile: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mbqcStarterFile
+.PHONY : mbqcStarterFile
+
+# fast build rule for target.
+mbqcStarterFile/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/build
+.PHONY : mbqcStarterFile/fast
+
+#=============================================================================
 # Target rules for targets named testNoNoiseSimpleCircuitsQuEST
 
 # Build rule for target.
@@ -141,6 +154,30 @@ testDampingSimpleCircuitsQuEST: cmake_check_build_system
 testDampingSimpleCircuitsQuEST/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testDampingSimpleCircuitsQuEST.dir/build.make CMakeFiles/testDampingSimpleCircuitsQuEST.dir/build
 .PHONY : testDampingSimpleCircuitsQuEST/fast
+
+src/mbqcStarterFile.o: src/mbqcStarterFile.cpp.o
+.PHONY : src/mbqcStarterFile.o
+
+# target to build an object file
+src/mbqcStarterFile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/src/mbqcStarterFile.cpp.o
+.PHONY : src/mbqcStarterFile.cpp.o
+
+src/mbqcStarterFile.i: src/mbqcStarterFile.cpp.i
+.PHONY : src/mbqcStarterFile.i
+
+# target to preprocess a source file
+src/mbqcStarterFile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/src/mbqcStarterFile.cpp.i
+.PHONY : src/mbqcStarterFile.cpp.i
+
+src/mbqcStarterFile.s: src/mbqcStarterFile.cpp.s
+.PHONY : src/mbqcStarterFile.s
+
+# target to generate assembly for a file
+src/mbqcStarterFile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarterFile.dir/build.make CMakeFiles/mbqcStarterFile.dir/src/mbqcStarterFile.cpp.s
+.PHONY : src/mbqcStarterFile.cpp.s
 
 tests/testDampingSimpleCircuitsQuEST.o: tests/testDampingSimpleCircuitsQuEST.cpp.o
 .PHONY : tests/testDampingSimpleCircuitsQuEST.o
@@ -198,8 +235,12 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... mbqcStarterFile"
 	@echo "... testDampingSimpleCircuitsQuEST"
 	@echo "... testNoNoiseSimpleCircuitsQuEST"
+	@echo "... src/mbqcStarterFile.o"
+	@echo "... src/mbqcStarterFile.i"
+	@echo "... src/mbqcStarterFile.s"
 	@echo "... tests/testDampingSimpleCircuitsQuEST.o"
 	@echo "... tests/testDampingSimpleCircuitsQuEST.i"
 	@echo "... tests/testDampingSimpleCircuitsQuEST.s"
