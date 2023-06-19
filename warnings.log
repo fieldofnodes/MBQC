@@ -1,4 +1,6 @@
-warning: Specified markdown mainpage 'README.md' has not been defined as input file/Users/jmille15/Projects/MBQC/src/archive/filesToGoThrough/createMbqcGraph.cpp:11: warning: Compound EdgeProperties is not documented.
+/Users/jmille15/Projects/MBQC/src/archive/filesToGoThrough/createMbqcGraph.cpp:11: warning: Compound EdgeProperties is not documented.
 /Users/jmille15/Projects/MBQC/src/archive/filesToGoThrough/createMbqcGraph.cpp:6: warning: Compound VertexProperties is not documented.
 /Users/jmille15/Projects/MBQC/src/archive/filesToGoThrough/createMbqcGraph.cpp:12: warning: Member angle (variable) of struct EdgeProperties is not documented.
 /Users/jmille15/Projects/MBQC/src/archive/filesToGoThrough/createMbqcGraph.cpp:7: warning: Member qubit (variable) of struct VertexProperties is not documented.
+/Users/jmille15/Projects/MBQC/README.md:10: warning: Unexpected subsubsection command found inside section!
+/Users/jmille15/Projects/MBQC/README.md:10: warning: Unexpected subsubsection command found inside section!

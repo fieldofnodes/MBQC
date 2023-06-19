@@ -1,0 +1,67 @@
+/* Set body and container background colors to a dark shade */
+body, div.container {
+    background-color: #333333;
+}
+
+/* Set the font color to light gray */
+body, p, div.container, div.contents, div.header, div.footer, div.contents div.section {
+    color: #CCCCCC;
+}
+
+/* Style the navigation tabs */
+div.tabs ul.tablist {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: #222222;
+}
+
+div.tabs ul.tablist li {
+    display: inline-block;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+div.tabs ul.tablist li:hover {
+    background-color: #444444;
+}
+
+div.tabs ul.tablist li.selected {
+    background-color: #555555;
+}
+
+/* Style the code blocks */
+pre {
+    background-color: #222222;
+    padding: 10px;
+    overflow: auto;
+}
+
+/* Style the code syntax highlighting */
+pre .fragment, pre .keyword, pre .comment, pre .string, pre .type {
+    color: #CCCCCC;
+}
+
+pre .fragment {
+    font-weight: bold;
+}
+
+pre .keyword {
+    color: #FF9900;
+}
+
+pre .comment {
+    color: #888888;
+}
+
+pre .string {
+    color: #33CC33;
+}
+
+pre .type {
+    color: #FF33CC;
+}

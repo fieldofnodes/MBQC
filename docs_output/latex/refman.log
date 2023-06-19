@@ -1,0 +1,943 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.6.2)  19 JUN 2023 17:58
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**refman
+(./refman.tex
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-02-22>
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2022/07/02 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/base/bk10.clo
+File: bk10.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@chapter=\count186
+\c@section=\count187
+\c@subsection=\count188
+\c@subsubsection=\count189
+\c@paragraph=\count190
+\c@subparagraph=\count191
+\c@figure=\count192
+\c@table=\count193
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+)
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/tools/array.sty
+Rollback for package 'array' requested -> date 2016-10-06.
+         Best approximation is the release introduced on 2016-10-06.
+
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/tools/array-2016-10-06.sty
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\col@sep=\dimen141
+\extrarowheight=\dimen142
+\NC@list=\toks16
+\extratabsurround=\skip50
+\backup@length=\skip51
+)) (/usr/local/texlive/2023basic/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+package info suppressed
+)
+(./doxygen.sty
+Package: doxygen 
+
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/base/alltt.sty
+Package: alltt 2021/01/29 v2.0g defines alltt environment
+)
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count194
+\calc@Bcount=\count195
+\calc@Adimen=\dimen143
+\calc@Bdimen=\dimen144
+\calc@Askip=\skip52
+\calc@Bskip=\skip53
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count196
+\calc@Cskip=\skip54
+)
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count197
+\float@exts=\toks17
+\float@box=\box51
+\@float@everytoks=\toks18
+\@floatcapt=\box52
+)
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2022-07-02 v1.5u LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks19
+\verbatim@line=\toks20
+\verbatim@in@stream=\read2
+)
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+)
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
+\everycr=\toks21
+\minrowclearance=\skip55
+\rownum=\count198
+)
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
+Package xcolor Info: Model `RGB' extended on input line 1369.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
+)
+(./longtable_doxygen.sty
+Package: longtable_doxygen 2014/10/28 v4.11 Multi-page Table package (DPC) - fr
+ozen version for doxygen
+\LTleft=\skip56
+\LTright=\skip57
+\LTpre=\skip58
+\LTpost=\skip59
+\LTchunksize=\count199
+\LTcapwidth=\dimen145
+\LT@head=\box53
+\LT@firsthead=\box54
+\LT@foot=\box55
+\LT@lastfoot=\box56
+\LT@cols=\count266
+\LT@rows=\count267
+\c@LT@tables=\count268
+\c@LT@chunks=\count269
+\LT@p@ftn=\toks22
+) (./tabu_doxygen.sty
+Package: tabu_doxygen 2011/02/26 v2.8 - flexible LaTeX tabulars (FC), frozen ve
+rsion for doxygen
+
+
+! LaTeX Error: File `varwidth.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+\c@taburow=\count270
+\tabu@nbcols=\count271
+\tabu@cnt=\count272
+\tabu@Xcol=\count273
+\tabu@alloc=\count274
+\tabu@nested=\count275
+\tabu@target=\dimen146
+\tabu@spreadtarget=\dimen147
+\tabu@naturalX=\dimen148
+\tabucolX=\dimen149
+\tabu@Xsum=\dimen150
+\extrarowdepth=\dimen151
+\abovetabulinesep=\dimen152
+\belowtabulinesep=\dimen153
+\tabustrutrule=\dimen154
+\tabu@thebody=\toks23
+\tabu@footnotes=\toks24
+\tabu@box=\box57
+\tabu@arstrutbox=\box58
+\tabu@hleads=\box59
+\tabu@vleads=\box60
+\tabu@cellskip=\skip60
+) (/usr/local/texlive/2023basic/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2023/01/19 4.5a verbatim text (tvz,hv)
+
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks25
+)
+\FV@CodeLineNo=\count276
+\FV@InFile=\read3
+\FV@TabBox=\box61
+\c@FancyVerbLine=\count277
+\FV@StepNumber=\count278
+\FV@OutFile=\write3
+)
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+\TX@col@width=\dimen155
+\TX@old@table=\dimen156
+\TX@old@col=\dimen157
+\TX@target=\dimen158
+\TX@delta=\dimen159
+\TX@cols=\count279
+\TX@ftn=\toks26
+)
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2021/11/30 v1.9d multicolumn formatting (FMi)
+\c@tracingmulticols=\count280
+\mult@box=\box62
+\multicol@leftmargin=\dimen160
+\c@unbalance=\count281
+\c@collectmore=\count282
+\doublecol@number=\count283
+\multicoltolerance=\count284
+\multicolpretolerance=\count285
+\full@width=\dimen161
+\page@free=\dimen162
+\premulticols=\dimen163
+\postmulticols=\dimen164
+\multicolsep=\skip61
+\multicolbaselineskip=\skip62
+\partial@page=\box63
+\last@line=\box64
+\maxbalancingoverflow=\dimen165
+\mult@rightbox=\box65
+\mult@grightbox=\box66
+\mult@firstbox=\box67
+\mult@gfirstbox=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\@tempa=\box97
+\@tempa=\box98
+\@tempa=\box99
+\@tempa=\box100
+\@tempa=\box101
+\@tempa=\box102
+\@tempa=\box103
+\@tempa=\box104
+\c@minrows=\count286
+\c@columnbadness=\count287
+\c@finalcolumnbadness=\count288
+\last@try=\dimen166
+\multicolovershoot=\dimen167
+\multicolundershoot=\dimen168
+\mult@nat@firstbox=\box105
+\colbreak@box=\box106
+\mc@col@check@num=\count289
+)
+
+! LaTeX Error: File `multirow.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+
+! LaTeX Error: File `hanging.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+(/usr/local/texlive/2023basic/texmf-dist/tex/generic/iftex/ifpdf.sty
+Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+
+(/usr/local/texlive/2023basic/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+))
+
+! LaTeX Error: File `adjustbox.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks27
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+
+! LaTeX Error: File `stackengine.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+
+! LaTeX Error: File `enumitem.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+
+! LaTeX Error: File `alphalph.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+(/usr/local/texlive/2023basic/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box107
+\UL@hyphenbox=\box108
+\UL@skip=\skip63
+\UL@hook=\toks28
+\UL@height=\dimen169
+\UL@pe=\count290
+\UL@pixel=\dimen170
+\ULC@box=\box109
+Package: ulem 2019/11/18
+\ULdepth=\dimen171
+)
+\xrefbox=\box110
+\xreflength=\skip64
+\CodeWidthChar=\skip65
+\CodeHeightChar=\skip66
+\DoxyCodeWidth=\skip67
+
+! Undefined control sequence.
+l.177 \setlistdepth
+                   {12}
+? 
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.177 \setlistdepth{1
+                     2}
+? 
+! Undefined control sequence.
+l.178 \newlist
+              {DoxyEnumerate}{enumerate}{12}
+? 
+! Undefined control sequence.
+l.179 \setlist
+              [DoxyEnumerate,1]{label=\arabic*.}
+? 
+! Missing number, treated as zero.
+<to be read again> 
+                   \c@* 
+l.179 \setlist[DoxyEnumerate,1]{label=\arabic*
+                                              .}
+? 
+! Undefined control sequence.
+l.180 \setlist
+              [DoxyEnumerate,2]{label=(\enumalphalphcnt*)}
+? 
+! Undefined control sequence.
+l.180 ...[DoxyEnumerate,2]{label=(\enumalphalphcnt
+                                                  *)}
+? 
+! Undefined control sequence.
+l.181 \setlist
+              [DoxyEnumerate,3]{label=\roman*.}
+? 
+! Missing number, treated as zero.
+<to be read again> 
+                   \c@* 
+l.181 \setlist[DoxyEnumerate,3]{label=\roman*
+                                             .}
+? 
+! Undefined control sequence.
+l.182 \setlist
+              [DoxyEnumerate,4]{label=\enumAlphAlphcnt*.}
+? 
+! Undefined control sequence.
+l.182 ...t[DoxyEnumerate,4]{label=\enumAlphAlphcnt
+                                                  *.}
+? 
+! Undefined control sequence.
+l.183 \setlist
+              [DoxyEnumerate,5]{label=\arabic*.}
+? 
+! Missing number, treated as zero.
+<to be read again> 
+                   \c@* 
+l.183 \setlist[DoxyEnumerate,5]{label=\arabic*
+                                              .}
+? 
+! Undefined control sequence.
+l.184 \setlist
+              [DoxyEnumerate,6]{label=(\enumalphalphcnt*)}
+? 
+! Undefined control sequence.
+l.184 ...[DoxyEnumerate,6]{label=(\enumalphalphcnt
+                                                  *)}
+? 
+! Undefined control sequence.
+l.185 \setlist
+              [DoxyEnumerate,7]{label=\roman*.}
+? 
+! Missing number, treated as zero.
+<to be read again> 
+                   \c@* 
+l.185 \setlist[DoxyEnumerate,7]{label=\roman*
+                                             .}
+? 
+! Undefined control sequence.
+l.186 \setlist
+              [DoxyEnumerate,8]{label=\enumAlphAlphcnt*.}
+? 
+! Undefined control sequence.
+l.186 ...t[DoxyEnumerate,8]{label=\enumAlphAlphcnt
+                                                  *.}
+? 
+! Undefined control sequence.
+l.187 \setlist
+              [DoxyEnumerate,9]{label=\arabic*.}
+? 
+! Missing number, treated as zero.
+<to be read again> 
+                   \c@* 
+l.187 \setlist[DoxyEnumerate,9]{label=\arabic*
+                                              .}
+? 
+! Undefined control sequence.
+l.188 \setlist
+              [DoxyEnumerate,10]{label=(\enumalphalphcnt*)}
+? 
+! Undefined control sequence.
+l.188 ...DoxyEnumerate,10]{label=(\enumalphalphcnt
+                                                  *)}
+? 
+! Undefined control sequence.
+l.189 \setlist
+              [DoxyEnumerate,11]{label=\roman*.}
+? 
+! Missing number, treated as zero.
+<to be read again> 
+                   \c@* 
+l.189 \setlist[DoxyEnumerate,11]{label=\roman*
+                                              .}
+? 
+! Undefined control sequence.
+l.190 \setlist
+              [DoxyEnumerate,12]{label=\enumAlphAlphcnt*.}
+? 
+! Undefined control sequence.
+l.190 ...[DoxyEnumerate,12]{label=\enumAlphAlphcnt
+                                                  *.}
+? 
+
+Overfull \hbox (12.92682pt too wide) in paragraph at lines 177--191
+\OT1/cmr/m/n/10 ate,2]label=(*) [DoxyEnu-mer-ate,3]label=. [DoxyEnu-mer-ate,4]l
+abel=*. [DoxyEnu-
+ []
+
+
+Overfull \hbox (29.62129pt too wide) in paragraph at lines 177--191
+\OT1/cmr/m/n/10 mer-ate,5]label=0. [DoxyEnu-mer-ate,6]label=(*) [DoxyEnu-mer-at
+e,7]label=. [DoxyEnu-
+ []
+
+! Undefined control sequence.
+l.193 \setlistdepth
+                   {12}
+? 
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.193 \setlistdepth{1
+                     2}
+? 
+! Undefined control sequence.
+l.194 \newlist
+              {DoxyItemize}{itemize}{12}
+? 
+! Undefined control sequence.
+l.195 \setlist
+              [DoxyItemize]{label=\textperiodcentered}
+? 
+! Undefined control sequence.
+l.197 \setlist
+              [DoxyItemize,1]{label=\textbullet}
+? 
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.197 \setlist[
+               DoxyItemize,1]{label=\textbullet}
+? 
+! Undefined control sequence.
+l.198 \setlist
+              [DoxyItemize,2]{label=\normalfont\bfseries \textendash}
+? 
+! Undefined control sequence.
+l.199 \setlist
+              [DoxyItemize,3]{label=\textasteriskcentered}
+? 
+! Undefined control sequence.
+l.200 \setlist
+              [DoxyItemize,4]{label=\textperiodcentered}
+? 
+
+Overfull \hbox (32.1361pt too wide) in paragraph at lines 197--201
+[]\OT1/cmr/m/n/10 [DoxyItemize,1]label=\TS1/cmr/m/n/10 ˆ \OT1/cmr/m/n/10 [DoxyI
+tem-ize,2]label=\OT1/cmr/bx/n/10 { \OT1/cmr/m/n/10 [DoxyItem-ize,3]label=\TS1/c
+mr/m/n/10 * \OT1/cmr/m/n/10 [DoxyItem-
+ []
+
+\c@subsubsubsection=\count291
+\c@subsubsubsubsection=\count292
+\c@subsubsubsubsubsection=\count293
+\c@subsubsubsubsubsubsection=\count294
+! Undefined control sequence.
+l.693 \AddEnumerateCounter
+                          {\enumalphalphcnt}{\@enumalphalphcnt}{aa}
+? 
+! Argument of \enumalphalphcnt has an extra }.
+<inserted text> 
+                \par 
+l.693 \AddEnumerateCounter{\enumalphalphcnt}
+                                            {\@enumalphalphcnt}{aa}
+? 
+Runaway argument?
+! Paragraph ended before \enumalphalphcnt was complete.
+<to be read again> 
+                   \par 
+l.693 \AddEnumerateCounter{\enumalphalphcnt}
+                                            {\@enumalphalphcnt}{aa}
+? 
+! You can't use `\spacefactor' in vertical mode.
+\@->\spacefactor 
+                 \@m {}
+l.693 \AddEnumerateCounter{\enumalphalphcnt}{\@
+                                               enumalphalphcnt}{aa}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.693 \AddEnumerateCounter{\enumalphalphcnt}{\@
+                                               enumalphalphcnt}{aa}
+? 
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.693 \AddEnumerateCounter{\enumalphalphcnt}{\@
+                                               enumalphalphcnt}{aa}
+? 
+LaTeX Font Info:    Trying to load font information for U+msa on input line 693
+.
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 693
+.
+
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+! Extra }, or forgotten $.
+l.693 ...nter{\enumalphalphcnt}{\@enumalphalphcnt}
+                                                  {aa}
+? 
+! Undefined control sequence.
+l.694 \AddEnumerateCounter
+                          {\enumAlphAlphcnt}{\@enumAlphAlphcnt}{AA}
+? 
+! Argument of \enumAlphAlphcnt has an extra }.
+<inserted text> 
+                \par 
+l.694 \AddEnumerateCounter{\enumAlphAlphcnt}
+                                            {\@enumAlphAlphcnt}{AA}
+? 
+Runaway argument?
+! Paragraph ended before \enumAlphAlphcnt was complete.
+<to be read again> 
+                   \par 
+l.694 \AddEnumerateCounter{\enumAlphAlphcnt}
+                                            {\@enumAlphAlphcnt}{AA}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.694 \AddEnumerateCounter{\enumAlphAlphcnt}
+                                            {\@enumAlphAlphcnt}{AA}
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.694 \AddEnumerateCounter{\enumAlphAlphcnt}
+                                            {\@enumAlphAlphcnt}{AA}
+? 
+Missing character: There is no è in font cmex10!
+! You can't use `\spacefactor' in vertical mode.
+\@->\spacefactor 
+                 \@m {}
+l.694 \AddEnumerateCounter{\enumAlphAlphcnt}{\@
+                                               enumAlphAlphcnt}{AA}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.694 \AddEnumerateCounter{\enumAlphAlphcnt}{\@
+                                               enumAlphAlphcnt}{AA}
+? 
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.694 \AddEnumerateCounter{\enumAlphAlphcnt}{\@
+                                               enumAlphAlphcnt}{AA}
+? 
+! Extra }, or forgotten $.
+l.694 ...nter{\enumAlphAlphcnt}{\@enumAlphAlphcnt}
+                                                  {AA}
+? 
+) (/usr/local/texlive/2023basic/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/graphics/graphics.sty
+! Missing $ inserted.
+<inserted text> 
+                $
+l.29 
+     
+? 
+Missing character: There is no è in font cmex10!
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+! You can't use `\spacefactor' in vertical mode.
+\@->\spacefactor 
+                 \@m {}
+l.42 \@
+       makeother\"%
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.42 \@
+       makeother\"%
+? 
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.42 \@
+       makeother\"%
+? 
+
+LaTeX Warning: Command \" invalid in math mode on input line 42.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   \global 
+l.43 \catcode
+             `\*=11
+? 
+! Missing number, treated as zero.
+<to be read again> 
+                   \global 
+l.43 \catcode
+             `\*=11
+? 
+! Please use \mathaccent for accents in math mode.
+\add@accent ... \let \ignorespaces \relax \accent 
+                                                  #1 #2\egroup \ifmmode \els...
+l.43 \catcode
+             `\*=11
+? 
+! Missing { inserted.
+<to be read again> 
+                   \catcode 
+l.43 \catcode
+             `\*=11
+? 
+! Missing number, treated as zero.
+<to be read again> 
+                   \egroup 
+l.43 \catcode
+             `\*=11
+? 
+! Missing number, treated as zero.
+<to be read again> 
+                   \egroup 
+l.43 \catcode
+             `\*=11
+? 
+! You can't use `\spacefactor' in math mode.
+\@->\spacefactor 
+                 \@m {}
+l.44 \@
+       makeother\!%
+? 
+! You can't use `\spacefactor' in math mode.
+\@->\spacefactor 
+                 \@m {}
+l.45 \@
+       makeother\:%
+? 
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+! You can't use `\spacefactor' in math mode.
+\@->\spacefactor 
+                 \@m {}
+l.47 \providecommand\Grot@start{\@
+                                  latex@error{Rotation not supported}\@ehc
+? 
+! You can't use `\spacefactor' in math mode.
+\@->\spacefactor 
+                 \@m {}
+l.47 ...rt{\@latex@error{Rotation not supported}\@
+                                                  ehc
+? 
+! You can't use `\spacefactor' in math mode.
+\@->\spacefactor 
+                 \@m {}
+l.50 \providecommand\Gscale@start{\@
+                                    latex@error{Scaling not supported}\@ehc
+? 
+! You can't use `\spacefactor' in math mode.
+\@->\spacefactor 
+                 \@m {}
+l.50 ...art{\@latex@error{Scaling not supported}\@
+                                                  ehc
+? 
+! Use of \Gin doesn't match its definition.
+l.64 \newif\ifGin@setpagesize\Gin@s
+                                   etpagesizetrue
+? 
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+! Missing $ inserted.
+<inserted text> 
+                $
+l.2 
+    
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.2 
+    
+? 
+Missing character: There is no è in font cmex10!
+Missing character: There is no è in font cmex10!
+Missing character: There is no è in font cmex10!
+Missing character: There is no è in font cmex10!
+Missing character: There is no è in font cmex10!
+Missing character: There is no è in font cmex10!
+Missing character: There is no è in font cmex10!
+
+Overfull \hbox (471.70992pt too wide) in paragraph at lines 42--2
+[]$[]\OML/cmm/m/it/10 makeother[]$ 
+ []
+
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+! Undefined control sequence.
+l.27     \ifnum\luatexversion
+                             >85
+? 
+! Missing number, treated as zero.
+<to be read again> 
+                   >
+l.27     \ifnum\luatexversion>
+                              85
+? 
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+
+! You can't use `\spacefactor' in vertical mode.
+\@->\spacefactor 
+                 \@m {}
+l.108   \@
+          ifundefined{ver@\Gin@driver}{\input{\Gin@driver}}{}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.108   \@
+          ifundefined{ver@\Gin@driver}{\input{\Gin@driver}}{}
+? 
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.108   \@
+          ifundefined{ver@\Gin@driver}{\input{\Gin@driver}}{}
+? 
+(/usr/local/texlive/2023basic/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+
+! Missing number, treated as zero.
+<to be read again> 
+                   @
+l.67 \chardef\main@
+                   pdfcolorstack=0 %
+? 
+! You can't use `\spacefactor' in math mode.
+\@->\spacefactor 
+                 \@m {}
+l.68 \@
+       ifundefined{@pdfcolorstack}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.144 
+      
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.144 
+      
+? 
+Missing character: There is no è in font cmex10!
+Missing character: There is no è in font cmex10!
+
+Overfull \hbox (55.8312pt too wide) in paragraph at lines 108--144
+[]$[]\OML/cmm/m/it/10 ifundefined[][]$ 
+ []
+
+! Use of \@ doesn't match its definition.
+<recently read> g
+                 
+l.149   \expandafter\@g
+                       obble
+? 
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.149   \expandafter\@go
+                        bble
+? 
+! Use of \@ doesn't match its definition.
+l.152  \@i
+          fl@t@r\fmtversion{2020/10/01}
+? 
+! Undefined control sequence.
+l.159     \g
+            @addto@macro\@kernel@before@shipout@background
+? 
+! Use of \@ doesn't match its definition.
+l.159     \g@addto@macro\@k
+                           ernel@before@shipout@background
+? 
+! Undefined control sequence.
+l.161       \ifGPT
+                  @pagecolor
+? 
+! Use of \@ doesn't match its definition.
+<argument> \pdfcolorstack \@p
+                             dfcolorstack push{\current @page@color}\aftergr...
+l.167           }
+                 %
+? 
+! Missing number, treated as zero.
+<to be read again> 
+                   d
+l.167           }
+                 %
+? 
+! Color stack action is missing.
+<to be read again> 
+                   d
+l.167           }
+                 %
+? 
+! Undefined control sequence.
+<argument> ...stack \@pdfcolorstack push{\current 
+                                                  @page@color}\aftergroup \r...
+l.167           }
+                 %
+? 
+! Undefined control sequence.
+<recently read> \reset 
+                       
+l.167           }
+                 %
+? 
+
+Overfull \hbox (45.1954pt too wide) in paragraph at lines 149--193
+[]\OT1/cmr/m/n/10 obble fl@t@r2022-11-012020/10/01 @ad-dto@macroernel@before@sh
+ipout@background
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+! Undefined control sequence.
+\set@color ...\@pdfcolorstack push{\current@color 
+                                                  }\aftergroup \reset@color 
+l.243 \let\Gin@a
+                ttr@hash\@empty
+? 
+! Undefined control sequence.
+\set@color ...\@pdfcolorstack push{\current@color 
+                                                  }\aftergroup \reset@color 
+l.243 \let\Gin@a
+                ttr@hash\@empty
+? xx
+ 
+Here is how much of TeX's memory you used:
+ 3866 strings out of 477476
+ 57645 string characters out of 5824245
+ 1852388 words of memory out of 5000000
+ 24078 multiletter control sequences out of 15000+600000
+ 515088 words of font info for 44 fonts, out of 8000000 for 9000
+ 319 hyphenation exceptions out of 8191
+ 64i,6n,65p,208b,247s stack positions out of 10000i,1000n,20000p,200000b,200000s
+No pages of output.
+PDF statistics:
+ 0 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
