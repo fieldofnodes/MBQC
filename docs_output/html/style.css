@@ -1,67 +1,99 @@
-/* Set body and container background colors to a dark shade */
-body, div.container {
-    background-color: #333333;
-}
+/* Global Styles */
 
-/* Set the font color to light gray */
-body, p, div.container, div.contents, div.header, div.footer, div.contents div.section {
-    color: #CCCCCC;
-}
-
-/* Style the navigation tabs */
-div.tabs ul.tablist {
-    list-style-type: none;
+html {
+    font-size: 16px;
+    background-color: #12272e;
+    color: #969ba2;
+  }
+  
+  body {
+    font-family: sans-serif;
+    font-size: 16px;
+    margin: 0 12%;
     padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
-    background-color: #222222;
-}
-
-div.tabs ul.tablist li {
-    display: inline-block;
+    background-color: #12272e;
+    line-height: 2; /* Adjust the line height as needed */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 22px;
+  }
+  
+  /* Set body and container background colors */
+  body, div.container {
+    background-color: #12272e;
+  }
+  
+  /* Set text color */
+  body, p, div.container, div.contents, div.header, div.footer {
+    color: #abaaac;
+  }
+  
+  /* Set font family and size */
+  body, p, div.container, div.contents, div.header, div.footer, div.contents div.section {
+    font-family: sans-serif;
+    font-size: 16px;
+  }
+  
+  /* Set font size for headers */
+  div.contents h1, div.contents h2, div.contents h3, div.contents h4, div.contents h5, div.contents h6 {
+    font-size: 22px;
+  }
+  
+  /* Set background color for images */
+  div.contents img {
+    background-color: rgba(1, 6, 10, 0.8);
     border-radius: 5px;
-    padding: 10px;
-    margin: 5px;
-    cursor: pointer;
-}
-
-div.tabs ul.tablist li:hover {
-    background-color: #444444;
-}
-
-div.tabs ul.tablist li.selected {
-    background-color: #555555;
-}
-
-/* Style the code blocks */
-pre {
-    background-color: #222222;
-    padding: 10px;
-    overflow: auto;
-}
-
-/* Style the code syntax highlighting */
-pre .fragment, pre .keyword, pre .comment, pre .string, pre .type {
-    color: #CCCCCC;
-}
-
-pre .fragment {
-    font-weight: bold;
-}
-
-pre .keyword {
-    color: #FF9900;
-}
-
-pre .comment {
-    color: #888888;
-}
-
-pre .string {
-    color: #33CC33;
-}
-
-pre .type {
-    color: #FF33CC;
-}
+  }
+  
+  /* Set padding and margin for sections */
+  div.contents div.section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-bottom: 3cm; /* Adjust the margin bottom to 3 centimeters */
+    border-bottom: 1px solid #abaaac; /* Add a bottom border */
+    position: relative; /* Add position relative */
+  }
+  
+  /* Set rectangle background for section names */
+  div.contents div.section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #004953; /* Set the rectangle background color to #004953 */
+    opacity: 0.2; /* Adjust the opacity as desired */
+    z-index: -1; /* Push the rectangle behind the section content */
+  }
+  
+  /* Set width and margin for tabs */
+  div.contents ul.tabs {
+    width: 70%;
+    margin: 0 auto;
+  }
+  
+  /* Set larger font size for tab labels */
+  div.contents ul.tabs li {
+    font-size: 110%;
+  }
+  
+  /* Set blank space at the beginning and end of the page */
+  div.contents div.header,
+  div.contents div.footer {
+    width: 25%;
+  }
+  
+  /* Set tab dropdown styles */
+  div.contents div.section select.language {
+    background-color: #00768c;
+    color: #010203;
+  }
+  
+  /* Set code snippet color */
+  code {
+    background-color: #00768c;
+    color: #27221f; /* Set the text color to #27221f */
+  }
+  
