@@ -1,5 +1,3 @@
 /Users/jmille15/Projects/MBQC/build/CMakeFiles/mbqcStarterFile.dir
-/Users/jmille15/Projects/MBQC/build/CMakeFiles/testNoNoiseSimpleCircuitsQuEST.dir
-/Users/jmille15/Projects/MBQC/build/CMakeFiles/testDampingSimpleCircuitsQuEST.dir
 /Users/jmille15/Projects/MBQC/build/CMakeFiles/edit_cache.dir
 /Users/jmille15/Projects/MBQC/build/CMakeFiles/rebuild_cache.dir
