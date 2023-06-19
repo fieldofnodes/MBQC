@@ -1,0 +1,134 @@
+\doxysection{graph\+Traversal\+Flows.\+hpp}
+\hypertarget{graph_traversal_flows_8hpp_source}{}\label{graph_traversal_flows_8hpp_source}\index{src/graphs/graphTraversalFlows.hpp@{src/graphs/graphTraversalFlows.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Title\ \ :\ graphTraversalFlows.hpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Author\ :\ Jonathan\ Miller\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Date\ \ \ :\ 20230425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Aim\ \ \ \ :\ Construct\ graphs\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ As\ graph\ types\ grow\ in\ number,\ separate\ tests\ \ //}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ across\ multiple\ files\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{00009\ \textcolor{comment}{}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{int}\ getLattice2DFutureVertex(\textcolor{keywordtype}{int}\ presentVertex,\ \textcolor{keywordtype}{int}\ numRows)\{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ For\ a\ 2D\ lattice\ graph\ }}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ (1)-\/(4)-\/(7)}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ (2)-\/(5)-\/(8)}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ (3)-\/(6)-\/(9)}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ a\ flow\ function\ for\ vertex\ 5}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ has\ future\ vertex\ 8}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ f(i)\ =\ i\ +\ r,\ r\ is\ numRows}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ futureVertex\ =\ presentVertex\ +\ numRows;}
+\DoxyCodeLine{00024\ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordflow}{return}\ futureVertex;}
+\DoxyCodeLine{00026\ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{int}\ getLattice2DPastVertex(\textcolor{keywordtype}{int}\ presentVertex,\ \textcolor{keywordtype}{int}\ numRows)\{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ For\ a\ 2D\ lattice\ graph\ }}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ (1)-\/(4)-\/(7)}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ (2)-\/(5)-\/(8)}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ (3)-\/(6)-\/(9)}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ a\ flow\ function\ for\ vertex\ 5}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ has\ past\ vertex\ 2}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ f(i)\ =\ i\ -\/\ r,\ r\ is\ numRows}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ pastVertex\ =\ presentVertex\ -\/\ numRows;}
+\DoxyCodeLine{00037\ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{return}\ pastVertex;}
+\DoxyCodeLine{00039\ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ std::vector<int>\ getVertexNeighbours(\textcolor{keyword}{const}\ undirectedGraph\&\ graph,\textcolor{keywordtype}{int}\ vertex)\{}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ Choose\ a\ vertex\ to\ find\ its\ adjacent\ vertices}}
+\DoxyCodeLine{00043\ \ \ \ \ undirectedGraph::vertex\_descriptor\ v\ =\ vertex;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ Find\ the\ range\ of\ adjacent\ vertices}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::adjacency\_iterator\ adjacency\_iterator;}
+\DoxyCodeLine{00046\ \ \ \ \ std::pair<adjacency\_iterator,\ adjacency\_iterator>\ neighbors\ =\ adjacent\_vertices(v,\ graph);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ std::vector<int>\ neighbourVector;}
+\DoxyCodeLine{00049\ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{for}\ (adjacency\_iterator\ it\ =\ neighbors.first;\ it\ !=\ neighbors.second;\ ++it)\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ neighbourVector.push\_back(*it);}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{return}\ neighbourVector;}
+\DoxyCodeLine{00054\ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{int}\ getLattice2DFutureVertexGraph(\textcolor{keyword}{const}\ undirectedGraph\&\ graph,\textcolor{keywordtype}{int}\ vertex,\textcolor{keywordtype}{int}\ numRows)\{}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ size\_graph\ =\ boost::num\_vertices(graph);}
+\DoxyCodeLine{00058\ \ \ \ \ assert(\textcolor{stringliteral}{"{}The\ vertex\ inputted\ needs\ to\ be\ less\ than\ the\ number\ of\ vertices\ -\/\ the\ number\ of\ the\ rows,\ but\ it\ is\ not"{}}\ \&\&\ vertex\ <\ (size\_graph\ -\/\ numRows));}
+\DoxyCodeLine{00059\ \ \ \ \ std::vector<int>\ vertexNeighbours\ =\ getVertexNeighbours(graph,vertex);}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ futureVertex\ =\ getLattice2DFutureVertex(vertex,numRows);}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ std::find(vertexNeighbours.begin(),\ vertexNeighbours.end(),\ futureVertex);}
+\DoxyCodeLine{00062\ \ \ \ \ assert((\textcolor{stringliteral}{"{}flow\ function\ produced\ a\ vertex\ not\ in\ the\ input\ v\ neighbourhodd"{}}\ \&\&\ it\ !=\ vertexNeighbours.end()));}
+\DoxyCodeLine{00063\ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{return}\ futureVertex;}
+\DoxyCodeLine{00065\ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{keywordtype}{int}\ getLattice2DPastVertexGraph(\textcolor{keyword}{const}\ undirectedGraph\&\ graph,\textcolor{keywordtype}{int}\ vertex,\textcolor{keywordtype}{int}\ numRows)\{}
+\DoxyCodeLine{00068\ \ \ \ \ assert((\textcolor{stringliteral}{"{}The\ inputted\ vertex\ needs\ to\ be\ greater\ than\ or\ equal\ to\ the\ number\ of\ rows."{}}\ \&\&\ vertex\ >=\ numRows));}
+\DoxyCodeLine{00069\ \ \ \ \ std::vector<int>\ vertexNeighbours\ =\ getVertexNeighbours(graph,vertex);}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{int}\ pastVertex\ =\ getLattice2DPastVertex(vertex,numRows);}
+\DoxyCodeLine{00071\ \ \ \ \ std::vector<int>::iterator\ it\ =\ std::find(vertexNeighbours.begin(),\ vertexNeighbours.end(),\ pastVertex);}
+\DoxyCodeLine{00072\ \ \ \ \ assert((\textcolor{stringliteral}{"{}flow\ function\ produced\ a\ vertex\ not\ in\ the\ input\ vertex\ neighbourhodd"{}}\ \&\&\ it\ !=\ vertexNeighbours.end()));}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{return}\ pastVertex;}
+\DoxyCodeLine{00074\ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ qreal\ computeCorrectedAngle(}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{const}\ undirectedGraph\&\ graph,}
+\DoxyCodeLine{00078\ \ \ \ \ std::vector<int>\ measuredOutcomes,\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{int}\ vertex,}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{int}\ numRows,\ }
+\DoxyCodeLine{00081\ \ \ \ \ qreal\ angle)\{}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ std::vector<int>\ neighbourhood\ =\ getVertexNeighbours(graph,vertex);}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{int}\ xCorrectionVertex;}
+\DoxyCodeLine{00085\ \ \ \ \ std::vector<int>\ zCorrectionVertices;}
+\DoxyCodeLine{00086\ \ \ \ \ qreal\ updatedAngle;}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordflow}{if}\ (vertex\ <\ numRows)\{\ \textcolor{comment}{//\ First\ column\ -\/\ no\ x\ correction\ no\ z\ correction}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ updatedAngle\ =\ angle;}
+\DoxyCodeLine{00090\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (vertex\ >=\ numRows)\{\ \textcolor{comment}{//\ ensure\ we\ are\ in\ second\ column}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ xCorrectionVertex\ =\ getLattice2DPastVertexGraph(graph,vertex,numRows);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i:\ neighbourhood)\{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ past;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\ >=\ numRows)\{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ past\ =\ getLattice2DPastVertexGraph(graph,i,numRows);}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ zCorrectionVertices.push\_back(past);}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Remove\ vertex\ in\ neigbourhood\ if\ it\ is\ the\ vertrex}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ we\ want\ to\ measure}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ zCorrectionVertices.erase(}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::remove(}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ zCorrectionVertices.begin(),\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ zCorrectionVertices.end(),\ vertex),\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ zCorrectionVertices.end());}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ exponent\ =\ measuredOutcomes[xCorrectionVertex];}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}f-\/1(j):\ "{}\ <<\ xCorrectionVertex\ <<\ std::endl;}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}s\_f-\/1(j):\ "{}\ <<\ exponent\ <<\ std::endl;}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ qreal\ xAngle\ =\ std::pow((-\/1),\ exponent)*angle;}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ std::vector<int>\ outcomesForZ;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i:zCorrectionVertices)\{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ outcomesForZ.push\_back(measuredOutcomes[i]);}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sum\ =\ std::accumulate(outcomesForZ.begin(),\ outcomesForZ.end(),\ 0);}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ qreal\ zAngle\ =\ M\_PI*sum;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ updatedAngle\ =\ xAngle\ +\ zAngle;}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ updatedAngle;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00129\ \}}
+
+\end{DoxyCode}

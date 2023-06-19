@@ -1,0 +1,55 @@
+\doxysection{create\+Graph.\+hpp}
+\hypertarget{create_graph_8hpp_source}{}\label{create_graph_8hpp_source}\index{src/archive/filesToGoThrough/createGraph.hpp@{src/archive/filesToGoThrough/createGraph.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <boost/graph/adjacency\_list.hpp>}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{using\ namespace\ }boost;}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{typedef}\ boost::property<boost::edge\_weight\_t,\ int>\ EdgeWeightProperty;}
+\DoxyCodeLine{00007\ \textcolor{keyword}{typedef}\ boost::adjacency\_list<boost::listS,\ boost::vecS,boost::undirectedS,boost::no\_property,EdgeWeightProperty>\ undirectedGraph;}
+\DoxyCodeLine{00008\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::edge\_iterator\ edge\_iterator;}
+\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::vertex\_iterator\ vertex\_iterator;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ create\ a\ 1D\ path\ graph\ on\ 1xn\ vertices}}
+\DoxyCodeLine{00014\ undirectedGraph\ createPathGraph(\textcolor{keywordtype}{int}\ n)\ \{\ }
+\DoxyCodeLine{00015\ \ \ undirectedGraph\ g(n);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n-\/1;\ i++)\ \{\ \ \textcolor{comment}{//\ add\ edges\ to\ create\ a\ path\ graph}}
+\DoxyCodeLine{00018\ \ \ \ \ add\_edge(i,\ i+1,\ g);}
+\DoxyCodeLine{00019\ \ \ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordflow}{return}\ g;}
+\DoxyCodeLine{00022\ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ create\ a\ 2D\ lattice\ graph\ with\ n\ x\ m\ vertices}}
+\DoxyCodeLine{00025\ undirectedGraph\ createLatticeGraph(\textcolor{keywordtype}{int}\ n,\ \textcolor{keywordtype}{int}\ m)\ \{\ }
+\DoxyCodeLine{00026\ \ \ undirectedGraph\ g(n\ *\ m);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ i++)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ m;\ j++)\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ <\ m-\/1)\ add\_edge(i*m+j,\ i*m+j+1,\ g);\ \textcolor{comment}{//\ add\ horizontal\ edges}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ n-\/1)\ add\_edge(i*m+j,\ (i+1)*m+j,\ g);\ \textcolor{comment}{//\ add\ vertical\ edges}}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordflow}{return}\ g;}
+\DoxyCodeLine{00036\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ std::vector<undirectedGraph::vertex\_descriptor>\ get\_adjacent\_vertices(\textcolor{keyword}{const}\ undirectedGraph\&\ g,\ \textcolor{keyword}{const}\ undirectedGraph::vertex\_descriptor\ v)}
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ std::vector<undirectedGraph::vertex\_descriptor>\ adjacent\_vertices;}
+\DoxyCodeLine{00043\ \ \ \ \ undirectedGraph::adjacency\_iterator\ ai,\ ai\_end;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{for}\ (boost::tie(ai,\ ai\_end)\ =\ boost::adjacent\_vertices(v,\ g);\ ai\ !=\ ai\_end;\ ++ai)}
+\DoxyCodeLine{00045\ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ adjacent\_vertices.push\_back(*ai);}
+\DoxyCodeLine{00047\ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{return}\ adjacent\_vertices;}
+\DoxyCodeLine{00049\ \}}
+
+\end{DoxyCode}

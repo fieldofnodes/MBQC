@@ -1,0 +1,91 @@
+\chapter{mbqc\+\_\+information}
+\hypertarget{md_src_2archive_2mbqc__information}{}\label{md_src_2archive_2mbqc__information}\index{mbqc\_information@{mbqc\_information}}
+\label{md_src_2archive_2mbqc__information_autotoc_md7}%
+\Hypertarget{md_src_2archive_2mbqc__information_autotoc_md7}%
+Building an MBQC simulator. This page will be the landing page for building the MBQC simulator. Links, requirments, user stories, etc will be placed here.
+
+Repository documentation can be found \href{https://ediparquantum.github.io/MBQC/}{\texttt{ here}}.
+
+From a quick google search there are very few examples of MBQC simmulators. The goal here is to take a\hypertarget{md_src_2archive_2mbqc__information_autotoc_md8}{}\doxysubsection{\texorpdfstring{Best practices and Qu\+EST}{Best practices and QuEST}}\label{md_src_2archive_2mbqc__information_autotoc_md8}
+
+\begin{DoxyEnumerate}
+\item \href{https://micro-os-plus.github.io/develop/sutter-101/}{\texttt{ C++ Best practices for projects}}
+\item \href{https://quest-kit.github.io/QuEST/index.html}{\texttt{ Qu\+EST Documentation}}
+\end{DoxyEnumerate}\hypertarget{md_src_2archive_2mbqc__information_autotoc_md9}{}\doxysubsection{\texorpdfstring{Plan for MBQC Development}{Plan for MBQC Development}}\label{md_src_2archive_2mbqc__information_autotoc_md9}
+
+\begin{DoxyEnumerate}
+\item Arbitrary size \"{}linear cluster\"{}, like ()-\/()-\/()-\/---() for N vertices.
+\item Analysis on the linear cluster.
+\item Arbitrary size \"{}grid cluster\"{}
+\item Analysis on grid cluster
+\item Develop brickwork state
+\begin{DoxyItemize}
+\item Universal resource for BQP under X-\/Y plane measurements
+\item Useful to encode arbitrary computations blindly.
+\item \href{https://arxiv.org/abs/0807.4154}{\texttt{ Brickwork graphs}}
+\end{DoxyItemize}
+\item Arbitrary graph cluster
+\item Analysis on graph cluster
+\end{DoxyEnumerate}\hypertarget{md_src_2archive_2mbqc__information_autotoc_md10}{}\doxysubsubsection{\texorpdfstring{Linear Cluster example figure}{Linear Cluster example figure}}\label{md_src_2archive_2mbqc__information_autotoc_md10}
+\hypertarget{md_src_2archive_2mbqc__information_autotoc_md11}{}\doxysubsubsection{\texorpdfstring{Some testing options for linear cluster state}{Some testing options for linear cluster state}}\label{md_src_2archive_2mbqc__information_autotoc_md11}
+
+\begin{DoxyEnumerate}
+\item The easiest thing one could do would be all zero angles (0,0,...). For an odd total number of qubits, this should always give the outcome 0 of the last qubit.
+\begin{DoxyItemize}
+\item \href{https://algassert.com/quirk\#circuit={\%22cols\%22:[[\%22H\%22,\%22H\%22,\%22H\%22,\%22H\%22,\%22H\%22],[\%22\%E2\%80\%A2\%22,\%22Z\%22],[1,\%22\%E2\%80\%A2\%22,\%22Z\%22],[1,1,\%22\%E2\%80\%A2\%22,\%22Z\%22],[1,1,1,\%22\%E2\%80\%A2\%22,\%22Z\%22],[\%22\%E2\%80\%A6\%22],[\%22H\%22],[\%22|0\%E2\%9F\%A9\%E2\%9F\%A80|\%22],[1,\%22H\%22],[1,\%22|0\%E2\%9F\%A9\%E2\%9F\%A80|\%22],[1,1,\%22H\%22],[1,1,\%22|0\%E2\%9F\%A9\%E2\%9F\%A80|\%22],[1,1,1,\%22H\%22],[1,1,1,\%22|0\%E2\%9F\%A9\%E2\%9F\%A80|\%22],[1,1,1,1,\%22H\%22],[1,1,1,1,\%22Measure\%22]]}}{\texttt{ Circuit}}
+\end{DoxyItemize}
+\item Another thing that one could do on 2 qubits are angles (pi/2, pi/2). This should always give a 0 outcome of the second qubit.
+\begin{DoxyItemize}
+\item \href{https://algassert.com/quirk\#circuit={\%22cols\%22:[[\%22H\%22,\%22H\%22],[\%22\%E2\%80\%A2\%22,\%22Z\%22],[\%22\%E2\%80\%A6\%22],[\%22Z^-\%C2\%BD\%22],[\%22H\%22],[\%22|0\%E2\%9F\%A9\%E2\%9F\%A80|\%22],[1,\%22Z^-\%C2\%BD\%22],[1,\%22H\%22],[1,\%22Measure\%22]]}}{\texttt{ Circuit}}
+\end{DoxyItemize}
+\item One more thing that one could do, would be to set every second angle to 0\+: (alpha\+\_\+1, 0, alpha\+\_\+3, 0, alpha\+\_\+5, 0, ...). If the total number of qubits is odd, and all angles add up to a multiple of 2\texorpdfstring{$\ast$}{*}pi, then the last measurement outcome should always be 0. If the total number of qubits is odd, and all angles add up to (a multiple of 2\texorpdfstring{$\ast$}{*}pi) + pi, then the last measurement outcome should always be 1.
+\begin{DoxyItemize}
+\item \href{https://algassert.com/quirk\#circuit={\%22cols\%22:[[\%22H\%22,\%22H\%22,\%22H\%22,\%22H\%22,\%22H\%22],[\%22\%E2\%80\%A2\%22,\%22Z\%22],[1,\%22\%E2\%80\%A2\%22,\%22Z\%22],[1,1,\%22\%E2\%80\%A2\%22,\%22Z\%22],[1,1,1,\%22\%E2\%80\%A2\%22,\%22Z\%22],[\%22\%E2\%80\%A6\%22],[\%22Z\%22],[\%22Z^-\%C2\%BC\%22],[\%22H\%22],[\%22|0\%E2\%9F\%A9\%E2\%9F\%A80|\%22],[1,\%22H\%22],[1,\%22|0\%E2\%9F\%A9\%E2\%9F\%A80|\%22],[1,1,\%22Z^-\%C2\%BD\%22],[1,1,\%22H\%22],[1,1,\%22|0\%E2\%9F\%A9\%E2\%9F\%A80|\%22],[1,1,1,\%22H\%22],[1,1,1,\%22|0\%E2\%9F\%A9\%E2\%9F\%A80|\%22],[1,1,1,1,\%22Z^-\%C2\%BC\%22],[1,1,1,1,\%22H\%22],[1,1,1,1,\%22Measure\%22]]}}{\texttt{ Circuit}}
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{md_src_2archive_2mbqc__information_autotoc_md12}{}\doxyparagraph{\texorpdfstring{Comments on links}{Comments on links}}\label{md_src_2archive_2mbqc__information_autotoc_md12}
+
+\begin{DoxyEnumerate}
+\item Instead of actual measurements, postselected for the 0 outcome. This avoids the need of corrections. In your code, you should use actual measurements and corrections, which should yield the same results.
+\begin{DoxyItemize}
+\item T-\/gate = pi/4-\/rotation around Z-\/axis
+\item S-\/gate = pi/2-\/rotation around Z-\/axis
+\item Z-\/gate = pi-\/rotation around Z-\/axis
+\item The example circuit from 3.) uses angles (5\texorpdfstring{$\ast$}{*}pi/4, 0, pi/2, 0, pi/4).
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{md_src_2archive_2mbqc__information_autotoc_md13}{}\doxysubsection{\texorpdfstring{Links for a google search of \"{}\+MBQC software\"{}}{Links for a google search of "MBQC software"}}\label{md_src_2archive_2mbqc__information_autotoc_md13}
+
+\begin{DoxyEnumerate}
+\item \href{https://arxiv.org/abs/2212.11975}{\texttt{ Graphix\+: optimizing and simulating measurement-\/based quantum computation on local-\/\+Clifford decorated graph}}
+\item \href{https://pennylane.ai/qml/demos/tutorial_mbqc.html}{\texttt{ Measurement-\/based quantum computation}}
+\item \href{https://ieeexplore.ieee.org/document/9779844}{\texttt{ Qiskit As a Simulation Platform for Measurement-\/based Quantum Computation}}
+\item \href{https://quantumcomputing.stackexchange.com/questions/27239/understanding-paddle-quantums-mbqc-simulation}{\texttt{ Quantum Computing Stack\+: Understanding Paddle Quantum\textquotesingle{}s MBQC simulation}}
+\item \href{https://www.cs.yale.edu/homes/soule/pubs/arxiv2022.pdf}{\texttt{ MCBeth\+: A Measurement Based Quantum Programming Language}}
+\item \href{https://tsgl.xyz/tundrasystems-quantum-software/}{\texttt{ Tundra\+Systems Quantum Software}}
+\item \href{https://inspirehep.net/literature/2617623}{\texttt{ Graphix\+: optimizing and simulating measurement-\/based quantum computation on local-\/\+Clifford decorated graph different from before}}
+\item \href{https://pennylane.ai/blog/2022/07/how-to-create-and-visualize-a-cluster-state-in-flamingpy/}{\texttt{ How to create and visualize a cluster state in Flaming\+Py}}
+\item \href{https://github.com/Quantomatic/sample-projects/releases/tag/qpc2018}{\texttt{ Quantomatic/sample-\/projects}}
+\item \href{https://quantomatic.github.io/}{\texttt{ Quantomatic}}
+\item \href{https://www.researchgate.net/publication/364126005_Q2Graph_a_modelling_tool_for_measurement-based_quantum_computing}{\texttt{ Q2\+Graph\+: a modelling tool for measurement-\/based quantum computing}}
+\item \mbox{[}\mbox{]}()
+\end{DoxyEnumerate}\hypertarget{md_src_2archive_2mbqc__information_autotoc_md14}{}\doxysubsection{\texorpdfstring{Links for a google search of \"{}\+MBQC\"{}}{Links for a google search of "MBQC"}}\label{md_src_2archive_2mbqc__information_autotoc_md14}
+
+\begin{DoxyEnumerate}
+\item \href{https://en.wikipedia.org/wiki/One-way_quantum_computer}{\texttt{ https\+://en.\+wikipedia.\+org/wiki/\+One-\/way\+\_\+quantum\+\_\+computer}}
+\item \href{https://qml.baidu.com/tutorials/measurement-based-quantum-computation/measurement-based-quantum-computation-module.html}{\texttt{ https\+://qml.\+baidu.\+com/tutorials/measurement-\/based-\/quantum-\/computation/measurement-\/based-\/quantum-\/computation-\/module.\+html}}
+\item \href{https://github.com/PaddlePaddle/Quantum/tree/master/tutorials}{\texttt{ https\+://github.\+com/\+Paddle\+Paddle/\+Quantum/tree/master/tutorials}}
+\item \href{http://pwallden.gr/files/IQC_2018_2019/18_IQC_Lecture16.pdf}{\texttt{ http\+://pwallden.\+gr/files/\+IQC\+\_\+2018\+\_\+2019/18\+\_\+\+IQC\+\_\+\+Lecture16.\+pdf}}
+\item \href{https://www.youtube.com/watch?v=zBjAoOW3xHk&ab_channel=RobertRaussendorf}{\texttt{ https\+://www.\+youtube.\+com/watch?v=z\+Bj\+Ao\+OW3x\+Hk\&ab\+\_\+channel=\+Robert\+Raussendorf}}
+\item \href{https://www.youtube.com/@robertraussendorf9379}{\texttt{ https\+://www.\+youtube.\+com/@robertraussendorf9379}}
+\item \href{https://www.youtube.com/@robertraussendorf9379}{\texttt{ https\+://www.\+youtube.\+com/@robertraussendorf9379}}
+\item \href{https://arxiv.org/abs/2209.06191}{\texttt{ Universal measurement-\/based quantum computation in a one-\/dimensional architecture enabled by dual-\/unitary circuits}}
+\item \href{https://pennylane.ai/qml/demos/tutorial_mbqc.html}{\texttt{ https\+://pennylane.\+ai/qml/demos/tutorial\+\_\+mbqc.\+html}}
+\item \href{https://oxfordre.com/physics/display/10.1093/acrefore/9780190871994.001.0001/acrefore-9780190871994-e-31;jsessionid=F048084B725DF72127D45A588315A515}{\texttt{ https\+://oxfordre.\+com/physics/display/10.\+1093/acrefore/9780190871994.\+001.\+0001/acrefore-\/9780190871994-\/e-\/31;jsessionid=\+F048084\+B725\+DF72127\+D45\+A588315\+A515}}
+\item \href{https://www.uibk.ac.at/th-physik/mbqc2022/}{\texttt{ https\+://www.\+uibk.\+ac.\+at/th-\/physik/mbqc2022/}}
+\end{DoxyEnumerate}\hypertarget{md_src_2archive_2mbqc__information_autotoc_md15}{}\doxysubsection{\texorpdfstring{To use in C++ Cmake}{To use in C++ Cmake}}\label{md_src_2archive_2mbqc__information_autotoc_md15}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#\ Use\ C++11}}
+\DoxyCodeLine{set(CMAKE\_CXX\_STANDARD\ 11)}
+
+\end{DoxyCode}
+ 

@@ -1,0 +1,102 @@
+\doxysection{flow\+Measurements.\+hpp}
+\hypertarget{flow_measurements_8hpp_source}{}\label{flow_measurements_8hpp_source}\index{src/quantumGraphs/flowMeasurements.hpp@{src/quantumGraphs/flowMeasurements.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Title\ \ :\ flowMeasurements.hpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Author\ :\ Jonathan\ Miller\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Date\ \ \ :\ 20230425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Aim\ \ \ \ :\ Construct\ flow\ actions\ reflected\ in\ graph\ \ \ \ \ \ //}}
+\DoxyCodeLine{00007\ \textcolor{comment}{}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ \ Fill\ lattice\ with\ qubit\ measurements}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ std::vector<std::vector<int>>\ returnMeasQubitOutcomesLattice(std::vector<int>\ measOutcomes,\textcolor{keywordtype}{int}\ numRows,\ \textcolor{keywordtype}{int}\ numCols)\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ numRows\ *\ numCols;}
+\DoxyCodeLine{00016\ \ \ \ \ std::vector<std::vector<int>>\ lattice(numRows,\ std::vector<int>(numCols,\ -\/1));}
+\DoxyCodeLine{00017\ \ \ \ \ std::vector<int>\ numbers(numVertices);}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numVertices;\ i++)\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ numbers[i]\ =\ i;}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ number\ :\ numbers)\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ row\ =\ number\ \%\ numRows;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ col\ =\ number\ /\ numRows;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ lattice[row][col]\ =\ measOutcomes[number];}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{return}\ lattice;}
+\DoxyCodeLine{00029\ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ std::vector<int>\ measureGraph(}
+\DoxyCodeLine{00034\ \ \ \ \ Qureg\ qureg,}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{const}\ undirectedGraph\&\ graph,}
+\DoxyCodeLine{00036\ \ \ \ \ std::vector<qreal>\ qubitAngles,}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{int}\ numRows)\{}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ std::vector<int>\ measuredQubitsOutcomes;}
+\DoxyCodeLine{00040\ \ \ \ \ undirectedGraph::vertex\_iterator\ vi,\ vi\_end;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{for}\ (boost::tie(vi,\ vi\_end)\ =\ boost::vertices(graph);\ vi\ !=\ vi\_end;\ vi++)\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ skip\ vertices\ that\ are\ in\ the\ first\ column}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(*vi\ <\ numRows)\{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ rotateZ(qureg,*vi,\ (-\/1)*qubitAngles[*vi]);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ hadamard(qureg,*vi);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ m\ =\ measure(qureg,*vi);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes.push\_back(m);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(*vi\ >=\ numRows)\{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ correctedAngle;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ correctedAngle\ =\ computeCorrectedAngle(graph,measuredQubitsOutcomes,*vi,numRows,qubitAngles[*vi]);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ rotateZ(qureg,*vi,\ (-\/1)*correctedAngle);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ hadamard(qureg,*vi);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ m\ =\ measure(qureg,*vi);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes.push\_back(m);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}attempting\ to\ measure\ nothing?"{}};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{return}\ measuredQubitsOutcomes;}
+\DoxyCodeLine{00062\ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00067\ \textcolor{comment}{\ \ Print\ results\ to\ scree}}
+\DoxyCodeLine{00068\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00069\ \textcolor{keywordtype}{void}\ printResultsToScreen(}
+\DoxyCodeLine{00070\ \ \ std::vector<int>\ measuredQubitsOutcomes,}
+\DoxyCodeLine{00071\ \ \ \textcolor{keywordtype}{int}\ numRows,}
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{int}\ numCols)\{}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \textcolor{comment}{//\ Print\ results\ to\ screen}}
+\DoxyCodeLine{00075\ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00076\ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00077\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Measured\ outcome\ vector\ has\ "{}}\ <<\ measuredQubitsOutcomes.size()\ <<\ \textcolor{stringliteral}{"{}\ qubits."{}}\ \ <<\ std::endl;\ }
+\DoxyCodeLine{00078\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}The\ measurements\ are:\ "{}};}
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i:measuredQubitsOutcomes)\{}
+\DoxyCodeLine{00080\ \ \ \ \ std::cout\ <<\ i\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00081\ \ \ \}}
+\DoxyCodeLine{00082\ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00083\ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ std::cout\ <<\ \textcolor{stringliteral}{"{}Measured\ outcome\ lattice:\ "{}}\ <<\ std::endl;}
+\DoxyCodeLine{00087\ \ \ std::vector<std::vector<int>>\ latticeOutcomes\ =\ }
+\DoxyCodeLine{00088\ \ \ \ \ returnMeasQubitOutcomesLattice(measuredQubitsOutcomes,numRows,numCols);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ row\ :\ latticeOutcomes)\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ number\ :\ row)\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ number\ <<\ \textcolor{charliteral}{'\ '};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \}}
+
+\end{DoxyCode}

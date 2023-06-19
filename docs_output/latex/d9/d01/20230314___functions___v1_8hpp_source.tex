@@ -1,0 +1,236 @@
+\doxysection{20230314\+\_\+\+Functions\+\_\+\+V1.\+hpp}
+\hypertarget{20230314___functions___v1_8hpp_source}{}\label{20230314___functions___v1_8hpp_source}\index{src/archive/filesToGoThrough/20230314\_Functions\_V1.hpp@{src/archive/filesToGoThrough/20230314\_Functions\_V1.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <QuEST.h>}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\#include\ <stdio.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ \ Create\ vector\ of\ digits\ from\ 0\ to\ N,\ separated\ by\ 1}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ To\ represent\ the\ a\ line\ of\ nodes\ connected\ by\ one\ }}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ \ edge\ ()-\/()-\/()-\/\ -\/\ -\/\ -\/()\ (1,2,3,...,N)}}
+\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00014\ vector<int>\ getPathGraph(\textcolor{keywordtype}{int}\ numberQubits)}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ vector<int>\ pathGraph;}
+\DoxyCodeLine{00017\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numberQubits;\ i++\ )}
+\DoxyCodeLine{00018\ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ pathGraph.push\_back(i);\ \ }
+\DoxyCodeLine{00020\ \ \ \}}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordflow}{return}\ pathGraph;}
+\DoxyCodeLine{00022\ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00025\ \textcolor{comment}{\ \ Linear\ flow,\ f(i)\ =\ i\ +\ 1}}
+\DoxyCodeLine{00026\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{int}\ getFutureQubit(\textcolor{keywordtype}{int}\ currentQubit)\{}
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{int}\ futureQubit;}
+\DoxyCodeLine{00029\ \ \ futureQubit\ =\ currentQubit\ +\ 1;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordflow}{return}\ futureQubit;}
+\DoxyCodeLine{00032\ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ \ Linear\ flow,\ f\string^\{-\/1\}(i)\ =\ i\ -\/\ 1}}
+\DoxyCodeLine{00036\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{int}\ getPastQubit(\textcolor{keywordtype}{int}\ currentQubit)\{}
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{00039\ \ \ pastQubit\ =\ currentQubit\ -\/\ 1;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordflow}{return}\ pastQubit;}
+\DoxyCodeLine{00042\ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00045\ \textcolor{comment}{\ \ Linear\ cluster\ vector\ with\ the\ flow,\ f.}}
+\DoxyCodeLine{00046\ \textcolor{comment}{\ \ f(i)\ =\ i\ +\ 1,\ if\ i\ is\ last\ element\ of\ vector,\ then}}
+\DoxyCodeLine{00047\ \textcolor{comment}{\ \ throw\ error.}}
+\DoxyCodeLine{00048\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{int}\ getFutureQubitPathGraph(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)}
+\DoxyCodeLine{00050\ \{}
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{int}\ futureQubit;}
+\DoxyCodeLine{00052\ \textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
+\DoxyCodeLine{00053\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[graphSize-\/1])\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ futureQubit\ =\ currentQubit;}
+\DoxyCodeLine{00055\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00056\ \ \ futureQubit\ =\ getFutureQubit(currentQubit);}
+\DoxyCodeLine{00057\ \}}
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordflow}{return}\ futureQubit;}
+\DoxyCodeLine{00059\ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00063\ \textcolor{comment}{\ \ Linear\ cluster\ vector\ with\ the\ flow,\ f.}}
+\DoxyCodeLine{00064\ \textcolor{comment}{\ \ f\string^\{-\/1\}(i)\ =\ i\ -\/\ 1,\ if\ i\ is\ first\ element\ of\ vector,\ then}}
+\DoxyCodeLine{00065\ \textcolor{comment}{\ \ throw\ error.}}
+\DoxyCodeLine{00066\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00067\ \textcolor{keywordtype}{int}\ getPastQubitPathGraph(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)}
+\DoxyCodeLine{00068\ \{}
+\DoxyCodeLine{00069\ \textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[0])\ \{}
+\DoxyCodeLine{00072\ \ \ pastQubit\ =\ currentQubit;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00075\ \ \ pastQubit\ =\ getPastQubit(currentQubit);}
+\DoxyCodeLine{00076\ \}}
+\DoxyCodeLine{00077\ \ \ \textcolor{keywordflow}{return}\ pastQubit;}
+\DoxyCodeLine{00078\ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00082\ \textcolor{comment}{\ \ Get\ the\ neighbourhood\ size}}
+\DoxyCodeLine{00083\ \textcolor{comment}{\ \ Look\ at\ the\ linear\ cluster\ and\ the\ current\ qubit}}
+\DoxyCodeLine{00084\ \textcolor{comment}{\ \ Determine\ if\ there\ are\ one\ or\ two\ neighbours\ to\ the\ }}
+\DoxyCodeLine{00085\ \textcolor{comment}{\ \ current\ qubit\ based\ on\ the\ qubit\ position\ in\ the}}
+\DoxyCodeLine{00086\ \textcolor{comment}{\ \ linear\ cluster}}
+\DoxyCodeLine{00087\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00088\ \textcolor{keywordtype}{int}\ getOpenNeighbourhoodSizePathGraph(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)\{}
+\DoxyCodeLine{00089\ \ \ \textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
+\DoxyCodeLine{00090\ \ \ \textcolor{keywordtype}{int}\ neighbourhoodSize;}
+\DoxyCodeLine{00091\ \ \ \textcolor{comment}{//\ Logic\ for\ getting\ nieghbors}}
+\DoxyCodeLine{00092\ \ \ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ 0)\ \{\ \textcolor{comment}{//\ qubit\ is\ first}}
+\DoxyCodeLine{00093\ \ \ \ \ neighbourhoodSize\ =\ 1;}
+\DoxyCodeLine{00094\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[graphSize-\/1])\ \{\ \textcolor{comment}{//\ qubit\ is\ last}}
+\DoxyCodeLine{00095\ \ \ \ \ neighbourhoodSize\ =\ 1;}
+\DoxyCodeLine{00096\ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{//\ all\ else}}
+\DoxyCodeLine{00097\ \ \ \ \ neighbourhoodSize\ =\ 2;}
+\DoxyCodeLine{00098\ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \textcolor{keywordflow}{return}\ neighbourhoodSize;}
+\DoxyCodeLine{00101\ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00104\ \textcolor{comment}{\ \ Get\ the\ neighbourhood\ of\ the\ qubit\ based\ on\ the\ linear\ cluster\ and\ the\ }}
+\DoxyCodeLine{00105\ \textcolor{comment}{\ \ qubits}}
+\DoxyCodeLine{00106\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00107\ vector<int>\ getOpenNeighbourhoodPathGraph(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)\{}
+\DoxyCodeLine{00108\ \ \ vector<int>\ neighbours;}
+\DoxyCodeLine{00109\ \ \ \textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
+\DoxyCodeLine{00110\ \ \ \textcolor{keywordtype}{int}\ firstQubit;}
+\DoxyCodeLine{00111\ \ \ \textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{00112\ \ \ \textcolor{keywordtype}{int}\ futureQubit;}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[0])\ \{\ \textcolor{comment}{//\ qubit\ is\ first\ in\ graph}}
+\DoxyCodeLine{00115\ \ \ \ \ firstQubit\ =\ currentQubit\ +\ 1;}
+\DoxyCodeLine{00116\ \ \ \ \ neighbours.push\_back(firstQubit);}
+\DoxyCodeLine{00117\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[graphSize-\/1])\ \{\ \textcolor{comment}{//\ qubit\ is\ last\ in\ graph}}
+\DoxyCodeLine{00118\ \ \ \ \ firstQubit\ =\ currentQubit\ -\/\ 1;}
+\DoxyCodeLine{00119\ \ \ \ \ neighbours.push\_back(firstQubit);}
+\DoxyCodeLine{00120\ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{//\ all\ else}}
+\DoxyCodeLine{00121\ \ \ \ \ pastQubit\ =\ currentQubit\ -\/\ 1;}
+\DoxyCodeLine{00122\ \ \ \ \ futureQubit\ =\ currentQubit\ +\ 1;}
+\DoxyCodeLine{00123\ \ \ \ \ neighbours.push\_back(pastQubit);}
+\DoxyCodeLine{00124\ \ \ \ \ neighbours.push\_back(futureQubit);}
+\DoxyCodeLine{00125\ \ \ \}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \textcolor{keywordflow}{return}\ neighbours;}
+\DoxyCodeLine{00128\ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ qreal\ computeXCorrectionAnglePathGraph(}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ vector<int>\ pathGraph,\ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ vector<int>\ measuredQubitsOutcomes,}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ vector<qreal>\ qubitAngles,}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currentQubit)}
+\DoxyCodeLine{00136\ \ \ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ qreal\ xCorrectionAngle;}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ pastQubit\ =\ getPastQubitPathGraph(pathGraph,currentQubit);}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ inverseFlowQubitOutcome\ =\ measuredQubitsOutcomes[pastQubit];}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ xCorrectionAngle\ =\ pow(-\/1,\ inverseFlowQubitOutcome)*qubitAngles[currentQubit];}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ xCorrectionAngle;}
+\DoxyCodeLine{00144\ \ \ \}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ qreal\ computeZCorrectionAnglePathGraph(}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ vector<int>\ pathGraph,\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ vector<int>\ measuredQubitsOutcomes,}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currentQubit)}
+\DoxyCodeLine{00152\ \ \ \{\ \ \ }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ qreal\ zCorrectionAngle;}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pastPastQubit;}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ inverseFlowQubitOutcome;}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ pastQubit\ =\ getPastQubitPathGraph(pathGraph,currentQubit);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ pastPastQubit\ =\ getPastQubitPathGraph(pathGraph,pastQubit);}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ inverseFlowQubitOutcome\ =\ measuredQubitsOutcomes[pastPastQubit];}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ zCorrectionAngle\ =\ M\_PI*inverseFlowQubitOutcome;}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ zCorrectionAngle;}
+\DoxyCodeLine{00164\ \ \ \}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \textcolor{keywordtype}{int}\ countElements(vector<int>\ v,\ \textcolor{keywordtype}{int}\ element)\ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =\ 0;}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ v.begin();\ it\ !=\ v.end();\ ++it)\ \{}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*it\ ==\ element)\ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ ++count;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00172\ \ \ \ \ \}}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordflow}{return}\ count;}
+\DoxyCodeLine{00174\ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ vector<int>\ runMbqcPathGraph(}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ Qureg\ qureg,}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ vector<int>\ pathGraph,}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ vector<qreal>\ qubitAngles)\{}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \ \ vector<qreal>\ updatedQubitAngles;}
+\DoxyCodeLine{00183\ \ \ \ \ vector<int>\ measuredQubitsOutcomes;}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordtype}{int}\ numberQubits\ =\ pathGraph.size();}
+\DoxyCodeLine{00185\ \ \ \ \ qreal\ X1;}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordtype}{int}\ firstQubitIndex=0;}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordtype}{int}\ secondQubitIndex=1;}
+\DoxyCodeLine{00188\ \ \ \ \ }
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{comment}{//\ Measure\ first\ qubit\ and\ update\ angle}}
+\DoxyCodeLine{00191\ \ \ \ \ updatedQubitAngles.push\_back(qubitAngles[firstQubitIndex]);}
+\DoxyCodeLine{00192\ \ \ \ \ rotateZ(qureg,firstQubitIndex,\ (-\/1)*updatedQubitAngles[firstQubitIndex]);}
+\DoxyCodeLine{00193\ \ \ \ \ hadamard(qureg,firstQubitIndex);}
+\DoxyCodeLine{00194\ \ \ \ \ measuredQubitsOutcomes.push\_back(measure(qureg,firstQubitIndex));}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{comment}{//\ measure\ second\ qubit}}
+\DoxyCodeLine{00197\ \ \ \ \ X1\ =\ pow((-\/1),measuredQubitsOutcomes[firstQubitIndex])*qubitAngles[secondQubitIndex];}
+\DoxyCodeLine{00198\ \ \ \ \ updatedQubitAngles[secondQubitIndex]\ =\ X1;}
+\DoxyCodeLine{00199\ \ \ \ \ rotateZ(qureg,secondQubitIndex,\ (-\/1)*updatedQubitAngles[secondQubitIndex]);}
+\DoxyCodeLine{00200\ \ \ \ \ hadamard(qureg,secondQubitIndex);}
+\DoxyCodeLine{00201\ \ \ \ \ measuredQubitsOutcomes.push\_back(measure(qureg,secondQubitIndex));}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ currentQubit=2;currentQubit<numberQubits;currentQubit++)}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ X;}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ Z;}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ phiPrime;}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ outcome;}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ X\ =\ computeXCorrectionAnglePathGraph(}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathGraph,\ }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes,}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles,}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentQubit);}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ Z\ =\ computeZCorrectionAnglePathGraph(}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathGraph,\ }
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes,}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentQubit);}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ phiPrime\ =\ X+Z;}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ rotateZ(qureg,currentQubit,\ (-\/1)*phiPrime);}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ hadamard(qureg,currentQubit);}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ outcome\ =\ measure(qureg,currentQubit);}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes.push\_back(outcome);}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ measuredQubitsOutcomes;}
+\DoxyCodeLine{00230\ \}}
+
+\end{DoxyCode}

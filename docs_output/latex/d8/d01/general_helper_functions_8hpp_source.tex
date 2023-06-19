@@ -1,0 +1,196 @@
+\doxysection{general\+Helper\+Functions.\+hpp}
+\hypertarget{general_helper_functions_8hpp_source}{}\label{general_helper_functions_8hpp_source}\index{src/genericHelperFunctions/generalHelperFunctions.hpp@{src/genericHelperFunctions/generalHelperFunctions.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Title\ \ :\ generalHelperFunctions.hpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Author\ :\ Jonathan\ Miller\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Date\ \ \ :\ 20230517\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Aim\ \ \ \ :\ Utility\ functions\ to\ be\ ord'd\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ The\ functions:}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ \ \ \ +\ markPosition}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ \ \ \ +\ drawRandomUniformInteger}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ \ \ \ +\ calculateColumnRatios}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ \ \ \ +\ getPaths}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ \ \ \ +\ printVector}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ \ \ \ +\ writeVectorToFile}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ \ \ \ +\ writeArrayToFile}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ \ \ \ +\ writeStateToFile}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ They\ perform\ various\ tasks\ such\ as\ printing\ }}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ values,\ calculating\ ratios,\ writing\ data\ to\ files,\ }}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ and\ obtaining\ paths.}}
+\DoxyCodeLine{00019\ \textcolor{comment}{}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ markPosition()\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Here"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00034\ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{int}\ drawRandomUniformInteger(\textcolor{keywordtype}{int}\ min,\ \textcolor{keywordtype}{int}\ max)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ std::random\_device\ rd;}
+\DoxyCodeLine{00055\ \ \ \ \ std::mt19937\ generator(rd());}
+\DoxyCodeLine{00056\ \ \ \ \ std::uniform\_int\_distribution<int>\ distribution(min,\ max);}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ randomInt\ =\ distribution(generator);}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{return}\ randomInt;}
+\DoxyCodeLine{00059\ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00091\ std::vector<double>\ calculateColumnRatios(\textcolor{keyword}{const}\ std::vector<std::vector<int>>\&\ matrix)\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ std::vector<double>\ ratios;}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.empty()\ ||\ matrix[0].empty())\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ratios;\ \ \textcolor{comment}{//\ Empty\ matrix,\ return\ empty\ ratios\ vector}}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ numRows\ =\ matrix.size();}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ numCols\ =\ matrix[0].size();}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ col\ =\ 0;\ col\ <\ numCols;\ col++)\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =\ 0;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ row\ =\ 0;\ row\ <\ numRows;\ row++)\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix[row][col]\ ==\ 1)\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count++;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ ratio\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(count)\ /\ numRows;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ ratios.push\_back(ratio);}
+\DoxyCodeLine{00110\ \ \ \ \ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordflow}{return}\ ratios;}
+\DoxyCodeLine{00113\ \}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00131\ std::vector<std::string>\ getPaths(std::string\ dataPath,\ std::string\ outputDir,\ std::string\ qubitInfo,\ qreal\ probability)\ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ homeDir\ =\ std::getenv(\textcolor{stringliteral}{"{}HOME"{}});}
+\DoxyCodeLine{00133\ \ \ \ \ std::string\ fslash\ =\ \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{00134\ \ \ \ \ std::string\ uscore\ =\ \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{00135\ \ \ \ \ std::string\ root\ =\ homeDir;}
+\DoxyCodeLine{00136\ \ \ \ \ std::string\ amps\ =\ \textcolor{stringliteral}{"{}amplitudes"{}};}
+\DoxyCodeLine{00137\ \ \ \ \ std::string\ probs\ =\ \textcolor{stringliteral}{"{}probabilities"{}};}
+\DoxyCodeLine{00138\ \ \ \ \ std::string\ damps;}
+\DoxyCodeLine{00139\ \ \ \ \ std::string\ csv\ =\ \textcolor{stringliteral}{"{}.csv"{}};}
+\DoxyCodeLine{00140\ \ \ \ \ }
+\DoxyCodeLine{00141\ \ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordflow}{if}(probability\ <\ 0)\{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ damps\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00144\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ precisionVal\ =\ 2;}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ std::string\ prob\_str\ =\ std::to\_string(probability).substr(0,\ std::to\_string(probability).find(\textcolor{stringliteral}{"{}."{}})\ +\ precisionVal\ +\ 1);}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ damps\ =\ \textcolor{stringliteral}{"{}mix\_damping\_prob-\/"{}}+prob\_str;}
+\DoxyCodeLine{00148\ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ }
+\DoxyCodeLine{00150\ \ \ \ \ std::string\ dataDirPath\ =\ homeDir\ +\ fslash\ +\ dataPath\ +\ fslash\ +\ outputDir\ +\ fslash;}
+\DoxyCodeLine{00151\ \ \ \ \ std::string\ fileAmp\ =\ \ dataDirPath\ +\ amps\ +\ uscore\ +\ qubitInfo\ +\ uscore\ +\ damps\ +\ csv;}
+\DoxyCodeLine{00152\ \ \ \ \ std::string\ fileProb\ =\ dataDirPath\ +\ probs\ +\ uscore\ +\ qubitInfo\ +\ uscore\ +\ damps\ +\ csv;}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ std::vector<std::string>\ paths\ =\ \{fileAmp,\ fileProb\};}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordflow}{return}\ paths;}
+\DoxyCodeLine{00157\ \}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00181\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00182\ \textcolor{keywordtype}{void}\ printVector(\textcolor{keyword}{const}\ std::vector<T>\&\ vec)\ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ T\&\ element\ :\ vec)\ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ std::cout\ <<\ element\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00185\ \ \ \ \ \}}
+\DoxyCodeLine{00186\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00187\ \}}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00208\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00209\ \textcolor{keywordtype}{void}\ writeVectorToFile(\textcolor{keyword}{const}\ std::vector<T>\&\ values,\ \textcolor{keyword}{const}\ std::string\&\ filename,\textcolor{keyword}{const}\ std::string\&\ col\_name)\ \{}
+\DoxyCodeLine{00210\ \ \ \ \ std::ofstream\ file(filename);}
+\DoxyCodeLine{00211\ \ \ \ \ file\ <<\ col\_name\ <<\ std::endl;}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ T\&\ value\ :\ values)\ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ value\ <<\ std::endl;}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00218\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ open\ the\ file."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00220\ \ \ \ \ \}}
+\DoxyCodeLine{00221\ \}}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00243\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00244\ \textcolor{keywordtype}{void}\ writeArrayToFile(\textcolor{keyword}{const}\ T*\ values,\ \textcolor{keywordtype}{size\_t}\ size,\ \textcolor{keyword}{const}\ std::string\&\ filename,\textcolor{keyword}{const}\ std::string\&\ col\_name)\ \{}
+\DoxyCodeLine{00245\ \ \ \ \ std::ofstream\ file(filename);}
+\DoxyCodeLine{00246\ \ \ \ \ file\ <<\ col\_name\ <<\ std::endl;}
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ size;\ ++i)\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ values[i]\ <<\ std::endl;}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00253\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ open\ the\ file."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00255\ \ \ \ \ \}}
+\DoxyCodeLine{00256\ \}}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00278\ \textcolor{keywordtype}{void}\ writeStateToFile(\textcolor{keyword}{const}\ Qureg\&\ qureg,\ \textcolor{keyword}{const}\ std::string\&\ filepath)\ \{}
+\DoxyCodeLine{00279\ \ \ \ \ FILE*\ state\ =\ std::fopen(filepath.c\_str(),\ \textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{00280\ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ index;}
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ std::perror(\textcolor{stringliteral}{"{}Failed\ to\ open\ file"{}});}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00284\ \ \ \ \ \}}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ \ \ \ \ \textcolor{keywordflow}{if}\ (qureg.chunkId\ ==\ 0)\ \{}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ std::fprintf(state,\ \textcolor{stringliteral}{"{}real,\ imag\(\backslash\)n"{}});}
+\DoxyCodeLine{00288\ \ \ \ \ \}}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \ \ \ \ \ \textcolor{keywordflow}{for}(index=0;\ index<qureg.numAmpsPerChunk;\ index++)\{}
+\DoxyCodeLine{00291\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#\ if\ QuEST\_PREC==1\ ||\ QuEST\_PREC==2}}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ fprintf(state,\ \textcolor{stringliteral}{"{}\%.12f,\ \%.12f\(\backslash\)n"{}},\ qureg.stateVec.real[index],\ qureg.stateVec.imag[index]);}
+\DoxyCodeLine{00293\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#\ elif\ QuEST\_PREC\ ==\ 4}}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ fprintf(state,\ \textcolor{stringliteral}{"{}\%.12Lf,\ \%.12Lf\(\backslash\)n"{}},\ qureg.stateVec.real[index],\ qureg.stateVec.imag[index]);}
+\DoxyCodeLine{00295\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00296\ \ \ \ \ \ \}}
+\DoxyCodeLine{00297\ \ \ \ \ \ fclose(state);}
+\DoxyCodeLine{00298\ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00299\ \}}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00303\ }
+\DoxyCodeLine{00304\ }
+\DoxyCodeLine{00305\ }
+
+\end{DoxyCode}

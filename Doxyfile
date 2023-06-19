@@ -945,7 +945,8 @@ WARN_LOGFILE           = warnings.log
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = src/**/*.{cpp,hpp,c,h} tests/**/*.{cpp,hpp,c,h} config/**/*.{h.in,h}
+#INPUT                  = src/**/*.{cpp,hpp,c,h} tests/**/*.{cpp,hpp,c,h} config/**/*.{h.in,h}
+INPUT                  = src tests config
 
 
 

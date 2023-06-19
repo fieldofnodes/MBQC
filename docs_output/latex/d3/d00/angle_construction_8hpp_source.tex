@@ -1,0 +1,248 @@
+\doxysection{angle\+Construction.\+hpp}
+\hypertarget{angle_construction_8hpp_source}{}\label{angle_construction_8hpp_source}\index{src/quantumGraphs/angleConstruction.hpp@{src/quantumGraphs/angleConstruction.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Title\ \ :\ angleConstruction.hpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Author\ :\ Jonathan\ Miller\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Date\ \ \ :\ 20230425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Aim\ \ \ \ :\ Construct\ angles\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{00007\ \textcolor{comment}{}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ \ \ \ Initialise\ a\ vector\ of\ \`{}qreal`\ values\ all\ set\ to\ 0.0}}
+\DoxyCodeLine{00012\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00013\ std::vector<qreal>\ initAllAnglesZero(\textcolor{keywordtype}{int}\ numQubits)\{}
+\DoxyCodeLine{00014\ \ \ \ \ std::vector<qreal>\ qubitAngles(numQubits,0.0);\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordflow}{return}\ qubitAngles;}
+\DoxyCodeLine{00016\ \}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ \ \ \ Initialise\ a\ vector\ of\ \`{}qreal`\ values\ all\ set\ to\ some\ same\ \`{}angle`}}
+\DoxyCodeLine{00021\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00022\ std::vector<qreal>\ initAllAnglesSame(\textcolor{keywordtype}{int}\ numQubits,\ qreal\ angle)\{}
+\DoxyCodeLine{00023\ \ \ \ \ std::vector<qreal>\ qubitAngles(numQubits,angle);\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{return}\ qubitAngles;}
+\DoxyCodeLine{00025\ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00029\ \textcolor{comment}{\ \ \ \ Initialise\ a\ vector\ of\ \`{}qreal`\ values\ all\ set\ to\ a\ random\ fraction}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ \ \ \ X*M\_PI/piDenominator:\ X\ \string~\ Uniform(0,2*piDenominator)}}
+\DoxyCodeLine{00031\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00032\ std::vector<qreal>\ initRandomPiOnNAngles(\textcolor{keywordtype}{int}\ numQubits,\ \textcolor{keywordtype}{int}\ piDenominator)\{}
+\DoxyCodeLine{00033\ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ uniform\ distribution\ for\ the\ range}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ min\ =\ 0;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ max\ =\ 2*piDenominator\ -\/\ 1;}
+\DoxyCodeLine{00037\ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ Populate\ angle\ vector}}
+\DoxyCodeLine{00039\ \ \ \ \ std::vector<qreal>\ qubitAngles(numQubits);}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i\ <\ numQubits;\ i++)\{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ numer\ =\ 1.0\ *\ drawRandomUniformInteger(min,max);\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ qreal\ angle\ =\ (double)(numer/piDenominator)\ *\ M\_PI;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ qubitAngles[i]\ =\ angle;}
+\DoxyCodeLine{00044\ \ \ \ \ \}\ }
+\DoxyCodeLine{00045\ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{return}\ qubitAngles;}
+\DoxyCodeLine{00047\ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ \ \ \ Initialise\ a\ vector\ of\ \`{}qreal`\ values\ all\ set\ to\ a\ random\ fraction}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ \ \ \ X*M\_PI/piDenominator:\ X\ \string~\ Uniform(0,2*piDenominator)}}
+\DoxyCodeLine{00055\ \textcolor{comment}{\ \ \ \ The\ sum\ of\ X*M\_PI/piDenominator\ is\ a\ multiple\ of\ 2M\_PI}}
+\DoxyCodeLine{00056\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00057\ std::vector<qreal>\ initRandomPiOnNAnglesMod2kPi(\textcolor{keywordtype}{int}\ numQubits,\ \textcolor{keywordtype}{int}\ piDenominator)\{}
+\DoxyCodeLine{00058\ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ uniform\ distribution\ for\ the\ range}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ min\ =\ 0;}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ max\ =\ 2*piDenominator\ -\/\ 1;}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{int}\ totalPositions\ =\ 2*piDenominator;}
+\DoxyCodeLine{00064\ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ Populate\ angle\ vector}}
+\DoxyCodeLine{00066\ \ \ \ \ std::vector<qreal>\ qubitAngles(numQubits);}
+\DoxyCodeLine{00067\ \ \ \ \ std::vector<int>\ numeratorVector(numQubits);}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i\ <\ numQubits-\/1;\ i++)\{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ numer\ =\ 1.0\ *\ drawRandomUniformInteger(min,max);\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ numeratorVector[i]\ =\ numer;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ qreal\ angle\ =\ (double)(numer/piDenominator)\ *\ M\_PI;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ qubitAngles[i]\ =\ angle;}
+\DoxyCodeLine{00073\ \ \ \ \ \}\ }
+\DoxyCodeLine{00074\ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ Compute\ some\ of\ random\ numerators}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{int}\ totalNumerator\ =\ std::accumulate(numeratorVector.begin(),\ numeratorVector.end(),\ 0);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//\ Get\ remainingPositions}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{int}\ remainingPositions\ =\ totalPositions\ -\/\ (totalNumerator\ \%\ totalPositions);}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{int}\ totalNumeratorAndRemainingModPositions\ =\ (remainingPositions\ +\ totalNumerator)\ \%\ totalPositions;}
+\DoxyCodeLine{00081\ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ assert((totalNumeratorAndRemainingModPositions\ ==\ 0)\ \&\&\ \textcolor{stringliteral}{"{}Total\ numerator\ values\ should\ be\ \ mod\ total\ positions\ equal\ to\ 0,\ indicating\ 2kPi\ multiple"{}});}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ qreal\ finalAngle\ =\ (1.0)*(remainingPositions/piDenominator)*M\_PI;}
+\DoxyCodeLine{00085\ \ \ \ \ qubitAngles[numQubits-\/1]\ =\ finalAngle;}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordflow}{return}\ qubitAngles;}
+\DoxyCodeLine{00091\ \ \ \ \ }
+\DoxyCodeLine{00092\ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00098\ \textcolor{comment}{\ \ \ \ Initialise\ a\ vector\ of\ \`{}qreal`\ values\ all\ set\ to\ a\ random\ fraction}}
+\DoxyCodeLine{00099\ \textcolor{comment}{\ \ \ \ X*M\_PI/piDenominator:\ X\ \string~\ Uniform(0,2*piDenominator)}}
+\DoxyCodeLine{00100\ \textcolor{comment}{\ \ \ \ The\ sum\ of\ X*M\_PI/piDenominator\ is\ a\ multiple\ of\ }}
+\DoxyCodeLine{00101\ \textcolor{comment}{\ \ \ \ 2M\_PI\ +\ M\_PI}}
+\DoxyCodeLine{00102\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00103\ std::vector<qreal>\ initRandomPiOnNAnglesMod2kPiPlusPi(\textcolor{keywordtype}{int}\ numQubits,\ \textcolor{keywordtype}{int}\ piDenominator)\{}
+\DoxyCodeLine{00104\ \ \ \ \ }
+\DoxyCodeLine{00105\ \ \ \ \ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ uniform\ distribution\ for\ the\ range}}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{int}\ min\ =\ 0;}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{int}\ max\ =\ 2*piDenominator\ -\/\ 1;}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{int}\ totalPositions\ =\ 2*piDenominator;}
+\DoxyCodeLine{00110\ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{//\ Populate\ angle\ vector}}
+\DoxyCodeLine{00112\ \ \ \ \ std::vector<qreal>\ qubitAngles(numQubits);}
+\DoxyCodeLine{00113\ \ \ \ \ std::vector<int>\ numeratorVector(numQubits);}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i\ <\ numQubits-\/1;\ i++)\{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ numer\ =\ 1.0\ *\ drawRandomUniformInteger(min,max);\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ numeratorVector[i]\ =\ numer;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ qreal\ angle\ =\ (double)(numer/piDenominator)\ *\ M\_PI;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ qubitAngles[i]\ =\ angle;}
+\DoxyCodeLine{00119\ \ \ \ \ \}\ }
+\DoxyCodeLine{00120\ \ \ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{//\ Compute\ some\ of\ random\ numerators}}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{int}\ totalNumerator\ =\ std::accumulate(numeratorVector.begin(),\ numeratorVector.end(),\ 0);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ Get\ remainingPositions}}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{int}\ remainingPositions\ =\ totalPositions\ -\/\ (totalNumerator\ \%\ totalPositions);}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{int}\ totalNumeratorAndRemainingModPositions\ =\ (remainingPositions\ +\ totalNumerator)\ \%\ totalPositions;}
+\DoxyCodeLine{00127\ \ \ \ \ }
+\DoxyCodeLine{00128\ \ \ \ \ assert((totalNumeratorAndRemainingModPositions\ ==\ 0)\ \&\&\ \textcolor{stringliteral}{"{}Total\ numerator\ values\ should\ be\ \ mod\ total\ positions\ equal\ to\ 0,\ indicating\ 2kPi\ multiple"{}});}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ qreal\ finalAngle\ =\ (1.0)*(remainingPositions/piDenominator)*M\_PI\ +\ M\_PI;}
+\DoxyCodeLine{00131\ \ \ \ \ qubitAngles[numQubits-\/1]\ =\ finalAngle;}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordflow}{return}\ qubitAngles;}
+\DoxyCodeLine{00137\ \ \ \ \ }
+\DoxyCodeLine{00138\ \}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00141\ \textcolor{comment}{\ \ \ \ Apply\ rotation\ of\ angle\ to\ qureg}}
+\DoxyCodeLine{00142\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00143\ \textcolor{keywordtype}{void}\ addAngleRotateZgate(Qureg\ qureg,\ std::vector<qreal>\ qubitAngles)\{}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =0;\ i\ <\ qureg.numQubitsRepresented;\ i++)\{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ rotateZ\ (qureg,\ i,\ qubitAngles[i]);}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
+\DoxyCodeLine{00147\ \}}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00150\ \textcolor{comment}{\ \ \ \ Every\ other\ angle\ is\ (elements:\ 1,3,5,...)\ 0}}
+\DoxyCodeLine{00151\ \textcolor{comment}{\ \ \ \ Total\ sum\ of\ anlges\ is\ multiple\ of\ 2pi}}
+\DoxyCodeLine{00152\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00153\ std::vector<qreal>\ initRandomPiOnNEveryOtherAnglesMod2kPi(\textcolor{keywordtype}{int}\ numQubits,\ \textcolor{keywordtype}{int}\ piDenominator)\{}
+\DoxyCodeLine{00154\ \ \ \ \ }
+\DoxyCodeLine{00155\ \ \ \ \ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ uniform\ distribution\ for\ the\ range}}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{int}\ min\ =\ 0;}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{int}\ max\ =\ 2*piDenominator\ -\/\ 1;}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{int}\ totalPositions\ =\ 2*piDenominator;}
+\DoxyCodeLine{00160\ \ \ \ \ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{comment}{//\ Populate\ angle\ vector}}
+\DoxyCodeLine{00162\ \ \ \ \ std::vector<qreal>\ qubitAngles(numQubits);}
+\DoxyCodeLine{00163\ \ \ \ \ std::vector<int>\ numeratorVector(numQubits);}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i\ <\ numQubits-\/1;\ i++)\{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\%2==0)\{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ numer\ =\ 1.0\ *\ drawRandomUniformInteger(min+1,max);\ }
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ numeratorVector[i]\ =\ numer;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ angle\ =\ (double)(numer/piDenominator)\ *\ M\_PI;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles[i]\ =\ angle;}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(i\%2==1)\{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles[i]\ =\ 0.0;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//nothing}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00176\ \ \ \ \ \}\ }
+\DoxyCodeLine{00177\ \ \ }
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{comment}{//\ Compute\ some\ of\ random\ numerators}}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordtype}{int}\ totalNumerator\ =\ std::accumulate(numeratorVector.begin(),\ numeratorVector.end(),\ 0);}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{comment}{//\ Get\ remainingPositions}}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordtype}{int}\ remainingPositions\ =\ totalPositions\ -\/\ (totalNumerator\ \%\ totalPositions);}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordtype}{int}\ totalNumeratorAndRemainingModPositions\ =\ (remainingPositions\ +\ totalNumerator)\ \%\ totalPositions;}
+\DoxyCodeLine{00184\ \ \ \ \ }
+\DoxyCodeLine{00185\ \ \ \ \ assert((totalNumeratorAndRemainingModPositions\ ==\ 0)\ \&\&\ \textcolor{stringliteral}{"{}Total\ numerator\ values\ should\ be\ \ mod\ total\ positions\ equal\ to\ 0,\ indicating\ 2kPi\ multiple"{}});}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \ \ \ \ qreal\ finalAngle\ =\ (1.0)*(remainingPositions/piDenominator)*M\_PI;}
+\DoxyCodeLine{00188\ \ \ \ \ qubitAngles[numQubits-\/1]\ =\ finalAngle;}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordflow}{return}\ qubitAngles;}
+\DoxyCodeLine{00192\ \ \ \ \ }
+\DoxyCodeLine{00193\ \}}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00197\ \textcolor{comment}{\ \ \ \ Every\ other\ angle\ is\ (elements:\ 1,3,5,...)\ 0}}
+\DoxyCodeLine{00198\ \textcolor{comment}{\ \ \ \ Total\ sum\ of\ anlges\ is\ multiple\ of\ 2pi\ +\ pi}}
+\DoxyCodeLine{00199\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00200\ std::vector<qreal>\ initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi(\textcolor{keywordtype}{int}\ numQubits,\ \textcolor{keywordtype}{int}\ piDenominator)\{}
+\DoxyCodeLine{00201\ \ \ \ \ }
+\DoxyCodeLine{00202\ \ \ \ \ }
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ uniform\ distribution\ for\ the\ range}}
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordtype}{int}\ min\ =\ 0;}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordtype}{int}\ max\ =\ 2*piDenominator\ -\/\ 1;}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keywordtype}{int}\ totalPositions\ =\ 2*piDenominator;}
+\DoxyCodeLine{00207\ \ \ \ \ }
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{comment}{//\ Populate\ angle\ vector}}
+\DoxyCodeLine{00209\ \ \ \ \ std::vector<qreal>\ qubitAngles(numQubits);}
+\DoxyCodeLine{00210\ \ \ \ \ std::vector<int>\ numeratorVector(numQubits);}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i\ <\ numQubits-\/1;\ i++)\{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\%2==0)\{}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ numer\ =\ 1.0\ *\ drawRandomUniformInteger(min+1,max);\ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ numeratorVector[i]\ =\ numer;}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ angle\ =\ (double)(numer/piDenominator)\ *\ M\_PI;}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles[i]\ =\ angle;}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(i\%2==1)\{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles[i]\ =\ 0.0;}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//nothing}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00222\ \ \ \ \ \}\ }
+\DoxyCodeLine{00223\ \ \ }
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{comment}{//\ Compute\ some\ of\ random\ numerators}}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordtype}{int}\ totalNumerator\ =\ std::accumulate(numeratorVector.begin(),\ numeratorVector.end(),\ 0);}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{comment}{//\ Get\ remainingPositions}}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keywordtype}{int}\ remainingPositions\ =\ totalPositions\ -\/\ (totalNumerator\ \%\ totalPositions);}
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{keywordtype}{int}\ totalNumeratorAndRemainingModPositions\ =\ (remainingPositions\ +\ totalNumerator)\ \%\ totalPositions;}
+\DoxyCodeLine{00230\ \ \ \ \ }
+\DoxyCodeLine{00231\ \ \ \ \ assert((totalNumeratorAndRemainingModPositions\ ==\ 0)\ \&\&\ \textcolor{stringliteral}{"{}Total\ numerator\ values\ should\ be\ \ mod\ total\ positions\ equal\ to\ 0,\ indicating\ 2kPi\ multiple"{}});}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \ \ \ \ qreal\ finalAngle\ =\ (1.0)*(remainingPositions/piDenominator)*M\_PI\ +\ M\_PI;}
+\DoxyCodeLine{00234\ \ \ \ \ qubitAngles[numQubits-\/1]\ =\ finalAngle;}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ }
+\DoxyCodeLine{00237\ \ \ \ \ }
+\DoxyCodeLine{00238\ \ \ \ \ }
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keywordflow}{return}\ qubitAngles;}
+\DoxyCodeLine{00240\ \ \ \ \ }
+\DoxyCodeLine{00241\ \}}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ }
+
+\end{DoxyCode}

@@ -1,0 +1,150 @@
+\chapter{MBQC}
+\hypertarget{md_src_2archive_2index}{}\label{md_src_2archive_2index}\index{MBQC@{MBQC}}
+\label{md_src_2archive_2index_autotoc_md0}%
+\Hypertarget{md_src_2archive_2index_autotoc_md0}%
+ \hypertarget{md_src_2archive_2index_autotoc_md1}{}\doxysection{\texorpdfstring{Measurement Based Quantum Computation}{Measurement Based Quantum Computation}}\label{md_src_2archive_2index_autotoc_md1}
+\hypertarget{md_src_2archive_2index_autotoc_md2}{}\doxysubsection{\texorpdfstring{Linear Cluster}{Linear Cluster}}\label{md_src_2archive_2index_autotoc_md2}
+\hypertarget{md_src_2archive_2index_autotoc_md3}{}\doxysubsubsection{\texorpdfstring{Used this libraries}{Used this libraries}}\label{md_src_2archive_2index_autotoc_md3}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <QuEST.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }std;}
+
+\end{DoxyCode}
+\hypertarget{md_src_2archive_2index_autotoc_md4}{}\doxysubsubsection{\texorpdfstring{Create a linear cluster}{Create a linear cluster}}\label{md_src_2archive_2index_autotoc_md4}
+Create vector of digits from \$0\$ to \$N-\/1\$, separated by \$1\$ to represent a cluster state by a line of nodes connected by edges, similar to this asci art {\ttfamily ()-\/()-\/()-\/ -\/ -\/ -\/()} where each {\ttfamily ()} represent a node or a qubit when this structure is used to generate the cluster state of qubits. \$(0,2,3,...,N-\/1)\$
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{vector<int>\ getPathGraph(\textcolor{keywordtype}{int}\ numberQubits)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ vector<int>\ pathGraph;}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numberQubits;\ i++\ )}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ pathGraph.push\_back(i);\ \ }
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ pathGraph;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_src_2archive_2index_autotoc_md5}{}\doxysubsubsection{\texorpdfstring{Flow function}{Flow function}}\label{md_src_2archive_2index_autotoc_md5}
+Linear cluster state flow is defined as, \$f(i) = i + 1\$, where \$i\$ is the current qubit. Consider the graph as a line of qubits, then the flow foward is the next qubit according to the labelled index.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ getFutureQubit(\textcolor{keywordtype}{int}\ currentQubit)\{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ futureQubit;}
+\DoxyCodeLine{\ \ futureQubit\ =\ currentQubit\ +\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ futureQubit;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Linear flow backwards is defined as, \$f\texorpdfstring{$^\wedge$}{\string^}\{-\/1\}(i) = i -\/ 1\$.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ getPastQubit(\textcolor{keywordtype}{int}\ currentQubit)\{}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{\ \ pastQubit\ =\ currentQubit\ -\/\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ pastQubit;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Linear cluster vector with the flow, \$f\$, \$f(i) = i + 1\$, if \$i\$ is last element of vector, then throw error.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ getFutureQubitPathGraph(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ futureQubit;}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[graphSize-\/1])\ \{}
+\DoxyCodeLine{\ \ \ \ assert(currentQubit\ !=\ pathGraph[graphSize-\/1]\ \&\&\ \textcolor{stringliteral}{"{}No\ past\ qubit\ here,\ re-\/check\ your\ program"{}});}
+\DoxyCodeLine{\}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ futureQubit\ =\ getFutureQubit(currentQubit);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ futureQubit;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Linear cluster vector with the flow, \$f\$, \$f\texorpdfstring{$^\wedge$}{\string^}\{-\/1\}(i) = i -\/ 1\$, if \$i\$ is first element of vector, then throw error.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ getPastQubitPathGraph(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[0])\ \{}
+\DoxyCodeLine{\ \ assert(currentQubit\ !=\ pathGraph[0]\ \&\&\ \textcolor{stringliteral}{"{}No\ past\ qubit\ here,\ re-\/check\ your\ program"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ pastQubit\ =\ getPastQubit(currentQubit);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ pastQubit;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md_src_2archive_2index_autotoc_md6}{}\doxysubsubsection{\texorpdfstring{Neighborhood}{Neighborhood}}\label{md_src_2archive_2index_autotoc_md6}
+The neighbor set in a cluster state is technically the open neighbours set, as we do not consider the present or current qubit. Here we get the neighbourhood size by looking at the linear cluster state vector and the current qubit. The logic determines if there are \$1\$ or \$2\$ neighbours to the current qubit, based on the qubit position in the linear cluster.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ getOpenNeighbourhoodSizePathGraph(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)\{}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ neighbourhoodSize;}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Logic\ for\ getting\ nieghbors}}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ 0)\ \{\ \textcolor{comment}{//\ qubit\ is\ first}}
+\DoxyCodeLine{\ \ \ \ neighbourhoodSize\ =\ 1;}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[graphSize-\/1])\ \{\ \textcolor{comment}{//\ qubit\ is\ last}}
+\DoxyCodeLine{\ \ \ \ neighbourhoodSize\ =\ 1;}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{//\ all\ else}}
+\DoxyCodeLine{\ \ \ \ neighbourhoodSize\ =\ 2;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ neighbourhoodSize;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Get the neighbor set of qubits based on the linear cluster and the current qubit
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{vector<int>\ getOpenNeighbourhoodPathGraph(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)\{}
+\DoxyCodeLine{\ \ vector<int>\ neighbours;}
+\DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ firstQubit;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ futureQubit;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[0])\ \{\ \textcolor{comment}{//\ qubit\ is\ first\ in\ graph}}
+\DoxyCodeLine{\ \ \ \ firstQubit\ =\ currentQubit\ +\ 1;}
+\DoxyCodeLine{\ \ \ \ neighbours.push\_back(firstQubit);}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[graphSize-\/1])\ \{\ \textcolor{comment}{//\ qubit\ is\ last\ in\ graph}}
+\DoxyCodeLine{\ \ \ \ firstQubit\ =\ currentQubit\ -\/\ 1;}
+\DoxyCodeLine{\ \ \ \ neighbours.push\_back(firstQubit);}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{//\ all\ else}}
+\DoxyCodeLine{\ \ \ \ pastQubit\ =\ currentQubit\ -\/\ 1;}
+\DoxyCodeLine{\ \ \ \ futureQubit\ =\ currentQubit\ +\ 1;}
+\DoxyCodeLine{\ \ \ \ neighbours.push\_back(pastQubit);}
+\DoxyCodeLine{\ \ \ \ neighbours.push\_back(futureQubit);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ neighbours;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 

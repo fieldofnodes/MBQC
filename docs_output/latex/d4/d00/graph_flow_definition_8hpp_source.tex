@@ -1,0 +1,73 @@
+\doxysection{graph\+Flow\+Definition.\+hpp}
+\hypertarget{graph_flow_definition_8hpp_source}{}\label{graph_flow_definition_8hpp_source}\index{src/graphs/graphFlowDefinition.hpp@{src/graphs/graphFlowDefinition.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\#include\ <boost/graph/graph\_traits.hpp>}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\#include\ <boost/graph/adjacency\_list.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\#include\ <functional>}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\#include\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\#include\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalAssertFunctions.hpp"{}}}
+\DoxyCodeLine{00008\ \textcolor{comment}{}}
+\DoxyCodeLine{00009\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ Define\ a\ function\ that\ takes\ a\ graph\ as\ a\ template\ parameter}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Graph>}
+\DoxyCodeLine{00014\ \textcolor{keywordtype}{void}\ assertFlowFunctionNeighbour(\textcolor{keyword}{const}\ Graph\&\ g,\ \textcolor{keywordtype}{int}\ v,\ \textcolor{keywordtype}{int}\ numRows,\ std::function<\textcolor{keywordtype}{int}(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int})>flowFunction)}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ Call\ the\ flow\ function\ to\ get\ the\ forward\ lattice\ flow}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ fv\ =\ flowFunction(v,\ numRows);}
+\DoxyCodeLine{00018\ \ \ \ \ std::vector<int>\ neigh\ =\ getVertexNeighbours(g,v)}
+\DoxyCodeLine{00019\ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ isIntInVector(v,\ neigh)}
+\DoxyCodeLine{00021\ \ \ \ \ }
+\DoxyCodeLine{00022\ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{using\ }Graph\ =\ boost::adjacency\_list<boost::vecS,\ boost::vecS,\ boost::undirectedS>;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{bool}\ areVerticesConnected(\textcolor{keyword}{const}\ Graph\&\ g,\ Graph::vertex\_descriptor\ u,\ Graph::vertex\_descriptor\ v)\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{auto}\ edge\ =\ boost::edge(u,\ v,\ g);}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{return}\ edge.second;\ \textcolor{comment}{//\ Returns\ true\ if\ there\ is\ an\ edge\ between\ u\ and\ v}}
+\DoxyCodeLine{00030\ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Graph>}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ assertFlowFunctionNeighbourVertex(\textcolor{keyword}{const}\ Graph\&\ g,\textcolor{keywordtype}{int}\ vertex)\{}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ Assert\ that\ for\ vertex,\ v,\ than\ f(v)\ is\ a\ neighbour}}
+\DoxyCodeLine{00037\ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ assertFlowFunctionFutureOfVertex()\{}
+\DoxyCodeLine{00041\ \ \ \ \ }
+\DoxyCodeLine{00042\ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ assertNeighbourFlowFunctionFutureOfVertex()\{}
+\DoxyCodeLine{00046\ \ \ \ \ }
+\DoxyCodeLine{00047\ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{int}\ main()}
+\DoxyCodeLine{00052\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ Define\ a\ graph\ and\ add\ some\ vertices\ and\ edges}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{using\ }Graph\ =\ boost::adjacency\_list<>;}
+\DoxyCodeLine{00055\ \ \ \ \ Graph\ g(5);}
+\DoxyCodeLine{00056\ \ \ \ \ boost::add\_edge(0,\ 1,\ g);}
+\DoxyCodeLine{00057\ \ \ \ \ boost::add\_edge(1,\ 2,\ g);}
+\DoxyCodeLine{00058\ \ \ \ \ boost::add\_edge(2,\ 3,\ g);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ Call\ the\ assertFlowNeighbour\ function\ with\ the\ getForwardLatticeFlow\ function}}
+\DoxyCodeLine{00061\ \ \ \ \ assertFlowNeighbour(g,\ 1,\ 2,\ getForwardLatticeFlow);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ Output:\ Vertex\ 3\ exists\ in\ the\ graph.}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00065\ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ }
+
+\end{DoxyCode}

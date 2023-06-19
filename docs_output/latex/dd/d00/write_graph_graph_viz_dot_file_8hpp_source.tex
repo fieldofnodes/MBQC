@@ -1,0 +1,114 @@
+\doxysection{write\+Graph\+Graph\+Viz\+Dot\+File.\+hpp}
+\hypertarget{write_graph_graph_viz_dot_file_8hpp_source}{}\label{write_graph_graph_viz_dot_file_8hpp_source}\index{src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp@{src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Title\ \ :\ testGraphProperties.cpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Author\ :\ Jonathan\ Miller\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Date\ \ \ :\ 20230425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Aim\ \ \ \ :\ Build\ graphs\ and\ test\ properties\ of\ graphs.\ \ \ \ //}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ As\ graph\ types\ grow\ in\ number,\ separate\ tests\ \ //}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ across\ multiple\ files\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{00009\ \textcolor{comment}{}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ boost::adjacency\_list<boost::vecS,\ boost::vecS,boost::undirectedS>\ undirectedGraph;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ std::string\ updateTextFile(std::string\ inputPath)\{}
+\DoxyCodeLine{00016\ \ \ \ \ std::ifstream\ infile(inputPath);}
+\DoxyCodeLine{00017\ \ \ \ \ std::size\_t\ pos\ =\ inputPath.find\_last\_of(\textcolor{stringliteral}{"{}."{}});}
+\DoxyCodeLine{00018\ \ \ \ \ std::string\ outputPath;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ !=\ std::string::npos)\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ std::string\ prefix\ =\ inputPath.substr(0,\ pos);}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ std::string\ suffix\ =\ inputPath.substr(pos);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ outputPath\ =\ prefix\ +\ \textcolor{stringliteral}{"{}Updated"{}}\ +\ suffix;}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ std::ofstream\ outfile(outputPath);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Read\ and\ write\ the\ first\ line}}
+\DoxyCodeLine{00028\ \ \ \ \ std::string\ line;}
+\DoxyCodeLine{00029\ \ \ \ \ std::getline(infile,\ line);}
+\DoxyCodeLine{00030\ \ \ \ \ outfile\ <<\ line\ <<\ std::endl;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ Insert\ new\ text\ at\ line\ 2}}
+\DoxyCodeLine{00033\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}graph\ [layout\ =\ neato]"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00034\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}node\ [shape\ =\ circle,"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00035\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}style\ =\ filled,"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00036\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}style\ =\ filled,"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00037\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}color\ =\ lightblue]"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00038\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}edge\ [color\ =\ silver]"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ Write\ the\ remaining\ lines}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(infile,\ line))\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ outfile\ <<\ line\ <<\ std::endl;}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ Close\ the\ files}}
+\DoxyCodeLine{00046\ \ \ \ \ infile.close();}
+\DoxyCodeLine{00047\ \ \ \ \ outfile.close();}
+\DoxyCodeLine{00048\ \ \ \ \ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{return}\ outputPath;}
+\DoxyCodeLine{00050\ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{void}\ printGraphToFile(\textcolor{keyword}{const}\ undirectedGraph\&\ graph,std::string\ fileDir,std::string\ graphName,std::string\ format)\{}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ Graphviz\ output\ stream}}
+\DoxyCodeLine{00057\ \ \ \ \ std::stringstream\ outputFile;}
+\DoxyCodeLine{00058\ \ \ \ \ outputFile\ <<\ fileDir\ <<\ \textcolor{stringliteral}{"{}/"{}}\ <<\ graphName;}
+\DoxyCodeLine{00059\ \ \ \ \ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ std::ofstream\ dot\_file(outputFile.str()+\textcolor{stringliteral}{"{}.dot"{}});}
+\DoxyCodeLine{00062\ \ \ \ \ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ Write\ to\ file}}
+\DoxyCodeLine{00066\ \ \ \ \ boost::write\_graphviz(}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ dot\_file,\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ graph);}
+\DoxyCodeLine{00069\ \ \ \ \ }
+\DoxyCodeLine{00070\ \ \ \ \ std::string\ updatedDotFile\ =\ updateTextFile(outputFile.str()+\textcolor{stringliteral}{"{}.dot"{}});}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{if}(format\ ==\ \textcolor{stringliteral}{"{}png"{}})\{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ DOT\ file\ to\ PNG}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ std::stringstream\ dotPath;\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ std::stringstream\ pngPath;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ std::stringstream\ sysString;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ dotPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.dot"{}};}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ pngPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.png"{}};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ sysString\ <<\ \textcolor{stringliteral}{"{}dot\ -\/Tpng\ "{}}\ <<\ updatedDotFile\ <<\ \textcolor{stringliteral}{"{}\ -\/o\ "{}}\ <<\ pngPath.str();}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ std::system(sysString.str().c\_str());}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (format\ ==\ \textcolor{stringliteral}{"{}svg"{}})\{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ DOT\ file\ to\ SVG}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ std::stringstream\ dotPath;\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ std::stringstream\ svgPath;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ std::stringstream\ sysString;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ dotPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.dot"{}};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ svgPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.svg"{}};}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ sysString\ <<\ \textcolor{stringliteral}{"{}dot\ -\/Tpng\ "{}}\ <<\ updatedDotFile\ <<\ \textcolor{stringliteral}{"{}\ -\/o\ "{}}\ <<\ svgPath.str();}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ std::system(sysString.str().c\_str());}
+\DoxyCodeLine{00092\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ DOT\ file\ to\ PNG\ and\ SVG}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ std::stringstream\ dotPath;\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ std::stringstream\ pngPath;}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ std::stringstream\ svgPath;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ std::stringstream\ pngSysString;}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ std::stringstream\ svgSysString;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ dotPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.dot"{}};}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ pngPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.png"{}};}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ svgPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.svg"{}};}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ pngSysString\ <<\ \textcolor{stringliteral}{"{}dot\ -\/Tpng\ "{}}\ <<\ updatedDotFile\ <<\ \textcolor{stringliteral}{"{}\ -\/o\ "{}}\ <<\ pngPath.str();}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ svgSysString\ <<\ \textcolor{stringliteral}{"{}dot\ -\/Tpng\ "{}}\ <<\ updatedDotFile\ <<\ \textcolor{stringliteral}{"{}\ -\/o\ "{}}\ <<\ svgPath.str();}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ std::system(pngSysString.str().c\_str());}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ std::system(svgSysString.str().c\_str());}
+\DoxyCodeLine{00106\ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ }
+
+\end{DoxyCode}

@@ -1,0 +1,79 @@
+\doxysection{packages.\+hpp}
+\hypertarget{packages_8hpp_source}{}\label{packages_8hpp_source}\index{src/packages.hpp@{src/packages.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ packages.hpp}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ PACKAGES\_HPP}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ PACKAGES\_HPP}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ Standard\ libraries}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <numeric>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}config.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <cstdio>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <ranges>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <cxxabi.h>}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{comment}{//\ QuEST}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <QuEST.h>}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ Boost}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <boost/graph/adjacency\_list.hpp>}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <boost/graph/grid\_graph.hpp>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <boost/graph/graphviz.hpp>}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <boost/array.hpp>}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ <boost/graph/graph\_utility.hpp>}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ <boost/container/vector.hpp>}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ <boost/range/algorithm/unique.hpp>}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ <boost/range/algorithm.hpp>}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ <boost/range/adaptor/filtered.hpp>}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ <boost/range/adaptor/transformed.hpp>}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ Helper\ functions}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#include\ "{}generalHelperFunctions.hpp"{}}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#include\ "{}writeGraphGraphVizDotFile.hpp"{}}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{comment}{//\ Graph\ functions}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#include\ "{}graphConstructions.hpp"{}}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#include\ "{}graphTraversalFlows.hpp"{}}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{comment}{//\ Quantum\ functions}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#include\ "{}flowMeasurements.hpp"{}}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#include\ "{}angleConstruction.hpp"{}}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#include\ "{}quantumGraphClusterStates.hpp"{}}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{comment}{//\ Assert\ functions}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#include\ "{}generalAssertFunctions.hpp"{}}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#include\ "{}graphAssertFunctions.hpp"{}}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#include\ "{}probabilitiesAmplitudesNoNoiseCircuits.hpp"{}}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#include\ "{}probabilitiesAmplitudesDampingCircuits.hpp"{}}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{using\ namespace\ }boost;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{comment}{//\ Define\ the\ typedefs}}
+\DoxyCodeLine{00068\ \textcolor{keyword}{typedef}\ boost::adjacency\_list<boost::vecS,\ boost::vecS,\ boost::undirectedS>\ undirectedGraph;}
+\DoxyCodeLine{00069\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::edge\_iterator\ edgeIterator;}
+\DoxyCodeLine{00070\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::vertex\_iterator\ vertexIterator;}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PACKAGES\_HPP}}
+
+\end{DoxyCode}

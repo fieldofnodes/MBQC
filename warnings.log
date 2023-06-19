@@ -1,12 +1,4 @@
-warning: source 'src/**/*.{cpp' is not a readable file or directory... skipping.
-warning: source 'hpp' is not a readable file or directory... skipping.
-warning: source 'c' is not a readable file or directory... skipping.
-warning: source 'h}' is not a readable file or directory... skipping.
-warning: source 'tests/**/*.{cpp' is not a readable file or directory... skipping.
-warning: source 'hpp' is not a readable file or directory... skipping.
-warning: source 'c' is not a readable file or directory... skipping.
-warning: source 'h}' is not a readable file or directory... skipping.
-warning: source 'config/**/*.{h.in' is not a readable file or directory... skipping.
-warning: source 'h}' is not a readable file or directory... skipping.
-warning: No files to be processed, please check your settings, in particular INPUT, FILE_PATTERNS, and RECURSIVE
-warning: Specified markdown mainpage '../README.md' does not exist
+warning: Specified markdown mainpage '../README.md' does not exist/Users/jmille15/Projects/MBQC/src/archive/filesToGoThrough/createMbqcGraph.cpp:11: warning: Compound EdgeProperties is not documented.
+/Users/jmille15/Projects/MBQC/src/archive/filesToGoThrough/createMbqcGraph.cpp:6: warning: Compound VertexProperties is not documented.
+/Users/jmille15/Projects/MBQC/src/archive/filesToGoThrough/createMbqcGraph.cpp:12: warning: Member angle (variable) of struct EdgeProperties is not documented.
+/Users/jmille15/Projects/MBQC/src/archive/filesToGoThrough/createMbqcGraph.cpp:7: warning: Member qubit (variable) of struct VertexProperties is not documented.
