@@ -1087,7 +1087,7 @@ EXAMPLE_PATH           = examples/
 # *.h) to filter out the source-files in the directories. If left blank all
 # files are included.
 
-EXAMPLE_PATTERNS = *.cpp *.h
+#EXAMPLE_PATTERNS = *.cpp *.h
 
 
 # If the EXAMPLE_RECURSIVE tag is set to YES then subdirectories will be
@@ -1095,7 +1095,7 @@ EXAMPLE_PATTERNS = *.cpp *.h
 # irrespective of the value of the RECURSIVE tag.
 # The default value is: NO.
 
-EXAMPLE_RECURSIVE      = NO
+EXAMPLE_RECURSIVE      = YES
 
 # The IMAGE_PATH tag can be used to specify one or more files or directories
 # that contain images that are to be included in the documentation (see the
@@ -1162,7 +1162,7 @@ FILTER_SOURCE_FILES    = NO
 # (index.html). This can be useful if you have a project on for instance GitHub
 # and want to reuse the introduction page also for the doxygen output.
 
-USE_MDFILE_AS_MAINPAGE = ../README.md
+USE_MDFILE_AS_MAINPAGE = README.md
 
 # The Fortran standard specifies that for fixed formatted Fortran code all
 # characters from position 72 are to be considered as comment. A common
