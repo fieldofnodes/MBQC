@@ -9,7 +9,7 @@
 
 <para>Constructs a lattice representation of qubit measurement outcomes. </para>
 </listitem>
-            <listitem><para>std::vector&lt; int &gt; <link linkend="_flow_measurements_8hpp_1a7231be9a1c347894c1d01c349f4b41c7">measureGraph</link> (Qureg qureg, const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, std::vector&lt; qreal &gt; qubitAngles, int numRows)</para>
+            <listitem><para>std::vector&lt; int &gt; <link linkend="_flow_measurements_8hpp_1a7231be9a1c347894c1d01c349f4b41c7">measureGraph</link> (Qureg qureg, const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, std::vector&lt; qreal &gt; qubitAngles, int numRows)</para>
 
 <para>Measures qubits in a graph-based quantum state. </para>
 </listitem>
@@ -25,7 +25,7 @@
     <title>measureGraph()</title>
 <indexterm><primary>measureGraph</primary><secondary>flowMeasurements.hpp</secondary></indexterm>
 <indexterm><primary>flowMeasurements.hpp</primary><secondary>measureGraph</secondary></indexterm>
-<para><computeroutput>std::vector&lt; int &gt; measureGraph (Qureg qureg, const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, std::vector&lt; qreal &gt; qubitAngles, int numRows)</computeroutput></para><para>
+<para><computeroutput>std::vector&lt; int &gt; measureGraph (Qureg qureg, const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, std::vector&lt; qreal &gt; qubitAngles, int numRows)</computeroutput></para><para>
 
 <para>Measures qubits in a graph-based quantum state. </para>
 </para>

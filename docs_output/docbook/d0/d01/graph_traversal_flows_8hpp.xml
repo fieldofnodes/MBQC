@@ -18,19 +18,19 @@
 
 <para>Computes the past vertex in a 2D lattice graph based on a flow function. </para>
 </listitem>
-            <listitem><para>std::vector&lt; int &gt; <link linkend="_graph_traversal_flows_8hpp_1a954183dad806b30b05e526c37284768b">getVertexNeighbours</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, int vertex)</para>
+            <listitem><para>std::vector&lt; int &gt; <link linkend="_graph_traversal_flows_8hpp_1a954183dad806b30b05e526c37284768b">getVertexNeighbours</link> (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, int vertex)</para>
 
 <para>Retrieves the neighboring vertices of a given vertex in an undirected graph. </para>
 </listitem>
-            <listitem><para>int <link linkend="_graph_traversal_flows_8hpp_1aafe3849a9ad4cb18d843d73c89936bb3">getLattice2DFutureVertexGraph</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, int vertex, int numRows)</para>
+            <listitem><para>int <link linkend="_graph_traversal_flows_8hpp_1aafe3849a9ad4cb18d843d73c89936bb3">getLattice2DFutureVertexGraph</link> (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, int vertex, int numRows)</para>
 
 <para>Computes the future vertex in a 2D lattice graph based on a flow function for a given vertex in the graph. </para>
 </listitem>
-            <listitem><para>int <link linkend="_graph_traversal_flows_8hpp_1a7b014587f20137aff522774eb1a05947">getLattice2DPastVertexGraph</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, int vertex, int numRows)</para>
+            <listitem><para>int <link linkend="_graph_traversal_flows_8hpp_1a7b014587f20137aff522774eb1a05947">getLattice2DPastVertexGraph</link> (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, int vertex, int numRows)</para>
 
 <para>Computes the past vertex in a 2D lattice graph based on a flow function for a given vertex in the graph. </para>
 </listitem>
-            <listitem><para>qreal <link linkend="_graph_traversal_flows_8hpp_1a2b29f1efbcbccfbe77481e5b1a9647c8">computeCorrectedAngle</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, std::vector&lt; int &gt; measuredOutcomes, int vertex, int numRows, qreal angle)</para>
+            <listitem><para>qreal <link linkend="_graph_traversal_flows_8hpp_1a2b29f1efbcbccfbe77481e5b1a9647c8">computeCorrectedAngle</link> (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, std::vector&lt; int &gt; measuredOutcomes, int vertex, int numRows, qreal angle)</para>
 
 <para>Computes the corrected angle based on measured outcomes and flow functions in an undirected graph. </para>
 </listitem>
@@ -59,7 +59,7 @@ Definition in file <link linkend="_graph_traversal_flows_8hpp_source">graphTrave
     <title>computeCorrectedAngle()</title>
 <indexterm><primary>computeCorrectedAngle</primary><secondary>graphTraversalFlows.hpp</secondary></indexterm>
 <indexterm><primary>graphTraversalFlows.hpp</primary><secondary>computeCorrectedAngle</secondary></indexterm>
-<para><computeroutput>qreal computeCorrectedAngle (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, std::vector&lt; int &gt; measuredOutcomes, int vertex, int numRows, qreal angle)</computeroutput></para><para>
+<para><computeroutput>qreal computeCorrectedAngle (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, std::vector&lt; int &gt; measuredOutcomes, int vertex, int numRows, qreal angle)</computeroutput></para><para>
 
 <para>Computes the corrected angle based on measured outcomes and flow functions in an undirected graph. </para>
 </para>
@@ -223,7 +223,7 @@ Definition at line <link linkend="_graph_traversal_flows_8hpp_source_1l00031">31
     <title>getLattice2DFutureVertexGraph()</title>
 <indexterm><primary>getLattice2DFutureVertexGraph</primary><secondary>graphTraversalFlows.hpp</secondary></indexterm>
 <indexterm><primary>graphTraversalFlows.hpp</primary><secondary>getLattice2DFutureVertexGraph</secondary></indexterm>
-<para><computeroutput>int getLattice2DFutureVertexGraph (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, int vertex, int numRows)</computeroutput></para><para>
+<para><computeroutput>int getLattice2DFutureVertexGraph (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, int vertex, int numRows)</computeroutput></para><para>
 
 <para>Computes the future vertex in a 2D lattice graph based on a flow function for a given vertex in the graph. </para>
 </para>
@@ -344,7 +344,7 @@ Definition at line <link linkend="_graph_traversal_flows_8hpp_source_1l00054">54
     <title>getLattice2DPastVertexGraph()</title>
 <indexterm><primary>getLattice2DPastVertexGraph</primary><secondary>graphTraversalFlows.hpp</secondary></indexterm>
 <indexterm><primary>graphTraversalFlows.hpp</primary><secondary>getLattice2DPastVertexGraph</secondary></indexterm>
-<para><computeroutput>int getLattice2DPastVertexGraph (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, int vertex, int numRows)</computeroutput></para><para>
+<para><computeroutput>int getLattice2DPastVertexGraph (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, int vertex, int numRows)</computeroutput></para><para>
 
 <para>Computes the past vertex in a 2D lattice graph based on a flow function for a given vertex in the graph. </para>
 </para>
@@ -407,7 +407,7 @@ Definition at line <link linkend="_graph_traversal_flows_8hpp_source_1l00130">13
     <title>getVertexNeighbours()</title>
 <indexterm><primary>getVertexNeighbours</primary><secondary>graphTraversalFlows.hpp</secondary></indexterm>
 <indexterm><primary>graphTraversalFlows.hpp</primary><secondary>getVertexNeighbours</secondary></indexterm>
-<para><computeroutput>std::vector&lt; int &gt; getVertexNeighbours (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, int vertex)</computeroutput></para><para>
+<para><computeroutput>std::vector&lt; int &gt; getVertexNeighbours (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, int vertex)</computeroutput></para><para>
 
 <para>Retrieves the neighboring vertices of a given vertex in an undirected graph. </para>
 </para>

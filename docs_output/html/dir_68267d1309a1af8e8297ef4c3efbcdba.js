@@ -1,6 +1,5 @@
 var dir_68267d1309a1af8e8297ef4c3efbcdba =
 [
-    [ "archive", "dir_05f47c3b30cbd06df5261c168690a0c6.html", "dir_05f47c3b30cbd06df5261c168690a0c6" ],
     [ "genericHelperFunctions", "dir_8dd1b576351d4498b09b7653aa979055.html", "dir_8dd1b576351d4498b09b7653aa979055" ],
     [ "graphs", "dir_77105f38aa9966768d2a320610a7e036.html", "dir_77105f38aa9966768d2a320610a7e036" ],
     [ "quantumGraphs", "dir_b546cf57ff779f8e98b34a37a252bf8b.html", "dir_b546cf57ff779f8e98b34a37a252bf8b" ],

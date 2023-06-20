@@ -68,7 +68,7 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_test_brick_works_graph_8cpp_source_1l00065"/>00065 
 <anchor xml:id="_test_brick_works_graph_8cpp_source_1l00066"/><link linkend="_test_brick_works_graph_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00066</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_test_brick_works_graph_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>(){
 <anchor xml:id="_test_brick_works_graph_8cpp_source_1l00067"/>00067 
-<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00068"/>00068 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;brickWorkGraph;
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00068"/>00068 &#32;&#32;&#32;&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;brickWorkGraph;
 <anchor xml:id="_test_brick_works_graph_8cpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices&#32;=&#32;10;
 <anchor xml:id="_test_brick_works_graph_8cpp_source_1l00070"/>00070 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
 <anchor xml:id="_test_brick_works_graph_8cpp_source_1l00071"/>00071 &#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();

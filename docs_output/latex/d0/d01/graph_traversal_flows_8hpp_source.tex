@@ -41,7 +41,7 @@
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00065}00065\ \}}
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00066}00066\ }
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00067}00067\ }
-\DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00077}\mbox{\hyperlink{graph_traversal_flows_8hpp_a954183dad806b30b05e526c37284768b}{00077}}\ std::vector<int>\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a954183dad806b30b05e526c37284768b}{getVertexNeighbours}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ graph,\textcolor{keywordtype}{int}\ vertex)\{}
+\DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00077}\mbox{\hyperlink{graph_traversal_flows_8hpp_a954183dad806b30b05e526c37284768b}{00077}}\ std::vector<int>\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a954183dad806b30b05e526c37284768b}{getVertexNeighbours}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ graph,\textcolor{keywordtype}{int}\ vertex)\{}
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//\ Choose\ a\ vertex\ to\ find\ its\ adjacent\ vertices}}
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00079}00079\ \ \ \ \ undirectedGraph::vertex\_descriptor\ v\ =\ vertex;}
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00080}00080\ \ \ \ \ \textcolor{comment}{//\ Find\ the\ range\ of\ adjacent\ vertices}}
@@ -56,7 +56,7 @@
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{return}\ neighbourVector;}
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00090}00090\ \}}
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00091}00091\ }
-\DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00105}\mbox{\hyperlink{graph_traversal_flows_8hpp_aafe3849a9ad4cb18d843d73c89936bb3}{00105}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{graph_traversal_flows_8hpp_aafe3849a9ad4cb18d843d73c89936bb3}{getLattice2DFutureVertexGraph}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ graph,\textcolor{keywordtype}{int}\ vertex,\textcolor{keywordtype}{int}\ numRows)\{}
+\DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00105}\mbox{\hyperlink{graph_traversal_flows_8hpp_aafe3849a9ad4cb18d843d73c89936bb3}{00105}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{graph_traversal_flows_8hpp_aafe3849a9ad4cb18d843d73c89936bb3}{getLattice2DFutureVertexGraph}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ graph,\textcolor{keywordtype}{int}\ vertex,\textcolor{keywordtype}{int}\ numRows)\{}
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00106}00106\ \ \ \ \ \textcolor{keywordtype}{int}\ size\_graph\ =\ boost::num\_vertices(graph);}
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00107}00107\ \ \ \ \ assert(\textcolor{stringliteral}{"{}The\ vertex\ inputted\ needs\ to\ be\ less\ than\ the\ number\ of\ vertices\ -\/\ the\ number\ of\ the\ rows,\ but\ it\ is\ not"{}}\ \&\&\ vertex\ <\ (size\_graph\ -\/\ numRows));}
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00108}00108\ \ \ \ \ std::vector<int>\ vertexNeighbours\ =\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a954183dad806b30b05e526c37284768b}{getVertexNeighbours}}(graph,vertex);}
@@ -68,7 +68,7 @@
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00114}00114\ \}}
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00115}00115\ }
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00116}00116\ }
-\DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00130}\mbox{\hyperlink{graph_traversal_flows_8hpp_a7b014587f20137aff522774eb1a05947}{00130}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a7b014587f20137aff522774eb1a05947}{getLattice2DPastVertexGraph}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ graph,\textcolor{keywordtype}{int}\ vertex,\textcolor{keywordtype}{int}\ numRows)\{}
+\DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00130}\mbox{\hyperlink{graph_traversal_flows_8hpp_a7b014587f20137aff522774eb1a05947}{00130}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a7b014587f20137aff522774eb1a05947}{getLattice2DPastVertexGraph}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ graph,\textcolor{keywordtype}{int}\ vertex,\textcolor{keywordtype}{int}\ numRows)\{}
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00131}00131\ \ \ \ \ assert((\textcolor{stringliteral}{"{}The\ inputted\ vertex\ needs\ to\ be\ greater\ than\ or\ equal\ to\ the\ number\ of\ rows."{}}\ \&\&\ vertex\ >=\ numRows));}
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00132}00132\ \ \ \ \ std::vector<int>\ vertexNeighbours\ =\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a954183dad806b30b05e526c37284768b}{getVertexNeighbours}}(graph,vertex);}
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00133}00133\ \ \ \ \ \textcolor{keywordtype}{int}\ pastVertex\ =\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a626f9a06defdfeec52b82251cef22702}{getLattice2DPastVertex}}(vertex,numRows);}
@@ -79,7 +79,7 @@
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00138}00138\ }
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00139}00139\ }
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00153}\mbox{\hyperlink{graph_traversal_flows_8hpp_a2b29f1efbcbccfbe77481e5b1a9647c8}{00153}}\ qreal\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a2b29f1efbcbccfbe77481e5b1a9647c8}{computeCorrectedAngle}}(}
-\DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00154}00154\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ graph,}
+\DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00154}00154\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ graph,}
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00155}00155\ \ \ \ \ std::vector<int>\ measuredOutcomes,\ }
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00156}00156\ \ \ \ \ \textcolor{keywordtype}{int}\ vertex,}
 \DoxyCodeLine{\Hypertarget{graph_traversal_flows_8hpp_source_l00157}00157\ \ \ \ \ \textcolor{keywordtype}{int}\ numRows,\ }

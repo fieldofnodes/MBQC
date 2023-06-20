@@ -7,9 +7,9 @@
         <itemizedlist>
             <listitem><para>typedef boost::adjacency_list&lt; boost::vecS, boost::vecS, boost::undirectedS &gt; <link linkend="_test_flow_functions_8cpp_1af845bf432b56cdda82dbde8011882168">undirectedGraph</link></para>
 </listitem>
-            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_test_flow_functions_8cpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link></para>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_test_flow_functions_8cpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_test_flow_functions_8cpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link></para>
 </listitem>
-            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_test_flow_functions_8cpp_1a9451df0dac964b257bedb5e60547824e">vertex_iterator</link></para>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_test_flow_functions_8cpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_test_flow_functions_8cpp_1a9451df0dac964b257bedb5e60547824e">vertex_iterator</link></para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -28,21 +28,21 @@
     <title>edge_iterator</title>
 <indexterm><primary>edge_iterator</primary><secondary>testFlowFunctions.cpp</secondary></indexterm>
 <indexterm><primary>testFlowFunctions.cpp</primary><secondary>edge_iterator</secondary></indexterm>
-<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link></computeroutput></para><para>
+<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_test_flow_functions_8cpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_test_flow_functions_8cpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link></computeroutput></para><para>
 Definition at line <link linkend="_test_flow_functions_8cpp_source_1l00030">30</link> of file <link linkend="_test_flow_functions_8cpp_source">testFlowFunctions.cpp</link>.</para>
 </section>
 <anchor xml:id="_test_flow_functions_8cpp_1af845bf432b56cdda82dbde8011882168"/><section>
     <title>undirectedGraph</title>
 <indexterm><primary>undirectedGraph</primary><secondary>testFlowFunctions.cpp</secondary></indexterm>
 <indexterm><primary>testFlowFunctions.cpp</primary><secondary>undirectedGraph</secondary></indexterm>
-<para><computeroutput>typedef boost::adjacency_list&lt;boost::vecS, boost::vecS,boost::undirectedS&gt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link></computeroutput></para><para>
+<para><computeroutput>typedef boost::adjacency_list&lt;boost::vecS, boost::vecS,boost::undirectedS&gt; <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link></computeroutput></para><para>
 Definition at line <link linkend="_test_flow_functions_8cpp_source_1l00029">29</link> of file <link linkend="_test_flow_functions_8cpp_source">testFlowFunctions.cpp</link>.</para>
 </section>
 <anchor xml:id="_test_flow_functions_8cpp_1a9451df0dac964b257bedb5e60547824e"/><section>
     <title>vertex_iterator</title>
 <indexterm><primary>vertex_iterator</primary><secondary>testFlowFunctions.cpp</secondary></indexterm>
 <indexterm><primary>testFlowFunctions.cpp</primary><secondary>vertex_iterator</secondary></indexterm>
-<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">vertex_iterator</link></computeroutput></para><para>
+<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_test_flow_functions_8cpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_test_flow_functions_8cpp_1a9451df0dac964b257bedb5e60547824e">vertex_iterator</link></computeroutput></para><para>
 Definition at line <link linkend="_test_flow_functions_8cpp_source_1l00031">31</link> of file <link linkend="_test_flow_functions_8cpp_source">testFlowFunctions.cpp</link>.</para>
 </section>
 </section>
@@ -74,11 +74,11 @@ Definition at line <link linkend="_test_flow_functions_8cpp_source_1l00051">51</
 00055 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;expectedTotalVertices;
 00056 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;boostCallTotalVertices;
 00057 
-00058 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+00058 &#32;&#32;&#32;&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
 00059 &#32;&#32;&#32;&#32;
 00060 &#32;&#32;&#32;&#32;
 00061 
-00062 &#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;<link linkend="_create_graph_8hpp_1aabb013bb6de93b1ca2ff83e1d7d200c7">createLatticeGraph</link>(numRows,&#32;numCols);
+00062 &#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;<link linkend="_graph_constructions_8hpp_1a74f9014929a19ec558c3bc766754f1c3">createLatticeGraph</link>(numRows,&#32;numCols);
 00063 &#32;&#32;&#32;&#32;expectedTotalVertices&#32;=&#32;numRows*numCols;
 00064 &#32;&#32;&#32;&#32;boostCallTotalVertices&#32;=&#32;boost::num_vertices(latticeGraph);
 00065 

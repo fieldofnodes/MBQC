@@ -79,7 +79,7 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00077"/>00077 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
 <anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00078"/>00078 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows;
 <anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00079"/>00079 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols;
-<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
 <anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices;
 <anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;
 <anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00083"/>00083 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;
@@ -89,7 +89,7 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00087"/>00087 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
 <anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;numRows&#32;=&#32;1;
 <anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;numCols&#32;=&#32;numberCols;&#32;<emphasis role="comment">//&#32;Test&#32;on&#32;an&#32;odd&#32;number&#32;of&#32;qubits</emphasis>
-<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;<link linkend="_create_graph_8hpp_1aabb013bb6de93b1ca2ff83e1d7d200c7">createLatticeGraph</link>(numRows,numCols);
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;<link linkend="_graph_constructions_8hpp_1a74f9014929a19ec558c3bc766754f1c3">createLatticeGraph</link>(numRows,numCols);
 <anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);
 <anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00092"/>00092 
 <anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00093"/>00093 

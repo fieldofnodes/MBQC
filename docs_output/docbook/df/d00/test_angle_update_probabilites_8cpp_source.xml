@@ -11,187 +11,132 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00007"/>00007 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;graph&#32;repeatedly.&#32;Will&#32;branch&#32;repo&#32;to&#32;make&#32;&#32;&#32;&#32;&#32;//</emphasis>
 <anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00008"/>00008 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;use&#32;different&#32;way&#32;to&#32;create&#32;graph&#32;by&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
 <anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00009"/>00009 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;adjacency&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00011"/>00011 <emphasis role="comment"></emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00012"/>00012 <emphasis role="comment">//&#32;Standard&#32;libraries</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00013"/>00013 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00014"/>00014 <emphasis role="preprocessor">#include&#32;&lt;algorithm&gt;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00015"/>00015 <emphasis role="preprocessor">#include&#32;&lt;iterator&gt;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00016"/>00016 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00017"/>00017 <emphasis role="preprocessor">#include&#32;&lt;set&gt;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00018"/>00018 <emphasis role="preprocessor">#include&#32;&lt;numeric&gt;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00019"/>00019 <emphasis role="preprocessor">#include&#32;&lt;cmath&gt;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00020"/>00020 <emphasis role="preprocessor">#include&#32;&lt;random&gt;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00021"/>00021 <emphasis role="preprocessor">#include&#32;&lt;filesystem&gt;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00022"/>00022 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00023"/>00023 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00024"/>00024 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00025"/>00025 <emphasis role="comment">//&#32;QuEST</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00026"/>00026 <emphasis role="preprocessor">#include&#32;&lt;QuEST.h&gt;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00027"/>00027 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00028"/>00028 <emphasis role="comment">//&#32;Boost</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00029"/>00029 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/adjacency_list.hpp&gt;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/grid_graph.hpp&gt;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00031"/>00031 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/graphviz.hpp&gt;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&lt;boost/array.hpp&gt;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00033"/>00033 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/graph_utility.hpp&gt;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#include&#32;&lt;boost/container/vector.hpp&gt;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00035"/>00035 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00036"/>00036 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00037"/>00037 <emphasis role="comment">//&#32;Helper&#32;functions</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp&quot;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00039"/>00039 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp&quot;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00040"/>00040 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00041"/>00041 <emphasis role="comment">//&#32;Graph&#32;functions</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp&quot;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp&quot;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00044"/>00044 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00045"/>00045 <emphasis role="comment">//&#32;Quantum&#32;functions</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/flowMeasurements.hpp&quot;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/angleConstruction.hpp&quot;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/quantumGraphClusterStates.hpp&quot;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00049"/>00049 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00050"/>00050 <emphasis role="comment">//&#32;Assert&#32;functions</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/generalAssertFunctions.hpp&quot;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp&quot;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00053"/>00053 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00054"/>00054 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00055"/>00055 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00056"/>00056 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00057"/>00057 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00058"/>00058 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>boost;
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00059"/><link linkend="_test_angle_update_probabilites_8cpp_1af845bf432b56cdda82dbde8011882168">00059</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::adjacency_list&lt;boost::vecS,&#32;boost::vecS,boost::undirectedS&gt;&#32;<link linkend="_test_angle_update_probabilites_8cpp_1af845bf432b56cdda82dbde8011882168">undirectedGraph</link>;
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00060"/><link linkend="_test_angle_update_probabilites_8cpp_1ad413424ad598fbd91fde4dffeceda3c0">00060</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::edge_iterator&#32;<link linkend="_test_angle_update_probabilites_8cpp_1ad413424ad598fbd91fde4dffeceda3c0">edgeIterator</link>;
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00061"/><link linkend="_test_angle_update_probabilites_8cpp_1ad100606fc4950dfc094fc60544838351">00061</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::vertex_iterator&#32;<link linkend="_test_angle_update_probabilites_8cpp_1ad100606fc4950dfc094fc60544838351">vertexIterator</link>;
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00062"/>00062 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00063"/>00063 &#32;
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00064"/><link linkend="_test_angle_update_probabilites_8cpp_1a3239399f882d9ea643c7862d70807d5c">00064</link> &#32;std::vector&lt;qreal&gt;&#32;<link linkend="_test_angle_update_probabilites_8cpp_1a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</link>(Qureg&#32;qureg,<emphasis role="keywordtype">int</emphasis>&#32;qubit){
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00065"/>00065 &#32;&#32;&#32;&#32;qreal&#32;prob_0&#32;=&#32;calcProbOfOutcome(qureg,0,0);
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00066"/>00066 &#32;&#32;&#32;&#32;qreal&#32;prob_1&#32;=&#32;calcProbOfOutcome(qureg,0,1);
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00067"/>00067 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;{prob_0,prob_1};
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00068"/>00068 &#32;}
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00070"/>00070 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00011"/>00011 <emphasis role="comment"></emphasis><emphasis role="comment">//&#32;Include&#32;package&#32;header&#32;file</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00012"/>00012 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_packages_8hpp">packages.hpp</link>&quot;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00013"/>00013 &#32;
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00014"/>00014 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00016"/>00016 
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00017"/>00017 
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00018"/>00018 
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00019"/><link linkend="_test_angle_update_probabilites_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00019</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_test_angle_update_probabilites_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>(){
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00020"/>00020 
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00021"/>00021 
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00024"/>00024 &#32;&#32;
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(1,&#32;env);
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubit&#32;=&#32;0;
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Probability&#32;outcomes&#32;single&#32;qubit:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;&#32;
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Initialised&#32;at&#32;0:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;&#32;
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;init_probs&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</link>(qureg,qubit);
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00031"/>00031 
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(init_probs);
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00033"/>00033 
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Pauli&#32;X&#32;gate&#32;applied:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;pauliX(qureg,0);
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;init_probs_gate&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</link>(qureg,qubit);
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(init_probs_gate);
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00039"/>00039 
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Pauli&#32;X&#32;gate&#32;applied:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;pauliX(qureg,0);
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00042"/>00042 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;init_probs_gate_1&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</link>(qureg,qubit);
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(init_probs_gate_1);
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00045"/>00045 
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00047"/>00047 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00048"/>00048 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;Apply&#32;Hadamard&#32;and&#32;test&#32;probability</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00049"/>00049 <emphasis role="comment">&#32;&#32;&#32;&#32;hadamard(qureg,0);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00050"/>00050 <emphasis role="comment">&#32;&#32;&#32;&#32;hadamard(qureg,1);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00051"/>00051 <emphasis role="comment">&#32;&#32;&#32;&#32;hadamard(qureg,2);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00052"/>00052 <emphasis role="comment">&#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,0,1);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00053"/>00053 <emphasis role="comment">&#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,1,2);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00054"/>00054 <emphasis role="comment">&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00055"/>00055 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00056"/>00056 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00057"/>00057 <emphasis role="comment">&#32;&#32;&#32;&#32;qreal&#32;prob_0&#32;=&#32;calcProbOfOutcome(qureg,0,0);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00058"/>00058 <emphasis role="comment">&#32;&#32;&#32;&#32;qreal&#32;prob_1&#32;=&#32;calcProbOfOutcome(qureg,1,0);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00059"/>00059 <emphasis role="comment">&#32;&#32;&#32;&#32;qreal&#32;prob_2&#32;=&#32;calcProbOfOutcome(qureg,2,0);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00060"/>00060 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Probability&#32;0:&#32;&quot;&#32;&lt;&lt;&#32;prob_0&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00061"/>00061 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Probability&#32;1:&#32;&quot;&#32;&lt;&lt;&#32;prob_1&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00062"/>00062 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Probability&#32;2:&#32;&quot;&#32;&lt;&lt;&#32;prob_2&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00063"/>00063 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00064"/>00064 <emphasis role="comment">&#32;&#32;&#32;&#32;qreal&#32;tp&#32;=&#32;calcTotalProb(qureg);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00065"/>00065 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Total&#32;Probability&#32;qureg:&#32;&quot;&#32;&lt;&lt;&#32;tp&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00066"/>00066 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00067"/>00067 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00068"/>00068 <emphasis role="comment">&#32;&#32;&#32;&#32;int&#32;m1&#32;=&#32;measure(qureg,0);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00069"/>00069 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00070"/>00070 <emphasis role="comment">*/</emphasis>
 <anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00071"/>00071 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00072"/>00072 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00073"/>00073 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00074"/><link linkend="_test_angle_update_probabilites_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00074</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_test_angle_update_probabilites_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>(){
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00072"/>00072 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00073"/>00073 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00074"/>00074 
 <anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00075"/>00075 
 <anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00076"/>00076 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00077"/>00077 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00078"/>00078 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00079"/>00079 &#32;&#32;
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(1,&#32;env);
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubit&#32;=&#32;0;
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00083"/>00083 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Probability&#32;outcomes&#32;single&#32;qubit:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;&#32;
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00084"/>00084 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Initialised&#32;at&#32;0:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;&#32;
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00085"/>00085 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;init_probs&#32;=&#32;<link linkend="_test_angle_update_probabilites_8cpp_1a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</link>(qureg,qubit);
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00086"/>00086 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00087"/>00087 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(init_probs);
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00088"/>00088 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Pauli&#32;X&#32;gate&#32;applied:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;pauliX(qureg,0);
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00092"/>00092 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;init_probs_gate&#32;=&#32;<link linkend="_test_angle_update_probabilites_8cpp_1a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</link>(qureg,qubit);
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(init_probs_gate);
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00094"/>00094 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Pauli&#32;X&#32;gate&#32;applied:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00096"/>00096 &#32;&#32;&#32;&#32;pauliX(qureg,0);
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00097"/>00097 &#32;&#32;&#32;&#32;
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;init_probs_gate_1&#32;=&#32;<link linkend="_test_angle_update_probabilites_8cpp_1a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</link>(qureg,qubit);
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00099"/>00099 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(init_probs_gate_1);
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00100"/>00100 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00101"/>00101 &#32;&#32;&#32;&#32;<emphasis role="comment">/*</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00102"/>00102 <emphasis role="comment"></emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00103"/>00103 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;Apply&#32;Hadamard&#32;and&#32;test&#32;probability</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00104"/>00104 <emphasis role="comment">&#32;&#32;&#32;&#32;hadamard(qureg,0);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00105"/>00105 <emphasis role="comment">&#32;&#32;&#32;&#32;hadamard(qureg,1);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00106"/>00106 <emphasis role="comment">&#32;&#32;&#32;&#32;hadamard(qureg,2);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00107"/>00107 <emphasis role="comment">&#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,0,1);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00108"/>00108 <emphasis role="comment">&#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,1,2);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00109"/>00109 <emphasis role="comment">&#32;&#32;&#32;&#32;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00110"/>00110 <emphasis role="comment"></emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00111"/>00111 <emphasis role="comment"></emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00112"/>00112 <emphasis role="comment">&#32;&#32;&#32;&#32;qreal&#32;prob_0&#32;=&#32;calcProbOfOutcome(qureg,0,0);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00113"/>00113 <emphasis role="comment">&#32;&#32;&#32;&#32;qreal&#32;prob_1&#32;=&#32;calcProbOfOutcome(qureg,1,0);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00114"/>00114 <emphasis role="comment">&#32;&#32;&#32;&#32;qreal&#32;prob_2&#32;=&#32;calcProbOfOutcome(qureg,2,0);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00115"/>00115 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Probability&#32;0:&#32;&quot;&#32;&lt;&lt;&#32;prob_0&#32;&lt;&lt;&#32;std::endl;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00116"/>00116 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Probability&#32;1:&#32;&quot;&#32;&lt;&lt;&#32;prob_1&#32;&lt;&lt;&#32;std::endl;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00117"/>00117 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Probability&#32;2:&#32;&quot;&#32;&lt;&lt;&#32;prob_2&#32;&lt;&lt;&#32;std::endl;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00118"/>00118 <emphasis role="comment"></emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00119"/>00119 <emphasis role="comment">&#32;&#32;&#32;&#32;qreal&#32;tp&#32;=&#32;calcTotalProb(qureg);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00120"/>00120 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Total&#32;Probability&#32;qureg:&#32;&quot;&#32;&lt;&lt;&#32;tp&#32;&lt;&lt;&#32;std::endl;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00121"/>00121 <emphasis role="comment"></emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00122"/>00122 <emphasis role="comment"></emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00123"/>00123 <emphasis role="comment">&#32;&#32;&#32;&#32;int&#32;m1&#32;=&#32;measure(qureg,0);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00124"/>00124 <emphasis role="comment"></emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00125"/>00125 <emphasis role="comment">*/</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00126"/>00126 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00128"/>00128 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00129"/>00129 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00130"/>00130 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00131"/>00131 
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00132"/>00132 <emphasis role="comment">/*</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00133"/>00133 <emphasis role="comment">&#32;&#32;//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00134"/>00134 <emphasis role="comment">&#32;&#32;int&#32;numRows;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00135"/>00135 <emphasis role="comment">&#32;&#32;int&#32;numCols;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00136"/>00136 <emphasis role="comment">&#32;&#32;undirectedGraph&#32;latticeGraph;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00137"/>00137 <emphasis role="comment">&#32;&#32;int&#32;numVertices;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00138"/>00138 <emphasis role="comment">&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00139"/>00139 <emphasis role="comment">&#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00140"/>00140 <emphasis role="comment">&#32;&#32;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00141"/>00141 <emphasis role="comment">&#32;&#32;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00142"/>00142 <emphasis role="comment">&#32;&#32;//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00143"/>00143 <emphasis role="comment">&#32;&#32;numRows&#32;=&#32;1;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00144"/>00144 <emphasis role="comment">&#32;&#32;numCols&#32;=&#32;2;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00145"/>00145 <emphasis role="comment">&#32;&#32;latticeGraph&#32;=&#32;createLatticeGraph(numRows,numCols);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00146"/>00146 <emphasis role="comment">&#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00147"/>00147 <emphasis role="comment">&#32;&#32;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00148"/>00148 <emphasis role="comment">&#32;&#32;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00149"/>00149 <emphasis role="comment">&#32;&#32;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00150"/>00150 <emphasis role="comment">&#32;&#32;//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00151"/>00151 <emphasis role="comment">&#32;&#32;//&#32;Update&#32;with&#32;desired&#32;directory&#32;to&#32;view&#32;graph.</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00152"/>00152 <emphasis role="comment">&#32;&#32;std::string&#32;fileDir&#32;=&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00153"/>00153 <emphasis role="comment">&#32;&#32;std::string&#32;graphName&#32;=&#32;&quot;twoQubitGraph&quot;;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00154"/>00154 <emphasis role="comment">&#32;&#32;std::string&#32;format&#32;=&#32;&quot;png&quot;;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00155"/>00155 <emphasis role="comment">&#32;&#32;printGraphToFile(latticeGraph,fileDir,graphName,format);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00156"/>00156 <emphasis role="comment"></emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00157"/>00157 <emphasis role="comment">&#32;&#32;//&#32;load&#32;QuEST&#32;environment</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00158"/>00158 <emphasis role="comment">&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00159"/>00159 <emphasis role="comment">&#32;&#32;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00160"/>00160 <emphasis role="comment">&#32;&#32;//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00161"/>00161 <emphasis role="comment">&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numVertices,&#32;env);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00162"/>00162 <emphasis role="comment">&#32;&#32;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00163"/>00163 <emphasis role="comment">&#32;&#32;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00164"/>00164 <emphasis role="comment">&#32;&#32;//qubitAngles&#32;=&#32;initRandomPiOnNAnglesMod2kPi(numVertices,&#32;4);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00165"/>00165 <emphasis role="comment">&#32;&#32;qubitAngles&#32;=&#32;initAllAnglesSame(numVertices,&#32;0);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00166"/>00166 <emphasis role="comment">&#32;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00167"/>00167 <emphasis role="comment"></emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00168"/>00168 <emphasis role="comment">&#32;&#32;//&#32;initialise&#32;in&#32;the&#32;plus&#32;state</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00169"/>00169 <emphasis role="comment">&#32;&#32;initPlusState(qureg);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00170"/>00170 <emphasis role="comment"></emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00171"/>00171 <emphasis role="comment">&#32;&#32;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00172"/>00172 <emphasis role="comment">&#32;&#32;//&#32;entangle&#32;graph</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00173"/>00173 <emphasis role="comment">&#32;&#32;entangleGraph(qureg,latticeGraph);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00174"/>00174 <emphasis role="comment"></emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00175"/>00175 <emphasis role="comment"></emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00176"/>00176 <emphasis role="comment">&#32;&#32;//&#32;measure&#32;graph</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00177"/>00177 <emphasis role="comment">&#32;&#32;measuredQubitsOutcomes&#32;=&#32;measureGraph(</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00178"/>00178 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qureg,</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00179"/>00179 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;latticeGraph,</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00180"/>00180 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles,</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00181"/>00181 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numRows);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00182"/>00182 <emphasis role="comment"></emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00183"/>00183 <emphasis role="comment">&#32;&#32;&#32;&#32;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00184"/>00184 <emphasis role="comment">&#32;&#32;//&#32;print&#32;results&#32;to&#32;screen</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00185"/>00185 <emphasis role="comment">&#32;&#32;printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00186"/>00186 <emphasis role="comment"></emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00187"/>00187 <emphasis role="comment"></emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00188"/>00188 <emphasis role="comment">&#32;&#32;//&#32;unload&#32;QuEST</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00189"/>00189 <emphasis role="comment">&#32;&#32;destroyQureg(qureg,&#32;env);&#32;</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00190"/>00190 <emphasis role="comment">&#32;&#32;destroyQuESTEnv(env);</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00191"/>00191 <emphasis role="comment">&#32;&#32;*/</emphasis>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00192"/>00192 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
-<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00193"/>00193 }
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00077"/>00077 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00078"/>00078 <emphasis role="comment">&#32;&#32;//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00079"/>00079 <emphasis role="comment">&#32;&#32;int&#32;numRows;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00080"/>00080 <emphasis role="comment">&#32;&#32;int&#32;numCols;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00081"/>00081 <emphasis role="comment">&#32;&#32;undirectedGraph&#32;latticeGraph;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00082"/>00082 <emphasis role="comment">&#32;&#32;int&#32;numVertices;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00083"/>00083 <emphasis role="comment">&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00084"/>00084 <emphasis role="comment">&#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00085"/>00085 <emphasis role="comment">&#32;&#32;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00086"/>00086 <emphasis role="comment">&#32;&#32;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00087"/>00087 <emphasis role="comment">&#32;&#32;//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00088"/>00088 <emphasis role="comment">&#32;&#32;numRows&#32;=&#32;1;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00089"/>00089 <emphasis role="comment">&#32;&#32;numCols&#32;=&#32;2;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00090"/>00090 <emphasis role="comment">&#32;&#32;latticeGraph&#32;=&#32;createLatticeGraph(numRows,numCols);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00091"/>00091 <emphasis role="comment">&#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00092"/>00092 <emphasis role="comment">&#32;&#32;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00093"/>00093 <emphasis role="comment">&#32;&#32;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00094"/>00094 <emphasis role="comment">&#32;&#32;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00095"/>00095 <emphasis role="comment">&#32;&#32;//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00096"/>00096 <emphasis role="comment">&#32;&#32;//&#32;Update&#32;with&#32;desired&#32;directory&#32;to&#32;view&#32;graph.</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00097"/>00097 <emphasis role="comment">&#32;&#32;std::string&#32;fileDir&#32;=&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00098"/>00098 <emphasis role="comment">&#32;&#32;std::string&#32;graphName&#32;=&#32;&quot;twoQubitGraph&quot;;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00099"/>00099 <emphasis role="comment">&#32;&#32;std::string&#32;format&#32;=&#32;&quot;png&quot;;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00100"/>00100 <emphasis role="comment">&#32;&#32;printGraphToFile(latticeGraph,fileDir,graphName,format);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00101"/>00101 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00102"/>00102 <emphasis role="comment">&#32;&#32;//&#32;load&#32;QuEST&#32;environment</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00103"/>00103 <emphasis role="comment">&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00104"/>00104 <emphasis role="comment">&#32;&#32;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00105"/>00105 <emphasis role="comment">&#32;&#32;//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00106"/>00106 <emphasis role="comment">&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numVertices,&#32;env);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00107"/>00107 <emphasis role="comment">&#32;&#32;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00108"/>00108 <emphasis role="comment">&#32;&#32;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00109"/>00109 <emphasis role="comment">&#32;&#32;//qubitAngles&#32;=&#32;initRandomPiOnNAnglesMod2kPi(numVertices,&#32;4);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00110"/>00110 <emphasis role="comment">&#32;&#32;qubitAngles&#32;=&#32;initAllAnglesSame(numVertices,&#32;0);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00111"/>00111 <emphasis role="comment">&#32;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00112"/>00112 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00113"/>00113 <emphasis role="comment">&#32;&#32;//&#32;initialise&#32;in&#32;the&#32;plus&#32;state</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00114"/>00114 <emphasis role="comment">&#32;&#32;initPlusState(qureg);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00115"/>00115 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00116"/>00116 <emphasis role="comment">&#32;&#32;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00117"/>00117 <emphasis role="comment">&#32;&#32;//&#32;entangle&#32;graph</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00118"/>00118 <emphasis role="comment">&#32;&#32;entangleGraph(qureg,latticeGraph);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00119"/>00119 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00120"/>00120 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00121"/>00121 <emphasis role="comment">&#32;&#32;//&#32;measure&#32;graph</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00122"/>00122 <emphasis role="comment">&#32;&#32;measuredQubitsOutcomes&#32;=&#32;measureGraph(</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00123"/>00123 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qureg,</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00124"/>00124 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;latticeGraph,</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00125"/>00125 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles,</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00126"/>00126 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numRows);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00127"/>00127 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00128"/>00128 <emphasis role="comment">&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00129"/>00129 <emphasis role="comment">&#32;&#32;//&#32;print&#32;results&#32;to&#32;screen</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00130"/>00130 <emphasis role="comment">&#32;&#32;printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00131"/>00131 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00132"/>00132 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00133"/>00133 <emphasis role="comment">&#32;&#32;//&#32;unload&#32;QuEST</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00134"/>00134 <emphasis role="comment">&#32;&#32;destroyQureg(qureg,&#32;env);&#32;</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00135"/>00135 <emphasis role="comment">&#32;&#32;destroyQuESTEnv(env);</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00136"/>00136 <emphasis role="comment">&#32;&#32;*/</emphasis>
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00137"/>00137 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_test_angle_update_probabilites_8cpp_source_1l00138"/>00138 }
 </programlisting></section>

@@ -34,8 +34,8 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_test_graph_properties_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;cols;
 <anchor xml:id="_test_graph_properties_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;totalVertices;
 <anchor xml:id="_test_graph_properties_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;
-<anchor xml:id="_test_graph_properties_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;pathGraph;
-<anchor xml:id="_test_graph_properties_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+<anchor xml:id="_test_graph_properties_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;pathGraph;
+<anchor xml:id="_test_graph_properties_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
 <anchor xml:id="_test_graph_properties_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;
 <anchor xml:id="_test_graph_properties_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;rows&#32;=&#32;10;
 <anchor xml:id="_test_graph_properties_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;cols&#32;=&#32;10;
@@ -44,8 +44,8 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_test_graph_properties_8cpp_source_1l00041"/>00041 
 <anchor xml:id="_test_graph_properties_8cpp_source_1l00042"/>00042 
 <anchor xml:id="_test_graph_properties_8cpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;
-<anchor xml:id="_test_graph_properties_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;pathGraph&#32;=&#32;<link linkend="_create_graph_8hpp_1aabb013bb6de93b1ca2ff83e1d7d200c7">createLatticeGraph</link>(1,cols);
-<anchor xml:id="_test_graph_properties_8cpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;<link linkend="_create_graph_8hpp_1aabb013bb6de93b1ca2ff83e1d7d200c7">createLatticeGraph</link>(rows,cols);
+<anchor xml:id="_test_graph_properties_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;pathGraph&#32;=&#32;<link linkend="_graph_constructions_8hpp_1a74f9014929a19ec558c3bc766754f1c3">createLatticeGraph</link>(1,cols);
+<anchor xml:id="_test_graph_properties_8cpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;<link linkend="_graph_constructions_8hpp_1a74f9014929a19ec558c3bc766754f1c3">createLatticeGraph</link>(rows,cols);
 <anchor xml:id="_test_graph_properties_8cpp_source_1l00046"/>00046 
 <anchor xml:id="_test_graph_properties_8cpp_source_1l00047"/>00047 
 <anchor xml:id="_test_graph_properties_8cpp_source_1l00048"/>00048 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Test&#32;that&#32;the&#32;total&#32;degree&#32;is&#32;equivalent&#32;to&#32;</emphasis>

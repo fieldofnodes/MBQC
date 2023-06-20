@@ -5,31 +5,31 @@
 <simplesect>
     <title>Functions    </title>
         <itemizedlist>
-            <listitem><para>void <link linkend="_graph_assert_functions_8hpp_1a60966966368ac25fe48dbccd70490e98">assertHandShakeLemma</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph)</para>
+            <listitem><para>void <link linkend="_graph_assert_functions_8hpp_1a60966966368ac25fe48dbccd70490e98">assertHandShakeLemma</link> (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph)</para>
 
 <para>Asserts the Handshake Lemma for an undirected graph. </para>
 </listitem>
-            <listitem><para>void <link linkend="_graph_assert_functions_8hpp_1a781ea29934c2f8c5c65a73075bc13da1">assertPathGraphMinMaxDegrees</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph)</para>
+            <listitem><para>void <link linkend="_graph_assert_functions_8hpp_1a781ea29934c2f8c5c65a73075bc13da1">assertPathGraphMinMaxDegrees</link> (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph)</para>
 
 <para>Asserts the minimum and maximum degrees for a path graph. </para>
 </listitem>
-            <listitem><para>void <link linkend="_graph_assert_functions_8hpp_1ab7b459ddc7c532fc5a37abb8760d7ca6">assertDegreeSetLatticeGraph</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph)</para>
+            <listitem><para>void <link linkend="_graph_assert_functions_8hpp_1ab7b459ddc7c532fc5a37abb8760d7ca6">assertDegreeSetLatticeGraph</link> (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph)</para>
 
 <para>Asserts the degree set for a lattice graph. </para>
 </listitem>
-            <listitem><para>void <link linkend="_graph_assert_functions_8hpp_1a026973ba07ba80213ede65e64a3eb614">assertGraphNumVertices</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, int numVertices)</para>
+            <listitem><para>void <link linkend="_graph_assert_functions_8hpp_1a026973ba07ba80213ede65e64a3eb614">assertGraphNumVertices</link> (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, int numVertices)</para>
 
 <para>Asserts the number of vertices in a graph. </para>
 </listitem>
-            <listitem><para>void <link linkend="_graph_assert_functions_8hpp_1a3241060bf4552dac98da626843460bb3">assertFlowFunctionsPerformExpected</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, int numRows)</para>
+            <listitem><para>void <link linkend="_graph_assert_functions_8hpp_1a3241060bf4552dac98da626843460bb3">assertFlowFunctionsPerformExpected</link> (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, int numRows)</para>
 
 <para>Asserts that flow functions perform as expected in a graph. </para>
 </listitem>
-            <listitem><para>void <link linkend="_graph_assert_functions_8hpp_1a5c3f8d6a6068b10ca7ca8f2f4515cbcd">assertNieghbours</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, std::vector&lt; std::vector&lt; int &gt; &gt; expectedNeighbourhood)</para>
+            <listitem><para>void <link linkend="_graph_assert_functions_8hpp_1a5c3f8d6a6068b10ca7ca8f2f4515cbcd">assertNieghbours</link> (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, std::vector&lt; std::vector&lt; int &gt; &gt; expectedNeighbourhood)</para>
 
 <para>Asserts that the computed neighborhood of each vertex in the graph matches the expected neighborhood. </para>
 </listitem>
-            <listitem><para>void <link linkend="_graph_assert_functions_8hpp_1a67fc70f2265e3ca43a7871939ae44a95">assertCorrection</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, std::vector&lt; int &gt; outcomeVector, int vertex, int numRows, qreal inputAngle, qreal expectedCorrectedAngle)</para>
+            <listitem><para>void <link linkend="_graph_assert_functions_8hpp_1a67fc70f2265e3ca43a7871939ae44a95">assertCorrection</link> (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, std::vector&lt; int &gt; outcomeVector, int vertex, int numRows, qreal inputAngle, qreal expectedCorrectedAngle)</para>
 
 <para>Asserts that the computed corrected angle matches the expected corrected angle. </para>
 </listitem>
@@ -41,7 +41,7 @@
     <title>assertCorrection()</title>
 <indexterm><primary>assertCorrection</primary><secondary>graphAssertFunctions.hpp</secondary></indexterm>
 <indexterm><primary>graphAssertFunctions.hpp</primary><secondary>assertCorrection</secondary></indexterm>
-<para><computeroutput>void assertCorrection (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, std::vector&lt; int &gt; outcomeVector, int vertex, int numRows, qreal inputAngle, qreal expectedCorrectedAngle)</computeroutput></para><para>
+<para><computeroutput>void assertCorrection (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, std::vector&lt; int &gt; outcomeVector, int vertex, int numRows, qreal inputAngle, qreal expectedCorrectedAngle)</computeroutput></para><para>
 
 <para>Asserts that the computed corrected angle matches the expected corrected angle. </para>
 </para>
@@ -132,7 +132,7 @@ Definition at line <link linkend="_graph_assert_functions_8hpp_source_1l00210">2
     <title>assertDegreeSetLatticeGraph()</title>
 <indexterm><primary>assertDegreeSetLatticeGraph</primary><secondary>graphAssertFunctions.hpp</secondary></indexterm>
 <indexterm><primary>graphAssertFunctions.hpp</primary><secondary>assertDegreeSetLatticeGraph</secondary></indexterm>
-<para><computeroutput>void assertDegreeSetLatticeGraph (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph)</computeroutput></para><para>
+<para><computeroutput>void assertDegreeSetLatticeGraph (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph)</computeroutput></para><para>
 
 <para>Asserts the degree set for a lattice graph. </para>
 </para>
@@ -215,7 +215,7 @@ Definition at line <link linkend="_graph_assert_functions_8hpp_source_1l00094">9
     <title>assertFlowFunctionsPerformExpected()</title>
 <indexterm><primary>assertFlowFunctionsPerformExpected</primary><secondary>graphAssertFunctions.hpp</secondary></indexterm>
 <indexterm><primary>graphAssertFunctions.hpp</primary><secondary>assertFlowFunctionsPerformExpected</secondary></indexterm>
-<para><computeroutput>void assertFlowFunctionsPerformExpected (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, int numRows)</computeroutput></para><para>
+<para><computeroutput>void assertFlowFunctionsPerformExpected (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, int numRows)</computeroutput></para><para>
 
 <para>Asserts that flow functions perform as expected in a graph. </para>
 </para>
@@ -297,7 +297,7 @@ Definition at line <link linkend="_graph_assert_functions_8hpp_source_1l00149">1
     <title>assertGraphNumVertices()</title>
 <indexterm><primary>assertGraphNumVertices</primary><secondary>graphAssertFunctions.hpp</secondary></indexterm>
 <indexterm><primary>graphAssertFunctions.hpp</primary><secondary>assertGraphNumVertices</secondary></indexterm>
-<para><computeroutput>void assertGraphNumVertices (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, int numVertices)</computeroutput></para><para>
+<para><computeroutput>void assertGraphNumVertices (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, int numVertices)</computeroutput></para><para>
 
 <para>Asserts the number of vertices in a graph. </para>
 </para>
@@ -361,7 +361,7 @@ Definition at line <link linkend="_graph_assert_functions_8hpp_source_1l00133">1
     <title>assertHandShakeLemma()</title>
 <indexterm><primary>assertHandShakeLemma</primary><secondary>graphAssertFunctions.hpp</secondary></indexterm>
 <indexterm><primary>graphAssertFunctions.hpp</primary><secondary>assertHandShakeLemma</secondary></indexterm>
-<para><computeroutput>void assertHandShakeLemma (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph)</computeroutput></para><para>
+<para><computeroutput>void assertHandShakeLemma (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph)</computeroutput></para><para>
 
 <para>Asserts the Handshake Lemma for an undirected graph. </para>
 </para>
@@ -432,7 +432,7 @@ Definition at line <link linkend="_graph_assert_functions_8hpp_source_1l00039">3
     <title>assertNieghbours()</title>
 <indexterm><primary>assertNieghbours</primary><secondary>graphAssertFunctions.hpp</secondary></indexterm>
 <indexterm><primary>graphAssertFunctions.hpp</primary><secondary>assertNieghbours</secondary></indexterm>
-<para><computeroutput>void assertNieghbours (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, std::vector&lt; std::vector&lt; int &gt; &gt; expectedNeighbourhood)</computeroutput></para><para>
+<para><computeroutput>void assertNieghbours (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, std::vector&lt; std::vector&lt; int &gt; &gt; expectedNeighbourhood)</computeroutput></para><para>
 
 <para>Asserts that the computed neighborhood of each vertex in the graph matches the expected neighborhood. </para>
 </para>
@@ -505,7 +505,7 @@ Definition at line <link linkend="_graph_assert_functions_8hpp_source_1l00181">1
     <title>assertPathGraphMinMaxDegrees()</title>
 <indexterm><primary>assertPathGraphMinMaxDegrees</primary><secondary>graphAssertFunctions.hpp</secondary></indexterm>
 <indexterm><primary>graphAssertFunctions.hpp</primary><secondary>assertPathGraphMinMaxDegrees</secondary></indexterm>
-<para><computeroutput>void assertPathGraphMinMaxDegrees (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph)</computeroutput></para><para>
+<para><computeroutput>void assertPathGraphMinMaxDegrees (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph)</computeroutput></para><para>
 
 <para>Asserts the minimum and maximum degrees for a path graph. </para>
 </para>

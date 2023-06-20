@@ -99,104 +99,19 @@ $(document).ready(function(){initNavTree('df/d00/test_angle_update_probabilites_
 
 <div class="header">
   <div class="summary">
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">testAngleUpdateProbabilites.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;algorithm&gt;</code><br />
-<code>#include &lt;iterator&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;set&gt;</code><br />
-<code>#include &lt;numeric&gt;</code><br />
-<code>#include &lt;cmath&gt;</code><br />
-<code>#include &lt;random&gt;</code><br />
-<code>#include &lt;filesystem&gt;</code><br />
-<code>#include &lt;QuEST.h&gt;</code><br />
-<code>#include &lt;boost/graph/adjacency_list.hpp&gt;</code><br />
-<code>#include &lt;boost/graph/grid_graph.hpp&gt;</code><br />
-<code>#include &lt;boost/graph/graphviz.hpp&gt;</code><br />
-<code>#include &lt;boost/array.hpp&gt;</code><br />
-<code>#include &lt;boost/graph/graph_utility.hpp&gt;</code><br />
-<code>#include &lt;boost/container/vector.hpp&gt;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp&quot;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp&quot;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp&quot;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp&quot;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/flowMeasurements.hpp&quot;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/angleConstruction.hpp&quot;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/quantumGraphClusterStates.hpp&quot;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/generalAssertFunctions.hpp&quot;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="../../de/d01/packages_8hpp_source.html">packages.hpp</a>&quot;</code><br />
 </div>
 <p><a href="../../df/d00/test_angle_update_probabilites_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:af845bf432b56cdda82dbde8011882168"><td class="memItemLeft" align="right" valign="top">typedef boost::adjacency_list&lt; boost::vecS, boost::vecS, boost::undirectedS &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d00/test_angle_update_probabilites_8cpp.html#af845bf432b56cdda82dbde8011882168">undirectedGraph</a></td></tr>
-<tr class="separator:af845bf432b56cdda82dbde8011882168"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad413424ad598fbd91fde4dffeceda3c0"><td class="memItemLeft" align="right" valign="top">typedef boost::graph_traits&lt; <a class="el" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a> &gt;<a class="el" href="../../d2/d01/create_graph_8hpp.html#af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d00/test_angle_update_probabilites_8cpp.html#ad413424ad598fbd91fde4dffeceda3c0">edgeIterator</a></td></tr>
-<tr class="separator:ad413424ad598fbd91fde4dffeceda3c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad100606fc4950dfc094fc60544838351"><td class="memItemLeft" align="right" valign="top">typedef boost::graph_traits&lt; <a class="el" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a> &gt;<a class="el" href="../../d2/d01/create_graph_8hpp.html#a9451df0dac964b257bedb5e60547824e">::vertex_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d00/test_angle_update_probabilites_8cpp.html#ad100606fc4950dfc094fc60544838351">vertexIterator</a></td></tr>
-<tr class="separator:ad100606fc4950dfc094fc60544838351"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3239399f882d9ea643c7862d70807d5c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; qreal &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d00/test_angle_update_probabilites_8cpp.html#a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</a> (Qureg qureg, int qubit)</td></tr>
-<tr class="separator:a3239399f882d9ea643c7862d70807d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d00/test_angle_update_probabilites_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="ad413424ad598fbd91fde4dffeceda3c0" name="ad413424ad598fbd91fde4dffeceda3c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad413424ad598fbd91fde4dffeceda3c0">&#9670;&#160;</a></span>edgeIterator</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef boost::graph_traits&lt;<a class="el" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>&gt;<a class="el" href="../../d2/d01/create_graph_8hpp.html#af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</a> <a class="el" href="../../de/d01/packages_8hpp.html#afccd45e2973698c37e8379f6b25a82bc">edgeIterator</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d00/test_angle_update_probabilites_8cpp_source.html#l00060">60</a> of file <a class="el" href="../../df/d00/test_angle_update_probabilites_8cpp_source.html">testAngleUpdateProbabilites.cpp</a>.</p>
-
-</div>
-</div>
-<a id="af845bf432b56cdda82dbde8011882168" name="af845bf432b56cdda82dbde8011882168"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af845bf432b56cdda82dbde8011882168">&#9670;&#160;</a></span>undirectedGraph</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef boost::adjacency_list&lt;boost::vecS, boost::vecS,boost::undirectedS&gt; <a class="el" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d00/test_angle_update_probabilites_8cpp_source.html#l00059">59</a> of file <a class="el" href="../../df/d00/test_angle_update_probabilites_8cpp_source.html">testAngleUpdateProbabilites.cpp</a>.</p>
-
-</div>
-</div>
-<a id="ad100606fc4950dfc094fc60544838351" name="ad100606fc4950dfc094fc60544838351"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad100606fc4950dfc094fc60544838351">&#9670;&#160;</a></span>vertexIterator</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef boost::graph_traits&lt;<a class="el" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>&gt;<a class="el" href="../../d2/d01/create_graph_8hpp.html#a9451df0dac964b257bedb5e60547824e">::vertex_iterator</a> <a class="el" href="../../de/d01/packages_8hpp.html#aad3f8f6369da7f36e6266fdcb1991169">vertexIterator</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d00/test_angle_update_probabilites_8cpp_source.html#l00061">61</a> of file <a class="el" href="../../df/d00/test_angle_update_probabilites_8cpp_source.html">testAngleUpdateProbabilites.cpp</a>.</p>
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ae66f6b31b5ad750f1fe042a706a4e3d4" name="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&#160;</a></span>main()</h2>
@@ -213,164 +128,129 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d00/test_angle_update_probabilites_8cpp_source.html#l00074">74</a> of file <a class="el" href="../../df/d00/test_angle_update_probabilites_8cpp_source.html">testAngleUpdateProbabilites.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   74</span>          {</div>
+<p class="definition">Definition at line <a class="el" href="../../df/d00/test_angle_update_probabilites_8cpp_source.html#l00019">19</a> of file <a class="el" href="../../df/d00/test_angle_update_probabilites_8cpp_source.html">testAngleUpdateProbabilites.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>          {</div>
+<div class="line"><span class="lineno">   20</span> </div>
+<div class="line"><span class="lineno">   21</span> </div>
+<div class="line"><span class="lineno">   22</span>    <span class="comment">// load QuEST environment</span></div>
+<div class="line"><span class="lineno">   23</span>    QuESTEnv env = createQuESTEnv();</div>
+<div class="line"><span class="lineno">   24</span>  </div>
+<div class="line"><span class="lineno">   25</span>    <span class="comment">// create a quantum register</span></div>
+<div class="line"><span class="lineno">   26</span>    Qureg qureg = createQureg(1, env);</div>
+<div class="line"><span class="lineno">   27</span>    <span class="keywordtype">int</span> qubit = 0;</div>
+<div class="line"><span class="lineno">   28</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Probability outcomes single qubit: &quot;</span> &lt;&lt; std::endl; </div>
+<div class="line"><span class="lineno">   29</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Initialised at 0: &quot;</span> &lt;&lt; std::endl; </div>
+<div class="line"><span class="lineno">   30</span>    std::vector&lt;qreal&gt; init_probs = <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</a>(qureg,qubit);</div>
+<div class="line"><span class="lineno">   31</span> </div>
+<div class="line"><span class="lineno">   32</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a721cdbc6bd980bd328255feba8168f26">printVector</a>(init_probs);</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Pauli X gate applied: &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   35</span>    pauliX(qureg,0);</div>
+<div class="line"><span class="lineno">   36</span>    </div>
+<div class="line"><span class="lineno">   37</span>    std::vector&lt;qreal&gt; init_probs_gate = <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</a>(qureg,qubit);</div>
+<div class="line"><span class="lineno">   38</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a721cdbc6bd980bd328255feba8168f26">printVector</a>(init_probs_gate);</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Pauli X gate applied: &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   41</span>    pauliX(qureg,0);</div>
+<div class="line"><span class="lineno">   42</span>    </div>
+<div class="line"><span class="lineno">   43</span>    std::vector&lt;qreal&gt; init_probs_gate_1 = <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</a>(qureg,qubit);</div>
+<div class="line"><span class="lineno">   44</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a721cdbc6bd980bd328255feba8168f26">printVector</a>(init_probs_gate_1);</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>    <span class="comment">/*</span></div>
+<div class="line"><span class="lineno">   47</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">   48</span><span class="comment">    // Apply Hadamard and test probability</span></div>
+<div class="line"><span class="lineno">   49</span><span class="comment">    hadamard(qureg,0);</span></div>
+<div class="line"><span class="lineno">   50</span><span class="comment">    hadamard(qureg,1);</span></div>
+<div class="line"><span class="lineno">   51</span><span class="comment">    hadamard(qureg,2);</span></div>
+<div class="line"><span class="lineno">   52</span><span class="comment">    controlledPhaseFlip(qureg,0,1);</span></div>
+<div class="line"><span class="lineno">   53</span><span class="comment">    controlledPhaseFlip(qureg,1,2);</span></div>
+<div class="line"><span class="lineno">   54</span><span class="comment">    </span></div>
+<div class="line"><span class="lineno">   55</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">   56</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">   57</span><span class="comment">    qreal prob_0 = calcProbOfOutcome(qureg,0,0);</span></div>
+<div class="line"><span class="lineno">   58</span><span class="comment">    qreal prob_1 = calcProbOfOutcome(qureg,1,0);</span></div>
+<div class="line"><span class="lineno">   59</span><span class="comment">    qreal prob_2 = calcProbOfOutcome(qureg,2,0);</span></div>
+<div class="line"><span class="lineno">   60</span><span class="comment">    std::cout &lt;&lt; &quot;Probability 0: &quot; &lt;&lt; prob_0 &lt;&lt; std::endl;</span></div>
+<div class="line"><span class="lineno">   61</span><span class="comment">    std::cout &lt;&lt; &quot;Probability 1: &quot; &lt;&lt; prob_1 &lt;&lt; std::endl;</span></div>
+<div class="line"><span class="lineno">   62</span><span class="comment">    std::cout &lt;&lt; &quot;Probability 2: &quot; &lt;&lt; prob_2 &lt;&lt; std::endl;</span></div>
+<div class="line"><span class="lineno">   63</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">   64</span><span class="comment">    qreal tp = calcTotalProb(qureg);</span></div>
+<div class="line"><span class="lineno">   65</span><span class="comment">    std::cout &lt;&lt; &quot;Total Probability qureg: &quot; &lt;&lt; tp &lt;&lt; std::endl;</span></div>
+<div class="line"><span class="lineno">   66</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">   67</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">   68</span><span class="comment">    int m1 = measure(qureg,0);</span></div>
+<div class="line"><span class="lineno">   69</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">   70</span><span class="comment">*/</span></div>
+<div class="line"><span class="lineno">   71</span> </div>
+<div class="line"><span class="lineno">   72</span>    destroyQureg(qureg, env); </div>
+<div class="line"><span class="lineno">   73</span>    destroyQuESTEnv(env);</div>
+<div class="line"><span class="lineno">   74</span> </div>
 <div class="line"><span class="lineno">   75</span> </div>
 <div class="line"><span class="lineno">   76</span> </div>
-<div class="line"><span class="lineno">   77</span>    <span class="comment">// load QuEST environment</span></div>
-<div class="line"><span class="lineno">   78</span>    QuESTEnv env = createQuESTEnv();</div>
-<div class="line"><span class="lineno">   79</span>  </div>
-<div class="line"><span class="lineno">   80</span>    <span class="comment">// create a quantum register</span></div>
-<div class="line"><span class="lineno">   81</span>    Qureg qureg = createQureg(1, env);</div>
-<div class="line"><span class="lineno">   82</span>    <span class="keywordtype">int</span> qubit = 0;</div>
-<div class="line"><span class="lineno">   83</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Probability outcomes single qubit: &quot;</span> &lt;&lt; std::endl; </div>
-<div class="line"><span class="lineno">   84</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Initialised at 0: &quot;</span> &lt;&lt; std::endl; </div>
-<div class="line"><span class="lineno">   85</span>    std::vector&lt;qreal&gt; init_probs = <a class="code hl_function" href="../../df/d00/test_angle_update_probabilites_8cpp.html#a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</a>(qureg,qubit);</div>
-<div class="line"><span class="lineno">   86</span> </div>
-<div class="line"><span class="lineno">   87</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a721cdbc6bd980bd328255feba8168f26">printVector</a>(init_probs);</div>
-<div class="line"><span class="lineno">   88</span> </div>
-<div class="line"><span class="lineno">   89</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Pauli X gate applied: &quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   90</span>    pauliX(qureg,0);</div>
-<div class="line"><span class="lineno">   91</span>    </div>
-<div class="line"><span class="lineno">   92</span>    std::vector&lt;qreal&gt; init_probs_gate = <a class="code hl_function" href="../../df/d00/test_angle_update_probabilites_8cpp.html#a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</a>(qureg,qubit);</div>
-<div class="line"><span class="lineno">   93</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a721cdbc6bd980bd328255feba8168f26">printVector</a>(init_probs_gate);</div>
-<div class="line"><span class="lineno">   94</span> </div>
-<div class="line"><span class="lineno">   95</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;Pauli X gate applied: &quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   96</span>    pauliX(qureg,0);</div>
-<div class="line"><span class="lineno">   97</span>    </div>
-<div class="line"><span class="lineno">   98</span>    std::vector&lt;qreal&gt; init_probs_gate_1 = <a class="code hl_function" href="../../df/d00/test_angle_update_probabilites_8cpp.html#a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</a>(qureg,qubit);</div>
-<div class="line"><span class="lineno">   99</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a721cdbc6bd980bd328255feba8168f26">printVector</a>(init_probs_gate_1);</div>
-<div class="line"><span class="lineno">  100</span> </div>
-<div class="line"><span class="lineno">  101</span>    <span class="comment">/*</span></div>
-<div class="line"><span class="lineno">  102</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  103</span><span class="comment">    // Apply Hadamard and test probability</span></div>
-<div class="line"><span class="lineno">  104</span><span class="comment">    hadamard(qureg,0);</span></div>
-<div class="line"><span class="lineno">  105</span><span class="comment">    hadamard(qureg,1);</span></div>
-<div class="line"><span class="lineno">  106</span><span class="comment">    hadamard(qureg,2);</span></div>
-<div class="line"><span class="lineno">  107</span><span class="comment">    controlledPhaseFlip(qureg,0,1);</span></div>
-<div class="line"><span class="lineno">  108</span><span class="comment">    controlledPhaseFlip(qureg,1,2);</span></div>
-<div class="line"><span class="lineno">  109</span><span class="comment">    </span></div>
-<div class="line"><span class="lineno">  110</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  111</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  112</span><span class="comment">    qreal prob_0 = calcProbOfOutcome(qureg,0,0);</span></div>
-<div class="line"><span class="lineno">  113</span><span class="comment">    qreal prob_1 = calcProbOfOutcome(qureg,1,0);</span></div>
-<div class="line"><span class="lineno">  114</span><span class="comment">    qreal prob_2 = calcProbOfOutcome(qureg,2,0);</span></div>
-<div class="line"><span class="lineno">  115</span><span class="comment">    std::cout &lt;&lt; &quot;Probability 0: &quot; &lt;&lt; prob_0 &lt;&lt; std::endl;</span></div>
-<div class="line"><span class="lineno">  116</span><span class="comment">    std::cout &lt;&lt; &quot;Probability 1: &quot; &lt;&lt; prob_1 &lt;&lt; std::endl;</span></div>
-<div class="line"><span class="lineno">  117</span><span class="comment">    std::cout &lt;&lt; &quot;Probability 2: &quot; &lt;&lt; prob_2 &lt;&lt; std::endl;</span></div>
-<div class="line"><span class="lineno">  118</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  119</span><span class="comment">    qreal tp = calcTotalProb(qureg);</span></div>
-<div class="line"><span class="lineno">  120</span><span class="comment">    std::cout &lt;&lt; &quot;Total Probability qureg: &quot; &lt;&lt; tp &lt;&lt; std::endl;</span></div>
-<div class="line"><span class="lineno">  121</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  122</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  123</span><span class="comment">    int m1 = measure(qureg,0);</span></div>
-<div class="line"><span class="lineno">  124</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  125</span><span class="comment">*/</span></div>
-<div class="line"><span class="lineno">  126</span> </div>
-<div class="line"><span class="lineno">  127</span>    destroyQureg(qureg, env); </div>
-<div class="line"><span class="lineno">  128</span>    destroyQuESTEnv(env);</div>
-<div class="line"><span class="lineno">  129</span> </div>
-<div class="line"><span class="lineno">  130</span> </div>
-<div class="line"><span class="lineno">  131</span> </div>
-<div class="line"><span class="lineno">  132</span><span class="comment">/*</span></div>
-<div class="line"><span class="lineno">  133</span><span class="comment">  // Initialise variable names and types</span></div>
-<div class="line"><span class="lineno">  134</span><span class="comment">  int numRows;</span></div>
-<div class="line"><span class="lineno">  135</span><span class="comment">  int numCols;</span></div>
-<div class="line"><span class="lineno">  136</span><span class="comment">  undirectedGraph latticeGraph;</span></div>
-<div class="line"><span class="lineno">  137</span><span class="comment">  int numVertices;</span></div>
-<div class="line"><span class="lineno">  138</span><span class="comment">  std::vector&lt;qreal&gt; qubitAngles;</span></div>
-<div class="line"><span class="lineno">  139</span><span class="comment">  std::vector&lt;int&gt; measuredQubitsOutcomes;</span></div>
-<div class="line"><span class="lineno">  140</span><span class="comment">  </span></div>
-<div class="line"><span class="lineno">  141</span><span class="comment">  </span></div>
-<div class="line"><span class="lineno">  142</span><span class="comment">  // Set values to variables</span></div>
-<div class="line"><span class="lineno">  143</span><span class="comment">  numRows = 1;</span></div>
-<div class="line"><span class="lineno">  144</span><span class="comment">  numCols = 2;</span></div>
-<div class="line"><span class="lineno">  145</span><span class="comment">  latticeGraph = createLatticeGraph(numRows,numCols);</span></div>
-<div class="line"><span class="lineno">  146</span><span class="comment">  numVertices = boost::num_vertices(latticeGraph);</span></div>
-<div class="line"><span class="lineno">  147</span><span class="comment">  </span></div>
-<div class="line"><span class="lineno">  148</span><span class="comment">  </span></div>
-<div class="line"><span class="lineno">  149</span><span class="comment">  </span></div>
-<div class="line"><span class="lineno">  150</span><span class="comment">  // Print graph to file</span></div>
-<div class="line"><span class="lineno">  151</span><span class="comment">  // Update with desired directory to view graph.</span></div>
-<div class="line"><span class="lineno">  152</span><span class="comment">  std::string fileDir = &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;;</span></div>
-<div class="line"><span class="lineno">  153</span><span class="comment">  std::string graphName = &quot;twoQubitGraph&quot;;</span></div>
-<div class="line"><span class="lineno">  154</span><span class="comment">  std::string format = &quot;png&quot;;</span></div>
-<div class="line"><span class="lineno">  155</span><span class="comment">  printGraphToFile(latticeGraph,fileDir,graphName,format);</span></div>
-<div class="line"><span class="lineno">  156</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  157</span><span class="comment">  // load QuEST environment</span></div>
-<div class="line"><span class="lineno">  158</span><span class="comment">  QuESTEnv env = createQuESTEnv();</span></div>
-<div class="line"><span class="lineno">  159</span><span class="comment">  </span></div>
-<div class="line"><span class="lineno">  160</span><span class="comment">  // create a quantum register</span></div>
-<div class="line"><span class="lineno">  161</span><span class="comment">  Qureg qureg = createQureg(numVertices, env);</span></div>
-<div class="line"><span class="lineno">  162</span><span class="comment">  </span></div>
-<div class="line"><span class="lineno">  163</span><span class="comment">  </span></div>
-<div class="line"><span class="lineno">  164</span><span class="comment">  //qubitAngles = initRandomPiOnNAnglesMod2kPi(numVertices, 4);</span></div>
-<div class="line"><span class="lineno">  165</span><span class="comment">  qubitAngles = initAllAnglesSame(numVertices, 0);</span></div>
-<div class="line"><span class="lineno">  166</span><span class="comment"> </span></div>
-<div class="line"><span class="lineno">  167</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  168</span><span class="comment">  // initialise in the plus state</span></div>
-<div class="line"><span class="lineno">  169</span><span class="comment">  initPlusState(qureg);</span></div>
-<div class="line"><span class="lineno">  170</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  171</span><span class="comment">  </span></div>
-<div class="line"><span class="lineno">  172</span><span class="comment">  // entangle graph</span></div>
-<div class="line"><span class="lineno">  173</span><span class="comment">  entangleGraph(qureg,latticeGraph);</span></div>
-<div class="line"><span class="lineno">  174</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  175</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  176</span><span class="comment">  // measure graph</span></div>
-<div class="line"><span class="lineno">  177</span><span class="comment">  measuredQubitsOutcomes = measureGraph(</span></div>
-<div class="line"><span class="lineno">  178</span><span class="comment">        qureg,</span></div>
-<div class="line"><span class="lineno">  179</span><span class="comment">        latticeGraph,</span></div>
-<div class="line"><span class="lineno">  180</span><span class="comment">        qubitAngles,</span></div>
-<div class="line"><span class="lineno">  181</span><span class="comment">        numRows);</span></div>
-<div class="line"><span class="lineno">  182</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  183</span><span class="comment">    </span></div>
-<div class="line"><span class="lineno">  184</span><span class="comment">  // print results to screen</span></div>
-<div class="line"><span class="lineno">  185</span><span class="comment">  printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);</span></div>
-<div class="line"><span class="lineno">  186</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  187</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  188</span><span class="comment">  // unload QuEST</span></div>
-<div class="line"><span class="lineno">  189</span><span class="comment">  destroyQureg(qureg, env); </span></div>
-<div class="line"><span class="lineno">  190</span><span class="comment">  destroyQuESTEnv(env);</span></div>
-<div class="line"><span class="lineno">  191</span><span class="comment">  */</span></div>
-<div class="line"><span class="lineno">  192</span>  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  193</span>}</div>
-<div class="ttc" id="ageneral_helper_functions_8hpp_html_a721cdbc6bd980bd328255feba8168f26"><div class="ttname"><a href="../../d8/d01/general_helper_functions_8hpp.html#a721cdbc6bd980bd328255feba8168f26">printVector</a></div><div class="ttdeci">void printVector(const std::vector&lt; T &gt; &amp;vec)</div><div class="ttdoc">Prints the elements of a vector.</div><div class="ttdef"><b>Definition</b> <a href="../../d8/d01/general_helper_functions_8hpp_source.html#l00182">generalHelperFunctions.hpp:182</a></div></div>
-<div class="ttc" id="atest_angle_update_probabilites_8cpp_html_a3239399f882d9ea643c7862d70807d5c"><div class="ttname"><a href="../../df/d00/test_angle_update_probabilites_8cpp.html#a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</a></div><div class="ttdeci">std::vector&lt; qreal &gt; outcomeProbabilitiesSingleQubit(Qureg qureg, int qubit)</div><div class="ttdef"><b>Definition</b> <a href="../../df/d00/test_angle_update_probabilites_8cpp_source.html#l00064">testAngleUpdateProbabilites.cpp:64</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a3239399f882d9ea643c7862d70807d5c" name="a3239399f882d9ea643c7862d70807d5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3239399f882d9ea643c7862d70807d5c">&#9670;&#160;</a></span>outcomeProbabilitiesSingleQubit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; qreal &gt; outcomeProbabilitiesSingleQubit </td>
-          <td>(</td>
-          <td class="paramtype">Qureg&#160;</td>
-          <td class="paramname"><em>qureg</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>qubit</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d00/test_angle_update_probabilites_8cpp_source.html#l00064">64</a> of file <a class="el" href="../../df/d00/test_angle_update_probabilites_8cpp_source.html">testAngleUpdateProbabilites.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   64</span>                                                                        {</div>
-<div class="line"><span class="lineno">   65</span>    qreal prob_0 = calcProbOfOutcome(qureg,0,0);</div>
-<div class="line"><span class="lineno">   66</span>    qreal prob_1 = calcProbOfOutcome(qureg,0,1);</div>
-<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">return</span> {prob_0,prob_1};</div>
-<div class="line"><span class="lineno">   68</span> }</div>
+<div class="line"><span class="lineno">   77</span><span class="comment">/*</span></div>
+<div class="line"><span class="lineno">   78</span><span class="comment">  // Initialise variable names and types</span></div>
+<div class="line"><span class="lineno">   79</span><span class="comment">  int numRows;</span></div>
+<div class="line"><span class="lineno">   80</span><span class="comment">  int numCols;</span></div>
+<div class="line"><span class="lineno">   81</span><span class="comment">  undirectedGraph latticeGraph;</span></div>
+<div class="line"><span class="lineno">   82</span><span class="comment">  int numVertices;</span></div>
+<div class="line"><span class="lineno">   83</span><span class="comment">  std::vector&lt;qreal&gt; qubitAngles;</span></div>
+<div class="line"><span class="lineno">   84</span><span class="comment">  std::vector&lt;int&gt; measuredQubitsOutcomes;</span></div>
+<div class="line"><span class="lineno">   85</span><span class="comment">  </span></div>
+<div class="line"><span class="lineno">   86</span><span class="comment">  </span></div>
+<div class="line"><span class="lineno">   87</span><span class="comment">  // Set values to variables</span></div>
+<div class="line"><span class="lineno">   88</span><span class="comment">  numRows = 1;</span></div>
+<div class="line"><span class="lineno">   89</span><span class="comment">  numCols = 2;</span></div>
+<div class="line"><span class="lineno">   90</span><span class="comment">  latticeGraph = createLatticeGraph(numRows,numCols);</span></div>
+<div class="line"><span class="lineno">   91</span><span class="comment">  numVertices = boost::num_vertices(latticeGraph);</span></div>
+<div class="line"><span class="lineno">   92</span><span class="comment">  </span></div>
+<div class="line"><span class="lineno">   93</span><span class="comment">  </span></div>
+<div class="line"><span class="lineno">   94</span><span class="comment">  </span></div>
+<div class="line"><span class="lineno">   95</span><span class="comment">  // Print graph to file</span></div>
+<div class="line"><span class="lineno">   96</span><span class="comment">  // Update with desired directory to view graph.</span></div>
+<div class="line"><span class="lineno">   97</span><span class="comment">  std::string fileDir = &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;;</span></div>
+<div class="line"><span class="lineno">   98</span><span class="comment">  std::string graphName = &quot;twoQubitGraph&quot;;</span></div>
+<div class="line"><span class="lineno">   99</span><span class="comment">  std::string format = &quot;png&quot;;</span></div>
+<div class="line"><span class="lineno">  100</span><span class="comment">  printGraphToFile(latticeGraph,fileDir,graphName,format);</span></div>
+<div class="line"><span class="lineno">  101</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">  102</span><span class="comment">  // load QuEST environment</span></div>
+<div class="line"><span class="lineno">  103</span><span class="comment">  QuESTEnv env = createQuESTEnv();</span></div>
+<div class="line"><span class="lineno">  104</span><span class="comment">  </span></div>
+<div class="line"><span class="lineno">  105</span><span class="comment">  // create a quantum register</span></div>
+<div class="line"><span class="lineno">  106</span><span class="comment">  Qureg qureg = createQureg(numVertices, env);</span></div>
+<div class="line"><span class="lineno">  107</span><span class="comment">  </span></div>
+<div class="line"><span class="lineno">  108</span><span class="comment">  </span></div>
+<div class="line"><span class="lineno">  109</span><span class="comment">  //qubitAngles = initRandomPiOnNAnglesMod2kPi(numVertices, 4);</span></div>
+<div class="line"><span class="lineno">  110</span><span class="comment">  qubitAngles = initAllAnglesSame(numVertices, 0);</span></div>
+<div class="line"><span class="lineno">  111</span><span class="comment"> </span></div>
+<div class="line"><span class="lineno">  112</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">  113</span><span class="comment">  // initialise in the plus state</span></div>
+<div class="line"><span class="lineno">  114</span><span class="comment">  initPlusState(qureg);</span></div>
+<div class="line"><span class="lineno">  115</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">  116</span><span class="comment">  </span></div>
+<div class="line"><span class="lineno">  117</span><span class="comment">  // entangle graph</span></div>
+<div class="line"><span class="lineno">  118</span><span class="comment">  entangleGraph(qureg,latticeGraph);</span></div>
+<div class="line"><span class="lineno">  119</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">  120</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">  121</span><span class="comment">  // measure graph</span></div>
+<div class="line"><span class="lineno">  122</span><span class="comment">  measuredQubitsOutcomes = measureGraph(</span></div>
+<div class="line"><span class="lineno">  123</span><span class="comment">        qureg,</span></div>
+<div class="line"><span class="lineno">  124</span><span class="comment">        latticeGraph,</span></div>
+<div class="line"><span class="lineno">  125</span><span class="comment">        qubitAngles,</span></div>
+<div class="line"><span class="lineno">  126</span><span class="comment">        numRows);</span></div>
+<div class="line"><span class="lineno">  127</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">  128</span><span class="comment">    </span></div>
+<div class="line"><span class="lineno">  129</span><span class="comment">  // print results to screen</span></div>
+<div class="line"><span class="lineno">  130</span><span class="comment">  printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);</span></div>
+<div class="line"><span class="lineno">  131</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">  132</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">  133</span><span class="comment">  // unload QuEST</span></div>
+<div class="line"><span class="lineno">  134</span><span class="comment">  destroyQureg(qureg, env); </span></div>
+<div class="line"><span class="lineno">  135</span><span class="comment">  destroyQuESTEnv(env);</span></div>
+<div class="line"><span class="lineno">  136</span><span class="comment">  */</span></div>
+<div class="line"><span class="lineno">  137</span>  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  138</span>}</div>
+<div class="ttc" id="ageneral_helper_functions_8hpp_html_a3239399f882d9ea643c7862d70807d5c"><div class="ttname"><a href="../../d8/d01/general_helper_functions_8hpp.html#a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</a></div><div class="ttdeci">std::vector&lt; qreal &gt; outcomeProbabilitiesSingleQubit(Qureg qureg, int qubit)</div><div class="ttdoc">Calculates the outcome probabilities of a single qubit in a quantum register.</div><div class="ttdef"><b>Definition</b> <a href="../../d8/d01/general_helper_functions_8hpp_source.html#l00124">generalHelperFunctions.hpp:124</a></div></div>
+<div class="ttc" id="ageneral_helper_functions_8hpp_html_a721cdbc6bd980bd328255feba8168f26"><div class="ttname"><a href="../../d8/d01/general_helper_functions_8hpp.html#a721cdbc6bd980bd328255feba8168f26">printVector</a></div><div class="ttdeci">void printVector(const std::vector&lt; T &gt; &amp;vec)</div><div class="ttdoc">Prints the elements of a vector.</div><div class="ttdef"><b>Definition</b> <a href="../../d8/d01/general_helper_functions_8hpp_source.html#l00195">generalHelperFunctions.hpp:195</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

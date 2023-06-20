@@ -1,2 +1,2 @@
-warning: Specified markdown mainpage 'mainpage.md' does not exist/Users/jmille15/Projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp:264: warning: argument 'qureg' from the argument list of writeStateToFile has multiple @param documentation sections
-/Users/jmille15/Projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp:264: warning: argument 'filepath' from the argument list of writeStateToFile has multiple @param documentation sections
+warning: Specified markdown mainpage 'mainpage.md' does not exist/Users/jmille15/Projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp:277: warning: argument 'qureg' from the argument list of writeStateToFile has multiple @param documentation sections
+/Users/jmille15/Projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp:277: warning: argument 'filepath' from the argument list of writeStateToFile has multiple @param documentation sections

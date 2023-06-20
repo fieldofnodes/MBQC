@@ -4,7 +4,7 @@
 <indexterm><primary>MBQC</primary></indexterm>
 
 <para><anchor xml:id="_index_1md_docs_2mainpage"/></para>
-<section xml:id="_index_1autotoc_md17">
+<section xml:id="_index_1autotoc_md1">
 <title>Measurement Based Quantum Computation (MBQC) Simulator (MBQC V0.01)</title>
 
 <para>Measurement-based quantum computation (MBQC) is an alternative computational model to the circuit-based quantum computation (CBQC) model. While many quantum computing simulators like</para>
@@ -30,16 +30,16 @@
 <para>Currently, MBQC++ offers variable sized one and two dimensional lattices.</para>
 </listitem></itemizedlist>
 </para>
-<section xml:id="_index_1autotoc_md18">
+<section xml:id="_index_1autotoc_md2">
 <title>What is MBQC</title>
 
 <para>**TODO: Some brief MBQC overview content**</para>
 </section>
-<section xml:id="_index_1autotoc_md19">
+<section xml:id="_index_1autotoc_md3">
 <title>Project status</title>
 
 <para>This project is in active development, labelled as version 0.01. There is some basic functionality in this repositors, but by no means is a complete simulator. To run this repository see below for external library requirements.</para>
-<section xml:id="_index_1autotoc_md20">
+<section xml:id="_index_1autotoc_md4">
 <title>External library requirements</title>
 
 <para>Along with the standard C/C++ libraries there are two additional external libraries. Since MBQC is a graph theoretic based paradigm, the numerical library, Boost is called and with it, its graph library. To performthe quantum computation the current backend simulator is QuEST. Each of these libraries can be found here:</para>
@@ -88,7 +88,7 @@
 </listitem></orderedlist>
 </para>
 </section>
-<section xml:id="_index_1autotoc_md21">
+<section xml:id="_index_1autotoc_md5">
 <title>Compile and execute a starter file</title>
 
 <para>To run a simple script executing a two dimensional lattice graph and measuring every qubit do the following</para>

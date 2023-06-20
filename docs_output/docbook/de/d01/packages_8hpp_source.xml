@@ -45,7 +45,7 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_packages_8hpp_source_1l00045"/>00045 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>boost;
 <anchor xml:id="_packages_8hpp_source_1l00046"/>00046 
 <anchor xml:id="_packages_8hpp_source_1l00047"/>00047 
-<anchor xml:id="_packages_8hpp_source_1l00057"/><link linkend="_packages_8hpp_1a1909d41b7bcda36f8b0cdcb9e7f4711a">00057</link> <emphasis role="keyword">using&#32;</emphasis><link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;=&#32;boost::adjacency_list&lt;boost::vecS,&#32;boost::vecS,&#32;boost::undirectedS&gt;;
+<anchor xml:id="_packages_8hpp_source_1l00057"/><link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">00057</link> <emphasis role="keyword">using&#32;</emphasis><link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;=&#32;boost::adjacency_list&lt;boost::vecS,&#32;boost::vecS,&#32;boost::undirectedS&gt;;
 <anchor xml:id="_packages_8hpp_source_1l00058"/>00058 
 <anchor xml:id="_packages_8hpp_source_1l00067"/><link linkend="_packages_8hpp_1afccd45e2973698c37e8379f6b25a82bc">00067</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::edge_iterator&#32;<link linkend="_packages_8hpp_1afccd45e2973698c37e8379f6b25a82bc">edgeIterator</link>;
 <anchor xml:id="_packages_8hpp_source_1l00068"/>00068 

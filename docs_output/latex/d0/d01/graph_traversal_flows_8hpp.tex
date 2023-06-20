@@ -12,13 +12,13 @@ int \mbox{\hyperlink{graph_traversal_flows_8hpp_a0f7ce92e965a947ec82300d194d76f4
 \begin{DoxyCompactList}\small\item\em Computes the future vertex in a 2D lattice graph based on a flow function. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{graph_traversal_flows_8hpp_a626f9a06defdfeec52b82251cef22702}{get\+Lattice2\+DPast\+Vertex}} (int present\+Vertex, int num\+Rows)
 \begin{DoxyCompactList}\small\item\em Computes the past vertex in a 2D lattice graph based on a flow function. \end{DoxyCompactList}\item 
-std\+::vector$<$ int $>$ \mbox{\hyperlink{graph_traversal_flows_8hpp_a954183dad806b30b05e526c37284768b}{get\+Vertex\+Neighbours}} (const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&graph, int vertex)
+std\+::vector$<$ int $>$ \mbox{\hyperlink{graph_traversal_flows_8hpp_a954183dad806b30b05e526c37284768b}{get\+Vertex\+Neighbours}} (const \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&graph, int vertex)
 \begin{DoxyCompactList}\small\item\em Retrieves the neighboring vertices of a given vertex in an undirected graph. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{graph_traversal_flows_8hpp_aafe3849a9ad4cb18d843d73c89936bb3}{get\+Lattice2\+DFuture\+Vertex\+Graph}} (const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&graph, int vertex, int num\+Rows)
+int \mbox{\hyperlink{graph_traversal_flows_8hpp_aafe3849a9ad4cb18d843d73c89936bb3}{get\+Lattice2\+DFuture\+Vertex\+Graph}} (const \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&graph, int vertex, int num\+Rows)
 \begin{DoxyCompactList}\small\item\em Computes the future vertex in a 2D lattice graph based on a flow function for a given vertex in the graph. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{graph_traversal_flows_8hpp_a7b014587f20137aff522774eb1a05947}{get\+Lattice2\+DPast\+Vertex\+Graph}} (const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&graph, int vertex, int num\+Rows)
+int \mbox{\hyperlink{graph_traversal_flows_8hpp_a7b014587f20137aff522774eb1a05947}{get\+Lattice2\+DPast\+Vertex\+Graph}} (const \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&graph, int vertex, int num\+Rows)
 \begin{DoxyCompactList}\small\item\em Computes the past vertex in a 2D lattice graph based on a flow function for a given vertex in the graph. \end{DoxyCompactList}\item 
-qreal \mbox{\hyperlink{graph_traversal_flows_8hpp_a2b29f1efbcbccfbe77481e5b1a9647c8}{compute\+Corrected\+Angle}} (const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&graph, std\+::vector$<$ int $>$ measured\+Outcomes, int vertex, int num\+Rows, qreal angle)
+qreal \mbox{\hyperlink{graph_traversal_flows_8hpp_a2b29f1efbcbccfbe77481e5b1a9647c8}{compute\+Corrected\+Angle}} (const \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&graph, std\+::vector$<$ int $>$ measured\+Outcomes, int vertex, int num\+Rows, qreal angle)
 \begin{DoxyCompactList}\small\item\em Computes the corrected angle based on measured outcomes and flow functions in an undirected graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -42,7 +42,7 @@ Definition in file \mbox{\hyperlink{graph_traversal_flows_8hpp_source}{graph\+Tr
 \index{graphTraversalFlows.hpp@{graphTraversalFlows.hpp}!computeCorrectedAngle@{computeCorrectedAngle}}
 \index{computeCorrectedAngle@{computeCorrectedAngle}!graphTraversalFlows.hpp@{graphTraversalFlows.hpp}}
 \doxysubsubsection{\texorpdfstring{computeCorrectedAngle()}{computeCorrectedAngle()}}
-{\footnotesize\ttfamily qreal compute\+Corrected\+Angle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{graph,  }\item[{std\+::vector$<$ int $>$}]{measured\+Outcomes,  }\item[{int}]{vertex,  }\item[{int}]{num\+Rows,  }\item[{qreal}]{angle }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily qreal compute\+Corrected\+Angle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{graph,  }\item[{std\+::vector$<$ int $>$}]{measured\+Outcomes,  }\item[{int}]{vertex,  }\item[{int}]{num\+Rows,  }\item[{qreal}]{angle }\end{DoxyParamCaption})}
 
 
 
@@ -169,7 +169,7 @@ Definition at line \mbox{\hyperlink{graph_traversal_flows_8hpp_source_l00031}{31
 \index{graphTraversalFlows.hpp@{graphTraversalFlows.hpp}!getLattice2DFutureVertexGraph@{getLattice2DFutureVertexGraph}}
 \index{getLattice2DFutureVertexGraph@{getLattice2DFutureVertexGraph}!graphTraversalFlows.hpp@{graphTraversalFlows.hpp}}
 \doxysubsubsection{\texorpdfstring{getLattice2DFutureVertexGraph()}{getLattice2DFutureVertexGraph()}}
-{\footnotesize\ttfamily int get\+Lattice2\+DFuture\+Vertex\+Graph (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{graph,  }\item[{int}]{vertex,  }\item[{int}]{num\+Rows }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int get\+Lattice2\+DFuture\+Vertex\+Graph (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{graph,  }\item[{int}]{vertex,  }\item[{int}]{num\+Rows }\end{DoxyParamCaption})}
 
 
 
@@ -258,7 +258,7 @@ Definition at line \mbox{\hyperlink{graph_traversal_flows_8hpp_source_l00054}{54
 \index{graphTraversalFlows.hpp@{graphTraversalFlows.hpp}!getLattice2DPastVertexGraph@{getLattice2DPastVertexGraph}}
 \index{getLattice2DPastVertexGraph@{getLattice2DPastVertexGraph}!graphTraversalFlows.hpp@{graphTraversalFlows.hpp}}
 \doxysubsubsection{\texorpdfstring{getLattice2DPastVertexGraph()}{getLattice2DPastVertexGraph()}}
-{\footnotesize\ttfamily int get\+Lattice2\+DPast\+Vertex\+Graph (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{graph,  }\item[{int}]{vertex,  }\item[{int}]{num\+Rows }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int get\+Lattice2\+DPast\+Vertex\+Graph (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{graph,  }\item[{int}]{vertex,  }\item[{int}]{num\+Rows }\end{DoxyParamCaption})}
 
 
 
@@ -303,7 +303,7 @@ Definition at line \mbox{\hyperlink{graph_traversal_flows_8hpp_source_l00130}{13
 \index{graphTraversalFlows.hpp@{graphTraversalFlows.hpp}!getVertexNeighbours@{getVertexNeighbours}}
 \index{getVertexNeighbours@{getVertexNeighbours}!graphTraversalFlows.hpp@{graphTraversalFlows.hpp}}
 \doxysubsubsection{\texorpdfstring{getVertexNeighbours()}{getVertexNeighbours()}}
-{\footnotesize\ttfamily std\+::vector$<$ int $>$ get\+Vertex\+Neighbours (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{graph,  }\item[{int}]{vertex }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ get\+Vertex\+Neighbours (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{graph,  }\item[{int}]{vertex }\end{DoxyParamCaption})}
 
 
 

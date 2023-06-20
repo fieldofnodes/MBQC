@@ -7,10 +7,6 @@
         <itemizedlist>
             <listitem><para>file <link linkend="_examples_2mbqc_starter_file_8cpp">mbqcStarterFile.cpp</link></para>
 </listitem>
-            <listitem><para>file <link linkend="_mbqc_starter_file_density_matrix_8cpp">mbqcStarterFileDensityMatrix.cpp</link></para>
-</listitem>
-            <listitem><para>file <link linkend="_mbqc_starter_file_mac_8cpp">mbqcStarterFileMac.cpp</link></para>
-</listitem>
         </itemizedlist>
 </simplesect>
 </section>

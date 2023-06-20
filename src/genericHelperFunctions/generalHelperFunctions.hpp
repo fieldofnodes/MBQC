@@ -114,6 +114,19 @@ std::vector<double> calculateColumnRatios(const std::vector<std::vector<int>>& m
 
 
 
+/**
+ * @brief Calculates the outcome probabilities of a single qubit in a quantum register.
+ *
+ * @param qureg The quantum register.
+ * @param qubit The index of the qubit for which to calculate the outcome probabilities.
+ * @return A vector containing the outcome probabilities [prob_0, prob_1].
+ */
+std::vector<qreal> outcomeProbabilitiesSingleQubit(Qureg qureg,int qubit){
+    qreal prob_0 = calcProbOfOutcome(qureg,0,0);
+    qreal prob_1 = calcProbOfOutcome(qureg,0,1);
+    return {prob_0,prob_1};
+ }
+ 
 
 
 

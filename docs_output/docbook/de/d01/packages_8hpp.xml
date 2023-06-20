@@ -10,13 +10,15 @@
 <programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;algorithm&gt;<?linebreak?>#include &lt;iterator&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;set&gt;<?linebreak?>#include &lt;numeric&gt;<?linebreak?>#include &lt;cmath&gt;<?linebreak?>#include &lt;random&gt;<?linebreak?>#include &lt;filesystem&gt;<?linebreak?>#include &lt;functional&gt;<?linebreak?>#include &quot;config.h&quot;<?linebreak?>#include &lt;fstream&gt;<?linebreak?>#include &lt;cstdio&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;ranges&gt;<?linebreak?>#include &lt;cstdlib&gt;<?linebreak?>#include &lt;cxxabi.h&gt;<?linebreak?>#include &lt;QuEST.h&gt;<?linebreak?>#include &lt;boost/graph/adjacency_list.hpp&gt;<?linebreak?>#include &lt;boost/graph/grid_graph.hpp&gt;<?linebreak?>#include &lt;boost/graph/graphviz.hpp&gt;<?linebreak?>#include &lt;boost/array.hpp&gt;<?linebreak?>#include &lt;boost/graph/graph_utility.hpp&gt;<?linebreak?>#include &lt;boost/container/vector.hpp&gt;<?linebreak?>#include &lt;boost/range/algorithm/unique.hpp&gt;<?linebreak?>#include &lt;boost/range/algorithm.hpp&gt;<?linebreak?>#include &lt;boost/range/adaptor/filtered.hpp&gt;<?linebreak?>#include &lt;boost/range/adaptor/transformed.hpp&gt;<?linebreak?>#include &quot;generalHelperFunctions.hpp&quot;<?linebreak?>#include &quot;writeGraphGraphVizDotFile.hpp&quot;<?linebreak?>#include &quot;graphConstructions.hpp&quot;<?linebreak?>#include &quot;graphTraversalFlows.hpp&quot;<?linebreak?>#include &quot;flowMeasurements.hpp&quot;<?linebreak?>#include &quot;angleConstruction.hpp&quot;<?linebreak?>#include &quot;quantumGraphClusterStates.hpp&quot;<?linebreak?>#include &quot;generalAssertFunctions.hpp&quot;<?linebreak?>#include &quot;graphAssertFunctions.hpp&quot;<?linebreak?>#include &quot;probabilitiesAmplitudesNoNoiseCircuits.hpp&quot;<?linebreak?>#include &quot;probabilitiesAmplitudesDampingCircuits.hpp&quot;<?linebreak?></programlisting><simplesect>
     <title>Typedefs    </title>
         <itemizedlist>
-            <listitem><para>using <link linkend="_packages_8hpp_1a1909d41b7bcda36f8b0cdcb9e7f4711a">undirectedGraph</link> = boost::adjacency_list&lt; boost::vecS, boost::vecS, boost::undirectedS &gt;</para>
+            <listitem><para>using <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> = boost::adjacency_list&lt; boost::vecS, boost::vecS, boost::undirectedS &gt;</para>
+
+<para>Alias for an undirected graph using boost::adjacency_list. </para>
 </listitem>
-            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_packages_8hpp_1afccd45e2973698c37e8379f6b25a82bc">edgeIterator</link></para>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_test_flow_functions_8cpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_packages_8hpp_1afccd45e2973698c37e8379f6b25a82bc">edgeIterator</link></para>
 
 <para>Iterator for traversing edges in an undirected graph. </para>
 </listitem>
-            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_packages_8hpp_1aad3f8f6369da7f36e6266fdcb1991169">vertexIterator</link></para>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_test_flow_functions_8cpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_packages_8hpp_1aad3f8f6369da7f36e6266fdcb1991169">vertexIterator</link></para>
 
 <para>Iterator for traversing vertices in an undirected graph. </para>
 </listitem>
@@ -44,11 +46,17 @@ Definition in file <link linkend="_packages_8hpp_source">packages.hpp</link>.</p
 <para>
 Definition at line <link linkend="_packages_8hpp_source_1l00067">67</link> of file <link linkend="_packages_8hpp_source">packages.hpp</link>.</para>
 </section>
-<anchor xml:id="_packages_8hpp_1a1909d41b7bcda36f8b0cdcb9e7f4711a"/><section>
+<anchor xml:id="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125"/><section>
     <title>undirectedGraph</title>
 <indexterm><primary>undirectedGraph</primary><secondary>packages.hpp</secondary></indexterm>
 <indexterm><primary>packages.hpp</primary><secondary>undirectedGraph</secondary></indexterm>
-<para><computeroutput>using <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> =  boost::adjacency_list&lt;boost::vecS, boost::vecS, boost::undirectedS&gt;</computeroutput></para><para>
+<para><computeroutput><link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link></computeroutput></para><para>
+
+<para>Alias for an undirected graph using boost::adjacency_list. </para>
+</para>
+
+<para>This typedef represents an undirected graph using the boost::adjacency_list data structure with boost::vecS as the vertex container and boost::undirectedS as the graph type. It provides an interface for creating and manipulating undirected graphs. </para>
+<para>
 Definition at line <link linkend="_packages_8hpp_source_1l00057">57</link> of file <link linkend="_packages_8hpp_source">packages.hpp</link>.</para>
 </section>
 <anchor xml:id="_packages_8hpp_1aad3f8f6369da7f36e6266fdcb1991169"/><section>

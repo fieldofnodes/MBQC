@@ -2,50 +2,13 @@
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test_angle_update_probabilites_8cpp" xml:lang="en-US">
 <title>tests/testAngleUpdateProbabilites.cpp File Reference</title>
 <indexterm><primary>tests/testAngleUpdateProbabilites.cpp</primary></indexterm>
-<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;algorithm&gt;<?linebreak?>#include &lt;iterator&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;set&gt;<?linebreak?>#include &lt;numeric&gt;<?linebreak?>#include &lt;cmath&gt;<?linebreak?>#include &lt;random&gt;<?linebreak?>#include &lt;filesystem&gt;<?linebreak?>#include &lt;QuEST.h&gt;<?linebreak?>#include &lt;boost/graph/adjacency_list.hpp&gt;<?linebreak?>#include &lt;boost/graph/grid_graph.hpp&gt;<?linebreak?>#include &lt;boost/graph/graphviz.hpp&gt;<?linebreak?>#include &lt;boost/array.hpp&gt;<?linebreak?>#include &lt;boost/graph/graph_utility.hpp&gt;<?linebreak?>#include &lt;boost/container/vector.hpp&gt;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/flowMeasurements.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/angleConstruction.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/quantumGraphClusterStates.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/generalAssertFunctions.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp&quot;<?linebreak?></programlisting><simplesect>
-    <title>Typedefs    </title>
-        <itemizedlist>
-            <listitem><para>typedef boost::adjacency_list&lt; boost::vecS, boost::vecS, boost::undirectedS &gt; <link linkend="_test_angle_update_probabilites_8cpp_1af845bf432b56cdda82dbde8011882168">undirectedGraph</link></para>
-</listitem>
-            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_test_angle_update_probabilites_8cpp_1ad413424ad598fbd91fde4dffeceda3c0">edgeIterator</link></para>
-</listitem>
-            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_test_angle_update_probabilites_8cpp_1ad100606fc4950dfc094fc60544838351">vertexIterator</link></para>
-</listitem>
-        </itemizedlist>
-</simplesect>
-<simplesect>
+<programlisting linenumbering="unnumbered">#include &quot;packages.hpp&quot;<?linebreak?></programlisting><simplesect>
     <title>Functions    </title>
         <itemizedlist>
-            <listitem><para>std::vector&lt; qreal &gt; <link linkend="_test_angle_update_probabilites_8cpp_1a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</link> (Qureg qureg, int qubit)</para>
-</listitem>
             <listitem><para>int <link linkend="_test_angle_update_probabilites_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
 </listitem>
         </itemizedlist>
 </simplesect>
-<section>
-<title>Typedef Documentation</title>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_1ad413424ad598fbd91fde4dffeceda3c0"/><section>
-    <title>edgeIterator</title>
-<indexterm><primary>edgeIterator</primary><secondary>testAngleUpdateProbabilites.cpp</secondary></indexterm>
-<indexterm><primary>testAngleUpdateProbabilites.cpp</primary><secondary>edgeIterator</secondary></indexterm>
-<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_packages_8hpp_1afccd45e2973698c37e8379f6b25a82bc">edgeIterator</link></computeroutput></para><para>
-Definition at line <link linkend="_test_angle_update_probabilites_8cpp_source_1l00060">60</link> of file <link linkend="_test_angle_update_probabilites_8cpp_source">testAngleUpdateProbabilites.cpp</link>.</para>
-</section>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_1af845bf432b56cdda82dbde8011882168"/><section>
-    <title>undirectedGraph</title>
-<indexterm><primary>undirectedGraph</primary><secondary>testAngleUpdateProbabilites.cpp</secondary></indexterm>
-<indexterm><primary>testAngleUpdateProbabilites.cpp</primary><secondary>undirectedGraph</secondary></indexterm>
-<para><computeroutput>typedef boost::adjacency_list&lt;boost::vecS, boost::vecS,boost::undirectedS&gt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link></computeroutput></para><para>
-Definition at line <link linkend="_test_angle_update_probabilites_8cpp_source_1l00059">59</link> of file <link linkend="_test_angle_update_probabilites_8cpp_source">testAngleUpdateProbabilites.cpp</link>.</para>
-</section>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_1ad100606fc4950dfc094fc60544838351"/><section>
-    <title>vertexIterator</title>
-<indexterm><primary>vertexIterator</primary><secondary>testAngleUpdateProbabilites.cpp</secondary></indexterm>
-<indexterm><primary>testAngleUpdateProbabilites.cpp</primary><secondary>vertexIterator</secondary></indexterm>
-<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_packages_8hpp_1aad3f8f6369da7f36e6266fdcb1991169">vertexIterator</link></computeroutput></para><para>
-Definition at line <link linkend="_test_angle_update_probabilites_8cpp_source_1l00061">61</link> of file <link linkend="_test_angle_update_probabilites_8cpp_source">testAngleUpdateProbabilites.cpp</link>.</para>
-</section>
-</section>
 <section>
 <title>Function Documentation</title>
 <anchor xml:id="_test_angle_update_probabilites_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
@@ -53,139 +16,127 @@ Definition at line <link linkend="_test_angle_update_probabilites_8cpp_source_1l
 <indexterm><primary>main</primary><secondary>testAngleUpdateProbabilites.cpp</secondary></indexterm>
 <indexterm><primary>testAngleUpdateProbabilites.cpp</primary><secondary>main</secondary></indexterm>
 <para><computeroutput>int main ( )</computeroutput></para><para>
-Definition at line <link linkend="_test_angle_update_probabilites_8cpp_source_1l00074">74</link> of file <link linkend="_test_angle_update_probabilites_8cpp_source">testAngleUpdateProbabilites.cpp</link>.</para>
-<programlisting linenumbering="unnumbered">00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+Definition at line <link linkend="_test_angle_update_probabilites_8cpp_source_1l00019">19</link> of file <link linkend="_test_angle_update_probabilites_8cpp_source">testAngleUpdateProbabilites.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00020 
+00021 
+00022 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+00023 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+00024 &#32;&#32;
+00025 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+00026 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(1,&#32;env);
+00027 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubit&#32;=&#32;0;
+00028 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Probability&#32;outcomes&#32;single&#32;qubit:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;&#32;
+00029 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Initialised&#32;at&#32;0:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;&#32;
+00030 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;init_probs&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</link>(qureg,qubit);
+00031 
+00032 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(init_probs);
+00033 
+00034 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Pauli&#32;X&#32;gate&#32;applied:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00035 &#32;&#32;&#32;&#32;pauliX(qureg,0);
+00036 &#32;&#32;&#32;&#32;
+00037 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;init_probs_gate&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</link>(qureg,qubit);
+00038 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(init_probs_gate);
+00039 
+00040 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Pauli&#32;X&#32;gate&#32;applied:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00041 &#32;&#32;&#32;&#32;pauliX(qureg,0);
+00042 &#32;&#32;&#32;&#32;
+00043 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;init_probs_gate_1&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</link>(qureg,qubit);
+00044 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(init_probs_gate_1);
+00045 
+00046 &#32;&#32;&#32;&#32;<emphasis role="comment">/*</emphasis>
+00047 <emphasis role="comment"></emphasis>
+00048 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;Apply&#32;Hadamard&#32;and&#32;test&#32;probability</emphasis>
+00049 <emphasis role="comment">&#32;&#32;&#32;&#32;hadamard(qureg,0);</emphasis>
+00050 <emphasis role="comment">&#32;&#32;&#32;&#32;hadamard(qureg,1);</emphasis>
+00051 <emphasis role="comment">&#32;&#32;&#32;&#32;hadamard(qureg,2);</emphasis>
+00052 <emphasis role="comment">&#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,0,1);</emphasis>
+00053 <emphasis role="comment">&#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,1,2);</emphasis>
+00054 <emphasis role="comment">&#32;&#32;&#32;&#32;</emphasis>
+00055 <emphasis role="comment"></emphasis>
+00056 <emphasis role="comment"></emphasis>
+00057 <emphasis role="comment">&#32;&#32;&#32;&#32;qreal&#32;prob_0&#32;=&#32;calcProbOfOutcome(qureg,0,0);</emphasis>
+00058 <emphasis role="comment">&#32;&#32;&#32;&#32;qreal&#32;prob_1&#32;=&#32;calcProbOfOutcome(qureg,1,0);</emphasis>
+00059 <emphasis role="comment">&#32;&#32;&#32;&#32;qreal&#32;prob_2&#32;=&#32;calcProbOfOutcome(qureg,2,0);</emphasis>
+00060 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Probability&#32;0:&#32;&quot;&#32;&lt;&lt;&#32;prob_0&#32;&lt;&lt;&#32;std::endl;</emphasis>
+00061 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Probability&#32;1:&#32;&quot;&#32;&lt;&lt;&#32;prob_1&#32;&lt;&lt;&#32;std::endl;</emphasis>
+00062 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Probability&#32;2:&#32;&quot;&#32;&lt;&lt;&#32;prob_2&#32;&lt;&lt;&#32;std::endl;</emphasis>
+00063 <emphasis role="comment"></emphasis>
+00064 <emphasis role="comment">&#32;&#32;&#32;&#32;qreal&#32;tp&#32;=&#32;calcTotalProb(qureg);</emphasis>
+00065 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Total&#32;Probability&#32;qureg:&#32;&quot;&#32;&lt;&lt;&#32;tp&#32;&lt;&lt;&#32;std::endl;</emphasis>
+00066 <emphasis role="comment"></emphasis>
+00067 <emphasis role="comment"></emphasis>
+00068 <emphasis role="comment">&#32;&#32;&#32;&#32;int&#32;m1&#32;=&#32;measure(qureg,0);</emphasis>
+00069 <emphasis role="comment"></emphasis>
+00070 <emphasis role="comment">*/</emphasis>
+00071 
+00072 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+00073 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+00074 
 00075 
 00076 
-00077 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
-00078 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
-00079 &#32;&#32;
-00080 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
-00081 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(1,&#32;env);
-00082 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubit&#32;=&#32;0;
-00083 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Probability&#32;outcomes&#32;single&#32;qubit:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;&#32;
-00084 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Initialised&#32;at&#32;0:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;&#32;
-00085 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;init_probs&#32;=&#32;<link linkend="_test_angle_update_probabilites_8cpp_1a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</link>(qureg,qubit);
-00086 
-00087 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(init_probs);
-00088 
-00089 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Pauli&#32;X&#32;gate&#32;applied:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
-00090 &#32;&#32;&#32;&#32;pauliX(qureg,0);
-00091 &#32;&#32;&#32;&#32;
-00092 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;init_probs_gate&#32;=&#32;<link linkend="_test_angle_update_probabilites_8cpp_1a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</link>(qureg,qubit);
-00093 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(init_probs_gate);
-00094 
-00095 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Pauli&#32;X&#32;gate&#32;applied:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
-00096 &#32;&#32;&#32;&#32;pauliX(qureg,0);
-00097 &#32;&#32;&#32;&#32;
-00098 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;init_probs_gate_1&#32;=&#32;<link linkend="_test_angle_update_probabilites_8cpp_1a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</link>(qureg,qubit);
-00099 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(init_probs_gate_1);
-00100 
-00101 &#32;&#32;&#32;&#32;<emphasis role="comment">/*</emphasis>
-00102 <emphasis role="comment"></emphasis>
-00103 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;Apply&#32;Hadamard&#32;and&#32;test&#32;probability</emphasis>
-00104 <emphasis role="comment">&#32;&#32;&#32;&#32;hadamard(qureg,0);</emphasis>
-00105 <emphasis role="comment">&#32;&#32;&#32;&#32;hadamard(qureg,1);</emphasis>
-00106 <emphasis role="comment">&#32;&#32;&#32;&#32;hadamard(qureg,2);</emphasis>
-00107 <emphasis role="comment">&#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,0,1);</emphasis>
-00108 <emphasis role="comment">&#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,1,2);</emphasis>
-00109 <emphasis role="comment">&#32;&#32;&#32;&#32;</emphasis>
-00110 <emphasis role="comment"></emphasis>
-00111 <emphasis role="comment"></emphasis>
-00112 <emphasis role="comment">&#32;&#32;&#32;&#32;qreal&#32;prob_0&#32;=&#32;calcProbOfOutcome(qureg,0,0);</emphasis>
-00113 <emphasis role="comment">&#32;&#32;&#32;&#32;qreal&#32;prob_1&#32;=&#32;calcProbOfOutcome(qureg,1,0);</emphasis>
-00114 <emphasis role="comment">&#32;&#32;&#32;&#32;qreal&#32;prob_2&#32;=&#32;calcProbOfOutcome(qureg,2,0);</emphasis>
-00115 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Probability&#32;0:&#32;&quot;&#32;&lt;&lt;&#32;prob_0&#32;&lt;&lt;&#32;std::endl;</emphasis>
-00116 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Probability&#32;1:&#32;&quot;&#32;&lt;&lt;&#32;prob_1&#32;&lt;&lt;&#32;std::endl;</emphasis>
-00117 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Probability&#32;2:&#32;&quot;&#32;&lt;&lt;&#32;prob_2&#32;&lt;&lt;&#32;std::endl;</emphasis>
-00118 <emphasis role="comment"></emphasis>
-00119 <emphasis role="comment">&#32;&#32;&#32;&#32;qreal&#32;tp&#32;=&#32;calcTotalProb(qureg);</emphasis>
-00120 <emphasis role="comment">&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Total&#32;Probability&#32;qureg:&#32;&quot;&#32;&lt;&lt;&#32;tp&#32;&lt;&lt;&#32;std::endl;</emphasis>
-00121 <emphasis role="comment"></emphasis>
-00122 <emphasis role="comment"></emphasis>
-00123 <emphasis role="comment">&#32;&#32;&#32;&#32;int&#32;m1&#32;=&#32;measure(qureg,0);</emphasis>
-00124 <emphasis role="comment"></emphasis>
-00125 <emphasis role="comment">*/</emphasis>
-00126 
-00127 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
-00128 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
-00129 
-00130 
-00131 
-00132 <emphasis role="comment">/*</emphasis>
-00133 <emphasis role="comment">&#32;&#32;//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
-00134 <emphasis role="comment">&#32;&#32;int&#32;numRows;</emphasis>
-00135 <emphasis role="comment">&#32;&#32;int&#32;numCols;</emphasis>
-00136 <emphasis role="comment">&#32;&#32;undirectedGraph&#32;latticeGraph;</emphasis>
-00137 <emphasis role="comment">&#32;&#32;int&#32;numVertices;</emphasis>
-00138 <emphasis role="comment">&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;</emphasis>
-00139 <emphasis role="comment">&#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;</emphasis>
-00140 <emphasis role="comment">&#32;&#32;</emphasis>
-00141 <emphasis role="comment">&#32;&#32;</emphasis>
-00142 <emphasis role="comment">&#32;&#32;//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
-00143 <emphasis role="comment">&#32;&#32;numRows&#32;=&#32;1;</emphasis>
-00144 <emphasis role="comment">&#32;&#32;numCols&#32;=&#32;2;</emphasis>
-00145 <emphasis role="comment">&#32;&#32;latticeGraph&#32;=&#32;createLatticeGraph(numRows,numCols);</emphasis>
-00146 <emphasis role="comment">&#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);</emphasis>
-00147 <emphasis role="comment">&#32;&#32;</emphasis>
-00148 <emphasis role="comment">&#32;&#32;</emphasis>
-00149 <emphasis role="comment">&#32;&#32;</emphasis>
-00150 <emphasis role="comment">&#32;&#32;//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
-00151 <emphasis role="comment">&#32;&#32;//&#32;Update&#32;with&#32;desired&#32;directory&#32;to&#32;view&#32;graph.</emphasis>
-00152 <emphasis role="comment">&#32;&#32;std::string&#32;fileDir&#32;=&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;;</emphasis>
-00153 <emphasis role="comment">&#32;&#32;std::string&#32;graphName&#32;=&#32;&quot;twoQubitGraph&quot;;</emphasis>
-00154 <emphasis role="comment">&#32;&#32;std::string&#32;format&#32;=&#32;&quot;png&quot;;</emphasis>
-00155 <emphasis role="comment">&#32;&#32;printGraphToFile(latticeGraph,fileDir,graphName,format);</emphasis>
-00156 <emphasis role="comment"></emphasis>
-00157 <emphasis role="comment">&#32;&#32;//&#32;load&#32;QuEST&#32;environment</emphasis>
-00158 <emphasis role="comment">&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();</emphasis>
-00159 <emphasis role="comment">&#32;&#32;</emphasis>
-00160 <emphasis role="comment">&#32;&#32;//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
-00161 <emphasis role="comment">&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numVertices,&#32;env);</emphasis>
-00162 <emphasis role="comment">&#32;&#32;</emphasis>
-00163 <emphasis role="comment">&#32;&#32;</emphasis>
-00164 <emphasis role="comment">&#32;&#32;//qubitAngles&#32;=&#32;initRandomPiOnNAnglesMod2kPi(numVertices,&#32;4);</emphasis>
-00165 <emphasis role="comment">&#32;&#32;qubitAngles&#32;=&#32;initAllAnglesSame(numVertices,&#32;0);</emphasis>
-00166 <emphasis role="comment">&#32;</emphasis>
-00167 <emphasis role="comment"></emphasis>
-00168 <emphasis role="comment">&#32;&#32;//&#32;initialise&#32;in&#32;the&#32;plus&#32;state</emphasis>
-00169 <emphasis role="comment">&#32;&#32;initPlusState(qureg);</emphasis>
-00170 <emphasis role="comment"></emphasis>
-00171 <emphasis role="comment">&#32;&#32;</emphasis>
-00172 <emphasis role="comment">&#32;&#32;//&#32;entangle&#32;graph</emphasis>
-00173 <emphasis role="comment">&#32;&#32;entangleGraph(qureg,latticeGraph);</emphasis>
-00174 <emphasis role="comment"></emphasis>
-00175 <emphasis role="comment"></emphasis>
-00176 <emphasis role="comment">&#32;&#32;//&#32;measure&#32;graph</emphasis>
-00177 <emphasis role="comment">&#32;&#32;measuredQubitsOutcomes&#32;=&#32;measureGraph(</emphasis>
-00178 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qureg,</emphasis>
-00179 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;latticeGraph,</emphasis>
-00180 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles,</emphasis>
-00181 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numRows);</emphasis>
-00182 <emphasis role="comment"></emphasis>
-00183 <emphasis role="comment">&#32;&#32;&#32;&#32;</emphasis>
-00184 <emphasis role="comment">&#32;&#32;//&#32;print&#32;results&#32;to&#32;screen</emphasis>
-00185 <emphasis role="comment">&#32;&#32;printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);</emphasis>
-00186 <emphasis role="comment"></emphasis>
-00187 <emphasis role="comment"></emphasis>
-00188 <emphasis role="comment">&#32;&#32;//&#32;unload&#32;QuEST</emphasis>
-00189 <emphasis role="comment">&#32;&#32;destroyQureg(qureg,&#32;env);&#32;</emphasis>
-00190 <emphasis role="comment">&#32;&#32;destroyQuESTEnv(env);</emphasis>
-00191 <emphasis role="comment">&#32;&#32;*/</emphasis>
-00192 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
-00193 }
-</programlisting></section>
-<anchor xml:id="_test_angle_update_probabilites_8cpp_1a3239399f882d9ea643c7862d70807d5c"/><section>
-    <title>outcomeProbabilitiesSingleQubit()</title>
-<indexterm><primary>outcomeProbabilitiesSingleQubit</primary><secondary>testAngleUpdateProbabilites.cpp</secondary></indexterm>
-<indexterm><primary>testAngleUpdateProbabilites.cpp</primary><secondary>outcomeProbabilitiesSingleQubit</secondary></indexterm>
-<para><computeroutput>std::vector&lt; qreal &gt; outcomeProbabilitiesSingleQubit (Qureg qureg, int qubit)</computeroutput></para><para>
-Definition at line <link linkend="_test_angle_update_probabilites_8cpp_source_1l00064">64</link> of file <link linkend="_test_angle_update_probabilites_8cpp_source">testAngleUpdateProbabilites.cpp</link>.</para>
-<programlisting linenumbering="unnumbered">00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-00065 &#32;&#32;&#32;&#32;qreal&#32;prob_0&#32;=&#32;calcProbOfOutcome(qureg,0,0);
-00066 &#32;&#32;&#32;&#32;qreal&#32;prob_1&#32;=&#32;calcProbOfOutcome(qureg,0,1);
-00067 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;{prob_0,prob_1};
-00068 &#32;}
+00077 <emphasis role="comment">/*</emphasis>
+00078 <emphasis role="comment">&#32;&#32;//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
+00079 <emphasis role="comment">&#32;&#32;int&#32;numRows;</emphasis>
+00080 <emphasis role="comment">&#32;&#32;int&#32;numCols;</emphasis>
+00081 <emphasis role="comment">&#32;&#32;undirectedGraph&#32;latticeGraph;</emphasis>
+00082 <emphasis role="comment">&#32;&#32;int&#32;numVertices;</emphasis>
+00083 <emphasis role="comment">&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;</emphasis>
+00084 <emphasis role="comment">&#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;</emphasis>
+00085 <emphasis role="comment">&#32;&#32;</emphasis>
+00086 <emphasis role="comment">&#32;&#32;</emphasis>
+00087 <emphasis role="comment">&#32;&#32;//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
+00088 <emphasis role="comment">&#32;&#32;numRows&#32;=&#32;1;</emphasis>
+00089 <emphasis role="comment">&#32;&#32;numCols&#32;=&#32;2;</emphasis>
+00090 <emphasis role="comment">&#32;&#32;latticeGraph&#32;=&#32;createLatticeGraph(numRows,numCols);</emphasis>
+00091 <emphasis role="comment">&#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);</emphasis>
+00092 <emphasis role="comment">&#32;&#32;</emphasis>
+00093 <emphasis role="comment">&#32;&#32;</emphasis>
+00094 <emphasis role="comment">&#32;&#32;</emphasis>
+00095 <emphasis role="comment">&#32;&#32;//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
+00096 <emphasis role="comment">&#32;&#32;//&#32;Update&#32;with&#32;desired&#32;directory&#32;to&#32;view&#32;graph.</emphasis>
+00097 <emphasis role="comment">&#32;&#32;std::string&#32;fileDir&#32;=&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;;</emphasis>
+00098 <emphasis role="comment">&#32;&#32;std::string&#32;graphName&#32;=&#32;&quot;twoQubitGraph&quot;;</emphasis>
+00099 <emphasis role="comment">&#32;&#32;std::string&#32;format&#32;=&#32;&quot;png&quot;;</emphasis>
+00100 <emphasis role="comment">&#32;&#32;printGraphToFile(latticeGraph,fileDir,graphName,format);</emphasis>
+00101 <emphasis role="comment"></emphasis>
+00102 <emphasis role="comment">&#32;&#32;//&#32;load&#32;QuEST&#32;environment</emphasis>
+00103 <emphasis role="comment">&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();</emphasis>
+00104 <emphasis role="comment">&#32;&#32;</emphasis>
+00105 <emphasis role="comment">&#32;&#32;//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+00106 <emphasis role="comment">&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numVertices,&#32;env);</emphasis>
+00107 <emphasis role="comment">&#32;&#32;</emphasis>
+00108 <emphasis role="comment">&#32;&#32;</emphasis>
+00109 <emphasis role="comment">&#32;&#32;//qubitAngles&#32;=&#32;initRandomPiOnNAnglesMod2kPi(numVertices,&#32;4);</emphasis>
+00110 <emphasis role="comment">&#32;&#32;qubitAngles&#32;=&#32;initAllAnglesSame(numVertices,&#32;0);</emphasis>
+00111 <emphasis role="comment">&#32;</emphasis>
+00112 <emphasis role="comment"></emphasis>
+00113 <emphasis role="comment">&#32;&#32;//&#32;initialise&#32;in&#32;the&#32;plus&#32;state</emphasis>
+00114 <emphasis role="comment">&#32;&#32;initPlusState(qureg);</emphasis>
+00115 <emphasis role="comment"></emphasis>
+00116 <emphasis role="comment">&#32;&#32;</emphasis>
+00117 <emphasis role="comment">&#32;&#32;//&#32;entangle&#32;graph</emphasis>
+00118 <emphasis role="comment">&#32;&#32;entangleGraph(qureg,latticeGraph);</emphasis>
+00119 <emphasis role="comment"></emphasis>
+00120 <emphasis role="comment"></emphasis>
+00121 <emphasis role="comment">&#32;&#32;//&#32;measure&#32;graph</emphasis>
+00122 <emphasis role="comment">&#32;&#32;measuredQubitsOutcomes&#32;=&#32;measureGraph(</emphasis>
+00123 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qureg,</emphasis>
+00124 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;latticeGraph,</emphasis>
+00125 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles,</emphasis>
+00126 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numRows);</emphasis>
+00127 <emphasis role="comment"></emphasis>
+00128 <emphasis role="comment">&#32;&#32;&#32;&#32;</emphasis>
+00129 <emphasis role="comment">&#32;&#32;//&#32;print&#32;results&#32;to&#32;screen</emphasis>
+00130 <emphasis role="comment">&#32;&#32;printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);</emphasis>
+00131 <emphasis role="comment"></emphasis>
+00132 <emphasis role="comment"></emphasis>
+00133 <emphasis role="comment">&#32;&#32;//&#32;unload&#32;QuEST</emphasis>
+00134 <emphasis role="comment">&#32;&#32;destroyQureg(qureg,&#32;env);&#32;</emphasis>
+00135 <emphasis role="comment">&#32;&#32;destroyQuESTEnv(env);</emphasis>
+00136 <emphasis role="comment">&#32;&#32;*/</emphasis>
+00137 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+00138 }
 </programlisting></section>
 </section>
 </section>

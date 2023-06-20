@@ -75,104 +75,104 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00090"/>00090 
 <anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00091"/>00091 
 <anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00092"/>00092 
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00102"/><link linkend="_probabilities_amplitudes_damping_circuits_8hpp_1a5b32b75a35ce71806d1c4dd09e316d32">00102</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_probabilities_amplitudes_damping_circuits_8hpp_1a5b32b75a35ce71806d1c4dd09e316d32">applyOnTwoQubitPauliXEachQubitMixDamping</link>(qreal&#32;prob,std::string&#32;fileAmp,std::string&#32;fileProb){
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numQubits&#32;=&#32;2;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;qureg</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00108"/>00108 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createDensityQureg(numQubits,&#32;env);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00109"/>00109 
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00110"/>00110 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Apply&#32;elements&#32;to&#32;circuit</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00111"/>00111 &#32;&#32;&#32;&#32;pauliX(qureg,0);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00112"/>00112 &#32;&#32;&#32;&#32;pauliX(qureg,1);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00113"/>00113 &#32;&#32;&#32;&#32;mixDamping(qureg,0,prob);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00114"/>00114 &#32;&#32;&#32;&#32;mixDamping(qureg,1,prob);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;amplitudes&#32;to&#32;file</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00117"/>00117 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</link>(qureg,fileAmp);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00118"/>00118 
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Compute&#32;probabilities</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numProbs&#32;=&#32;1&lt;&lt;numQubits;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00121"/>00121 &#32;&#32;&#32;&#32;qreal&#32;outcomeProbs[numProbs];
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00122"/>00122 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubits[]&#32;=&#32;{0,1};
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00123"/>00123 &#32;&#32;&#32;&#32;calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);&#32;&#32;&#32;&#32;&#32;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00124"/>00124 &#32;&#32;&#32;&#32;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00125"/>00125 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;probabilities&#32;to&#32;file</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;std::string&#32;col_name&#32;=&#32;<emphasis role="stringliteral">&quot;probabilities&quot;</emphasis>;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</link>(outcomeProbs,&#32;numProbs,&#32;fileProb,col_name);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00128"/>00128 
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00129"/>00129 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00130"/>00130 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00131"/>00131 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00132"/>00132 }
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00133"/>00133 
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00143"/><link linkend="_probabilities_amplitudes_damping_circuits_8hpp_1a0e0364e3829b875d9fdf4dcd405ce17b">00143</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_probabilities_amplitudes_damping_circuits_8hpp_1a0e0364e3829b875d9fdf4dcd405ce17b">applyOnTwoQubitHGateEachQubitMixDamping</link>(qreal&#32;prob,std::string&#32;fileAmp,std::string&#32;fileProb){
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numQubits&#32;=&#32;2;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00145"/>00145 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00146"/>00146 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00147"/>00147 &#32;&#32;&#32;&#32;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00148"/>00148 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;qureg</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00149"/>00149 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createDensityQureg(numQubits,&#32;env);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00150"/>00150 
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00151"/>00151 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Apply&#32;elements&#32;to&#32;circuit</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00152"/>00152 &#32;&#32;&#32;&#32;hadamard(qureg,0);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00153"/>00153 &#32;&#32;&#32;&#32;hadamard(qureg,1);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00154"/>00154 &#32;&#32;&#32;&#32;mixDamping(qureg,0,prob);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00155"/>00155 &#32;&#32;&#32;&#32;mixDamping(qureg,1,prob);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00156"/>00156 &#32;&#32;&#32;&#32;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00157"/>00157 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;amplitudes&#32;to&#32;file</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00158"/>00158 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</link>(qureg,fileAmp);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00159"/>00159 
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00160"/>00160 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Compute&#32;probabilities</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00161"/>00161 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numProbs&#32;=&#32;1&lt;&lt;numQubits;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00162"/>00162 &#32;&#32;&#32;&#32;qreal&#32;outcomeProbs[numProbs];
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00163"/>00163 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubits[]&#32;=&#32;{0,1};
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00164"/>00164 &#32;&#32;&#32;&#32;calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);&#32;&#32;&#32;&#32;&#32;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00165"/>00165 &#32;&#32;&#32;&#32;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00166"/>00166 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;probabilities&#32;to&#32;file</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00167"/>00167 &#32;&#32;&#32;&#32;std::string&#32;col_name&#32;=&#32;<emphasis role="stringliteral">&quot;probabilities&quot;</emphasis>;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00168"/>00168 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</link>(outcomeProbs,&#32;numProbs,&#32;fileProb,col_name);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00169"/>00169 
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00170"/>00170 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00171"/>00171 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00172"/>00172 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00173"/>00173 }
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00174"/>00174 
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00093"/>00093 
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00103"/><link linkend="_probabilities_amplitudes_damping_circuits_8hpp_1a5b32b75a35ce71806d1c4dd09e316d32">00103</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_probabilities_amplitudes_damping_circuits_8hpp_1a5b32b75a35ce71806d1c4dd09e316d32">applyOnTwoQubitPauliXEachQubitMixDamping</link>(qreal&#32;prob,std::string&#32;fileAmp,std::string&#32;fileProb){
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numQubits&#32;=&#32;2;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00108"/>00108 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;qureg</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00109"/>00109 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createDensityQureg(numQubits,&#32;env);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00110"/>00110 
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00111"/>00111 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Apply&#32;elements&#32;to&#32;circuit</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00112"/>00112 &#32;&#32;&#32;&#32;pauliX(qureg,0);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00113"/>00113 &#32;&#32;&#32;&#32;pauliX(qureg,1);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00114"/>00114 &#32;&#32;&#32;&#32;mixDamping(qureg,0,prob);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;mixDamping(qureg,1,prob);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00117"/>00117 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;amplitudes&#32;to&#32;file</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00118"/>00118 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</link>(qureg,fileAmp);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00119"/>00119 
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Compute&#32;probabilities</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00121"/>00121 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numProbs&#32;=&#32;1&lt;&lt;numQubits;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00122"/>00122 &#32;&#32;&#32;&#32;qreal&#32;outcomeProbs[numProbs];
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00123"/>00123 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubits[]&#32;=&#32;{0,1};
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00124"/>00124 &#32;&#32;&#32;&#32;calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00125"/>00125 &#32;&#32;&#32;&#32;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;probabilities&#32;to&#32;file</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;std::string&#32;col_name&#32;=&#32;<emphasis role="stringliteral">&quot;probabilities&quot;</emphasis>;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00128"/>00128 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</link>(outcomeProbs,&#32;numProbs,&#32;fileProb,col_name);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00129"/>00129 
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00130"/>00130 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00131"/>00131 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00132"/>00132 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00133"/>00133 }
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00134"/>00134 
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00144"/><link linkend="_probabilities_amplitudes_damping_circuits_8hpp_1a0e0364e3829b875d9fdf4dcd405ce17b">00144</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_probabilities_amplitudes_damping_circuits_8hpp_1a0e0364e3829b875d9fdf4dcd405ce17b">applyOnTwoQubitHGateEachQubitMixDamping</link>(qreal&#32;prob,std::string&#32;fileAmp,std::string&#32;fileProb){
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numQubits&#32;=&#32;2;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00146"/>00146 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00147"/>00147 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00148"/>00148 &#32;&#32;&#32;&#32;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00149"/>00149 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;qureg</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00150"/>00150 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createDensityQureg(numQubits,&#32;env);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00151"/>00151 
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00152"/>00152 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Apply&#32;elements&#32;to&#32;circuit</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00153"/>00153 &#32;&#32;&#32;&#32;hadamard(qureg,0);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00154"/>00154 &#32;&#32;&#32;&#32;hadamard(qureg,1);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00155"/>00155 &#32;&#32;&#32;&#32;mixDamping(qureg,0,prob);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00156"/>00156 &#32;&#32;&#32;&#32;mixDamping(qureg,1,prob);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00157"/>00157 &#32;&#32;&#32;&#32;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00158"/>00158 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;amplitudes&#32;to&#32;file</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00159"/>00159 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</link>(qureg,fileAmp);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00160"/>00160 
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00161"/>00161 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Compute&#32;probabilities</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00162"/>00162 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numProbs&#32;=&#32;1&lt;&lt;numQubits;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00163"/>00163 &#32;&#32;&#32;&#32;qreal&#32;outcomeProbs[numProbs];
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00164"/>00164 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubits[]&#32;=&#32;{0,1};
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00165"/>00165 &#32;&#32;&#32;&#32;calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00166"/>00166 &#32;&#32;&#32;&#32;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00167"/>00167 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;probabilities&#32;to&#32;file</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00168"/>00168 &#32;&#32;&#32;&#32;std::string&#32;col_name&#32;=&#32;<emphasis role="stringliteral">&quot;probabilities&quot;</emphasis>;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00169"/>00169 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</link>(outcomeProbs,&#32;numProbs,&#32;fileProb,col_name);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00170"/>00170 
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00171"/>00171 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00172"/>00172 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00173"/>00173 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00174"/>00174 }
 <anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00175"/>00175 
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00185"/><link linkend="_probabilities_amplitudes_damping_circuits_8hpp_1a5831b982783a400e7bc0ab09fe410f10">00185</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_probabilities_amplitudes_damping_circuits_8hpp_1a5831b982783a400e7bc0ab09fe410f10">applyTwoQubitHCZGateBetweenQubitMixDamping</link>(qreal&#32;prob,std::string&#32;fileAmp,std::string&#32;fileProb){
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00186"/>00186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numQubits&#32;=&#32;2;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00187"/>00187 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00188"/>00188 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00189"/>00189 &#32;&#32;&#32;&#32;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00190"/>00190 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;qureg</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00191"/>00191 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createDensityQureg(numQubits,&#32;env);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00192"/>00192 
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00193"/>00193 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Apply&#32;elements&#32;to&#32;circuit</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00194"/>00194 &#32;&#32;&#32;&#32;hadamard(qureg,0);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00195"/>00195 &#32;&#32;&#32;&#32;hadamard(qureg,1);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00196"/>00196 &#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,0,1);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00197"/>00197 &#32;&#32;&#32;&#32;mixDamping(qureg,0,prob);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00198"/>00198 &#32;&#32;&#32;&#32;mixDamping(qureg,1,prob);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00199"/>00199 &#32;&#32;&#32;&#32;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00200"/>00200 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;amplitudes&#32;to&#32;file</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00201"/>00201 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</link>(qureg,fileAmp);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00202"/>00202 
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00203"/>00203 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Compute&#32;probabilities</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00204"/>00204 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numProbs&#32;=&#32;1&lt;&lt;numQubits;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00205"/>00205 &#32;&#32;&#32;&#32;qreal&#32;outcomeProbs[numProbs];
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00206"/>00206 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubits[]&#32;=&#32;{0,1};
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00207"/>00207 &#32;&#32;&#32;&#32;calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);&#32;&#32;&#32;&#32;&#32;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00208"/>00208 &#32;&#32;&#32;&#32;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00209"/>00209 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;probabilities&#32;to&#32;file</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00210"/>00210 &#32;&#32;&#32;&#32;std::string&#32;col_name&#32;=&#32;<emphasis role="stringliteral">&quot;probabilities&quot;</emphasis>;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00211"/>00211 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</link>(outcomeProbs,&#32;numProbs,&#32;fileProb,col_name);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00212"/>00212 
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00213"/>00213 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00215"/>00215 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00216"/>00216 }
-<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00217"/>00217 
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00176"/>00176 
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00186"/><link linkend="_probabilities_amplitudes_damping_circuits_8hpp_1a5831b982783a400e7bc0ab09fe410f10">00186</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_probabilities_amplitudes_damping_circuits_8hpp_1a5831b982783a400e7bc0ab09fe410f10">applyTwoQubitHCZGateBetweenQubitMixDamping</link>(qreal&#32;prob,std::string&#32;fileAmp,std::string&#32;fileProb){
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00187"/>00187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numQubits&#32;=&#32;2;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00188"/>00188 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00189"/>00189 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00190"/>00190 &#32;&#32;&#32;&#32;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00191"/>00191 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;qureg</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00192"/>00192 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createDensityQureg(numQubits,&#32;env);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00193"/>00193 
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00194"/>00194 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Apply&#32;elements&#32;to&#32;circuit</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00195"/>00195 &#32;&#32;&#32;&#32;hadamard(qureg,0);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00196"/>00196 &#32;&#32;&#32;&#32;hadamard(qureg,1);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00197"/>00197 &#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,0,1);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00198"/>00198 &#32;&#32;&#32;&#32;mixDamping(qureg,0,prob);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00199"/>00199 &#32;&#32;&#32;&#32;mixDamping(qureg,1,prob);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00200"/>00200 &#32;&#32;&#32;&#32;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00201"/>00201 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;amplitudes&#32;to&#32;file</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00202"/>00202 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</link>(qureg,fileAmp);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00203"/>00203 
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00204"/>00204 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Compute&#32;probabilities</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00205"/>00205 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numProbs&#32;=&#32;1&lt;&lt;numQubits;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00206"/>00206 &#32;&#32;&#32;&#32;qreal&#32;outcomeProbs[numProbs];
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00207"/>00207 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubits[]&#32;=&#32;{0,1};
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00208"/>00208 &#32;&#32;&#32;&#32;calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00209"/>00209 &#32;&#32;&#32;&#32;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00210"/>00210 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;probabilities&#32;to&#32;file</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00211"/>00211 &#32;&#32;&#32;&#32;std::string&#32;col_name&#32;=&#32;<emphasis role="stringliteral">&quot;probabilities&quot;</emphasis>;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00212"/>00212 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</link>(outcomeProbs,&#32;numProbs,&#32;fileProb,col_name);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00213"/>00213 
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00215"/>00215 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00216"/>00216 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00217"/>00217 }
 <anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00218"/>00218 
 <anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00219"/>00219 
 <anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00220"/>00220 
@@ -182,4 +182,5 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00224"/>00224 
 <anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00225"/>00225 
 <anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00226"/>00226 
+<anchor xml:id="_probabilities_amplitudes_damping_circuits_8hpp_source_1l00227"/>00227 
 </programlisting></section>

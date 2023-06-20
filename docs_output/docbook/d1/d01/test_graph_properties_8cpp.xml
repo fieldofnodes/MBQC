@@ -7,9 +7,9 @@
         <itemizedlist>
             <listitem><para>typedef boost::adjacency_list&lt; boost::vecS, boost::vecS, boost::undirectedS &gt; <link linkend="_test_graph_properties_8cpp_1af845bf432b56cdda82dbde8011882168">undirectedGraph</link></para>
 </listitem>
-            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_test_graph_properties_8cpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link></para>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_test_flow_functions_8cpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_test_graph_properties_8cpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link></para>
 </listitem>
-            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_test_graph_properties_8cpp_1a9451df0dac964b257bedb5e60547824e">vertex_iterator</link></para>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_test_flow_functions_8cpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_test_graph_properties_8cpp_1a9451df0dac964b257bedb5e60547824e">vertex_iterator</link></para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -26,21 +26,21 @@
     <title>edge_iterator</title>
 <indexterm><primary>edge_iterator</primary><secondary>testGraphProperties.cpp</secondary></indexterm>
 <indexterm><primary>testGraphProperties.cpp</primary><secondary>edge_iterator</secondary></indexterm>
-<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link></computeroutput></para><para>
+<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_test_flow_functions_8cpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_test_flow_functions_8cpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link></computeroutput></para><para>
 Definition at line <link linkend="_test_graph_properties_8cpp_source_1l00024">24</link> of file <link linkend="_test_graph_properties_8cpp_source">testGraphProperties.cpp</link>.</para>
 </section>
 <anchor xml:id="_test_graph_properties_8cpp_1af845bf432b56cdda82dbde8011882168"/><section>
     <title>undirectedGraph</title>
 <indexterm><primary>undirectedGraph</primary><secondary>testGraphProperties.cpp</secondary></indexterm>
 <indexterm><primary>testGraphProperties.cpp</primary><secondary>undirectedGraph</secondary></indexterm>
-<para><computeroutput>typedef boost::adjacency_list&lt;boost::vecS, boost::vecS,boost::undirectedS&gt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link></computeroutput></para><para>
+<para><computeroutput>typedef boost::adjacency_list&lt;boost::vecS, boost::vecS,boost::undirectedS&gt; <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link></computeroutput></para><para>
 Definition at line <link linkend="_test_graph_properties_8cpp_source_1l00023">23</link> of file <link linkend="_test_graph_properties_8cpp_source">testGraphProperties.cpp</link>.</para>
 </section>
 <anchor xml:id="_test_graph_properties_8cpp_1a9451df0dac964b257bedb5e60547824e"/><section>
     <title>vertex_iterator</title>
 <indexterm><primary>vertex_iterator</primary><secondary>testGraphProperties.cpp</secondary></indexterm>
 <indexterm><primary>testGraphProperties.cpp</primary><secondary>vertex_iterator</secondary></indexterm>
-<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">vertex_iterator</link></computeroutput></para><para>
+<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_test_flow_functions_8cpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_test_flow_functions_8cpp_1a9451df0dac964b257bedb5e60547824e">vertex_iterator</link></computeroutput></para><para>
 Definition at line <link linkend="_test_graph_properties_8cpp_source_1l00025">25</link> of file <link linkend="_test_graph_properties_8cpp_source">testGraphProperties.cpp</link>.</para>
 </section>
 </section>
@@ -57,8 +57,8 @@ Definition at line <link linkend="_test_graph_properties_8cpp_source_1l00029">29
 00031 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;cols;
 00032 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;totalVertices;
 00033 &#32;&#32;&#32;&#32;
-00034 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;pathGraph;
-00035 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+00034 &#32;&#32;&#32;&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;pathGraph;
+00035 &#32;&#32;&#32;&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
 00036 &#32;&#32;&#32;&#32;
 00037 &#32;&#32;&#32;&#32;rows&#32;=&#32;10;
 00038 &#32;&#32;&#32;&#32;cols&#32;=&#32;10;
@@ -67,8 +67,8 @@ Definition at line <link linkend="_test_graph_properties_8cpp_source_1l00029">29
 00041 
 00042 
 00043 &#32;&#32;&#32;&#32;
-00044 &#32;&#32;&#32;&#32;pathGraph&#32;=&#32;<link linkend="_create_graph_8hpp_1aabb013bb6de93b1ca2ff83e1d7d200c7">createLatticeGraph</link>(1,cols);
-00045 &#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;<link linkend="_create_graph_8hpp_1aabb013bb6de93b1ca2ff83e1d7d200c7">createLatticeGraph</link>(rows,cols);
+00044 &#32;&#32;&#32;&#32;pathGraph&#32;=&#32;<link linkend="_graph_constructions_8hpp_1a74f9014929a19ec558c3bc766754f1c3">createLatticeGraph</link>(1,cols);
+00045 &#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;<link linkend="_graph_constructions_8hpp_1a74f9014929a19ec558c3bc766754f1c3">createLatticeGraph</link>(rows,cols);
 00046 
 00047 
 00048 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Test&#32;that&#32;the&#32;total&#32;degree&#32;is&#32;equivalent&#32;to&#32;</emphasis>

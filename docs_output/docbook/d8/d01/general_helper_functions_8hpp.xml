@@ -17,6 +17,10 @@
 
 <para>Calculates the ratios of ones in each column of a matrix. </para>
 </listitem>
+            <listitem><para>std::vector&lt; qreal &gt; <link linkend="_general_helper_functions_8hpp_1a3239399f882d9ea643c7862d70807d5c">outcomeProbabilitiesSingleQubit</link> (Qureg qureg, int qubit)</para>
+
+<para>Calculates the outcome probabilities of a single qubit in a quantum register. </para>
+</listitem>
             <listitem><para>std::vector&lt; std::string &gt; <link linkend="_general_helper_functions_8hpp_1a318982330941fb08021062d2593a62f9">getPaths</link> (std::string dataPath, std::string outputDir, std::string qubitInfo, qreal probability)</para>
 
 <para>Create probability and amplitude paths. </para>
@@ -233,34 +237,34 @@ Parameters</title>
 </formalpara>
 </para>
 <para>
-Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00131">131</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
-<programlisting linenumbering="unnumbered">00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-00132 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;homeDir&#32;=&#32;std::getenv(<emphasis role="stringliteral">&quot;HOME&quot;</emphasis>);
-00133 &#32;&#32;&#32;&#32;std::string&#32;fslash&#32;=&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>;
-00134 &#32;&#32;&#32;&#32;std::string&#32;uscore&#32;=&#32;<emphasis role="stringliteral">&quot;_&quot;</emphasis>;
-00135 &#32;&#32;&#32;&#32;std::string&#32;root&#32;=&#32;homeDir;
-00136 &#32;&#32;&#32;&#32;std::string&#32;amps&#32;=&#32;<emphasis role="stringliteral">&quot;amplitudes&quot;</emphasis>;
-00137 &#32;&#32;&#32;&#32;std::string&#32;probs&#32;=&#32;<emphasis role="stringliteral">&quot;probabilities&quot;</emphasis>;
-00138 &#32;&#32;&#32;&#32;std::string&#32;damps;
-00139 &#32;&#32;&#32;&#32;std::string&#32;csv&#32;=&#32;<emphasis role="stringliteral">&quot;.csv&quot;</emphasis>;
-00140 &#32;&#32;&#32;&#32;
-00141 &#32;&#32;&#32;&#32;
-00142 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(probability&#32;&lt;&#32;0){
-00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;damps&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>;
-00144 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>{
-00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;precisionVal&#32;=&#32;2;
-00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;prob_str&#32;=&#32;std::to_string(probability).substr(0,&#32;std::to_string(probability).find(<emphasis role="stringliteral">&quot;.&quot;</emphasis>)&#32;+&#32;precisionVal&#32;+&#32;1);
-00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;damps&#32;=&#32;<emphasis role="stringliteral">&quot;mix_damping_prob-&quot;</emphasis>+prob_str;
-00148 &#32;&#32;&#32;&#32;}
-00149 &#32;&#32;&#32;&#32;
-00150 &#32;&#32;&#32;&#32;std::string&#32;dataDirPath&#32;=&#32;homeDir&#32;+&#32;fslash&#32;+&#32;dataPath&#32;+&#32;fslash&#32;+&#32;outputDir&#32;+&#32;fslash;
-00151 &#32;&#32;&#32;&#32;std::string&#32;fileAmp&#32;=&#32;&#32;dataDirPath&#32;+&#32;amps&#32;+&#32;uscore&#32;+&#32;qubitInfo&#32;+&#32;uscore&#32;+&#32;damps&#32;+&#32;csv;
-00152 &#32;&#32;&#32;&#32;std::string&#32;fileProb&#32;=&#32;dataDirPath&#32;+&#32;probs&#32;+&#32;uscore&#32;+&#32;qubitInfo&#32;+&#32;uscore&#32;+&#32;damps&#32;+&#32;csv;
-00153 
-00154 &#32;&#32;&#32;&#32;std::vector&lt;std::string&gt;&#32;paths&#32;=&#32;{fileAmp,&#32;fileProb};
-00155 
-00156 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;paths;
-00157 }
+Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00144">144</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00145 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;homeDir&#32;=&#32;std::getenv(<emphasis role="stringliteral">&quot;HOME&quot;</emphasis>);
+00146 &#32;&#32;&#32;&#32;std::string&#32;fslash&#32;=&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>;
+00147 &#32;&#32;&#32;&#32;std::string&#32;uscore&#32;=&#32;<emphasis role="stringliteral">&quot;_&quot;</emphasis>;
+00148 &#32;&#32;&#32;&#32;std::string&#32;root&#32;=&#32;homeDir;
+00149 &#32;&#32;&#32;&#32;std::string&#32;amps&#32;=&#32;<emphasis role="stringliteral">&quot;amplitudes&quot;</emphasis>;
+00150 &#32;&#32;&#32;&#32;std::string&#32;probs&#32;=&#32;<emphasis role="stringliteral">&quot;probabilities&quot;</emphasis>;
+00151 &#32;&#32;&#32;&#32;std::string&#32;damps;
+00152 &#32;&#32;&#32;&#32;std::string&#32;csv&#32;=&#32;<emphasis role="stringliteral">&quot;.csv&quot;</emphasis>;
+00153 &#32;&#32;&#32;&#32;
+00154 &#32;&#32;&#32;&#32;
+00155 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(probability&#32;&lt;&#32;0){
+00156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;damps&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>;
+00157 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>{
+00158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;precisionVal&#32;=&#32;2;
+00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;prob_str&#32;=&#32;std::to_string(probability).substr(0,&#32;std::to_string(probability).find(<emphasis role="stringliteral">&quot;.&quot;</emphasis>)&#32;+&#32;precisionVal&#32;+&#32;1);
+00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;damps&#32;=&#32;<emphasis role="stringliteral">&quot;mix_damping_prob-&quot;</emphasis>+prob_str;
+00161 &#32;&#32;&#32;&#32;}
+00162 &#32;&#32;&#32;&#32;
+00163 &#32;&#32;&#32;&#32;std::string&#32;dataDirPath&#32;=&#32;homeDir&#32;+&#32;fslash&#32;+&#32;dataPath&#32;+&#32;fslash&#32;+&#32;outputDir&#32;+&#32;fslash;
+00164 &#32;&#32;&#32;&#32;std::string&#32;fileAmp&#32;=&#32;&#32;dataDirPath&#32;+&#32;amps&#32;+&#32;uscore&#32;+&#32;qubitInfo&#32;+&#32;uscore&#32;+&#32;damps&#32;+&#32;csv;
+00165 &#32;&#32;&#32;&#32;std::string&#32;fileProb&#32;=&#32;dataDirPath&#32;+&#32;probs&#32;+&#32;uscore&#32;+&#32;qubitInfo&#32;+&#32;uscore&#32;+&#32;damps&#32;+&#32;csv;
+00166 
+00167 &#32;&#32;&#32;&#32;std::vector&lt;std::string&gt;&#32;paths&#32;=&#32;{fileAmp,&#32;fileProb};
+00168 
+00169 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;paths;
+00170 }
 </programlisting></section>
 <anchor xml:id="_general_helper_functions_8hpp_1ac42846f45bd917af1aef32178df53bbf"/><section>
     <title>markPosition()</title>
@@ -277,6 +281,53 @@ Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00032"
 <programlisting linenumbering="unnumbered">00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
 00033 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Here&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
 00034 }
+</programlisting></section>
+<anchor xml:id="_general_helper_functions_8hpp_1a3239399f882d9ea643c7862d70807d5c"/><section>
+    <title>outcomeProbabilitiesSingleQubit()</title>
+<indexterm><primary>outcomeProbabilitiesSingleQubit</primary><secondary>generalHelperFunctions.hpp</secondary></indexterm>
+<indexterm><primary>generalHelperFunctions.hpp</primary><secondary>outcomeProbabilitiesSingleQubit</secondary></indexterm>
+<para><computeroutput>std::vector&lt; qreal &gt; outcomeProbabilitiesSingleQubit (Qureg qureg, int qubit)</computeroutput></para><para>
+
+<para>Calculates the outcome probabilities of a single qubit in a quantum register. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>qureg</entry><entry>
+<para>The quantum register. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>qubit</entry><entry>
+<para>The index of the qubit for which to calculate the outcome probabilities. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>A vector containing the outcome probabilities [prob_0, prob_1]. </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00124">124</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00125 &#32;&#32;&#32;&#32;qreal&#32;prob_0&#32;=&#32;calcProbOfOutcome(qureg,0,0);
+00126 &#32;&#32;&#32;&#32;qreal&#32;prob_1&#32;=&#32;calcProbOfOutcome(qureg,0,1);
+00127 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;{prob_0,prob_1};
+00128 &#32;}
 </programlisting></section>
 <anchor xml:id="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26"/><section>
     <title>printVector()</title>
@@ -335,13 +386,13 @@ Template Parameters</title>
                 </formalpara>
                 </para>
 <para>
-Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00182">182</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
-<programlisting linenumbering="unnumbered">00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-00183 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">const</emphasis>&#32;T&amp;&#32;element&#32;:&#32;vec)&#32;{
-00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;element&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>;
-00185 &#32;&#32;&#32;&#32;}
-00186 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
-00187 }
+Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00195">195</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00196 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">const</emphasis>&#32;T&amp;&#32;element&#32;:&#32;vec)&#32;{
+00197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;element&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>;
+00198 &#32;&#32;&#32;&#32;}
+00199 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+00200 }
 </programlisting></section>
 <anchor xml:id="_general_helper_functions_8hpp_1a41a7ac4a876af2866b1d6ab915ecdfb2"/><section>
     <title>writeArrayToFile()</title>
@@ -411,20 +462,20 @@ Template Parameters</title>
                 </formalpara>
                 </para>
 <para>
-Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00244">244</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
-<programlisting linenumbering="unnumbered">00244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-00245 &#32;&#32;&#32;&#32;std::ofstream&#32;file(filename);
-00246 &#32;&#32;&#32;&#32;file&#32;&lt;&lt;&#32;col_name&#32;&lt;&lt;&#32;std::endl;
-00247 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(file.is_open())&#32;{
-00248 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">size_t</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;size;&#32;++i)&#32;{
-00249 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;file&#32;&lt;&lt;&#32;values[i]&#32;&lt;&lt;&#32;std::endl;
-00250 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-00251 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;file.close();
-00252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Values&#32;written&#32;to&#32;file&#32;successfully.&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
-00253 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
-00254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Unable&#32;to&#32;open&#32;the&#32;file.&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
-00255 &#32;&#32;&#32;&#32;}
-00256 }
+Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00257">257</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00258 &#32;&#32;&#32;&#32;std::ofstream&#32;file(filename);
+00259 &#32;&#32;&#32;&#32;file&#32;&lt;&lt;&#32;col_name&#32;&lt;&lt;&#32;std::endl;
+00260 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(file.is_open())&#32;{
+00261 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">size_t</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;size;&#32;++i)&#32;{
+00262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;file&#32;&lt;&lt;&#32;values[i]&#32;&lt;&lt;&#32;std::endl;
+00263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;file.close();
+00265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Values&#32;written&#32;to&#32;file&#32;successfully.&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00266 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+00267 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Unable&#32;to&#32;open&#32;the&#32;file.&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00268 &#32;&#32;&#32;&#32;}
+00269 }
 </programlisting></section>
 <anchor xml:id="_general_helper_functions_8hpp_1a7465cffdfd3bf3b9d59175e8194b4588"/><section>
     <title>writeStateToFile()</title>
@@ -489,29 +540,29 @@ Parameters</title>
                 </formalpara>
                 </para>
 <para>
-Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00278">278</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
-<programlisting linenumbering="unnumbered">00278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-00279 &#32;&#32;&#32;&#32;FILE*&#32;state&#32;=&#32;std::fopen(filepath.c_str(),&#32;<emphasis role="stringliteral">&quot;w&quot;</emphasis>);
-00280 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">long</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;index;
-00281 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(state&#32;==&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;{
-00282 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::perror(<emphasis role="stringliteral">&quot;Failed&#32;to&#32;open&#32;file&quot;</emphasis>);
-00283 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
-00284 &#32;&#32;&#32;&#32;}
-00285 
-00286 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(qureg.chunkId&#32;==&#32;0)&#32;{
-00287 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::fprintf(state,&#32;<emphasis role="stringliteral">&quot;real,&#32;imag\n&quot;</emphasis>);
-00288 &#32;&#32;&#32;&#32;}
-00289 
-00290 &#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(index=0;&#32;index&lt;qureg.numAmpsPerChunk;&#32;index++){
-00291 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#&#32;if&#32;QuEST_PREC==1&#32;||&#32;QuEST_PREC==2</emphasis>
-00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fprintf(state,&#32;<emphasis role="stringliteral">&quot;%.12f,&#32;%.12f\n&quot;</emphasis>,&#32;qureg.stateVec.real[index],&#32;qureg.stateVec.imag[index]);
-00293 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#&#32;elif&#32;QuEST_PREC&#32;==&#32;4</emphasis>
-00294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fprintf(state,&#32;<emphasis role="stringliteral">&quot;%.12Lf,&#32;%.12Lf\n&quot;</emphasis>,&#32;qureg.stateVec.real[index],&#32;qureg.stateVec.imag[index]);
-00295 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
-00296 &#32;&#32;&#32;&#32;&#32;}
-00297 &#32;&#32;&#32;&#32;&#32;fclose(state);
-00298 &#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Values&#32;written&#32;to&#32;file&#32;successfully.&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
-00299 }
+Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00291">291</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00291 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00292 &#32;&#32;&#32;&#32;FILE*&#32;state&#32;=&#32;std::fopen(filepath.c_str(),&#32;<emphasis role="stringliteral">&quot;w&quot;</emphasis>);
+00293 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">long</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;index;
+00294 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(state&#32;==&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;{
+00295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::perror(<emphasis role="stringliteral">&quot;Failed&#32;to&#32;open&#32;file&quot;</emphasis>);
+00296 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+00297 &#32;&#32;&#32;&#32;}
+00298 
+00299 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(qureg.chunkId&#32;==&#32;0)&#32;{
+00300 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::fprintf(state,&#32;<emphasis role="stringliteral">&quot;real,&#32;imag\n&quot;</emphasis>);
+00301 &#32;&#32;&#32;&#32;}
+00302 
+00303 &#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(index=0;&#32;index&lt;qureg.numAmpsPerChunk;&#32;index++){
+00304 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#&#32;if&#32;QuEST_PREC==1&#32;||&#32;QuEST_PREC==2</emphasis>
+00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fprintf(state,&#32;<emphasis role="stringliteral">&quot;%.12f,&#32;%.12f\n&quot;</emphasis>,&#32;qureg.stateVec.real[index],&#32;qureg.stateVec.imag[index]);
+00306 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#&#32;elif&#32;QuEST_PREC&#32;==&#32;4</emphasis>
+00307 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fprintf(state,&#32;<emphasis role="stringliteral">&quot;%.12Lf,&#32;%.12Lf\n&quot;</emphasis>,&#32;qureg.stateVec.real[index],&#32;qureg.stateVec.imag[index]);
+00308 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+00309 &#32;&#32;&#32;&#32;&#32;}
+00310 &#32;&#32;&#32;&#32;&#32;fclose(state);
+00311 &#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Values&#32;written&#32;to&#32;file&#32;successfully.&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00312 }
 </programlisting></section>
 <anchor xml:id="_general_helper_functions_8hpp_1ac0434b40f8b6ac7962d760550c133c8f"/><section>
     <title>writeVectorToFile()</title>
@@ -576,20 +627,20 @@ Template Parameters</title>
                 </formalpara>
                 </para>
 <para>
-Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00209">209</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
-<programlisting linenumbering="unnumbered">00209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-00210 &#32;&#32;&#32;&#32;std::ofstream&#32;file(filename);
-00211 &#32;&#32;&#32;&#32;file&#32;&lt;&lt;&#32;col_name&#32;&lt;&lt;&#32;std::endl;
-00212 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(file.is_open())&#32;{
-00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">const</emphasis>&#32;T&amp;&#32;value&#32;:&#32;values)&#32;{
-00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;file&#32;&lt;&lt;&#32;value&#32;&lt;&lt;&#32;std::endl;
-00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;file.close();
-00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Values&#32;written&#32;to&#32;file&#32;successfully.&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
-00218 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
-00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Unable&#32;to&#32;open&#32;the&#32;file.&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
-00220 &#32;&#32;&#32;&#32;}
-00221 }
+Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00222">222</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00223 &#32;&#32;&#32;&#32;std::ofstream&#32;file(filename);
+00224 &#32;&#32;&#32;&#32;file&#32;&lt;&lt;&#32;col_name&#32;&lt;&lt;&#32;std::endl;
+00225 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(file.is_open())&#32;{
+00226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">const</emphasis>&#32;T&amp;&#32;value&#32;:&#32;values)&#32;{
+00227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;file&#32;&lt;&lt;&#32;value&#32;&lt;&lt;&#32;std::endl;
+00228 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;file.close();
+00230 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Values&#32;written&#32;to&#32;file&#32;successfully.&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00231 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+00232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Unable&#32;to&#32;open&#32;the&#32;file.&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00233 &#32;&#32;&#32;&#32;}
+00234 }
 </programlisting></section>
 </section>
 </section>

@@ -25,30 +25,30 @@
 var NAVTREE =
 [
   [ "MBQC", "index.html", [
-    [ "Measurement Based Quantum Computation (MBQC) Simulator (MBQC V0.01)", "index.html#autotoc_md17", [
-      [ "What is MBQC", "index.html#autotoc_md18", null ],
-      [ "Project status", "index.html#autotoc_md19", [
-        [ "External library requirements", "index.html#autotoc_md20", null ],
-        [ "Compile and execute a starter file", "index.html#autotoc_md21", null ]
+    [ "Measurement Based Quantum Computation (MBQC) Simulator (MBQC V0.01)", "index.html#autotoc_md1", [
+      [ "What is MBQC", "index.html#autotoc_md2", null ],
+      [ "Project status", "index.html#autotoc_md3", [
+        [ "External library requirements", "index.html#autotoc_md4", null ],
+        [ "Compile and execute a starter file", "index.html#autotoc_md5", null ]
       ] ]
     ] ],
-    [ "MBQC", "d6/d00/md_src_2archive_2index.html", [
-      [ "Measurement Based Quantum Computation", "d6/d00/md_src_2archive_2index.html#autotoc_md1", [
-        [ "Linear Cluster", "d6/d00/md_src_2archive_2index.html#autotoc_md2", [
-          [ "Used this libraries", "d6/d00/md_src_2archive_2index.html#autotoc_md3", null ],
-          [ "Create a linear cluster", "d6/d00/md_src_2archive_2index.html#autotoc_md4", null ],
-          [ "Flow function", "d6/d00/md_src_2archive_2index.html#autotoc_md5", null ],
-          [ "Neighborhood", "d6/d00/md_src_2archive_2index.html#autotoc_md6", null ]
-        ] ]
-      ] ]
-    ] ],
-    [ "mbqc_information", "d5/d00/md_src_2archive_2mbqc__information.html", null ],
-    [ "Data Structures", "annotated.html", [
-      [ "Data Structures", "annotated.html", "annotated_dup" ],
-      [ "Data Structure Index", "classes.html", null ],
-      [ "Data Fields", "functions.html", [
-        [ "All", "functions.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+    [ "Tutorial 1: MBQC Starter File", "df/d01/mbqc_starter_file.html", [
+      [ "Introduction", "df/d01/mbqc_starter_file.html#intro", null ],
+      [ "Script Overview", "df/d01/mbqc_starter_file.html#overview", null ],
+      [ "Usage", "df/d01/mbqc_starter_file.html#usage", [
+        [ "Include Package Header File", "df/d01/mbqc_starter_file.html#include", null ],
+        [ "Set up the Main Function", "df/d01/mbqc_starter_file.html#main", null ],
+        [ "Set Values to Variables", "df/d01/mbqc_starter_file.html#setvalues", null ],
+        [ "Print Graph to File", "df/d01/mbqc_starter_file.html#printgraph", null ],
+        [ "Load QuEST Environment", "df/d01/mbqc_starter_file.html#loadenv", null ],
+        [ "Create Quantum Register", "df/d01/mbqc_starter_file.html#createqreg", null ],
+        [ "Initialize Random Angles", "df/d01/mbqc_starter_file.html#initangles", null ],
+        [ "Initialize in Plus State", "df/d01/mbqc_starter_file.html#initstate", null ],
+        [ "Add Angles to Qubits", "df/d01/mbqc_starter_file.html#addangles", null ],
+        [ "Entangle Graph", "df/d01/mbqc_starter_file.html#entangle", null ],
+        [ "Measure Graph", "df/d01/mbqc_starter_file.html#measure", null ],
+        [ "Print Results to Screen", "df/d01/mbqc_starter_file.html#printresults", null ],
+        [ "Unload QuEST", "df/d01/mbqc_starter_file.html#unloadenv", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -56,7 +56,6 @@ var NAVTREE =
       [ "Globals", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ]
       ] ]
     ] ]
@@ -65,8 +64,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"dd/d01/20230313___m_b_q_c___v2_8c_source.html"
+"d0/d01/graph_assert_functions_8hpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

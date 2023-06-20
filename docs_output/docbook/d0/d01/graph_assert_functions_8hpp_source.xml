@@ -31,7 +31,7 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00028"/>00028 
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00029"/>00029 
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00030"/>00030 
-<anchor xml:id="_graph_assert_functions_8hpp_source_1l00039"/><link linkend="_graph_assert_functions_8hpp_1a60966966368ac25fe48dbccd70490e98">00039</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1a60966966368ac25fe48dbccd70490e98">assertHandShakeLemma</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph)&#32;{
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00039"/><link linkend="_graph_assert_functions_8hpp_1a60966966368ac25fe48dbccd70490e98">00039</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1a60966966368ac25fe48dbccd70490e98">assertHandShakeLemma</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph)&#32;{
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num_vertices&#32;=&#32;boost::num_vertices(graph);
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00042"/>00042 &#32;&#32;&#32;&#32;boost::container::vector&lt;int&gt;&#32;degree_vector;
@@ -50,7 +50,7 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00055"/>00055 
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00056"/>00056 
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00057"/>00057 
-<anchor xml:id="_graph_assert_functions_8hpp_source_1l00066"/><link linkend="_graph_assert_functions_8hpp_1a781ea29934c2f8c5c65a73075bc13da1">00066</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1a781ea29934c2f8c5c65a73075bc13da1">assertPathGraphMinMaxDegrees</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph)&#32;{
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00066"/><link linkend="_graph_assert_functions_8hpp_1a781ea29934c2f8c5c65a73075bc13da1">00066</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1a781ea29934c2f8c5c65a73075bc13da1">assertPathGraphMinMaxDegrees</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph)&#32;{
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00067"/>00067 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num_vertices&#32;=&#32;boost::num_vertices(graph);
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00068"/>00068 &#32;&#32;&#32;&#32;boost::container::vector&lt;int&gt;&#32;degree_vector;
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00069"/>00069 
@@ -70,7 +70,7 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00083"/>00083 
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00084"/>00084 
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00085"/>00085 
-<anchor xml:id="_graph_assert_functions_8hpp_source_1l00094"/><link linkend="_graph_assert_functions_8hpp_1ab7b459ddc7c532fc5a37abb8760d7ca6">00094</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1ab7b459ddc7c532fc5a37abb8760d7ca6">assertDegreeSetLatticeGraph</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph)&#32;{
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00094"/><link linkend="_graph_assert_functions_8hpp_1ab7b459ddc7c532fc5a37abb8760d7ca6">00094</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1ab7b459ddc7c532fc5a37abb8760d7ca6">assertDegreeSetLatticeGraph</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph)&#32;{
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00096"/>00096 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num_vertices&#32;=&#32;boost::num_vertices(graph);
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00097"/>00097 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;degree_vector;
@@ -100,14 +100,14 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00121"/>00121 }
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00122"/>00122 
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00123"/>00123 
-<anchor xml:id="_graph_assert_functions_8hpp_source_1l00133"/><link linkend="_graph_assert_functions_8hpp_1a026973ba07ba80213ede65e64a3eb614">00133</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1a026973ba07ba80213ede65e64a3eb614">assertGraphNumVertices</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph,&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices){
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00133"/><link linkend="_graph_assert_functions_8hpp_1a026973ba07ba80213ede65e64a3eb614">00133</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1a026973ba07ba80213ede65e64a3eb614">assertGraphNumVertices</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph,&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices){
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00134"/>00134 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num_vertices&#32;=&#32;boost::num_vertices(graph);
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00135"/>00135 &#32;&#32;assert(<emphasis role="stringliteral">&quot;Number&#32;of&#32;vertices&#32;in&#32;graph&#32;must&#32;equal&#32;input&quot;</emphasis>&#32;&amp;&amp;&#32;numVertices&#32;==&#32;num_vertices);
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00136"/>00136 }
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00137"/>00137 
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00138"/>00138 
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00139"/>00139 
-<anchor xml:id="_graph_assert_functions_8hpp_source_1l00149"/><link linkend="_graph_assert_functions_8hpp_1a3241060bf4552dac98da626843460bb3">00149</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1a3241060bf4552dac98da626843460bb3">assertFlowFunctionsPerformExpected</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph,&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows)&#32;{
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00149"/><link linkend="_graph_assert_functions_8hpp_1a3241060bf4552dac98da626843460bb3">00149</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1a3241060bf4552dac98da626843460bb3">assertFlowFunctionsPerformExpected</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph,&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows)&#32;{
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00150"/>00150 &#32;&#32;&#32;&#32;undirectedGraph::vertex_iterator&#32;vi,&#32;vi_end;
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00151"/>00151 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;size_graph&#32;=&#32;boost::num_vertices(graph);
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00152"/>00152 
@@ -130,7 +130,7 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00169"/>00169 &#32;&#32;&#32;&#32;}
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00170"/>00170 }
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00171"/>00171 
-<anchor xml:id="_graph_assert_functions_8hpp_source_1l00181"/><link linkend="_graph_assert_functions_8hpp_1a5c3f8d6a6068b10ca7ca8f2f4515cbcd">00181</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1a5c3f8d6a6068b10ca7ca8f2f4515cbcd">assertNieghbours</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph,std::vector&lt;std::vector&lt;int&gt;&gt;&#32;expectedNeighbourhood){&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00181"/><link linkend="_graph_assert_functions_8hpp_1a5c3f8d6a6068b10ca7ca8f2f4515cbcd">00181</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1a5c3f8d6a6068b10ca7ca8f2f4515cbcd">assertNieghbours</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph,std::vector&lt;std::vector&lt;int&gt;&gt;&#32;expectedNeighbourhood){&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00182"/>00182 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;size_graph&#32;=&#32;boost::num_vertices(graph);
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00183"/>00183 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;vertexIter&#32;=&#32;0;&#32;vertexIter&#32;&lt;&#32;size_graph;&#32;vertexIter++){
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;computedNeighbours&#32;=&#32;<link linkend="_graph_traversal_flows_8hpp_1a954183dad806b30b05e526c37284768b">getVertexNeighbours</link>(graph,vertexIter);
@@ -147,7 +147,7 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00195"/>00195 
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00196"/>00196 
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00210"/><link linkend="_graph_assert_functions_8hpp_1a67fc70f2265e3ca43a7871939ae44a95">00210</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1a67fc70f2265e3ca43a7871939ae44a95">assertCorrection</link>(
-<anchor xml:id="_graph_assert_functions_8hpp_source_1l00211"/>00211 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph,
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00211"/>00211 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph,
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00212"/>00212 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;outcomeVector,&#32;
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00213"/>00213 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;vertex,
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows,

@@ -35,7 +35,7 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_flow_measurements_8hpp_source_1l00044"/>00044 
 <anchor xml:id="_flow_measurements_8hpp_source_1l00057"/><link linkend="_flow_measurements_8hpp_1a7231be9a1c347894c1d01c349f4b41c7">00057</link> std::vector&lt;int&gt;&#32;<link linkend="_flow_measurements_8hpp_1a7231be9a1c347894c1d01c349f4b41c7">measureGraph</link>(
 <anchor xml:id="_flow_measurements_8hpp_source_1l00058"/>00058 &#32;&#32;&#32;&#32;Qureg&#32;qureg,
-<anchor xml:id="_flow_measurements_8hpp_source_1l00059"/>00059 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph,
+<anchor xml:id="_flow_measurements_8hpp_source_1l00059"/>00059 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph,
 <anchor xml:id="_flow_measurements_8hpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles,
 <anchor xml:id="_flow_measurements_8hpp_source_1l00061"/>00061 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows){
 <anchor xml:id="_flow_measurements_8hpp_source_1l00062"/>00062 

@@ -9,7 +9,7 @@
 
 <para>Updates a text file with additional content. </para>
 </listitem>
-            <listitem><para>void <link linkend="_write_graph_graph_viz_dot_file_8hpp_1a3d553b54b16922ee146bfb33201a3993">printGraphToFile</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, std::string fileDir, std::string graphName, std::string format)</para>
+            <listitem><para>void <link linkend="_write_graph_graph_viz_dot_file_8hpp_1a3d553b54b16922ee146bfb33201a3993">printGraphToFile</link> (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, std::string fileDir, std::string graphName, std::string format)</para>
 
 <para>Prints a graph to a file using Graphviz. </para>
 </listitem>
@@ -21,7 +21,7 @@
     <title>printGraphToFile()</title>
 <indexterm><primary>printGraphToFile</primary><secondary>writeGraphGraphVizDotFile.hpp</secondary></indexterm>
 <indexterm><primary>writeGraphGraphVizDotFile.hpp</primary><secondary>printGraphToFile</secondary></indexterm>
-<para><computeroutput>void printGraphToFile (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, std::string fileDir, std::string graphName, std::string format)</computeroutput></para><para>
+<para><computeroutput>void printGraphToFile (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, std::string fileDir, std::string graphName, std::string format)</computeroutput></para><para>
 
 <para>Prints a graph to a file using Graphviz. </para>
 </para>

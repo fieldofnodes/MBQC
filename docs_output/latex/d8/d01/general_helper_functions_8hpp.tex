@@ -9,6 +9,8 @@ int \mbox{\hyperlink{general_helper_functions_8hpp_a4c07ccd9e75d9522fb31bd4155bc
 \begin{DoxyCompactList}\small\item\em Draws a random integer from a uniform distribution within a specified range. \end{DoxyCompactList}\item 
 std\+::vector$<$ double $>$ \mbox{\hyperlink{general_helper_functions_8hpp_a7162e6559cb0f6cd2c76ebee85fe113d}{calculate\+Column\+Ratios}} (const std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \&matrix)
 \begin{DoxyCompactList}\small\item\em Calculates the ratios of ones in each column of a matrix. \end{DoxyCompactList}\item 
+std\+::vector$<$ qreal $>$ \mbox{\hyperlink{general_helper_functions_8hpp_a3239399f882d9ea643c7862d70807d5c}{outcome\+Probabilities\+Single\+Qubit}} (Qureg qureg, int qubit)
+\begin{DoxyCompactList}\small\item\em Calculates the outcome probabilities of a single qubit in a quantum register. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{general_helper_functions_8hpp_a318982330941fb08021062d2593a62f9}{get\+Paths}} (std\+::string data\+Path, std\+::string output\+Dir, std\+::string qubit\+Info, qreal probability)
 \begin{DoxyCompactList}\small\item\em Create probability and amplitude paths. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{general_helper_functions_8hpp_a721cdbc6bd980bd328255feba8168f26}{print\+Vector}} (const std\+::vector$<$ T $>$ \&vec)
@@ -154,37 +156,37 @@ A vector containing the generated paths for probability and amplitude files.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00131}{131}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
+Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00144}{144}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ homeDir\ =\ std::getenv(\textcolor{stringliteral}{"{}HOME"{}});}
-\DoxyCodeLine{00133\ \ \ \ \ std::string\ fslash\ =\ \textcolor{stringliteral}{"{}/"{}};}
-\DoxyCodeLine{00134\ \ \ \ \ std::string\ uscore\ =\ \textcolor{stringliteral}{"{}\_"{}};}
-\DoxyCodeLine{00135\ \ \ \ \ std::string\ root\ =\ homeDir;}
-\DoxyCodeLine{00136\ \ \ \ \ std::string\ amps\ =\ \textcolor{stringliteral}{"{}amplitudes"{}};}
-\DoxyCodeLine{00137\ \ \ \ \ std::string\ probs\ =\ \textcolor{stringliteral}{"{}probabilities"{}};}
-\DoxyCodeLine{00138\ \ \ \ \ std::string\ damps;}
-\DoxyCodeLine{00139\ \ \ \ \ std::string\ csv\ =\ \textcolor{stringliteral}{"{}.csv"{}};}
-\DoxyCodeLine{00140\ \ \ \ \ }
-\DoxyCodeLine{00141\ \ \ \ \ }
-\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordflow}{if}(probability\ <\ 0)\{}
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ damps\ =\ \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{00144\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\{}
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ precisionVal\ =\ 2;}
-\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ std::string\ prob\_str\ =\ std::to\_string(probability).substr(0,\ std::to\_string(probability).find(\textcolor{stringliteral}{"{}."{}})\ +\ precisionVal\ +\ 1);}
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ damps\ =\ \textcolor{stringliteral}{"{}mix\_damping\_prob-\/"{}}+prob\_str;}
-\DoxyCodeLine{00148\ \ \ \ \ \}}
-\DoxyCodeLine{00149\ \ \ \ \ }
-\DoxyCodeLine{00150\ \ \ \ \ std::string\ dataDirPath\ =\ homeDir\ +\ fslash\ +\ dataPath\ +\ fslash\ +\ outputDir\ +\ fslash;}
-\DoxyCodeLine{00151\ \ \ \ \ std::string\ fileAmp\ =\ \ dataDirPath\ +\ amps\ +\ uscore\ +\ qubitInfo\ +\ uscore\ +\ damps\ +\ csv;}
-\DoxyCodeLine{00152\ \ \ \ \ std::string\ fileProb\ =\ dataDirPath\ +\ probs\ +\ uscore\ +\ qubitInfo\ +\ uscore\ +\ damps\ +\ csv;}
-\DoxyCodeLine{00153\ }
-\DoxyCodeLine{00154\ \ \ \ \ std::vector<std::string>\ paths\ =\ \{fileAmp,\ fileProb\};}
-\DoxyCodeLine{00155\ }
-\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordflow}{return}\ paths;}
-\DoxyCodeLine{00157\ \}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ homeDir\ =\ std::getenv(\textcolor{stringliteral}{"{}HOME"{}});}
+\DoxyCodeLine{00146\ \ \ \ \ std::string\ fslash\ =\ \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{00147\ \ \ \ \ std::string\ uscore\ =\ \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{00148\ \ \ \ \ std::string\ root\ =\ homeDir;}
+\DoxyCodeLine{00149\ \ \ \ \ std::string\ amps\ =\ \textcolor{stringliteral}{"{}amplitudes"{}};}
+\DoxyCodeLine{00150\ \ \ \ \ std::string\ probs\ =\ \textcolor{stringliteral}{"{}probabilities"{}};}
+\DoxyCodeLine{00151\ \ \ \ \ std::string\ damps;}
+\DoxyCodeLine{00152\ \ \ \ \ std::string\ csv\ =\ \textcolor{stringliteral}{"{}.csv"{}};}
+\DoxyCodeLine{00153\ \ \ \ \ }
+\DoxyCodeLine{00154\ \ \ \ \ }
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordflow}{if}(probability\ <\ 0)\{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ damps\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00157\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ precisionVal\ =\ 2;}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ std::string\ prob\_str\ =\ std::to\_string(probability).substr(0,\ std::to\_string(probability).find(\textcolor{stringliteral}{"{}."{}})\ +\ precisionVal\ +\ 1);}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ damps\ =\ \textcolor{stringliteral}{"{}mix\_damping\_prob-\/"{}}+prob\_str;}
+\DoxyCodeLine{00161\ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \ \ \ \ }
+\DoxyCodeLine{00163\ \ \ \ \ std::string\ dataDirPath\ =\ homeDir\ +\ fslash\ +\ dataPath\ +\ fslash\ +\ outputDir\ +\ fslash;}
+\DoxyCodeLine{00164\ \ \ \ \ std::string\ fileAmp\ =\ \ dataDirPath\ +\ amps\ +\ uscore\ +\ qubitInfo\ +\ uscore\ +\ damps\ +\ csv;}
+\DoxyCodeLine{00165\ \ \ \ \ std::string\ fileProb\ =\ dataDirPath\ +\ probs\ +\ uscore\ +\ qubitInfo\ +\ uscore\ +\ damps\ +\ csv;}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ std::vector<std::string>\ paths\ =\ \{fileAmp,\ fileProb\};}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordflow}{return}\ paths;}
+\DoxyCodeLine{00170\ \}}
 
 \end{DoxyCode}
 \Hypertarget{general_helper_functions_8hpp_ac42846f45bd917af1aef32178df53bbf}\label{general_helper_functions_8hpp_ac42846f45bd917af1aef32178df53bbf} 
@@ -206,6 +208,39 @@ Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00032}
 \DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00033\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Here"{}}\ <<\ std::endl;}
 \DoxyCodeLine{00034\ \}}
+
+\end{DoxyCode}
+\Hypertarget{general_helper_functions_8hpp_a3239399f882d9ea643c7862d70807d5c}\label{general_helper_functions_8hpp_a3239399f882d9ea643c7862d70807d5c} 
+\index{generalHelperFunctions.hpp@{generalHelperFunctions.hpp}!outcomeProbabilitiesSingleQubit@{outcomeProbabilitiesSingleQubit}}
+\index{outcomeProbabilitiesSingleQubit@{outcomeProbabilitiesSingleQubit}!generalHelperFunctions.hpp@{generalHelperFunctions.hpp}}
+\doxysubsubsection{\texorpdfstring{outcomeProbabilitiesSingleQubit()}{outcomeProbabilitiesSingleQubit()}}
+{\footnotesize\ttfamily std\+::vector$<$ qreal $>$ outcome\+Probabilities\+Single\+Qubit (\begin{DoxyParamCaption}\item[{Qureg}]{qureg,  }\item[{int}]{qubit }\end{DoxyParamCaption})}
+
+
+
+Calculates the outcome probabilities of a single qubit in a quantum register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em qureg} & The quantum register. \\
+\hline
+{\em qubit} & The index of the qubit for which to calculate the outcome probabilities. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing the outcome probabilities \mbox{[}prob\+\_\+0, prob\+\_\+1\mbox{]}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00124}{124}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ qreal\ prob\_0\ =\ calcProbOfOutcome(qureg,0,0);}
+\DoxyCodeLine{00126\ \ \ \ \ qreal\ prob\_1\ =\ calcProbOfOutcome(qureg,0,1);}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordflow}{return}\ \{prob\_0,prob\_1\};}
+\DoxyCodeLine{00128\ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{general_helper_functions_8hpp_a721cdbc6bd980bd328255feba8168f26}\label{general_helper_functions_8hpp_a721cdbc6bd980bd328255feba8168f26} 
@@ -241,16 +276,16 @@ Example usage\+:
 \end{DoxyTemplParams}
 
 
-Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00182}{182}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
+Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00195}{195}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ T\&\ element\ :\ vec)\ \{}
-\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ std::cout\ <<\ element\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
-\DoxyCodeLine{00185\ \ \ \ \ \}}
-\DoxyCodeLine{00186\ \ \ \ \ std::cout\ <<\ std::endl;}
-\DoxyCodeLine{00187\ \}}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ T\&\ element\ :\ vec)\ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ std::cout\ <<\ element\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00198\ \ \ \ \ \}}
+\DoxyCodeLine{00199\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00200\ \}}
 
 \end{DoxyCode}
 \Hypertarget{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}\label{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2} 
@@ -284,23 +319,23 @@ This function writes the elements of the given array to a file. It takes an arra
 \end{DoxyTemplParams}
 
 
-Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00244}{244}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
+Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00257}{257}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00245\ \ \ \ \ std::ofstream\ file(filename);}
-\DoxyCodeLine{00246\ \ \ \ \ file\ <<\ col\_name\ <<\ std::endl;}
-\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
-\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ size;\ ++i)\ \{}
-\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ values[i]\ <<\ std::endl;}
-\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ file.close();}
-\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
-\DoxyCodeLine{00253\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ open\ the\ file."{}}\ <<\ std::endl;}
-\DoxyCodeLine{00255\ \ \ \ \ \}}
-\DoxyCodeLine{00256\ \}}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00258\ \ \ \ \ std::ofstream\ file(filename);}
+\DoxyCodeLine{00259\ \ \ \ \ file\ <<\ col\_name\ <<\ std::endl;}
+\DoxyCodeLine{00260\ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ size;\ ++i)\ \{}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ values[i]\ <<\ std::endl;}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00266\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ open\ the\ file."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00268\ \ \ \ \ \}}
+\DoxyCodeLine{00269\ \}}
 
 \end{DoxyCode}
 \Hypertarget{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}\label{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588} 
@@ -331,32 +366,32 @@ This function writes the state vector of the given quantum register to a file. I
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00278}{278}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
+Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00291}{291}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00279\ \ \ \ \ FILE*\ state\ =\ std::fopen(filepath.c\_str(),\ \textcolor{stringliteral}{"{}w"{}});}
-\DoxyCodeLine{00280\ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ index;}
-\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \textcolor{keyword}{nullptr})\ \{}
-\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ std::perror(\textcolor{stringliteral}{"{}Failed\ to\ open\ file"{}});}
-\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00284\ \ \ \ \ \}}
-\DoxyCodeLine{00285\ }
-\DoxyCodeLine{00286\ \ \ \ \ \textcolor{keywordflow}{if}\ (qureg.chunkId\ ==\ 0)\ \{}
-\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ std::fprintf(state,\ \textcolor{stringliteral}{"{}real,\ imag\(\backslash\)n"{}});}
-\DoxyCodeLine{00288\ \ \ \ \ \}}
-\DoxyCodeLine{00289\ }
-\DoxyCodeLine{00290\ \ \ \ \ \ \textcolor{keywordflow}{for}(index=0;\ index<qureg.numAmpsPerChunk;\ index++)\{}
-\DoxyCodeLine{00291\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#\ if\ QuEST\_PREC==1\ ||\ QuEST\_PREC==2}}
-\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ fprintf(state,\ \textcolor{stringliteral}{"{}\%.12f,\ \%.12f\(\backslash\)n"{}},\ qureg.stateVec.real[index],\ qureg.stateVec.imag[index]);}
-\DoxyCodeLine{00293\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#\ elif\ QuEST\_PREC\ ==\ 4}}
-\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ fprintf(state,\ \textcolor{stringliteral}{"{}\%.12Lf,\ \%.12Lf\(\backslash\)n"{}},\ qureg.stateVec.real[index],\ qureg.stateVec.imag[index]);}
-\DoxyCodeLine{00295\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#endif}}
-\DoxyCodeLine{00296\ \ \ \ \ \ \}}
-\DoxyCodeLine{00297\ \ \ \ \ \ fclose(state);}
-\DoxyCodeLine{00298\ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
-\DoxyCodeLine{00299\ \}}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00292\ \ \ \ \ FILE*\ state\ =\ std::fopen(filepath.c\_str(),\ \textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{00293\ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ index;}
+\DoxyCodeLine{00294\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ std::perror(\textcolor{stringliteral}{"{}Failed\ to\ open\ file"{}});}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00297\ \ \ \ \ \}}
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00299\ \ \ \ \ \textcolor{keywordflow}{if}\ (qureg.chunkId\ ==\ 0)\ \{}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ std::fprintf(state,\ \textcolor{stringliteral}{"{}real,\ imag\(\backslash\)n"{}});}
+\DoxyCodeLine{00301\ \ \ \ \ \}}
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00303\ \ \ \ \ \ \textcolor{keywordflow}{for}(index=0;\ index<qureg.numAmpsPerChunk;\ index++)\{}
+\DoxyCodeLine{00304\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#\ if\ QuEST\_PREC==1\ ||\ QuEST\_PREC==2}}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ fprintf(state,\ \textcolor{stringliteral}{"{}\%.12f,\ \%.12f\(\backslash\)n"{}},\ qureg.stateVec.real[index],\ qureg.stateVec.imag[index]);}
+\DoxyCodeLine{00306\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#\ elif\ QuEST\_PREC\ ==\ 4}}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ fprintf(state,\ \textcolor{stringliteral}{"{}\%.12Lf,\ \%.12Lf\(\backslash\)n"{}},\ qureg.stateVec.real[index],\ qureg.stateVec.imag[index]);}
+\DoxyCodeLine{00308\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00309\ \ \ \ \ \ \}}
+\DoxyCodeLine{00310\ \ \ \ \ \ fclose(state);}
+\DoxyCodeLine{00311\ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00312\ \}}
 
 \end{DoxyCode}
 \Hypertarget{general_helper_functions_8hpp_ac0434b40f8b6ac7962d760550c133c8f}\label{general_helper_functions_8hpp_ac0434b40f8b6ac7962d760550c133c8f} 
@@ -388,22 +423,22 @@ This function writes the elements of the given vector to a file. It takes a vect
 \end{DoxyTemplParams}
 
 
-Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00209}{209}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
+Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00222}{222}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00210\ \ \ \ \ std::ofstream\ file(filename);}
-\DoxyCodeLine{00211\ \ \ \ \ file\ <<\ col\_name\ <<\ std::endl;}
-\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
-\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ T\&\ value\ :\ values)\ \{}
-\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ value\ <<\ std::endl;}
-\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ file.close();}
-\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
-\DoxyCodeLine{00218\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ open\ the\ file."{}}\ <<\ std::endl;}
-\DoxyCodeLine{00220\ \ \ \ \ \}}
-\DoxyCodeLine{00221\ \}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00223\ \ \ \ \ std::ofstream\ file(filename);}
+\DoxyCodeLine{00224\ \ \ \ \ file\ <<\ col\_name\ <<\ std::endl;}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ T\&\ value\ :\ values)\ \{}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ value\ <<\ std::endl;}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00231\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ open\ the\ file."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00233\ \ \ \ \ \}}
+\DoxyCodeLine{00234\ \}}
 
 \end{DoxyCode}

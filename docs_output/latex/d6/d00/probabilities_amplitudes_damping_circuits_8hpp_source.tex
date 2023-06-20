@@ -75,104 +75,104 @@
 \DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00090}00090\ }
 \DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00091}00091\ }
 \DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00092}00092\ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00102}\mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp_a5b32b75a35ce71806d1c4dd09e316d32}{00102}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp_a5b32b75a35ce71806d1c4dd09e316d32}{applyOnTwoQubitPauliXEachQubitMixDamping}}(qreal\ prob,std::string\ fileAmp,std::string\ fileProb)\{}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00103}00103\ \ \ \ \ \textcolor{keywordtype}{int}\ numQubits\ =\ 2;}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00104}00104\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00105}00105\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00106}00106\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00107}00107\ \ \ \ \ \textcolor{comment}{//\ Create\ qureg}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00108}00108\ \ \ \ \ Qureg\ qureg\ =\ createDensityQureg(numQubits,\ env);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00109}00109\ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00110}00110\ \ \ \ \ \textcolor{comment}{//\ Apply\ elements\ to\ circuit}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00111}00111\ \ \ \ \ pauliX(qureg,0);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00112}00112\ \ \ \ \ pauliX(qureg,1);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00113}00113\ \ \ \ \ mixDamping(qureg,0,prob);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00114}00114\ \ \ \ \ mixDamping(qureg,1,prob);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00115}00115\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00116}00116\ \ \ \ \ \textcolor{comment}{//\ Write\ amplitudes\ to\ file}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00117}00117\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}{writeStateToFile}}(qureg,fileAmp);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00118}00118\ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00119}00119\ \ \ \ \ \textcolor{comment}{//\ Compute\ probabilities}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00120}00120\ \ \ \ \ \textcolor{keywordtype}{int}\ numProbs\ =\ 1<<numQubits;}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00121}00121\ \ \ \ \ qreal\ outcomeProbs[numProbs];}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00122}00122\ \ \ \ \ \textcolor{keywordtype}{int}\ qubits[]\ =\ \{0,1\};}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00123}00123\ \ \ \ \ calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00124}00124\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00125}00125\ \ \ \ \ \textcolor{comment}{//\ Write\ probabilities\ to\ file}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00126}00126\ \ \ \ \ std::string\ col\_name\ =\ \textcolor{stringliteral}{"{}probabilities"{}};}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00127}00127\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}{writeArrayToFile}}(outcomeProbs,\ numProbs,\ fileProb,col\_name);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00128}00128\ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00129}00129\ \ \ \ \ \textcolor{comment}{//\ unload\ QuEST}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00130}00130\ \ \ \ \ destroyQureg(qureg,\ env);\ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00131}00131\ \ \ \ \ destroyQuESTEnv(env);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00132}00132\ \}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00133}00133\ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00143}\mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp_a0e0364e3829b875d9fdf4dcd405ce17b}{00143}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp_a0e0364e3829b875d9fdf4dcd405ce17b}{applyOnTwoQubitHGateEachQubitMixDamping}}(qreal\ prob,std::string\ fileAmp,std::string\ fileProb)\{}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numQubits\ =\ 2;}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00145}00145\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00146}00146\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00147}00147\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00148}00148\ \ \ \ \ \textcolor{comment}{//\ Create\ qureg}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00149}00149\ \ \ \ \ Qureg\ qureg\ =\ createDensityQureg(numQubits,\ env);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00150}00150\ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00151}00151\ \ \ \ \ \textcolor{comment}{//\ Apply\ elements\ to\ circuit}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00152}00152\ \ \ \ \ hadamard(qureg,0);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00153}00153\ \ \ \ \ hadamard(qureg,1);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00154}00154\ \ \ \ \ mixDamping(qureg,0,prob);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00155}00155\ \ \ \ \ mixDamping(qureg,1,prob);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00156}00156\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00157}00157\ \ \ \ \ \textcolor{comment}{//\ Write\ amplitudes\ to\ file}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00158}00158\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}{writeStateToFile}}(qureg,fileAmp);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00159}00159\ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00160}00160\ \ \ \ \ \textcolor{comment}{//\ Compute\ probabilities}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00161}00161\ \ \ \ \ \textcolor{keywordtype}{int}\ numProbs\ =\ 1<<numQubits;}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00162}00162\ \ \ \ \ qreal\ outcomeProbs[numProbs];}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00163}00163\ \ \ \ \ \textcolor{keywordtype}{int}\ qubits[]\ =\ \{0,1\};}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00164}00164\ \ \ \ \ calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00165}00165\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00166}00166\ \ \ \ \ \textcolor{comment}{//\ Write\ probabilities\ to\ file}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00167}00167\ \ \ \ \ std::string\ col\_name\ =\ \textcolor{stringliteral}{"{}probabilities"{}};}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00168}00168\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}{writeArrayToFile}}(outcomeProbs,\ numProbs,\ fileProb,col\_name);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00169}00169\ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00170}00170\ \ \ \ \ \textcolor{comment}{//\ unload\ QuEST}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00171}00171\ \ \ \ \ destroyQureg(qureg,\ env);\ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00172}00172\ \ \ \ \ destroyQuESTEnv(env);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00173}00173\ \}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00103}\mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp_a5b32b75a35ce71806d1c4dd09e316d32}{00103}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp_a5b32b75a35ce71806d1c4dd09e316d32}{applyOnTwoQubitPauliXEachQubitMixDamping}}(qreal\ prob,std::string\ fileAmp,std::string\ fileProb)\{}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00104}00104\ \ \ \ \ \textcolor{keywordtype}{int}\ numQubits\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00105}00105\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00106}00106\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00107}00107\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//\ Create\ qureg}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00109}00109\ \ \ \ \ Qureg\ qureg\ =\ createDensityQureg(numQubits,\ env);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00111}00111\ \ \ \ \ \textcolor{comment}{//\ Apply\ elements\ to\ circuit}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00112}00112\ \ \ \ \ pauliX(qureg,0);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00113}00113\ \ \ \ \ pauliX(qureg,1);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00114}00114\ \ \ \ \ mixDamping(qureg,0,prob);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00115}00115\ \ \ \ \ mixDamping(qureg,1,prob);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00116}00116\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00117}00117\ \ \ \ \ \textcolor{comment}{//\ Write\ amplitudes\ to\ file}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00118}00118\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}{writeStateToFile}}(qureg,fileAmp);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00120}00120\ \ \ \ \ \textcolor{comment}{//\ Compute\ probabilities}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00121}00121\ \ \ \ \ \textcolor{keywordtype}{int}\ numProbs\ =\ 1<<numQubits;}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00122}00122\ \ \ \ \ qreal\ outcomeProbs[numProbs];}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00123}00123\ \ \ \ \ \textcolor{keywordtype}{int}\ qubits[]\ =\ \{0,1\};}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00124}00124\ \ \ \ \ calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00125}00125\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00126}00126\ \ \ \ \ \textcolor{comment}{//\ Write\ probabilities\ to\ file}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00127}00127\ \ \ \ \ std::string\ col\_name\ =\ \textcolor{stringliteral}{"{}probabilities"{}};}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00128}00128\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}{writeArrayToFile}}(outcomeProbs,\ numProbs,\ fileProb,col\_name);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00130}00130\ \ \ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00131}00131\ \ \ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00132}00132\ \ \ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00133}00133\ \}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00144}\mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp_a0e0364e3829b875d9fdf4dcd405ce17b}{00144}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp_a0e0364e3829b875d9fdf4dcd405ce17b}{applyOnTwoQubitHGateEachQubitMixDamping}}(qreal\ prob,std::string\ fileAmp,std::string\ fileProb)\{}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numQubits\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00146}00146\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00147}00147\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00148}00148\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00149}00149\ \ \ \ \ \textcolor{comment}{//\ Create\ qureg}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00150}00150\ \ \ \ \ Qureg\ qureg\ =\ createDensityQureg(numQubits,\ env);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00152}00152\ \ \ \ \ \textcolor{comment}{//\ Apply\ elements\ to\ circuit}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00153}00153\ \ \ \ \ hadamard(qureg,0);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00154}00154\ \ \ \ \ hadamard(qureg,1);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00155}00155\ \ \ \ \ mixDamping(qureg,0,prob);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00156}00156\ \ \ \ \ mixDamping(qureg,1,prob);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00157}00157\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00158}00158\ \ \ \ \ \textcolor{comment}{//\ Write\ amplitudes\ to\ file}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00159}00159\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}{writeStateToFile}}(qureg,fileAmp);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00161}00161\ \ \ \ \ \textcolor{comment}{//\ Compute\ probabilities}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00162}00162\ \ \ \ \ \textcolor{keywordtype}{int}\ numProbs\ =\ 1<<numQubits;}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00163}00163\ \ \ \ \ qreal\ outcomeProbs[numProbs];}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00164}00164\ \ \ \ \ \textcolor{keywordtype}{int}\ qubits[]\ =\ \{0,1\};}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00165}00165\ \ \ \ \ calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00166}00166\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00167}00167\ \ \ \ \ \textcolor{comment}{//\ Write\ probabilities\ to\ file}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00168}00168\ \ \ \ \ std::string\ col\_name\ =\ \textcolor{stringliteral}{"{}probabilities"{}};}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00169}00169\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}{writeArrayToFile}}(outcomeProbs,\ numProbs,\ fileProb,col\_name);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00171}00171\ \ \ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00172}00172\ \ \ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00173}00173\ \ \ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00174}00174\ \}}
 \DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00175}00175\ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00185}\mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp_a5831b982783a400e7bc0ab09fe410f10}{00185}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp_a5831b982783a400e7bc0ab09fe410f10}{applyTwoQubitHCZGateBetweenQubitMixDamping}}(qreal\ prob,std::string\ fileAmp,std::string\ fileProb)\{}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numQubits\ =\ 2;}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00187}00187\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00188}00188\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00189}00189\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00190}00190\ \ \ \ \ \textcolor{comment}{//\ Create\ qureg}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00191}00191\ \ \ \ \ Qureg\ qureg\ =\ createDensityQureg(numQubits,\ env);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00192}00192\ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00193}00193\ \ \ \ \ \textcolor{comment}{//\ Apply\ elements\ to\ circuit}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00194}00194\ \ \ \ \ hadamard(qureg,0);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00195}00195\ \ \ \ \ hadamard(qureg,1);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00196}00196\ \ \ \ \ controlledPhaseFlip(qureg,0,1);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00197}00197\ \ \ \ \ mixDamping(qureg,0,prob);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00198}00198\ \ \ \ \ mixDamping(qureg,1,prob);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00199}00199\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00200}00200\ \ \ \ \ \textcolor{comment}{//\ Write\ amplitudes\ to\ file}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00201}00201\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}{writeStateToFile}}(qureg,fileAmp);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00202}00202\ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00203}00203\ \ \ \ \ \textcolor{comment}{//\ Compute\ probabilities}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00204}00204\ \ \ \ \ \textcolor{keywordtype}{int}\ numProbs\ =\ 1<<numQubits;}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00205}00205\ \ \ \ \ qreal\ outcomeProbs[numProbs];}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00206}00206\ \ \ \ \ \textcolor{keywordtype}{int}\ qubits[]\ =\ \{0,1\};}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00207}00207\ \ \ \ \ calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00208}00208\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00209}00209\ \ \ \ \ \textcolor{comment}{//\ Write\ probabilities\ to\ file}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00210}00210\ \ \ \ \ std::string\ col\_name\ =\ \textcolor{stringliteral}{"{}probabilities"{}};}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00211}00211\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}{writeArrayToFile}}(outcomeProbs,\ numProbs,\ fileProb,col\_name);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00212}00212\ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00213}00213\ \ \ \ \ \textcolor{comment}{//\ unload\ QuEST}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00214}00214\ \ \ \ \ destroyQureg(qureg,\ env);\ }
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00215}00215\ \ \ \ \ destroyQuESTEnv(env);}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00216}00216\ \}}
-\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00186}\mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp_a5831b982783a400e7bc0ab09fe410f10}{00186}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp_a5831b982783a400e7bc0ab09fe410f10}{applyTwoQubitHCZGateBetweenQubitMixDamping}}(qreal\ prob,std::string\ fileAmp,std::string\ fileProb)\{}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numQubits\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00188}00188\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00189}00189\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00190}00190\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00191}00191\ \ \ \ \ \textcolor{comment}{//\ Create\ qureg}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00192}00192\ \ \ \ \ Qureg\ qureg\ =\ createDensityQureg(numQubits,\ env);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00194}00194\ \ \ \ \ \textcolor{comment}{//\ Apply\ elements\ to\ circuit}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00195}00195\ \ \ \ \ hadamard(qureg,0);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00196}00196\ \ \ \ \ hadamard(qureg,1);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00197}00197\ \ \ \ \ controlledPhaseFlip(qureg,0,1);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00198}00198\ \ \ \ \ mixDamping(qureg,0,prob);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00199}00199\ \ \ \ \ mixDamping(qureg,1,prob);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00200}00200\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00201}00201\ \ \ \ \ \textcolor{comment}{//\ Write\ amplitudes\ to\ file}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00202}00202\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}{writeStateToFile}}(qureg,fileAmp);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00204}00204\ \ \ \ \ \textcolor{comment}{//\ Compute\ probabilities}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00205}00205\ \ \ \ \ \textcolor{keywordtype}{int}\ numProbs\ =\ 1<<numQubits;}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00206}00206\ \ \ \ \ qreal\ outcomeProbs[numProbs];}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00207}00207\ \ \ \ \ \textcolor{keywordtype}{int}\ qubits[]\ =\ \{0,1\};}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00208}00208\ \ \ \ \ calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00209}00209\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00210}00210\ \ \ \ \ \textcolor{comment}{//\ Write\ probabilities\ to\ file}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00211}00211\ \ \ \ \ std::string\ col\_name\ =\ \textcolor{stringliteral}{"{}probabilities"{}};}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00212}00212\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}{writeArrayToFile}}(outcomeProbs,\ numProbs,\ fileProb,col\_name);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00214}00214\ \ \ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00215}00215\ \ \ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00216}00216\ \ \ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00217}00217\ \}}
 \DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00218}00218\ }
 \DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00219}00219\ }
 \DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00220}00220\ }
@@ -182,5 +182,6 @@
 \DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00224}00224\ }
 \DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00225}00225\ }
 \DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{probabilities_amplitudes_damping_circuits_8hpp_source_l00227}00227\ }
 
 \end{DoxyCode}

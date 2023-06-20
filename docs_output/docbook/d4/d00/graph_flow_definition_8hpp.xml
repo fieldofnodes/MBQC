@@ -5,23 +5,23 @@
 <simplesect>
     <title>Functions    </title>
         <itemizedlist>
-            <listitem><para>void <link linkend="_graph_flow_definition_8hpp_1a7da00b4eb0fe705f2a1ac54347decb27">assertFlowFunctionNeighbour</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;g, int v, int numRows, std::function&lt; int(int, int)&gt;flowFunction)</para>
+            <listitem><para>void <link linkend="_graph_flow_definition_8hpp_1a7da00b4eb0fe705f2a1ac54347decb27">assertFlowFunctionNeighbour</link> (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;g, int v, int numRows, std::function&lt; int(int, int)&gt;flowFunction)</para>
 
 <para>Asserts the flow function for a given vertex and its neighbors in the graph. </para>
 </listitem>
-            <listitem><para>bool <link linkend="_graph_flow_definition_8hpp_1ab2d570648375d421e37ef5eeb2590242">areVerticesConnected</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;g, undirectedGraph::vertex_descriptor u, undirectedGraph::vertex_descriptor v)</para>
+            <listitem><para>bool <link linkend="_graph_flow_definition_8hpp_1ab2d570648375d421e37ef5eeb2590242">areVerticesConnected</link> (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;g, undirectedGraph::vertex_descriptor u, undirectedGraph::vertex_descriptor v)</para>
 
 <para>Checks if two vertices in the undirected graph are connected by an edge. </para>
 </listitem>
-            <listitem><para>void <link linkend="_graph_flow_definition_8hpp_1a0adf0631e71f1959ee93977f2867e9c7">assertFlowFunctionNeighbourVertex</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;g, int vertex)</para>
+            <listitem><para>void <link linkend="_graph_flow_definition_8hpp_1a0adf0631e71f1959ee93977f2867e9c7">assertFlowFunctionNeighbourVertex</link> (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;g, int vertex)</para>
 
 <para>Asserts a condition for the flow function of a given vertex and its neighbors. </para>
 </listitem>
-            <listitem><para>void <link linkend="_graph_flow_definition_8hpp_1a41aab0ccd3ea6f075647fb7a443daf4d">assertFlowFunctionFutureOfVertex</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;g, int vertex)</para>
+            <listitem><para>void <link linkend="_graph_flow_definition_8hpp_1a41aab0ccd3ea6f075647fb7a443daf4d">assertFlowFunctionFutureOfVertex</link> (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;g, int vertex)</para>
 
 <para>Asserts a condition for the flow function and future of a given vertex. </para>
 </listitem>
-            <listitem><para>void void <link linkend="_graph_flow_definition_8hpp_1aceae62f2b36e649d0a5cebdd0369f5c3">assertNeighbourFlowFunctionFutureOfVertex</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;g, int vertex)</para>
+            <listitem><para>void void <link linkend="_graph_flow_definition_8hpp_1aceae62f2b36e649d0a5cebdd0369f5c3">assertNeighbourFlowFunctionFutureOfVertex</link> (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;g, int vertex)</para>
 
 <para>Asserts a condition involving the neighbor, flow function, and future of a vertex. </para>
 </listitem>
@@ -33,7 +33,7 @@
     <title>areVerticesConnected()</title>
 <indexterm><primary>areVerticesConnected</primary><secondary>graphFlowDefinition.hpp</secondary></indexterm>
 <indexterm><primary>graphFlowDefinition.hpp</primary><secondary>areVerticesConnected</secondary></indexterm>
-<para><computeroutput>bool areVerticesConnected (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; g, undirectedGraph::vertex_descriptor u, undirectedGraph::vertex_descriptor v)</computeroutput></para><para>
+<para><computeroutput>bool areVerticesConnected (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; g, undirectedGraph::vertex_descriptor u, undirectedGraph::vertex_descriptor v)</computeroutput></para><para>
 
 <para>Checks if two vertices in the undirected graph are connected by an edge. </para>
 </para>
@@ -86,7 +86,7 @@ Definition at line <link linkend="_graph_flow_definition_8hpp_source_1l00063">63
     <title>assertFlowFunctionFutureOfVertex()</title>
 <indexterm><primary>assertFlowFunctionFutureOfVertex</primary><secondary>graphFlowDefinition.hpp</secondary></indexterm>
 <indexterm><primary>graphFlowDefinition.hpp</primary><secondary>assertFlowFunctionFutureOfVertex</secondary></indexterm>
-<para><computeroutput>void assertFlowFunctionFutureOfVertex (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; g, int vertex)</computeroutput></para><para>
+<para><computeroutput>void assertFlowFunctionFutureOfVertex (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; g, int vertex)</computeroutput></para><para>
 
 <para>Asserts a condition for the flow function and future of a given vertex. </para>
 </para>
@@ -129,7 +129,7 @@ Definition at line <link linkend="_graph_flow_definition_8hpp_source_1l00095">95
     <title>assertFlowFunctionNeighbour()</title>
 <indexterm><primary>assertFlowFunctionNeighbour</primary><secondary>graphFlowDefinition.hpp</secondary></indexterm>
 <indexterm><primary>graphFlowDefinition.hpp</primary><secondary>assertFlowFunctionNeighbour</secondary></indexterm>
-<para><computeroutput>void assertFlowFunctionNeighbour (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; g, int v, int numRows, std::function&lt; int(int, int)&gt; flowFunction)</computeroutput></para><para>
+<para><computeroutput>void assertFlowFunctionNeighbour (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; g, int v, int numRows, std::function&lt; int(int, int)&gt; flowFunction)</computeroutput></para><para>
 
 <para>Asserts the flow function for a given vertex and its neighbors in the graph. </para>
 </para>
@@ -187,7 +187,7 @@ Definition at line <link linkend="_graph_flow_definition_8hpp_source_1l00038">38
     <title>assertFlowFunctionNeighbourVertex()</title>
 <indexterm><primary>assertFlowFunctionNeighbourVertex</primary><secondary>graphFlowDefinition.hpp</secondary></indexterm>
 <indexterm><primary>graphFlowDefinition.hpp</primary><secondary>assertFlowFunctionNeighbourVertex</secondary></indexterm>
-<para><computeroutput>void assertFlowFunctionNeighbourVertex (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; g, int vertex)</computeroutput></para><para>
+<para><computeroutput>void assertFlowFunctionNeighbourVertex (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; g, int vertex)</computeroutput></para><para>
 
 <para>Asserts a condition for the flow function of a given vertex and its neighbors. </para>
 </para>
@@ -230,7 +230,7 @@ Definition at line <link linkend="_graph_flow_definition_8hpp_source_1l00080">80
     <title>assertNeighbourFlowFunctionFutureOfVertex()</title>
 <indexterm><primary>assertNeighbourFlowFunctionFutureOfVertex</primary><secondary>graphFlowDefinition.hpp</secondary></indexterm>
 <indexterm><primary>graphFlowDefinition.hpp</primary><secondary>assertNeighbourFlowFunctionFutureOfVertex</secondary></indexterm>
-<para><computeroutput>void void assertNeighbourFlowFunctionFutureOfVertex (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; g, int vertex)</computeroutput></para><para>
+<para><computeroutput>void void assertNeighbourFlowFunctionFutureOfVertex (const <link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; g, int vertex)</computeroutput></para><para>
 
 <para>Asserts a condition involving the neighbor, flow function, and future of a vertex. </para>
 </para>

@@ -23,7 +23,7 @@
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00020}00020\ \textcolor{comment}{}}
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00021}00021\ }
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00022}00022\ }
-\DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00038}\mbox{\hyperlink{graph_flow_definition_8hpp_a7da00b4eb0fe705f2a1ac54347decb27}{00038}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_flow_definition_8hpp_a7da00b4eb0fe705f2a1ac54347decb27}{assertFlowFunctionNeighbour}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ g,\ \textcolor{keywordtype}{int}\ v,\ \textcolor{keywordtype}{int}\ numRows,\ std::function<\textcolor{keywordtype}{int}(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int})>flowFunction)}
+\DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00038}\mbox{\hyperlink{graph_flow_definition_8hpp_a7da00b4eb0fe705f2a1ac54347decb27}{00038}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_flow_definition_8hpp_a7da00b4eb0fe705f2a1ac54347decb27}{assertFlowFunctionNeighbour}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ g,\ \textcolor{keywordtype}{int}\ v,\ \textcolor{keywordtype}{int}\ numRows,\ std::function<\textcolor{keywordtype}{int}(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int})>flowFunction)}
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00039}00039\ \{}
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ Call\ the\ flow\ function\ to\ get\ the\ forward\ lattice\ flow}}
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{int}\ fv\ =\ flowFunction(v,\ numRows);}
@@ -35,25 +35,25 @@
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00047}00047\ }
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00048}00048\ }
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00049}00049\ }
-\DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00063}\mbox{\hyperlink{graph_flow_definition_8hpp_ab2d570648375d421e37ef5eeb2590242}{00063}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{graph_flow_definition_8hpp_ab2d570648375d421e37ef5eeb2590242}{areVerticesConnected}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ g,\ undirectedGraph::vertex\_descriptor\ u,\ undirectedGraph::vertex\_descriptor\ v)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00063}\mbox{\hyperlink{graph_flow_definition_8hpp_ab2d570648375d421e37ef5eeb2590242}{00063}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{graph_flow_definition_8hpp_ab2d570648375d421e37ef5eeb2590242}{areVerticesConnected}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ g,\ undirectedGraph::vertex\_descriptor\ u,\ undirectedGraph::vertex\_descriptor\ v)\ \{}
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{auto}\ edge\ =\ boost::edge(u,\ v,\ g);}
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{return}\ edge.second;\ \textcolor{comment}{//\ Returns\ true\ if\ there\ is\ an\ edge\ between\ u\ and\ v}}
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00066}00066\ \}}
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00067}00067\ }
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00068}00068\ }
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00069}00069\ }
-\DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00080}\mbox{\hyperlink{graph_flow_definition_8hpp_a0adf0631e71f1959ee93977f2867e9c7}{00080}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_flow_definition_8hpp_a0adf0631e71f1959ee93977f2867e9c7}{assertFlowFunctionNeighbourVertex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ g,\textcolor{keywordtype}{int}\ vertex)\{}
+\DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00080}\mbox{\hyperlink{graph_flow_definition_8hpp_a0adf0631e71f1959ee93977f2867e9c7}{00080}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_flow_definition_8hpp_a0adf0631e71f1959ee93977f2867e9c7}{assertFlowFunctionNeighbourVertex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ g,\textcolor{keywordtype}{int}\ vertex)\{}
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//\ Assert\ that\ for\ vertex,\ v,\ than\ f(v)\ is\ a\ neighbour}}
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00082}00082\ \}}
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00083}00083\ }
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00084}00084\ }
-\DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00095}\mbox{\hyperlink{graph_flow_definition_8hpp_a41aab0ccd3ea6f075647fb7a443daf4d}{00095}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_flow_definition_8hpp_a41aab0ccd3ea6f075647fb7a443daf4d}{assertFlowFunctionFutureOfVertex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ g,\textcolor{keywordtype}{int}\ vertex)\{}
+\DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00095}\mbox{\hyperlink{graph_flow_definition_8hpp_a41aab0ccd3ea6f075647fb7a443daf4d}{00095}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_flow_definition_8hpp_a41aab0ccd3ea6f075647fb7a443daf4d}{assertFlowFunctionFutureOfVertex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ g,\textcolor{keywordtype}{int}\ vertex)\{}
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00096}00096\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00097}00097\ \}}
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00098}00098\ }
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00109}00109\ \textcolor{keywordtype}{void}}
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00110}00110\ }
-\DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00111}\mbox{\hyperlink{graph_flow_definition_8hpp_aceae62f2b36e649d0a5cebdd0369f5c3}{00111}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_flow_definition_8hpp_aceae62f2b36e649d0a5cebdd0369f5c3}{assertNeighbourFlowFunctionFutureOfVertex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ g,\textcolor{keywordtype}{int}\ vertex)\{}
+\DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00111}\mbox{\hyperlink{graph_flow_definition_8hpp_aceae62f2b36e649d0a5cebdd0369f5c3}{00111}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_flow_definition_8hpp_aceae62f2b36e649d0a5cebdd0369f5c3}{assertNeighbourFlowFunctionFutureOfVertex}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ g,\textcolor{keywordtype}{int}\ vertex)\{}
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00112}00112\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00113}00113\ \}}
 \DoxyCodeLine{\Hypertarget{graph_flow_definition_8hpp_source_l00114}00114\ }

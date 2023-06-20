@@ -39,7 +39,7 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_src_2mbqc_starter_file_8cpp_source_1l00036"/>00036 &#32;&#32;<emphasis role="comment">//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
 <anchor xml:id="_src_2mbqc_starter_file_8cpp_source_1l00037"/>00037 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows;
 <anchor xml:id="_src_2mbqc_starter_file_8cpp_source_1l00038"/>00038 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols;
-<anchor xml:id="_src_2mbqc_starter_file_8cpp_source_1l00039"/>00039 &#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+<anchor xml:id="_src_2mbqc_starter_file_8cpp_source_1l00039"/>00039 &#32;&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
 <anchor xml:id="_src_2mbqc_starter_file_8cpp_source_1l00040"/>00040 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices;
 <anchor xml:id="_src_2mbqc_starter_file_8cpp_source_1l00041"/>00041 &#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;
 <anchor xml:id="_src_2mbqc_starter_file_8cpp_source_1l00042"/>00042 &#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;
@@ -48,7 +48,7 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_src_2mbqc_starter_file_8cpp_source_1l00045"/>00045 &#32;&#32;<emphasis role="comment">//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
 <anchor xml:id="_src_2mbqc_starter_file_8cpp_source_1l00046"/>00046 &#32;&#32;numRows&#32;=&#32;4;
 <anchor xml:id="_src_2mbqc_starter_file_8cpp_source_1l00047"/>00047 &#32;&#32;numCols&#32;=&#32;4;
-<anchor xml:id="_src_2mbqc_starter_file_8cpp_source_1l00048"/>00048 &#32;&#32;latticeGraph&#32;=&#32;<link linkend="_create_graph_8hpp_1aabb013bb6de93b1ca2ff83e1d7d200c7">createLatticeGraph</link>(numRows,numCols);
+<anchor xml:id="_src_2mbqc_starter_file_8cpp_source_1l00048"/>00048 &#32;&#32;latticeGraph&#32;=&#32;<link linkend="_graph_constructions_8hpp_1a74f9014929a19ec558c3bc766754f1c3">createLatticeGraph</link>(numRows,numCols);
 <anchor xml:id="_src_2mbqc_starter_file_8cpp_source_1l00049"/>00049 &#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);
 <anchor xml:id="_src_2mbqc_starter_file_8cpp_source_1l00050"/>00050 &#32;&#32;
 <anchor xml:id="_src_2mbqc_starter_file_8cpp_source_1l00051"/>00051 &#32;&#32;
