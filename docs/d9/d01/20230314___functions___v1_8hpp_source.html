@@ -9,10 +9,21 @@
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
-<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -48,6 +59,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d9/d01/20230314___functions___v1_8hpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,16 +97,11 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_05f47c3b30cbd06df5261c168690a0c6.html">archive</a></li><li class="navelem"><a class="el" href="../../dir_a17940faa29cad4a7fb1cbcc8986b984.html">filesToGoThrough</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">20230314_Functions_V1.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;QuEST.h&gt;</span></div>
+<a href="../../d9/d01/20230314___functions___v1_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;QuEST.h&gt;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
@@ -91,7 +114,7 @@ $(function() {
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">  To represent the a line of nodes connected by one </span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">  edge ()-()-()- - - -() (1,2,3,...,N)</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>vector&lt;int&gt; getPathGraph(<span class="keywordtype">int</span> numberQubits)</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="../../d9/d01/20230314___functions___v1_8hpp.html#aa6c7ea81b30e713a1f641e9a86e5f0a8">   14</a></span>vector&lt;int&gt; <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#aa6c7ea81b30e713a1f641e9a86e5f0a8">getPathGraph</a>(<span class="keywordtype">int</span> numberQubits)</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>  vector&lt;int&gt; pathGraph;</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; numberQubits; i++ )</div>
@@ -104,7 +127,7 @@ $(function() {
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">/*</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">  Linear flow, f(i) = i + 1</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keywordtype">int</span> getFutureQubit(<span class="keywordtype">int</span> currentQubit){</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../d9/d01/20230314___functions___v1_8hpp.html#a89ebfc1e65a5c1ee3c420843c016be0e">   27</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#a89ebfc1e65a5c1ee3c420843c016be0e">getFutureQubit</a>(<span class="keywordtype">int</span> currentQubit){</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keywordtype">int</span> futureQubit;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  futureQubit = currentQubit + 1;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
@@ -114,7 +137,7 @@ $(function() {
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">/*</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">  Linear flow, f^{-1}(i) = i - 1</span></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keywordtype">int</span> getPastQubit(<span class="keywordtype">int</span> currentQubit){</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="../../d9/d01/20230314___functions___v1_8hpp.html#af44420884b989805a33b6b4cb35fb2e1">   37</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#af44420884b989805a33b6b4cb35fb2e1">getPastQubit</a>(<span class="keywordtype">int</span> currentQubit){</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="keywordtype">int</span> pastQubit;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  pastQubit = currentQubit - 1;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
@@ -126,14 +149,14 @@ $(function() {
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">  f(i) = i + 1, if i is last element of vector, then</span></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">  throw error.</span></div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keywordtype">int</span> getFutureQubitPathGraph(vector&lt;int&gt; pathGraph ,<span class="keywordtype">int</span> currentQubit)</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="../../d9/d01/20230314___functions___v1_8hpp.html#adf1055c60f73eb56e5e51d97b15feeaf">   49</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#adf1055c60f73eb56e5e51d97b15feeaf">getFutureQubitPathGraph</a>(vector&lt;int&gt; pathGraph ,<span class="keywordtype">int</span> currentQubit)</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keywordtype">int</span> futureQubit;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">auto</span> graphSize = pathGraph.size();</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keywordflow">if</span> (currentQubit == pathGraph[graphSize-1]) {</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    futureQubit = currentQubit;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>} <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  futureQubit = getFutureQubit(currentQubit);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  futureQubit = <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#a89ebfc1e65a5c1ee3c420843c016be0e">getFutureQubit</a>(currentQubit);</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>}</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keywordflow">return</span> futureQubit;</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
@@ -144,7 +167,7 @@ $(function() {
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">  f^{-1}(i) = i - 1, if i is first element of vector, then</span></div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">  throw error.</span></div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keywordtype">int</span> getPastQubitPathGraph(vector&lt;int&gt; pathGraph ,<span class="keywordtype">int</span> currentQubit)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="../../d9/d01/20230314___functions___v1_8hpp.html#a1be0a6fc146b59a21929f000546f57a4">   67</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#a1be0a6fc146b59a21929f000546f57a4">getPastQubitPathGraph</a>(vector&lt;int&gt; pathGraph ,<span class="keywordtype">int</span> currentQubit)</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>{</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keywordtype">int</span> pastQubit;</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
@@ -152,7 +175,7 @@ $(function() {
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  pastQubit = currentQubit;</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>} <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  pastQubit = getPastQubit(currentQubit);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  pastQubit = <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#af44420884b989805a33b6b4cb35fb2e1">getPastQubit</a>(currentQubit);</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>}</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="keywordflow">return</span> pastQubit;</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>}</div>
@@ -165,7 +188,7 @@ $(function() {
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">  current qubit based on the qubit position in the</span></div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">  linear cluster</span></div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keywordtype">int</span> getOpenNeighbourhoodSizePathGraph(vector&lt;int&gt; pathGraph ,<span class="keywordtype">int</span> currentQubit){</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="../../d9/d01/20230314___functions___v1_8hpp.html#aebc14db121869c416ee59e033335ad63">   88</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#aebc14db121869c416ee59e033335ad63">getOpenNeighbourhoodSizePathGraph</a>(vector&lt;int&gt; pathGraph ,<span class="keywordtype">int</span> currentQubit){</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  <span class="keyword">auto</span> graphSize = pathGraph.size();</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <span class="keywordtype">int</span> neighbourhoodSize;</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  <span class="comment">// Logic for getting nieghbors</span></div>
@@ -184,7 +207,7 @@ $(function() {
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">  Get the neighbourhood of the qubit based on the linear cluster and the </span></div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">  qubits</span></div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>vector&lt;int&gt; getOpenNeighbourhoodPathGraph(vector&lt;int&gt; pathGraph ,<span class="keywordtype">int</span> currentQubit){</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="../../d9/d01/20230314___functions___v1_8hpp.html#a1a2f9b091ffe6a2814a21e720faafbe7">  107</a></span>vector&lt;int&gt; <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#a1a2f9b091ffe6a2814a21e720faafbe7">getOpenNeighbourhoodPathGraph</a>(vector&lt;int&gt; pathGraph ,<span class="keywordtype">int</span> currentQubit){</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  vector&lt;int&gt; neighbours;</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  <span class="keyword">auto</span> graphSize = pathGraph.size();</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  <span class="keywordtype">int</span> firstQubit;</div>
@@ -208,7 +231,7 @@ $(function() {
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>}</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  qreal computeXCorrectionAnglePathGraph(</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="../../d9/d01/20230314___functions___v1_8hpp.html#a9c227d82e03f906a192a861db4ddf6ab">  131</a></span>  qreal <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#a9c227d82e03f906a192a861db4ddf6ab">computeXCorrectionAnglePathGraph</a>(</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>      vector&lt;int&gt; pathGraph, </div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>      vector&lt;int&gt; measuredQubitsOutcomes,</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>      vector&lt;qreal&gt; qubitAngles,</div>
@@ -216,7 +239,7 @@ $(function() {
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>  {</div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>      qreal xCorrectionAngle;</div>
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>      <span class="keywordtype">int</span> pastQubit;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>      pastQubit = getPastQubitPathGraph(pathGraph,currentQubit);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>      pastQubit = <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#a1be0a6fc146b59a21929f000546f57a4">getPastQubitPathGraph</a>(pathGraph,currentQubit);</div>
 <div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>      <span class="keywordtype">int</span> inverseFlowQubitOutcome = measuredQubitsOutcomes[pastQubit];</div>
 <div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>      xCorrectionAngle = pow(-1, inverseFlowQubitOutcome)*qubitAngles[currentQubit];</div>
 <div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
@@ -225,7 +248,7 @@ $(function() {
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>  qreal computeZCorrectionAnglePathGraph(</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="../../d9/d01/20230314___functions___v1_8hpp.html#acf8731fbf6fdc066d371b78a916dc431">  148</a></span>  qreal <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#acf8731fbf6fdc066d371b78a916dc431">computeZCorrectionAnglePathGraph</a>(</div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>      vector&lt;int&gt; pathGraph, </div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>      vector&lt;int&gt; measuredQubitsOutcomes,</div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>      <span class="keywordtype">int</span> currentQubit)</div>
@@ -235,15 +258,15 @@ $(function() {
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>      <span class="keywordtype">int</span> pastQubit;</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>      <span class="keywordtype">int</span> pastPastQubit;</div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>      <span class="keywordtype">int</span> inverseFlowQubitOutcome;</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>      pastQubit = getPastQubitPathGraph(pathGraph,currentQubit);</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>      pastPastQubit = getPastQubitPathGraph(pathGraph,pastQubit);</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>      pastQubit = <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#a1be0a6fc146b59a21929f000546f57a4">getPastQubitPathGraph</a>(pathGraph,currentQubit);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>      pastPastQubit = <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#a1be0a6fc146b59a21929f000546f57a4">getPastQubitPathGraph</a>(pathGraph,pastQubit);</div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>      inverseFlowQubitOutcome = measuredQubitsOutcomes[pastPastQubit];</div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>      zCorrectionAngle = M_PI*inverseFlowQubitOutcome;</div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>              </div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>      <span class="keywordflow">return</span> zCorrectionAngle;</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>  }</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="keywordtype">int</span> countElements(vector&lt;int&gt; v, <span class="keywordtype">int</span> element) {</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="../../d9/d01/20230314___functions___v1_8hpp.html#a93cdcf18ac63c09cd8354e765238386a">  166</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#a93cdcf18ac63c09cd8354e765238386a">countElements</a>(vector&lt;int&gt; v, <span class="keywordtype">int</span> element) {</div>
 <div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordtype">int</span> count = 0;</div>
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = v.begin(); it != v.end(); ++it) {</div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        <span class="keywordflow">if</span> (*it == element) {</div>
@@ -253,7 +276,7 @@ $(function() {
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keywordflow">return</span> count;</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>}</div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>vector&lt;int&gt; runMbqcPathGraph(</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno"><a class="line" href="../../d9/d01/20230314___functions___v1_8hpp.html#acdb0932776bd659eddba9f2942af2c15">  176</a></span>vector&lt;int&gt; <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#acdb0932776bd659eddba9f2942af2c15">runMbqcPathGraph</a>(</div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        Qureg qureg,</div>
 <div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        vector&lt;int&gt; pathGraph,</div>
 <div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        vector&lt;qreal&gt; qubitAngles){</div>
@@ -288,12 +311,12 @@ $(function() {
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>            qreal phiPrime;</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>            <span class="keywordtype">int</span> outcome;</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>            X = computeXCorrectionAnglePathGraph(</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>            X = <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#a9c227d82e03f906a192a861db4ddf6ab">computeXCorrectionAnglePathGraph</a>(</div>
 <div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>                    pathGraph, </div>
 <div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>                    measuredQubitsOutcomes,</div>
 <div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>                    qubitAngles,</div>
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>                    currentQubit);</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>            Z = computeZCorrectionAnglePathGraph(</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>            Z = <a class="code hl_function" href="../../d9/d01/20230314___functions___v1_8hpp.html#acf8731fbf6fdc066d371b78a916dc431">computeZCorrectionAnglePathGraph</a>(</div>
 <div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>                    pathGraph, </div>
 <div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>                    measuredQubitsOutcomes,</div>
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>                    currentQubit);</div>
@@ -308,10 +331,25 @@ $(function() {
 <div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
 <div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>            <span class="keywordflow">return</span> measuredQubitsOutcomes;</div>
 <div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>}</div>
+<div class="ttc" id="a20230314___functions___v1_8hpp_html_a1a2f9b091ffe6a2814a21e720faafbe7"><div class="ttname"><a href="../../d9/d01/20230314___functions___v1_8hpp.html#a1a2f9b091ffe6a2814a21e720faafbe7">getOpenNeighbourhoodPathGraph</a></div><div class="ttdeci">vector&lt; int &gt; getOpenNeighbourhoodPathGraph(vector&lt; int &gt; pathGraph, int currentQubit)</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d01/20230314___functions___v1_8hpp_source.html#l00107">20230314_Functions_V1.hpp:107</a></div></div>
+<div class="ttc" id="a20230314___functions___v1_8hpp_html_a1be0a6fc146b59a21929f000546f57a4"><div class="ttname"><a href="../../d9/d01/20230314___functions___v1_8hpp.html#a1be0a6fc146b59a21929f000546f57a4">getPastQubitPathGraph</a></div><div class="ttdeci">int getPastQubitPathGraph(vector&lt; int &gt; pathGraph, int currentQubit)</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d01/20230314___functions___v1_8hpp_source.html#l00067">20230314_Functions_V1.hpp:67</a></div></div>
+<div class="ttc" id="a20230314___functions___v1_8hpp_html_a89ebfc1e65a5c1ee3c420843c016be0e"><div class="ttname"><a href="../../d9/d01/20230314___functions___v1_8hpp.html#a89ebfc1e65a5c1ee3c420843c016be0e">getFutureQubit</a></div><div class="ttdeci">int getFutureQubit(int currentQubit)</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d01/20230314___functions___v1_8hpp_source.html#l00027">20230314_Functions_V1.hpp:27</a></div></div>
+<div class="ttc" id="a20230314___functions___v1_8hpp_html_a93cdcf18ac63c09cd8354e765238386a"><div class="ttname"><a href="../../d9/d01/20230314___functions___v1_8hpp.html#a93cdcf18ac63c09cd8354e765238386a">countElements</a></div><div class="ttdeci">int countElements(vector&lt; int &gt; v, int element)</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d01/20230314___functions___v1_8hpp_source.html#l00166">20230314_Functions_V1.hpp:166</a></div></div>
+<div class="ttc" id="a20230314___functions___v1_8hpp_html_a9c227d82e03f906a192a861db4ddf6ab"><div class="ttname"><a href="../../d9/d01/20230314___functions___v1_8hpp.html#a9c227d82e03f906a192a861db4ddf6ab">computeXCorrectionAnglePathGraph</a></div><div class="ttdeci">qreal computeXCorrectionAnglePathGraph(vector&lt; int &gt; pathGraph, vector&lt; int &gt; measuredQubitsOutcomes, vector&lt; qreal &gt; qubitAngles, int currentQubit)</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d01/20230314___functions___v1_8hpp_source.html#l00131">20230314_Functions_V1.hpp:131</a></div></div>
+<div class="ttc" id="a20230314___functions___v1_8hpp_html_aa6c7ea81b30e713a1f641e9a86e5f0a8"><div class="ttname"><a href="../../d9/d01/20230314___functions___v1_8hpp.html#aa6c7ea81b30e713a1f641e9a86e5f0a8">getPathGraph</a></div><div class="ttdeci">vector&lt; int &gt; getPathGraph(int numberQubits)</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d01/20230314___functions___v1_8hpp_source.html#l00014">20230314_Functions_V1.hpp:14</a></div></div>
+<div class="ttc" id="a20230314___functions___v1_8hpp_html_acdb0932776bd659eddba9f2942af2c15"><div class="ttname"><a href="../../d9/d01/20230314___functions___v1_8hpp.html#acdb0932776bd659eddba9f2942af2c15">runMbqcPathGraph</a></div><div class="ttdeci">vector&lt; int &gt; runMbqcPathGraph(Qureg qureg, vector&lt; int &gt; pathGraph, vector&lt; qreal &gt; qubitAngles)</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d01/20230314___functions___v1_8hpp_source.html#l00176">20230314_Functions_V1.hpp:176</a></div></div>
+<div class="ttc" id="a20230314___functions___v1_8hpp_html_acf8731fbf6fdc066d371b78a916dc431"><div class="ttname"><a href="../../d9/d01/20230314___functions___v1_8hpp.html#acf8731fbf6fdc066d371b78a916dc431">computeZCorrectionAnglePathGraph</a></div><div class="ttdeci">qreal computeZCorrectionAnglePathGraph(vector&lt; int &gt; pathGraph, vector&lt; int &gt; measuredQubitsOutcomes, int currentQubit)</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d01/20230314___functions___v1_8hpp_source.html#l00148">20230314_Functions_V1.hpp:148</a></div></div>
+<div class="ttc" id="a20230314___functions___v1_8hpp_html_adf1055c60f73eb56e5e51d97b15feeaf"><div class="ttname"><a href="../../d9/d01/20230314___functions___v1_8hpp.html#adf1055c60f73eb56e5e51d97b15feeaf">getFutureQubitPathGraph</a></div><div class="ttdeci">int getFutureQubitPathGraph(vector&lt; int &gt; pathGraph, int currentQubit)</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d01/20230314___functions___v1_8hpp_source.html#l00049">20230314_Functions_V1.hpp:49</a></div></div>
+<div class="ttc" id="a20230314___functions___v1_8hpp_html_aebc14db121869c416ee59e033335ad63"><div class="ttname"><a href="../../d9/d01/20230314___functions___v1_8hpp.html#aebc14db121869c416ee59e033335ad63">getOpenNeighbourhoodSizePathGraph</a></div><div class="ttdeci">int getOpenNeighbourhoodSizePathGraph(vector&lt; int &gt; pathGraph, int currentQubit)</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d01/20230314___functions___v1_8hpp_source.html#l00088">20230314_Functions_V1.hpp:88</a></div></div>
+<div class="ttc" id="a20230314___functions___v1_8hpp_html_af44420884b989805a33b6b4cb35fb2e1"><div class="ttname"><a href="../../d9/d01/20230314___functions___v1_8hpp.html#af44420884b989805a33b6b4cb35fb2e1">getPastQubit</a></div><div class="ttdeci">int getPastQubit(int currentQubit)</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d01/20230314___functions___v1_8hpp_source.html#l00037">20230314_Functions_V1.hpp:37</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_05f47c3b30cbd06df5261c168690a0c6.html">archive</a></li><li class="navelem"><a class="el" href="../../dir_a17940faa29cad4a7fb1cbcc8986b984.html">filesToGoThrough</a></li><li class="navelem"><a class="el" href="../../d9/d01/20230314___functions___v1_8hpp.html">20230314_Functions_V1.hpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>
