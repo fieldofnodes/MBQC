@@ -8,7 +8,12 @@
 /////////////////////////////////////////////////////////////
 
 
-// Density matrix with no damping noise 
+/**
+ * Apply single-qubit Pauli-X gate to the quantum state without any damping noise.
+ *
+ * @param fileAmp The file to write the amplitudes of the quantum state.
+ * @param fileProb The file to write the probabilities of the quantum state.
+ */
 void applySingleQubitPauliX(std::string fileAmp,std::string fileProb){
     int numQubits = 1;
     // load QuEST environment
@@ -39,6 +44,17 @@ void applySingleQubitPauliX(std::string fileAmp,std::string fileProb){
     destroyQureg(qureg, env); 
     destroyQuESTEnv(env);
 }
+
+
+
+
+
+/**
+ * Apply single-qubit Hadamard gate to the quantum state without any damping noise.
+ *
+ * @param fileAmp The file to write the amplitudes of the quantum state.
+ * @param fileProb The file to write the probabilities of the quantum state.
+ */
 void applySingleQubitHGate(std::string fileAmp,std::string fileProb){
         int numQubits = 1;
     // load QuEST environment
@@ -69,6 +85,14 @@ void applySingleQubitHGate(std::string fileAmp,std::string fileProb){
     destroyQureg(qureg, env); 
     destroyQuESTEnv(env);
 }
+
+
+/**
+ * Apply Pauli-X gate to each qubit of a two-qubit system without any damping noise.
+ *
+ * @param fileAmp The file to write the amplitudes of the quantum state.
+ * @param fileProb The file to write the probabilities of the quantum state.
+ */
 void applyTwoQubitPauliXEachQubit(std::string fileAmp,std::string fileProb){
     int numQubits = 2;
     // load QuEST environment
@@ -100,6 +124,16 @@ void applyTwoQubitPauliXEachQubit(std::string fileAmp,std::string fileProb){
     destroyQureg(qureg, env); 
     destroyQuESTEnv(env);
 }
+
+
+
+
+/**
+ * Apply Hadamard gate to each qubit of a two-qubit system without any damping noise.
+ *
+ * @param fileAmp The file to write the amplitudes of the quantum state.
+ * @param fileProb The file to write the probabilities of the quantum state.
+ */
 void applyTwoQubitHGateEachQubit(std::string fileAmp,std::string fileProb){
     int numQubits = 2;
     // load QuEST environment
@@ -131,6 +165,15 @@ void applyTwoQubitHGateEachQubit(std::string fileAmp,std::string fileProb){
     destroyQureg(qureg, env); 
     destroyQuESTEnv(env);
 }
+
+
+/**
+ * Apply Hadamard gate to each qubit of a two-qubit system, and a controlled phase flip gate between the qubits,
+ * without any damping noise.
+ *
+ * @param fileAmp The file to write the amplitudes of the quantum state.
+ * @param fileProb The file to write the probabilities of the quantum state.
+ */
 void applyTwoQubitHCZGateBetweenQubit(std::string fileAmp,std::string fileProb){
             int numQubits = 2;
     // load QuEST environment

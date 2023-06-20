@@ -7,6 +7,16 @@
 //        : damping
 /////////////////////////////////////////////////////////////
 
+
+/**
+ * @brief Applies a single-qubit Pauli-X gate followed by mix damping to a quantum system.
+ *
+ * The function applies a Pauli-X gate followed by mix damping to the specified qubit of the quantum system. It then writes the amplitudes and probabilities of the quantum system to the specified files.
+ *
+ * @param prob The probability of mix damping.
+ * @param fileAmp The file path to write the amplitudes.
+ * @param fileProb The file path to write the probabilities.
+ */
 void applySingleQubitPauliXMixDamping(qreal prob,std::string fileAmp,std::string fileProb){
     int numQubits = 1;
     // load QuEST environment
@@ -37,6 +47,16 @@ void applySingleQubitPauliXMixDamping(qreal prob,std::string fileAmp,std::string
     destroyQuESTEnv(env);
     
 }
+
+/**
+ * @brief Applies a single-qubit Hadamard gate followed by mix damping to a quantum system.
+ *
+ * The function applies a Hadamard gate followed by mix damping to the specified qubit of the quantum system. It then writes the amplitudes and probabilities of the quantum system to the specified files.
+ *
+ * @param prob The probability of mix damping.
+ * @param fileAmp The file path to write the amplitudes.
+ * @param fileProb The file path to write the probabilities.
+ */
 void applySingleQubitHGateMixDamping(qreal prob,std::string fileAmp,std::string fileProb){
     int numQubits = 1;
     // load QuEST environment
@@ -67,6 +87,19 @@ void applySingleQubitHGateMixDamping(qreal prob,std::string fileAmp,std::string 
     destroyQuESTEnv(env);
     
 }
+
+
+
+
+/**
+ * @brief Applies Pauli-X gates followed by mix damping to each qubit of a two-qubit quantum system.
+ *
+ * The function applies Pauli-X gates followed by mix damping to each qubit of the two-qubit quantum system. It then writes the amplitudes and probabilities of the quantum system to the specified files.
+ *
+ * @param prob The probability of mix damping.
+ * @param fileAmp The file path to write the amplitudes.
+ * @param fileProb The file path to write the probabilities.
+ */
 void applyOnTwoQubitPauliXEachQubitMixDamping(qreal prob,std::string fileAmp,std::string fileProb){
     int numQubits = 2;
     // load QuEST environment
@@ -98,6 +131,16 @@ void applyOnTwoQubitPauliXEachQubitMixDamping(qreal prob,std::string fileAmp,std
     destroyQureg(qureg, env); 
     destroyQuESTEnv(env);
 }
+
+/**
+ * @brief Applies Hadamard gates followed by mix damping to each qubit of a two-qubit quantum system.
+ *
+ * The function applies Hadamard gates followed by mix damping to each qubit of the two-qubit quantum system. It then writes the amplitudes and probabilities of the quantum system to the specified files.
+ *
+ * @param prob The probability of mix damping.
+ * @param fileAmp The file path to write the amplitudes.
+ * @param fileProb The file path to write the probabilities.
+ */
 void applyOnTwoQubitHGateEachQubitMixDamping(qreal prob,std::string fileAmp,std::string fileProb){
         int numQubits = 2;
     // load QuEST environment
@@ -129,6 +172,17 @@ void applyOnTwoQubitHGateEachQubitMixDamping(qreal prob,std::string fileAmp,std:
     destroyQureg(qureg, env); 
     destroyQuESTEnv(env);
 }
+
+
+/**
+ * @brief Applies a controlled-Z gate followed by mix damping to two qubits of a two-qubit quantum system.
+ *
+ * The function applies a controlled-Z gate followed by mix damping to the specified two qubits of the two-qubit quantum system. It then writes the amplitudes and probabilities of the quantum system to the specified files.
+ *
+ * @param prob The probability of mix damping.
+ * @param fileAmp The file path to write the amplitudes.
+ * @param fileProb The file path to write the probabilities.
+ */
 void applyTwoQubitHCZGateBetweenQubitMixDamping(qreal prob,std::string fileAmp,std::string fileProb){
             int numQubits = 2;
     // load QuEST environment
@@ -161,3 +215,13 @@ void applyTwoQubitHCZGateBetweenQubitMixDamping(qreal prob,std::string fileAmp,s
     destroyQureg(qureg, env); 
     destroyQuESTEnv(env);
 }
+
+
+
+
+
+
+
+
+
+

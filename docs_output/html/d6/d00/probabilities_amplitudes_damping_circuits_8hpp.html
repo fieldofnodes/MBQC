@@ -109,14 +109,19 @@ $(document).ready(function(){initNavTree('d6/d00/probabilities_amplitudes_dampin
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aa20aa58ec759d87b836c19d8140445dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp.html#aa20aa58ec759d87b836c19d8140445dc">applySingleQubitPauliXMixDamping</a> (qreal prob, std::string fileAmp, std::string fileProb)</td></tr>
+<tr class="memdesc:aa20aa58ec759d87b836c19d8140445dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a single-qubit Pauli-X gate followed by mix damping to a quantum system.  <br /></td></tr>
 <tr class="separator:aa20aa58ec759d87b836c19d8140445dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c742a3dbd13ecb76c32ea605ace9c5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp.html#a2c742a3dbd13ecb76c32ea605ace9c5a">applySingleQubitHGateMixDamping</a> (qreal prob, std::string fileAmp, std::string fileProb)</td></tr>
+<tr class="memdesc:a2c742a3dbd13ecb76c32ea605ace9c5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a single-qubit Hadamard gate followed by mix damping to a quantum system.  <br /></td></tr>
 <tr class="separator:a2c742a3dbd13ecb76c32ea605ace9c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b32b75a35ce71806d1c4dd09e316d32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp.html#a5b32b75a35ce71806d1c4dd09e316d32">applyOnTwoQubitPauliXEachQubitMixDamping</a> (qreal prob, std::string fileAmp, std::string fileProb)</td></tr>
+<tr class="memdesc:a5b32b75a35ce71806d1c4dd09e316d32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies Pauli-X gates followed by mix damping to each qubit of a two-qubit quantum system.  <br /></td></tr>
 <tr class="separator:a5b32b75a35ce71806d1c4dd09e316d32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e0364e3829b875d9fdf4dcd405ce17b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp.html#a0e0364e3829b875d9fdf4dcd405ce17b">applyOnTwoQubitHGateEachQubitMixDamping</a> (qreal prob, std::string fileAmp, std::string fileProb)</td></tr>
+<tr class="memdesc:a0e0364e3829b875d9fdf4dcd405ce17b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies Hadamard gates followed by mix damping to each qubit of a two-qubit quantum system.  <br /></td></tr>
 <tr class="separator:a0e0364e3829b875d9fdf4dcd405ce17b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5831b982783a400e7bc0ab09fe410f10"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp.html#a5831b982783a400e7bc0ab09fe410f10">applyTwoQubitHCZGateBetweenQubitMixDamping</a> (qreal prob, std::string fileAmp, std::string fileProb)</td></tr>
+<tr class="memdesc:a5831b982783a400e7bc0ab09fe410f10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applies a controlled-Z gate followed by mix damping to two qubits of a two-qubit quantum system.  <br /></td></tr>
 <tr class="separator:a5831b982783a400e7bc0ab09fe410f10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -152,38 +157,49 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html#l00101">101</a> of file <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html">probabilitiesAmplitudesDampingCircuits.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  101</span>                                                                                             {</div>
-<div class="line"><span class="lineno">  102</span>        <span class="keywordtype">int</span> numQubits = 2;</div>
-<div class="line"><span class="lineno">  103</span>    <span class="comment">// load QuEST environment</span></div>
-<div class="line"><span class="lineno">  104</span>    QuESTEnv env = createQuESTEnv();</div>
-<div class="line"><span class="lineno">  105</span>    </div>
-<div class="line"><span class="lineno">  106</span>    <span class="comment">// Create qureg</span></div>
-<div class="line"><span class="lineno">  107</span>    Qureg qureg = createDensityQureg(numQubits, env);</div>
-<div class="line"><span class="lineno">  108</span> </div>
-<div class="line"><span class="lineno">  109</span>    <span class="comment">// Apply elements to circuit</span></div>
-<div class="line"><span class="lineno">  110</span>    hadamard(qureg,0);</div>
-<div class="line"><span class="lineno">  111</span>    hadamard(qureg,1);</div>
-<div class="line"><span class="lineno">  112</span>    mixDamping(qureg,0,prob);</div>
-<div class="line"><span class="lineno">  113</span>    mixDamping(qureg,1,prob);</div>
-<div class="line"><span class="lineno">  114</span>    </div>
-<div class="line"><span class="lineno">  115</span>    <span class="comment">// Write amplitudes to file</span></div>
-<div class="line"><span class="lineno">  116</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</a>(qureg,fileAmp);</div>
-<div class="line"><span class="lineno">  117</span> </div>
-<div class="line"><span class="lineno">  118</span>    <span class="comment">// Compute probabilities</span></div>
-<div class="line"><span class="lineno">  119</span>    <span class="keywordtype">int</span> numProbs = 1&lt;&lt;numQubits;</div>
-<div class="line"><span class="lineno">  120</span>    qreal outcomeProbs[numProbs];</div>
-<div class="line"><span class="lineno">  121</span>    <span class="keywordtype">int</span> qubits[] = {0,1};</div>
-<div class="line"><span class="lineno">  122</span>    calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);     </div>
-<div class="line"><span class="lineno">  123</span>    </div>
-<div class="line"><span class="lineno">  124</span>    <span class="comment">// Write probabilities to file</span></div>
-<div class="line"><span class="lineno">  125</span>    std::string col_name = <span class="stringliteral">&quot;probabilities&quot;</span>;</div>
-<div class="line"><span class="lineno">  126</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</a>(outcomeProbs, numProbs, fileProb,col_name);</div>
-<div class="line"><span class="lineno">  127</span> </div>
-<div class="line"><span class="lineno">  128</span>    <span class="comment">// unload QuEST</span></div>
-<div class="line"><span class="lineno">  129</span>    destroyQureg(qureg, env); </div>
-<div class="line"><span class="lineno">  130</span>    destroyQuESTEnv(env);</div>
-<div class="line"><span class="lineno">  131</span>}</div>
+<p>Applies Hadamard gates followed by mix damping to each qubit of a two-qubit quantum system. </p>
+<p>The function applies Hadamard gates followed by mix damping to each qubit of the two-qubit quantum system. It then writes the amplitudes and probabilities of the quantum system to the specified files.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prob</td><td>The probability of mix damping. </td></tr>
+    <tr><td class="paramname">fileAmp</td><td>The file path to write the amplitudes. </td></tr>
+    <tr><td class="paramname">fileProb</td><td>The file path to write the probabilities. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html#l00143">143</a> of file <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html">probabilitiesAmplitudesDampingCircuits.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  143</span>                                                                                             {</div>
+<div class="line"><span class="lineno">  144</span>        <span class="keywordtype">int</span> numQubits = 2;</div>
+<div class="line"><span class="lineno">  145</span>    <span class="comment">// load QuEST environment</span></div>
+<div class="line"><span class="lineno">  146</span>    QuESTEnv env = createQuESTEnv();</div>
+<div class="line"><span class="lineno">  147</span>    </div>
+<div class="line"><span class="lineno">  148</span>    <span class="comment">// Create qureg</span></div>
+<div class="line"><span class="lineno">  149</span>    Qureg qureg = createDensityQureg(numQubits, env);</div>
+<div class="line"><span class="lineno">  150</span> </div>
+<div class="line"><span class="lineno">  151</span>    <span class="comment">// Apply elements to circuit</span></div>
+<div class="line"><span class="lineno">  152</span>    hadamard(qureg,0);</div>
+<div class="line"><span class="lineno">  153</span>    hadamard(qureg,1);</div>
+<div class="line"><span class="lineno">  154</span>    mixDamping(qureg,0,prob);</div>
+<div class="line"><span class="lineno">  155</span>    mixDamping(qureg,1,prob);</div>
+<div class="line"><span class="lineno">  156</span>    </div>
+<div class="line"><span class="lineno">  157</span>    <span class="comment">// Write amplitudes to file</span></div>
+<div class="line"><span class="lineno">  158</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</a>(qureg,fileAmp);</div>
+<div class="line"><span class="lineno">  159</span> </div>
+<div class="line"><span class="lineno">  160</span>    <span class="comment">// Compute probabilities</span></div>
+<div class="line"><span class="lineno">  161</span>    <span class="keywordtype">int</span> numProbs = 1&lt;&lt;numQubits;</div>
+<div class="line"><span class="lineno">  162</span>    qreal outcomeProbs[numProbs];</div>
+<div class="line"><span class="lineno">  163</span>    <span class="keywordtype">int</span> qubits[] = {0,1};</div>
+<div class="line"><span class="lineno">  164</span>    calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);     </div>
+<div class="line"><span class="lineno">  165</span>    </div>
+<div class="line"><span class="lineno">  166</span>    <span class="comment">// Write probabilities to file</span></div>
+<div class="line"><span class="lineno">  167</span>    std::string col_name = <span class="stringliteral">&quot;probabilities&quot;</span>;</div>
+<div class="line"><span class="lineno">  168</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</a>(outcomeProbs, numProbs, fileProb,col_name);</div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  170</span>    <span class="comment">// unload QuEST</span></div>
+<div class="line"><span class="lineno">  171</span>    destroyQureg(qureg, env); </div>
+<div class="line"><span class="lineno">  172</span>    destroyQuESTEnv(env);</div>
+<div class="line"><span class="lineno">  173</span>}</div>
 <div class="ttc" id="ageneral_helper_functions_8hpp_html_a41a7ac4a876af2866b1d6ab915ecdfb2"><div class="ttname"><a href="../../d8/d01/general_helper_functions_8hpp.html#a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</a></div><div class="ttdeci">void writeArrayToFile(const T *values, size_t size, const std::string &amp;filename, const std::string &amp;col_name)</div><div class="ttdoc">Writes the elements of an array to a file.</div><div class="ttdef"><b>Definition</b> <a href="../../d8/d01/general_helper_functions_8hpp_source.html#l00244">generalHelperFunctions.hpp:244</a></div></div>
 <div class="ttc" id="ageneral_helper_functions_8hpp_html_a7465cffdfd3bf3b9d59175e8194b4588"><div class="ttname"><a href="../../d8/d01/general_helper_functions_8hpp.html#a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</a></div><div class="ttdeci">void writeStateToFile(const Qureg &amp;qureg, const std::string &amp;filepath)</div><div class="ttdoc">Writes the state vector of a quantum register to a file.</div><div class="ttdef"><b>Definition</b> <a href="../../d8/d01/general_helper_functions_8hpp_source.html#l00278">generalHelperFunctions.hpp:278</a></div></div>
 </div><!-- fragment -->
@@ -221,38 +237,49 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html#l00070">70</a> of file <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html">probabilitiesAmplitudesDampingCircuits.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>                                                                                              {</div>
-<div class="line"><span class="lineno">   71</span>    <span class="keywordtype">int</span> numQubits = 2;</div>
-<div class="line"><span class="lineno">   72</span>    <span class="comment">// load QuEST environment</span></div>
-<div class="line"><span class="lineno">   73</span>    QuESTEnv env = createQuESTEnv();</div>
-<div class="line"><span class="lineno">   74</span>    </div>
-<div class="line"><span class="lineno">   75</span>    <span class="comment">// Create qureg</span></div>
-<div class="line"><span class="lineno">   76</span>    Qureg qureg = createDensityQureg(numQubits, env);</div>
-<div class="line"><span class="lineno">   77</span> </div>
-<div class="line"><span class="lineno">   78</span>    <span class="comment">// Apply elements to circuit</span></div>
-<div class="line"><span class="lineno">   79</span>    pauliX(qureg,0);</div>
-<div class="line"><span class="lineno">   80</span>    pauliX(qureg,1);</div>
-<div class="line"><span class="lineno">   81</span>    mixDamping(qureg,0,prob);</div>
-<div class="line"><span class="lineno">   82</span>    mixDamping(qureg,1,prob);</div>
-<div class="line"><span class="lineno">   83</span>    </div>
-<div class="line"><span class="lineno">   84</span>    <span class="comment">// Write amplitudes to file</span></div>
-<div class="line"><span class="lineno">   85</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</a>(qureg,fileAmp);</div>
-<div class="line"><span class="lineno">   86</span> </div>
-<div class="line"><span class="lineno">   87</span>    <span class="comment">// Compute probabilities</span></div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordtype">int</span> numProbs = 1&lt;&lt;numQubits;</div>
-<div class="line"><span class="lineno">   89</span>    qreal outcomeProbs[numProbs];</div>
-<div class="line"><span class="lineno">   90</span>    <span class="keywordtype">int</span> qubits[] = {0,1};</div>
-<div class="line"><span class="lineno">   91</span>    calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);     </div>
-<div class="line"><span class="lineno">   92</span>    </div>
-<div class="line"><span class="lineno">   93</span>    <span class="comment">// Write probabilities to file</span></div>
-<div class="line"><span class="lineno">   94</span>    std::string col_name = <span class="stringliteral">&quot;probabilities&quot;</span>;</div>
-<div class="line"><span class="lineno">   95</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</a>(outcomeProbs, numProbs, fileProb,col_name);</div>
-<div class="line"><span class="lineno">   96</span> </div>
-<div class="line"><span class="lineno">   97</span>    <span class="comment">// unload QuEST</span></div>
-<div class="line"><span class="lineno">   98</span>    destroyQureg(qureg, env); </div>
-<div class="line"><span class="lineno">   99</span>    destroyQuESTEnv(env);</div>
-<div class="line"><span class="lineno">  100</span>}</div>
+<p>Applies Pauli-X gates followed by mix damping to each qubit of a two-qubit quantum system. </p>
+<p>The function applies Pauli-X gates followed by mix damping to each qubit of the two-qubit quantum system. It then writes the amplitudes and probabilities of the quantum system to the specified files.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prob</td><td>The probability of mix damping. </td></tr>
+    <tr><td class="paramname">fileAmp</td><td>The file path to write the amplitudes. </td></tr>
+    <tr><td class="paramname">fileProb</td><td>The file path to write the probabilities. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html#l00102">102</a> of file <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html">probabilitiesAmplitudesDampingCircuits.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  102</span>                                                                                              {</div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordtype">int</span> numQubits = 2;</div>
+<div class="line"><span class="lineno">  104</span>    <span class="comment">// load QuEST environment</span></div>
+<div class="line"><span class="lineno">  105</span>    QuESTEnv env = createQuESTEnv();</div>
+<div class="line"><span class="lineno">  106</span>    </div>
+<div class="line"><span class="lineno">  107</span>    <span class="comment">// Create qureg</span></div>
+<div class="line"><span class="lineno">  108</span>    Qureg qureg = createDensityQureg(numQubits, env);</div>
+<div class="line"><span class="lineno">  109</span> </div>
+<div class="line"><span class="lineno">  110</span>    <span class="comment">// Apply elements to circuit</span></div>
+<div class="line"><span class="lineno">  111</span>    pauliX(qureg,0);</div>
+<div class="line"><span class="lineno">  112</span>    pauliX(qureg,1);</div>
+<div class="line"><span class="lineno">  113</span>    mixDamping(qureg,0,prob);</div>
+<div class="line"><span class="lineno">  114</span>    mixDamping(qureg,1,prob);</div>
+<div class="line"><span class="lineno">  115</span>    </div>
+<div class="line"><span class="lineno">  116</span>    <span class="comment">// Write amplitudes to file</span></div>
+<div class="line"><span class="lineno">  117</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</a>(qureg,fileAmp);</div>
+<div class="line"><span class="lineno">  118</span> </div>
+<div class="line"><span class="lineno">  119</span>    <span class="comment">// Compute probabilities</span></div>
+<div class="line"><span class="lineno">  120</span>    <span class="keywordtype">int</span> numProbs = 1&lt;&lt;numQubits;</div>
+<div class="line"><span class="lineno">  121</span>    qreal outcomeProbs[numProbs];</div>
+<div class="line"><span class="lineno">  122</span>    <span class="keywordtype">int</span> qubits[] = {0,1};</div>
+<div class="line"><span class="lineno">  123</span>    calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);     </div>
+<div class="line"><span class="lineno">  124</span>    </div>
+<div class="line"><span class="lineno">  125</span>    <span class="comment">// Write probabilities to file</span></div>
+<div class="line"><span class="lineno">  126</span>    std::string col_name = <span class="stringliteral">&quot;probabilities&quot;</span>;</div>
+<div class="line"><span class="lineno">  127</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</a>(outcomeProbs, numProbs, fileProb,col_name);</div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span>    <span class="comment">// unload QuEST</span></div>
+<div class="line"><span class="lineno">  130</span>    destroyQureg(qureg, env); </div>
+<div class="line"><span class="lineno">  131</span>    destroyQuESTEnv(env);</div>
+<div class="line"><span class="lineno">  132</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -288,37 +315,48 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html#l00040">40</a> of file <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html">probabilitiesAmplitudesDampingCircuits.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>                                                                                     {</div>
-<div class="line"><span class="lineno">   41</span>    <span class="keywordtype">int</span> numQubits = 1;</div>
-<div class="line"><span class="lineno">   42</span>    <span class="comment">// load QuEST environment</span></div>
-<div class="line"><span class="lineno">   43</span>    QuESTEnv env = createQuESTEnv();</div>
-<div class="line"><span class="lineno">   44</span>    </div>
-<div class="line"><span class="lineno">   45</span>    <span class="comment">// Create qureg</span></div>
-<div class="line"><span class="lineno">   46</span>    Qureg qureg = createDensityQureg(numQubits, env);</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>    <span class="comment">// Apply elements to circuit</span></div>
-<div class="line"><span class="lineno">   49</span>    hadamard(qureg,0);</div>
-<div class="line"><span class="lineno">   50</span>    mixDamping(qureg,0,prob);</div>
-<div class="line"><span class="lineno">   51</span>    </div>
-<div class="line"><span class="lineno">   52</span>    <span class="comment">// Write amplitudes to file</span></div>
-<div class="line"><span class="lineno">   53</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</a>(qureg,fileAmp);</div>
-<div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>    <span class="comment">// Compute probabilities</span></div>
-<div class="line"><span class="lineno">   56</span>    <span class="keywordtype">int</span> numProbs = 1&lt;&lt;numQubits;</div>
-<div class="line"><span class="lineno">   57</span>    qreal outcomeProbs[numProbs];</div>
-<div class="line"><span class="lineno">   58</span>    <span class="keywordtype">int</span> qubits[] = {0};</div>
-<div class="line"><span class="lineno">   59</span>    calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);     </div>
-<div class="line"><span class="lineno">   60</span>    </div>
-<div class="line"><span class="lineno">   61</span>    <span class="comment">// Write probabilities to file</span></div>
-<div class="line"><span class="lineno">   62</span>    std::string col_name = <span class="stringliteral">&quot;probabilities&quot;</span>;</div>
-<div class="line"><span class="lineno">   63</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</a>(outcomeProbs, numProbs, fileProb,col_name);</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>    <span class="comment">// unload QuEST</span></div>
-<div class="line"><span class="lineno">   66</span>    destroyQureg(qureg, env); </div>
-<div class="line"><span class="lineno">   67</span>    destroyQuESTEnv(env);</div>
-<div class="line"><span class="lineno">   68</span>    </div>
-<div class="line"><span class="lineno">   69</span>}</div>
+<p>Applies a single-qubit Hadamard gate followed by mix damping to a quantum system. </p>
+<p>The function applies a Hadamard gate followed by mix damping to the specified qubit of the quantum system. It then writes the amplitudes and probabilities of the quantum system to the specified files.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prob</td><td>The probability of mix damping. </td></tr>
+    <tr><td class="paramname">fileAmp</td><td>The file path to write the amplitudes. </td></tr>
+    <tr><td class="paramname">fileProb</td><td>The file path to write the probabilities. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html#l00060">60</a> of file <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html">probabilitiesAmplitudesDampingCircuits.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>                                                                                     {</div>
+<div class="line"><span class="lineno">   61</span>    <span class="keywordtype">int</span> numQubits = 1;</div>
+<div class="line"><span class="lineno">   62</span>    <span class="comment">// load QuEST environment</span></div>
+<div class="line"><span class="lineno">   63</span>    QuESTEnv env = createQuESTEnv();</div>
+<div class="line"><span class="lineno">   64</span>    </div>
+<div class="line"><span class="lineno">   65</span>    <span class="comment">// Create qureg</span></div>
+<div class="line"><span class="lineno">   66</span>    Qureg qureg = createDensityQureg(numQubits, env);</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>    <span class="comment">// Apply elements to circuit</span></div>
+<div class="line"><span class="lineno">   69</span>    hadamard(qureg,0);</div>
+<div class="line"><span class="lineno">   70</span>    mixDamping(qureg,0,prob);</div>
+<div class="line"><span class="lineno">   71</span>    </div>
+<div class="line"><span class="lineno">   72</span>    <span class="comment">// Write amplitudes to file</span></div>
+<div class="line"><span class="lineno">   73</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</a>(qureg,fileAmp);</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>    <span class="comment">// Compute probabilities</span></div>
+<div class="line"><span class="lineno">   76</span>    <span class="keywordtype">int</span> numProbs = 1&lt;&lt;numQubits;</div>
+<div class="line"><span class="lineno">   77</span>    qreal outcomeProbs[numProbs];</div>
+<div class="line"><span class="lineno">   78</span>    <span class="keywordtype">int</span> qubits[] = {0};</div>
+<div class="line"><span class="lineno">   79</span>    calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);     </div>
+<div class="line"><span class="lineno">   80</span>    </div>
+<div class="line"><span class="lineno">   81</span>    <span class="comment">// Write probabilities to file</span></div>
+<div class="line"><span class="lineno">   82</span>    std::string col_name = <span class="stringliteral">&quot;probabilities&quot;</span>;</div>
+<div class="line"><span class="lineno">   83</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</a>(outcomeProbs, numProbs, fileProb,col_name);</div>
+<div class="line"><span class="lineno">   84</span> </div>
+<div class="line"><span class="lineno">   85</span>    <span class="comment">// unload QuEST</span></div>
+<div class="line"><span class="lineno">   86</span>    destroyQureg(qureg, env); </div>
+<div class="line"><span class="lineno">   87</span>    destroyQuESTEnv(env);</div>
+<div class="line"><span class="lineno">   88</span>    </div>
+<div class="line"><span class="lineno">   89</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -354,37 +392,48 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html#l00010">10</a> of file <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html">probabilitiesAmplitudesDampingCircuits.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   10</span>                                                                                      {</div>
-<div class="line"><span class="lineno">   11</span>    <span class="keywordtype">int</span> numQubits = 1;</div>
-<div class="line"><span class="lineno">   12</span>    <span class="comment">// load QuEST environment</span></div>
-<div class="line"><span class="lineno">   13</span>    QuESTEnv env = createQuESTEnv();</div>
-<div class="line"><span class="lineno">   14</span>    </div>
-<div class="line"><span class="lineno">   15</span>    <span class="comment">// Create qureg</span></div>
-<div class="line"><span class="lineno">   16</span>    Qureg qureg = createDensityQureg(numQubits, env);</div>
-<div class="line"><span class="lineno">   17</span> </div>
-<div class="line"><span class="lineno">   18</span>    <span class="comment">// Apply elements to circuit</span></div>
-<div class="line"><span class="lineno">   19</span>    pauliX(qureg,0);</div>
-<div class="line"><span class="lineno">   20</span>    mixDamping(qureg,0,prob);</div>
-<div class="line"><span class="lineno">   21</span>    </div>
-<div class="line"><span class="lineno">   22</span>    <span class="comment">// Write amplitudes to file</span></div>
-<div class="line"><span class="lineno">   23</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</a>(qureg,fileAmp);</div>
-<div class="line"><span class="lineno">   24</span> </div>
-<div class="line"><span class="lineno">   25</span>    <span class="comment">// Compute probabilities</span></div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordtype">int</span> numProbs = 1&lt;&lt;numQubits;</div>
-<div class="line"><span class="lineno">   27</span>    qreal outcomeProbs[numProbs];</div>
-<div class="line"><span class="lineno">   28</span>    <span class="keywordtype">int</span> qubits[] = {0};</div>
-<div class="line"><span class="lineno">   29</span>    calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);     </div>
-<div class="line"><span class="lineno">   30</span>    </div>
-<div class="line"><span class="lineno">   31</span>    <span class="comment">// Write probabilities to file</span></div>
-<div class="line"><span class="lineno">   32</span>    std::string col_name = <span class="stringliteral">&quot;probabilities&quot;</span>;</div>
-<div class="line"><span class="lineno">   33</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</a>(outcomeProbs, numProbs, fileProb,col_name);</div>
+<p>Applies a single-qubit Pauli-X gate followed by mix damping to a quantum system. </p>
+<p>The function applies a Pauli-X gate followed by mix damping to the specified qubit of the quantum system. It then writes the amplitudes and probabilities of the quantum system to the specified files.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prob</td><td>The probability of mix damping. </td></tr>
+    <tr><td class="paramname">fileAmp</td><td>The file path to write the amplitudes. </td></tr>
+    <tr><td class="paramname">fileProb</td><td>The file path to write the probabilities. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html#l00020">20</a> of file <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html">probabilitiesAmplitudesDampingCircuits.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   20</span>                                                                                      {</div>
+<div class="line"><span class="lineno">   21</span>    <span class="keywordtype">int</span> numQubits = 1;</div>
+<div class="line"><span class="lineno">   22</span>    <span class="comment">// load QuEST environment</span></div>
+<div class="line"><span class="lineno">   23</span>    QuESTEnv env = createQuESTEnv();</div>
+<div class="line"><span class="lineno">   24</span>    </div>
+<div class="line"><span class="lineno">   25</span>    <span class="comment">// Create qureg</span></div>
+<div class="line"><span class="lineno">   26</span>    Qureg qureg = createDensityQureg(numQubits, env);</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   28</span>    <span class="comment">// Apply elements to circuit</span></div>
+<div class="line"><span class="lineno">   29</span>    pauliX(qureg,0);</div>
+<div class="line"><span class="lineno">   30</span>    mixDamping(qureg,0,prob);</div>
+<div class="line"><span class="lineno">   31</span>    </div>
+<div class="line"><span class="lineno">   32</span>    <span class="comment">// Write amplitudes to file</span></div>
+<div class="line"><span class="lineno">   33</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</a>(qureg,fileAmp);</div>
 <div class="line"><span class="lineno">   34</span> </div>
-<div class="line"><span class="lineno">   35</span>    <span class="comment">// unload QuEST</span></div>
-<div class="line"><span class="lineno">   36</span>    destroyQureg(qureg, env); </div>
-<div class="line"><span class="lineno">   37</span>    destroyQuESTEnv(env);</div>
-<div class="line"><span class="lineno">   38</span>    </div>
-<div class="line"><span class="lineno">   39</span>}</div>
+<div class="line"><span class="lineno">   35</span>    <span class="comment">// Compute probabilities</span></div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordtype">int</span> numProbs = 1&lt;&lt;numQubits;</div>
+<div class="line"><span class="lineno">   37</span>    qreal outcomeProbs[numProbs];</div>
+<div class="line"><span class="lineno">   38</span>    <span class="keywordtype">int</span> qubits[] = {0};</div>
+<div class="line"><span class="lineno">   39</span>    calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);     </div>
+<div class="line"><span class="lineno">   40</span>    </div>
+<div class="line"><span class="lineno">   41</span>    <span class="comment">// Write probabilities to file</span></div>
+<div class="line"><span class="lineno">   42</span>    std::string col_name = <span class="stringliteral">&quot;probabilities&quot;</span>;</div>
+<div class="line"><span class="lineno">   43</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</a>(outcomeProbs, numProbs, fileProb,col_name);</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>    <span class="comment">// unload QuEST</span></div>
+<div class="line"><span class="lineno">   46</span>    destroyQureg(qureg, env); </div>
+<div class="line"><span class="lineno">   47</span>    destroyQuESTEnv(env);</div>
+<div class="line"><span class="lineno">   48</span>    </div>
+<div class="line"><span class="lineno">   49</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -420,39 +469,50 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html#l00132">132</a> of file <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html">probabilitiesAmplitudesDampingCircuits.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  132</span>                                                                                                {</div>
-<div class="line"><span class="lineno">  133</span>            <span class="keywordtype">int</span> numQubits = 2;</div>
-<div class="line"><span class="lineno">  134</span>    <span class="comment">// load QuEST environment</span></div>
-<div class="line"><span class="lineno">  135</span>    QuESTEnv env = createQuESTEnv();</div>
-<div class="line"><span class="lineno">  136</span>    </div>
-<div class="line"><span class="lineno">  137</span>    <span class="comment">// Create qureg</span></div>
-<div class="line"><span class="lineno">  138</span>    Qureg qureg = createDensityQureg(numQubits, env);</div>
-<div class="line"><span class="lineno">  139</span> </div>
-<div class="line"><span class="lineno">  140</span>    <span class="comment">// Apply elements to circuit</span></div>
-<div class="line"><span class="lineno">  141</span>    hadamard(qureg,0);</div>
-<div class="line"><span class="lineno">  142</span>    hadamard(qureg,1);</div>
-<div class="line"><span class="lineno">  143</span>    controlledPhaseFlip(qureg,0,1);</div>
-<div class="line"><span class="lineno">  144</span>    mixDamping(qureg,0,prob);</div>
-<div class="line"><span class="lineno">  145</span>    mixDamping(qureg,1,prob);</div>
-<div class="line"><span class="lineno">  146</span>    </div>
-<div class="line"><span class="lineno">  147</span>    <span class="comment">// Write amplitudes to file</span></div>
-<div class="line"><span class="lineno">  148</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</a>(qureg,fileAmp);</div>
-<div class="line"><span class="lineno">  149</span> </div>
-<div class="line"><span class="lineno">  150</span>    <span class="comment">// Compute probabilities</span></div>
-<div class="line"><span class="lineno">  151</span>    <span class="keywordtype">int</span> numProbs = 1&lt;&lt;numQubits;</div>
-<div class="line"><span class="lineno">  152</span>    qreal outcomeProbs[numProbs];</div>
-<div class="line"><span class="lineno">  153</span>    <span class="keywordtype">int</span> qubits[] = {0,1};</div>
-<div class="line"><span class="lineno">  154</span>    calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);     </div>
-<div class="line"><span class="lineno">  155</span>    </div>
-<div class="line"><span class="lineno">  156</span>    <span class="comment">// Write probabilities to file</span></div>
-<div class="line"><span class="lineno">  157</span>    std::string col_name = <span class="stringliteral">&quot;probabilities&quot;</span>;</div>
-<div class="line"><span class="lineno">  158</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</a>(outcomeProbs, numProbs, fileProb,col_name);</div>
-<div class="line"><span class="lineno">  159</span> </div>
-<div class="line"><span class="lineno">  160</span>    <span class="comment">// unload QuEST</span></div>
-<div class="line"><span class="lineno">  161</span>    destroyQureg(qureg, env); </div>
-<div class="line"><span class="lineno">  162</span>    destroyQuESTEnv(env);</div>
-<div class="line"><span class="lineno">  163</span>}</div>
+<p>Applies a controlled-Z gate followed by mix damping to two qubits of a two-qubit quantum system. </p>
+<p>The function applies a controlled-Z gate followed by mix damping to the specified two qubits of the two-qubit quantum system. It then writes the amplitudes and probabilities of the quantum system to the specified files.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prob</td><td>The probability of mix damping. </td></tr>
+    <tr><td class="paramname">fileAmp</td><td>The file path to write the amplitudes. </td></tr>
+    <tr><td class="paramname">fileProb</td><td>The file path to write the probabilities. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html#l00185">185</a> of file <a class="el" href="../../d6/d00/probabilities_amplitudes_damping_circuits_8hpp_source.html">probabilitiesAmplitudesDampingCircuits.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  185</span>                                                                                                {</div>
+<div class="line"><span class="lineno">  186</span>            <span class="keywordtype">int</span> numQubits = 2;</div>
+<div class="line"><span class="lineno">  187</span>    <span class="comment">// load QuEST environment</span></div>
+<div class="line"><span class="lineno">  188</span>    QuESTEnv env = createQuESTEnv();</div>
+<div class="line"><span class="lineno">  189</span>    </div>
+<div class="line"><span class="lineno">  190</span>    <span class="comment">// Create qureg</span></div>
+<div class="line"><span class="lineno">  191</span>    Qureg qureg = createDensityQureg(numQubits, env);</div>
+<div class="line"><span class="lineno">  192</span> </div>
+<div class="line"><span class="lineno">  193</span>    <span class="comment">// Apply elements to circuit</span></div>
+<div class="line"><span class="lineno">  194</span>    hadamard(qureg,0);</div>
+<div class="line"><span class="lineno">  195</span>    hadamard(qureg,1);</div>
+<div class="line"><span class="lineno">  196</span>    controlledPhaseFlip(qureg,0,1);</div>
+<div class="line"><span class="lineno">  197</span>    mixDamping(qureg,0,prob);</div>
+<div class="line"><span class="lineno">  198</span>    mixDamping(qureg,1,prob);</div>
+<div class="line"><span class="lineno">  199</span>    </div>
+<div class="line"><span class="lineno">  200</span>    <span class="comment">// Write amplitudes to file</span></div>
+<div class="line"><span class="lineno">  201</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</a>(qureg,fileAmp);</div>
+<div class="line"><span class="lineno">  202</span> </div>
+<div class="line"><span class="lineno">  203</span>    <span class="comment">// Compute probabilities</span></div>
+<div class="line"><span class="lineno">  204</span>    <span class="keywordtype">int</span> numProbs = 1&lt;&lt;numQubits;</div>
+<div class="line"><span class="lineno">  205</span>    qreal outcomeProbs[numProbs];</div>
+<div class="line"><span class="lineno">  206</span>    <span class="keywordtype">int</span> qubits[] = {0,1};</div>
+<div class="line"><span class="lineno">  207</span>    calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);     </div>
+<div class="line"><span class="lineno">  208</span>    </div>
+<div class="line"><span class="lineno">  209</span>    <span class="comment">// Write probabilities to file</span></div>
+<div class="line"><span class="lineno">  210</span>    std::string col_name = <span class="stringliteral">&quot;probabilities&quot;</span>;</div>
+<div class="line"><span class="lineno">  211</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</a>(outcomeProbs, numProbs, fileProb,col_name);</div>
+<div class="line"><span class="lineno">  212</span> </div>
+<div class="line"><span class="lineno">  213</span>    <span class="comment">// unload QuEST</span></div>
+<div class="line"><span class="lineno">  214</span>    destroyQureg(qureg, env); </div>
+<div class="line"><span class="lineno">  215</span>    destroyQuESTEnv(env);</div>
+<div class="line"><span class="lineno">  216</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

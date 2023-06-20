@@ -148,14 +148,14 @@ if(TRUE)
     target_link_libraries(mbqcStarterFile PRIVATE QuEST::QuEST ${Boost_LIBRARIES})
 endif()
 
-if(FALSE)
+if(TRUE)
     # Set up testNoNoiseSimpleCircuitsQuEST
     add_executable(testNoNoiseSimpleCircuitsQuEST ${TEST_NO_NOISE_SIMPLE_CIRCUITS_QUEST_FILE})
     target_include_directories(testNoNoiseSimpleCircuitsQuEST PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
     target_link_libraries(testNoNoiseSimpleCircuitsQuEST PRIVATE QuEST::QuEST  ${Boost_LIBRARIES})
 endif()
 
-if(FALSE)
+if(TRUE)
     # Set up testNoNoiseSimpleCircuitsQuEST
     add_executable(testDampingSimpleCircuitsQuEST ${TEST_DAMPING_SIMPLE_CIRCUITS_QUEST_FILE})
     target_include_directories(testDampingSimpleCircuitsQuEST PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
