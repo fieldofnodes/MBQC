@@ -1,8 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"dd/d01/20230313___m_b_q_c___v2_8c.html#ab81ffa7099ed1d954baf7af535ab3143":[4,0,2,0,3,2],
-"dd/d01/20230313___m_b_q_c___v2_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4":[4,0,2,0,3,4],
-"dd/d01/20230313___m_b_q_c___v2_8c.html#af44420884b989805a33b6b4cb35fb2e1":[4,0,2,0,3,3],
 "dd/d01/20230313___m_b_q_c___v2_8c_source.html":[4,0,2,0,3],
 "dd/d01/_prepare_measure_single_qubit_8c.html":[4,0,2,0,0,14],
 "dd/d01/_prepare_measure_single_qubit_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4":[4,0,2,0,0,14,0],

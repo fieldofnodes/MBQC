@@ -1,8 +1,5 @@
 var graph_assert_functions_8hpp =
 [
-    [ "edge_iterator", "d0/d01/graph_assert_functions_8hpp.html#af04c50f717d4bda41f0c58fe0eece059", null ],
-    [ "undirectedGraph", "d0/d01/graph_assert_functions_8hpp.html#af845bf432b56cdda82dbde8011882168", null ],
-    [ "vertex_iterator", "d0/d01/graph_assert_functions_8hpp.html#a9451df0dac964b257bedb5e60547824e", null ],
     [ "assertCorrection", "d0/d01/graph_assert_functions_8hpp.html#a67fc70f2265e3ca43a7871939ae44a95", null ],
     [ "assertDegreeSetLatticeGraph", "d0/d01/graph_assert_functions_8hpp.html#ab7b459ddc7c532fc5a37abb8760d7ca6", null ],
     [ "assertFlowFunctionsPerformExpected", "d0/d01/graph_assert_functions_8hpp.html#a3241060bf4552dac98da626843460bb3", null ],

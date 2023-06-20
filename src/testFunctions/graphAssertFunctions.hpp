@@ -24,36 +24,18 @@
     assertDegreeSetLatticeGraph
     A lattice graph in 2d will have degrees 2,3 and 4
 */
-#include <iostream>
-#include <algorithm>
-#include <iterator>
-#include <vector>
-#include <set>
-#include <numeric>
-#include <boost/container/vector.hpp>
-#include <boost/graph/adjacency_list.hpp>
-#include <boost/range/algorithm/unique.hpp>
-#include <boost/range/algorithm.hpp>
-#include <boost/range/adaptor/filtered.hpp>
-#include <boost/range/adaptor/transformed.hpp>
 
 
 
 
-
-using namespace boost;
-
-
-typedef boost::adjacency_list<boost::vecS, boost::vecS,boost::undirectedS> undirectedGraph;
-typedef boost::graph_traits<undirectedGraph>::edge_iterator edge_iterator;
-typedef boost::graph_traits<undirectedGraph>::vertex_iterator vertex_iterator;
-
-
-
-/*
-  inthe hand shake lemma stipulates that the total degree of a graph G,
-  is equivalent to 2 times the number of edges
-*/
+/**
+ * @brief Asserts the Handshake Lemma for an undirected graph.
+ *
+ * This function asserts the Handshake Lemma for an undirected graph. The Handshake Lemma states that the sum of the degrees of all vertices in an undirected graph is equal to twice the number of edges in the graph.
+ *
+ * @param graph The undirected graph to check.
+ * @throws std::runtime_error if the Handshake Lemma is violated.
+ */
 void assertHandShakeLemma(const undirectedGraph& graph) {
     
     int num_vertices = boost::num_vertices(graph);
@@ -73,35 +55,42 @@ void assertHandShakeLemma(const undirectedGraph& graph) {
 
 
 
-/*
-  inthe hand shake lemma stipulates that the total degree of a graph G,
-  is equivalent to 2 times the number of edges
-*/
+/**
+ * @brief Asserts the minimum and maximum degrees for a path graph.
+ *
+ * This function asserts that the minimum degree of a path graph is 1 and the maximum degree is 2. It calculates the degrees of all vertices in the provided graph and checks if the minimum degree is 1 and the maximum degree is 2.
+ *
+ * @param graph The path graph to check.
+ * @throws std::runtime_error if the minimum or maximum degree is violated.
+ */
 void assertPathGraphMinMaxDegrees(const undirectedGraph& graph) {
-    
     int num_vertices = boost::num_vertices(graph);
     boost::container::vector<int> degree_vector;
 
-    // Call the function and print the adjacent vertices of vertex 0
+    // Calculate the degree of each vertex
     for (int i = 0; i < num_vertices; i++) {
-      undirectedGraph::vertex_descriptor v;
-      v = boost::vertex(i, graph); 
-      degree_vector.push_back(boost::degree(v, graph));        
+        undirectedGraph::vertex_descriptor v;
+        v = boost::vertex(i, graph);
+        degree_vector.push_back(boost::degree(v, graph));
     }
 
-    int min_it = getMin(degree_vector);
-    assert(("minimum degree is 1" && min_it == 1));
-    int max_it = getMax(degree_vector);
-    assert(("maximum degree is 1" && max_it == 2));
-
+    int min_degree = getMin(degree_vector);
+    assert(("minimum degree is 1" && min_degree == 1));
+    int max_degree = getMax(degree_vector);
+    assert(("maximum degree is 2" && max_degree == 2));
 }
 
 
 
-/*
-  inthe hand shake lemma stipulates that the total degree of a graph G,
-  is equivalent to 2 times the number of edges
-*/
+
+/**
+ * @brief Asserts the degree set for a lattice graph.
+ *
+ * The function checks whether the degrees of all vertices in the provided lattice graph belong to the set {2, 3, 4}. It calculates the degrees of all vertices in the graph and filters out degrees that are not in the required set. It then asserts that all remaining degrees are either 2, 3, or 4.
+ *
+ * @param graph The lattice graph to check.
+ * @throws std::runtime_error if a degree outside the set {2, 3, 4} is found.
+ */
 void assertDegreeSetLatticeGraph(const undirectedGraph& graph) {
     
     int num_vertices = boost::num_vertices(graph);
@@ -132,46 +121,63 @@ void assertDegreeSetLatticeGraph(const undirectedGraph& graph) {
 }
 
 
-/*
-  Assert that the number of vertices in a graph matches expected input 
-*/
+/**
+ * @brief Asserts the number of vertices in a graph.
+ *
+ * The function checks whether the number of vertices in the provided graph matches the expected number of vertices. It compares the actual number of vertices in the graph with the expected number and throws an assertion error if they do not match.
+ *
+ * @param graph The graph to check.
+ * @param numVertices The expected number of vertices.
+ * @throws std::runtime_error if the number of vertices does not match the expected number.
+ */
 void assertGraphNumVertices(const undirectedGraph& graph, int numVertices){
   int num_vertices = boost::num_vertices(graph);
   assert("Number of vertices in graph must equal input" && numVertices == num_vertices);
 }
 
 
-/*
-  Test for all flow on vertices
-  Iterate over the vertices of the graph
-*/
-void assertFlowFunctionsPerformExpected(const undirectedGraph& graph,int numRows){
+
+/**
+ * @brief Asserts that flow functions perform as expected in a graph.
+ *
+ * The function checks whether the flow functions in the provided graph produce the expected results. It verifies that the computed vertices from the flow functions match the expected vertices based on the graph structure and the specified number of rows. It throws an assertion error if any mismatch is found.
+ *
+ * @param graph The graph to check.
+ * @param numRows The number of rows in the graph.
+ * @throws std::runtime_error if any computed vertex does not match the expected vertex.
+ */
+void assertFlowFunctionsPerformExpected(const undirectedGraph& graph, int numRows) {
     undirectedGraph::vertex_iterator vi, vi_end;
     int size_graph = boost::num_vertices(graph);
 
     for (boost::tie(vi, vi_end) = boost::vertices(graph); vi != vi_end; ++vi) {
-        // skip vertices that are in the first column
-        if(*vi >= numRows){
-            int computedVi = getLattice2DPastVertexGraph(graph,*vi,numRows);
+        // Skip vertices that are in the first column
+        if (*vi >= numRows) {
+            int computedVi = getLattice2DPastVertexGraph(graph, *vi, numRows);
             int expectedVi = *vi - numRows;
             assert(((expectedVi == computedVi) && "Expected vertex does not match computed vertex from getLattice2DPastVertexGraph function"));
         }
     }
     
     for (boost::tie(vi, vi_end) = boost::vertices(graph); vi != vi_end; ++vi) {
-        // skip vertices that are in the first column
-        if(*vi < (size_graph-numRows)){
-            int computedVi = getLattice2DFutureVertexGraph(graph,*vi,numRows);
+        // Skip vertices that are in the last column
+        if (*vi < (size_graph - numRows)) {
+            int computedVi = getLattice2DFutureVertexGraph(graph, *vi, numRows);
             int expectedVi = *vi + numRows;
             assert(((expectedVi == computedVi) && "Expected vertex does not match computed vertex from getLattice2DPastVertexGraph function"));
         }
     }
-    return ;
 }
 
-/*
-  Assert each vertex neighbour has a matchin neighbour to the input
-*/
+/**
+ * @brief Asserts that the computed neighborhood of each vertex in the graph matches the expected neighborhood.
+ *
+ * The function checks whether the computed neighborhood of each vertex in the provided graph matches the expected neighborhood specified in `expectedNeighbourhood`. It throws an assertion error if any mismatch is found.
+ *
+ * @param graph The graph to check.
+ * @param expectedNeighbourhood The expected neighborhood for each vertex. The outer vector represents vertices, and the inner vectors represent their respective neighborhoods.
+ * @throws std::runtime_error if any computed neighborhood does not match the expected neighborhood.
+ */
 void assertNieghbours(const undirectedGraph& graph,std::vector<std::vector<int>> expectedNeighbourhood){        
     int size_graph = boost::num_vertices(graph);
     for (int vertexIter = 0; vertexIter < size_graph; vertexIter++){
@@ -186,9 +192,21 @@ void assertNieghbours(const undirectedGraph& graph,std::vector<std::vector<int>>
     return;
 }
 
-/*
-  Assert the correction angle is the same as the inputted correction angle
-*/
+
+
+/**
+ * @brief Asserts that the computed corrected angle matches the expected corrected angle.
+ *
+ * The function computes the corrected angle using the `computeCorrectedAngle` function and compares it with the expected corrected angle. It throws an assertion error if the computed corrected angle does not match the expected corrected angle.
+ *
+ * @param graph The graph representing the lattice.
+ * @param outcomeVector The vector of measured outcomes.
+ * @param vertex The vertex for which the corrected angle is computed.
+ * @param numRows The number of rows in the lattice.
+ * @param inputAngle The input angle for the vertex.
+ * @param expectedCorrectedAngle The expected corrected angle.
+ * @throws std::runtime_error if the computed corrected angle does not match the expected corrected angle.
+ */
 void assertCorrection(
     const undirectedGraph& graph,
     std::vector<int> outcomeVector, 
