@@ -1,213 +1,213 @@
 \doxysection{graph\+Assert\+Functions.\+hpp}
 \hypertarget{graph_assert_functions_8hpp_source}{}\label{graph_assert_functions_8hpp_source}\index{src/testFunctions/graphAssertFunctions.hpp@{src/testFunctions/graphAssertFunctions.hpp}}
-
+\mbox{\hyperlink{graph_assert_functions_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ }
-\DoxyCodeLine{00002\ \textcolor{comment}{//\ Title\ \ :\ graphAssertFunctions.hpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
-\DoxyCodeLine{00003\ \textcolor{comment}{//\ Author\ :\ Jonathan\ Miller\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
-\DoxyCodeLine{00004\ \textcolor{comment}{//\ Date\ \ \ :\ 20230425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
-\DoxyCodeLine{00005\ \textcolor{comment}{//\ Aim\ \ \ \ :\ Construct\ assertion\ functions\ for\ graphs\ \ \ \ \ \ \ //}}
-\DoxyCodeLine{00007\ \textcolor{comment}{}}
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00011\ \textcolor{comment}{\ \ \ \ Functions\ to\ be\ used\ to\ test\ graph\ properties.\ }}
-\DoxyCodeLine{00012\ \textcolor{comment}{\ \ \ \ List\ of\ functions\ used\ in\ general\ graph\ assertions}}
-\DoxyCodeLine{00013\ \textcolor{comment}{\ \ \ \ 1.\ assertHandShakeLemma}}
-\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ \ 2.\ assertPathGraphMinMaxDegrees}}
-\DoxyCodeLine{00015\ \textcolor{comment}{\ \ \ \ 3.\ assertDegreeSetLatticeGraph}}
-\DoxyCodeLine{00016\ \textcolor{comment}{}}
-\DoxyCodeLine{00017\ \textcolor{comment}{\ \ \ \ assertHandShakeLemma}}
-\DoxyCodeLine{00018\ \textcolor{comment}{\ \ \ \ The\ hand\ shake\ lemma\ states\ that\ the\ sum\ of\ degrees\ is\ equivalent\ to\ two\ times\ the\ number\ of\ edges}}
-\DoxyCodeLine{00019\ \textcolor{comment}{\ \ \ \ sum(deg(v))\ =\ 2|E|\ for\ v\ in\ V}}
-\DoxyCodeLine{00020\ \textcolor{comment}{}}
-\DoxyCodeLine{00021\ \textcolor{comment}{\ \ \ \ assertPathGraphMinMaxDegrees}}
-\DoxyCodeLine{00022\ \textcolor{comment}{\ \ \ \ A\ path\ graph\ will\ degrees\ 1\ and\ 2}}
-\DoxyCodeLine{00023\ \textcolor{comment}{}}
-\DoxyCodeLine{00024\ \textcolor{comment}{\ \ \ \ assertDegreeSetLatticeGraph}}
-\DoxyCodeLine{00025\ \textcolor{comment}{\ \ \ \ A\ lattice\ graph\ in\ 2d\ will\ have\ degrees\ 2,3\ and\ 4}}
-\DoxyCodeLine{00026\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <algorithm>}}
-\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <iterator>}}
-\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <set>}}
-\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <numeric>}}
-\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <boost/container/vector.hpp>}}
-\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <boost/graph/adjacency\_list.hpp>}}
-\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <boost/range/algorithm/unique.hpp>}}
-\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <boost/range/algorithm.hpp>}}
-\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ <boost/range/adaptor/filtered.hpp>}}
-\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ <boost/range/adaptor/transformed.hpp>}}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ }
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \textcolor{keyword}{using\ namespace\ }boost;}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \textcolor{keyword}{typedef}\ boost::adjacency\_list<boost::vecS,\ boost::vecS,boost::undirectedS>\ undirectedGraph;}
-\DoxyCodeLine{00048\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::edge\_iterator\ edge\_iterator;}
-\DoxyCodeLine{00049\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::vertex\_iterator\ vertex\_iterator;}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00054\ \textcolor{comment}{\ \ inthe\ hand\ shake\ lemma\ stipulates\ that\ the\ total\ degree\ of\ a\ graph\ G,}}
-\DoxyCodeLine{00055\ \textcolor{comment}{\ \ is\ equivalent\ to\ 2\ times\ the\ number\ of\ edges}}
-\DoxyCodeLine{00056\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00057\ \textcolor{keywordtype}{void}\ assertHandShakeLemma(\textcolor{keyword}{const}\ undirectedGraph\&\ graph)\ \{}
-\DoxyCodeLine{00058\ \ \ \ \ }
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ num\_vertices\ =\ boost::num\_vertices(graph);}
-\DoxyCodeLine{00060\ \ \ \ \ boost::container::vector<int>\ degree\_vector;}
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ Call\ the\ function\ and\ print\ the\ adjacent\ vertices\ of\ vertex\ 0}}
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_vertices;\ i++)\ \{}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ undirectedGraph::vertex\_descriptor\ v;}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ v\ =\ boost::vertex(i,\ graph);\ }
-\DoxyCodeLine{00066\ \ \ \ \ \ \ degree\_vector.push\_back(boost::degree(v,\ graph));\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00067\ \ \ \ \ \}}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{int}\ num\_edge\ =\ boost::num\_edges(graph);\ \ \ }
-\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{int}\ sum\ =\ std::accumulate(degree\_vector.begin(),\ degree\_vector.end(),\ 0);}
-\DoxyCodeLine{00071\ \ \ \ \ assert((\textcolor{stringliteral}{"{}total\ degree\ is\ two\ times\ the\ edge\ set"{}}\ \&\&\ sum\ ==\ 2\ *\ num\_edge));}
-\DoxyCodeLine{00072\ \}}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ }
-\DoxyCodeLine{00075\ }
-\DoxyCodeLine{00076\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00077\ \textcolor{comment}{\ \ inthe\ hand\ shake\ lemma\ stipulates\ that\ the\ total\ degree\ of\ a\ graph\ G,}}
-\DoxyCodeLine{00078\ \textcolor{comment}{\ \ is\ equivalent\ to\ 2\ times\ the\ number\ of\ edges}}
-\DoxyCodeLine{00079\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00080\ \textcolor{keywordtype}{void}\ assertPathGraphMinMaxDegrees(\textcolor{keyword}{const}\ undirectedGraph\&\ graph)\ \{}
-\DoxyCodeLine{00081\ \ \ \ \ }
-\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{int}\ num\_vertices\ =\ boost::num\_vertices(graph);}
-\DoxyCodeLine{00083\ \ \ \ \ boost::container::vector<int>\ degree\_vector;}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ Call\ the\ function\ and\ print\ the\ adjacent\ vertices\ of\ vertex\ 0}}
-\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_vertices;\ i++)\ \{}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ undirectedGraph::vertex\_descriptor\ v;}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ v\ =\ boost::vertex(i,\ graph);\ }
-\DoxyCodeLine{00089\ \ \ \ \ \ \ degree\_vector.push\_back(boost::degree(v,\ graph));\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00090\ \ \ \ \ \}}
-\DoxyCodeLine{00091\ }
-\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{int}\ min\_it\ =\ getMin(degree\_vector);}
-\DoxyCodeLine{00093\ \ \ \ \ assert((\textcolor{stringliteral}{"{}minimum\ degree\ is\ 1"{}}\ \&\&\ min\_it\ ==\ 1));}
-\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_it\ =\ getMax(degree\_vector);}
-\DoxyCodeLine{00095\ \ \ \ \ assert((\textcolor{stringliteral}{"{}maximum\ degree\ is\ 1"{}}\ \&\&\ max\_it\ ==\ 2));}
-\DoxyCodeLine{00096\ }
-\DoxyCodeLine{00097\ \}}
-\DoxyCodeLine{00098\ }
-\DoxyCodeLine{00099\ }
-\DoxyCodeLine{00100\ }
-\DoxyCodeLine{00101\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00102\ \textcolor{comment}{\ \ inthe\ hand\ shake\ lemma\ stipulates\ that\ the\ total\ degree\ of\ a\ graph\ G,}}
-\DoxyCodeLine{00103\ \textcolor{comment}{\ \ is\ equivalent\ to\ 2\ times\ the\ number\ of\ edges}}
-\DoxyCodeLine{00104\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00105\ \textcolor{keywordtype}{void}\ assertDegreeSetLatticeGraph(\textcolor{keyword}{const}\ undirectedGraph\&\ graph)\ \{}
-\DoxyCodeLine{00106\ \ \ \ \ }
-\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{int}\ num\_vertices\ =\ boost::num\_vertices(graph);}
-\DoxyCodeLine{00108\ \ \ \ \ std::vector<int>\ degree\_vector;}
-\DoxyCodeLine{00109\ \ \ \ \ std::vector<int>\ required\_deg\_vector\ =\ \{2,3,4\};}
-\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{//\ Call\ the\ function\ and\ print\ the\ adjacent\ vertices\ of\ vertex\ 0}}
-\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_vertices;\ i++)\ \{}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ undirectedGraph::vertex\_descriptor\ v;}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ v\ =\ boost::vertex(i,\ graph);\ }
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ d\ =\ boost::degree(v,\ graph);}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ degree\_vector.push\_back(d);\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00116\ \ \ \ \ \}}
-\DoxyCodeLine{00117\ }
-\DoxyCodeLine{00118\ \ \ \ \ sort(\ degree\_vector.begin(),\ degree\_vector.end()\ );}
-\DoxyCodeLine{00119\ \ \ \ \ }
-\DoxyCodeLine{00120\ \ \ \ \ degree\_vector.erase(std::unique(\ degree\_vector.begin(),\ degree\_vector.end()\ ),\ degree\_vector.end()\ );}
-\DoxyCodeLine{00121\ }
-\DoxyCodeLine{00122\ }
-\DoxyCodeLine{00123\ \ \ \ \ std::vector<int>\ filt;}
-\DoxyCodeLine{00124\ \ \ \ \ std::copy\_if(degree\_vector.begin(),\ degree\_vector.end(),\ std::back\_inserter(filt),\ [](\textcolor{keywordtype}{int}\ i)\ \{}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ return\ i\ ==\ 2\ ||\ i\ ==\ 3\ ||\ i\ ==\ 4;}
-\DoxyCodeLine{00126\ \ \ \ \ \});}
-\DoxyCodeLine{00127\ \ }
-\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \&i:\ filt)\ \{}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ assert(\textcolor{stringliteral}{"{}Degree\ must\ be\ either\ 2,3\ or\ 4"{}}\ \&\&\ i\ ==\ 2\ ||\ i\ ==\ 3\ ||\ i\ ==\ 4);}
-\DoxyCodeLine{00130\ \ \ \ \ \}}
-\DoxyCodeLine{00131\ }
-\DoxyCodeLine{00132\ \}}
-\DoxyCodeLine{00133\ }
-\DoxyCodeLine{00134\ }
-\DoxyCodeLine{00135\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00136\ \textcolor{comment}{\ \ Assert\ that\ the\ number\ of\ vertices\ in\ a\ graph\ matches\ expected\ input\ }}
-\DoxyCodeLine{00137\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00138\ \textcolor{keywordtype}{void}\ assertGraphNumVertices(\textcolor{keyword}{const}\ undirectedGraph\&\ graph,\ \textcolor{keywordtype}{int}\ numVertices)\{}
-\DoxyCodeLine{00139\ \ \ \textcolor{keywordtype}{int}\ num\_vertices\ =\ boost::num\_vertices(graph);}
-\DoxyCodeLine{00140\ \ \ assert(\textcolor{stringliteral}{"{}Number\ of\ vertices\ in\ graph\ must\ equal\ input"{}}\ \&\&\ numVertices\ ==\ num\_vertices);}
-\DoxyCodeLine{00141\ \}}
-\DoxyCodeLine{00142\ }
-\DoxyCodeLine{00143\ }
-\DoxyCodeLine{00144\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00145\ \textcolor{comment}{\ \ Test\ for\ all\ flow\ on\ vertices}}
-\DoxyCodeLine{00146\ \textcolor{comment}{\ \ Iterate\ over\ the\ vertices\ of\ the\ graph}}
-\DoxyCodeLine{00147\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00148\ \textcolor{keywordtype}{void}\ assertFlowFunctionsPerformExpected(\textcolor{keyword}{const}\ undirectedGraph\&\ graph,\textcolor{keywordtype}{int}\ numRows)\{}
-\DoxyCodeLine{00149\ \ \ \ \ undirectedGraph::vertex\_iterator\ vi,\ vi\_end;}
-\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordtype}{int}\ size\_graph\ =\ boost::num\_vertices(graph);}
-\DoxyCodeLine{00151\ }
-\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordflow}{for}\ (boost::tie(vi,\ vi\_end)\ =\ boost::vertices(graph);\ vi\ !=\ vi\_end;\ ++vi)\ \{}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ skip\ vertices\ that\ are\ in\ the\ first\ column}}
-\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(*vi\ >=\ numRows)\{}
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ computedVi\ =\ getLattice2DPastVertexGraph(graph,*vi,numRows);}
-\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ expectedVi\ =\ *vi\ -\/\ numRows;}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ assert(((expectedVi\ ==\ computedVi)\ \&\&\ \textcolor{stringliteral}{"{}Expected\ vertex\ does\ not\ match\ computed\ vertex\ from\ getLattice2DPastVertexGraph\ function"{}}));}
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00159\ \ \ \ \ \}}
-\DoxyCodeLine{00160\ \ \ \ \ }
-\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordflow}{for}\ (boost::tie(vi,\ vi\_end)\ =\ boost::vertices(graph);\ vi\ !=\ vi\_end;\ ++vi)\ \{}
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ skip\ vertices\ that\ are\ in\ the\ first\ column}}
-\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(*vi\ <\ (size\_graph-\/numRows))\{}
-\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ computedVi\ =\ getLattice2DFutureVertexGraph(graph,*vi,numRows);}
-\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ expectedVi\ =\ *vi\ +\ numRows;}
-\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ assert(((expectedVi\ ==\ computedVi)\ \&\&\ \textcolor{stringliteral}{"{}Expected\ vertex\ does\ not\ match\ computed\ vertex\ from\ getLattice2DPastVertexGraph\ function"{}}));}
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00168\ \ \ \ \ \}}
-\DoxyCodeLine{00169\ \ \ \ \ return\ ;}
-\DoxyCodeLine{00170\ \}}
-\DoxyCodeLine{00171\ }
-\DoxyCodeLine{00172\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00173\ \textcolor{comment}{\ \ Assert\ each\ vertex\ neighbour\ has\ a\ matchin\ neighbour\ to\ the\ input}}
-\DoxyCodeLine{00174\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00175\ \textcolor{keywordtype}{void}\ assertNieghbours(\textcolor{keyword}{const}\ undirectedGraph\&\ graph,std::vector<std::vector<int>>\ expectedNeighbourhood)\{\ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordtype}{int}\ size\_graph\ =\ boost::num\_vertices(graph);}
-\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ vertexIter\ =\ 0;\ vertexIter\ <\ size\_graph;\ vertexIter++)\{}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ std::vector<int>\ computedNeighbours\ =\ getVertexNeighbours(graph,vertexIter);}
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ std::vector<int>\ expectedNeighbours;}
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ expectedNeighbours\ =\ expectedNeighbourhood[vertexIter];}
-\DoxyCodeLine{00181\ \ \ \ \ }
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ std::sort(expectedNeighbours.begin(),\ expectedNeighbours.end());}
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ std::sort(computedNeighbours.begin(),\ computedNeighbours.end());}
-\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ assert(expectedNeighbours.size()\ ==\ computedNeighbours.size()\ \&\&\ std::equal(expectedNeighbours.begin(),\ expectedNeighbours.end(),\ computedNeighbours.begin()));}
-\DoxyCodeLine{00185\ \ \ \ \ \}}
-\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00187\ \}}
-\DoxyCodeLine{00188\ }
-\DoxyCodeLine{00189\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00190\ \textcolor{comment}{\ \ Assert\ the\ correction\ angle\ is\ the\ same\ as\ the\ inputted\ correction\ angle}}
-\DoxyCodeLine{00191\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00192\ \textcolor{keywordtype}{void}\ assertCorrection(}
-\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keyword}{const}\ undirectedGraph\&\ graph,}
-\DoxyCodeLine{00194\ \ \ \ \ std::vector<int>\ outcomeVector,\ }
-\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordtype}{int}\ vertex,}
-\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordtype}{int}\ numRows,}
-\DoxyCodeLine{00197\ \ \ \ \ qreal\ inputAngle,}
-\DoxyCodeLine{00198\ \ \ \ \ qreal\ expectedCorrectedAngle)\{}
-\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ qreal\ computedCorrectedAngle\ =\ computeCorrectedAngle(}
-\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ graph,}
-\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ outcomeVector,\ }
-\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ vertex,}
-\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ numRows,}
-\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ inputAngle);}
-\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ assert((\textcolor{stringliteral}{"{}New\ angle\ and\ original\ angle\ do\ not\ match"{}}\ \&\&\ computedCorrectedAngle\ ==\ expectedCorrectedAngle));}
-\DoxyCodeLine{00208\ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00002}00002\ \textcolor{comment}{//\ Title\ \ :\ graphAssertFunctions.hpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00003}00003\ \textcolor{comment}{//\ Author\ :\ Jonathan\ Miller\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00004}00004\ \textcolor{comment}{//\ Date\ \ \ :\ 20230425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00005}00005\ \textcolor{comment}{//\ Aim\ \ \ \ :\ Construct\ assertion\ functions\ for\ graphs\ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00007}00007\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00010}00010\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00011}00011\ \textcolor{comment}{\ \ \ \ Functions\ to\ be\ used\ to\ test\ graph\ properties.\ }}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ List\ of\ functions\ used\ in\ general\ graph\ assertions}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00013}00013\ \textcolor{comment}{\ \ \ \ 1.\ assertHandShakeLemma}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00014}00014\ \textcolor{comment}{\ \ \ \ 2.\ assertPathGraphMinMaxDegrees}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ 3.\ assertDegreeSetLatticeGraph}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00016}00016\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00017}00017\ \textcolor{comment}{\ \ \ \ assertHandShakeLemma}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00018}00018\ \textcolor{comment}{\ \ \ \ The\ hand\ shake\ lemma\ states\ that\ the\ sum\ of\ degrees\ is\ equivalent\ to\ two\ times\ the\ number\ of\ edges}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00019}00019\ \textcolor{comment}{\ \ \ \ sum(deg(v))\ =\ 2|E|\ for\ v\ in\ V}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00020}00020\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00021}00021\ \textcolor{comment}{\ \ \ \ assertPathGraphMinMaxDegrees}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00022}00022\ \textcolor{comment}{\ \ \ \ A\ path\ graph\ will\ degrees\ 1\ and\ 2}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00023}00023\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00024}00024\ \textcolor{comment}{\ \ \ \ assertDegreeSetLatticeGraph}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00025}00025\ \textcolor{comment}{\ \ \ \ A\ lattice\ graph\ in\ 2d\ will\ have\ degrees\ 2,3\ and\ 4}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00026}00026\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00027}00027\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ <numeric>}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ <boost/container/vector.hpp>}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00034}00034\ \textcolor{preprocessor}{\#include\ <boost/graph/adjacency\_list.hpp>}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ <boost/range/algorithm/unique.hpp>}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ <boost/range/algorithm.hpp>}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00037}00037\ \textcolor{preprocessor}{\#include\ <boost/range/adaptor/filtered.hpp>}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ <boost/range/adaptor/transformed.hpp>}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00044}00044\ \textcolor{keyword}{using\ namespace\ }boost;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00047}\mbox{\hyperlink{graph_assert_functions_8hpp_af845bf432b56cdda82dbde8011882168}{00047}}\ \textcolor{keyword}{typedef}\ boost::adjacency\_list<boost::vecS,\ boost::vecS,boost::undirectedS>\ \mbox{\hyperlink{graph_assert_functions_8hpp_af845bf432b56cdda82dbde8011882168}{undirectedGraph}};}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00048}\mbox{\hyperlink{graph_assert_functions_8hpp_af04c50f717d4bda41f0c58fe0eece059}{00048}}\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::edge\_iterator\ \mbox{\hyperlink{graph_assert_functions_8hpp_af04c50f717d4bda41f0c58fe0eece059}{edge\_iterator}};}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00049}\mbox{\hyperlink{graph_assert_functions_8hpp_a9451df0dac964b257bedb5e60547824e}{00049}}\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::vertex\_iterator\ \mbox{\hyperlink{graph_assert_functions_8hpp_a9451df0dac964b257bedb5e60547824e}{vertex\_iterator}};}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00053}00053\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00054}00054\ \textcolor{comment}{\ \ inthe\ hand\ shake\ lemma\ stipulates\ that\ the\ total\ degree\ of\ a\ graph\ G,}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00055}00055\ \textcolor{comment}{\ \ is\ equivalent\ to\ 2\ times\ the\ number\ of\ edges}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00056}00056\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00057}\mbox{\hyperlink{graph_assert_functions_8hpp_a60966966368ac25fe48dbccd70490e98}{00057}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_assert_functions_8hpp_a60966966368ac25fe48dbccd70490e98}{assertHandShakeLemma}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ graph)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00058}00058\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{int}\ num\_vertices\ =\ boost::num\_vertices(graph);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00060}00060\ \ \ \ \ boost::container::vector<int>\ degree\_vector;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00062}00062\ \ \ \ \ \textcolor{comment}{//\ Call\ the\ function\ and\ print\ the\ adjacent\ vertices\ of\ vertex\ 0}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_vertices;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00064}00064\ \ \ \ \ \ \ undirectedGraph::vertex\_descriptor\ v;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00065}00065\ \ \ \ \ \ \ v\ =\ boost::vertex(i,\ graph);\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00066}00066\ \ \ \ \ \ \ degree\_vector.push\_back(boost::degree(v,\ graph));\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordtype}{int}\ num\_edge\ =\ boost::num\_edges(graph);\ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordtype}{int}\ sum\ =\ std::accumulate(degree\_vector.begin(),\ degree\_vector.end(),\ 0);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00071}00071\ \ \ \ \ assert((\textcolor{stringliteral}{"{}total\ degree\ is\ two\ times\ the\ edge\ set"{}}\ \&\&\ sum\ ==\ 2\ *\ num\_edge));}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00072}00072\ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00076}00076\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00077}00077\ \textcolor{comment}{\ \ inthe\ hand\ shake\ lemma\ stipulates\ that\ the\ total\ degree\ of\ a\ graph\ G,}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00078}00078\ \textcolor{comment}{\ \ is\ equivalent\ to\ 2\ times\ the\ number\ of\ edges}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00079}00079\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00080}\mbox{\hyperlink{graph_assert_functions_8hpp_a781ea29934c2f8c5c65a73075bc13da1}{00080}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_assert_functions_8hpp_a781ea29934c2f8c5c65a73075bc13da1}{assertPathGraphMinMaxDegrees}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ graph)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00081}00081\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00082}00082\ \ \ \ \ \textcolor{keywordtype}{int}\ num\_vertices\ =\ boost::num\_vertices(graph);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00083}00083\ \ \ \ \ boost::container::vector<int>\ degree\_vector;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//\ Call\ the\ function\ and\ print\ the\ adjacent\ vertices\ of\ vertex\ 0}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_vertices;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00087}00087\ \ \ \ \ \ \ undirectedGraph::vertex\_descriptor\ v;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00088}00088\ \ \ \ \ \ \ v\ =\ boost::vertex(i,\ graph);\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00089}00089\ \ \ \ \ \ \ degree\_vector.push\_back(boost::degree(v,\ graph));\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00092}00092\ \ \ \ \ \textcolor{keywordtype}{int}\ min\_it\ =\ \mbox{\hyperlink{general_assert_functions_8hpp_aaa5eeda4e79aa986d57c3256556b6e6c}{getMin}}(degree\_vector);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00093}00093\ \ \ \ \ assert((\textcolor{stringliteral}{"{}minimum\ degree\ is\ 1"{}}\ \&\&\ min\_it\ ==\ 1));}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00094}00094\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_it\ =\ \mbox{\hyperlink{general_assert_functions_8hpp_af227e83a7360ec64f91773c37a905253}{getMax}}(degree\_vector);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00095}00095\ \ \ \ \ assert((\textcolor{stringliteral}{"{}maximum\ degree\ is\ 1"{}}\ \&\&\ max\_it\ ==\ 2));}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00097}00097\ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00101}00101\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00102}00102\ \textcolor{comment}{\ \ inthe\ hand\ shake\ lemma\ stipulates\ that\ the\ total\ degree\ of\ a\ graph\ G,}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00103}00103\ \textcolor{comment}{\ \ is\ equivalent\ to\ 2\ times\ the\ number\ of\ edges}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00104}00104\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00105}\mbox{\hyperlink{graph_assert_functions_8hpp_ab7b459ddc7c532fc5a37abb8760d7ca6}{00105}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_assert_functions_8hpp_ab7b459ddc7c532fc5a37abb8760d7ca6}{assertDegreeSetLatticeGraph}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ graph)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00106}00106\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00107}00107\ \ \ \ \ \textcolor{keywordtype}{int}\ num\_vertices\ =\ boost::num\_vertices(graph);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00108}00108\ \ \ \ \ std::vector<int>\ degree\_vector;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00109}00109\ \ \ \ \ std::vector<int>\ required\_deg\_vector\ =\ \{2,3,4\};}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00110}00110\ \ \ \ \ \textcolor{comment}{//\ Call\ the\ function\ and\ print\ the\ adjacent\ vertices\ of\ vertex\ 0}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00111}00111\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ num\_vertices;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00112}00112\ \ \ \ \ \ \ undirectedGraph::vertex\_descriptor\ v;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00113}00113\ \ \ \ \ \ \ v\ =\ boost::vertex(i,\ graph);\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00114}00114\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ d\ =\ boost::degree(v,\ graph);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00115}00115\ \ \ \ \ \ \ degree\_vector.push\_back(d);\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00116}00116\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00118}00118\ \ \ \ \ sort(\ degree\_vector.begin(),\ degree\_vector.end()\ );}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00119}00119\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00120}00120\ \ \ \ \ degree\_vector.erase(std::unique(\ degree\_vector.begin(),\ degree\_vector.end()\ ),\ degree\_vector.end()\ );}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00123}00123\ \ \ \ \ std::vector<int>\ filt;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00124}00124\ \ \ \ \ std::copy\_if(degree\_vector.begin(),\ degree\_vector.end(),\ std::back\_inserter(filt),\ [](\textcolor{keywordtype}{int}\ i)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00125}00125\ \ \ \ \ \ \ \ \ return\ i\ ==\ 2\ ||\ i\ ==\ 3\ ||\ i\ ==\ 4;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00126}00126\ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00127}00127\ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00128}00128\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \&i:\ filt)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00129}00129\ \ \ \ \ \ \ \ \ assert(\textcolor{stringliteral}{"{}Degree\ must\ be\ either\ 2,3\ or\ 4"{}}\ \&\&\ i\ ==\ 2\ ||\ i\ ==\ 3\ ||\ i\ ==\ 4);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00130}00130\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00132}00132\ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00135}00135\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00136}00136\ \textcolor{comment}{\ \ Assert\ that\ the\ number\ of\ vertices\ in\ a\ graph\ matches\ expected\ input\ }}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00137}00137\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00138}\mbox{\hyperlink{graph_assert_functions_8hpp_a026973ba07ba80213ede65e64a3eb614}{00138}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_assert_functions_8hpp_a026973ba07ba80213ede65e64a3eb614}{assertGraphNumVertices}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ graph,\ \textcolor{keywordtype}{int}\ numVertices)\{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00139}00139\ \ \ \textcolor{keywordtype}{int}\ num\_vertices\ =\ boost::num\_vertices(graph);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00140}00140\ \ \ assert(\textcolor{stringliteral}{"{}Number\ of\ vertices\ in\ graph\ must\ equal\ input"{}}\ \&\&\ numVertices\ ==\ num\_vertices);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00141}00141\ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00144}00144\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00145}00145\ \textcolor{comment}{\ \ Test\ for\ all\ flow\ on\ vertices}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00146}00146\ \textcolor{comment}{\ \ Iterate\ over\ the\ vertices\ of\ the\ graph}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00147}00147\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00148}\mbox{\hyperlink{graph_assert_functions_8hpp_a3241060bf4552dac98da626843460bb3}{00148}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_assert_functions_8hpp_a3241060bf4552dac98da626843460bb3}{assertFlowFunctionsPerformExpected}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ graph,\textcolor{keywordtype}{int}\ numRows)\{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00149}00149\ \ \ \ \ undirectedGraph::vertex\_iterator\ vi,\ vi\_end;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00150}00150\ \ \ \ \ \textcolor{keywordtype}{int}\ size\_graph\ =\ boost::num\_vertices(graph);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00152}00152\ \ \ \ \ \textcolor{keywordflow}{for}\ (boost::tie(vi,\ vi\_end)\ =\ boost::vertices(graph);\ vi\ !=\ vi\_end;\ ++vi)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ skip\ vertices\ that\ are\ in\ the\ first\ column}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(*vi\ >=\ numRows)\{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ computedVi\ =\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a7b014587f20137aff522774eb1a05947}{getLattice2DPastVertexGraph}}(graph,*vi,numRows);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ expectedVi\ =\ *vi\ -\/\ numRows;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ assert(((expectedVi\ ==\ computedVi)\ \&\&\ \textcolor{stringliteral}{"{}Expected\ vertex\ does\ not\ match\ computed\ vertex\ from\ getLattice2DPastVertexGraph\ function"{}}));}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00159}00159\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00160}00160\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00161}00161\ \ \ \ \ \textcolor{keywordflow}{for}\ (boost::tie(vi,\ vi\_end)\ =\ boost::vertices(graph);\ vi\ !=\ vi\_end;\ ++vi)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ skip\ vertices\ that\ are\ in\ the\ first\ column}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(*vi\ <\ (size\_graph-\/numRows))\{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ computedVi\ =\ \mbox{\hyperlink{graph_traversal_flows_8hpp_aafe3849a9ad4cb18d843d73c89936bb3}{getLattice2DFutureVertexGraph}}(graph,*vi,numRows);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ expectedVi\ =\ *vi\ +\ numRows;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ assert(((expectedVi\ ==\ computedVi)\ \&\&\ \textcolor{stringliteral}{"{}Expected\ vertex\ does\ not\ match\ computed\ vertex\ from\ getLattice2DPastVertexGraph\ function"{}}));}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00168}00168\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00169}00169\ \ \ \ \ return\ ;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00170}00170\ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00172}00172\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00173}00173\ \textcolor{comment}{\ \ Assert\ each\ vertex\ neighbour\ has\ a\ matchin\ neighbour\ to\ the\ input}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00174}00174\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00175}\mbox{\hyperlink{graph_assert_functions_8hpp_a5c3f8d6a6068b10ca7ca8f2f4515cbcd}{00175}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_assert_functions_8hpp_a5c3f8d6a6068b10ca7ca8f2f4515cbcd}{assertNieghbours}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ graph,std::vector<std::vector<int>>\ expectedNeighbourhood)\{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00176}00176\ \ \ \ \ \textcolor{keywordtype}{int}\ size\_graph\ =\ boost::num\_vertices(graph);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00177}00177\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ vertexIter\ =\ 0;\ vertexIter\ <\ size\_graph;\ vertexIter++)\{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00178}00178\ \ \ \ \ \ \ \ \ std::vector<int>\ computedNeighbours\ =\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a954183dad806b30b05e526c37284768b}{getVertexNeighbours}}(graph,vertexIter);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00179}00179\ \ \ \ \ \ \ \ \ std::vector<int>\ expectedNeighbours;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00180}00180\ \ \ \ \ \ \ \ \ expectedNeighbours\ =\ expectedNeighbourhood[vertexIter];}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00181}00181\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00182}00182\ \ \ \ \ \ \ \ \ std::sort(expectedNeighbours.begin(),\ expectedNeighbours.end());}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00183}00183\ \ \ \ \ \ \ \ \ std::sort(computedNeighbours.begin(),\ computedNeighbours.end());}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00184}00184\ \ \ \ \ \ \ \ \ assert(expectedNeighbours.size()\ ==\ computedNeighbours.size()\ \&\&\ std::equal(expectedNeighbours.begin(),\ expectedNeighbours.end(),\ computedNeighbours.begin()));}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00185}00185\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00186}00186\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00187}00187\ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00189}00189\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00190}00190\ \textcolor{comment}{\ \ Assert\ the\ correction\ angle\ is\ the\ same\ as\ the\ inputted\ correction\ angle}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00191}00191\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00192}\mbox{\hyperlink{graph_assert_functions_8hpp_a67fc70f2265e3ca43a7871939ae44a95}{00192}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_assert_functions_8hpp_a67fc70f2265e3ca43a7871939ae44a95}{assertCorrection}}(}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00193}00193\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ graph,}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00194}00194\ \ \ \ \ std::vector<int>\ outcomeVector,\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00195}00195\ \ \ \ \ \textcolor{keywordtype}{int}\ vertex,}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00196}00196\ \ \ \ \ \textcolor{keywordtype}{int}\ numRows,}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00197}00197\ \ \ \ \ qreal\ inputAngle,}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00198}00198\ \ \ \ \ qreal\ expectedCorrectedAngle)\{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00199}00199\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00200}00200\ \ \ \ \ \ \ \ \ qreal\ computedCorrectedAngle\ =\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a2b29f1efbcbccfbe77481e5b1a9647c8}{computeCorrectedAngle}}(}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ graph,}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ outcomeVector,\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ vertex,}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ numRows,}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ inputAngle);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00206}00206\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00207}00207\ \ \ \ \ \ \ \ \ assert((\textcolor{stringliteral}{"{}New\ angle\ and\ original\ angle\ do\ not\ match"{}}\ \&\&\ computedCorrectedAngle\ ==\ expectedCorrectedAngle));}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00208}00208\ \}}
 
 \end{DoxyCode}

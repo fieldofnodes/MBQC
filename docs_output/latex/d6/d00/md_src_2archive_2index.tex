@@ -19,7 +19,7 @@ Create vector of digits from \$0\$ to \$N-\/1\$, separated by \$1\$ to represent
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{vector<int>\ getPathGraph(\textcolor{keywordtype}{int}\ numberQubits)}
+\DoxyCodeLine{vector<int>\ \mbox{\hyperlink{20230314___functions___v1_8hpp_aa6c7ea81b30e713a1f641e9a86e5f0a8}{getPathGraph}}(\textcolor{keywordtype}{int}\ numberQubits)}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{\ \ vector<int>\ pathGraph;}
 \DoxyCodeLine{\ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numberQubits;\ i++\ )}
@@ -35,7 +35,7 @@ Linear cluster state flow is defined as, \$f(i) = i + 1\$, where \$i\$ is the cu
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ getFutureQubit(\textcolor{keywordtype}{int}\ currentQubit)\{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{20230313___m_b_q_c___v2_8c_a89ebfc1e65a5c1ee3c420843c016be0e}{getFutureQubit}}(\textcolor{keywordtype}{int}\ currentQubit)\{}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ futureQubit;}
 \DoxyCodeLine{\ \ futureQubit\ =\ currentQubit\ +\ 1;}
 \DoxyCodeLine{}
@@ -49,7 +49,7 @@ Linear flow backwards is defined as, \$f\texorpdfstring{$^\wedge$}{\string^}\{-\
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ getPastQubit(\textcolor{keywordtype}{int}\ currentQubit)\{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{20230313___m_b_q_c___v2_8c_af44420884b989805a33b6b4cb35fb2e1}{getPastQubit}}(\textcolor{keywordtype}{int}\ currentQubit)\{}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ pastQubit;}
 \DoxyCodeLine{\ \ pastQubit\ =\ currentQubit\ -\/\ 1;}
 \DoxyCodeLine{}
@@ -63,14 +63,14 @@ Linear cluster vector with the flow, \$f\$, \$f(i) = i + 1\$, if \$i\$ is last e
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ getFutureQubitPathGraph(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{20230314___functions___v1_8hpp_adf1055c60f73eb56e5e51d97b15feeaf}{getFutureQubitPathGraph}}(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ futureQubit;}
 \DoxyCodeLine{\textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
 \DoxyCodeLine{\textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[graphSize-\/1])\ \{}
 \DoxyCodeLine{\ \ \ \ assert(currentQubit\ !=\ pathGraph[graphSize-\/1]\ \&\&\ \textcolor{stringliteral}{"{}No\ past\ qubit\ here,\ re-\/check\ your\ program"{}});}
 \DoxyCodeLine{\}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\ \ futureQubit\ =\ getFutureQubit(currentQubit);}
+\DoxyCodeLine{\ \ futureQubit\ =\ \mbox{\hyperlink{20230313___m_b_q_c___v2_8c_a89ebfc1e65a5c1ee3c420843c016be0e}{getFutureQubit}}(currentQubit);}
 \DoxyCodeLine{\}}
 \DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ futureQubit;}
 \DoxyCodeLine{\}}
@@ -82,7 +82,7 @@ Linear cluster vector with the flow, \$f\$, \$f\texorpdfstring{$^\wedge$}{\strin
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ getPastQubitPathGraph(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a1be0a6fc146b59a21929f000546f57a4}{getPastQubitPathGraph}}(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)}
 \DoxyCodeLine{\{}
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ pastQubit;}
 \DoxyCodeLine{}
@@ -90,7 +90,7 @@ Linear cluster vector with the flow, \$f\$, \$f\texorpdfstring{$^\wedge$}{\strin
 \DoxyCodeLine{\ \ assert(currentQubit\ !=\ pathGraph[0]\ \&\&\ \textcolor{stringliteral}{"{}No\ past\ qubit\ here,\ re-\/check\ your\ program"{}});}
 \DoxyCodeLine{}
 \DoxyCodeLine{\}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\ \ pastQubit\ =\ getPastQubit(currentQubit);}
+\DoxyCodeLine{\ \ pastQubit\ =\ \mbox{\hyperlink{20230313___m_b_q_c___v2_8c_af44420884b989805a33b6b4cb35fb2e1}{getPastQubit}}(currentQubit);}
 \DoxyCodeLine{\}}
 \DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ pastQubit;}
 \DoxyCodeLine{\}}
@@ -101,7 +101,7 @@ The neighbor set in a cluster state is technically the open neighbours set, as w
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{int}\ getOpenNeighbourhoodSizePathGraph(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)\{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{20230313___m_b_q_c___v2_8c_ab81ffa7099ed1d954baf7af535ab3143}{getOpenNeighbourhoodSizePathGraph}}(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)\{}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ neighbourhoodSize;}
 \DoxyCodeLine{\ \ \textcolor{comment}{//\ Logic\ for\ getting\ nieghbors}}
@@ -123,7 +123,7 @@ Get the neighbor set of qubits based on the linear cluster and the current qubit
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{vector<int>\ getOpenNeighbourhoodPathGraph(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)\{}
+\DoxyCodeLine{vector<int>\ \mbox{\hyperlink{20230313___m_b_q_c___v2_8c_a5aa77a698227173b06b1c3d363215699}{getOpenNeighbourhoodPathGraph}}(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)\{}
 \DoxyCodeLine{\ \ vector<int>\ neighbours;}
 \DoxyCodeLine{\ \ \textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
 \DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ firstQubit;}

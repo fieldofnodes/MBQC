@@ -1,55 +1,55 @@
 \doxysection{create\+Graph.\+hpp}
 \hypertarget{create_graph_8hpp_source}{}\label{create_graph_8hpp_source}\index{src/archive/filesToGoThrough/createGraph.hpp@{src/archive/filesToGoThrough/createGraph.hpp}}
-
+\mbox{\hyperlink{create_graph_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <boost/graph/adjacency\_list.hpp>}}
-\DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{keyword}{using\ namespace\ }boost;}
-\DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{keyword}{typedef}\ boost::property<boost::edge\_weight\_t,\ int>\ EdgeWeightProperty;}
-\DoxyCodeLine{00007\ \textcolor{keyword}{typedef}\ boost::adjacency\_list<boost::listS,\ boost::vecS,boost::undirectedS,boost::no\_property,EdgeWeightProperty>\ undirectedGraph;}
-\DoxyCodeLine{00008\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::edge\_iterator\ edge\_iterator;}
-\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::vertex\_iterator\ vertex\_iterator;}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ \textcolor{comment}{//\ create\ a\ 1D\ path\ graph\ on\ 1xn\ vertices}}
-\DoxyCodeLine{00014\ undirectedGraph\ createPathGraph(\textcolor{keywordtype}{int}\ n)\ \{\ }
-\DoxyCodeLine{00015\ \ \ undirectedGraph\ g(n);}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n-\/1;\ i++)\ \{\ \ \textcolor{comment}{//\ add\ edges\ to\ create\ a\ path\ graph}}
-\DoxyCodeLine{00018\ \ \ \ \ add\_edge(i,\ i+1,\ g);}
-\DoxyCodeLine{00019\ \ \ \}}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \textcolor{keywordflow}{return}\ g;}
-\DoxyCodeLine{00022\ \}}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \textcolor{comment}{//\ create\ a\ 2D\ lattice\ graph\ with\ n\ x\ m\ vertices}}
-\DoxyCodeLine{00025\ undirectedGraph\ createLatticeGraph(\textcolor{keywordtype}{int}\ n,\ \textcolor{keywordtype}{int}\ m)\ \{\ }
-\DoxyCodeLine{00026\ \ \ undirectedGraph\ g(n\ *\ m);}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ i++)\ \{}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ m;\ j++)\ \{}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ <\ m-\/1)\ add\_edge(i*m+j,\ i*m+j+1,\ g);\ \textcolor{comment}{//\ add\ horizontal\ edges}}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ n-\/1)\ add\_edge(i*m+j,\ (i+1)*m+j,\ g);\ \textcolor{comment}{//\ add\ vertical\ edges}}
-\DoxyCodeLine{00032\ \ \ \ \ \}}
-\DoxyCodeLine{00033\ \ \ \}}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \ \ \textcolor{keywordflow}{return}\ g;}
-\DoxyCodeLine{00036\ \}}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ std::vector<undirectedGraph::vertex\_descriptor>\ get\_adjacent\_vertices(\textcolor{keyword}{const}\ undirectedGraph\&\ g,\ \textcolor{keyword}{const}\ undirectedGraph::vertex\_descriptor\ v)}
-\DoxyCodeLine{00041\ \{}
-\DoxyCodeLine{00042\ \ \ \ \ std::vector<undirectedGraph::vertex\_descriptor>\ adjacent\_vertices;}
-\DoxyCodeLine{00043\ \ \ \ \ undirectedGraph::adjacency\_iterator\ ai,\ ai\_end;}
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{for}\ (boost::tie(ai,\ ai\_end)\ =\ boost::adjacent\_vertices(v,\ g);\ ai\ !=\ ai\_end;\ ++ai)}
-\DoxyCodeLine{00045\ \ \ \ \ \{}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ adjacent\_vertices.push\_back(*ai);}
-\DoxyCodeLine{00047\ \ \ \ \ \}}
-\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{return}\ adjacent\_vertices;}
-\DoxyCodeLine{00049\ \}}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <boost/graph/adjacency\_list.hpp>}}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00004}00004\ \textcolor{keyword}{using\ namespace\ }boost;}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00006}\mbox{\hyperlink{create_graph_8hpp_ad531f0530c52e2baed8840517b52b457}{00006}}\ \textcolor{keyword}{typedef}\ boost::property<boost::edge\_weight\_t,\ int>\ \mbox{\hyperlink{create_graph_8hpp_ad531f0530c52e2baed8840517b52b457}{EdgeWeightProperty}};}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00007}\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{00007}}\ \textcolor{keyword}{typedef}\ boost::adjacency\_list<boost::listS,\ boost::vecS,boost::undirectedS,boost::no\_property,EdgeWeightProperty>\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}};}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00008}\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{00008}}\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::edge\_iterator\ \mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{edge\_iterator}};}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00009}\mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{00009}}\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::vertex\_iterator\ \mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{vertex\_iterator}};}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00013}00013\ \textcolor{comment}{//\ create\ a\ 1D\ path\ graph\ on\ 1xn\ vertices}}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00014}\mbox{\hyperlink{create_graph_8hpp_abe67d4f4ed1169c1376d3a14fd9d144d}{00014}}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ \mbox{\hyperlink{create_graph_8hpp_abe67d4f4ed1169c1376d3a14fd9d144d}{createPathGraph}}(\textcolor{keywordtype}{int}\ n)\ \{\ }
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00015}00015\ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ g(n);}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00017}00017\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n-\/1;\ i++)\ \{\ \ \textcolor{comment}{//\ add\ edges\ to\ create\ a\ path\ graph}}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00018}00018\ \ \ \ \ add\_edge(i,\ i+1,\ g);}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00019}00019\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00021}00021\ \ \ \textcolor{keywordflow}{return}\ g;}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00024}00024\ \textcolor{comment}{//\ create\ a\ 2D\ lattice\ graph\ with\ n\ x\ m\ vertices}}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00025}\mbox{\hyperlink{create_graph_8hpp_aabb013bb6de93b1ca2ff83e1d7d200c7}{00025}}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ \mbox{\hyperlink{create_graph_8hpp_aabb013bb6de93b1ca2ff83e1d7d200c7}{createLatticeGraph}}(\textcolor{keywordtype}{int}\ n,\ \textcolor{keywordtype}{int}\ m)\ \{\ }
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00026}00026\ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ g(n\ *\ m);}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00028}00028\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ m;\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00030}00030\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ <\ m-\/1)\ add\_edge(i*m+j,\ i*m+j+1,\ g);\ \textcolor{comment}{//\ add\ horizontal\ edges}}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00031}00031\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ n-\/1)\ add\_edge(i*m+j,\ (i+1)*m+j,\ g);\ \textcolor{comment}{//\ add\ vertical\ edges}}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00033}00033\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00035}00035\ \ \ \textcolor{keywordflow}{return}\ g;}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00040}\mbox{\hyperlink{create_graph_8hpp_a95616ef95512e388dddbc756c8644c4d}{00040}}\ std::vector<undirectedGraph::vertex\_descriptor>\ \mbox{\hyperlink{create_graph_8hpp_a95616ef95512e388dddbc756c8644c4d}{get\_adjacent\_vertices}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ g,\ \textcolor{keyword}{const}\ undirectedGraph::vertex\_descriptor\ v)}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00041}00041\ \{}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00042}00042\ \ \ \ \ std::vector<undirectedGraph::vertex\_descriptor>\ adjacent\_vertices;}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00043}00043\ \ \ \ \ undirectedGraph::adjacency\_iterator\ ai,\ ai\_end;}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{for}\ (boost::tie(ai,\ ai\_end)\ =\ boost::adjacent\_vertices(v,\ g);\ ai\ !=\ ai\_end;\ ++ai)}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00045}00045\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00046}00046\ \ \ \ \ \ \ \ \ adjacent\_vertices.push\_back(*ai);}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{return}\ adjacent\_vertices;}
+\DoxyCodeLine{\Hypertarget{create_graph_8hpp_source_l00049}00049\ \}}
 
 \end{DoxyCode}

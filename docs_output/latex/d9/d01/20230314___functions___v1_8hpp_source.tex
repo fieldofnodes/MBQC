@@ -1,236 +1,236 @@
 \doxysection{20230314\+\_\+\+Functions\+\_\+\+V1.\+hpp}
 \hypertarget{20230314___functions___v1_8hpp_source}{}\label{20230314___functions___v1_8hpp_source}\index{src/archive/filesToGoThrough/20230314\_Functions\_V1.hpp@{src/archive/filesToGoThrough/20230314\_Functions\_V1.hpp}}
-
+\mbox{\hyperlink{20230314___functions___v1_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <QuEST.h>}}
-\DoxyCodeLine{00002\ \textcolor{comment}{//\#include\ <stdio.h>}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00006\ \textcolor{keyword}{using\ namespace\ }std;}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ \textcolor{comment}{/*\ }}
-\DoxyCodeLine{00010\ \textcolor{comment}{\ \ Create\ vector\ of\ digits\ from\ 0\ to\ N,\ separated\ by\ 1}}
-\DoxyCodeLine{00011\ \textcolor{comment}{\ \ To\ represent\ the\ a\ line\ of\ nodes\ connected\ by\ one\ }}
-\DoxyCodeLine{00012\ \textcolor{comment}{\ \ edge\ ()-\/()-\/()-\/\ -\/\ -\/\ -\/()\ (1,2,3,...,N)}}
-\DoxyCodeLine{00013\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00014\ vector<int>\ getPathGraph(\textcolor{keywordtype}{int}\ numberQubits)}
-\DoxyCodeLine{00015\ \{}
-\DoxyCodeLine{00016\ \ \ vector<int>\ pathGraph;}
-\DoxyCodeLine{00017\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numberQubits;\ i++\ )}
-\DoxyCodeLine{00018\ \ \ \{}
-\DoxyCodeLine{00019\ \ \ \ \ pathGraph.push\_back(i);\ \ }
-\DoxyCodeLine{00020\ \ \ \}}
-\DoxyCodeLine{00021\ \ \ \textcolor{keywordflow}{return}\ pathGraph;}
-\DoxyCodeLine{00022\ \}}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00025\ \textcolor{comment}{\ \ Linear\ flow,\ f(i)\ =\ i\ +\ 1}}
-\DoxyCodeLine{00026\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00027\ \textcolor{keywordtype}{int}\ getFutureQubit(\textcolor{keywordtype}{int}\ currentQubit)\{}
-\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{int}\ futureQubit;}
-\DoxyCodeLine{00029\ \ \ futureQubit\ =\ currentQubit\ +\ 1;}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \textcolor{keywordflow}{return}\ futureQubit;}
-\DoxyCodeLine{00032\ \}}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00035\ \textcolor{comment}{\ \ Linear\ flow,\ f\string^\{-\/1\}(i)\ =\ i\ -\/\ 1}}
-\DoxyCodeLine{00036\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00037\ \textcolor{keywordtype}{int}\ getPastQubit(\textcolor{keywordtype}{int}\ currentQubit)\{}
-\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{int}\ pastQubit;}
-\DoxyCodeLine{00039\ \ \ pastQubit\ =\ currentQubit\ -\/\ 1;}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \ \ \textcolor{keywordflow}{return}\ pastQubit;}
-\DoxyCodeLine{00042\ \}}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00045\ \textcolor{comment}{\ \ Linear\ cluster\ vector\ with\ the\ flow,\ f.}}
-\DoxyCodeLine{00046\ \textcolor{comment}{\ \ f(i)\ =\ i\ +\ 1,\ if\ i\ is\ last\ element\ of\ vector,\ then}}
-\DoxyCodeLine{00047\ \textcolor{comment}{\ \ throw\ error.}}
-\DoxyCodeLine{00048\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00049\ \textcolor{keywordtype}{int}\ getFutureQubitPathGraph(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)}
-\DoxyCodeLine{00050\ \{}
-\DoxyCodeLine{00051\ \textcolor{keywordtype}{int}\ futureQubit;}
-\DoxyCodeLine{00052\ \textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
-\DoxyCodeLine{00053\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[graphSize-\/1])\ \{}
-\DoxyCodeLine{00054\ \ \ \ \ futureQubit\ =\ currentQubit;}
-\DoxyCodeLine{00055\ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00056\ \ \ futureQubit\ =\ getFutureQubit(currentQubit);}
-\DoxyCodeLine{00057\ \}}
-\DoxyCodeLine{00058\ \ \ \textcolor{keywordflow}{return}\ futureQubit;}
-\DoxyCodeLine{00059\ \}}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00063\ \textcolor{comment}{\ \ Linear\ cluster\ vector\ with\ the\ flow,\ f.}}
-\DoxyCodeLine{00064\ \textcolor{comment}{\ \ f\string^\{-\/1\}(i)\ =\ i\ -\/\ 1,\ if\ i\ is\ first\ element\ of\ vector,\ then}}
-\DoxyCodeLine{00065\ \textcolor{comment}{\ \ throw\ error.}}
-\DoxyCodeLine{00066\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00067\ \textcolor{keywordtype}{int}\ getPastQubitPathGraph(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)}
-\DoxyCodeLine{00068\ \{}
-\DoxyCodeLine{00069\ \textcolor{keywordtype}{int}\ pastQubit;}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[0])\ \{}
-\DoxyCodeLine{00072\ \ \ pastQubit\ =\ currentQubit;}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00075\ \ \ pastQubit\ =\ getPastQubit(currentQubit);}
-\DoxyCodeLine{00076\ \}}
-\DoxyCodeLine{00077\ \ \ \textcolor{keywordflow}{return}\ pastQubit;}
-\DoxyCodeLine{00078\ \}}
-\DoxyCodeLine{00079\ }
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00082\ \textcolor{comment}{\ \ Get\ the\ neighbourhood\ size}}
-\DoxyCodeLine{00083\ \textcolor{comment}{\ \ Look\ at\ the\ linear\ cluster\ and\ the\ current\ qubit}}
-\DoxyCodeLine{00084\ \textcolor{comment}{\ \ Determine\ if\ there\ are\ one\ or\ two\ neighbours\ to\ the\ }}
-\DoxyCodeLine{00085\ \textcolor{comment}{\ \ current\ qubit\ based\ on\ the\ qubit\ position\ in\ the}}
-\DoxyCodeLine{00086\ \textcolor{comment}{\ \ linear\ cluster}}
-\DoxyCodeLine{00087\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00088\ \textcolor{keywordtype}{int}\ getOpenNeighbourhoodSizePathGraph(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)\{}
-\DoxyCodeLine{00089\ \ \ \textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
-\DoxyCodeLine{00090\ \ \ \textcolor{keywordtype}{int}\ neighbourhoodSize;}
-\DoxyCodeLine{00091\ \ \ \textcolor{comment}{//\ Logic\ for\ getting\ nieghbors}}
-\DoxyCodeLine{00092\ \ \ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ 0)\ \{\ \textcolor{comment}{//\ qubit\ is\ first}}
-\DoxyCodeLine{00093\ \ \ \ \ neighbourhoodSize\ =\ 1;}
-\DoxyCodeLine{00094\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[graphSize-\/1])\ \{\ \textcolor{comment}{//\ qubit\ is\ last}}
-\DoxyCodeLine{00095\ \ \ \ \ neighbourhoodSize\ =\ 1;}
-\DoxyCodeLine{00096\ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{//\ all\ else}}
-\DoxyCodeLine{00097\ \ \ \ \ neighbourhoodSize\ =\ 2;}
-\DoxyCodeLine{00098\ \ \ \}}
-\DoxyCodeLine{00099\ }
-\DoxyCodeLine{00100\ \ \ \textcolor{keywordflow}{return}\ neighbourhoodSize;}
-\DoxyCodeLine{00101\ \}}
-\DoxyCodeLine{00102\ }
-\DoxyCodeLine{00103\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00104\ \textcolor{comment}{\ \ Get\ the\ neighbourhood\ of\ the\ qubit\ based\ on\ the\ linear\ cluster\ and\ the\ }}
-\DoxyCodeLine{00105\ \textcolor{comment}{\ \ qubits}}
-\DoxyCodeLine{00106\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00107\ vector<int>\ getOpenNeighbourhoodPathGraph(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)\{}
-\DoxyCodeLine{00108\ \ \ vector<int>\ neighbours;}
-\DoxyCodeLine{00109\ \ \ \textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
-\DoxyCodeLine{00110\ \ \ \textcolor{keywordtype}{int}\ firstQubit;}
-\DoxyCodeLine{00111\ \ \ \textcolor{keywordtype}{int}\ pastQubit;}
-\DoxyCodeLine{00112\ \ \ \textcolor{keywordtype}{int}\ futureQubit;}
-\DoxyCodeLine{00113\ }
-\DoxyCodeLine{00114\ \ \ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[0])\ \{\ \textcolor{comment}{//\ qubit\ is\ first\ in\ graph}}
-\DoxyCodeLine{00115\ \ \ \ \ firstQubit\ =\ currentQubit\ +\ 1;}
-\DoxyCodeLine{00116\ \ \ \ \ neighbours.push\_back(firstQubit);}
-\DoxyCodeLine{00117\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[graphSize-\/1])\ \{\ \textcolor{comment}{//\ qubit\ is\ last\ in\ graph}}
-\DoxyCodeLine{00118\ \ \ \ \ firstQubit\ =\ currentQubit\ -\/\ 1;}
-\DoxyCodeLine{00119\ \ \ \ \ neighbours.push\_back(firstQubit);}
-\DoxyCodeLine{00120\ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{//\ all\ else}}
-\DoxyCodeLine{00121\ \ \ \ \ pastQubit\ =\ currentQubit\ -\/\ 1;}
-\DoxyCodeLine{00122\ \ \ \ \ futureQubit\ =\ currentQubit\ +\ 1;}
-\DoxyCodeLine{00123\ \ \ \ \ neighbours.push\_back(pastQubit);}
-\DoxyCodeLine{00124\ \ \ \ \ neighbours.push\_back(futureQubit);}
-\DoxyCodeLine{00125\ \ \ \}}
-\DoxyCodeLine{00126\ }
-\DoxyCodeLine{00127\ \ \ \textcolor{keywordflow}{return}\ neighbours;}
-\DoxyCodeLine{00128\ \}}
-\DoxyCodeLine{00129\ }
-\DoxyCodeLine{00130\ }
-\DoxyCodeLine{00131\ \ \ qreal\ computeXCorrectionAnglePathGraph(}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ vector<int>\ pathGraph,\ }
-\DoxyCodeLine{00133\ \ \ \ \ \ \ vector<int>\ measuredQubitsOutcomes,}
-\DoxyCodeLine{00134\ \ \ \ \ \ \ vector<qreal>\ qubitAngles,}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currentQubit)}
-\DoxyCodeLine{00136\ \ \ \{}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ qreal\ xCorrectionAngle;}
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pastQubit;}
-\DoxyCodeLine{00139\ \ \ \ \ \ \ pastQubit\ =\ getPastQubitPathGraph(pathGraph,currentQubit);}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ inverseFlowQubitOutcome\ =\ measuredQubitsOutcomes[pastQubit];}
-\DoxyCodeLine{00141\ \ \ \ \ \ \ xCorrectionAngle\ =\ pow(-\/1,\ inverseFlowQubitOutcome)*qubitAngles[currentQubit];}
-\DoxyCodeLine{00142\ }
-\DoxyCodeLine{00143\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ xCorrectionAngle;}
-\DoxyCodeLine{00144\ \ \ \}}
-\DoxyCodeLine{00145\ }
-\DoxyCodeLine{00146\ }
-\DoxyCodeLine{00147\ }
-\DoxyCodeLine{00148\ \ \ qreal\ computeZCorrectionAnglePathGraph(}
-\DoxyCodeLine{00149\ \ \ \ \ \ \ vector<int>\ pathGraph,\ }
-\DoxyCodeLine{00150\ \ \ \ \ \ \ vector<int>\ measuredQubitsOutcomes,}
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currentQubit)}
-\DoxyCodeLine{00152\ \ \ \{\ \ \ }
-\DoxyCodeLine{00153\ \ \ \ \ \ \ qreal\ zCorrectionAngle;}
-\DoxyCodeLine{00154\ \ \ \ \ \ \ }
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pastQubit;}
-\DoxyCodeLine{00156\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pastPastQubit;}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ inverseFlowQubitOutcome;}
-\DoxyCodeLine{00158\ \ \ \ \ \ \ pastQubit\ =\ getPastQubitPathGraph(pathGraph,currentQubit);}
-\DoxyCodeLine{00159\ \ \ \ \ \ \ pastPastQubit\ =\ getPastQubitPathGraph(pathGraph,pastQubit);}
-\DoxyCodeLine{00160\ \ \ \ \ \ \ inverseFlowQubitOutcome\ =\ measuredQubitsOutcomes[pastPastQubit];}
-\DoxyCodeLine{00161\ \ \ \ \ \ \ zCorrectionAngle\ =\ M\_PI*inverseFlowQubitOutcome;}
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00163\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ zCorrectionAngle;}
-\DoxyCodeLine{00164\ \ \ \}}
-\DoxyCodeLine{00165\ }
-\DoxyCodeLine{00166\ \textcolor{keywordtype}{int}\ countElements(vector<int>\ v,\ \textcolor{keywordtype}{int}\ element)\ \{}
-\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =\ 0;}
-\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ v.begin();\ it\ !=\ v.end();\ ++it)\ \{}
-\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*it\ ==\ element)\ \{}
-\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ ++count;}
-\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00172\ \ \ \ \ \}}
-\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordflow}{return}\ count;}
-\DoxyCodeLine{00174\ \}}
-\DoxyCodeLine{00175\ }
-\DoxyCodeLine{00176\ vector<int>\ runMbqcPathGraph(}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ Qureg\ qureg,}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ vector<int>\ pathGraph,}
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ vector<qreal>\ qubitAngles)\{}
-\DoxyCodeLine{00180\ }
-\DoxyCodeLine{00181\ }
-\DoxyCodeLine{00182\ \ \ \ \ vector<qreal>\ updatedQubitAngles;}
-\DoxyCodeLine{00183\ \ \ \ \ vector<int>\ measuredQubitsOutcomes;}
-\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordtype}{int}\ numberQubits\ =\ pathGraph.size();}
-\DoxyCodeLine{00185\ \ \ \ \ qreal\ X1;}
-\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordtype}{int}\ firstQubitIndex=0;}
-\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordtype}{int}\ secondQubitIndex=1;}
-\DoxyCodeLine{00188\ \ \ \ \ }
-\DoxyCodeLine{00189\ }
-\DoxyCodeLine{00190\ \ \ \ \ \textcolor{comment}{//\ Measure\ first\ qubit\ and\ update\ angle}}
-\DoxyCodeLine{00191\ \ \ \ \ updatedQubitAngles.push\_back(qubitAngles[firstQubitIndex]);}
-\DoxyCodeLine{00192\ \ \ \ \ rotateZ(qureg,firstQubitIndex,\ (-\/1)*updatedQubitAngles[firstQubitIndex]);}
-\DoxyCodeLine{00193\ \ \ \ \ hadamard(qureg,firstQubitIndex);}
-\DoxyCodeLine{00194\ \ \ \ \ measuredQubitsOutcomes.push\_back(measure(qureg,firstQubitIndex));}
-\DoxyCodeLine{00195\ }
-\DoxyCodeLine{00196\ \ \ \ \ \textcolor{comment}{//\ measure\ second\ qubit}}
-\DoxyCodeLine{00197\ \ \ \ \ X1\ =\ pow((-\/1),measuredQubitsOutcomes[firstQubitIndex])*qubitAngles[secondQubitIndex];}
-\DoxyCodeLine{00198\ \ \ \ \ updatedQubitAngles[secondQubitIndex]\ =\ X1;}
-\DoxyCodeLine{00199\ \ \ \ \ rotateZ(qureg,secondQubitIndex,\ (-\/1)*updatedQubitAngles[secondQubitIndex]);}
-\DoxyCodeLine{00200\ \ \ \ \ hadamard(qureg,secondQubitIndex);}
-\DoxyCodeLine{00201\ \ \ \ \ measuredQubitsOutcomes.push\_back(measure(qureg,secondQubitIndex));}
-\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00203\ }
-\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ currentQubit=2;currentQubit<numberQubits;currentQubit++)}
-\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ }
-\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ X;}
-\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ Z;}
-\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ phiPrime;}
-\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ outcome;}
-\DoxyCodeLine{00210\ }
-\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ X\ =\ computeXCorrectionAnglePathGraph(}
-\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathGraph,\ }
-\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes,}
-\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles,}
-\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentQubit);}
-\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ Z\ =\ computeZCorrectionAnglePathGraph(}
-\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathGraph,\ }
-\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes,}
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentQubit);}
-\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ phiPrime\ =\ X+Z;}
-\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ rotateZ(qureg,currentQubit,\ (-\/1)*phiPrime);}
-\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ hadamard(qureg,currentQubit);}
-\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ outcome\ =\ measure(qureg,currentQubit);}
-\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes.push\_back(outcome);}
-\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00228\ }
-\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ measuredQubitsOutcomes;}
-\DoxyCodeLine{00230\ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <QuEST.h>}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00002}00002\ \textcolor{comment}{//\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00006}00006\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00009}00009\ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00010}00010\ \textcolor{comment}{\ \ Create\ vector\ of\ digits\ from\ 0\ to\ N,\ separated\ by\ 1}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00011}00011\ \textcolor{comment}{\ \ To\ represent\ the\ a\ line\ of\ nodes\ connected\ by\ one\ }}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00012}00012\ \textcolor{comment}{\ \ edge\ ()-\/()-\/()-\/\ -\/\ -\/\ -\/()\ (1,2,3,...,N)}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00013}00013\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00014}\mbox{\hyperlink{20230314___functions___v1_8hpp_aa6c7ea81b30e713a1f641e9a86e5f0a8}{00014}}\ vector<int>\ \mbox{\hyperlink{20230314___functions___v1_8hpp_aa6c7ea81b30e713a1f641e9a86e5f0a8}{getPathGraph}}(\textcolor{keywordtype}{int}\ numberQubits)}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00015}00015\ \{}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00016}00016\ \ \ vector<int>\ pathGraph;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00017}00017\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numberQubits;\ i++\ )}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00018}00018\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00019}00019\ \ \ \ \ pathGraph.push\_back(i);\ \ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00020}00020\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00021}00021\ \ \ \textcolor{keywordflow}{return}\ pathGraph;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00024}00024\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00025}00025\ \textcolor{comment}{\ \ Linear\ flow,\ f(i)\ =\ i\ +\ 1}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00026}00026\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00027}\mbox{\hyperlink{20230314___functions___v1_8hpp_a89ebfc1e65a5c1ee3c420843c016be0e}{00027}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a89ebfc1e65a5c1ee3c420843c016be0e}{getFutureQubit}}(\textcolor{keywordtype}{int}\ currentQubit)\{}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00028}00028\ \ \ \textcolor{keywordtype}{int}\ futureQubit;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00029}00029\ \ \ futureQubit\ =\ currentQubit\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00031}00031\ \ \ \textcolor{keywordflow}{return}\ futureQubit;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00032}00032\ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00034}00034\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00035}00035\ \textcolor{comment}{\ \ Linear\ flow,\ f\string^\{-\/1\}(i)\ =\ i\ -\/\ 1}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00036}00036\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00037}\mbox{\hyperlink{20230314___functions___v1_8hpp_af44420884b989805a33b6b4cb35fb2e1}{00037}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{20230314___functions___v1_8hpp_af44420884b989805a33b6b4cb35fb2e1}{getPastQubit}}(\textcolor{keywordtype}{int}\ currentQubit)\{}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00038}00038\ \ \ \textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00039}00039\ \ \ pastQubit\ =\ currentQubit\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00041}00041\ \ \ \textcolor{keywordflow}{return}\ pastQubit;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00042}00042\ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00044}00044\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00045}00045\ \textcolor{comment}{\ \ Linear\ cluster\ vector\ with\ the\ flow,\ f.}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00046}00046\ \textcolor{comment}{\ \ f(i)\ =\ i\ +\ 1,\ if\ i\ is\ last\ element\ of\ vector,\ then}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00047}00047\ \textcolor{comment}{\ \ throw\ error.}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00048}00048\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00049}\mbox{\hyperlink{20230314___functions___v1_8hpp_adf1055c60f73eb56e5e51d97b15feeaf}{00049}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{20230314___functions___v1_8hpp_adf1055c60f73eb56e5e51d97b15feeaf}{getFutureQubitPathGraph}}(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00050}00050\ \{}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00051}00051\ \textcolor{keywordtype}{int}\ futureQubit;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00052}00052\ \textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00053}00053\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[graphSize-\/1])\ \{}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00054}00054\ \ \ \ \ futureQubit\ =\ currentQubit;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00055}00055\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00056}00056\ \ \ futureQubit\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a89ebfc1e65a5c1ee3c420843c016be0e}{getFutureQubit}}(currentQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00057}00057\ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00058}00058\ \ \ \textcolor{keywordflow}{return}\ futureQubit;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00059}00059\ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00062}00062\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00063}00063\ \textcolor{comment}{\ \ Linear\ cluster\ vector\ with\ the\ flow,\ f.}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00064}00064\ \textcolor{comment}{\ \ f\string^\{-\/1\}(i)\ =\ i\ -\/\ 1,\ if\ i\ is\ first\ element\ of\ vector,\ then}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00065}00065\ \textcolor{comment}{\ \ throw\ error.}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00066}00066\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00067}\mbox{\hyperlink{20230314___functions___v1_8hpp_a1be0a6fc146b59a21929f000546f57a4}{00067}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a1be0a6fc146b59a21929f000546f57a4}{getPastQubitPathGraph}}(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00068}00068\ \{}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00069}00069\ \textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00071}00071\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[0])\ \{}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00072}00072\ \ \ pastQubit\ =\ currentQubit;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00074}00074\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00075}00075\ \ \ pastQubit\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_af44420884b989805a33b6b4cb35fb2e1}{getPastQubit}}(currentQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00076}00076\ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00077}00077\ \ \ \textcolor{keywordflow}{return}\ pastQubit;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00078}00078\ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00081}00081\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00082}00082\ \textcolor{comment}{\ \ Get\ the\ neighbourhood\ size}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00083}00083\ \textcolor{comment}{\ \ Look\ at\ the\ linear\ cluster\ and\ the\ current\ qubit}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00084}00084\ \textcolor{comment}{\ \ Determine\ if\ there\ are\ one\ or\ two\ neighbours\ to\ the\ }}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00085}00085\ \textcolor{comment}{\ \ current\ qubit\ based\ on\ the\ qubit\ position\ in\ the}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00086}00086\ \textcolor{comment}{\ \ linear\ cluster}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00087}00087\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00088}\mbox{\hyperlink{20230314___functions___v1_8hpp_aebc14db121869c416ee59e033335ad63}{00088}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{20230314___functions___v1_8hpp_aebc14db121869c416ee59e033335ad63}{getOpenNeighbourhoodSizePathGraph}}(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)\{}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00089}00089\ \ \ \textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00090}00090\ \ \ \textcolor{keywordtype}{int}\ neighbourhoodSize;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00091}00091\ \ \ \textcolor{comment}{//\ Logic\ for\ getting\ nieghbors}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00092}00092\ \ \ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ 0)\ \{\ \textcolor{comment}{//\ qubit\ is\ first}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00093}00093\ \ \ \ \ neighbourhoodSize\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00094}00094\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[graphSize-\/1])\ \{\ \textcolor{comment}{//\ qubit\ is\ last}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00095}00095\ \ \ \ \ neighbourhoodSize\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00096}00096\ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{//\ all\ else}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00097}00097\ \ \ \ \ neighbourhoodSize\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00098}00098\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00100}00100\ \ \ \textcolor{keywordflow}{return}\ neighbourhoodSize;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00101}00101\ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00103}00103\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00104}00104\ \textcolor{comment}{\ \ Get\ the\ neighbourhood\ of\ the\ qubit\ based\ on\ the\ linear\ cluster\ and\ the\ }}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00105}00105\ \textcolor{comment}{\ \ qubits}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00106}00106\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00107}\mbox{\hyperlink{20230314___functions___v1_8hpp_a1a2f9b091ffe6a2814a21e720faafbe7}{00107}}\ vector<int>\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a1a2f9b091ffe6a2814a21e720faafbe7}{getOpenNeighbourhoodPathGraph}}(vector<int>\ pathGraph\ ,\textcolor{keywordtype}{int}\ currentQubit)\{}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00108}00108\ \ \ vector<int>\ neighbours;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00109}00109\ \ \ \textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00110}00110\ \ \ \textcolor{keywordtype}{int}\ firstQubit;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00111}00111\ \ \ \textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00112}00112\ \ \ \textcolor{keywordtype}{int}\ futureQubit;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00114}00114\ \ \ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[0])\ \{\ \textcolor{comment}{//\ qubit\ is\ first\ in\ graph}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00115}00115\ \ \ \ \ firstQubit\ =\ currentQubit\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00116}00116\ \ \ \ \ neighbours.push\_back(firstQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00117}00117\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[graphSize-\/1])\ \{\ \textcolor{comment}{//\ qubit\ is\ last\ in\ graph}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00118}00118\ \ \ \ \ firstQubit\ =\ currentQubit\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00119}00119\ \ \ \ \ neighbours.push\_back(firstQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00120}00120\ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{//\ all\ else}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00121}00121\ \ \ \ \ pastQubit\ =\ currentQubit\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00122}00122\ \ \ \ \ futureQubit\ =\ currentQubit\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00123}00123\ \ \ \ \ neighbours.push\_back(pastQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00124}00124\ \ \ \ \ neighbours.push\_back(futureQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00125}00125\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00127}00127\ \ \ \textcolor{keywordflow}{return}\ neighbours;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00128}00128\ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00131}\mbox{\hyperlink{20230314___functions___v1_8hpp_a9c227d82e03f906a192a861db4ddf6ab}{00131}}\ \ \ qreal\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a9c227d82e03f906a192a861db4ddf6ab}{computeXCorrectionAnglePathGraph}}(}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00132}00132\ \ \ \ \ \ \ vector<int>\ pathGraph,\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00133}00133\ \ \ \ \ \ \ vector<int>\ measuredQubitsOutcomes,}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00134}00134\ \ \ \ \ \ \ vector<qreal>\ qubitAngles,}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00135}00135\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currentQubit)}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00136}00136\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00137}00137\ \ \ \ \ \ \ qreal\ xCorrectionAngle;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00138}00138\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00139}00139\ \ \ \ \ \ \ pastQubit\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a1be0a6fc146b59a21929f000546f57a4}{getPastQubitPathGraph}}(pathGraph,currentQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00140}00140\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ inverseFlowQubitOutcome\ =\ measuredQubitsOutcomes[pastQubit];}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00141}00141\ \ \ \ \ \ \ xCorrectionAngle\ =\ pow(-\/1,\ inverseFlowQubitOutcome)*qubitAngles[currentQubit];}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00143}00143\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ xCorrectionAngle;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00144}00144\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00148}\mbox{\hyperlink{20230314___functions___v1_8hpp_acf8731fbf6fdc066d371b78a916dc431}{00148}}\ \ \ qreal\ \mbox{\hyperlink{20230314___functions___v1_8hpp_acf8731fbf6fdc066d371b78a916dc431}{computeZCorrectionAnglePathGraph}}(}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00149}00149\ \ \ \ \ \ \ vector<int>\ pathGraph,\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00150}00150\ \ \ \ \ \ \ vector<int>\ measuredQubitsOutcomes,}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00151}00151\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currentQubit)}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00152}00152\ \ \ \{\ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00153}00153\ \ \ \ \ \ \ qreal\ zCorrectionAngle;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00154}00154\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00155}00155\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00156}00156\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pastPastQubit;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00157}00157\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ inverseFlowQubitOutcome;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00158}00158\ \ \ \ \ \ \ pastQubit\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a1be0a6fc146b59a21929f000546f57a4}{getPastQubitPathGraph}}(pathGraph,currentQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00159}00159\ \ \ \ \ \ \ pastPastQubit\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a1be0a6fc146b59a21929f000546f57a4}{getPastQubitPathGraph}}(pathGraph,pastQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00160}00160\ \ \ \ \ \ \ inverseFlowQubitOutcome\ =\ measuredQubitsOutcomes[pastPastQubit];}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00161}00161\ \ \ \ \ \ \ zCorrectionAngle\ =\ M\_PI*inverseFlowQubitOutcome;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00163}00163\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ zCorrectionAngle;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00164}00164\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00166}\mbox{\hyperlink{20230314___functions___v1_8hpp_a93cdcf18ac63c09cd8354e765238386a}{00166}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a93cdcf18ac63c09cd8354e765238386a}{countElements}}(vector<int>\ v,\ \textcolor{keywordtype}{int}\ element)\ \{}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00167}00167\ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00168}00168\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ v.begin();\ it\ !=\ v.end();\ ++it)\ \{}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*it\ ==\ element)\ \{}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ ++count;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00172}00172\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00173}00173\ \ \ \ \ \textcolor{keywordflow}{return}\ count;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00174}00174\ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00176}\mbox{\hyperlink{20230314___functions___v1_8hpp_acdb0932776bd659eddba9f2942af2c15}{00176}}\ vector<int>\ \mbox{\hyperlink{20230314___functions___v1_8hpp_acdb0932776bd659eddba9f2942af2c15}{runMbqcPathGraph}}(}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00177}00177\ \ \ \ \ \ \ \ \ Qureg\ qureg,}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00178}00178\ \ \ \ \ \ \ \ \ vector<int>\ pathGraph,}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00179}00179\ \ \ \ \ \ \ \ \ vector<qreal>\ qubitAngles)\{}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00182}00182\ \ \ \ \ vector<qreal>\ updatedQubitAngles;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00183}00183\ \ \ \ \ vector<int>\ measuredQubitsOutcomes;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00184}00184\ \ \ \ \ \textcolor{keywordtype}{int}\ numberQubits\ =\ pathGraph.size();}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00185}00185\ \ \ \ \ qreal\ X1;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00186}00186\ \ \ \ \ \textcolor{keywordtype}{int}\ firstQubitIndex=0;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00187}00187\ \ \ \ \ \textcolor{keywordtype}{int}\ secondQubitIndex=1;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00188}00188\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00190}00190\ \ \ \ \ \textcolor{comment}{//\ Measure\ first\ qubit\ and\ update\ angle}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00191}00191\ \ \ \ \ updatedQubitAngles.push\_back(qubitAngles[firstQubitIndex]);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00192}00192\ \ \ \ \ rotateZ(qureg,firstQubitIndex,\ (-\/1)*updatedQubitAngles[firstQubitIndex]);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00193}00193\ \ \ \ \ hadamard(qureg,firstQubitIndex);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00194}00194\ \ \ \ \ measuredQubitsOutcomes.push\_back(measure(qureg,firstQubitIndex));}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00196}00196\ \ \ \ \ \textcolor{comment}{//\ measure\ second\ qubit}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00197}00197\ \ \ \ \ X1\ =\ pow((-\/1),measuredQubitsOutcomes[firstQubitIndex])*qubitAngles[secondQubitIndex];}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00198}00198\ \ \ \ \ updatedQubitAngles[secondQubitIndex]\ =\ X1;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00199}00199\ \ \ \ \ rotateZ(qureg,secondQubitIndex,\ (-\/1)*updatedQubitAngles[secondQubitIndex]);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00200}00200\ \ \ \ \ hadamard(qureg,secondQubitIndex);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00201}00201\ \ \ \ \ measuredQubitsOutcomes.push\_back(measure(qureg,secondQubitIndex));}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00204}00204\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ currentQubit=2;currentQubit<numberQubits;currentQubit++)}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ X;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ Z;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ phiPrime;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ outcome;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ X\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a9c227d82e03f906a192a861db4ddf6ab}{computeXCorrectionAnglePathGraph}}(}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathGraph,\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes,}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles,}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ Z\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_acf8731fbf6fdc066d371b78a916dc431}{computeZCorrectionAnglePathGraph}}(}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathGraph,\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes,}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ phiPrime\ =\ X+Z;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ rotateZ(qureg,currentQubit,\ (-\/1)*phiPrime);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ hadamard(qureg,currentQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ outcome\ =\ measure(qureg,currentQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes.push\_back(outcome);}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ measuredQubitsOutcomes;}
+\DoxyCodeLine{\Hypertarget{20230314___functions___v1_8hpp_source_l00230}00230\ \}}
 
 \end{DoxyCode}

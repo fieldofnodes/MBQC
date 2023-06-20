@@ -97,3 +97,8 @@ html {
     color: #27221f; /* Set the text color to #27221f */
   }
   
+  /* Set hyperlink color */
+  a {
+    color: #00c672; /* Set the hyperlink color to #00c672 */
+  }
+  

@@ -1,79 +1,80 @@
 \doxysection{packages.\+hpp}
 \hypertarget{packages_8hpp_source}{}\label{packages_8hpp_source}\index{src/packages.hpp@{src/packages.hpp}}
-
+\mbox{\hyperlink{packages_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{comment}{//\ packages.hpp}}
-\DoxyCodeLine{00002\ }
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ PACKAGES\_HPP}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ PACKAGES\_HPP}}
-\DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{comment}{//\ Standard\ libraries}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <algorithm>}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <iterator>}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <set>}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <numeric>}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <cmath>}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <random>}}
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <filesystem>}}
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <functional>}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}config.h"{}}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <fstream>}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <cstdio>}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <ranges>}}
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
-\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <functional>}}
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <cxxabi.h>}}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{comment}{//\ QuEST}}
-\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <QuEST.h>}}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \textcolor{comment}{//\ Boost}}
-\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <boost/graph/adjacency\_list.hpp>}}
-\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <boost/graph/grid\_graph.hpp>}}
-\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <boost/graph/graphviz.hpp>}}
-\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <boost/array.hpp>}}
-\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ <boost/graph/graph\_utility.hpp>}}
-\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ <boost/container/vector.hpp>}}
-\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ <boost/range/algorithm/unique.hpp>}}
-\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ <boost/range/algorithm.hpp>}}
-\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ <boost/range/adaptor/filtered.hpp>}}
-\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ <boost/range/adaptor/transformed.hpp>}}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \textcolor{comment}{//\ Helper\ functions}}
-\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#include\ "{}generalHelperFunctions.hpp"{}}}
-\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#include\ "{}writeGraphGraphVizDotFile.hpp"{}}}
-\DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \textcolor{comment}{//\ Graph\ functions}}
-\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#include\ "{}graphConstructions.hpp"{}}}
-\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#include\ "{}graphTraversalFlows.hpp"{}}}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ \textcolor{comment}{//\ Quantum\ functions}}
-\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#include\ "{}flowMeasurements.hpp"{}}}
-\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#include\ "{}angleConstruction.hpp"{}}}
-\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#include\ "{}quantumGraphClusterStates.hpp"{}}}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \textcolor{comment}{//\ Assert\ functions}}
-\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#include\ "{}generalAssertFunctions.hpp"{}}}
-\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#include\ "{}graphAssertFunctions.hpp"{}}}
-\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#include\ "{}probabilitiesAmplitudesNoNoiseCircuits.hpp"{}}}
-\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#include\ "{}probabilitiesAmplitudesDampingCircuits.hpp"{}}}
-\DoxyCodeLine{00064\ }
-\DoxyCodeLine{00065\ \textcolor{keyword}{using\ namespace\ }boost;}
-\DoxyCodeLine{00066\ }
-\DoxyCodeLine{00067\ \textcolor{comment}{//\ Define\ the\ typedefs}}
-\DoxyCodeLine{00068\ \textcolor{keyword}{typedef}\ boost::adjacency\_list<boost::vecS,\ boost::vecS,\ boost::undirectedS>\ undirectedGraph;}
-\DoxyCodeLine{00069\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::edge\_iterator\ edgeIterator;}
-\DoxyCodeLine{00070\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::vertex\_iterator\ vertexIterator;}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PACKAGES\_HPP}}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#ifndef\ PACKAGES\_HPP}}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00007}00007\ \textcolor{preprocessor}{\#define\ PACKAGES\_HPP}}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00009}00009\ \textcolor{comment}{//\ Standard\ libraries}}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <iostream>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <algorithm>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <iterator>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <vector>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <set>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <numeric>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <cmath>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <random>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <filesystem>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <functional>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00020}00020\ \textcolor{preprocessor}{\#include\ "{}config.h"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <fstream>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <cstdio>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <string>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00024}00024\ \textcolor{preprocessor}{\#include\ <ranges>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00025}00025\ \textcolor{preprocessor}{\#include\ <cstdlib>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ <functional>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00027}00027\ \textcolor{preprocessor}{\#include\ <cxxabi.h>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00029}00029\ \textcolor{comment}{//\ QuEST}}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ <QuEST.h>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00032}00032\ \textcolor{comment}{//\ Boost}}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ <boost/graph/adjacency\_list.hpp>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00034}00034\ \textcolor{preprocessor}{\#include\ <boost/graph/grid\_graph.hpp>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ <boost/graph/graphviz.hpp>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ <boost/array.hpp>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00037}00037\ \textcolor{preprocessor}{\#include\ <boost/graph/graph\_utility.hpp>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ <boost/container/vector.hpp>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00039}00039\ \textcolor{preprocessor}{\#include\ <boost/range/algorithm/unique.hpp>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ <boost/range/algorithm.hpp>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ <boost/range/adaptor/filtered.hpp>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ <boost/range/adaptor/transformed.hpp>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00045}00045\ \textcolor{keyword}{using\ namespace\ }boost;}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00057}\mbox{\hyperlink{packages_8hpp_a1909d41b7bcda36f8b0cdcb9e7f4711a}{00057}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ =\ boost::adjacency\_list<boost::vecS,\ boost::vecS,\ boost::undirectedS>;}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00067}\mbox{\hyperlink{packages_8hpp_afccd45e2973698c37e8379f6b25a82bc}{00067}}\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::edge\_iterator\ \mbox{\hyperlink{packages_8hpp_afccd45e2973698c37e8379f6b25a82bc}{edgeIterator}};}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00077}\mbox{\hyperlink{packages_8hpp_aad3f8f6369da7f36e6266fdcb1991169}{00077}}\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::vertex\_iterator\ \mbox{\hyperlink{packages_8hpp_aad3f8f6369da7f36e6266fdcb1991169}{vertexIterator}};}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00083}00083\ \textcolor{comment}{//\ Helper\ functions}}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00084}00084\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{general_helper_functions_8hpp}{generalHelperFunctions.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00085}00085\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp}{writeGraphGraphVizDotFile.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00087}00087\ \textcolor{comment}{//\ Graph\ functions}}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00088}00088\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{graph_constructions_8hpp}{graphConstructions.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00089}00089\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{graph_traversal_flows_8hpp}{graphTraversalFlows.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00091}00091\ \textcolor{comment}{//\ Quantum\ functions}}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00092}00092\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{flow_measurements_8hpp}{flowMeasurements.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00093}00093\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{angle_construction_8hpp}{angleConstruction.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00094}00094\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{quantum_graph_cluster_states_8hpp}{quantumGraphClusterStates.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00096}00096\ \textcolor{comment}{//\ Assert\ functions}}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00097}00097\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{general_assert_functions_8hpp}{generalAssertFunctions.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00098}00098\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{graph_assert_functions_8hpp}{graphAssertFunctions.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00099}00099\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp}{probabilitiesAmplitudesNoNoiseCircuits.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00100}00100\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp}{probabilitiesAmplitudesDampingCircuits.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00103}00103\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PACKAGES\_HPP}}
 
 \end{DoxyCode}

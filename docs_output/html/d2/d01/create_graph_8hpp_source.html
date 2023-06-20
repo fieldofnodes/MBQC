@@ -9,10 +9,21 @@
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
-<link href="../../style.css" rel="stylesheet" type="text/css" />
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -48,6 +59,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d2/d01/create_graph_8hpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,30 +97,25 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_05f47c3b30cbd06df5261c168690a0c6.html">archive</a></li><li class="navelem"><a class="el" href="../../dir_a17940faa29cad4a7fb1cbcc8986b984.html">filesToGoThrough</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">createGraph.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<a href="../../d2/d01/create_graph_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;boost/graph/adjacency_list.hpp&gt;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">using namespace </span>boost;</div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">typedef</span> boost::property&lt;boost::edge_weight_t, int&gt; EdgeWeightProperty;</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">typedef</span> boost::adjacency_list&lt;boost::listS, boost::vecS,boost::undirectedS,boost::no_property,EdgeWeightProperty&gt; undirectedGraph;</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">typedef</span> boost::graph_traits&lt;undirectedGraph&gt;::edge_iterator edge_iterator;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">typedef</span> boost::graph_traits&lt;undirectedGraph&gt;::vertex_iterator vertex_iterator;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="../../d2/d01/create_graph_8hpp.html#ad531f0530c52e2baed8840517b52b457">    6</a></span><span class="keyword">typedef</span> boost::property&lt;boost::edge_weight_t, int&gt; <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#ad531f0530c52e2baed8840517b52b457">EdgeWeightProperty</a>;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">    7</a></span><span class="keyword">typedef</span> boost::adjacency_list&lt;boost::listS, boost::vecS,boost::undirectedS,boost::no_property,EdgeWeightProperty&gt; <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="../../d2/d01/create_graph_8hpp.html#af04c50f717d4bda41f0c58fe0eece059">    8</a></span><span class="keyword">typedef</span> boost::graph_traits&lt;undirectedGraph&gt;::edge_iterator <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#af04c50f717d4bda41f0c58fe0eece059">edge_iterator</a>;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="../../d2/d01/create_graph_8hpp.html#a9451df0dac964b257bedb5e60547824e">    9</a></span><span class="keyword">typedef</span> boost::graph_traits&lt;undirectedGraph&gt;::vertex_iterator <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#a9451df0dac964b257bedb5e60547824e">vertex_iterator</a>;</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">// create a 1D path graph on 1xn vertices</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>undirectedGraph createPathGraph(<span class="keywordtype">int</span> n) { </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  undirectedGraph g(n);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="../../d2/d01/create_graph_8hpp.html#abe67d4f4ed1169c1376d3a14fd9d144d">   14</a></span><a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a> <a class="code hl_function" href="../../d2/d01/create_graph_8hpp.html#abe67d4f4ed1169c1376d3a14fd9d144d">createPathGraph</a>(<span class="keywordtype">int</span> n) { </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a> g(n);</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n-1; i++) {  <span class="comment">// add edges to create a path graph</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    add_edge(i, i+1, g);</div>
@@ -102,8 +125,8 @@ $(function() {
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">// create a 2D lattice graph with n x m vertices</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>undirectedGraph createLatticeGraph(<span class="keywordtype">int</span> n, <span class="keywordtype">int</span> m) { </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  undirectedGraph g(n * m);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="../../d2/d01/create_graph_8hpp.html#aabb013bb6de93b1ca2ff83e1d7d200c7">   25</a></span><a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a> <a class="code hl_function" href="../../d2/d01/create_graph_8hpp.html#aabb013bb6de93b1ca2ff83e1d7d200c7">createLatticeGraph</a>(<span class="keywordtype">int</span> n, <span class="keywordtype">int</span> m) { </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a> g(n * m);</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n; i++) {</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; m; j++) {</div>
@@ -117,7 +140,7 @@ $(function() {
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>std::vector&lt;undirectedGraph::vertex_descriptor&gt; get_adjacent_vertices(<span class="keyword">const</span> undirectedGraph&amp; g, <span class="keyword">const</span> undirectedGraph::vertex_descriptor v)</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="../../d2/d01/create_graph_8hpp.html#a95616ef95512e388dddbc756c8644c4d">   40</a></span>std::vector&lt;undirectedGraph::vertex_descriptor&gt; <a class="code hl_function" href="../../d2/d01/create_graph_8hpp.html#a95616ef95512e388dddbc756c8644c4d">get_adjacent_vertices</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>&amp; g, <span class="keyword">const</span> undirectedGraph::vertex_descriptor v)</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>{</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    std::vector&lt;undirectedGraph::vertex_descriptor&gt; adjacent_vertices;</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    undirectedGraph::adjacency_iterator ai, ai_end;</div>
@@ -127,10 +150,21 @@ $(function() {
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    }</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">return</span> adjacent_vertices;</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
+<div class="ttc" id="acreate_graph_8hpp_html_a9451df0dac964b257bedb5e60547824e"><div class="ttname"><a href="../../d2/d01/create_graph_8hpp.html#a9451df0dac964b257bedb5e60547824e">vertex_iterator</a></div><div class="ttdeci">boost::graph_traits&lt; undirectedGraph &gt;::vertex_iterator vertex_iterator</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d01/create_graph_8hpp_source.html#l00009">createGraph.hpp:9</a></div></div>
+<div class="ttc" id="acreate_graph_8hpp_html_a95616ef95512e388dddbc756c8644c4d"><div class="ttname"><a href="../../d2/d01/create_graph_8hpp.html#a95616ef95512e388dddbc756c8644c4d">get_adjacent_vertices</a></div><div class="ttdeci">std::vector&lt; undirectedGraph::vertex_descriptor &gt; get_adjacent_vertices(const undirectedGraph &amp;g, const undirectedGraph::vertex_descriptor v)</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d01/create_graph_8hpp_source.html#l00040">createGraph.hpp:40</a></div></div>
+<div class="ttc" id="acreate_graph_8hpp_html_aabb013bb6de93b1ca2ff83e1d7d200c7"><div class="ttname"><a href="../../d2/d01/create_graph_8hpp.html#aabb013bb6de93b1ca2ff83e1d7d200c7">createLatticeGraph</a></div><div class="ttdeci">undirectedGraph createLatticeGraph(int n, int m)</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d01/create_graph_8hpp_source.html#l00025">createGraph.hpp:25</a></div></div>
+<div class="ttc" id="acreate_graph_8hpp_html_abe67d4f4ed1169c1376d3a14fd9d144d"><div class="ttname"><a href="../../d2/d01/create_graph_8hpp.html#abe67d4f4ed1169c1376d3a14fd9d144d">createPathGraph</a></div><div class="ttdeci">undirectedGraph createPathGraph(int n)</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d01/create_graph_8hpp_source.html#l00014">createGraph.hpp:14</a></div></div>
+<div class="ttc" id="acreate_graph_8hpp_html_ad531f0530c52e2baed8840517b52b457"><div class="ttname"><a href="../../d2/d01/create_graph_8hpp.html#ad531f0530c52e2baed8840517b52b457">EdgeWeightProperty</a></div><div class="ttdeci">boost::property&lt; boost::edge_weight_t, int &gt; EdgeWeightProperty</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d01/create_graph_8hpp_source.html#l00006">createGraph.hpp:6</a></div></div>
+<div class="ttc" id="acreate_graph_8hpp_html_adb6c610c60479e8b904f5832786b4125"><div class="ttname"><a href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a></div><div class="ttdeci">boost::adjacency_list&lt; boost::listS, boost::vecS, boost::undirectedS, boost::no_property, EdgeWeightProperty &gt; undirectedGraph</div><div class="ttdoc">Alias for an undirected graph using boost::adjacency_list.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d01/create_graph_8hpp_source.html#l00007">createGraph.hpp:7</a></div></div>
+<div class="ttc" id="acreate_graph_8hpp_html_af04c50f717d4bda41f0c58fe0eece059"><div class="ttname"><a href="../../d2/d01/create_graph_8hpp.html#af04c50f717d4bda41f0c58fe0eece059">edge_iterator</a></div><div class="ttdeci">boost::graph_traits&lt; undirectedGraph &gt;::edge_iterator edge_iterator</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d01/create_graph_8hpp_source.html#l00008">createGraph.hpp:8</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_05f47c3b30cbd06df5261c168690a0c6.html">archive</a></li><li class="navelem"><a class="el" href="../../dir_a17940faa29cad4a7fb1cbcc8986b984.html">filesToGoThrough</a></li><li class="navelem"><a class="el" href="../../d2/d01/create_graph_8hpp.html">createGraph.hpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

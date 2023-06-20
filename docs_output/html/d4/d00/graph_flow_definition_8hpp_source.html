@@ -9,10 +9,21 @@
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
-<link href="../../style.css" rel="stylesheet" type="text/css" />
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -48,6 +59,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d4/d00/graph_flow_definition_8hpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,86 +97,84 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_77105f38aa9966768d2a320610a7e036.html">graphs</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">graphFlowDefinition.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">#include &lt;boost/graph/graph_traits.hpp&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">#include &lt;boost/graph/adjacency_list.hpp&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">#include &lt;functional&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalAssertFunctions.hpp&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"></span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// Define a function that takes a graph as a template parameter</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Graph&gt;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keywordtype">void</span> assertFlowFunctionNeighbour(<span class="keyword">const</span> Graph&amp; g, <span class="keywordtype">int</span> v, <span class="keywordtype">int</span> numRows, std::function&lt;<span class="keywordtype">int</span>(<span class="keywordtype">int</span>, <span class="keywordtype">int</span>)&gt;flowFunction)</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="comment">// Call the flow function to get the forward lattice flow</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">int</span> fv = flowFunction(v, numRows);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    std::vector&lt;int&gt; neigh = getVertexNeighbours(g,v)</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    isIntInVector(v, neigh)</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">using </span>Graph = boost::adjacency_list&lt;boost::vecS, boost::vecS, boost::undirectedS&gt;;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keywordtype">bool</span> areVerticesConnected(<span class="keyword">const</span> Graph&amp; g, Graph::vertex_descriptor u, Graph::vertex_descriptor v) {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">auto</span> edge = boost::edge(u, v, g);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">return</span> edge.second; <span class="comment">// Returns true if there is an edge between u and v</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Graph&gt;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keywordtype">void</span> assertFlowFunctionNeighbourVertex(<span class="keyword">const</span> Graph&amp; g,<span class="keywordtype">int</span> vertex){</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// Assert that for vertex, v, than f(v) is a neighbour</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">void</span> assertFlowFunctionFutureOfVertex(){</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keywordtype">void</span> assertNeighbourFlowFunctionFutureOfVertex(){</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
+<a href="../../d4/d00/graph_flow_definition_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// Filename  : graphFlowDefinition.hpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// Author    : Jonathan Miller</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// Date      : 2023-06-19</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// Aim       : aim_script</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">//           : This script contains functions for asserting </span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">//           : and checking properties in an undirected graph. </span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">//           : The assertFlowFunctionNeighbour function verifies </span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">//           : if the flow function for a vertex and its </span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">//           : neighbors meets a condition. areVerticesConnected </span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">//           : checks if two vertices are connected by an edge. </span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">//           : The assertFlowFunctionNeighbourVertex and </span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">//           : assertFlowFunctionFutureOfVertex functions </span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">//           : assert conditions related to flow functions and </span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">//           : vertex properties. Finally, </span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">//           : assertNeighbourFlowFunctionFutureOfVertex </span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">//           : asserts a condition involving neighbors, </span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">//           : flow functions, and vertex futures.</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"></span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="../../d4/d00/graph_flow_definition_8hpp.html#a7da00b4eb0fe705f2a1ac54347decb27">   38</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d4/d00/graph_flow_definition_8hpp.html#a7da00b4eb0fe705f2a1ac54347decb27">assertFlowFunctionNeighbour</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>&amp; g, <span class="keywordtype">int</span> v, <span class="keywordtype">int</span> numRows, std::function&lt;<span class="keywordtype">int</span>(<span class="keywordtype">int</span>, <span class="keywordtype">int</span>)&gt;flowFunction)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// Call the flow function to get the forward lattice flow</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">int</span> fv = flowFunction(v, numRows);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    std::vector&lt;int&gt; neigh = <a class="code hl_function" href="../../d0/d01/graph_traversal_flows_8hpp.html#a954183dad806b30b05e526c37284768b">getVertexNeighbours</a>(g,v)</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_function" href="../../d3/d01/general_assert_functions_8hpp.html#a4a6a933e01029d0c61bce553817a0feb">isIntInVector</a>(v, neigh)</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keywordtype">int</span> main()</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>{</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// Define a graph and add some vertices and edges</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">using </span>Graph = boost::adjacency_list&lt;&gt;;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    Graph g(5);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    boost::add_edge(0, 1, g);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    boost::add_edge(1, 2, g);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    boost::add_edge(2, 3, g);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">// Call the assertFlowNeighbour function with the getForwardLatticeFlow function</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    assertFlowNeighbour(g, 1, 2, getForwardLatticeFlow);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">// Output: Vertex 3 exists in the graph.</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="../../d4/d00/graph_flow_definition_8hpp.html#ab2d570648375d421e37ef5eeb2590242">   63</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="../../d4/d00/graph_flow_definition_8hpp.html#ab2d570648375d421e37ef5eeb2590242">areVerticesConnected</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>&amp; g, undirectedGraph::vertex_descriptor u, undirectedGraph::vertex_descriptor v) {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keyword">auto</span> edge = boost::edge(u, v, g);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordflow">return</span> edge.second; <span class="comment">// Returns true if there is an edge between u and v</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="../../d4/d00/graph_flow_definition_8hpp.html#a0adf0631e71f1959ee93977f2867e9c7">   80</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d4/d00/graph_flow_definition_8hpp.html#a0adf0631e71f1959ee93977f2867e9c7">assertFlowFunctionNeighbourVertex</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>&amp; g,<span class="keywordtype">int</span> vertex){</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="comment">// Assert that for vertex, v, than f(v) is a neighbour</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>}</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="../../d4/d00/graph_flow_definition_8hpp.html#a41aab0ccd3ea6f075647fb7a443daf4d">   95</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d4/d00/graph_flow_definition_8hpp.html#a41aab0ccd3ea6f075647fb7a443daf4d">assertFlowFunctionFutureOfVertex</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>&amp; g,<span class="keywordtype">int</span> vertex){</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>}</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keywordtype">void</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="../../d4/d00/graph_flow_definition_8hpp.html#aceae62f2b36e649d0a5cebdd0369f5c3">  111</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d4/d00/graph_flow_definition_8hpp.html#aceae62f2b36e649d0a5cebdd0369f5c3">assertNeighbourFlowFunctionFutureOfVertex</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>&amp; g,<span class="keywordtype">int</span> vertex){</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>}</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="ttc" id="acreate_graph_8hpp_html_adb6c610c60479e8b904f5832786b4125"><div class="ttname"><a href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a></div><div class="ttdeci">boost::adjacency_list&lt; boost::listS, boost::vecS, boost::undirectedS, boost::no_property, EdgeWeightProperty &gt; undirectedGraph</div><div class="ttdoc">Alias for an undirected graph using boost::adjacency_list.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d01/create_graph_8hpp_source.html#l00007">createGraph.hpp:7</a></div></div>
+<div class="ttc" id="ageneral_assert_functions_8hpp_html_a4a6a933e01029d0c61bce553817a0feb"><div class="ttname"><a href="../../d3/d01/general_assert_functions_8hpp.html#a4a6a933e01029d0c61bce553817a0feb">isIntInVector</a></div><div class="ttdeci">bool isIntInVector(int value, const std::vector&lt; int &gt; &amp;vec)</div><div class="ttdef"><b>Definition</b> <a href="../../d3/d01/general_assert_functions_8hpp_source.html#l00068">generalAssertFunctions.hpp:68</a></div></div>
+<div class="ttc" id="agraph_flow_definition_8hpp_html_a0adf0631e71f1959ee93977f2867e9c7"><div class="ttname"><a href="../../d4/d00/graph_flow_definition_8hpp.html#a0adf0631e71f1959ee93977f2867e9c7">assertFlowFunctionNeighbourVertex</a></div><div class="ttdeci">void assertFlowFunctionNeighbourVertex(const undirectedGraph &amp;g, int vertex)</div><div class="ttdoc">Asserts a condition for the flow function of a given vertex and its neighbors.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d00/graph_flow_definition_8hpp_source.html#l00080">graphFlowDefinition.hpp:80</a></div></div>
+<div class="ttc" id="agraph_flow_definition_8hpp_html_a41aab0ccd3ea6f075647fb7a443daf4d"><div class="ttname"><a href="../../d4/d00/graph_flow_definition_8hpp.html#a41aab0ccd3ea6f075647fb7a443daf4d">assertFlowFunctionFutureOfVertex</a></div><div class="ttdeci">void assertFlowFunctionFutureOfVertex(const undirectedGraph &amp;g, int vertex)</div><div class="ttdoc">Asserts a condition for the flow function and future of a given vertex.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d00/graph_flow_definition_8hpp_source.html#l00095">graphFlowDefinition.hpp:95</a></div></div>
+<div class="ttc" id="agraph_flow_definition_8hpp_html_a7da00b4eb0fe705f2a1ac54347decb27"><div class="ttname"><a href="../../d4/d00/graph_flow_definition_8hpp.html#a7da00b4eb0fe705f2a1ac54347decb27">assertFlowFunctionNeighbour</a></div><div class="ttdeci">void assertFlowFunctionNeighbour(const undirectedGraph &amp;g, int v, int numRows, std::function&lt; int(int, int)&gt;flowFunction)</div><div class="ttdoc">Asserts the flow function for a given vertex and its neighbors in the graph.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d00/graph_flow_definition_8hpp_source.html#l00038">graphFlowDefinition.hpp:38</a></div></div>
+<div class="ttc" id="agraph_flow_definition_8hpp_html_ab2d570648375d421e37ef5eeb2590242"><div class="ttname"><a href="../../d4/d00/graph_flow_definition_8hpp.html#ab2d570648375d421e37ef5eeb2590242">areVerticesConnected</a></div><div class="ttdeci">bool areVerticesConnected(const undirectedGraph &amp;g, undirectedGraph::vertex_descriptor u, undirectedGraph::vertex_descriptor v)</div><div class="ttdoc">Checks if two vertices in the undirected graph are connected by an edge.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d00/graph_flow_definition_8hpp_source.html#l00063">graphFlowDefinition.hpp:63</a></div></div>
+<div class="ttc" id="agraph_flow_definition_8hpp_html_aceae62f2b36e649d0a5cebdd0369f5c3"><div class="ttname"><a href="../../d4/d00/graph_flow_definition_8hpp.html#aceae62f2b36e649d0a5cebdd0369f5c3">assertNeighbourFlowFunctionFutureOfVertex</a></div><div class="ttdeci">void void assertNeighbourFlowFunctionFutureOfVertex(const undirectedGraph &amp;g, int vertex)</div><div class="ttdoc">Asserts a condition involving the neighbor, flow function, and future of a vertex.</div><div class="ttdef"><b>Definition</b> <a href="../../d4/d00/graph_flow_definition_8hpp_source.html#l00111">graphFlowDefinition.hpp:111</a></div></div>
+<div class="ttc" id="agraph_traversal_flows_8hpp_html_a954183dad806b30b05e526c37284768b"><div class="ttname"><a href="../../d0/d01/graph_traversal_flows_8hpp.html#a954183dad806b30b05e526c37284768b">getVertexNeighbours</a></div><div class="ttdeci">std::vector&lt; int &gt; getVertexNeighbours(const undirectedGraph &amp;graph, int vertex)</div><div class="ttdoc">Retrieves the neighboring vertices of a given vertex in an undirected graph.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d01/graph_traversal_flows_8hpp_source.html#l00077">graphTraversalFlows.hpp:77</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_77105f38aa9966768d2a320610a7e036.html">graphs</a></li><li class="navelem"><a class="el" href="../../d4/d00/graph_flow_definition_8hpp.html">graphFlowDefinition.hpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

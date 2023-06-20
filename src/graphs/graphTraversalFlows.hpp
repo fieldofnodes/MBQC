@@ -11,7 +11,23 @@
 
 
 
+/**
+ * @file graphTraversalFlows.hpp
+ * @brief Construct graphs and perform various graph traversal operations.
+ * @author Jonathan Miller
+ * @date 20230425
+ */
 
+/**
+ * @brief Computes the future vertex in a 2D lattice graph based on a flow function.
+ *
+ * For a 2D lattice graph, the flow function for a vertex returns the future vertex.
+ * The future vertex is calculated as presentVertex + numRows, where numRows is the number of rows in the lattice.
+ *
+ * @param presentVertex The present vertex for which the future vertex is computed.
+ * @param numRows The number of rows in the 2D lattice graph.
+ * @return The future vertex.
+ */
 int getLattice2DFutureVertex(int presentVertex, int numRows){
     // For a 2D lattice graph 
     // (1)-(4)-(7)
@@ -25,6 +41,16 @@ int getLattice2DFutureVertex(int presentVertex, int numRows){
     return futureVertex;
 }
 
+/**
+ * @brief Computes the past vertex in a 2D lattice graph based on a flow function.
+ *
+ * For a 2D lattice graph, the flow function for a vertex returns the past vertex.
+ * The past vertex is calculated as presentVertex - numRows, where numRows is the number of rows in the lattice.
+ *
+ * @param presentVertex The present vertex for which the past vertex is computed.
+ * @param numRows The number of rows in the 2D lattice graph.
+ * @return The past vertex.
+ */
 int getLattice2DPastVertex(int presentVertex, int numRows){
     // For a 2D lattice graph 
     // (1)-(4)-(7)
@@ -38,6 +64,16 @@ int getLattice2DPastVertex(int presentVertex, int numRows){
     return pastVertex;
 }
 
+
+/**
+ * @brief Retrieves the neighboring vertices of a given vertex in an undirected graph.
+ *
+ * Given an undirected graph and a vertex, this function returns a vector containing the neighboring vertices of the given vertex.
+ *
+ * @param graph The undirected graph.
+ * @param vertex The vertex for which the neighboring vertices are retrieved.
+ * @return A vector containing the neighboring vertices.
+ */
 std::vector<int> getVertexNeighbours(const undirectedGraph& graph,int vertex){
     // Choose a vertex to find its adjacent vertices
     undirectedGraph::vertex_descriptor v = vertex;
@@ -53,6 +89,19 @@ std::vector<int> getVertexNeighbours(const undirectedGraph& graph,int vertex){
     return neighbourVector;
 }
 
+/**
+ * @brief Computes the future vertex in a 2D lattice graph based on a flow function for a given vertex in the graph.
+ *
+ * This function calculates the future vertex for a given vertex in a 2D lattice graph based on a flow function.
+ * It performs validation checks to ensure the input vertex and the computed future vertex satisfy certain conditions.
+ *
+ * @param graph The 2D lattice graph.
+ * @param vertex The vertex for which the future vertex is computed.
+ * @param numRows The number of rows in the 2D lattice graph.
+ * @return The future vertex.
+ * @pre The vertex inputted needs to be less than the number of vertices minus the number of rows.
+ * @pre The flow function produced a vertex that is in the input vertex neighborhood.
+ */
 int getLattice2DFutureVertexGraph(const undirectedGraph& graph,int vertex,int numRows){
     int size_graph = boost::num_vertices(graph);
     assert("The vertex inputted needs to be less than the number of vertices - the number of the rows, but it is not" && vertex < (size_graph - numRows));
@@ -64,6 +113,20 @@ int getLattice2DFutureVertexGraph(const undirectedGraph& graph,int vertex,int nu
     return futureVertex;
 }
 
+
+/**
+ * @brief Computes the past vertex in a 2D lattice graph based on a flow function for a given vertex in the graph.
+ *
+ * This function calculates the past vertex for a given vertex in a 2D lattice graph based on a flow function.
+ * It performs validation checks to ensure the input vertex and the computed past vertex satisfy certain conditions.
+ *
+ * @param graph The 2D lattice graph.
+ * @param vertex The vertex for which the past vertex is computed.
+ * @param numRows The number of rows in the 2D lattice graph.
+ * @return The past vertex.
+ * @pre The inputted vertex needs to be greater than or equal to the number of rows.
+ * @pre The flow function produced a vertex that is in the input vertex neighborhood.
+ */
 int getLattice2DPastVertexGraph(const undirectedGraph& graph,int vertex,int numRows){
     assert(("The inputted vertex needs to be greater than or equal to the number of rows." && vertex >= numRows));
     std::vector<int> vertexNeighbours = getVertexNeighbours(graph,vertex);
@@ -73,6 +136,20 @@ int getLattice2DPastVertexGraph(const undirectedGraph& graph,int vertex,int numR
     return pastVertex;
 }
 
+
+/**
+ * @brief Computes the corrected angle based on measured outcomes and flow functions in an undirected graph.
+ *
+ * This function computes the corrected angle by considering the measured outcomes and flow functions of vertices in an undirected graph.
+ * It takes into account the neighboring vertices, past vertices, and various correction factors to calculate the updated angle.
+ *
+ * @param graph The undirected graph.
+ * @param measuredOutcomes The vector of measured outcomes.
+ * @param vertex The vertex for which the corrected angle is computed.
+ * @param numRows The number of rows in the 2D lattice graph.
+ * @param angle The initial angle.
+ * @return The corrected angle.
+ */
 qreal computeCorrectedAngle(
     const undirectedGraph& graph,
     std::vector<int> measuredOutcomes, 

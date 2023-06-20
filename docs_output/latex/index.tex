@@ -3,9 +3,25 @@
 \label{index_md_docs_2mainpage}%
 \Hypertarget{index_md_docs_2mainpage}%
 \hypertarget{index_autotoc_md17}{}\doxysection{\texorpdfstring{Measurement Based Quantum Computation (\+MBQC) Simulator (\+MBQC V0.\+01)}{Measurement Based Quantum Computation (MBQC) Simulator (MBQC V0.01)}}\label{index_autotoc_md17}
-Measurement-\/based quantum computation (MBQC) is an alternative computational model to the circuit-\/based quantum computation (CBQC) model. While many quantum computing simulators like Qiskit-\/aer, Py\+Quil-\/qvm, and Qu\+EST are based on the CBQC model, Qu\+EST stands out by offering flexibility with mid-\/circuit measurement and the ability to perform feed-\/forward actions, such as adaptive basis measurements for future qubits. This repository aims to simulate a general MBQC framework using Qu\+EST and leveraging the Boost Graph Library (\href{https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/index.html}{\texttt{ BGL}}), which is developed under the \href{https://www.boost.org/}{\texttt{ Boost}} library in C++.
+Measurement-\/based quantum computation (MBQC) is an alternative computational model to the circuit-\/based quantum computation (CBQC) model. While many quantum computing simulators like
 
-By combining Qu\+EST\textquotesingle{}s capabilities with the power of the Boost Graph Library, this project provides a versatile MBQC simulator. As more verification protocols rely on MBQC, this repository can prove to be a valuable resource.\hypertarget{index_autotoc_md18}{}\doxysubsubsection{\texorpdfstring{What is MBQC}{What is MBQC}}\label{index_autotoc_md18}
+
+\begin{DoxyItemize}
+\item Qiskit-\/aer,
+\item Py\+Quil-\/qvm, and
+\item Qu\+EST
+\end{DoxyItemize}
+
+are based on the CBQC model. Qu\+EST stands out by offering flexibility with mid-\/circuit measurement and the ability to perform feed-\/forward actions, such as adaptive basis measurements for future qubits.
+
+This repository aims to simulate a general MBQC framework using Qu\+EST and leveraging the Boost Graph Library (\href{https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/index.html}{\texttt{ BGL}}), which is developed under the \href{https://www.boost.org/}{\texttt{ Boost}} library in C++.
+
+By combining Qu\+EST\textquotesingle{}s capabilities with the power of the Boost Graph Library, this project provides a versatile MBQC simulator.
+
+
+\begin{DoxyItemize}
+\item Currently, MBQC++ offers variable sized one and two dimensional lattices.
+\end{DoxyItemize}\hypertarget{index_autotoc_md18}{}\doxysubsection{\texorpdfstring{What is MBQC}{What is MBQC}}\label{index_autotoc_md18}
 \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}TODO\+: Some brief MBQC overview content\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\hypertarget{index_autotoc_md19}{}\doxysubsection{\texorpdfstring{Project status}{Project status}}\label{index_autotoc_md19}
 This project is in active development, labelled as version 0.\+01. There is some basic functionality in this repositors, but by no means is a complete simulator. To run this repository see below for external library requirements.\hypertarget{index_autotoc_md20}{}\doxysubsubsection{\texorpdfstring{External library requirements}{External library requirements}}\label{index_autotoc_md20}
 Along with the standard C/\+C++ libraries there are two additional external libraries. Since MBQC is a graph theoretic based paradigm, the numerical library, Boost is called and with it, its graph library. To performthe quantum computation the current backend simulator is Qu\+EST. Each of these libraries can be found here\+:

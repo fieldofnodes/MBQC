@@ -9,10 +9,21 @@
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/searchdata.js"></script>
 <script type="text/javascript" src="../../search/search.js"></script>
-<link href="../../style.css" rel="stylesheet" type="text/css" />
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen-awesome.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -48,6 +59,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('d0/d01/graph_assert_functions_8hpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,16 +97,11 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_5e94d188cba95e774cdc9d0c259e64a6.html">testFunctions</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">graphAssertFunctions.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<a href="../../d0/d01/graph_assert_functions_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// Title  : graphAssertFunctions.hpp                       //</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// Author : Jonathan Miller                                //</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// Date   : 20230425                                       //</span></div>
@@ -123,9 +146,9 @@ $(function() {
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">using namespace </span>boost;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">typedef</span> boost::adjacency_list&lt;boost::vecS, boost::vecS,boost::undirectedS&gt; undirectedGraph;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">typedef</span> boost::graph_traits&lt;undirectedGraph&gt;::edge_iterator edge_iterator;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">typedef</span> boost::graph_traits&lt;undirectedGraph&gt;::vertex_iterator vertex_iterator;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="../../d0/d01/graph_assert_functions_8hpp.html#af845bf432b56cdda82dbde8011882168">   47</a></span><span class="keyword">typedef</span> boost::adjacency_list&lt;boost::vecS, boost::vecS,boost::undirectedS&gt; <a class="code hl_typedef" href="../../d0/d01/graph_assert_functions_8hpp.html#af845bf432b56cdda82dbde8011882168">undirectedGraph</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="../../d0/d01/graph_assert_functions_8hpp.html#af04c50f717d4bda41f0c58fe0eece059">   48</a></span><span class="keyword">typedef</span> boost::graph_traits&lt;undirectedGraph&gt;::edge_iterator <a class="code hl_typedef" href="../../d0/d01/graph_assert_functions_8hpp.html#af04c50f717d4bda41f0c58fe0eece059">edge_iterator</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="../../d0/d01/graph_assert_functions_8hpp.html#a9451df0dac964b257bedb5e60547824e">   49</a></span><span class="keyword">typedef</span> boost::graph_traits&lt;undirectedGraph&gt;::vertex_iterator <a class="code hl_typedef" href="../../d0/d01/graph_assert_functions_8hpp.html#a9451df0dac964b257bedb5e60547824e">vertex_iterator</a>;</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
@@ -133,7 +156,7 @@ $(function() {
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">  inthe hand shake lemma stipulates that the total degree of a graph G,</span></div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">  is equivalent to 2 times the number of edges</span></div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keywordtype">void</span> assertHandShakeLemma(<span class="keyword">const</span> undirectedGraph&amp; graph) {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="../../d0/d01/graph_assert_functions_8hpp.html#a60966966368ac25fe48dbccd70490e98">   57</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d01/graph_assert_functions_8hpp.html#a60966966368ac25fe48dbccd70490e98">assertHandShakeLemma</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>&amp; graph) {</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">int</span> num_vertices = boost::num_vertices(graph);</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    boost::container::vector&lt;int&gt; degree_vector;</div>
@@ -156,7 +179,7 @@ $(function() {
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">  inthe hand shake lemma stipulates that the total degree of a graph G,</span></div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">  is equivalent to 2 times the number of edges</span></div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keywordtype">void</span> assertPathGraphMinMaxDegrees(<span class="keyword">const</span> undirectedGraph&amp; graph) {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="../../d0/d01/graph_assert_functions_8hpp.html#a781ea29934c2f8c5c65a73075bc13da1">   80</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d01/graph_assert_functions_8hpp.html#a781ea29934c2f8c5c65a73075bc13da1">assertPathGraphMinMaxDegrees</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>&amp; graph) {</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    </div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">int</span> num_vertices = boost::num_vertices(graph);</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    boost::container::vector&lt;int&gt; degree_vector;</div>
@@ -168,9 +191,9 @@ $(function() {
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>      degree_vector.push_back(boost::degree(v, graph));        </div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    }</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordtype">int</span> min_it = getMin(degree_vector);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordtype">int</span> min_it = <a class="code hl_function" href="../../d3/d01/general_assert_functions_8hpp.html#aaa5eeda4e79aa986d57c3256556b6e6c">getMin</a>(degree_vector);</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    assert((<span class="stringliteral">&quot;minimum degree is 1&quot;</span> &amp;&amp; min_it == 1));</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordtype">int</span> max_it = getMax(degree_vector);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordtype">int</span> max_it = <a class="code hl_function" href="../../d3/d01/general_assert_functions_8hpp.html#af227e83a7360ec64f91773c37a905253">getMax</a>(degree_vector);</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    assert((<span class="stringliteral">&quot;maximum degree is 1&quot;</span> &amp;&amp; max_it == 2));</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>}</div>
@@ -181,7 +204,7 @@ $(function() {
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">  inthe hand shake lemma stipulates that the total degree of a graph G,</span></div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment">  is equivalent to 2 times the number of edges</span></div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="keywordtype">void</span> assertDegreeSetLatticeGraph(<span class="keyword">const</span> undirectedGraph&amp; graph) {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="../../d0/d01/graph_assert_functions_8hpp.html#ab7b459ddc7c532fc5a37abb8760d7ca6">  105</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d01/graph_assert_functions_8hpp.html#ab7b459ddc7c532fc5a37abb8760d7ca6">assertDegreeSetLatticeGraph</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>&amp; graph) {</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    </div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordtype">int</span> num_vertices = boost::num_vertices(graph);</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    std::vector&lt;int&gt; degree_vector;</div>
@@ -214,7 +237,7 @@ $(function() {
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment">/*</span></div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="comment">  Assert that the number of vertices in a graph matches expected input </span></div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="keywordtype">void</span> assertGraphNumVertices(<span class="keyword">const</span> undirectedGraph&amp; graph, <span class="keywordtype">int</span> numVertices){</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="../../d0/d01/graph_assert_functions_8hpp.html#a026973ba07ba80213ede65e64a3eb614">  138</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d01/graph_assert_functions_8hpp.html#a026973ba07ba80213ede65e64a3eb614">assertGraphNumVertices</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>&amp; graph, <span class="keywordtype">int</span> numVertices){</div>
 <div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>  <span class="keywordtype">int</span> num_vertices = boost::num_vertices(graph);</div>
 <div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>  assert(<span class="stringliteral">&quot;Number of vertices in graph must equal input&quot;</span> &amp;&amp; numVertices == num_vertices);</div>
 <div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>}</div>
@@ -224,14 +247,14 @@ $(function() {
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment">  Test for all flow on vertices</span></div>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">  Iterate over the vertices of the graph</span></div>
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="keywordtype">void</span> assertFlowFunctionsPerformExpected(<span class="keyword">const</span> undirectedGraph&amp; graph,<span class="keywordtype">int</span> numRows){</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="../../d0/d01/graph_assert_functions_8hpp.html#a3241060bf4552dac98da626843460bb3">  148</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d01/graph_assert_functions_8hpp.html#a3241060bf4552dac98da626843460bb3">assertFlowFunctionsPerformExpected</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>&amp; graph,<span class="keywordtype">int</span> numRows){</div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    undirectedGraph::vertex_iterator vi, vi_end;</div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordtype">int</span> size_graph = boost::num_vertices(graph);</div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordflow">for</span> (boost::tie(vi, vi_end) = boost::vertices(graph); vi != vi_end; ++vi) {</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="comment">// skip vertices that are in the first column</span></div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordflow">if</span>(*vi &gt;= numRows){</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            <span class="keywordtype">int</span> computedVi = getLattice2DPastVertexGraph(graph,*vi,numRows);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            <span class="keywordtype">int</span> computedVi = <a class="code hl_function" href="../../d0/d01/graph_traversal_flows_8hpp.html#a7b014587f20137aff522774eb1a05947">getLattice2DPastVertexGraph</a>(graph,*vi,numRows);</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            <span class="keywordtype">int</span> expectedVi = *vi - numRows;</div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            assert(((expectedVi == computedVi) &amp;&amp; <span class="stringliteral">&quot;Expected vertex does not match computed vertex from getLattice2DPastVertexGraph function&quot;</span>));</div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        }</div>
@@ -240,7 +263,7 @@ $(function() {
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordflow">for</span> (boost::tie(vi, vi_end) = boost::vertices(graph); vi != vi_end; ++vi) {</div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        <span class="comment">// skip vertices that are in the first column</span></div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        <span class="keywordflow">if</span>(*vi &lt; (size_graph-numRows)){</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>            <span class="keywordtype">int</span> computedVi = getLattice2DFutureVertexGraph(graph,*vi,numRows);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>            <span class="keywordtype">int</span> computedVi = <a class="code hl_function" href="../../d0/d01/graph_traversal_flows_8hpp.html#aafe3849a9ad4cb18d843d73c89936bb3">getLattice2DFutureVertexGraph</a>(graph,*vi,numRows);</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>            <span class="keywordtype">int</span> expectedVi = *vi + numRows;</div>
 <div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>            assert(((expectedVi == computedVi) &amp;&amp; <span class="stringliteral">&quot;Expected vertex does not match computed vertex from getLattice2DPastVertexGraph function&quot;</span>));</div>
 <div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        }</div>
@@ -251,10 +274,10 @@ $(function() {
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment">/*</span></div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="comment">  Assert each vertex neighbour has a matchin neighbour to the input</span></div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="keywordtype">void</span> assertNieghbours(<span class="keyword">const</span> undirectedGraph&amp; graph,std::vector&lt;std::vector&lt;int&gt;&gt; expectedNeighbourhood){        </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="../../d0/d01/graph_assert_functions_8hpp.html#a5c3f8d6a6068b10ca7ca8f2f4515cbcd">  175</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d01/graph_assert_functions_8hpp.html#a5c3f8d6a6068b10ca7ca8f2f4515cbcd">assertNieghbours</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>&amp; graph,std::vector&lt;std::vector&lt;int&gt;&gt; expectedNeighbourhood){        </div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keywordtype">int</span> size_graph = boost::num_vertices(graph);</div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> vertexIter = 0; vertexIter &lt; size_graph; vertexIter++){</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        std::vector&lt;int&gt; computedNeighbours = getVertexNeighbours(graph,vertexIter);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        std::vector&lt;int&gt; computedNeighbours = <a class="code hl_function" href="../../d0/d01/graph_traversal_flows_8hpp.html#a954183dad806b30b05e526c37284768b">getVertexNeighbours</a>(graph,vertexIter);</div>
 <div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        std::vector&lt;int&gt; expectedNeighbours;</div>
 <div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        expectedNeighbours = expectedNeighbourhood[vertexIter];</div>
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    </div>
@@ -268,15 +291,15 @@ $(function() {
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment">/*</span></div>
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment">  Assert the correction angle is the same as the inputted correction angle</span></div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="keywordtype">void</span> assertCorrection(</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keyword">const</span> undirectedGraph&amp; graph,</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno"><a class="line" href="../../d0/d01/graph_assert_functions_8hpp.html#a67fc70f2265e3ca43a7871939ae44a95">  192</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d01/graph_assert_functions_8hpp.html#a67fc70f2265e3ca43a7871939ae44a95">assertCorrection</a>(</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keyword">const</span> <a class="code hl_typedef" href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>&amp; graph,</div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    std::vector&lt;int&gt; outcomeVector, </div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <span class="keywordtype">int</span> vertex,</div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    <span class="keywordtype">int</span> numRows,</div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    qreal inputAngle,</div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    qreal expectedCorrectedAngle){</div>
 <div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        </div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        qreal computedCorrectedAngle = computeCorrectedAngle(</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        qreal computedCorrectedAngle = <a class="code hl_function" href="../../d0/d01/graph_traversal_flows_8hpp.html#a2b29f1efbcbccfbe77481e5b1a9647c8">computeCorrectedAngle</a>(</div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>            graph,</div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>            outcomeVector, </div>
 <div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>            vertex,</div>
@@ -285,10 +308,31 @@ $(function() {
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        </div>
 <div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        assert((<span class="stringliteral">&quot;New angle and original angle do not match&quot;</span> &amp;&amp; computedCorrectedAngle == expectedCorrectedAngle));</div>
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>}</div>
+<div class="ttc" id="acreate_graph_8hpp_html_adb6c610c60479e8b904f5832786b4125"><div class="ttname"><a href="../../d2/d01/create_graph_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a></div><div class="ttdeci">boost::adjacency_list&lt; boost::listS, boost::vecS, boost::undirectedS, boost::no_property, EdgeWeightProperty &gt; undirectedGraph</div><div class="ttdoc">Alias for an undirected graph using boost::adjacency_list.</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d01/create_graph_8hpp_source.html#l00007">createGraph.hpp:7</a></div></div>
+<div class="ttc" id="ageneral_assert_functions_8hpp_html_aaa5eeda4e79aa986d57c3256556b6e6c"><div class="ttname"><a href="../../d3/d01/general_assert_functions_8hpp.html#aaa5eeda4e79aa986d57c3256556b6e6c">getMin</a></div><div class="ttdeci">int getMin(const boost::container::vector&lt; int &gt; &amp;vec)</div><div class="ttdef"><b>Definition</b> <a href="../../d3/d01/general_assert_functions_8hpp_source.html#l00029">generalAssertFunctions.hpp:29</a></div></div>
+<div class="ttc" id="ageneral_assert_functions_8hpp_html_af227e83a7360ec64f91773c37a905253"><div class="ttname"><a href="../../d3/d01/general_assert_functions_8hpp.html#af227e83a7360ec64f91773c37a905253">getMax</a></div><div class="ttdeci">int getMax(const boost::container::vector&lt; int &gt; &amp;vec)</div><div class="ttdef"><b>Definition</b> <a href="../../d3/d01/general_assert_functions_8hpp_source.html#l00048">generalAssertFunctions.hpp:48</a></div></div>
+<div class="ttc" id="agraph_assert_functions_8hpp_html_a026973ba07ba80213ede65e64a3eb614"><div class="ttname"><a href="../../d0/d01/graph_assert_functions_8hpp.html#a026973ba07ba80213ede65e64a3eb614">assertGraphNumVertices</a></div><div class="ttdeci">void assertGraphNumVertices(const undirectedGraph &amp;graph, int numVertices)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d01/graph_assert_functions_8hpp_source.html#l00138">graphAssertFunctions.hpp:138</a></div></div>
+<div class="ttc" id="agraph_assert_functions_8hpp_html_a3241060bf4552dac98da626843460bb3"><div class="ttname"><a href="../../d0/d01/graph_assert_functions_8hpp.html#a3241060bf4552dac98da626843460bb3">assertFlowFunctionsPerformExpected</a></div><div class="ttdeci">void assertFlowFunctionsPerformExpected(const undirectedGraph &amp;graph, int numRows)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d01/graph_assert_functions_8hpp_source.html#l00148">graphAssertFunctions.hpp:148</a></div></div>
+<div class="ttc" id="agraph_assert_functions_8hpp_html_a5c3f8d6a6068b10ca7ca8f2f4515cbcd"><div class="ttname"><a href="../../d0/d01/graph_assert_functions_8hpp.html#a5c3f8d6a6068b10ca7ca8f2f4515cbcd">assertNieghbours</a></div><div class="ttdeci">void assertNieghbours(const undirectedGraph &amp;graph, std::vector&lt; std::vector&lt; int &gt; &gt; expectedNeighbourhood)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d01/graph_assert_functions_8hpp_source.html#l00175">graphAssertFunctions.hpp:175</a></div></div>
+<div class="ttc" id="agraph_assert_functions_8hpp_html_a60966966368ac25fe48dbccd70490e98"><div class="ttname"><a href="../../d0/d01/graph_assert_functions_8hpp.html#a60966966368ac25fe48dbccd70490e98">assertHandShakeLemma</a></div><div class="ttdeci">void assertHandShakeLemma(const undirectedGraph &amp;graph)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d01/graph_assert_functions_8hpp_source.html#l00057">graphAssertFunctions.hpp:57</a></div></div>
+<div class="ttc" id="agraph_assert_functions_8hpp_html_a67fc70f2265e3ca43a7871939ae44a95"><div class="ttname"><a href="../../d0/d01/graph_assert_functions_8hpp.html#a67fc70f2265e3ca43a7871939ae44a95">assertCorrection</a></div><div class="ttdeci">void assertCorrection(const undirectedGraph &amp;graph, std::vector&lt; int &gt; outcomeVector, int vertex, int numRows, qreal inputAngle, qreal expectedCorrectedAngle)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d01/graph_assert_functions_8hpp_source.html#l00192">graphAssertFunctions.hpp:192</a></div></div>
+<div class="ttc" id="agraph_assert_functions_8hpp_html_a781ea29934c2f8c5c65a73075bc13da1"><div class="ttname"><a href="../../d0/d01/graph_assert_functions_8hpp.html#a781ea29934c2f8c5c65a73075bc13da1">assertPathGraphMinMaxDegrees</a></div><div class="ttdeci">void assertPathGraphMinMaxDegrees(const undirectedGraph &amp;graph)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d01/graph_assert_functions_8hpp_source.html#l00080">graphAssertFunctions.hpp:80</a></div></div>
+<div class="ttc" id="agraph_assert_functions_8hpp_html_a9451df0dac964b257bedb5e60547824e"><div class="ttname"><a href="../../d0/d01/graph_assert_functions_8hpp.html#a9451df0dac964b257bedb5e60547824e">vertex_iterator</a></div><div class="ttdeci">boost::graph_traits&lt; undirectedGraph &gt;::vertex_iterator vertex_iterator</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d01/graph_assert_functions_8hpp_source.html#l00049">graphAssertFunctions.hpp:49</a></div></div>
+<div class="ttc" id="agraph_assert_functions_8hpp_html_ab7b459ddc7c532fc5a37abb8760d7ca6"><div class="ttname"><a href="../../d0/d01/graph_assert_functions_8hpp.html#ab7b459ddc7c532fc5a37abb8760d7ca6">assertDegreeSetLatticeGraph</a></div><div class="ttdeci">void assertDegreeSetLatticeGraph(const undirectedGraph &amp;graph)</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d01/graph_assert_functions_8hpp_source.html#l00105">graphAssertFunctions.hpp:105</a></div></div>
+<div class="ttc" id="agraph_assert_functions_8hpp_html_af04c50f717d4bda41f0c58fe0eece059"><div class="ttname"><a href="../../d0/d01/graph_assert_functions_8hpp.html#af04c50f717d4bda41f0c58fe0eece059">edge_iterator</a></div><div class="ttdeci">boost::graph_traits&lt; undirectedGraph &gt;::edge_iterator edge_iterator</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d01/graph_assert_functions_8hpp_source.html#l00048">graphAssertFunctions.hpp:48</a></div></div>
+<div class="ttc" id="agraph_assert_functions_8hpp_html_af845bf432b56cdda82dbde8011882168"><div class="ttname"><a href="../../d0/d01/graph_assert_functions_8hpp.html#af845bf432b56cdda82dbde8011882168">undirectedGraph</a></div><div class="ttdeci">boost::adjacency_list&lt; boost::vecS, boost::vecS, boost::undirectedS &gt; undirectedGraph</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d01/graph_assert_functions_8hpp_source.html#l00047">graphAssertFunctions.hpp:47</a></div></div>
+<div class="ttc" id="agraph_traversal_flows_8hpp_html_a2b29f1efbcbccfbe77481e5b1a9647c8"><div class="ttname"><a href="../../d0/d01/graph_traversal_flows_8hpp.html#a2b29f1efbcbccfbe77481e5b1a9647c8">computeCorrectedAngle</a></div><div class="ttdeci">qreal computeCorrectedAngle(const undirectedGraph &amp;graph, std::vector&lt; int &gt; measuredOutcomes, int vertex, int numRows, qreal angle)</div><div class="ttdoc">Computes the corrected angle based on measured outcomes and flow functions in an undirected graph.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d01/graph_traversal_flows_8hpp_source.html#l00153">graphTraversalFlows.hpp:153</a></div></div>
+<div class="ttc" id="agraph_traversal_flows_8hpp_html_a7b014587f20137aff522774eb1a05947"><div class="ttname"><a href="../../d0/d01/graph_traversal_flows_8hpp.html#a7b014587f20137aff522774eb1a05947">getLattice2DPastVertexGraph</a></div><div class="ttdeci">int getLattice2DPastVertexGraph(const undirectedGraph &amp;graph, int vertex, int numRows)</div><div class="ttdoc">Computes the past vertex in a 2D lattice graph based on a flow function for a given vertex in the gra...</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d01/graph_traversal_flows_8hpp_source.html#l00130">graphTraversalFlows.hpp:130</a></div></div>
+<div class="ttc" id="agraph_traversal_flows_8hpp_html_a954183dad806b30b05e526c37284768b"><div class="ttname"><a href="../../d0/d01/graph_traversal_flows_8hpp.html#a954183dad806b30b05e526c37284768b">getVertexNeighbours</a></div><div class="ttdeci">std::vector&lt; int &gt; getVertexNeighbours(const undirectedGraph &amp;graph, int vertex)</div><div class="ttdoc">Retrieves the neighboring vertices of a given vertex in an undirected graph.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d01/graph_traversal_flows_8hpp_source.html#l00077">graphTraversalFlows.hpp:77</a></div></div>
+<div class="ttc" id="agraph_traversal_flows_8hpp_html_aafe3849a9ad4cb18d843d73c89936bb3"><div class="ttname"><a href="../../d0/d01/graph_traversal_flows_8hpp.html#aafe3849a9ad4cb18d843d73c89936bb3">getLattice2DFutureVertexGraph</a></div><div class="ttdeci">int getLattice2DFutureVertexGraph(const undirectedGraph &amp;graph, int vertex, int numRows)</div><div class="ttdoc">Computes the future vertex in a 2D lattice graph based on a flow function for a given vertex in the g...</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d01/graph_traversal_flows_8hpp_source.html#l00105">graphTraversalFlows.hpp:105</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_5e94d188cba95e774cdc9d0c259e64a6.html">testFunctions</a></li><li class="navelem"><a class="el" href="../../d0/d01/graph_assert_functions_8hpp.html">graphAssertFunctions.hpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.7 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -3,11 +3,24 @@
 
 # Measurement Based Quantum Computation (MBQC) Simulator (MBQC V0.01)
 
-Measurement-based quantum computation (MBQC) is an alternative computational model to the circuit-based quantum computation (CBQC) model. While many quantum computing simulators like Qiskit-aer, PyQuil-qvm, and QuEST are based on the CBQC model, QuEST stands out by offering flexibility with mid-circuit measurement and the ability to perform feed-forward actions, such as adaptive basis measurements for future qubits. This repository aims to simulate a general MBQC framework using QuEST and leveraging the Boost Graph Library ([BGL](https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/index.html)), which is developed under the [Boost](https://www.boost.org/) library in C++.
+Measurement-based quantum computation (MBQC) is an alternative computational model to the circuit-based quantum computation (CBQC) model. While many quantum computing simulators like 
 
-By combining QuEST's capabilities with the power of the Boost Graph Library, this project provides a versatile MBQC simulator. As more verification protocols rely on MBQC, this repository can prove to be a valuable resource.
++ Qiskit-aer,
++ PyQuil-qvm, and
++ QuEST 
+  
+are based on the CBQC model. QuEST stands out by offering flexibility with mid-circuit measurement and the ability to perform feed-forward actions, such as adaptive basis measurements for future qubits. 
 
-### What is MBQC
+
+This repository aims to simulate a general MBQC framework using QuEST and leveraging the Boost Graph Library ([BGL](https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/index.html)), which is developed under the [Boost](https://www.boost.org/) library in C++.
+
+By combining QuEST's capabilities with the power of the Boost Graph Library, this project provides a versatile MBQC simulator. 
+
++ Currently, MBQC++ offers variable sized one and two dimensional lattices.
+
+
+
+## What is MBQC
 
 
 **<span style="color:red">TODO: Some brief MBQC overview content</span>**

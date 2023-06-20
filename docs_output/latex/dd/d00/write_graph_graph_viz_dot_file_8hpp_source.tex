@@ -1,114 +1,116 @@
 \doxysection{write\+Graph\+Graph\+Viz\+Dot\+File.\+hpp}
 \hypertarget{write_graph_graph_viz_dot_file_8hpp_source}{}\label{write_graph_graph_viz_dot_file_8hpp_source}\index{src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp@{src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp}}
-
+\mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ }
-\DoxyCodeLine{00002\ \textcolor{comment}{//\ Title\ \ :\ testGraphProperties.cpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
-\DoxyCodeLine{00003\ \textcolor{comment}{//\ Author\ :\ Jonathan\ Miller\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
-\DoxyCodeLine{00004\ \textcolor{comment}{//\ Date\ \ \ :\ 20230425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
-\DoxyCodeLine{00005\ \textcolor{comment}{//\ Aim\ \ \ \ :\ Build\ graphs\ and\ test\ properties\ of\ graphs.\ \ \ \ //}}
-\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ As\ graph\ types\ grow\ in\ number,\ separate\ tests\ \ //}}
-\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ across\ multiple\ files\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
-\DoxyCodeLine{00009\ \textcolor{comment}{}}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ boost::adjacency\_list<boost::vecS,\ boost::vecS,boost::undirectedS>\ undirectedGraph;}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ std::string\ updateTextFile(std::string\ inputPath)\{}
-\DoxyCodeLine{00016\ \ \ \ \ std::ifstream\ infile(inputPath);}
-\DoxyCodeLine{00017\ \ \ \ \ std::size\_t\ pos\ =\ inputPath.find\_last\_of(\textcolor{stringliteral}{"{}."{}});}
-\DoxyCodeLine{00018\ \ \ \ \ std::string\ outputPath;}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ !=\ std::string::npos)\ \{}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ std::string\ prefix\ =\ inputPath.substr(0,\ pos);}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ std::string\ suffix\ =\ inputPath.substr(pos);}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ outputPath\ =\ prefix\ +\ \textcolor{stringliteral}{"{}Updated"{}}\ +\ suffix;}
-\DoxyCodeLine{00023\ \ \ \ \ \}}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \ \ std::ofstream\ outfile(outputPath);}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Read\ and\ write\ the\ first\ line}}
-\DoxyCodeLine{00028\ \ \ \ \ std::string\ line;}
-\DoxyCodeLine{00029\ \ \ \ \ std::getline(infile,\ line);}
-\DoxyCodeLine{00030\ \ \ \ \ outfile\ <<\ line\ <<\ std::endl;}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ Insert\ new\ text\ at\ line\ 2}}
-\DoxyCodeLine{00033\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}graph\ [layout\ =\ neato]"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00034\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}node\ [shape\ =\ circle,"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00035\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}style\ =\ filled,"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00036\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}style\ =\ filled,"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00037\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}color\ =\ lightblue]"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00038\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}edge\ [color\ =\ silver]"{}}\ <<\ std::endl;}
-\DoxyCodeLine{00039\ \ \ \ \ }
-\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ Write\ the\ remaining\ lines}}
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(infile,\ line))\ \{}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ outfile\ <<\ line\ <<\ std::endl;}
-\DoxyCodeLine{00043\ \ \ \ \ \}}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ Close\ the\ files}}
-\DoxyCodeLine{00046\ \ \ \ \ infile.close();}
-\DoxyCodeLine{00047\ \ \ \ \ outfile.close();}
-\DoxyCodeLine{00048\ \ \ \ \ }
-\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{return}\ outputPath;}
-\DoxyCodeLine{00050\ \}}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ }
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ }
-\DoxyCodeLine{00055\ \textcolor{keywordtype}{void}\ printGraphToFile(\textcolor{keyword}{const}\ undirectedGraph\&\ graph,std::string\ fileDir,std::string\ graphName,std::string\ format)\{}
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ Graphviz\ output\ stream}}
-\DoxyCodeLine{00057\ \ \ \ \ std::stringstream\ outputFile;}
-\DoxyCodeLine{00058\ \ \ \ \ outputFile\ <<\ fileDir\ <<\ \textcolor{stringliteral}{"{}/"{}}\ <<\ graphName;}
-\DoxyCodeLine{00059\ \ \ \ \ }
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \ \ \ \ std::ofstream\ dot\_file(outputFile.str()+\textcolor{stringliteral}{"{}.dot"{}});}
-\DoxyCodeLine{00062\ \ \ \ \ }
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00064\ \ \ \ \ }
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ Write\ to\ file}}
-\DoxyCodeLine{00066\ \ \ \ \ boost::write\_graphviz(}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ dot\_file,\ }
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ graph);}
-\DoxyCodeLine{00069\ \ \ \ \ }
-\DoxyCodeLine{00070\ \ \ \ \ std::string\ updatedDotFile\ =\ updateTextFile(outputFile.str()+\textcolor{stringliteral}{"{}.dot"{}});}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{if}(format\ ==\ \textcolor{stringliteral}{"{}png"{}})\{}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ DOT\ file\ to\ PNG}}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ std::stringstream\ dotPath;\ }
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ std::stringstream\ pngPath;}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ std::stringstream\ sysString;}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ dotPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.dot"{}};}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ pngPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.png"{}};}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ sysString\ <<\ \textcolor{stringliteral}{"{}dot\ -\/Tpng\ "{}}\ <<\ updatedDotFile\ <<\ \textcolor{stringliteral}{"{}\ -\/o\ "{}}\ <<\ pngPath.str();}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ std::system(sysString.str().c\_str());}
-\DoxyCodeLine{00082\ }
-\DoxyCodeLine{00083\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (format\ ==\ \textcolor{stringliteral}{"{}svg"{}})\{}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ DOT\ file\ to\ SVG}}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ std::stringstream\ dotPath;\ }
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ std::stringstream\ svgPath;}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ std::stringstream\ sysString;}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ dotPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.dot"{}};}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ svgPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.svg"{}};}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ sysString\ <<\ \textcolor{stringliteral}{"{}dot\ -\/Tpng\ "{}}\ <<\ updatedDotFile\ <<\ \textcolor{stringliteral}{"{}\ -\/o\ "{}}\ <<\ svgPath.str();}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ std::system(sysString.str().c\_str());}
-\DoxyCodeLine{00092\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ DOT\ file\ to\ PNG\ and\ SVG}}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ std::stringstream\ dotPath;\ }
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ std::stringstream\ pngPath;}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ std::stringstream\ svgPath;}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ std::stringstream\ pngSysString;}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ std::stringstream\ svgSysString;}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ dotPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.dot"{}};}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ pngPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.png"{}};}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ svgPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.svg"{}};}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ pngSysString\ <<\ \textcolor{stringliteral}{"{}dot\ -\/Tpng\ "{}}\ <<\ updatedDotFile\ <<\ \textcolor{stringliteral}{"{}\ -\/o\ "{}}\ <<\ pngPath.str();}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ svgSysString\ <<\ \textcolor{stringliteral}{"{}dot\ -\/Tpng\ "{}}\ <<\ updatedDotFile\ <<\ \textcolor{stringliteral}{"{}\ -\/o\ "{}}\ <<\ svgPath.str();}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ std::system(pngSysString.str().c\_str());}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ std::system(svgSysString.str().c\_str());}
-\DoxyCodeLine{00106\ \ \ \ \ \}}
-\DoxyCodeLine{00107\ \}}
-\DoxyCodeLine{00108\ }
-\DoxyCodeLine{00109\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00002}00002\ \textcolor{comment}{//\ Title\ \ :\ testGraphProperties.cpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00003}00003\ \textcolor{comment}{//\ Author\ :\ Jonathan\ Miller\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00004}00004\ \textcolor{comment}{//\ Date\ \ \ :\ 20230425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00005}00005\ \textcolor{comment}{//\ Aim\ \ \ \ :\ Build\ graphs\ and\ test\ properties\ of\ graphs.\ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00006}00006\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ As\ graph\ types\ grow\ in\ number,\ separate\ tests\ \ //}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00007}00007\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ across\ multiple\ files\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00024}\mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_a1409ed3eb04c88533bec225163b568ea}{00024}}\ std::string\ \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_a1409ed3eb04c88533bec225163b568ea}{updateTextFile}}(std::string\ inputPath)\{}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00025}00025\ \ \ \ \ std::ifstream\ infile(inputPath);}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00026}00026\ \ \ \ \ std::size\_t\ pos\ =\ inputPath.find\_last\_of(\textcolor{stringliteral}{"{}."{}});}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00027}00027\ \ \ \ \ std::string\ outputPath;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ !=\ std::string::npos)\ \{}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00029}00029\ \ \ \ \ \ \ \ \ std::string\ prefix\ =\ inputPath.substr(0,\ pos);}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00030}00030\ \ \ \ \ \ \ \ \ std::string\ suffix\ =\ inputPath.substr(pos);}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00031}00031\ \ \ \ \ \ \ \ \ outputPath\ =\ prefix\ +\ \textcolor{stringliteral}{"{}Updated"{}}\ +\ suffix;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00034}00034\ \ \ \ \ std::ofstream\ outfile(outputPath);}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00036}00036\ \ \ \ \ \textcolor{comment}{//\ Read\ and\ write\ the\ first\ line}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00037}00037\ \ \ \ \ std::string\ line;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00038}00038\ \ \ \ \ std::getline(infile,\ line);}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00039}00039\ \ \ \ \ outfile\ <<\ line\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ Insert\ new\ text\ at\ line\ 2}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00042}00042\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}graph\ [layout\ =\ neato]"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00043}00043\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}node\ [shape\ =\ circle,"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00044}00044\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}style\ =\ filled,"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00045}00045\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}style\ =\ filled,"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00046}00046\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}color\ =\ lightblue]"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00047}00047\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}edge\ [color\ =\ silver]"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00048}00048\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ Write\ the\ remaining\ lines}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(infile,\ line))\ \{}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00051}00051\ \ \ \ \ \ \ \ \ outfile\ <<\ line\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//\ Close\ the\ files}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00055}00055\ \ \ \ \ infile.close();}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00056}00056\ \ \ \ \ outfile.close();}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00057}00057\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{return}\ outputPath;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00059}00059\ \}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00079}\mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_a3d553b54b16922ee146bfb33201a3993}{00079}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_a3d553b54b16922ee146bfb33201a3993}{printGraphToFile}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ graph,std::string\ fileDir,std::string\ graphName,std::string\ format)\{}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00080}00080\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ Graphviz\ output\ stream}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00081}00081\ \ \ \ \ std::stringstream\ outputFile;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00082}00082\ \ \ \ \ outputFile\ <<\ fileDir\ <<\ \textcolor{stringliteral}{"{}/"{}}\ <<\ graphName;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00083}00083\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00085}00085\ \ \ \ \ std::ofstream\ dot\_file(outputFile.str()+\textcolor{stringliteral}{"{}.dot"{}});}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00086}00086\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00088}00088\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00089}00089\ \ \ \ \ \textcolor{comment}{//\ Write\ to\ file}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00090}00090\ \ \ \ \ boost::write\_graphviz(}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00091}00091\ \ \ \ \ \ \ \ \ dot\_file,\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00092}00092\ \ \ \ \ \ \ \ \ graph);}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00093}00093\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00094}00094\ \ \ \ \ std::string\ updatedDotFile\ =\ \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_a1409ed3eb04c88533bec225163b568ea}{updateTextFile}}(outputFile.str()+\textcolor{stringliteral}{"{}.dot"{}});}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{if}(format\ ==\ \textcolor{stringliteral}{"{}png"{}})\{}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ DOT\ file\ to\ PNG}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00099}00099\ \ \ \ \ \ \ \ \ std::stringstream\ dotPath;\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00100}00100\ \ \ \ \ \ \ \ \ std::stringstream\ pngPath;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00101}00101\ \ \ \ \ \ \ \ \ std::stringstream\ sysString;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00102}00102\ \ \ \ \ \ \ \ \ dotPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.dot"{}};}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00103}00103\ \ \ \ \ \ \ \ \ pngPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.png"{}};}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00104}00104\ \ \ \ \ \ \ \ \ sysString\ <<\ \textcolor{stringliteral}{"{}dot\ -\/Tpng\ "{}}\ <<\ updatedDotFile\ <<\ \textcolor{stringliteral}{"{}\ -\/o\ "{}}\ <<\ pngPath.str();}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00105}00105\ \ \ \ \ \ \ \ \ std::system(sysString.str().c\_str());}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00107}00107\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (format\ ==\ \textcolor{stringliteral}{"{}svg"{}})\{}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ DOT\ file\ to\ SVG}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00109}00109\ \ \ \ \ \ \ \ \ std::stringstream\ dotPath;\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00110}00110\ \ \ \ \ \ \ \ \ std::stringstream\ svgPath;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00111}00111\ \ \ \ \ \ \ \ \ std::stringstream\ sysString;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00112}00112\ \ \ \ \ \ \ \ \ dotPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.dot"{}};}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00113}00113\ \ \ \ \ \ \ \ \ svgPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.svg"{}};}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00114}00114\ \ \ \ \ \ \ \ \ sysString\ <<\ \textcolor{stringliteral}{"{}dot\ -\/Tpng\ "{}}\ <<\ updatedDotFile\ <<\ \textcolor{stringliteral}{"{}\ -\/o\ "{}}\ <<\ svgPath.str();}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00115}00115\ \ \ \ \ \ \ \ \ std::system(sysString.str().c\_str());}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00116}00116\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ DOT\ file\ to\ PNG\ and\ SVG}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00118}00118\ \ \ \ \ \ \ \ \ std::stringstream\ dotPath;\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00119}00119\ \ \ \ \ \ \ \ \ std::stringstream\ pngPath;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00120}00120\ \ \ \ \ \ \ \ \ std::stringstream\ svgPath;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00121}00121\ \ \ \ \ \ \ \ \ std::stringstream\ pngSysString;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00122}00122\ \ \ \ \ \ \ \ \ std::stringstream\ svgSysString;}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00123}00123\ \ \ \ \ \ \ \ \ dotPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.dot"{}};}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00124}00124\ \ \ \ \ \ \ \ \ pngPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.png"{}};}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00125}00125\ \ \ \ \ \ \ \ \ svgPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.svg"{}};}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00126}00126\ \ \ \ \ \ \ \ \ pngSysString\ <<\ \textcolor{stringliteral}{"{}dot\ -\/Tpng\ "{}}\ <<\ updatedDotFile\ <<\ \textcolor{stringliteral}{"{}\ -\/o\ "{}}\ <<\ pngPath.str();}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00127}00127\ \ \ \ \ \ \ \ \ svgSysString\ <<\ \textcolor{stringliteral}{"{}dot\ -\/Tpng\ "{}}\ <<\ updatedDotFile\ <<\ \textcolor{stringliteral}{"{}\ -\/o\ "{}}\ <<\ svgPath.str();}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00128}00128\ \ \ \ \ \ \ \ \ std::system(pngSysString.str().c\_str());}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00129}00129\ \ \ \ \ \ \ \ \ std::system(svgSysString.str().c\_str());}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00130}00130\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00131}00131\ \}}
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{write_graph_graph_viz_dot_file_8hpp_source_l00133}00133\ \ \ \ \ }
 
 \end{DoxyCode}

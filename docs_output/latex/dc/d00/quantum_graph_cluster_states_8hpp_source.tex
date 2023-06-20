@@ -1,28 +1,28 @@
 \doxysection{quantum\+Graph\+Cluster\+States.\+hpp}
 \hypertarget{quantum_graph_cluster_states_8hpp_source}{}\label{quantum_graph_cluster_states_8hpp_source}\index{src/quantumGraphs/quantumGraphClusterStates.hpp@{src/quantumGraphs/quantumGraphClusterStates.hpp}}
-
+\mbox{\hyperlink{quantum_graph_cluster_states_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ }
-\DoxyCodeLine{00002\ \textcolor{comment}{//\ Title\ \ :\ quantumGraphClusterStates.hpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
-\DoxyCodeLine{00003\ \textcolor{comment}{//\ Author\ :\ Jonathan\ Miller\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
-\DoxyCodeLine{00004\ \textcolor{comment}{//\ Date\ \ \ :\ 20230425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
-\DoxyCodeLine{00005\ \textcolor{comment}{//\ Aim\ \ \ \ :\ Construct\ cluster\ and\ graph\ states\ from\ graph\ \ //}}
-\DoxyCodeLine{00007\ \textcolor{comment}{}}
-\DoxyCodeLine{00008\ \textcolor{comment}{//\#include\ <boost/graph/adjacency\_list.hpp>}}
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::edge\_iterator\ edgeIterator;}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{keywordtype}{void}\ entangleGraph(Qureg\ qureg,}
-\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{const}\ undirectedGraph\&\ graph)\{}
-\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//\ entangle\ qureg\ according\ to\ the\ graph\ with\ CZ\ gates}}
-\DoxyCodeLine{00015\ \ \ \ \ edgeIterator\ ei,\ ei\_end;}
-\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordflow}{for}\ (boost::tie(ei,\ ei\_end)\ =\ edges(graph);\ ei\ !=\ ei\_end;\ ++ei)\ \{}
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ source\ =\ boost::source(*ei,\ graph);}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ target\ =\ boost::target(*ei,\ graph);}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ controlledPhaseFlip\ (qureg,source,target);}
-\DoxyCodeLine{00020\ \ \ \ \ \}}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ }
-\DoxyCodeLine{00023\ \}}
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00002}00002\ \textcolor{comment}{//\ Title\ \ :\ quantumGraphClusterStates.hpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00003}00003\ \textcolor{comment}{//\ Author\ :\ Jonathan\ Miller\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00004}00004\ \textcolor{comment}{//\ Date\ \ \ :\ 20230425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00005}00005\ \textcolor{comment}{//\ Aim\ \ \ \ :\ Construct\ cluster\ and\ graph\ states\ from\ graph\ \ //}}
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00007}00007\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00008}00008\ \textcolor{comment}{//\#include\ <boost/graph/adjacency\_list.hpp>}}
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00010}\mbox{\hyperlink{quantum_graph_cluster_states_8hpp_ad413424ad598fbd91fde4dffeceda3c0}{00010}}\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::edge\_iterator\ \mbox{\hyperlink{quantum_graph_cluster_states_8hpp_ad413424ad598fbd91fde4dffeceda3c0}{edgeIterator}};}
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00012}\mbox{\hyperlink{quantum_graph_cluster_states_8hpp_a3f830234f9eb3a150a084b0f2b4aa056}{00012}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{quantum_graph_cluster_states_8hpp_a3f830234f9eb3a150a084b0f2b4aa056}{entangleGraph}}(Qureg\ qureg,}
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\&\ graph)\{}
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ entangle\ qureg\ according\ to\ the\ graph\ with\ CZ\ gates}}
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00015}00015\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_afccd45e2973698c37e8379f6b25a82bc}{edgeIterator}}\ ei,\ ei\_end;}
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00016}00016\ \ \ \ \ \textcolor{keywordflow}{for}\ (boost::tie(ei,\ ei\_end)\ =\ edges(graph);\ ei\ !=\ ei\_end;\ ++ei)\ \{}
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ source\ =\ boost::source(*ei,\ graph);}
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ target\ =\ boost::target(*ei,\ graph);}
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00019}00019\ \ \ \ \ \ \ \ \ controlledPhaseFlip\ (qureg,source,target);}
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00022}00022\ \ }
+\DoxyCodeLine{\Hypertarget{quantum_graph_cluster_states_8hpp_source_l00023}00023\ \}}
 
 \end{DoxyCode}

@@ -7,9 +7,6 @@
 //        : across multiple files                          //
 /////////////////////////////////////////////////////////////
 
-typedef boost::adjacency_list<boost::vecS, boost::vecS,boost::undirectedS> undirectedGraph;
-typedef boost::graph_traits<undirectedGraph>::edge_iterator edge_iterator;
-typedef boost::graph_traits<undirectedGraph>::vertex_iterator vertex_iterator;
 
 
 /**
@@ -39,27 +36,21 @@ std::vector<std::vector<int>> create_lattice(int numRows, int numCols) {
 }
 
 
-/*
-  create a 2D lattice graph with n rows, m columns and nxm vertices
-
-undirectedGraph createLatticeGraph(int n, int m) { 
-  undirectedGraph g(n * m);
-
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < m; j++) {
-      if (j < m-1) add_edge(i*m+j, i*m+j+1, g); // add horizontal edges
-      if (i < n-1) add_edge(i*m+j, (i+1)*m+j, g); // add vertical edges
-    }
-  }
-
-  return g;
-}
-*/
-  
+/**
+ * @brief Creates an undirected lattice graph with the specified number of rows and columns.
+ *
+ * This function creates an undirected lattice graph based on the given number of rows and columns.
+ * It uses the create_lattice function to generate the lattice structure and then constructs a
+ * corresponding Boost Graph using the undirectedGraph typedef.
+ * 
+ * 
+ * @param numRows The number of rows in the lattice graph.
+ * @param numCols The number of columns in the lattice graph.
+ * @return The created undirected lattice graph represented by an undirectedGraph.
+ */
 undirectedGraph createLatticeGraph(int numRows, int numCols) { 
-    std::vector<std::vector<int>>lattice = create_lattice(numRows,numCols);
+    std::vector<std::vector<int>> lattice = create_lattice(numRows, numCols);
     int numVertices = numRows * numCols;
-    // Create a Boost Graph
     undirectedGraph latticeGraph(numVertices);
     
     // Add edges to the graph
@@ -76,4 +67,5 @@ undirectedGraph createLatticeGraph(int numRows, int numCols) {
 
     return latticeGraph;
 }
+
 

@@ -8,10 +8,19 @@
 /////////////////////////////////////////////////////////////
 
 
-typedef boost::adjacency_list<boost::vecS, boost::vecS,boost::undirectedS> undirectedGraph;
 
 
 
+/**
+ * @brief Updates a text file with additional content.
+ *
+ * This function reads the content of the input file, inserts new text at a specific line,
+ * and writes the updated content to a new output file. The new file name is derived by
+ * appending "Updated" to the original file name. The input file should exist and be accessible.
+ *
+ * @param inputPath The path to the input file.
+ * @return The path to the updated output file.
+ */
 std::string updateTextFile(std::string inputPath){
     std::ifstream infile(inputPath);
     std::size_t pos = inputPath.find_last_of(".");
@@ -52,6 +61,21 @@ std::string updateTextFile(std::string inputPath){
 
 
 
+
+
+
+/**
+ * @brief Prints a graph to a file using Graphviz.
+ *
+ * This function writes a Boost undirected graph to a Graphviz DOT file. It then converts
+ * the DOT file to the specified output format (e.g., PNG, SVG) using the Graphviz "dot" command.
+ * The resulting file is saved in the specified directory with the given graph name.
+ *
+ * @param graph The undirected graph to print.
+ * @param fileDir The directory where the output file will be saved.
+ * @param graphName The name of the output file without the file extension.
+ * @param format The desired output format ("png", "svg", or any other format to generate both).
+ */
 void printGraphToFile(const undirectedGraph& graph,std::string fileDir,std::string graphName,std::string format){
     // Create a Graphviz output stream
     std::stringstream outputFile;

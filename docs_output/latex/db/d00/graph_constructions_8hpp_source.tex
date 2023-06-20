@@ -1,75 +1,55 @@
 \doxysection{graph\+Constructions.\+hpp}
 \hypertarget{graph_constructions_8hpp_source}{}\label{graph_constructions_8hpp_source}\index{src/graphs/graphConstructions.hpp@{src/graphs/graphConstructions.hpp}}
-
+\mbox{\hyperlink{graph_constructions_8hpp}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ }
-\DoxyCodeLine{00002\ \textcolor{comment}{//\ Title\ \ :\ graphConstructions.hpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
-\DoxyCodeLine{00003\ \textcolor{comment}{//\ Author\ :\ Jonathan\ Miller\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
-\DoxyCodeLine{00004\ \textcolor{comment}{//\ Date\ \ \ :\ 20230425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
-\DoxyCodeLine{00005\ \textcolor{comment}{//\ Aim\ \ \ \ :\ Construct\ graphs\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
-\DoxyCodeLine{00006\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ As\ graph\ types\ grow\ in\ number,\ separate\ tests\ \ //}}
-\DoxyCodeLine{00007\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ across\ multiple\ files\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
-\DoxyCodeLine{00009\ \textcolor{comment}{}}
-\DoxyCodeLine{00010\ \textcolor{keyword}{typedef}\ boost::adjacency\_list<boost::vecS,\ boost::vecS,boost::undirectedS>\ undirectedGraph;}
-\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::edge\_iterator\ edge\_iterator;}
-\DoxyCodeLine{00012\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::vertex\_iterator\ vertex\_iterator;}
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00024\ std::vector<std::vector<int>>\ create\_lattice(\textcolor{keywordtype}{int}\ numRows,\ \textcolor{keywordtype}{int}\ numCols)\ \{}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ numRows\ *\ numCols;}
-\DoxyCodeLine{00026\ \ \ \ \ std::vector<std::vector<int>>\ lattice(numRows,\ std::vector<int>(numCols,\ -\/1));}
-\DoxyCodeLine{00027\ \ \ \ \ std::vector<int>\ numbers(numVertices);}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numVertices;\ i++)\ \{}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ numbers[i]\ =\ i;}
-\DoxyCodeLine{00030\ \ \ \ \ \}}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ number\ :\ numbers)\ \{}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ row\ =\ number\ \%\ numRows;}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ col\ =\ number\ /\ numRows;}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ lattice[row][col]\ =\ number;}
-\DoxyCodeLine{00036\ \ \ \ \ \}}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{return}\ lattice;}
-\DoxyCodeLine{00039\ \}}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00043\ \textcolor{comment}{\ \ create\ a\ 2D\ lattice\ graph\ with\ n\ rows,\ m\ columns\ and\ nxm\ vertices}}
-\DoxyCodeLine{00044\ \textcolor{comment}{}}
-\DoxyCodeLine{00045\ \textcolor{comment}{undirectedGraph\ createLatticeGraph(int\ n,\ int\ m)\ \{\ }}
-\DoxyCodeLine{00046\ \textcolor{comment}{\ \ undirectedGraph\ g(n\ *\ m);}}
-\DoxyCodeLine{00047\ \textcolor{comment}{}}
-\DoxyCodeLine{00048\ \textcolor{comment}{\ \ for\ (int\ i\ =\ 0;\ i\ <\ n;\ i++)\ \{}}
-\DoxyCodeLine{00049\ \textcolor{comment}{\ \ \ \ for\ (int\ j\ =\ 0;\ j\ <\ m;\ j++)\ \{}}
-\DoxyCodeLine{00050\ \textcolor{comment}{\ \ \ \ \ \ if\ (j\ <\ m-\/1)\ add\_edge(i*m+j,\ i*m+j+1,\ g);\ //\ add\ horizontal\ edges}}
-\DoxyCodeLine{00051\ \textcolor{comment}{\ \ \ \ \ \ if\ (i\ <\ n-\/1)\ add\_edge(i*m+j,\ (i+1)*m+j,\ g);\ //\ add\ vertical\ edges}}
-\DoxyCodeLine{00052\ \textcolor{comment}{\ \ \ \ \}}}
-\DoxyCodeLine{00053\ \textcolor{comment}{\ \ \}}}
-\DoxyCodeLine{00054\ \textcolor{comment}{}}
-\DoxyCodeLine{00055\ \textcolor{comment}{\ \ return\ g;}}
-\DoxyCodeLine{00056\ \textcolor{comment}{\}}}
-\DoxyCodeLine{00057\ \textcolor{comment}{*/}}
-\DoxyCodeLine{00058\ \ \ }
-\DoxyCodeLine{00059\ undirectedGraph\ createLatticeGraph(\textcolor{keywordtype}{int}\ numRows,\ \textcolor{keywordtype}{int}\ numCols)\ \{\ }
-\DoxyCodeLine{00060\ \ \ \ \ std::vector<std::vector<int>>lattice\ =\ create\_lattice(numRows,numCols);}
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ numRows\ *\ numCols;}
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ Boost\ Graph}}
-\DoxyCodeLine{00063\ \ \ \ \ undirectedGraph\ latticeGraph(numVertices);}
-\DoxyCodeLine{00064\ \ \ \ \ }
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ Add\ edges\ to\ the\ graph}}
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ row\ =\ 0;\ row\ <\ numRows;\ row++)\ \{}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ col\ =\ 0;\ col\ <\ numCols;\ col++)\ \{}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row\ +\ 1\ <\ numRows)\ \{}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(lattice[row][col],\ lattice[row\ +\ 1][col],\ latticeGraph);}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (col\ +\ 1\ <\ numCols)\ \{}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(lattice[row][col],\ lattice[row][col\ +\ 1],\ latticeGraph);}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00075\ \ \ \ \ \}}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{return}\ latticeGraph;}
-\DoxyCodeLine{00078\ \}}
-\DoxyCodeLine{00079\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00002}00002\ \textcolor{comment}{//\ Title\ \ :\ graphConstructions.hpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00003}00003\ \textcolor{comment}{//\ Author\ :\ Jonathan\ Miller\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00004}00004\ \textcolor{comment}{//\ Date\ \ \ :\ 20230425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00005}00005\ \textcolor{comment}{//\ Aim\ \ \ \ :\ Construct\ graphs\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00006}00006\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ As\ graph\ types\ grow\ in\ number,\ separate\ tests\ \ //}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00007}00007\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ across\ multiple\ files\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00021}\mbox{\hyperlink{graph_constructions_8hpp_a6e0974be2fa2e599ab591aa02f1c9eb2}{00021}}\ std::vector<std::vector<int>>\ \mbox{\hyperlink{graph_constructions_8hpp_a6e0974be2fa2e599ab591aa02f1c9eb2}{create\_lattice}}(\textcolor{keywordtype}{int}\ numRows,\ \textcolor{keywordtype}{int}\ numCols)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ numRows\ *\ numCols;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00023}00023\ \ \ \ \ std::vector<std::vector<int>>\ lattice(numRows,\ std::vector<int>(numCols,\ -\/1));}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00024}00024\ \ \ \ \ std::vector<int>\ numbers(numVertices);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numVertices;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00026}00026\ \ \ \ \ \ \ \ \ numbers[i]\ =\ i;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ number\ :\ numbers)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ row\ =\ number\ \%\ numRows;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ col\ =\ number\ /\ numRows;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00032}00032\ \ \ \ \ \ \ \ \ lattice[row][col]\ =\ number;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{return}\ lattice;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00051}\mbox{\hyperlink{graph_constructions_8hpp_a74f9014929a19ec558c3bc766754f1c3}{00051}}\ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ \mbox{\hyperlink{graph_constructions_8hpp_a74f9014929a19ec558c3bc766754f1c3}{createLatticeGraph}}(\textcolor{keywordtype}{int}\ numRows,\ \textcolor{keywordtype}{int}\ numCols)\ \{\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00052}00052\ \ \ \ \ std::vector<std::vector<int>>\ lattice\ =\ \mbox{\hyperlink{graph_constructions_8hpp_a6e0974be2fa2e599ab591aa02f1c9eb2}{create\_lattice}}(numRows,\ numCols);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ numRows\ *\ numCols;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00054}00054\ \ \ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph(numVertices);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00055}00055\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//\ Add\ edges\ to\ the\ graph}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ row\ =\ 0;\ row\ <\ numRows;\ row++)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ col\ =\ 0;\ col\ <\ numCols;\ col++)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row\ +\ 1\ <\ numRows)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(lattice[row][col],\ lattice[row\ +\ 1][col],\ latticeGraph);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (col\ +\ 1\ <\ numCols)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(lattice[row][col],\ lattice[row][col\ +\ 1],\ latticeGraph);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{return}\ latticeGraph;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00069}00069\ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00071}00071\ }
 
 \end{DoxyCode}
