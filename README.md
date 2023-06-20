@@ -1,7 +1,8 @@
 <img src="https://user-images.githubusercontent.com/19248072/225727493-def23a0b-96e3-4310-aa9b-5f27fb0c6f2a.png"  width="300" height="200">
 
 
-[![Documentation](https://img.shields.io/badge/Documentation-View%20Docs-blue.svg?style=flat-square&logo=read-the-docs)](https://ediparquantum.github.io/MBQC/index.html)
+[![Documentation](https://img.shields.io/badge/Documentation-View%20Docs-blue.svg?style=flat-square&logo=read-the-docs)](https://ediparquantum.github.io/MBQC/index.html) [![Tutorial](https://img.shields.io/badge/Tutorial-MBQC%20Starter%20File-orange.svg?style=flat-square&logo=read-the-docs)](https://ediparquantum.github.io/MBQC/df/d01/mbqc_starter_file.html)
+
 
 
 # Measurement Based Quantum Computation (MBQC) Simulator (MBQC V0.01)
