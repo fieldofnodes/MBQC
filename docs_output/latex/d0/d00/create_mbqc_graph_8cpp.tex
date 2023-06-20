@@ -1,0 +1,84 @@
+\doxysection{src/archive/files\+To\+Go\+Through/create\+Mbqc\+Graph.cpp File Reference}
+\hypertarget{create_mbqc_graph_8cpp}{}\label{create_mbqc_graph_8cpp}\index{src/archive/filesToGoThrough/createMbqcGraph.cpp@{src/archive/filesToGoThrough/createMbqcGraph.cpp}}
+{\ttfamily \#include $<$boost/graph/adjacency\+\_\+list.\+hpp$>$}\newline
+{\ttfamily \#include $<$Qu\+EST.\+h$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_vertex_properties}{Vertex\+Properties}}
+\item 
+struct \mbox{\hyperlink{struct_edge_properties}{Edge\+Properties}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef boost\+::adjacency\+\_\+list$<$ boost\+::vecS, boost\+::vecS, boost\+::bidirectionalS, \mbox{\hyperlink{struct_vertex_properties}{Vertex\+Properties}}, \mbox{\hyperlink{struct_edge_properties}{Edge\+Properties}} $>$ \mbox{\hyperlink{create_mbqc_graph_8cpp_aecb5240937295d7d862af72b714284a3}{Circuit\+Graph}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{create_mbqc_graph_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{create_mbqc_graph_8cpp_aecb5240937295d7d862af72b714284a3}\label{create_mbqc_graph_8cpp_aecb5240937295d7d862af72b714284a3} 
+\index{createMbqcGraph.cpp@{createMbqcGraph.cpp}!CircuitGraph@{CircuitGraph}}
+\index{CircuitGraph@{CircuitGraph}!createMbqcGraph.cpp@{createMbqcGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{CircuitGraph}{CircuitGraph}}
+{\footnotesize\ttfamily typedef boost\+::adjacency\+\_\+list$<$boost\+::vecS, boost\+::vecS, boost\+::bidirectionalS, \mbox{\hyperlink{struct_vertex_properties}{Vertex\+Properties}}, \mbox{\hyperlink{struct_edge_properties}{Edge\+Properties}}$>$ \mbox{\hyperlink{create_mbqc_graph_8cpp_aecb5240937295d7d862af72b714284a3}{Circuit\+Graph}}}
+
+
+
+Definition at line \mbox{\hyperlink{create_mbqc_graph_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{create_mbqc_graph_8cpp_source}{create\+Mbqc\+Graph.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{create_mbqc_graph_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{create_mbqc_graph_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{createMbqcGraph.cpp@{createMbqcGraph.cpp}!main@{main}}
+\index{main@{main}!createMbqcGraph.cpp@{createMbqcGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{create_mbqc_graph_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{create_mbqc_graph_8cpp_source}{create\+Mbqc\+Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ quantum\ register\ with\ 3\ qubits}}
+\DoxyCodeLine{00020\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{00021\ \ \ \ \ Qureg\ qubits\ =\ createQureg(3,\ env);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ graph}}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{create_mbqc_graph_8cpp_aecb5240937295d7d862af72b714284a3}{CircuitGraph}}\ circuit(3);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ Add\ the\ qubits\ as\ vertices\ and\ attach\ them\ to\ the\ graph}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 3;\ i++)\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_vertex_properties}{VertexProperties}}\ vp\ =\ \{qubits\};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ boost::add\_vertex(vp,\ circuit);}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ Add\ the\ controlled-\/Z\ gates\ as\ edges\ and\ attach\ them\ to\ the\ graph}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ boost::add\_edge(0,\ 1,\ \{M\_PI\},\ circuit);}
+\DoxyCodeLine{00036\ \ \ \ \ boost::add\_edge(1,\ 2,\ \{M\_PI/2\},\ circuit);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ Perform\ some\ operations\ on\ the\ qubits\ using\ the\ graph}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ m\ =\ measure(qubits,0);}
+\DoxyCodeLine{00040\ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ std::cout\ <<\ m\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00042\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ Destroy\ the\ quantum\ register\ and\ the\ environment}}
+\DoxyCodeLine{00045\ \ \ \ \ destroyQureg(qubits,\ env);}
+\DoxyCodeLine{00046\ \ \ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00049\ \}}
+
+\end{DoxyCode}

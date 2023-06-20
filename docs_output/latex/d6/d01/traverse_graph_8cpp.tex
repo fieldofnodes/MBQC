@@ -1,0 +1,109 @@
+\doxysection{src/archive/files\+To\+Go\+Through/traverse\+Graph.cpp File Reference}
+\hypertarget{traverse_graph_8cpp}{}\label{traverse_graph_8cpp}\index{src/archive/filesToGoThrough/traverseGraph.cpp@{src/archive/filesToGoThrough/traverseGraph.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$boost/graph/adjacency\+\_\+list.\+hpp$>$}\newline
+{\ttfamily \#include \"{}create\+Graph.\+hpp\"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef boost\+::property$<$ boost\+::edge\+\_\+weight\+\_\+t, int $>$ \mbox{\hyperlink{traverse_graph_8cpp_ad531f0530c52e2baed8840517b52b457}{Edge\+Weight\+Property}}
+\item 
+typedef boost\+::adjacency\+\_\+list$<$ boost\+::listS, boost\+::vecS, boost\+::undirectedS, boost\+::no\+\_\+property, \mbox{\hyperlink{create_graph_8hpp_ad531f0530c52e2baed8840517b52b457}{Edge\+Weight\+Property}} $>$ \mbox{\hyperlink{traverse_graph_8cpp_ae727d82d2665e0ccdbb85e29c841ba5f}{undirected\+Graph}}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{traverse_graph_8cpp_af04c50f717d4bda41f0c58fe0eece059}{edge\+\_\+iterator}}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{\+::vertex\+\_\+iterator}} \mbox{\hyperlink{traverse_graph_8cpp_a9451df0dac964b257bedb5e60547824e}{vertex\+\_\+iterator}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{traverse_graph_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{traverse_graph_8cpp_af04c50f717d4bda41f0c58fe0eece059}\label{traverse_graph_8cpp_af04c50f717d4bda41f0c58fe0eece059} 
+\index{traverseGraph.cpp@{traverseGraph.cpp}!edge\_iterator@{edge\_iterator}}
+\index{edge\_iterator@{edge\_iterator}!traverseGraph.cpp@{traverseGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{edge\_iterator}{edge\_iterator}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}$>$\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{edge\+\_\+iterator}}}
+
+
+
+Definition at line \mbox{\hyperlink{traverse_graph_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{traverse_graph_8cpp_source}{traverse\+Graph.\+cpp}}.
+
+\Hypertarget{traverse_graph_8cpp_ad531f0530c52e2baed8840517b52b457}\label{traverse_graph_8cpp_ad531f0530c52e2baed8840517b52b457} 
+\index{traverseGraph.cpp@{traverseGraph.cpp}!EdgeWeightProperty@{EdgeWeightProperty}}
+\index{EdgeWeightProperty@{EdgeWeightProperty}!traverseGraph.cpp@{traverseGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{EdgeWeightProperty}{EdgeWeightProperty}}
+{\footnotesize\ttfamily typedef boost\+::property$<$boost\+::edge\+\_\+weight\+\_\+t, int$>$ \mbox{\hyperlink{create_graph_8hpp_ad531f0530c52e2baed8840517b52b457}{Edge\+Weight\+Property}}}
+
+
+
+Definition at line \mbox{\hyperlink{traverse_graph_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{traverse_graph_8cpp_source}{traverse\+Graph.\+cpp}}.
+
+\Hypertarget{traverse_graph_8cpp_ae727d82d2665e0ccdbb85e29c841ba5f}\label{traverse_graph_8cpp_ae727d82d2665e0ccdbb85e29c841ba5f} 
+\index{traverseGraph.cpp@{traverseGraph.cpp}!undirectedGraph@{undirectedGraph}}
+\index{undirectedGraph@{undirectedGraph}!traverseGraph.cpp@{traverseGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{undirectedGraph}{undirectedGraph}}
+{\footnotesize\ttfamily typedef boost\+::adjacency\+\_\+list$<$boost\+::listS, boost\+::vecS,boost\+::undirectedS,boost\+::no\+\_\+property,\mbox{\hyperlink{create_graph_8hpp_ad531f0530c52e2baed8840517b52b457}{Edge\+Weight\+Property}}$>$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}}
+
+
+
+Definition at line \mbox{\hyperlink{traverse_graph_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{traverse_graph_8cpp_source}{traverse\+Graph.\+cpp}}.
+
+\Hypertarget{traverse_graph_8cpp_a9451df0dac964b257bedb5e60547824e}\label{traverse_graph_8cpp_a9451df0dac964b257bedb5e60547824e} 
+\index{traverseGraph.cpp@{traverseGraph.cpp}!vertex\_iterator@{vertex\_iterator}}
+\index{vertex\_iterator@{vertex\_iterator}!traverseGraph.cpp@{traverseGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{vertex\_iterator}{vertex\_iterator}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}$>$\mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{\+::vertex\+\_\+iterator}} \mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{vertex\+\_\+iterator}}}
+
+
+
+Definition at line \mbox{\hyperlink{traverse_graph_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{traverse_graph_8cpp_source}{traverse\+Graph.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{traverse_graph_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{traverse_graph_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{traverseGraph.cpp@{traverseGraph.cpp}!main@{main}}
+\index{main@{main}!traverseGraph.cpp@{traverseGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{traverse_graph_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{traverse_graph_8cpp_source}{traverse\+Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{int}\ rows;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ cols;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ pathVertices;}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ pathGraph;}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph;}
+\DoxyCodeLine{00021\ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ rows\ =\ 100;}
+\DoxyCodeLine{00023\ \ \ \ \ cols\ =\ 100;}
+\DoxyCodeLine{00024\ \ \ \ \ pathVertices\ =\ 1000;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ pathGraph\ =\ \mbox{\hyperlink{create_graph_8hpp_abe67d4f4ed1169c1376d3a14fd9d144d}{createPathGraph}}(pathVertices);}
+\DoxyCodeLine{00028\ \ \ \ \ latticeGraph\ =\ \mbox{\hyperlink{create_graph_8hpp_aabb013bb6de93b1ca2ff83e1d7d200c7}{createLatticeGraph}}(rows,cols);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ Call\ the\ function\ and\ print\ the\ adjacent\ vertices\ of\ vertex\ 0}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;i<pathVertices;i++)}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ std::vector<undirectedGraph::vertex\_descriptor>\ adj\_vertices\ =\ \mbox{\hyperlink{create_graph_8hpp_a95616ef95512e388dddbc756c8644c4d}{get\_adjacent\_vertices}}(pathGraph,\ i);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ v\ :\ adj\_vertices)}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ v\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00041\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_struct_vertex_properties" xml:lang="en-US">
+<title>VertexProperties Struct Reference</title>
+<indexterm><primary>VertexProperties</primary></indexterm>
+<simplesect>
+    <title>Data Fields    </title>
+        <itemizedlist>
+            <listitem><para>Qureg <link linkend="_struct_vertex_properties_1a9529d752f2f361d68137d410f83f6c07">qubit</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<para>
+Definition at line <link linkend="_create_mbqc_graph_8cpp_source_1l00006">6</link> of file <link linkend="_create_mbqc_graph_8cpp_source">createMbqcGraph.cpp</link>.</para>
+</section>
+<section>
+<title>Field Documentation</title>
+<anchor xml:id="_struct_vertex_properties_1a9529d752f2f361d68137d410f83f6c07"/><section>
+    <title>qubit</title>
+<indexterm><primary>qubit</primary><secondary>VertexProperties</secondary></indexterm>
+<indexterm><primary>VertexProperties</primary><secondary>qubit</secondary></indexterm>
+<para><computeroutput>Qureg VertexProperties::qubit</computeroutput></para><para>
+Definition at line <link linkend="_create_mbqc_graph_8cpp_source_1l00007">7</link> of file <link linkend="_create_mbqc_graph_8cpp_source">createMbqcGraph.cpp</link>.</para>
+</section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+src/archive/filesToGoThrough/<link linkend="_create_mbqc_graph_8cpp">createMbqcGraph.cpp</link></section>
+</section>

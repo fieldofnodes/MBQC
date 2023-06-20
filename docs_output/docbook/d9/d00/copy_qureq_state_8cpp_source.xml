@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_copy_qureq_state_8cpp_source" xml:lang="en-US">
+<title>copyQureqState.cpp</title>
+<indexterm><primary>src/archive/filesToGoThrough/copyQureqState.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_copy_qureq_state_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&lt;QuEST.h&gt;</emphasis>
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00002"/>00002 
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00003"/><link linkend="_copy_qureq_state_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00003</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_copy_qureq_state_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00004"/>00004 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;quantum&#32;register&#32;with&#32;3&#32;qubits</emphasis>
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00005"/>00005 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00006"/>00006 &#32;&#32;&#32;&#32;Qureg&#32;qubits&#32;=&#32;createQureg(3,&#32;env);
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00007"/>00007 
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00008"/>00008 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Perform&#32;operations&#32;on&#32;the&#32;qubits</emphasis>
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00009"/>00009 
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Measure&#32;the&#32;second&#32;qubit</emphasis>
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00011"/>00011 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;measurementOutcome&#32;=&#32;measure(qubits,&#32;1);
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00012"/>00012 
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;new&#32;register&#32;with&#32;4&#32;qubits</emphasis>
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00014"/>00014 &#32;&#32;&#32;&#32;Qureg&#32;newQubits&#32;=&#32;createQureg(4,&#32;env);
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00015"/>00015 
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Copy&#32;the&#32;state&#32;of&#32;the&#32;old&#32;register&#32;onto&#32;the&#32;new&#32;one</emphasis>
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;copyState(qubits,&#32;newQubits);
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00018"/>00018 
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Destroy&#32;the&#32;old&#32;register</emphasis>
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;destroyQureg(qubits,&#32;env);
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00021"/>00021 
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Perform&#32;operations&#32;on&#32;the&#32;new&#32;register</emphasis>
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00023"/>00023 
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Destroy&#32;the&#32;new&#32;register</emphasis>
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;destroyQureg(newQubits,&#32;env);
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00026"/>00026 
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Destroy&#32;the&#32;environment</emphasis>
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00029"/>00029 
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_copy_qureq_state_8cpp_source_1l00031"/>00031 }
+</programlisting></section>

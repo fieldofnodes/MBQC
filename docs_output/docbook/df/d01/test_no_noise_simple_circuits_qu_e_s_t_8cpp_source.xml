@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source" xml:lang="en-US">
+<title>testNoNoiseSimpleCircuitsQuEST.cpp</title>
+<indexterm><primary>tests/testNoNoiseSimpleCircuitsQuEST.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00001"/>00001 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Title&#32;&#32;:&#32;testNoiseModelsQuEST.cpp&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00003"/>00003 <emphasis role="comment">//&#32;Author&#32;:&#32;Jonathan&#32;Miller&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00004"/>00004 <emphasis role="comment">//&#32;Date&#32;&#32;&#32;:&#32;20230503&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00005"/>00005 <emphasis role="comment">//&#32;Aim&#32;&#32;&#32;&#32;:&#32;test&#32;noise&#32;models&#32;using&#32;QuEST&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00006"/>00006 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Use&#32;CBQC&#32;first&#32;then&#32;apply&#32;to&#32;MBQC&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00008"/>00008 <emphasis role="comment"></emphasis><emphasis role="comment">//&#32;Include&#32;package&#32;header&#32;file</emphasis>
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00009"/>00009 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_packages_8hpp">packages.hpp</link>&quot;</emphasis>
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00010"/>00010 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00011"/>00011 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00012"/><link linkend="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00012</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>(){
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00013"/>00013 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Set&#32;probability</emphasis>
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00014"/>00014 &#32;&#32;&#32;&#32;qreal&#32;noProb&#32;=&#32;-1;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;std::string&#32;dataDir;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00016"/>00016 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;std::string&#32;outputNoNoiseDir;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;std::string&#32;qubitInfo;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;std::string&#32;dataPath&#32;=&#32;<emphasis role="stringliteral">&quot;Projects/exploringNoiseInQuEST/data&quot;</emphasis>;&#32;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;outputNoNoiseDir&#32;=&#32;<emphasis role="stringliteral">&quot;no_noise&quot;</emphasis>;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00021"/>00021 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;std::vector&lt;std::string&gt;&#32;savePaths;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;std::string&#32;fileAmp;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;std::string&#32;fileProb;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00026"/>00026 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00027"/>00027 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Run&#32;circuits&#32;save&#32;output&#32;to&#32;file&#32;no&#32;damping</emphasis>
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;qubitInfo&#32;=&#32;<emphasis role="stringliteral">&quot;applySingleQubitPauliX&quot;</emphasis>;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;savePaths&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a318982330941fb08021062d2593a62f9">getPaths</link>(dataPath,&#32;outputNoNoiseDir,&#32;qubitInfo,&#32;noProb);
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;fileAmp&#32;=&#32;savePaths[0];
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;fileProb&#32;=&#32;savePaths[1];
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_1a04cb99395192eeaaf6127a5566a1f0f2">applySingleQubitPauliX</link>(fileAmp,fileProb);
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;qubitInfo&#32;=&#32;<emphasis role="stringliteral">&quot;applySingleQubitHGate&quot;</emphasis>;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;savePaths&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a318982330941fb08021062d2593a62f9">getPaths</link>(dataPath,&#32;outputNoNoiseDir,&#32;qubitInfo,&#32;noProb);
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;fileAmp&#32;=&#32;savePaths[0];
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;fileProb&#32;=&#32;savePaths[1];
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;<link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_1abcf93bff15914fce42420a9c180cb52b">applySingleQubitHGate</link>(fileAmp,fileProb);
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00040"/>00040 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;qubitInfo&#32;=&#32;<emphasis role="stringliteral">&quot;applyTwoQubitPauliXEachQubit&quot;</emphasis>;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00042"/>00042 &#32;&#32;&#32;&#32;savePaths&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a318982330941fb08021062d2593a62f9">getPaths</link>(dataPath,&#32;outputNoNoiseDir,&#32;qubitInfo,&#32;noProb);
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;fileAmp&#32;=&#32;savePaths[0];
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;fileProb&#32;=&#32;savePaths[1];
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;<link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_1a0a4ae0264fe447986b9ec9020be0b300">applyTwoQubitPauliXEachQubit</link>(fileAmp,fileProb);
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00046"/>00046 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00047"/>00047 &#32;&#32;&#32;&#32;qubitInfo&#32;=&#32;<emphasis role="stringliteral">&quot;applyTwoQubitHGateEachQubit&quot;</emphasis>;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00048"/>00048 &#32;&#32;&#32;&#32;savePaths&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a318982330941fb08021062d2593a62f9">getPaths</link>(dataPath,&#32;outputNoNoiseDir,&#32;qubitInfo,&#32;noProb);
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00049"/>00049 &#32;&#32;&#32;&#32;fileAmp&#32;=&#32;savePaths[0];
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00050"/>00050 &#32;&#32;&#32;&#32;fileProb&#32;=&#32;savePaths[1];
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00051"/>00051 &#32;&#32;&#32;&#32;<link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_1a83516056319fc01a2e77d10e1207db1b">applyTwoQubitHGateEachQubit</link>(fileAmp,fileProb);
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00052"/>00052 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00053"/>00053 &#32;&#32;&#32;&#32;qubitInfo&#32;=&#32;<emphasis role="stringliteral">&quot;applyTwoQubitHCZGateBetweenQubit&quot;</emphasis>;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00054"/>00054 &#32;&#32;&#32;&#32;savePaths&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a318982330941fb08021062d2593a62f9">getPaths</link>(dataPath,&#32;outputNoNoiseDir,&#32;qubitInfo,&#32;noProb);
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00055"/>00055 &#32;&#32;&#32;&#32;fileAmp&#32;=&#32;savePaths[0];
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00056"/>00056 &#32;&#32;&#32;&#32;fileProb&#32;=&#32;savePaths[1];
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00057"/>00057 &#32;&#32;&#32;&#32;<link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_1a29e290b1295a652cd32caa8b1b9fadc1">applyTwoQubitHCZGateBetweenQubit</link>(fileAmp,fileProb);
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00058"/>00058 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00059"/>00059 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00061"/>00061 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00062"/>00062 }
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00063"/>00063 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00064"/>00064 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00065"/>00065 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00066"/>00066 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00067"/>00067 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00068"/>00068 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00069"/>00069 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00070"/>00070 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00071"/>00071 
+<anchor xml:id="_test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_1l00072"/>00072 
+</programlisting></section>

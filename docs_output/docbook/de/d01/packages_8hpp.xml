@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_packages_8hpp" xml:lang="en-US">
+<title>src/packages.hpp File Reference</title>
+<indexterm><primary>src/packages.hpp</primary></indexterm>
+<para>
+
+<para>Contains the inclusion of various packages and libraries used in the project. </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;algorithm&gt;<?linebreak?>#include &lt;iterator&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;set&gt;<?linebreak?>#include &lt;numeric&gt;<?linebreak?>#include &lt;cmath&gt;<?linebreak?>#include &lt;random&gt;<?linebreak?>#include &lt;filesystem&gt;<?linebreak?>#include &lt;functional&gt;<?linebreak?>#include &quot;config.h&quot;<?linebreak?>#include &lt;fstream&gt;<?linebreak?>#include &lt;cstdio&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &lt;ranges&gt;<?linebreak?>#include &lt;cstdlib&gt;<?linebreak?>#include &lt;cxxabi.h&gt;<?linebreak?>#include &lt;QuEST.h&gt;<?linebreak?>#include &lt;boost/graph/adjacency_list.hpp&gt;<?linebreak?>#include &lt;boost/graph/grid_graph.hpp&gt;<?linebreak?>#include &lt;boost/graph/graphviz.hpp&gt;<?linebreak?>#include &lt;boost/array.hpp&gt;<?linebreak?>#include &lt;boost/graph/graph_utility.hpp&gt;<?linebreak?>#include &lt;boost/container/vector.hpp&gt;<?linebreak?>#include &lt;boost/range/algorithm/unique.hpp&gt;<?linebreak?>#include &lt;boost/range/algorithm.hpp&gt;<?linebreak?>#include &lt;boost/range/adaptor/filtered.hpp&gt;<?linebreak?>#include &lt;boost/range/adaptor/transformed.hpp&gt;<?linebreak?>#include &quot;generalHelperFunctions.hpp&quot;<?linebreak?>#include &quot;writeGraphGraphVizDotFile.hpp&quot;<?linebreak?>#include &quot;graphConstructions.hpp&quot;<?linebreak?>#include &quot;graphTraversalFlows.hpp&quot;<?linebreak?>#include &quot;flowMeasurements.hpp&quot;<?linebreak?>#include &quot;angleConstruction.hpp&quot;<?linebreak?>#include &quot;quantumGraphClusterStates.hpp&quot;<?linebreak?>#include &quot;generalAssertFunctions.hpp&quot;<?linebreak?>#include &quot;graphAssertFunctions.hpp&quot;<?linebreak?>#include &quot;probabilitiesAmplitudesNoNoiseCircuits.hpp&quot;<?linebreak?>#include &quot;probabilitiesAmplitudesDampingCircuits.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>using <link linkend="_packages_8hpp_1a1909d41b7bcda36f8b0cdcb9e7f4711a">undirectedGraph</link> = boost::adjacency_list&lt; boost::vecS, boost::vecS, boost::undirectedS &gt;</para>
+</listitem>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_packages_8hpp_1afccd45e2973698c37e8379f6b25a82bc">edgeIterator</link></para>
+
+<para>Iterator for traversing edges in an undirected graph. </para>
+</listitem>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_packages_8hpp_1aad3f8f6369da7f36e6266fdcb1991169">vertexIterator</link></para>
+
+<para>Iterator for traversing vertices in an undirected graph. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Contains the inclusion of various packages and libraries used in the project. </para>
+<para>
+Definition in file <link linkend="_packages_8hpp_source">packages.hpp</link>.</para>
+</section>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_packages_8hpp_1afccd45e2973698c37e8379f6b25a82bc"/><section>
+    <title>edgeIterator</title>
+<indexterm><primary>edgeIterator</primary><secondary>packages.hpp</secondary></indexterm>
+<indexterm><primary>packages.hpp</primary><secondary>edgeIterator</secondary></indexterm>
+<para><computeroutput><link linkend="_packages_8hpp_1afccd45e2973698c37e8379f6b25a82bc">edgeIterator</link></computeroutput></para><para>
+
+<para>Iterator for traversing edges in an undirected graph. </para>
+</para>
+
+<para>This typedef represents an iterator for traversing edges in an undirected graph. It is used to iterate over the edges of an undirectedGraph. You can use it in conjunction with boost::edges() to traverse and operate on the edges of the graph. </para>
+<para>
+Definition at line <link linkend="_packages_8hpp_source_1l00067">67</link> of file <link linkend="_packages_8hpp_source">packages.hpp</link>.</para>
+</section>
+<anchor xml:id="_packages_8hpp_1a1909d41b7bcda36f8b0cdcb9e7f4711a"/><section>
+    <title>undirectedGraph</title>
+<indexterm><primary>undirectedGraph</primary><secondary>packages.hpp</secondary></indexterm>
+<indexterm><primary>packages.hpp</primary><secondary>undirectedGraph</secondary></indexterm>
+<para><computeroutput>using <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> =  boost::adjacency_list&lt;boost::vecS, boost::vecS, boost::undirectedS&gt;</computeroutput></para><para>
+Definition at line <link linkend="_packages_8hpp_source_1l00057">57</link> of file <link linkend="_packages_8hpp_source">packages.hpp</link>.</para>
+</section>
+<anchor xml:id="_packages_8hpp_1aad3f8f6369da7f36e6266fdcb1991169"/><section>
+    <title>vertexIterator</title>
+<indexterm><primary>vertexIterator</primary><secondary>packages.hpp</secondary></indexterm>
+<indexterm><primary>packages.hpp</primary><secondary>vertexIterator</secondary></indexterm>
+<para><computeroutput><link linkend="_packages_8hpp_1aad3f8f6369da7f36e6266fdcb1991169">vertexIterator</link></computeroutput></para><para>
+
+<para>Iterator for traversing vertices in an undirected graph. </para>
+</para>
+
+<para>This typedef represents an iterator for traversing vertices in an undirected graph. It is used to iterate over the vertices of an undirectedGraph. You can use it in conjunction with boost::vertices() to traverse and operate on the vertices of the graph. </para>
+<para>
+Definition at line <link linkend="_packages_8hpp_source_1l00077">77</link> of file <link linkend="_packages_8hpp_source">packages.hpp</link>.</para>
+</section>
+</section>
+</section>

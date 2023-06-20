@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_angle_construction_8hpp" xml:lang="en-US">
+<title>src/quantumGraphs/angleConstruction.hpp File Reference</title>
+<indexterm><primary>src/quantumGraphs/angleConstruction.hpp</primary></indexterm>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>std::vector&lt; qreal &gt; <link linkend="_angle_construction_8hpp_1aabc90c9d60fe6133e0143eda8db51906">initAllAnglesZero</link> (int numQubits)</para>
+</listitem>
+            <listitem><para>std::vector&lt; qreal &gt; <link linkend="_angle_construction_8hpp_1ac940c0b993f5f0e21dc74a2ac2f3fc7a">initAllAnglesSame</link> (int numQubits, qreal angle)</para>
+</listitem>
+            <listitem><para>std::vector&lt; qreal &gt; <link linkend="_angle_construction_8hpp_1aad84f8117e971acc869f15e6a616f195">initRandomPiOnNAngles</link> (int numQubits, int piDenominator)</para>
+</listitem>
+            <listitem><para>std::vector&lt; qreal &gt; <link linkend="_angle_construction_8hpp_1a4711c7e692e9e1c3dd07c4e5255b41d1">initRandomPiOnNAnglesMod2kPi</link> (int numQubits, int piDenominator)</para>
+</listitem>
+            <listitem><para>std::vector&lt; qreal &gt; <link linkend="_angle_construction_8hpp_1adde2e56cefa79b49346bc9e560b4430b">initRandomPiOnNAnglesMod2kPiPlusPi</link> (int numQubits, int piDenominator)</para>
+</listitem>
+            <listitem><para>void <link linkend="_angle_construction_8hpp_1a6647ed996ec54a9137e68e6c6317e8ee">addAngleRotateZgate</link> (Qureg qureg, std::vector&lt; qreal &gt; qubitAngles)</para>
+</listitem>
+            <listitem><para>std::vector&lt; qreal &gt; <link linkend="_angle_construction_8hpp_1a0804b07ffb2bea2c7ac8cba482a88d62">initRandomPiOnNEveryOtherAnglesMod2kPi</link> (int numQubits, int piDenominator)</para>
+</listitem>
+            <listitem><para>std::vector&lt; qreal &gt; <link linkend="_angle_construction_8hpp_1ac35939429a8657a1f33dad419e7812c1">initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi</link> (int numQubits, int piDenominator)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_angle_construction_8hpp_1a6647ed996ec54a9137e68e6c6317e8ee"/><section>
+    <title>addAngleRotateZgate()</title>
+<indexterm><primary>addAngleRotateZgate</primary><secondary>angleConstruction.hpp</secondary></indexterm>
+<indexterm><primary>angleConstruction.hpp</primary><secondary>addAngleRotateZgate</secondary></indexterm>
+<para><computeroutput>void addAngleRotateZgate (Qureg qureg, std::vector&lt; qreal &gt; qubitAngles)</computeroutput></para><para>
+Definition at line <link linkend="_angle_construction_8hpp_source_1l00143">143</link> of file <link linkend="_angle_construction_8hpp_source">angleConstruction.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00144 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=0;&#32;i&#32;&lt;&#32;qureg.numQubitsRepresented;&#32;i++){
+00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rotateZ&#32;(qureg,&#32;i,&#32;qubitAngles[i]);
+00146 &#32;&#32;&#32;&#32;}
+00147 }
+</programlisting></section>
+<anchor xml:id="_angle_construction_8hpp_1ac940c0b993f5f0e21dc74a2ac2f3fc7a"/><section>
+    <title>initAllAnglesSame()</title>
+<indexterm><primary>initAllAnglesSame</primary><secondary>angleConstruction.hpp</secondary></indexterm>
+<indexterm><primary>angleConstruction.hpp</primary><secondary>initAllAnglesSame</secondary></indexterm>
+<para><computeroutput>std::vector&lt; qreal &gt; initAllAnglesSame (int numQubits, qreal angle)</computeroutput></para><para>
+Definition at line <link linkend="_angle_construction_8hpp_source_1l00022">22</link> of file <link linkend="_angle_construction_8hpp_source">angleConstruction.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00023 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles(numQubits,angle);&#32;
+00024 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;qubitAngles;
+00025 }
+</programlisting></section>
+<anchor xml:id="_angle_construction_8hpp_1aabc90c9d60fe6133e0143eda8db51906"/><section>
+    <title>initAllAnglesZero()</title>
+<indexterm><primary>initAllAnglesZero</primary><secondary>angleConstruction.hpp</secondary></indexterm>
+<indexterm><primary>angleConstruction.hpp</primary><secondary>initAllAnglesZero</secondary></indexterm>
+<para><computeroutput>std::vector&lt; qreal &gt; initAllAnglesZero (int numQubits)</computeroutput></para><para>
+Definition at line <link linkend="_angle_construction_8hpp_source_1l00013">13</link> of file <link linkend="_angle_construction_8hpp_source">angleConstruction.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00014 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles(numQubits,0.0);&#32;
+00015 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;qubitAngles;
+00016 }
+</programlisting></section>
+<anchor xml:id="_angle_construction_8hpp_1aad84f8117e971acc869f15e6a616f195"/><section>
+    <title>initRandomPiOnNAngles()</title>
+<indexterm><primary>initRandomPiOnNAngles</primary><secondary>angleConstruction.hpp</secondary></indexterm>
+<indexterm><primary>angleConstruction.hpp</primary><secondary>initRandomPiOnNAngles</secondary></indexterm>
+<para><computeroutput>std::vector&lt; qreal &gt; initRandomPiOnNAngles (int numQubits, int piDenominator)</computeroutput></para><para>
+Definition at line <link linkend="_angle_construction_8hpp_source_1l00032">32</link> of file <link linkend="_angle_construction_8hpp_source">angleConstruction.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00033 &#32;&#32;&#32;&#32;
+00034 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;uniform&#32;distribution&#32;for&#32;the&#32;range</emphasis>
+00035 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;min&#32;=&#32;0;
+00036 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;max&#32;=&#32;2*piDenominator&#32;-&#32;1;
+00037 &#32;&#32;&#32;&#32;
+00038 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Populate&#32;angle&#32;vector</emphasis>
+00039 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles(numQubits);
+00040 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=0;&#32;i&#32;&lt;&#32;numQubits;&#32;i++){
+00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;numer&#32;=&#32;1.0&#32;*&#32;<link linkend="_general_helper_functions_8hpp_1a4c07ccd9e75d9522fb31bd4155bc5c46">drawRandomUniformInteger</link>(min,max);&#32;
+00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;angle&#32;=&#32;(double)(numer/piDenominator)&#32;*&#32;M_PI;
+00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles[i]&#32;=&#32;angle;
+00044 &#32;&#32;&#32;&#32;}&#32;
+00045 &#32;&#32;&#32;&#32;
+00046 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;qubitAngles;
+00047 }
+</programlisting></section>
+<anchor xml:id="_angle_construction_8hpp_1a4711c7e692e9e1c3dd07c4e5255b41d1"/><section>
+    <title>initRandomPiOnNAnglesMod2kPi()</title>
+<indexterm><primary>initRandomPiOnNAnglesMod2kPi</primary><secondary>angleConstruction.hpp</secondary></indexterm>
+<indexterm><primary>angleConstruction.hpp</primary><secondary>initRandomPiOnNAnglesMod2kPi</secondary></indexterm>
+<para><computeroutput>std::vector&lt; qreal &gt; initRandomPiOnNAnglesMod2kPi (int numQubits, int piDenominator)</computeroutput></para><para>
+Definition at line <link linkend="_angle_construction_8hpp_source_1l00057">57</link> of file <link linkend="_angle_construction_8hpp_source">angleConstruction.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00058 &#32;&#32;&#32;&#32;
+00059 &#32;&#32;&#32;&#32;
+00060 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;uniform&#32;distribution&#32;for&#32;the&#32;range</emphasis>
+00061 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;min&#32;=&#32;0;
+00062 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;max&#32;=&#32;2*piDenominator&#32;-&#32;1;
+00063 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;totalPositions&#32;=&#32;2*piDenominator;
+00064 &#32;&#32;&#32;&#32;
+00065 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Populate&#32;angle&#32;vector</emphasis>
+00066 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles(numQubits);
+00067 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;numeratorVector(numQubits);
+00068 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=0;&#32;i&#32;&lt;&#32;numQubits-1;&#32;i++){
+00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;numer&#32;=&#32;1.0&#32;*&#32;<link linkend="_general_helper_functions_8hpp_1a4c07ccd9e75d9522fb31bd4155bc5c46">drawRandomUniformInteger</link>(min,max);&#32;
+00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numeratorVector[i]&#32;=&#32;numer;
+00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;angle&#32;=&#32;(double)(numer/piDenominator)&#32;*&#32;M_PI;
+00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles[i]&#32;=&#32;angle;
+00073 &#32;&#32;&#32;&#32;}&#32;
+00074 &#32;&#32;
+00075 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Compute&#32;some&#32;of&#32;random&#32;numerators</emphasis>
+00076 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;totalNumerator&#32;=&#32;std::accumulate(numeratorVector.begin(),&#32;numeratorVector.end(),&#32;0);
+00077 
+00078 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Get&#32;remainingPositions</emphasis>
+00079 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;remainingPositions&#32;=&#32;totalPositions&#32;-&#32;(totalNumerator&#32;%&#32;totalPositions);
+00080 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;totalNumeratorAndRemainingModPositions&#32;=&#32;(remainingPositions&#32;+&#32;totalNumerator)&#32;%&#32;totalPositions;
+00081 &#32;&#32;&#32;&#32;
+00082 &#32;&#32;&#32;&#32;assert((totalNumeratorAndRemainingModPositions&#32;==&#32;0)&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;Total&#32;numerator&#32;values&#32;should&#32;be&#32;&#32;mod&#32;total&#32;positions&#32;equal&#32;to&#32;0,&#32;indicating&#32;2kPi&#32;multiple&quot;</emphasis>);
+00083 
+00084 &#32;&#32;&#32;&#32;qreal&#32;finalAngle&#32;=&#32;(1.0)*(remainingPositions/piDenominator)*M_PI;
+00085 &#32;&#32;&#32;&#32;qubitAngles[numQubits-1]&#32;=&#32;finalAngle;
+00086 
+00087 &#32;&#32;&#32;&#32;
+00088 &#32;&#32;&#32;&#32;
+00089 &#32;&#32;&#32;&#32;
+00090 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;qubitAngles;
+00091 &#32;&#32;&#32;&#32;
+00092 }
+</programlisting></section>
+<anchor xml:id="_angle_construction_8hpp_1adde2e56cefa79b49346bc9e560b4430b"/><section>
+    <title>initRandomPiOnNAnglesMod2kPiPlusPi()</title>
+<indexterm><primary>initRandomPiOnNAnglesMod2kPiPlusPi</primary><secondary>angleConstruction.hpp</secondary></indexterm>
+<indexterm><primary>angleConstruction.hpp</primary><secondary>initRandomPiOnNAnglesMod2kPiPlusPi</secondary></indexterm>
+<para><computeroutput>std::vector&lt; qreal &gt; initRandomPiOnNAnglesMod2kPiPlusPi (int numQubits, int piDenominator)</computeroutput></para><para>
+Definition at line <link linkend="_angle_construction_8hpp_source_1l00103">103</link> of file <link linkend="_angle_construction_8hpp_source">angleConstruction.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00104 &#32;&#32;&#32;&#32;
+00105 &#32;&#32;&#32;&#32;
+00106 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;uniform&#32;distribution&#32;for&#32;the&#32;range</emphasis>
+00107 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;min&#32;=&#32;0;
+00108 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;max&#32;=&#32;2*piDenominator&#32;-&#32;1;
+00109 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;totalPositions&#32;=&#32;2*piDenominator;
+00110 &#32;&#32;&#32;&#32;
+00111 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Populate&#32;angle&#32;vector</emphasis>
+00112 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles(numQubits);
+00113 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;numeratorVector(numQubits);
+00114 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=0;&#32;i&#32;&lt;&#32;numQubits-1;&#32;i++){
+00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;numer&#32;=&#32;1.0&#32;*&#32;<link linkend="_general_helper_functions_8hpp_1a4c07ccd9e75d9522fb31bd4155bc5c46">drawRandomUniformInteger</link>(min,max);&#32;
+00116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numeratorVector[i]&#32;=&#32;numer;
+00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;angle&#32;=&#32;(double)(numer/piDenominator)&#32;*&#32;M_PI;
+00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles[i]&#32;=&#32;angle;
+00119 &#32;&#32;&#32;&#32;}&#32;
+00120 &#32;&#32;
+00121 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Compute&#32;some&#32;of&#32;random&#32;numerators</emphasis>
+00122 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;totalNumerator&#32;=&#32;std::accumulate(numeratorVector.begin(),&#32;numeratorVector.end(),&#32;0);
+00123 
+00124 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Get&#32;remainingPositions</emphasis>
+00125 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;remainingPositions&#32;=&#32;totalPositions&#32;-&#32;(totalNumerator&#32;%&#32;totalPositions);
+00126 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;totalNumeratorAndRemainingModPositions&#32;=&#32;(remainingPositions&#32;+&#32;totalNumerator)&#32;%&#32;totalPositions;
+00127 &#32;&#32;&#32;&#32;
+00128 &#32;&#32;&#32;&#32;assert((totalNumeratorAndRemainingModPositions&#32;==&#32;0)&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;Total&#32;numerator&#32;values&#32;should&#32;be&#32;&#32;mod&#32;total&#32;positions&#32;equal&#32;to&#32;0,&#32;indicating&#32;2kPi&#32;multiple&quot;</emphasis>);
+00129 
+00130 &#32;&#32;&#32;&#32;qreal&#32;finalAngle&#32;=&#32;(1.0)*(remainingPositions/piDenominator)*M_PI&#32;+&#32;M_PI;
+00131 &#32;&#32;&#32;&#32;qubitAngles[numQubits-1]&#32;=&#32;finalAngle;
+00132 
+00133 &#32;&#32;&#32;&#32;
+00134 &#32;&#32;&#32;&#32;
+00135 &#32;&#32;&#32;&#32;
+00136 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;qubitAngles;
+00137 &#32;&#32;&#32;&#32;
+00138 }
+</programlisting></section>
+<anchor xml:id="_angle_construction_8hpp_1a0804b07ffb2bea2c7ac8cba482a88d62"/><section>
+    <title>initRandomPiOnNEveryOtherAnglesMod2kPi()</title>
+<indexterm><primary>initRandomPiOnNEveryOtherAnglesMod2kPi</primary><secondary>angleConstruction.hpp</secondary></indexterm>
+<indexterm><primary>angleConstruction.hpp</primary><secondary>initRandomPiOnNEveryOtherAnglesMod2kPi</secondary></indexterm>
+<para><computeroutput>std::vector&lt; qreal &gt; initRandomPiOnNEveryOtherAnglesMod2kPi (int numQubits, int piDenominator)</computeroutput></para><para>
+Definition at line <link linkend="_angle_construction_8hpp_source_1l00153">153</link> of file <link linkend="_angle_construction_8hpp_source">angleConstruction.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00154 &#32;&#32;&#32;&#32;
+00155 &#32;&#32;&#32;&#32;
+00156 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;uniform&#32;distribution&#32;for&#32;the&#32;range</emphasis>
+00157 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;min&#32;=&#32;0;
+00158 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;max&#32;=&#32;2*piDenominator&#32;-&#32;1;
+00159 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;totalPositions&#32;=&#32;2*piDenominator;
+00160 &#32;&#32;&#32;&#32;
+00161 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Populate&#32;angle&#32;vector</emphasis>
+00162 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles(numQubits);
+00163 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;numeratorVector(numQubits);
+00164 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=0;&#32;i&#32;&lt;&#32;numQubits-1;&#32;i++){
+00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(i%2==0){
+00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;numer&#32;=&#32;1.0&#32;*&#32;<link linkend="_general_helper_functions_8hpp_1a4c07ccd9e75d9522fb31bd4155bc5c46">drawRandomUniformInteger</link>(min+1,max);&#32;
+00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numeratorVector[i]&#32;=&#32;numer;
+00168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;angle&#32;=&#32;(double)(numer/piDenominator)&#32;*&#32;M_PI;
+00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles[i]&#32;=&#32;angle;
+00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>(i%2==1){
+00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles[i]&#32;=&#32;0.0;
+00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}<emphasis role="keywordflow">else</emphasis>{
+00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//nothing</emphasis>
+00174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+00176 &#32;&#32;&#32;&#32;}&#32;
+00177 &#32;&#32;
+00178 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Compute&#32;some&#32;of&#32;random&#32;numerators</emphasis>
+00179 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;totalNumerator&#32;=&#32;std::accumulate(numeratorVector.begin(),&#32;numeratorVector.end(),&#32;0);
+00180 
+00181 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Get&#32;remainingPositions</emphasis>
+00182 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;remainingPositions&#32;=&#32;totalPositions&#32;-&#32;(totalNumerator&#32;%&#32;totalPositions);
+00183 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;totalNumeratorAndRemainingModPositions&#32;=&#32;(remainingPositions&#32;+&#32;totalNumerator)&#32;%&#32;totalPositions;
+00184 &#32;&#32;&#32;&#32;
+00185 &#32;&#32;&#32;&#32;assert((totalNumeratorAndRemainingModPositions&#32;==&#32;0)&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;Total&#32;numerator&#32;values&#32;should&#32;be&#32;&#32;mod&#32;total&#32;positions&#32;equal&#32;to&#32;0,&#32;indicating&#32;2kPi&#32;multiple&quot;</emphasis>);
+00186 
+00187 &#32;&#32;&#32;&#32;qreal&#32;finalAngle&#32;=&#32;(1.0)*(remainingPositions/piDenominator)*M_PI;
+00188 &#32;&#32;&#32;&#32;qubitAngles[numQubits-1]&#32;=&#32;finalAngle;
+00189 
+00190 
+00191 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;qubitAngles;
+00192 &#32;&#32;&#32;&#32;
+00193 }
+</programlisting></section>
+<anchor xml:id="_angle_construction_8hpp_1ac35939429a8657a1f33dad419e7812c1"/><section>
+    <title>initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi()</title>
+<indexterm><primary>initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi</primary><secondary>angleConstruction.hpp</secondary></indexterm>
+<indexterm><primary>angleConstruction.hpp</primary><secondary>initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi</secondary></indexterm>
+<para><computeroutput>std::vector&lt; qreal &gt; initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi (int numQubits, int piDenominator)</computeroutput></para><para>
+Definition at line <link linkend="_angle_construction_8hpp_source_1l00200">200</link> of file <link linkend="_angle_construction_8hpp_source">angleConstruction.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00201 &#32;&#32;&#32;&#32;
+00202 &#32;&#32;&#32;&#32;
+00203 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;uniform&#32;distribution&#32;for&#32;the&#32;range</emphasis>
+00204 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;min&#32;=&#32;0;
+00205 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;max&#32;=&#32;2*piDenominator&#32;-&#32;1;
+00206 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;totalPositions&#32;=&#32;2*piDenominator;
+00207 &#32;&#32;&#32;&#32;
+00208 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Populate&#32;angle&#32;vector</emphasis>
+00209 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles(numQubits);
+00210 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;numeratorVector(numQubits);
+00211 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=0;&#32;i&#32;&lt;&#32;numQubits-1;&#32;i++){
+00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(i%2==0){
+00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;numer&#32;=&#32;1.0&#32;*&#32;<link linkend="_general_helper_functions_8hpp_1a4c07ccd9e75d9522fb31bd4155bc5c46">drawRandomUniformInteger</link>(min+1,max);&#32;
+00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numeratorVector[i]&#32;=&#32;numer;
+00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;angle&#32;=&#32;(double)(numer/piDenominator)&#32;*&#32;M_PI;
+00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles[i]&#32;=&#32;angle;
+00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>(i%2==1){
+00218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles[i]&#32;=&#32;0.0;
+00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}<emphasis role="keywordflow">else</emphasis>{
+00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//nothing</emphasis>
+00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00222 &#32;&#32;&#32;&#32;}&#32;
+00223 &#32;&#32;
+00224 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Compute&#32;some&#32;of&#32;random&#32;numerators</emphasis>
+00225 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;totalNumerator&#32;=&#32;std::accumulate(numeratorVector.begin(),&#32;numeratorVector.end(),&#32;0);
+00226 
+00227 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Get&#32;remainingPositions</emphasis>
+00228 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;remainingPositions&#32;=&#32;totalPositions&#32;-&#32;(totalNumerator&#32;%&#32;totalPositions);
+00229 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;totalNumeratorAndRemainingModPositions&#32;=&#32;(remainingPositions&#32;+&#32;totalNumerator)&#32;%&#32;totalPositions;
+00230 &#32;&#32;&#32;&#32;
+00231 &#32;&#32;&#32;&#32;assert((totalNumeratorAndRemainingModPositions&#32;==&#32;0)&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;Total&#32;numerator&#32;values&#32;should&#32;be&#32;&#32;mod&#32;total&#32;positions&#32;equal&#32;to&#32;0,&#32;indicating&#32;2kPi&#32;multiple&quot;</emphasis>);
+00232 
+00233 &#32;&#32;&#32;&#32;qreal&#32;finalAngle&#32;=&#32;(1.0)*(remainingPositions/piDenominator)*M_PI&#32;+&#32;M_PI;
+00234 &#32;&#32;&#32;&#32;qubitAngles[numQubits-1]&#32;=&#32;finalAngle;
+00235 
+00236 &#32;&#32;&#32;&#32;
+00237 &#32;&#32;&#32;&#32;
+00238 &#32;&#32;&#32;&#32;
+00239 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;qubitAngles;
+00240 &#32;&#32;&#32;&#32;
+00241 }
+</programlisting></section>
+</section>
+</section>

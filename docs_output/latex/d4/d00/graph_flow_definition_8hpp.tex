@@ -1,0 +1,183 @@
+\doxysection{src/graphs/graph\+Flow\+Definition.hpp File Reference}
+\hypertarget{graph_flow_definition_8hpp}{}\label{graph_flow_definition_8hpp}\index{src/graphs/graphFlowDefinition.hpp@{src/graphs/graphFlowDefinition.hpp}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{graph_flow_definition_8hpp_a7da00b4eb0fe705f2a1ac54347decb27}{assert\+Flow\+Function\+Neighbour}} (const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&g, int v, int num\+Rows, std\+::function$<$ int(int, int)$>$flow\+Function)
+\begin{DoxyCompactList}\small\item\em Asserts the flow function for a given vertex and its neighbors in the graph. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{graph_flow_definition_8hpp_ab2d570648375d421e37ef5eeb2590242}{are\+Vertices\+Connected}} (const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&g, undirected\+Graph\+::vertex\+\_\+descriptor u, undirected\+Graph\+::vertex\+\_\+descriptor v)
+\begin{DoxyCompactList}\small\item\em Checks if two vertices in the undirected graph are connected by an edge. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{graph_flow_definition_8hpp_a0adf0631e71f1959ee93977f2867e9c7}{assert\+Flow\+Function\+Neighbour\+Vertex}} (const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&g, int vertex)
+\begin{DoxyCompactList}\small\item\em Asserts a condition for the flow function of a given vertex and its neighbors. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{graph_flow_definition_8hpp_a41aab0ccd3ea6f075647fb7a443daf4d}{assert\+Flow\+Function\+Future\+Of\+Vertex}} (const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&g, int vertex)
+\begin{DoxyCompactList}\small\item\em Asserts a condition for the flow function and future of a given vertex. \end{DoxyCompactList}\item 
+void void \mbox{\hyperlink{graph_flow_definition_8hpp_aceae62f2b36e649d0a5cebdd0369f5c3}{assert\+Neighbour\+Flow\+Function\+Future\+Of\+Vertex}} (const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&g, int vertex)
+\begin{DoxyCompactList}\small\item\em Asserts a condition involving the neighbor, flow function, and future of a vertex. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{graph_flow_definition_8hpp_ab2d570648375d421e37ef5eeb2590242}\label{graph_flow_definition_8hpp_ab2d570648375d421e37ef5eeb2590242} 
+\index{graphFlowDefinition.hpp@{graphFlowDefinition.hpp}!areVerticesConnected@{areVerticesConnected}}
+\index{areVerticesConnected@{areVerticesConnected}!graphFlowDefinition.hpp@{graphFlowDefinition.hpp}}
+\doxysubsubsection{\texorpdfstring{areVerticesConnected()}{areVerticesConnected()}}
+{\footnotesize\ttfamily bool are\+Vertices\+Connected (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{g,  }\item[{undirected\+Graph\+::vertex\+\_\+descriptor}]{u,  }\item[{undirected\+Graph\+::vertex\+\_\+descriptor}]{v }\end{DoxyParamCaption})}
+
+
+
+Checks if two vertices in the undirected graph are connected by an edge. 
+
+This function checks if two vertices \textquotesingle{}u\textquotesingle{} and \textquotesingle{}v\textquotesingle{} in the undirected graph \textquotesingle{}g\textquotesingle{} are connected by an edge. It uses the boost\+::edge() function to check the presence of an edge between \textquotesingle{}u\textquotesingle{} and \textquotesingle{}v\textquotesingle{}. If an edge exists, the function returns true; otherwise, it returns false.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The undirected graph. \\
+\hline
+{\em u} & The first vertex. \\
+\hline
+{\em v} & The second vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if there is an edge between \textquotesingle{}u\textquotesingle{} and \textquotesingle{}v\textquotesingle{}, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graph_flow_definition_8hpp_source_l00063}{63}} of file \mbox{\hyperlink{graph_flow_definition_8hpp_source}{graph\+Flow\+Definition.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{auto}\ edge\ =\ boost::edge(u,\ v,\ g);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{return}\ edge.second;\ \textcolor{comment}{//\ Returns\ true\ if\ there\ is\ an\ edge\ between\ u\ and\ v}}
+\DoxyCodeLine{00066\ \}}
+
+\end{DoxyCode}
+\Hypertarget{graph_flow_definition_8hpp_a41aab0ccd3ea6f075647fb7a443daf4d}\label{graph_flow_definition_8hpp_a41aab0ccd3ea6f075647fb7a443daf4d} 
+\index{graphFlowDefinition.hpp@{graphFlowDefinition.hpp}!assertFlowFunctionFutureOfVertex@{assertFlowFunctionFutureOfVertex}}
+\index{assertFlowFunctionFutureOfVertex@{assertFlowFunctionFutureOfVertex}!graphFlowDefinition.hpp@{graphFlowDefinition.hpp}}
+\doxysubsubsection{\texorpdfstring{assertFlowFunctionFutureOfVertex()}{assertFlowFunctionFutureOfVertex()}}
+{\footnotesize\ttfamily void assert\+Flow\+Function\+Future\+Of\+Vertex (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{g,  }\item[{int}]{vertex }\end{DoxyParamCaption})}
+
+
+
+Asserts a condition for the flow function and future of a given vertex. 
+
+This function asserts a condition for the flow function and future of a given vertex \textquotesingle{}vertex\textquotesingle{} in the undirected graph \textquotesingle{}g\textquotesingle{}. It performs an assertion that involves the flow function and future of \textquotesingle{}vertex\textquotesingle{}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The undirected graph. \\
+\hline
+{\em vertex} & The vertex for which to assert the flow function and future. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{graph_flow_definition_8hpp_source_l00095}{95}} of file \mbox{\hyperlink{graph_flow_definition_8hpp_source}{graph\+Flow\+Definition.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ }
+\DoxyCodeLine{00097\ \}}
+
+\end{DoxyCode}
+\Hypertarget{graph_flow_definition_8hpp_a7da00b4eb0fe705f2a1ac54347decb27}\label{graph_flow_definition_8hpp_a7da00b4eb0fe705f2a1ac54347decb27} 
+\index{graphFlowDefinition.hpp@{graphFlowDefinition.hpp}!assertFlowFunctionNeighbour@{assertFlowFunctionNeighbour}}
+\index{assertFlowFunctionNeighbour@{assertFlowFunctionNeighbour}!graphFlowDefinition.hpp@{graphFlowDefinition.hpp}}
+\doxysubsubsection{\texorpdfstring{assertFlowFunctionNeighbour()}{assertFlowFunctionNeighbour()}}
+{\footnotesize\ttfamily void assert\+Flow\+Function\+Neighbour (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{g,  }\item[{int}]{v,  }\item[{int}]{num\+Rows,  }\item[{std\+::function$<$ int(int, int)$>$}]{flow\+Function }\end{DoxyParamCaption})}
+
+
+
+Asserts the flow function for a given vertex and its neighbors in the graph. 
+
+This function asserts that the flow function for a given vertex and its neighbors in the undirected graph satisfies a certain condition. It takes the graph \textquotesingle{}g\textquotesingle{}, the vertex \textquotesingle{}v\textquotesingle{}, the number of rows \textquotesingle{}num\+Rows\textquotesingle{}, and the flow function \textquotesingle{}flow\+Function\textquotesingle{} as input parameters. It calculates the forward lattice flow for the vertex \textquotesingle{}v\textquotesingle{} using the provided flow function and checks if it is present in the list of neighbors of \textquotesingle{}v\textquotesingle{}. If the flow value is found in the neighbor vertices, the assertion passes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The undirected graph. \\
+\hline
+{\em v} & The vertex for which to assert the flow function and its neighbors. \\
+\hline
+{\em num\+Rows} & The number of rows in the lattice. \\
+\hline
+{\em flow\+Function} & The flow function to be tested. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{graph_flow_definition_8hpp_source_l00038}{38}} of file \mbox{\hyperlink{graph_flow_definition_8hpp_source}{graph\+Flow\+Definition.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ Call\ the\ flow\ function\ to\ get\ the\ forward\ lattice\ flow}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ fv\ =\ flowFunction(v,\ numRows);}
+\DoxyCodeLine{00042\ \ \ \ \ std::vector<int>\ neigh\ =\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a954183dad806b30b05e526c37284768b}{getVertexNeighbours}}(g,v)}
+\DoxyCodeLine{00043\ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{general_assert_functions_8hpp_a4a6a933e01029d0c61bce553817a0feb}{isIntInVector}}(v,\ neigh)}
+\DoxyCodeLine{00045\ \ \ \ \ }
+\DoxyCodeLine{00046\ \}}
+
+\end{DoxyCode}
+\Hypertarget{graph_flow_definition_8hpp_a0adf0631e71f1959ee93977f2867e9c7}\label{graph_flow_definition_8hpp_a0adf0631e71f1959ee93977f2867e9c7} 
+\index{graphFlowDefinition.hpp@{graphFlowDefinition.hpp}!assertFlowFunctionNeighbourVertex@{assertFlowFunctionNeighbourVertex}}
+\index{assertFlowFunctionNeighbourVertex@{assertFlowFunctionNeighbourVertex}!graphFlowDefinition.hpp@{graphFlowDefinition.hpp}}
+\doxysubsubsection{\texorpdfstring{assertFlowFunctionNeighbourVertex()}{assertFlowFunctionNeighbourVertex()}}
+{\footnotesize\ttfamily void assert\+Flow\+Function\+Neighbour\+Vertex (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{g,  }\item[{int}]{vertex }\end{DoxyParamCaption})}
+
+
+
+Asserts a condition for the flow function of a given vertex and its neighbors. 
+
+This function asserts a condition for the flow function of a given vertex \textquotesingle{}vertex\textquotesingle{} in the undirected graph \textquotesingle{}g\textquotesingle{} and its neighboring vertices. It performs an assertion that involves the flow function of \textquotesingle{}vertex\textquotesingle{} and its neighbors.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The undirected graph. \\
+\hline
+{\em vertex} & The vertex for which to assert the flow function and its neighbors. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{graph_flow_definition_8hpp_source_l00080}{80}} of file \mbox{\hyperlink{graph_flow_definition_8hpp_source}{graph\+Flow\+Definition.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//\ Assert\ that\ for\ vertex,\ v,\ than\ f(v)\ is\ a\ neighbour}}
+\DoxyCodeLine{00082\ \}}
+
+\end{DoxyCode}
+\Hypertarget{graph_flow_definition_8hpp_aceae62f2b36e649d0a5cebdd0369f5c3}\label{graph_flow_definition_8hpp_aceae62f2b36e649d0a5cebdd0369f5c3} 
+\index{graphFlowDefinition.hpp@{graphFlowDefinition.hpp}!assertNeighbourFlowFunctionFutureOfVertex@{assertNeighbourFlowFunctionFutureOfVertex}}
+\index{assertNeighbourFlowFunctionFutureOfVertex@{assertNeighbourFlowFunctionFutureOfVertex}!graphFlowDefinition.hpp@{graphFlowDefinition.hpp}}
+\doxysubsubsection{\texorpdfstring{assertNeighbourFlowFunctionFutureOfVertex()}{assertNeighbourFlowFunctionFutureOfVertex()}}
+{\footnotesize\ttfamily void void assert\+Neighbour\+Flow\+Function\+Future\+Of\+Vertex (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{g,  }\item[{int}]{vertex }\end{DoxyParamCaption})}
+
+
+
+Asserts a condition involving the neighbor, flow function, and future of a vertex. 
+
+This function asserts a condition that involves the neighbor, flow function, and future of a vertex in the undirected graph \textquotesingle{}g\textquotesingle{}. It performs an assertion based on these properties of the vertex.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The undirected graph. \\
+\hline
+{\em vertex} & The vertex for which to assert the flow function and future. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{graph_flow_definition_8hpp_source_l00111}{111}} of file \mbox{\hyperlink{graph_flow_definition_8hpp_source}{graph\+Flow\+Definition.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ }
+\DoxyCodeLine{00113\ \}}
+
+\end{DoxyCode}

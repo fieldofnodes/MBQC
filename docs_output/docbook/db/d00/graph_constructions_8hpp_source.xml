@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_graph_constructions_8hpp_source" xml:lang="en-US">
+<title>graphConstructions.hpp</title>
+<indexterm><primary>src/graphs/graphConstructions.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_graph_constructions_8hpp_source_1l00001"/>00001 
+<anchor xml:id="_graph_constructions_8hpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Title&#32;&#32;:&#32;graphConstructions.hpp&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_graph_constructions_8hpp_source_1l00003"/>00003 <emphasis role="comment">//&#32;Author&#32;:&#32;Jonathan&#32;Miller&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_graph_constructions_8hpp_source_1l00004"/>00004 <emphasis role="comment">//&#32;Date&#32;&#32;&#32;:&#32;20230425&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_graph_constructions_8hpp_source_1l00005"/>00005 <emphasis role="comment">//&#32;Aim&#32;&#32;&#32;&#32;:&#32;Construct&#32;graphs&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_graph_constructions_8hpp_source_1l00006"/>00006 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;As&#32;graph&#32;types&#32;grow&#32;in&#32;number,&#32;separate&#32;tests&#32;&#32;//</emphasis>
+<anchor xml:id="_graph_constructions_8hpp_source_1l00007"/>00007 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;across&#32;multiple&#32;files&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_graph_constructions_8hpp_source_1l00009"/>00009 <emphasis role="comment"></emphasis>
+<anchor xml:id="_graph_constructions_8hpp_source_1l00010"/>00010 
+<anchor xml:id="_graph_constructions_8hpp_source_1l00011"/>00011 
+<anchor xml:id="_graph_constructions_8hpp_source_1l00021"/><link linkend="_graph_constructions_8hpp_1a6e0974be2fa2e599ab591aa02f1c9eb2">00021</link> std::vector&lt;std::vector&lt;int&gt;&gt;&#32;<link linkend="_graph_constructions_8hpp_1a6e0974be2fa2e599ab591aa02f1c9eb2">create_lattice</link>(<emphasis role="keywordtype">int</emphasis>&#32;numRows,&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols)&#32;{
+<anchor xml:id="_graph_constructions_8hpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices&#32;=&#32;numRows&#32;*&#32;numCols;
+<anchor xml:id="_graph_constructions_8hpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;std::vector&lt;std::vector&lt;int&gt;&gt;&#32;lattice(numRows,&#32;std::vector&lt;int&gt;(numCols,&#32;-1));
+<anchor xml:id="_graph_constructions_8hpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;numbers(numVertices);
+<anchor xml:id="_graph_constructions_8hpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;numVertices;&#32;i++)&#32;{
+<anchor xml:id="_graph_constructions_8hpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numbers[i]&#32;=&#32;i;
+<anchor xml:id="_graph_constructions_8hpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_graph_constructions_8hpp_source_1l00028"/>00028 
+<anchor xml:id="_graph_constructions_8hpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;number&#32;:&#32;numbers)&#32;{
+<anchor xml:id="_graph_constructions_8hpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;row&#32;=&#32;number&#32;%&#32;numRows;
+<anchor xml:id="_graph_constructions_8hpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;col&#32;=&#32;number&#32;/&#32;numRows;
+<anchor xml:id="_graph_constructions_8hpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lattice[row][col]&#32;=&#32;number;
+<anchor xml:id="_graph_constructions_8hpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_graph_constructions_8hpp_source_1l00034"/>00034 
+<anchor xml:id="_graph_constructions_8hpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;lattice;
+<anchor xml:id="_graph_constructions_8hpp_source_1l00036"/>00036 }
+<anchor xml:id="_graph_constructions_8hpp_source_1l00037"/>00037 
+<anchor xml:id="_graph_constructions_8hpp_source_1l00038"/>00038 
+<anchor xml:id="_graph_constructions_8hpp_source_1l00051"/><link linkend="_graph_constructions_8hpp_1a74f9014929a19ec558c3bc766754f1c3">00051</link> <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;<link linkend="_graph_constructions_8hpp_1a74f9014929a19ec558c3bc766754f1c3">createLatticeGraph</link>(<emphasis role="keywordtype">int</emphasis>&#32;numRows,&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols)&#32;{&#32;
+<anchor xml:id="_graph_constructions_8hpp_source_1l00052"/>00052 &#32;&#32;&#32;&#32;std::vector&lt;std::vector&lt;int&gt;&gt;&#32;lattice&#32;=&#32;<link linkend="_graph_constructions_8hpp_1a6e0974be2fa2e599ab591aa02f1c9eb2">create_lattice</link>(numRows,&#32;numCols);
+<anchor xml:id="_graph_constructions_8hpp_source_1l00053"/>00053 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices&#32;=&#32;numRows&#32;*&#32;numCols;
+<anchor xml:id="_graph_constructions_8hpp_source_1l00054"/>00054 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph(numVertices);
+<anchor xml:id="_graph_constructions_8hpp_source_1l00055"/>00055 &#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_constructions_8hpp_source_1l00056"/>00056 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Add&#32;edges&#32;to&#32;the&#32;graph</emphasis>
+<anchor xml:id="_graph_constructions_8hpp_source_1l00057"/>00057 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;row&#32;=&#32;0;&#32;row&#32;&lt;&#32;numRows;&#32;row++)&#32;{
+<anchor xml:id="_graph_constructions_8hpp_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;col&#32;=&#32;0;&#32;col&#32;&lt;&#32;numCols;&#32;col++)&#32;{
+<anchor xml:id="_graph_constructions_8hpp_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(row&#32;+&#32;1&#32;&lt;&#32;numRows)&#32;{
+<anchor xml:id="_graph_constructions_8hpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;boost::add_edge(lattice[row][col],&#32;lattice[row&#32;+&#32;1][col],&#32;latticeGraph);
+<anchor xml:id="_graph_constructions_8hpp_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_graph_constructions_8hpp_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(col&#32;+&#32;1&#32;&lt;&#32;numCols)&#32;{
+<anchor xml:id="_graph_constructions_8hpp_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;boost::add_edge(lattice[row][col],&#32;lattice[row][col&#32;+&#32;1],&#32;latticeGraph);
+<anchor xml:id="_graph_constructions_8hpp_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_graph_constructions_8hpp_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_graph_constructions_8hpp_source_1l00066"/>00066 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_graph_constructions_8hpp_source_1l00067"/>00067 
+<anchor xml:id="_graph_constructions_8hpp_source_1l00068"/>00068 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;latticeGraph;
+<anchor xml:id="_graph_constructions_8hpp_source_1l00069"/>00069 }
+<anchor xml:id="_graph_constructions_8hpp_source_1l00070"/>00070 
+<anchor xml:id="_graph_constructions_8hpp_source_1l00071"/>00071 
+</programlisting></section>

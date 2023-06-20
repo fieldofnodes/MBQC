@@ -1,0 +1,77 @@
+\doxysection{tests/test\+Damping\+Simple\+Circuits\+Qu\+EST.cpp File Reference}
+\hypertarget{test_damping_simple_circuits_qu_e_s_t_8cpp}{}\label{test_damping_simple_circuits_qu_e_s_t_8cpp}\index{tests/testDampingSimpleCircuitsQuEST.cpp@{tests/testDampingSimpleCircuitsQuEST.cpp}}
+{\ttfamily \#include \"{}packages.\+hpp\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{test_damping_simple_circuits_qu_e_s_t_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{test_damping_simple_circuits_qu_e_s_t_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{test_damping_simple_circuits_qu_e_s_t_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{testDampingSimpleCircuitsQuEST.cpp@{testDampingSimpleCircuitsQuEST.cpp}!main@{main}}
+\index{main@{main}!testDampingSimpleCircuitsQuEST.cpp@{testDampingSimpleCircuitsQuEST.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test_damping_simple_circuits_qu_e_s_t_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{test_damping_simple_circuits_qu_e_s_t_8cpp_source}{test\+Damping\+Simple\+Circuits\+Qu\+EST.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{comment}{//\ Set\ probability}}
+\DoxyCodeLine{00014\ \ }
+\DoxyCodeLine{00015\ \ \ \ \ qreal\ prob\ =\ 0.1;}
+\DoxyCodeLine{00016\ \ \ \ \ std::string\ dataDir;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ std::string\ outputDampingDir;}
+\DoxyCodeLine{00019\ \ \ \ \ std::string\ qubitInfo;}
+\DoxyCodeLine{00020\ \ \ \ \ std::string\ dataPath\ =\ \textcolor{stringliteral}{"{}Projects/exploringNoiseInQuEST/data"{}};\ }
+\DoxyCodeLine{00021\ \ \ \ \ outputDampingDir\ =\ \textcolor{stringliteral}{"{}damping"{}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ std::vector<std::string>\ savePaths;}
+\DoxyCodeLine{00024\ \ \ \ \ std::string\ fileAmp;}
+\DoxyCodeLine{00025\ \ \ \ \ std::string\ fileProb;}
+\DoxyCodeLine{00026\ \ \ \ \ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ Damping\ applied\ now}}
+\DoxyCodeLine{00029\ \ \ \ \ qubitInfo\ =\ \textcolor{stringliteral}{"{}applySingleQubitPauliXMixDamping"{}};}
+\DoxyCodeLine{00030\ \ \ \ \ savePaths\ =\ \mbox{\hyperlink{general_helper_functions_8hpp_a318982330941fb08021062d2593a62f9}{getPaths}}(dataPath,\ outputDampingDir,\ qubitInfo,\ prob);}
+\DoxyCodeLine{00031\ \ \ \ \ fileAmp\ =\ savePaths[0];}
+\DoxyCodeLine{00032\ \ \ \ \ fileProb\ =\ savePaths[1];}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp_aa20aa58ec759d87b836c19d8140445dc}{applySingleQubitPauliXMixDamping}}(prob,fileAmp,fileProb);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ qubitInfo\ =\ \textcolor{stringliteral}{"{}applySingleQubitHGateMixDamping"{}};}
+\DoxyCodeLine{00036\ \ \ \ \ savePaths\ =\ \mbox{\hyperlink{general_helper_functions_8hpp_a318982330941fb08021062d2593a62f9}{getPaths}}(dataPath,\ outputDampingDir,\ qubitInfo,\ prob);}
+\DoxyCodeLine{00037\ \ \ \ \ fileAmp\ =\ savePaths[0];}
+\DoxyCodeLine{00038\ \ \ \ \ fileProb\ =\ savePaths[1];}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp_a2c742a3dbd13ecb76c32ea605ace9c5a}{applySingleQubitHGateMixDamping}}(prob,fileAmp,fileProb);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ qubitInfo\ =\ \textcolor{stringliteral}{"{}applyOnTwoQubitPauliXEachQubitMixDamping"{}};}
+\DoxyCodeLine{00042\ \ \ \ \ savePaths\ =\ \mbox{\hyperlink{general_helper_functions_8hpp_a318982330941fb08021062d2593a62f9}{getPaths}}(dataPath,\ outputDampingDir,\ qubitInfo,\ prob);}
+\DoxyCodeLine{00043\ \ \ \ \ fileAmp\ =\ savePaths[0];}
+\DoxyCodeLine{00044\ \ \ \ \ fileProb\ =\ savePaths[1];}
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp_a5b32b75a35ce71806d1c4dd09e316d32}{applyOnTwoQubitPauliXEachQubitMixDamping}}(prob,fileAmp,fileProb);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ qubitInfo\ =\ \textcolor{stringliteral}{"{}applyOnTwoQubitHGateEachQubitMixDamping"{}};}
+\DoxyCodeLine{00048\ \ \ \ \ savePaths\ =\ \mbox{\hyperlink{general_helper_functions_8hpp_a318982330941fb08021062d2593a62f9}{getPaths}}(dataPath,\ outputDampingDir,\ qubitInfo,\ prob);}
+\DoxyCodeLine{00049\ \ \ \ \ fileAmp\ =\ savePaths[0];}
+\DoxyCodeLine{00050\ \ \ \ \ fileProb\ =\ savePaths[1];}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp_a0e0364e3829b875d9fdf4dcd405ce17b}{applyOnTwoQubitHGateEachQubitMixDamping}}(prob,fileAmp,fileProb);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ qubitInfo\ =\ \textcolor{stringliteral}{"{}applyTwoQubitHCZGateBetweenQubitMixDamping"{}};}
+\DoxyCodeLine{00054\ \ \ \ \ savePaths\ =\ \mbox{\hyperlink{general_helper_functions_8hpp_a318982330941fb08021062d2593a62f9}{getPaths}}(dataPath,\ outputDampingDir,\ qubitInfo,\ prob);}
+\DoxyCodeLine{00055\ \ \ \ \ fileAmp\ =\ savePaths[0];}
+\DoxyCodeLine{00056\ \ \ \ \ fileProb\ =\ savePaths[1];}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp_a5831b982783a400e7bc0ab09fe410f10}{applyTwoQubitHCZGateBetweenQubitMixDamping}}(prob,fileAmp,fileProb);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \}}
+
+\end{DoxyCode}

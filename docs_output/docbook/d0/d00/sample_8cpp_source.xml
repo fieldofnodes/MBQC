@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_sample_8cpp_source" xml:lang="en-US">
+<title>sample.cpp</title>
+<indexterm><primary>src/archive/filesToGoThrough/sample.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_sample_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&lt;QuEST.h&gt;</emphasis>
+<anchor xml:id="_sample_8cpp_source_1l00002"/>00002 
+<anchor xml:id="_sample_8cpp_source_1l00003"/><link linkend="_sample_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00003</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_sample_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="_sample_8cpp_source_1l00004"/>00004 
+<anchor xml:id="_sample_8cpp_source_1l00005"/>00005 &#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST</emphasis>
+<anchor xml:id="_sample_8cpp_source_1l00006"/>00006 &#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="_sample_8cpp_source_1l00007"/>00007 &#32;&#32;
+<anchor xml:id="_sample_8cpp_source_1l00008"/>00008 &#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;2&#32;qubit&#32;register&#32;in&#32;the&#32;zero&#32;state</emphasis>
+<anchor xml:id="_sample_8cpp_source_1l00009"/>00009 &#32;&#32;Qureg&#32;qubits&#32;=&#32;createQureg(2,&#32;env);
+<anchor xml:id="_sample_8cpp_source_1l00010"/>00010 &#32;&#32;initZeroState(qubits);
+<anchor xml:id="_sample_8cpp_source_1l00011"/>00011 &#32;&#32;&#32;&#32;
+<anchor xml:id="_sample_8cpp_source_1l00012"/>00012 &#32;&#32;<emphasis role="comment">//&#32;apply&#32;circuit</emphasis>
+<anchor xml:id="_sample_8cpp_source_1l00013"/>00013 &#32;&#32;hadamard(qubits,&#32;0);
+<anchor xml:id="_sample_8cpp_source_1l00014"/>00014 &#32;&#32;controlledNot(qubits,&#32;0,&#32;1);
+<anchor xml:id="_sample_8cpp_source_1l00015"/>00015 &#32;&#32;measure(qubits,&#32;1);
+<anchor xml:id="_sample_8cpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;
+<anchor xml:id="_sample_8cpp_source_1l00017"/>00017 &#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+<anchor xml:id="_sample_8cpp_source_1l00018"/>00018 &#32;&#32;destroyQureg(qubits,&#32;env);&#32;
+<anchor xml:id="_sample_8cpp_source_1l00019"/>00019 &#32;&#32;destroyQuESTEnv(env);
+<anchor xml:id="_sample_8cpp_source_1l00020"/>00020 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_sample_8cpp_source_1l00021"/>00021 }
+</programlisting></section>

@@ -1,0 +1,105 @@
+\doxysection{src/packages.hpp File Reference}
+\hypertarget{packages_8hpp}{}\label{packages_8hpp}\index{src/packages.hpp@{src/packages.hpp}}
+
+
+Contains the inclusion of various packages and libraries used in the project.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$numeric$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$filesystem$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include \"{}config.\+h\"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$cstdio$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$ranges$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$cxxabi.\+h$>$}\newline
+{\ttfamily \#include $<$Qu\+EST.\+h$>$}\newline
+{\ttfamily \#include $<$boost/graph/adjacency\+\_\+list.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/grid\+\_\+graph.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/graphviz.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/array.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/graph\+\_\+utility.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/container/vector.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/range/algorithm/unique.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/range/algorithm.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/range/adaptor/filtered.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/range/adaptor/transformed.\+hpp$>$}\newline
+{\ttfamily \#include \"{}general\+Helper\+Functions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}write\+Graph\+Graph\+Viz\+Dot\+File.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}graph\+Constructions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}graph\+Traversal\+Flows.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}flow\+Measurements.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}angle\+Construction.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}quantum\+Graph\+Cluster\+States.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}general\+Assert\+Functions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}graph\+Assert\+Functions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}probabilities\+Amplitudes\+No\+Noise\+Circuits.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}probabilities\+Amplitudes\+Damping\+Circuits.\+hpp\"{}}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{packages_8hpp_a1909d41b7bcda36f8b0cdcb9e7f4711a}{undirected\+Graph}} = boost\+::adjacency\+\_\+list$<$ boost\+::vecS, boost\+::vecS, boost\+::undirectedS $>$
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{packages_8hpp_afccd45e2973698c37e8379f6b25a82bc}{edge\+Iterator}}
+\begin{DoxyCompactList}\small\item\em Iterator for traversing edges in an undirected graph. \end{DoxyCompactList}\item 
+typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{\+::vertex\+\_\+iterator}} \mbox{\hyperlink{packages_8hpp_aad3f8f6369da7f36e6266fdcb1991169}{vertex\+Iterator}}
+\begin{DoxyCompactList}\small\item\em Iterator for traversing vertices in an undirected graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the inclusion of various packages and libraries used in the project. 
+
+
+
+Definition in file \mbox{\hyperlink{packages_8hpp_source}{packages.\+hpp}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{packages_8hpp_afccd45e2973698c37e8379f6b25a82bc}\label{packages_8hpp_afccd45e2973698c37e8379f6b25a82bc} 
+\index{packages.hpp@{packages.hpp}!edgeIterator@{edgeIterator}}
+\index{edgeIterator@{edgeIterator}!packages.hpp@{packages.hpp}}
+\doxysubsubsection{\texorpdfstring{edgeIterator}{edgeIterator}}
+{\footnotesize\ttfamily \mbox{\hyperlink{packages_8hpp_afccd45e2973698c37e8379f6b25a82bc}{edge\+Iterator}}}
+
+
+
+Iterator for traversing edges in an undirected graph. 
+
+This typedef represents an iterator for traversing edges in an undirected graph. It is used to iterate over the edges of an undirected\+Graph. You can use it in conjunction with boost\+::edges() to traverse and operate on the edges of the graph. 
+
+Definition at line \mbox{\hyperlink{packages_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{packages_8hpp_source}{packages.\+hpp}}.
+
+\Hypertarget{packages_8hpp_a1909d41b7bcda36f8b0cdcb9e7f4711a}\label{packages_8hpp_a1909d41b7bcda36f8b0cdcb9e7f4711a} 
+\index{packages.hpp@{packages.hpp}!undirectedGraph@{undirectedGraph}}
+\index{undirectedGraph@{undirectedGraph}!packages.hpp@{packages.hpp}}
+\doxysubsubsection{\texorpdfstring{undirectedGraph}{undirectedGraph}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} =  boost\+::adjacency\+\_\+list$<$boost\+::vecS, boost\+::vecS, boost\+::undirectedS$>$}
+
+
+
+Definition at line \mbox{\hyperlink{packages_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{packages_8hpp_source}{packages.\+hpp}}.
+
+\Hypertarget{packages_8hpp_aad3f8f6369da7f36e6266fdcb1991169}\label{packages_8hpp_aad3f8f6369da7f36e6266fdcb1991169} 
+\index{packages.hpp@{packages.hpp}!vertexIterator@{vertexIterator}}
+\index{vertexIterator@{vertexIterator}!packages.hpp@{packages.hpp}}
+\doxysubsubsection{\texorpdfstring{vertexIterator}{vertexIterator}}
+{\footnotesize\ttfamily \mbox{\hyperlink{packages_8hpp_aad3f8f6369da7f36e6266fdcb1991169}{vertex\+Iterator}}}
+
+
+
+Iterator for traversing vertices in an undirected graph. 
+
+This typedef represents an iterator for traversing vertices in an undirected graph. It is used to iterate over the vertices of an undirected\+Graph. You can use it in conjunction with boost\+::vertices() to traverse and operate on the vertices of the graph. 
+
+Definition at line \mbox{\hyperlink{packages_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{packages_8hpp_source}{packages.\+hpp}}.
+

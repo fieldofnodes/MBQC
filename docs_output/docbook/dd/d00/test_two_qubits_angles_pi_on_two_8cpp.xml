@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test_two_qubits_angles_pi_on_two_8cpp" xml:lang="en-US">
+<title>tests/testTwoQubitsAnglesPiOnTwo.cpp File Reference</title>
+<indexterm><primary>tests/testTwoQubitsAnglesPiOnTwo.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;algorithm&gt;<?linebreak?>#include &lt;iterator&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;set&gt;<?linebreak?>#include &lt;numeric&gt;<?linebreak?>#include &lt;cmath&gt;<?linebreak?>#include &lt;random&gt;<?linebreak?>#include &lt;filesystem&gt;<?linebreak?>#include &lt;QuEST.h&gt;<?linebreak?>#include &lt;boost/graph/adjacency_list.hpp&gt;<?linebreak?>#include &lt;boost/graph/grid_graph.hpp&gt;<?linebreak?>#include &lt;boost/graph/graphviz.hpp&gt;<?linebreak?>#include &lt;boost/array.hpp&gt;<?linebreak?>#include &lt;boost/graph/graph_utility.hpp&gt;<?linebreak?>#include &lt;boost/container/vector.hpp&gt;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/flowMeasurements.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/angleConstruction.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/quantumGraphClusterStates.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/generalAssertFunctions.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>typedef boost::adjacency_list&lt; boost::vecS, boost::vecS, boost::undirectedS &gt; <link linkend="_test_two_qubits_angles_pi_on_two_8cpp_1af845bf432b56cdda82dbde8011882168">undirectedGraph</link></para>
+</listitem>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_test_two_qubits_angles_pi_on_two_8cpp_1ad413424ad598fbd91fde4dffeceda3c0">edgeIterator</link></para>
+</listitem>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_test_two_qubits_angles_pi_on_two_8cpp_1ad100606fc4950dfc094fc60544838351">vertexIterator</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_test_two_qubits_angles_pi_on_two_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_1ad413424ad598fbd91fde4dffeceda3c0"/><section>
+    <title>edgeIterator</title>
+<indexterm><primary>edgeIterator</primary><secondary>testTwoQubitsAnglesPiOnTwo.cpp</secondary></indexterm>
+<indexterm><primary>testTwoQubitsAnglesPiOnTwo.cpp</primary><secondary>edgeIterator</secondary></indexterm>
+<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_packages_8hpp_1afccd45e2973698c37e8379f6b25a82bc">edgeIterator</link></computeroutput></para><para>
+Definition at line <link linkend="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00064">64</link> of file <link linkend="_test_two_qubits_angles_pi_on_two_8cpp_source">testTwoQubitsAnglesPiOnTwo.cpp</link>.</para>
+</section>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_1af845bf432b56cdda82dbde8011882168"/><section>
+    <title>undirectedGraph</title>
+<indexterm><primary>undirectedGraph</primary><secondary>testTwoQubitsAnglesPiOnTwo.cpp</secondary></indexterm>
+<indexterm><primary>testTwoQubitsAnglesPiOnTwo.cpp</primary><secondary>undirectedGraph</secondary></indexterm>
+<para><computeroutput>typedef boost::adjacency_list&lt;boost::vecS, boost::vecS,boost::undirectedS&gt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link></computeroutput></para><para>
+Definition at line <link linkend="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00063">63</link> of file <link linkend="_test_two_qubits_angles_pi_on_two_8cpp_source">testTwoQubitsAnglesPiOnTwo.cpp</link>.</para>
+</section>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_1ad100606fc4950dfc094fc60544838351"/><section>
+    <title>vertexIterator</title>
+<indexterm><primary>vertexIterator</primary><secondary>testTwoQubitsAnglesPiOnTwo.cpp</secondary></indexterm>
+<indexterm><primary>testTwoQubitsAnglesPiOnTwo.cpp</primary><secondary>vertexIterator</secondary></indexterm>
+<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_packages_8hpp_1aad3f8f6369da7f36e6266fdcb1991169">vertexIterator</link></computeroutput></para><para>
+Definition at line <link linkend="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00065">65</link> of file <link linkend="_test_two_qubits_angles_pi_on_two_8cpp_source">testTwoQubitsAnglesPiOnTwo.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>testTwoQubitsAnglesPiOnTwo.cpp</secondary></indexterm>
+<indexterm><primary>testTwoQubitsAnglesPiOnTwo.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00070">70</link> of file <link linkend="_test_two_qubits_angles_pi_on_two_8cpp_source">testTwoQubitsAnglesPiOnTwo.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00071 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;1e6;&#32;i++)
+00072 &#32;&#32;&#32;&#32;{
+00073 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
+00074 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows;
+00075 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols;
+00076 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+00077 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices;
+00078 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;
+00079 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;
+00080 
+00081 
+00082 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
+00083 &#32;&#32;&#32;&#32;numRows&#32;=&#32;1;
+00084 &#32;&#32;&#32;&#32;numCols&#32;=&#32;2;&#32;<emphasis role="comment">//&#32;Test&#32;on&#32;an&#32;odd&#32;number&#32;of&#32;qubits</emphasis>
+00085 &#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;<link linkend="_create_graph_8hpp_1aabb013bb6de93b1ca2ff83e1d7d200c7">createLatticeGraph</link>(numRows,numCols);
+00086 &#32;&#32;&#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);
+00087 
+00088 
+00089 
+00090 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
+00091 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Update&#32;with&#32;desired&#32;directory&#32;to&#32;view&#32;graph.</emphasis>
+00092 &#32;&#32;&#32;&#32;<emphasis role="comment">//std::string&#32;fileDir&#32;=&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;;</emphasis>
+00093 &#32;&#32;&#32;&#32;<emphasis role="comment">//std::string&#32;graphName&#32;=&#32;&quot;1DLattice2QubitsAnglesPiOn2&quot;;</emphasis>
+00094 &#32;&#32;&#32;&#32;<emphasis role="comment">//std::string&#32;format&#32;=&#32;&quot;png&quot;;</emphasis>
+00095 &#32;&#32;&#32;&#32;<emphasis role="comment">//printGraphToFile(latticeGraph,fileDir,graphName,format);</emphasis>
+00096 
+00097 
+00098 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+00099 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+00100 
+00101 
+00102 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+00103 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numVertices,&#32;env);
+00104 
+00105 
+00106 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;angles</emphasis>
+00107 &#32;&#32;&#32;&#32;qubitAngles&#32;=&#32;<link linkend="_angle_construction_8hpp_1ac940c0b993f5f0e21dc74a2ac2f3fc7a">initAllAnglesSame</link>(numVertices,&#32;M_PI/2);
+00108 
+00109 
+00110 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;initialise&#32;in&#32;the&#32;plus&#32;state</emphasis>
+00111 &#32;&#32;&#32;&#32;initPlusState(qureg);
+00112 
+00113 &#32;&#32;&#32;&#32;<emphasis role="comment">//Leave&#32;angle&#32;off&#32;qubits</emphasis>
+00114 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;add&#32;angles&#32;to&#32;the&#32;qubits</emphasis>
+00115 &#32;&#32;&#32;&#32;<emphasis role="comment">//addAngleRotateZgate(qureg,qubitAngles);</emphasis>
+00116 
+00117 
+00118 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;entangle&#32;graph</emphasis>
+00119 &#32;&#32;&#32;&#32;<link linkend="_quantum_graph_cluster_states_8hpp_1a3f830234f9eb3a150a084b0f2b4aa056">entangleGraph</link>(qureg,latticeGraph);
+00120 
+00121 
+00122 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;graph</emphasis>
+00123 &#32;&#32;&#32;&#32;measuredQubitsOutcomes&#32;=&#32;<link linkend="_flow_measurements_8hpp_1a7231be9a1c347894c1d01c349f4b41c7">measureGraph</link>(
+00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qureg,
+00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;latticeGraph,
+00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles,
+00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numRows);
+00128 
+00129 &#32;&#32;&#32;&#32;assert((measuredQubitsOutcomes.back()==0)&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;The&#32;last&#32;qubit&#32;must&#32;be&#32;0,&#32;it&#32;is&#32;not.&quot;</emphasis>);
+00130 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;print&#32;results&#32;to&#32;screen</emphasis>
+00131 &#32;&#32;&#32;&#32;<emphasis role="comment">//printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);</emphasis>
+00132 
+00133 
+00134 
+00135 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+00136 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+00137 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+00138 &#32;&#32;&#32;&#32;
+00139 &#32;&#32;&#32;&#32;}
+00140 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+00141 }
+</programlisting></section>
+</section>
+</section>

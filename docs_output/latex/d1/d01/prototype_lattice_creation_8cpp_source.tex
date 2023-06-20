@@ -1,0 +1,108 @@
+\doxysection{prototype\+Lattice\+Creation.\+cpp}
+\hypertarget{prototype_lattice_creation_8cpp_source}{}\label{prototype_lattice_creation_8cpp_source}\index{src/archive/prototypeLatticeCreation.cpp@{src/archive/prototypeLatticeCreation.cpp}}
+\mbox{\hyperlink{prototype_lattice_creation_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00002}00002\ \textcolor{comment}{//\ Title\ \ :\ prototypeLatticeCreation.cpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00003}00003\ \textcolor{comment}{//\ Author\ :\ Jonathan\ Miller\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00004}00004\ \textcolor{comment}{//\ Date\ \ \ :\ 20230515\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00005}00005\ \textcolor{comment}{//\ Aim\ \ \ \ :\ File\ used\ to\ prototype\ the\ creation\ of\ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00006}00006\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ an\ arbitrary\ lattice\ and\ presents\ rows\ and\ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00007}00007\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ cols\ as\ needed.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <numeric>}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <QuEST.h>}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <boost/graph/adjacency\_list.hpp>}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <boost/graph/grid\_graph.hpp>}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <boost/graph/graphviz.hpp>}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <boost/array.hpp>}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00024}00024\ \textcolor{preprocessor}{\#include\ <boost/graph/graph\_utility.hpp>}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00025}00025\ \textcolor{preprocessor}{\#include\ <boost/container/vector.hpp>}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#include\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalAssertFunctions.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00033}00033\ \textcolor{comment}{//\ Define\ the\ lattice\ creation\ function\ (same\ as\ before)}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00034}00034\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00035}00035\ \textcolor{comment}{std::vector<std::vector<int>>\ create\_lattice(int\ K,\ int\ L)\ \{}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00036}00036\ \textcolor{comment}{\ \ \ \ int\ N\ =\ K\ *\ L;}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00037}00037\ \textcolor{comment}{\ \ \ \ std::vector<std::vector<int>>\ lattice(K,\ std::vector<int>(L,\ -\/1));}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00038}00038\ \textcolor{comment}{\ \ \ \ std::vector<int>\ numbers(N);}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00039}00039\ \textcolor{comment}{\ \ \ \ for\ (int\ i\ =\ 0;\ i\ <\ N;\ i++)\ \{}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00040}00040\ \textcolor{comment}{\ \ \ \ \ \ \ \ numbers[i]\ =\ i;}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00041}00041\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00042}00042\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00043}00043\ \textcolor{comment}{\ \ \ \ for\ (int\ number\ :\ numbers)\ \{}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00044}00044\ \textcolor{comment}{\ \ \ \ \ \ \ \ int\ row\ =\ number\ \%\ K;}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00045}00045\ \textcolor{comment}{\ \ \ \ \ \ \ \ int\ col\ =\ number\ /\ K;}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00046}00046\ \textcolor{comment}{\ \ \ \ \ \ \ \ lattice[row][col]\ =\ number;}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00047}00047\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00048}00048\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00049}00049\ \textcolor{comment}{\ \ \ \ return\ lattice;}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00050}00050\ \textcolor{comment}{\}}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00051}00051\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00056}\mbox{\hyperlink{prototype_lattice_creation_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00056}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{prototype_lattice_creation_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00057}00057\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{int}\ K\ =\ 7;}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{int}\ L\ =\ 3;}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordtype}{int}\ N\ =\ K*L;}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00062}00062\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ lattice\ using\ create\_lattice\ function}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00063}00063\ \ \ \ \ std::vector<std::vector<int>>\ lattice\ =\ \mbox{\hyperlink{graph_constructions_8hpp_a6e0974be2fa2e599ab591aa02f1c9eb2}{create\_lattice}}(K,\ L);}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ row\ :\ lattice)\ \{}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ number\ :\ row)\ \{}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ number\ <<\ \textcolor{charliteral}{'\(\backslash\)t'};}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ Define\ the\ Boost\ Graph\ types}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{keyword}{typedef}\ boost::adjacency\_list<boost::vecS,\ boost::vecS,\ boost::undirectedS>\ Graph;}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00075}00075\ \ \ \ \ \textcolor{keyword}{typedef}\ boost::graph\_traits<Graph>::vertex\_descriptor\ Vertex;}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ Boost\ Graph}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00078}00078\ \ \ \ \ Graph\ graph(N);}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00079}00079\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00080}00080\ \ \ \ \ \textcolor{comment}{//\ Add\ edges\ to\ the\ graph}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ row\ =\ 0;\ row\ <\ K;\ row++)\ \{}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ col\ =\ 0;\ col\ <\ L;\ col++)\ \{}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row\ +\ 1\ <\ K)\ \{}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(lattice[row][col],\ lattice[row\ +\ 1][col],\ graph);}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (col\ +\ 1\ <\ L)\ \{}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(lattice[row][col],\ lattice[row][col\ +\ 1],\ graph);}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00092}00092\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Num\ vertices:\ "{}}\ <<\ boost::num\_vertices(graph)\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00093}00093\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Num\ edges:\ "{}}\ <<\ boost::num\_edges(graph)\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00094}00094\ \ \ \ \ print\_graph(graph);}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00096}00096\ \ \ \ \ \textcolor{comment}{//\ Print\ graph\ to\ file}}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00097}00097\ \ \ \ \ std::string\ fileDir\ =\ \textcolor{stringliteral}{"{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs"{}};}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00098}00098\ \ \ \ \ std::string\ graphName\ =\ \textcolor{stringliteral}{"{}lattice2DArrayGraph"{}};}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00099}00099\ \ \ \ \ std::string\ format\ =\ \textcolor{stringliteral}{"{}png"{}};}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00100}00100\ \ \ \ \ \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_a3d553b54b16922ee146bfb33201a3993}{printGraphToFile}}(graph,fileDir,graphName,format);}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00102}00102\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{prototype_lattice_creation_8cpp_source_l00103}00103\ \}}
+
+\end{DoxyCode}

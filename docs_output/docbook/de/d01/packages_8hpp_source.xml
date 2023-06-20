@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_packages_8hpp_source" xml:lang="en-US">
+<title>packages.hpp</title>
+<indexterm><primary>src/packages.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_packages_8hpp_source_1l00001"/>00001 
+<anchor xml:id="_packages_8hpp_source_1l00006"/>00006 <emphasis role="preprocessor">#ifndef&#32;PACKAGES_HPP</emphasis>
+<anchor xml:id="_packages_8hpp_source_1l00007"/>00007 <emphasis role="preprocessor">#define&#32;PACKAGES_HPP</emphasis>
+<anchor xml:id="_packages_8hpp_source_1l00008"/>00008 
+<anchor xml:id="_packages_8hpp_source_1l00009"/>00009 <emphasis role="comment">//&#32;Standard&#32;libraries</emphasis>
+<anchor xml:id="_packages_8hpp_source_1l00010"/>00010 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00011"/>00011 <emphasis role="preprocessor">#include&#32;&lt;algorithm&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00012"/>00012 <emphasis role="preprocessor">#include&#32;&lt;iterator&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00013"/>00013 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00014"/>00014 <emphasis role="preprocessor">#include&#32;&lt;set&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00015"/>00015 <emphasis role="preprocessor">#include&#32;&lt;numeric&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00016"/>00016 <emphasis role="preprocessor">#include&#32;&lt;cmath&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00017"/>00017 <emphasis role="preprocessor">#include&#32;&lt;random&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00018"/>00018 <emphasis role="preprocessor">#include&#32;&lt;filesystem&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00019"/>00019 <emphasis role="preprocessor">#include&#32;&lt;functional&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00020"/>00020 <emphasis role="preprocessor">#include&#32;&quot;config.h&quot;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00021"/>00021 <emphasis role="preprocessor">#include&#32;&lt;fstream&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00022"/>00022 <emphasis role="preprocessor">#include&#32;&lt;cstdio&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00023"/>00023 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00024"/>00024 <emphasis role="preprocessor">#include&#32;&lt;ranges&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00025"/>00025 <emphasis role="preprocessor">#include&#32;&lt;cstdlib&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00026"/>00026 <emphasis role="preprocessor">#include&#32;&lt;functional&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00027"/>00027 <emphasis role="preprocessor">#include&#32;&lt;cxxabi.h&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00028"/>00028 
+<anchor xml:id="_packages_8hpp_source_1l00029"/>00029 <emphasis role="comment">//&#32;QuEST</emphasis>
+<anchor xml:id="_packages_8hpp_source_1l00030"/>00030 <emphasis role="preprocessor">#include&#32;&lt;QuEST.h&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00031"/>00031 
+<anchor xml:id="_packages_8hpp_source_1l00032"/>00032 <emphasis role="comment">//&#32;Boost</emphasis>
+<anchor xml:id="_packages_8hpp_source_1l00033"/>00033 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/adjacency_list.hpp&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00034"/>00034 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/grid_graph.hpp&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00035"/>00035 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/graphviz.hpp&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00036"/>00036 <emphasis role="preprocessor">#include&#32;&lt;boost/array.hpp&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00037"/>00037 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/graph_utility.hpp&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00038"/>00038 <emphasis role="preprocessor">#include&#32;&lt;boost/container/vector.hpp&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00039"/>00039 <emphasis role="preprocessor">#include&#32;&lt;boost/range/algorithm/unique.hpp&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&lt;boost/range/algorithm.hpp&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00041"/>00041 <emphasis role="preprocessor">#include&#32;&lt;boost/range/adaptor/filtered.hpp&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&lt;boost/range/adaptor/transformed.hpp&gt;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00043"/>00043 
+<anchor xml:id="_packages_8hpp_source_1l00044"/>00044 
+<anchor xml:id="_packages_8hpp_source_1l00045"/>00045 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>boost;
+<anchor xml:id="_packages_8hpp_source_1l00046"/>00046 
+<anchor xml:id="_packages_8hpp_source_1l00047"/>00047 
+<anchor xml:id="_packages_8hpp_source_1l00057"/><link linkend="_packages_8hpp_1a1909d41b7bcda36f8b0cdcb9e7f4711a">00057</link> <emphasis role="keyword">using&#32;</emphasis><link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;=&#32;boost::adjacency_list&lt;boost::vecS,&#32;boost::vecS,&#32;boost::undirectedS&gt;;
+<anchor xml:id="_packages_8hpp_source_1l00058"/>00058 
+<anchor xml:id="_packages_8hpp_source_1l00067"/><link linkend="_packages_8hpp_1afccd45e2973698c37e8379f6b25a82bc">00067</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::edge_iterator&#32;<link linkend="_packages_8hpp_1afccd45e2973698c37e8379f6b25a82bc">edgeIterator</link>;
+<anchor xml:id="_packages_8hpp_source_1l00068"/>00068 
+<anchor xml:id="_packages_8hpp_source_1l00077"/><link linkend="_packages_8hpp_1aad3f8f6369da7f36e6266fdcb1991169">00077</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::vertex_iterator&#32;<link linkend="_packages_8hpp_1aad3f8f6369da7f36e6266fdcb1991169">vertexIterator</link>;
+<anchor xml:id="_packages_8hpp_source_1l00078"/>00078 
+<anchor xml:id="_packages_8hpp_source_1l00079"/>00079 
+<anchor xml:id="_packages_8hpp_source_1l00080"/>00080 
+<anchor xml:id="_packages_8hpp_source_1l00081"/>00081 
+<anchor xml:id="_packages_8hpp_source_1l00082"/>00082 
+<anchor xml:id="_packages_8hpp_source_1l00083"/>00083 <emphasis role="comment">//&#32;Helper&#32;functions</emphasis>
+<anchor xml:id="_packages_8hpp_source_1l00084"/>00084 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_general_helper_functions_8hpp">generalHelperFunctions.hpp</link>&quot;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00085"/>00085 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_write_graph_graph_viz_dot_file_8hpp">writeGraphGraphVizDotFile.hpp</link>&quot;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00086"/>00086 
+<anchor xml:id="_packages_8hpp_source_1l00087"/>00087 <emphasis role="comment">//&#32;Graph&#32;functions</emphasis>
+<anchor xml:id="_packages_8hpp_source_1l00088"/>00088 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_graph_constructions_8hpp">graphConstructions.hpp</link>&quot;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00089"/>00089 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_graph_traversal_flows_8hpp">graphTraversalFlows.hpp</link>&quot;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00090"/>00090 
+<anchor xml:id="_packages_8hpp_source_1l00091"/>00091 <emphasis role="comment">//&#32;Quantum&#32;functions</emphasis>
+<anchor xml:id="_packages_8hpp_source_1l00092"/>00092 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_flow_measurements_8hpp">flowMeasurements.hpp</link>&quot;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00093"/>00093 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_angle_construction_8hpp">angleConstruction.hpp</link>&quot;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00094"/>00094 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_quantum_graph_cluster_states_8hpp">quantumGraphClusterStates.hpp</link>&quot;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00095"/>00095 
+<anchor xml:id="_packages_8hpp_source_1l00096"/>00096 <emphasis role="comment">//&#32;Assert&#32;functions</emphasis>
+<anchor xml:id="_packages_8hpp_source_1l00097"/>00097 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_general_assert_functions_8hpp">generalAssertFunctions.hpp</link>&quot;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00098"/>00098 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_graph_assert_functions_8hpp">graphAssertFunctions.hpp</link>&quot;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00099"/>00099 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp">probabilitiesAmplitudesNoNoiseCircuits.hpp</link>&quot;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00100"/>00100 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_probabilities_amplitudes_damping_circuits_8hpp">probabilitiesAmplitudesDampingCircuits.hpp</link>&quot;</emphasis>&#32;
+<anchor xml:id="_packages_8hpp_source_1l00101"/>00101 
+<anchor xml:id="_packages_8hpp_source_1l00102"/>00102 
+<anchor xml:id="_packages_8hpp_source_1l00103"/>00103 <emphasis role="preprocessor">#endif&#32;</emphasis><emphasis role="comment">//&#32;PACKAGES_HPP</emphasis>
+</programlisting></section>

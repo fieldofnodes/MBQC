@@ -1,0 +1,98 @@
+\doxysection{20230330\+\_\+\+Creating\+Mbqc\+Function.\+cpp}
+\hypertarget{20230330___creating_mbqc_function_8cpp_source}{}\label{20230330___creating_mbqc_function_8cpp_source}\index{src/archive/filesToGoThrough/20230330\_CreatingMbqcFunction.cpp@{src/archive/filesToGoThrough/20230330\_CreatingMbqcFunction.cpp}}
+\mbox{\hyperlink{20230330___creating_mbqc_function_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <QuEST.h>}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00002}00002\ \textcolor{comment}{//\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <algorithm>}\ \ \ \ \textcolor{comment}{//\ std::all\_of}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{20230314___functions___v1_8hpp}{20230314\_Functions\_V1.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00008}00008\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00013}\mbox{\hyperlink{20230330___creating_mbqc_function_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00013}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{20230330___creating_mbqc_function_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00015}00015\ \ \ \ \ vector<int>\ lastQubitOutcome;}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00016}00016\ \ \ \ \ vector<int>\ allLastQubitZero;}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{int}\ numberRealisations\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{int}\ qubitNumber=5;}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00020}00020\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<numberRealisations;i++)}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00022}00022\ \ \ \ \ \{\ \ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ QuEST\ environment}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ parameters}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numberQubits\ =\ qubitNumber;}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ prepare\ our\ register}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ Qureg\ qureg\ =\ createQureg(numberQubits,\ env);}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ qureg\ -\/>\ |+><+|}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ initPlusState(qureg);\ \ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ vector\ representing\ a\ linear\ cluster\ graph}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ vector<int>\ pathGraph\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_aa6c7ea81b30e713a1f641e9a86e5f0a8}{getPathGraph}}(numberQubits);\ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ vector<qreal>\ qubitAngles;}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ apply\ CZ\ gate\ to\ entangle\ the\ circuit}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(std::vector<int>::size\_type\ q\ =\ 0;\ q\ !=\ pathGraph.size()-\/1;\ q++)\ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \{\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ controlledPhaseFlip(qureg,q,q+1);}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ initial\ angles}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<numberQubits;i++)\{}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\ \%\ 2\ ==\ 0)\{}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles.push\_back(2*M\_PI);}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles.push\_back(0.0);\ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ vector<int>\ outcomes\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_acdb0932776bd659eddba9f2942af2c15}{runMbqcPathGraph}}(qureg,pathGraph,qubitAngles);}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i:\ outcomes)\{}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ i\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00064}00064\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00065}00065\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ //\ Run\ MBQC}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00066}00066\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ //\ measure\ first\ qubit}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00067}00067\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00068}00068\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00069}00069\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00070}00070\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00071}00071\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00072}00072\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00073}00073\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ lastQubitOutcome.push\_back(measuredQubitsOutcomes.back());}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00074}00074\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00075}00075\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00076}00076\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00077}00077\ \textcolor{comment}{\ \ \ \ \ \ \ \ for(int\ i:lastQubitOutcome)\{}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00078}00078\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ i\ <<\ "{}\ "{};}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00079}00079\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}\ }}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00080}00080\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00081}00081\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Confirm\ all\ of\ the\ last\ qubits\ are\ 0}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00082}00082\ \textcolor{comment}{\ \ \ \ \ \ \ \ if\ (\ std::all\_of(}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00083}00083\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lastQubitOutcome.begin(),\ }}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00084}00084\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lastQubitOutcome.end(),\ }}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00085}00085\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [](int\ i)\{return\ i==0;\}))}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00086}00086\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00087}00087\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}All\ the\ elements\ on\ "{}\ <<\ qubitNumber\ <<\ "{}\ qubits\ are\ 1.\(\backslash\)n"{};}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00088}00088\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ allLastQubitZero.push\_back(1);}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00089}00089\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00090}00090\ \textcolor{comment}{\ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00091}00091\ \}}
+\DoxyCodeLine{\Hypertarget{20230330___creating_mbqc_function_8cpp_source_l00092}00092\ }
+
+\end{DoxyCode}

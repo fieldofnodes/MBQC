@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_create_path_graph_8cpp_source" xml:lang="en-US">
+<title>createPathGraph.cpp</title>
+<indexterm><primary>src/archive/filesToGoThrough/createPathGraph.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_create_path_graph_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_create_path_graph_8cpp_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/adjacency_list.hpp&gt;</emphasis>
+<anchor xml:id="_create_path_graph_8cpp_source_1l00003"/>00003 
+<anchor xml:id="_create_path_graph_8cpp_source_1l00004"/>00004 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>boost;
+<anchor xml:id="_create_path_graph_8cpp_source_1l00005"/>00005 
+<anchor xml:id="_create_path_graph_8cpp_source_1l00006"/><link linkend="_create_path_graph_8cpp_1ad531f0530c52e2baed8840517b52b457">00006</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::property&lt;boost::edge_weight_t,&#32;int&gt;&#32;<link linkend="_create_path_graph_8cpp_1ad531f0530c52e2baed8840517b52b457">EdgeWeightProperty</link>;
+<anchor xml:id="_create_path_graph_8cpp_source_1l00007"/><link linkend="_create_path_graph_8cpp_1ae727d82d2665e0ccdbb85e29c841ba5f">00007</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::adjacency_list&lt;boost::listS,&#32;boost::vecS,boost::undirectedS,boost::no_property,EdgeWeightProperty&gt;&#32;<link linkend="_create_path_graph_8cpp_1ae727d82d2665e0ccdbb85e29c841ba5f">undirectedGraph</link>;
+<anchor xml:id="_create_path_graph_8cpp_source_1l00008"/><link linkend="_create_path_graph_8cpp_1af04c50f717d4bda41f0c58fe0eece059">00008</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::edge_iterator&#32;<link linkend="_create_path_graph_8cpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link>;
+<anchor xml:id="_create_path_graph_8cpp_source_1l00009"/>00009 
+<anchor xml:id="_create_path_graph_8cpp_source_1l00010"/>00010 <emphasis role="comment">//typedef&#32;adjacency_list&lt;vecS,&#32;vecS,&#32;undirectedS&gt;&#32;Graph;&#32;//&#32;define&#32;the&#32;graph&#32;type</emphasis>
+<anchor xml:id="_create_path_graph_8cpp_source_1l00011"/>00011 <emphasis role="comment">//typedef&#32;boost::graph_traits&lt;undirectedGraph&gt;::edge_iterator&#32;edge_iterator;&#32;//&#32;define&#32;an&#32;edge&#32;iterator</emphasis>
+<anchor xml:id="_create_path_graph_8cpp_source_1l00012"/>00012 
+<anchor xml:id="_create_path_graph_8cpp_source_1l00013"/><link linkend="_create_path_graph_8cpp_1a7be0ea99a39ac1e9e8d423a6c2d3e51b">00013</link> <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;<link linkend="_create_path_graph_8cpp_1a7be0ea99a39ac1e9e8d423a6c2d3e51b">create_path_graph</link>(<emphasis role="keywordtype">int</emphasis>&#32;n)&#32;{&#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;path&#32;graph&#32;with&#32;n&#32;vertices</emphasis>
+<anchor xml:id="_create_path_graph_8cpp_source_1l00014"/>00014 &#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;g(n);
+<anchor xml:id="_create_path_graph_8cpp_source_1l00015"/>00015 
+<anchor xml:id="_create_path_graph_8cpp_source_1l00016"/>00016 &#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;n-1;&#32;i++)&#32;{&#32;&#32;<emphasis role="comment">//&#32;add&#32;edges&#32;to&#32;create&#32;a&#32;path&#32;graph</emphasis>
+<anchor xml:id="_create_path_graph_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;add_edge(i,&#32;i+1,&#32;g);
+<anchor xml:id="_create_path_graph_8cpp_source_1l00018"/>00018 &#32;&#32;}
+<anchor xml:id="_create_path_graph_8cpp_source_1l00019"/>00019 
+<anchor xml:id="_create_path_graph_8cpp_source_1l00020"/>00020 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;g;
+<anchor xml:id="_create_path_graph_8cpp_source_1l00021"/>00021 }
+<anchor xml:id="_create_path_graph_8cpp_source_1l00022"/>00022 
+<anchor xml:id="_create_path_graph_8cpp_source_1l00023"/><link linkend="_create_path_graph_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00023</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_create_path_graph_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="_create_path_graph_8cpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;n&#32;=&#32;100;
+<anchor xml:id="_create_path_graph_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;g&#32;=&#32;<link linkend="_create_path_graph_8cpp_1a7be0ea99a39ac1e9e8d423a6c2d3e51b">create_path_graph</link>(n);&#32;<emphasis role="comment">//&#32;create&#32;a&#32;path&#32;graph&#32;with&#32;5&#32;vertices</emphasis>
+<anchor xml:id="_create_path_graph_8cpp_source_1l00026"/>00026 
+<anchor xml:id="_create_path_graph_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;std::pair&lt;edge_iterator,&#32;edge_iterator&gt;&#32;ei&#32;=&#32;edges(g);
+<anchor xml:id="_create_path_graph_8cpp_source_1l00028"/>00028 &#32;
+<anchor xml:id="_create_path_graph_8cpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Number&#32;of&#32;edges&#32;=&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;num_edges(g)&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>;
+<anchor xml:id="_create_path_graph_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Edge&#32;list:\n&quot;</emphasis>;
+<anchor xml:id="_create_path_graph_8cpp_source_1l00031"/>00031 &#32;
+<anchor xml:id="_create_path_graph_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link>&#32;it&#32;=&#32;ei.first;&#32;it&#32;!=&#32;ei.second;&#32;++it&#32;)
+<anchor xml:id="_create_path_graph_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_create_path_graph_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;*it&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_create_path_graph_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_create_path_graph_8cpp_source_1l00036"/>00036 &#32;
+<anchor xml:id="_create_path_graph_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_create_path_graph_8cpp_source_1l00038"/>00038 &#32;
+<anchor xml:id="_create_path_graph_8cpp_source_1l00039"/>00039 
+<anchor xml:id="_create_path_graph_8cpp_source_1l00040"/>00040 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_create_path_graph_8cpp_source_1l00041"/>00041 }
+</programlisting></section>

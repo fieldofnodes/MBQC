@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_write_graph_graph_viz_dot_file_8hpp_source" xml:lang="en-US">
+<title>writeGraphGraphVizDotFile.hpp</title>
+<indexterm><primary>src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00001"/>00001 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Title&#32;&#32;:&#32;testGraphProperties.cpp&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00003"/>00003 <emphasis role="comment">//&#32;Author&#32;:&#32;Jonathan&#32;Miller&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00004"/>00004 <emphasis role="comment">//&#32;Date&#32;&#32;&#32;:&#32;20230425&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00005"/>00005 <emphasis role="comment">//&#32;Aim&#32;&#32;&#32;&#32;:&#32;Build&#32;graphs&#32;and&#32;test&#32;properties&#32;of&#32;graphs.&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00006"/>00006 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;As&#32;graph&#32;types&#32;grow&#32;in&#32;number,&#32;separate&#32;tests&#32;&#32;//</emphasis>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00007"/>00007 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;across&#32;multiple&#32;files&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00009"/>00009 <emphasis role="comment"></emphasis>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00010"/>00010 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00011"/>00011 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00012"/>00012 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00013"/>00013 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00024"/><link linkend="_write_graph_graph_viz_dot_file_8hpp_1a1409ed3eb04c88533bec225163b568ea">00024</link> std::string&#32;<link linkend="_write_graph_graph_viz_dot_file_8hpp_1a1409ed3eb04c88533bec225163b568ea">updateTextFile</link>(std::string&#32;inputPath){
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;std::ifstream&#32;infile(inputPath);
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;std::size_t&#32;pos&#32;=&#32;inputPath.find_last_of(<emphasis role="stringliteral">&quot;.&quot;</emphasis>);
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;std::string&#32;outputPath;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pos&#32;!=&#32;std::string::npos)&#32;{
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;prefix&#32;=&#32;inputPath.substr(0,&#32;pos);
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;suffix&#32;=&#32;inputPath.substr(pos);
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;outputPath&#32;=&#32;prefix&#32;+&#32;<emphasis role="stringliteral">&quot;Updated&quot;</emphasis>&#32;+&#32;suffix;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00033"/>00033 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;std::ofstream&#32;outfile(outputPath);
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00035"/>00035 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Read&#32;and&#32;write&#32;the&#32;first&#32;line</emphasis>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;std::string&#32;line;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;std::getline(infile,&#32;line);
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;outfile&#32;&lt;&lt;&#32;line&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00040"/>00040 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Insert&#32;new&#32;text&#32;at&#32;line&#32;2</emphasis>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00042"/>00042 &#32;&#32;&#32;&#32;outfile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;graph&#32;[layout&#32;=&#32;neato]&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;outfile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;node&#32;[shape&#32;=&#32;circle,&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;outfile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;style&#32;=&#32;filled,&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;outfile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;style&#32;=&#32;filled,&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;outfile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;color&#32;=&#32;lightblue]&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00047"/>00047 &#32;&#32;&#32;&#32;outfile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;edge&#32;[color&#32;=&#32;silver]&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00048"/>00048 &#32;&#32;&#32;&#32;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00049"/>00049 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;the&#32;remaining&#32;lines</emphasis>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00050"/>00050 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(std::getline(infile,&#32;line))&#32;{
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;outfile&#32;&lt;&lt;&#32;line&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00052"/>00052 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00053"/>00053 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00054"/>00054 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Close&#32;the&#32;files</emphasis>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00055"/>00055 &#32;&#32;&#32;&#32;infile.close();
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00056"/>00056 &#32;&#32;&#32;&#32;outfile.close();
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00057"/>00057 &#32;&#32;&#32;&#32;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;outputPath;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00059"/>00059 }
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00060"/>00060 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00061"/>00061 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00062"/>00062 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00063"/>00063 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00064"/>00064 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00065"/>00065 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00066"/>00066 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00079"/><link linkend="_write_graph_graph_viz_dot_file_8hpp_1a3d553b54b16922ee146bfb33201a3993">00079</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_write_graph_graph_viz_dot_file_8hpp_1a3d553b54b16922ee146bfb33201a3993">printGraphToFile</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph,std::string&#32;fileDir,std::string&#32;graphName,std::string&#32;format){
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;Graphviz&#32;output&#32;stream</emphasis>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;std::stringstream&#32;outputFile;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;outputFile&#32;&lt;&lt;&#32;fileDir&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>&#32;&lt;&lt;&#32;graphName;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00083"/>00083 &#32;&#32;&#32;&#32;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00084"/>00084 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00085"/>00085 &#32;&#32;&#32;&#32;std::ofstream&#32;dot_file(outputFile.str()+<emphasis role="stringliteral">&quot;.dot&quot;</emphasis>);
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00086"/>00086 &#32;&#32;&#32;&#32;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00087"/>00087 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;to&#32;file</emphasis>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;boost::write_graphviz(
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;dot_file,&#32;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;graph);
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;std::string&#32;updatedDotFile&#32;=&#32;<link linkend="_write_graph_graph_viz_dot_file_8hpp_1a1409ed3eb04c88533bec225163b568ea">updateTextFile</link>(outputFile.str()+<emphasis role="stringliteral">&quot;.dot&quot;</emphasis>);
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00095"/>00095 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00096"/>00096 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00097"/>00097 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(format&#32;==&#32;<emphasis role="stringliteral">&quot;png&quot;</emphasis>){
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Convert&#32;the&#32;DOT&#32;file&#32;to&#32;PNG</emphasis>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;dotPath;&#32;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;pngPath;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;sysString;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;dotPath&#32;&lt;&lt;&#32;outputFile.str()&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;.dot&quot;</emphasis>;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pngPath&#32;&lt;&lt;&#32;outputFile.str()&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;.png&quot;</emphasis>;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sysString&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;dot&#32;-Tpng&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;updatedDotFile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;-o&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;pngPath.str();
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::system(sysString.str().c_str());
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00106"/>00106 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(format&#32;==&#32;<emphasis role="stringliteral">&quot;svg&quot;</emphasis>){
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Convert&#32;the&#32;DOT&#32;file&#32;to&#32;SVG</emphasis>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;dotPath;&#32;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;svgPath;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;sysString;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;dotPath&#32;&lt;&lt;&#32;outputFile.str()&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;.dot&quot;</emphasis>;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;svgPath&#32;&lt;&lt;&#32;outputFile.str()&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;.svg&quot;</emphasis>;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sysString&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;dot&#32;-Tpng&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;updatedDotFile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;-o&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;svgPath.str();
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::system(sysString.str().c_str());
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Convert&#32;the&#32;DOT&#32;file&#32;to&#32;PNG&#32;and&#32;SVG</emphasis>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;dotPath;&#32;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;pngPath;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;svgPath;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;pngSysString;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;svgSysString;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;dotPath&#32;&lt;&lt;&#32;outputFile.str()&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;.dot&quot;</emphasis>;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pngPath&#32;&lt;&lt;&#32;outputFile.str()&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;.png&quot;</emphasis>;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;svgPath&#32;&lt;&lt;&#32;outputFile.str()&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;.svg&quot;</emphasis>;
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pngSysString&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;dot&#32;-Tpng&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;updatedDotFile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;-o&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;pngPath.str();
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;svgSysString&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;dot&#32;-Tpng&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;updatedDotFile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;-o&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;svgPath.str();
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::system(pngSysString.str().c_str());
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::system(svgSysString.str().c_str());
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00130"/>00130 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00131"/>00131 }
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00132"/>00132 
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_source_1l00133"/>00133 &#32;&#32;&#32;&#32;
+</programlisting></section>

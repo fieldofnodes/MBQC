@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_probabilities_amplitudes_no_noise_circuits_8hpp" xml:lang="en-US">
+<title>src/testFunctions/probabilitiesAmplitudesNoNoiseCircuits.hpp File Reference</title>
+<indexterm><primary>src/testFunctions/probabilitiesAmplitudesNoNoiseCircuits.hpp</primary></indexterm>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_1a04cb99395192eeaaf6127a5566a1f0f2">applySingleQubitPauliX</link> (std::string fileAmp, std::string fileProb)</para>
+</listitem>
+            <listitem><para>void <link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_1abcf93bff15914fce42420a9c180cb52b">applySingleQubitHGate</link> (std::string fileAmp, std::string fileProb)</para>
+</listitem>
+            <listitem><para>void <link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_1a0a4ae0264fe447986b9ec9020be0b300">applyTwoQubitPauliXEachQubit</link> (std::string fileAmp, std::string fileProb)</para>
+</listitem>
+            <listitem><para>void <link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_1a83516056319fc01a2e77d10e1207db1b">applyTwoQubitHGateEachQubit</link> (std::string fileAmp, std::string fileProb)</para>
+</listitem>
+            <listitem><para>void <link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_1a29e290b1295a652cd32caa8b1b9fadc1">applyTwoQubitHCZGateBetweenQubit</link> (std::string fileAmp, std::string fileProb)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_probabilities_amplitudes_no_noise_circuits_8hpp_1abcf93bff15914fce42420a9c180cb52b"/><section>
+    <title>applySingleQubitHGate()</title>
+<indexterm><primary>applySingleQubitHGate</primary><secondary>probabilitiesAmplitudesNoNoiseCircuits.hpp</secondary></indexterm>
+<indexterm><primary>probabilitiesAmplitudesNoNoiseCircuits.hpp</primary><secondary>applySingleQubitHGate</secondary></indexterm>
+<para><computeroutput>void applySingleQubitHGate (std::string fileAmp, std::string fileProb)</computeroutput></para><para>
+Definition at line <link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_source_1l00042">42</link> of file <link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_source">probabilitiesAmplitudesNoNoiseCircuits.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numQubits&#32;=&#32;1;
+00044 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+00045 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+00046 &#32;&#32;&#32;&#32;
+00047 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;qureg</emphasis>
+00048 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createDensityQureg(numQubits,&#32;env);
+00049 &#32;&#32;&#32;&#32;
+00050 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Apply&#32;details&#32;to&#32;circuit</emphasis>
+00051 &#32;&#32;&#32;&#32;hadamard(qureg,0);
+00052 &#32;&#32;&#32;&#32;
+00053 &#32;&#32;&#32;&#32;
+00054 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</link>(qureg,fileAmp);
+00055 
+00056 
+00057 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Compute&#32;probabilites</emphasis>
+00058 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numProbs&#32;=&#32;1&lt;&lt;numQubits;
+00059 &#32;&#32;&#32;&#32;qreal&#32;outcomeProbs[1&lt;&lt;numProbs];
+00060 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubits[]&#32;=&#32;{0};
+00061 &#32;&#32;&#32;&#32;calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);&#32;&#32;&#32;&#32;&#32;
+00062 &#32;&#32;&#32;&#32;
+00063 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;probabilities&#32;to&#32;file</emphasis>
+00064 &#32;&#32;&#32;&#32;
+00065 &#32;&#32;&#32;&#32;std::string&#32;col_name&#32;=&#32;<emphasis role="stringliteral">&quot;probabilities&quot;</emphasis>;
+00066 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</link>(outcomeProbs,&#32;numProbs,&#32;fileProb,col_name);
+00067 
+00068 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+00069 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+00070 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+00071 }
+</programlisting></section>
+<anchor xml:id="_probabilities_amplitudes_no_noise_circuits_8hpp_1a04cb99395192eeaaf6127a5566a1f0f2"/><section>
+    <title>applySingleQubitPauliX()</title>
+<indexterm><primary>applySingleQubitPauliX</primary><secondary>probabilitiesAmplitudesNoNoiseCircuits.hpp</secondary></indexterm>
+<indexterm><primary>probabilitiesAmplitudesNoNoiseCircuits.hpp</primary><secondary>applySingleQubitPauliX</secondary></indexterm>
+<para><computeroutput>void applySingleQubitPauliX (std::string fileAmp, std::string fileProb)</computeroutput></para><para>
+Definition at line <link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_source_1l00012">12</link> of file <link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_source">probabilitiesAmplitudesNoNoiseCircuits.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00013 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numQubits&#32;=&#32;1;
+00014 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+00015 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+00016 &#32;&#32;&#32;&#32;
+00017 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;qureg</emphasis>
+00018 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createDensityQureg(numQubits,&#32;env);
+00019 &#32;&#32;&#32;&#32;
+00020 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Apply&#32;details&#32;to&#32;circuit</emphasis>
+00021 &#32;&#32;&#32;&#32;pauliX(qureg,0);
+00022 &#32;&#32;&#32;&#32;
+00023 &#32;&#32;&#32;&#32;
+00024 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</link>(qureg,fileAmp);
+00025 
+00026 
+00027 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Compute&#32;probabilites</emphasis>
+00028 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numProbs&#32;=&#32;1&lt;&lt;numQubits;
+00029 &#32;&#32;&#32;&#32;qreal&#32;outcomeProbs[1&lt;&lt;numProbs];
+00030 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubits[]&#32;=&#32;{0};
+00031 &#32;&#32;&#32;&#32;calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);&#32;&#32;&#32;&#32;&#32;
+00032 &#32;&#32;&#32;&#32;
+00033 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;probabilities&#32;to&#32;file</emphasis>
+00034 &#32;&#32;&#32;&#32;
+00035 &#32;&#32;&#32;&#32;std::string&#32;col_name&#32;=&#32;<emphasis role="stringliteral">&quot;probabilities&quot;</emphasis>;
+00036 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</link>(outcomeProbs,&#32;numProbs,&#32;fileProb,col_name);
+00037 
+00038 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+00039 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+00040 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+00041 }
+</programlisting></section>
+<anchor xml:id="_probabilities_amplitudes_no_noise_circuits_8hpp_1a29e290b1295a652cd32caa8b1b9fadc1"/><section>
+    <title>applyTwoQubitHCZGateBetweenQubit()</title>
+<indexterm><primary>applyTwoQubitHCZGateBetweenQubit</primary><secondary>probabilitiesAmplitudesNoNoiseCircuits.hpp</secondary></indexterm>
+<indexterm><primary>probabilitiesAmplitudesNoNoiseCircuits.hpp</primary><secondary>applyTwoQubitHCZGateBetweenQubit</secondary></indexterm>
+<para><computeroutput>void applyTwoQubitHCZGateBetweenQubit (std::string fileAmp, std::string fileProb)</computeroutput></para><para>
+Definition at line <link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_source_1l00134">134</link> of file <link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_source">probabilitiesAmplitudesNoNoiseCircuits.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numQubits&#32;=&#32;2;
+00136 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+00137 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+00138 &#32;&#32;&#32;&#32;
+00139 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;qureg</emphasis>
+00140 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createDensityQureg(numQubits,&#32;env);
+00141 
+00142 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Apply&#32;elements&#32;to&#32;circuit</emphasis>
+00143 &#32;&#32;&#32;&#32;hadamard(qureg,0);
+00144 &#32;&#32;&#32;&#32;hadamard(qureg,1);
+00145 &#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,0,1);
+00146 &#32;&#32;&#32;&#32;
+00147 &#32;&#32;&#32;&#32;
+00148 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;amplitudes&#32;to&#32;file</emphasis>
+00149 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</link>(qureg,fileAmp);
+00150 
+00151 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Compute&#32;probabilities</emphasis>
+00152 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numProbs&#32;=&#32;1&lt;&lt;numQubits;
+00153 &#32;&#32;&#32;&#32;qreal&#32;outcomeProbs[numProbs];
+00154 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubits[]&#32;=&#32;{0,1};
+00155 &#32;&#32;&#32;&#32;calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);&#32;&#32;&#32;&#32;&#32;
+00156 &#32;&#32;&#32;&#32;
+00157 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;probabilities&#32;to&#32;file</emphasis>
+00158 &#32;&#32;&#32;&#32;std::string&#32;col_name&#32;=&#32;<emphasis role="stringliteral">&quot;probabilities&quot;</emphasis>;
+00159 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</link>(outcomeProbs,&#32;numProbs,&#32;fileProb,col_name);
+00160 
+00161 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+00162 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+00163 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+00164 }
+</programlisting></section>
+<anchor xml:id="_probabilities_amplitudes_no_noise_circuits_8hpp_1a83516056319fc01a2e77d10e1207db1b"/><section>
+    <title>applyTwoQubitHGateEachQubit()</title>
+<indexterm><primary>applyTwoQubitHGateEachQubit</primary><secondary>probabilitiesAmplitudesNoNoiseCircuits.hpp</secondary></indexterm>
+<indexterm><primary>probabilitiesAmplitudesNoNoiseCircuits.hpp</primary><secondary>applyTwoQubitHGateEachQubit</secondary></indexterm>
+<para><computeroutput>void applyTwoQubitHGateEachQubit (std::string fileAmp, std::string fileProb)</computeroutput></para><para>
+Definition at line <link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_source_1l00103">103</link> of file <link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_source">probabilitiesAmplitudesNoNoiseCircuits.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00104 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numQubits&#32;=&#32;2;
+00105 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+00106 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+00107 &#32;&#32;&#32;&#32;
+00108 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;qureg</emphasis>
+00109 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createDensityQureg(numQubits,&#32;env);
+00110 &#32;&#32;&#32;&#32;
+00111 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Apply&#32;details&#32;to&#32;circuit</emphasis>
+00112 &#32;&#32;&#32;&#32;hadamard(qureg,0);
+00113 &#32;&#32;&#32;&#32;hadamard(qureg,1);
+00114 &#32;&#32;&#32;&#32;
+00115 &#32;&#32;&#32;&#32;
+00116 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</link>(qureg,fileAmp);
+00117 
+00118 
+00119 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Compute&#32;probabilites</emphasis>
+00120 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numProbs&#32;=&#32;1&lt;&lt;numQubits;
+00121 &#32;&#32;&#32;&#32;qreal&#32;outcomeProbs[1&lt;&lt;numProbs];
+00122 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubits[]&#32;=&#32;{0,1};
+00123 &#32;&#32;&#32;&#32;calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);&#32;&#32;&#32;&#32;&#32;
+00124 &#32;&#32;&#32;&#32;
+00125 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;probabilities&#32;to&#32;file</emphasis>
+00126 &#32;&#32;&#32;&#32;
+00127 &#32;&#32;&#32;&#32;std::string&#32;col_name&#32;=&#32;<emphasis role="stringliteral">&quot;probabilities&quot;</emphasis>;
+00128 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</link>(outcomeProbs,&#32;numProbs,&#32;fileProb,col_name);
+00129 
+00130 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+00131 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+00132 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+00133 }
+</programlisting></section>
+<anchor xml:id="_probabilities_amplitudes_no_noise_circuits_8hpp_1a0a4ae0264fe447986b9ec9020be0b300"/><section>
+    <title>applyTwoQubitPauliXEachQubit()</title>
+<indexterm><primary>applyTwoQubitPauliXEachQubit</primary><secondary>probabilitiesAmplitudesNoNoiseCircuits.hpp</secondary></indexterm>
+<indexterm><primary>probabilitiesAmplitudesNoNoiseCircuits.hpp</primary><secondary>applyTwoQubitPauliXEachQubit</secondary></indexterm>
+<para><computeroutput>void applyTwoQubitPauliXEachQubit (std::string fileAmp, std::string fileProb)</computeroutput></para><para>
+Definition at line <link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_source_1l00072">72</link> of file <link linkend="_probabilities_amplitudes_no_noise_circuits_8hpp_source">probabilitiesAmplitudesNoNoiseCircuits.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00073 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numQubits&#32;=&#32;2;
+00074 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+00075 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+00076 &#32;&#32;&#32;&#32;
+00077 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;qureg</emphasis>
+00078 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createDensityQureg(numQubits,&#32;env);
+00079 &#32;&#32;&#32;&#32;
+00080 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Apply&#32;details&#32;to&#32;circuit</emphasis>
+00081 &#32;&#32;&#32;&#32;pauliX(qureg,0);
+00082 &#32;&#32;&#32;&#32;pauliX(qureg,1);
+00083 &#32;&#32;&#32;&#32;
+00084 &#32;&#32;&#32;&#32;
+00085 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</link>(qureg,fileAmp);
+00086 
+00087 
+00088 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Compute&#32;probabilites</emphasis>
+00089 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numProbs&#32;=&#32;1&lt;&lt;numQubits;
+00090 &#32;&#32;&#32;&#32;qreal&#32;outcomeProbs[1&lt;&lt;numProbs];
+00091 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubits[]&#32;=&#32;{0,1};
+00092 &#32;&#32;&#32;&#32;calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);&#32;&#32;&#32;&#32;&#32;
+00093 &#32;&#32;&#32;&#32;
+00094 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;probabilities&#32;to&#32;file</emphasis>
+00095 &#32;&#32;&#32;&#32;
+00096 &#32;&#32;&#32;&#32;std::string&#32;col_name&#32;=&#32;<emphasis role="stringliteral">&quot;probabilities&quot;</emphasis>;
+00097 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</link>(outcomeProbs,&#32;numProbs,&#32;fileProb,col_name);
+00098 
+00099 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+00100 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+00101 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+00102 }
+</programlisting></section>
+</section>
+</section>

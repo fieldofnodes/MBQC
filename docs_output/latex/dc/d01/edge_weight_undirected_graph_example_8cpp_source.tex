@@ -1,0 +1,35 @@
+\doxysection{edge\+Weight\+Undirected\+Graph\+Example.\+cpp}
+\hypertarget{edge_weight_undirected_graph_example_8cpp_source}{}\label{edge_weight_undirected_graph_example_8cpp_source}\index{src/archive/filesToGoThrough/edgeWeightUndirectedGraphExample.cpp@{src/archive/filesToGoThrough/edgeWeightUndirectedGraphExample.cpp}}
+\mbox{\hyperlink{edge_weight_undirected_graph_example_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <boost/graph/graph\_traits.hpp>}}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <boost/graph/adjacency\_list.hpp>}}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00004}00004\ \ \ }
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00005}\mbox{\hyperlink{edge_weight_undirected_graph_example_8cpp_a27fc6328bddf7e7d16af9457c98e57d8}{00005}}\ \textcolor{keyword}{typedef}\ boost::property<boost::edge\_weight\_t,\ double>\ \mbox{\hyperlink{edge_weight_undirected_graph_example_8cpp_a27fc6328bddf7e7d16af9457c98e57d8}{EdgeWeight}};}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00006}\mbox{\hyperlink{edge_weight_undirected_graph_example_8cpp_ada53ca761157c2b09def3a3a6e4f0c15}{00006}}\ \textcolor{keyword}{typedef}\ boost::adjacency\_list<boost::listS,\ boost::vecS,\ boost::undirectedS,\ boost::no\_property,\ EdgeWeight>\ \mbox{\hyperlink{edge_weight_undirected_graph_example_8cpp_ada53ca761157c2b09def3a3a6e4f0c15}{undirectedGraph}};}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00007}\mbox{\hyperlink{edge_weight_undirected_graph_example_8cpp_af04c50f717d4bda41f0c58fe0eece059}{00007}}\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::edge\_iterator\ \mbox{\hyperlink{edge_weight_undirected_graph_example_8cpp_af04c50f717d4bda41f0c58fe0eece059}{edge\_iterator}};}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00008}00008\ \ \ }
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00009}\mbox{\hyperlink{edge_weight_undirected_graph_example_8cpp_a81ce304348a420752ee080480d2b3095}{00009}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{char}*[])}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ 1.\ Undirected\ graph\ -\/\ print\ out\ the\ edge\ weights}}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ g;}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00013}00013\ \ \ }
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00014}00014\ \ \ \ \ boost::add\_edge(0,\ 1,\ 8,\ g);}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00015}00015\ \ \ \ \ boost::add\_edge(0,\ 5,\ 2,\ g);}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00016}00016\ \ \ \ \ boost::add\_edge(5,\ 6,\ 1,\ g);}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00017}00017\ \ \ \ \ boost::add\_edge(4,\ 5,\ 5,\ g);}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00018}00018\ \ \ \ \ boost::add\_edge(3,\ 5,\ 7,\ g);}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00019}00019\ \ \ }
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00020}00020\ \ \ \ \ boost::property\_map<undirectedGraph,\ boost::edge\_weight\_t>::type\ EdgeWeightMap\ =\ get(boost::edge\_weight\_t(),\ g);}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00021}00021\ \ \ }
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00022}00022\ \ \ \ \ std::pair<edge\_iterator,\ edge\_iterator>\ edgePair;}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00023}00023\ \ \ \ \ \textcolor{keywordflow}{for}\ (edgePair\ =\ edges(g);\ edgePair.first\ !=\ edgePair.second;\ ++edgePair.first)}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ std::cout\ <<\ *edgePair.first\ <<\ \textcolor{stringliteral}{"{}\ "{}}\ <<\ EdgeWeightMap[*edgePair.first]\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00026}00026\ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00027}00027\ \ \ }
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{edge_weight_undirected_graph_example_8cpp_source_l00029}00029\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,92 @@
+\doxysection{src/archive/prototype\+Lattice\+Creation.cpp File Reference}
+\hypertarget{prototype_lattice_creation_8cpp}{}\label{prototype_lattice_creation_8cpp}\index{src/archive/prototypeLatticeCreation.cpp@{src/archive/prototypeLatticeCreation.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$numeric$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$Qu\+EST.\+h$>$}\newline
+{\ttfamily \#include $<$boost/graph/adjacency\+\_\+list.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/grid\+\_\+graph.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/graphviz.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/array.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/graph\+\_\+utility.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/container/vector.\+hpp$>$}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/graphs/graph\+Constructions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/graphs/graph\+Traversal\+Flows.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/generic\+Helper\+Functions/general\+Assert\+Functions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/test\+Functions/graph\+Assert\+Functions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/generic\+Helper\+Functions/write\+Graph\+Graph\+Viz\+Dot\+File.\+hpp\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{prototype_lattice_creation_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{prototype_lattice_creation_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{prototype_lattice_creation_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{prototypeLatticeCreation.cpp@{prototypeLatticeCreation.cpp}!main@{main}}
+\index{main@{main}!prototypeLatticeCreation.cpp@{prototypeLatticeCreation.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{prototype_lattice_creation_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{prototype_lattice_creation_8cpp_source}{prototype\+Lattice\+Creation.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ K\ =\ 7;}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ L\ =\ 3;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ N\ =\ K*L;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ lattice\ using\ create\_lattice\ function}}
+\DoxyCodeLine{00063\ \ \ \ \ std::vector<std::vector<int>>\ lattice\ =\ \mbox{\hyperlink{graph_constructions_8hpp_a6e0974be2fa2e599ab591aa02f1c9eb2}{create\_lattice}}(K,\ L);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ row\ :\ lattice)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ number\ :\ row)\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ number\ <<\ \textcolor{charliteral}{'\(\backslash\)t'};}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{//\ Define\ the\ Boost\ Graph\ types}}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{typedef}\ boost::adjacency\_list<boost::vecS,\ boost::vecS,\ boost::undirectedS>\ Graph;}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{typedef}\ boost::graph\_traits<Graph>::vertex\_descriptor\ Vertex;}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ Boost\ Graph}}
+\DoxyCodeLine{00078\ \ \ \ \ Graph\ graph(N);}
+\DoxyCodeLine{00079\ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ Add\ edges\ to\ the\ graph}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ row\ =\ 0;\ row\ <\ K;\ row++)\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ col\ =\ 0;\ col\ <\ L;\ col++)\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row\ +\ 1\ <\ K)\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(lattice[row][col],\ lattice[row\ +\ 1][col],\ graph);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (col\ +\ 1\ <\ L)\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(lattice[row][col],\ lattice[row][col\ +\ 1],\ graph);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Num\ vertices:\ "{}}\ <<\ boost::num\_vertices(graph)\ <<\ std::endl;}
+\DoxyCodeLine{00093\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Num\ edges:\ "{}}\ <<\ boost::num\_edges(graph)\ <<\ std::endl;}
+\DoxyCodeLine{00094\ \ \ \ \ print\_graph(graph);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{comment}{//\ Print\ graph\ to\ file}}
+\DoxyCodeLine{00097\ \ \ \ \ std::string\ fileDir\ =\ \textcolor{stringliteral}{"{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs"{}};}
+\DoxyCodeLine{00098\ \ \ \ \ std::string\ graphName\ =\ \textcolor{stringliteral}{"{}lattice2DArrayGraph"{}};}
+\DoxyCodeLine{00099\ \ \ \ \ std::string\ format\ =\ \textcolor{stringliteral}{"{}png"{}};}
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_a3d553b54b16922ee146bfb33201a3993}{printGraphToFile}}(graph,fileDir,graphName,format);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00103\ \}}
+
+\end{DoxyCode}

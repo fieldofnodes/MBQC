@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_59425e443f801f1f2fd8bbe4959a3ccf" xml:lang="en-US">
+<title>tests Directory Reference</title>
+<indexterm><primary>tests Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_test_angle_update_probabilites_8cpp">testAngleUpdateProbabilites.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_test_brick_works_graph_8cpp">testBrickWorksGraph.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_test_damping_simple_circuits_qu_e_s_t_8cpp">testDampingSimpleCircuitsQuEST.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_test_flow_functions_8cpp">testFlowFunctions.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_test_graph_properties_8cpp">testGraphProperties.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_test_no_noise_simple_circuits_qu_e_s_t_8cpp">testNoNoiseSimpleCircuitsQuEST.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_test_odd_number_qubit_angles_all_zero_8cpp">testOddNumberQubitAnglesAllZero.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp">testOddNumberQubitsEverySecondsAngleZero.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_test_two_qubits_angles_pi_on_two_8cpp">testTwoQubitsAnglesPiOnTwo.cpp</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

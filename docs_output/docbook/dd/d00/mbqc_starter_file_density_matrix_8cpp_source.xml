@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_mbqc_starter_file_density_matrix_8cpp_source" xml:lang="en-US">
+<title>mbqcStarterFileDensityMatrix.cpp</title>
+<indexterm><primary>examples/mbqcStarterFileDensityMatrix.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00001"/>00001 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00003"/>00003 <emphasis role="comment">//&#32;Title&#32;&#32;:&#32;mbqcStarterFile.cpp&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00004"/>00004 <emphasis role="comment">//&#32;Author&#32;:&#32;Jonathan&#32;Miller&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00005"/>00005 <emphasis role="comment">//&#32;Date&#32;&#32;&#32;:&#32;20230503&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00006"/>00006 <emphasis role="comment">//&#32;Aim&#32;&#32;&#32;&#32;:&#32;Basic&#32;start&#32;file&#32;to&#32;run&#32;mbqc&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00007"/>00007 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Current&#32;implementation&#32;can&#32;only&#32;do&#32;square&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00008"/>00008 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;graph&#32;repeatedly.&#32;Will&#32;branch&#32;repo&#32;to&#32;make&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00009"/>00009 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;use&#32;different&#32;way&#32;to&#32;create&#32;graph&#32;by&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00010"/>00010 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;adjacency&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00012"/>00012 <emphasis role="comment"></emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00013"/>00013 <emphasis role="comment">//&#32;Standard&#32;libraries</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00014"/>00014 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00015"/>00015 <emphasis role="preprocessor">#include&#32;&lt;algorithm&gt;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00016"/>00016 <emphasis role="preprocessor">#include&#32;&lt;iterator&gt;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00017"/>00017 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00018"/>00018 <emphasis role="preprocessor">#include&#32;&lt;set&gt;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00019"/>00019 <emphasis role="preprocessor">#include&#32;&lt;numeric&gt;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00020"/>00020 <emphasis role="preprocessor">#include&#32;&lt;cmath&gt;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00021"/>00021 <emphasis role="preprocessor">#include&#32;&lt;random&gt;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00022"/>00022 <emphasis role="preprocessor">#include&#32;&lt;filesystem&gt;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00023"/>00023 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00024"/>00024 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00025"/>00025 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00026"/>00026 <emphasis role="comment">//&#32;QuEST</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00027"/>00027 <emphasis role="preprocessor">#include&#32;&lt;QuEST.h&gt;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00028"/>00028 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00029"/>00029 <emphasis role="comment">//&#32;Boost</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/adjacency_list.hpp&gt;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00031"/>00031 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/grid_graph.hpp&gt;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/graphviz.hpp&gt;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00033"/>00033 <emphasis role="preprocessor">#include&#32;&lt;boost/array.hpp&gt;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/graph_utility.hpp&gt;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00035"/>00035 <emphasis role="preprocessor">#include&#32;&lt;boost/container/vector.hpp&gt;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00036"/>00036 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00037"/>00037 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00038"/>00038 <emphasis role="comment">//&#32;Helper&#32;functions</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00039"/>00039 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp&quot;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp&quot;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00041"/>00041 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00042"/>00042 <emphasis role="comment">//&#32;Graph&#32;functions</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp&quot;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp&quot;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00045"/>00045 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00046"/>00046 <emphasis role="comment">//&#32;Quantum&#32;functions</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/flowMeasurements.hpp&quot;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/angleConstruction.hpp&quot;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/quantumGraphClusterStates.hpp&quot;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00050"/>00050 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00051"/>00051 <emphasis role="comment">//&#32;Assert&#32;functions</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/generalAssertFunctions.hpp&quot;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp&quot;</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00054"/>00054 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00055"/>00055 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00056"/>00056 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00057"/>00057 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00058"/>00058 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00059"/>00059 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>boost;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00060"/><link linkend="_mbqc_starter_file_density_matrix_8cpp_1af845bf432b56cdda82dbde8011882168">00060</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::adjacency_list&lt;boost::vecS,&#32;boost::vecS,boost::undirectedS&gt;&#32;<link linkend="_mbqc_starter_file_density_matrix_8cpp_1af845bf432b56cdda82dbde8011882168">undirectedGraph</link>;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00061"/><link linkend="_mbqc_starter_file_density_matrix_8cpp_1ad413424ad598fbd91fde4dffeceda3c0">00061</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::edge_iterator&#32;<link linkend="_mbqc_starter_file_density_matrix_8cpp_1ad413424ad598fbd91fde4dffeceda3c0">edgeIterator</link>;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00062"/><link linkend="_mbqc_starter_file_density_matrix_8cpp_1ad100606fc4950dfc094fc60544838351">00062</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::vertex_iterator&#32;<link linkend="_mbqc_starter_file_density_matrix_8cpp_1ad100606fc4950dfc094fc60544838351">vertexIterator</link>;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00063"/>00063 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00064"/>00064 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00065"/>00065 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00066"/>00066 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00067"/>00067 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00068"/>00068 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00069"/>00069 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00070"/>00070 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00071"/>00071 <emphasis role="comment">//&#32;Set&#32;up&#32;the&#32;main&#32;function</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00072"/><link linkend="_mbqc_starter_file_density_matrix_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00072</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_mbqc_starter_file_density_matrix_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00073"/>00073 &#32;&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00074"/>00074 &#32;&#32;<emphasis role="comment">//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00075"/>00075 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00076"/>00076 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00077"/>00077 &#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00078"/>00078 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00079"/>00079 &#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00080"/>00080 &#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00081"/>00081 &#32;&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00082"/>00082 &#32;&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00083"/>00083 &#32;&#32;<emphasis role="comment">//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00084"/>00084 &#32;&#32;numRows&#32;=&#32;2;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00085"/>00085 &#32;&#32;numCols&#32;=&#32;3;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00086"/>00086 &#32;&#32;latticeGraph&#32;=&#32;<link linkend="_create_graph_8hpp_1aabb013bb6de93b1ca2ff83e1d7d200c7">createLatticeGraph</link>(numRows,numCols);
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00087"/>00087 &#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00088"/>00088 &#32;&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00089"/>00089 &#32;&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00090"/>00090 &#32;&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00091"/>00091 &#32;&#32;<emphasis role="comment">//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00092"/>00092 &#32;&#32;<emphasis role="comment">//&#32;Update&#32;with&#32;desired&#32;directory&#32;to&#32;view&#32;graph.</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00093"/>00093 &#32;&#32;std::string&#32;fileDir&#32;=&#32;<emphasis role="stringliteral">&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;</emphasis>;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00094"/>00094 &#32;&#32;std::string&#32;graphName&#32;=&#32;<emphasis role="stringliteral">&quot;lattice2DGraph&quot;</emphasis>;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00095"/>00095 &#32;&#32;std::string&#32;format&#32;=&#32;<emphasis role="stringliteral">&quot;png&quot;</emphasis>;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00096"/>00096 &#32;&#32;<link linkend="_write_graph_graph_viz_dot_file_8hpp_1a3d553b54b16922ee146bfb33201a3993">printGraphToFile</link>(latticeGraph,fileDir,graphName,format);
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00097"/>00097 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00098"/>00098 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00099"/>00099 &#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00100"/>00100 &#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00101"/>00101 &#32;&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00102"/>00102 &#32;&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00103"/>00103 &#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00104"/>00104 &#32;&#32;Qureg&#32;qureg&#32;=&#32;createDensityQureg(numVertices,&#32;env);
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00105"/>00105 &#32;&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00106"/>00106 &#32;&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00107"/>00107 &#32;&#32;<emphasis role="comment">//qubitAngles&#32;=&#32;initRandomPiOnNAnglesMod2kPi(numVertices,&#32;4);</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00108"/>00108 &#32;&#32;qubitAngles&#32;=&#32;<link linkend="_angle_construction_8hpp_1adde2e56cefa79b49346bc9e560b4430b">initRandomPiOnNAnglesMod2kPiPlusPi</link>(numVertices,&#32;4);
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00109"/>00109 &#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00110"/>00110 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00111"/>00111 &#32;&#32;<emphasis role="comment">//&#32;initialise&#32;in&#32;the&#32;plus&#32;state</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00112"/>00112 &#32;&#32;initPlusState(qureg);
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00113"/>00113 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00114"/>00114 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00115"/>00115 &#32;&#32;<emphasis role="comment">//&#32;add&#32;angles&#32;to&#32;the&#32;qubits</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00116"/>00116 &#32;&#32;<link linkend="_angle_construction_8hpp_1a6647ed996ec54a9137e68e6c6317e8ee">addAngleRotateZgate</link>(qureg,qubitAngles);
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00117"/>00117 &#32;&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00118"/>00118 &#32;&#32;&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00119"/>00119 &#32;&#32;<emphasis role="comment">//&#32;entangle&#32;graph</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00120"/>00120 &#32;&#32;<link linkend="_quantum_graph_cluster_states_8hpp_1a3f830234f9eb3a150a084b0f2b4aa056">entangleGraph</link>(qureg,latticeGraph);
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00121"/>00121 &#32;&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00122"/>00122 &#32;&#32;<emphasis role="comment">//&#32;Playing&#32;with&#32;rate&#32;of&#32;occurrences</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00123"/>00123 &#32;&#32;<emphasis role="comment">//&#32;Is&#32;there&#32;a&#32;Bayesian&#32;approach&#32;here,&#32;using&#32;this&#32;as</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00124"/>00124 &#32;&#32;<emphasis role="comment">//&#32;as&#32;the&#32;likelihood&#32;data?</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00125"/>00125 &#32;&#32;std::vector&lt;std::vector&lt;int&gt;&gt;&#32;resultsVector;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;graph</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;1000;i++){
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;measuredQubitsOutcomes&#32;=&#32;<link linkend="_flow_measurements_8hpp_1a7231be9a1c347894c1d01c349f4b41c7">measureGraph</link>(
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qureg,
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;latticeGraph,
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles,
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numRows);
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;resultsVector.push_back(measuredQubitsOutcomes);
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00134"/>00134 &#32;&#32;}&#32;&#32;&#32;&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00135"/>00135 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00136"/>00136 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00137"/>00137 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00138"/>00138 &#32;&#32;std::vector&lt;double&gt;&#32;resultsRatio;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00139"/>00139 &#32;&#32;resultsRatio&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a7162e6559cb0f6cd2c76ebee85fe113d">calculateColumnRatios</link>(resultsVector);
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00140"/>00140 &#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">auto</emphasis>&amp;&#32;ratio&#32;:&#32;resultsRatio)&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00141"/>00141 &#32;&#32;{
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;ratio&#32;&lt;&lt;&#32;<emphasis role="charliteral">&apos;&#32;&apos;</emphasis>;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00143"/>00143 &#32;&#32;}
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00144"/>00144 &#32;&#32;&#32;&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00145"/>00145 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00146"/>00146 &#32;&#32;&#32;&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00147"/>00147 &#32;&#32;<emphasis role="comment">//&#32;print&#32;results&#32;to&#32;screen</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00148"/>00148 &#32;&#32;<emphasis role="comment">//printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00149"/>00149 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00150"/>00150 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00151"/>00151 &#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00152"/>00152 &#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00153"/>00153 &#32;&#32;destroyQuESTEnv(env);
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00154"/>00154 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00155"/>00155 }
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00156"/>00156 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00157"/>00157 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00158"/>00158 
+<anchor xml:id="_mbqc_starter_file_density_matrix_8cpp_source_1l00159"/>00159 
+</programlisting></section>

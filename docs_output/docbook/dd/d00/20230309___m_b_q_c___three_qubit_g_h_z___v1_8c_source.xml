@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source" xml:lang="en-US">
+<title>20230309_MBQC_ThreeQubitGHZ_V1.c</title>
+<indexterm><primary>src/archive/20230309_MBQC_ThreeQubitGHZ_V1.c</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00001"/>00001 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00002"/>00002 <emphasis role="comment">//&#32;Title&#32;&#32;&#32;&#32;&#32;:&#32;Three&#32;qubit&#32;in&#32;a&#32;line&#32;entangled</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00003"/>00003 <emphasis role="comment">//&#32;Author&#32;&#32;&#32;&#32;:&#32;Jonathan&#32;Miller</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00004"/>00004 <emphasis role="comment">//&#32;Date&#32;&#32;&#32;&#32;&#32;&#32;:&#32;20230309</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00005"/>00005 <emphasis role="comment">//&#32;Aim&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Implement&#32;a&#32;simple&#32;MBQC&#32;circuit&#32;for&#32;()-()-()&#32;circuit</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00006"/>00006 <emphasis role="comment">//&#32;Flow&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Same&#32;row,&#32;next&#32;column;&#32;</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00007"/>00007 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;f(0)&#32;=&#32;1,&#32;f(1)&#32;=&#32;2,&#32;f(2)&#32;=&#32;3</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00008"/>00008 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;f-1(3)&#32;=&#32;2,&#32;f-1(2)&#32;=&#32;1,&#32;f-1(1)&#32;=&#32;0</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00009"/>00009 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00010"/>00010 <emphasis role="preprocessor">#include&#32;&lt;QuEST.h&gt;</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00011"/>00011 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00012"/>00012 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00013"/>00013 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00014"/>00014 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00015"/>00015 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00016"/>00016 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00017"/><link linkend="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4">00017</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00018"/>00018 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00020"/>00020 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00021"/>00021 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;number&#32;of&#32;qubits</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00023"/>00023 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numQubits&#32;=&#32;3;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubits[]&#32;=&#32;{0,1,2};
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00025"/>00025 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00026"/>00026 &#32;&#32;&#32;&#32;qreal&#32;outcomeProbs[1&lt;&lt;numQubits];
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00027"/>00027 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00028"/>00028 &#32;&#32;&#32;<emphasis role="comment">//&#32;Declare&#32;angle&#32;array&#32;and&#32;measure&#32;qubit&#32;array</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00029"/>00029 &#32;&#32;&#32;&#32;qreal&#32;angles[numQubits];&#32;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;measured_qubits[numQubits];
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00031"/>00031 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;initial&#32;angles</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=0;i&lt;numQubits;i++)
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;angles[i]&#32;=&#32;M_PI&#32;/&#32;4;&#32;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00035"/>00035 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00036"/>00036 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;prepare&#32;our&#32;register</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00037"/>00037 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numQubits,&#32;env);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00038"/>00038 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00039"/>00039 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00040"/>00040 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;qureg&#32;-&gt;&#32;|+&gt;&lt;+|</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00041"/>00041 &#32;&#32;&#32;&#32;initPlusState(qureg);&#32;&#32;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00042"/>00042 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00043"/>00043 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;apply&#32;CZ&#32;gate&#32;to&#32;entangle&#32;the&#32;circuit</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00044"/>00044 &#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,0,1);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00045"/>00045 &#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,1,2);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00046"/>00046 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00047"/>00047 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;first&#32;qubit</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00048"/>00048 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;()-()-()&#32;-&gt;&#32;X-()-(),&#32;for&#32;X&#32;being&#32;a&#32;removed&#32;qubit</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00049"/>00049 &#32;&#32;&#32;&#32;rotateZ(qureg,0,&#32;angles[0]);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00050"/>00050 &#32;&#32;&#32;&#32;hadamard(qureg,0);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00051"/>00051 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;s0&#32;=&#32;measure(qureg,0);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00052"/>00052 &#32;&#32;&#32;&#32;measured_qubits[0]&#32;=&#32;s0;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00053"/>00053 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;first&#32;angle&#32;is&#32;%f\n&quot;</emphasis>,angles[0]);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00054"/>00054 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;first&#32;qubit&#32;measure&#32;is&#32;%d\n&quot;</emphasis>,s0);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00055"/>00055 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00056"/>00056 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00057"/>00057 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;update&#32;second&#32;angle</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;sum_neigh_meas_q0&#32;=&#32;0;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00059"/>00059 &#32;&#32;&#32;&#32;qreal&#32;x_correction_q1&#32;=&#32;pow(-1,&#32;s0)*angles[1];
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00060"/>00060 &#32;&#32;&#32;&#32;qreal&#32;z_correction_q1&#32;=&#32;M_PI*(sum_neigh_meas_q0);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00061"/>00061 &#32;&#32;&#32;&#32;qreal&#32;updated_angle_q1&#32;=&#32;x_correction_q1&#32;+&#32;z_correction_q1;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00062"/>00062 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00063"/>00063 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;second&#32;qubit</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00064"/>00064 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;X-()-()&#32;-&gt;&#32;X-X-(),&#32;for&#32;X&#32;being&#32;a&#32;removed&#32;qubit</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00065"/>00065 &#32;&#32;&#32;&#32;rotateZ(qureg,1,&#32;(-1)*updated_angle_q1);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00066"/>00066 &#32;&#32;&#32;&#32;hadamard(qureg,1);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00067"/>00067 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;s1&#32;=&#32;measure(qureg,1);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00068"/>00068 &#32;&#32;&#32;&#32;measured_qubits[1]&#32;=&#32;s1;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00069"/>00069 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Original&#32;second&#32;angle&#32;is&#32;%f\n&quot;</emphasis>,angles[1]);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00070"/>00070 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Updated&#32;second&#32;angle&#32;is&#32;%f\n&quot;</emphasis>,updated_angle_q1);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00071"/>00071 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Second&#32;qubit&#32;measure&#32;is&#32;%d\n&quot;</emphasis>,s1);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00072"/>00072 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00073"/>00073 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00074"/>00074 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;update&#32;third&#32;angle</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00075"/>00075 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;sum_neigh_meas_q1&#32;=&#32;s0;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00076"/>00076 &#32;&#32;&#32;&#32;qreal&#32;x_correction_q2&#32;=&#32;pow(-1,&#32;s1)*angles[2];
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00077"/>00077 &#32;&#32;&#32;&#32;qreal&#32;z_correction_q2&#32;=&#32;M_PI*(sum_neigh_meas_q1);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00078"/>00078 &#32;&#32;&#32;&#32;qreal&#32;updated_angle_q2&#32;=&#32;x_correction_q2&#32;+&#32;z_correction_q2;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00079"/>00079 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;third&#32;qubit</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00081"/>00081 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;X-X-()&#32;-&gt;&#32;X-X-X,&#32;for&#32;X&#32;being&#32;a&#32;removed&#32;qubit</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00082"/>00082 &#32;&#32;&#32;&#32;rotateZ(qureg,2,&#32;(-1)*updated_angle_q2);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00083"/>00083 &#32;&#32;&#32;&#32;hadamard(qureg,2);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00084"/>00084 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;s2&#32;=&#32;measure(qureg,2);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00085"/>00085 &#32;&#32;&#32;&#32;measured_qubits[2]&#32;=&#32;s2;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00086"/>00086 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Original&#32;third&#32;angle&#32;is&#32;%f\n&quot;</emphasis>,angles[2]);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00087"/>00087 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Updated&#32;third&#32;angle&#32;is&#32;%f\n&quot;</emphasis>,updated_angle_q2);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00088"/>00088 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Third&#32;qubit&#32;measure&#32;is&#32;%d\n&quot;</emphasis>,s2);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00089"/>00089 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00090"/>00090 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00091"/>00091 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00092"/>00092 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00093"/>00093 &#32;&#32;&#32;&#32;<emphasis role="comment">//calcProbOfAllOutcomes(outcomeProbs,&#32;qureg,&#32;qubits,&#32;numQubits);</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00094"/>00094 &#32;&#32;&#32;&#32;qreal&#32;prob;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00095"/>00095 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;numQubits;&#32;i++)
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00096"/>00096 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;prob&#32;=&#32;calcProbOfOutcome(qureg,i,0);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Probability:&#32;%f\n&#32;&quot;</emphasis>,&#32;prob);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00099"/>00099 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00100"/>00100 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00101"/>00101 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00102"/>00102 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Print&#32;measured&#32;qubit&#32;vector</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00103"/>00103 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Measured&#32;array:&quot;</emphasis>);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00104"/>00104 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;loop&#32;=&#32;0;&#32;loop&#32;&lt;&#32;numQubits;&#32;loop++)
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;%d&#32;&quot;</emphasis>,&#32;measured_qubits[loop]);
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00106"/>00106 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00107"/>00107 }
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00108"/>00108 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00109"/>00109 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00110"/>00110 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00111"/>00111 
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00112"/>00112 
+</programlisting></section>

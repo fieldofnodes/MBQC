@@ -1,0 +1,160 @@
+\doxysection{src/generic\+Helper\+Functions/write\+Graph\+Graph\+Viz\+Dot\+File.hpp File Reference}
+\hypertarget{write_graph_graph_viz_dot_file_8hpp}{}\label{write_graph_graph_viz_dot_file_8hpp}\index{src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp@{src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_a1409ed3eb04c88533bec225163b568ea}{update\+Text\+File}} (std\+::string input\+Path)
+\begin{DoxyCompactList}\small\item\em Updates a text file with additional content. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_a3d553b54b16922ee146bfb33201a3993}{print\+Graph\+To\+File}} (const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&graph, std\+::string file\+Dir, std\+::string graph\+Name, std\+::string format)
+\begin{DoxyCompactList}\small\item\em Prints a graph to a file using Graphviz. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{write_graph_graph_viz_dot_file_8hpp_a3d553b54b16922ee146bfb33201a3993}\label{write_graph_graph_viz_dot_file_8hpp_a3d553b54b16922ee146bfb33201a3993} 
+\index{writeGraphGraphVizDotFile.hpp@{writeGraphGraphVizDotFile.hpp}!printGraphToFile@{printGraphToFile}}
+\index{printGraphToFile@{printGraphToFile}!writeGraphGraphVizDotFile.hpp@{writeGraphGraphVizDotFile.hpp}}
+\doxysubsubsection{\texorpdfstring{printGraphToFile()}{printGraphToFile()}}
+{\footnotesize\ttfamily void print\+Graph\+To\+File (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{graph,  }\item[{std\+::string}]{file\+Dir,  }\item[{std\+::string}]{graph\+Name,  }\item[{std\+::string}]{format }\end{DoxyParamCaption})}
+
+
+
+Prints a graph to a file using Graphviz. 
+
+This function writes a Boost undirected graph to a Graphviz DOT file. It then converts the DOT file to the specified output format (e.\+g., PNG, SVG) using the Graphviz \"{}dot\"{} command. The resulting file is saved in the specified directory with the given graph name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The undirected graph to print. \\
+\hline
+{\em file\+Dir} & The directory where the output file will be saved. \\
+\hline
+{\em graph\+Name} & The name of the output file without the file extension. \\
+\hline
+{\em format} & The desired output format (\"{}png\"{}, \"{}svg\"{}, or any other format to generate both). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_source_l00079}{79}} of file \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_source}{write\+Graph\+Graph\+Viz\+Dot\+File.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ Graphviz\ output\ stream}}
+\DoxyCodeLine{00081\ \ \ \ \ std::stringstream\ outputFile;}
+\DoxyCodeLine{00082\ \ \ \ \ outputFile\ <<\ fileDir\ <<\ \textcolor{stringliteral}{"{}/"{}}\ <<\ graphName;}
+\DoxyCodeLine{00083\ \ \ \ \ }
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ std::ofstream\ dot\_file(outputFile.str()+\textcolor{stringliteral}{"{}.dot"{}});}
+\DoxyCodeLine{00086\ \ \ \ \ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{comment}{//\ Write\ to\ file}}
+\DoxyCodeLine{00090\ \ \ \ \ boost::write\_graphviz(}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ dot\_file,\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ graph);}
+\DoxyCodeLine{00093\ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ std::string\ updatedDotFile\ =\ \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_a1409ed3eb04c88533bec225163b568ea}{updateTextFile}}(outputFile.str()+\textcolor{stringliteral}{"{}.dot"{}});}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordflow}{if}(format\ ==\ \textcolor{stringliteral}{"{}png"{}})\{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ DOT\ file\ to\ PNG}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ std::stringstream\ dotPath;\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ std::stringstream\ pngPath;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ std::stringstream\ sysString;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ dotPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.dot"{}};}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ pngPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.png"{}};}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ sysString\ <<\ \textcolor{stringliteral}{"{}dot\ -\/Tpng\ "{}}\ <<\ updatedDotFile\ <<\ \textcolor{stringliteral}{"{}\ -\/o\ "{}}\ <<\ pngPath.str();}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ std::system(sysString.str().c\_str());}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (format\ ==\ \textcolor{stringliteral}{"{}svg"{}})\{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ DOT\ file\ to\ SVG}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ std::stringstream\ dotPath;\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ std::stringstream\ svgPath;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ std::stringstream\ sysString;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ dotPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.dot"{}};}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ svgPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.svg"{}};}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ sysString\ <<\ \textcolor{stringliteral}{"{}dot\ -\/Tpng\ "{}}\ <<\ updatedDotFile\ <<\ \textcolor{stringliteral}{"{}\ -\/o\ "{}}\ <<\ svgPath.str();}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ std::system(sysString.str().c\_str());}
+\DoxyCodeLine{00116\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ DOT\ file\ to\ PNG\ and\ SVG}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ std::stringstream\ dotPath;\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ std::stringstream\ pngPath;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ std::stringstream\ svgPath;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ std::stringstream\ pngSysString;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ std::stringstream\ svgSysString;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ dotPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.dot"{}};}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ pngPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.png"{}};}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ svgPath\ <<\ outputFile.str()\ <<\ \textcolor{stringliteral}{"{}.svg"{}};}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ pngSysString\ <<\ \textcolor{stringliteral}{"{}dot\ -\/Tpng\ "{}}\ <<\ updatedDotFile\ <<\ \textcolor{stringliteral}{"{}\ -\/o\ "{}}\ <<\ pngPath.str();}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ svgSysString\ <<\ \textcolor{stringliteral}{"{}dot\ -\/Tpng\ "{}}\ <<\ updatedDotFile\ <<\ \textcolor{stringliteral}{"{}\ -\/o\ "{}}\ <<\ svgPath.str();}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ std::system(pngSysString.str().c\_str());}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ std::system(svgSysString.str().c\_str());}
+\DoxyCodeLine{00130\ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \}}
+
+\end{DoxyCode}
+\Hypertarget{write_graph_graph_viz_dot_file_8hpp_a1409ed3eb04c88533bec225163b568ea}\label{write_graph_graph_viz_dot_file_8hpp_a1409ed3eb04c88533bec225163b568ea} 
+\index{writeGraphGraphVizDotFile.hpp@{writeGraphGraphVizDotFile.hpp}!updateTextFile@{updateTextFile}}
+\index{updateTextFile@{updateTextFile}!writeGraphGraphVizDotFile.hpp@{writeGraphGraphVizDotFile.hpp}}
+\doxysubsubsection{\texorpdfstring{updateTextFile()}{updateTextFile()}}
+{\footnotesize\ttfamily std\+::string update\+Text\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{input\+Path }\end{DoxyParamCaption})}
+
+
+
+Updates a text file with additional content. 
+
+This function reads the content of the input file, inserts new text at a specific line, and writes the updated content to a new output file. The new file name is derived by appending \"{}\+Updated\"{} to the original file name. The input file should exist and be accessible.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Path} & The path to the input file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The path to the updated output file. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_source}{write\+Graph\+Graph\+Viz\+Dot\+File.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ std::ifstream\ infile(inputPath);}
+\DoxyCodeLine{00026\ \ \ \ \ std::size\_t\ pos\ =\ inputPath.find\_last\_of(\textcolor{stringliteral}{"{}."{}});}
+\DoxyCodeLine{00027\ \ \ \ \ std::string\ outputPath;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ !=\ std::string::npos)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ std::string\ prefix\ =\ inputPath.substr(0,\ pos);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ std::string\ suffix\ =\ inputPath.substr(pos);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ outputPath\ =\ prefix\ +\ \textcolor{stringliteral}{"{}Updated"{}}\ +\ suffix;}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ std::ofstream\ outfile(outputPath);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ Read\ and\ write\ the\ first\ line}}
+\DoxyCodeLine{00037\ \ \ \ \ std::string\ line;}
+\DoxyCodeLine{00038\ \ \ \ \ std::getline(infile,\ line);}
+\DoxyCodeLine{00039\ \ \ \ \ outfile\ <<\ line\ <<\ std::endl;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ Insert\ new\ text\ at\ line\ 2}}
+\DoxyCodeLine{00042\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}graph\ [layout\ =\ neato]"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00043\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}node\ [shape\ =\ circle,"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00044\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}style\ =\ filled,"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00045\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}style\ =\ filled,"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00046\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}color\ =\ lightblue]"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00047\ \ \ \ \ outfile\ <<\ \textcolor{stringliteral}{"{}edge\ [color\ =\ silver]"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00048\ \ \ \ \ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ Write\ the\ remaining\ lines}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(infile,\ line))\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ outfile\ <<\ line\ <<\ std::endl;}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ Close\ the\ files}}
+\DoxyCodeLine{00055\ \ \ \ \ infile.close();}
+\DoxyCodeLine{00056\ \ \ \ \ outfile.close();}
+\DoxyCodeLine{00057\ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{return}\ outputPath;}
+\DoxyCodeLine{00059\ \}}
+
+\end{DoxyCode}

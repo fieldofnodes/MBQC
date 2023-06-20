@@ -1,0 +1,89 @@
+\doxysection{src/archive/files\+To\+Go\+Through/find\+Dijkstra\+Sshortest\+Path\+Example.cpp File Reference}
+\hypertarget{find_dijkstra_sshortest_path_example_8cpp}{}\label{find_dijkstra_sshortest_path_example_8cpp}\index{src/archive/filesToGoThrough/findDijkstraSshortestPathExample.cpp@{src/archive/filesToGoThrough/findDijkstraSshortestPathExample.cpp}}
+{\ttfamily \#include $<$boost/config.\+hpp$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$boost/graph/graph\+\_\+traits.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/adjacency\+\_\+list.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/dijkstra\+\_\+shortest\+\_\+paths.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/property\+\_\+map/property\+\_\+map.\+hpp$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{find_dijkstra_sshortest_path_example_8cpp_a81ce304348a420752ee080480d2b3095}{main}} (int, char \texorpdfstring{$\ast$}{*}\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{find_dijkstra_sshortest_path_example_8cpp_a81ce304348a420752ee080480d2b3095}\label{find_dijkstra_sshortest_path_example_8cpp_a81ce304348a420752ee080480d2b3095} 
+\index{findDijkstraSshortestPathExample.cpp@{findDijkstraSshortestPathExample.cpp}!main@{main}}
+\index{main@{main}!findDijkstraSshortestPathExample.cpp@{findDijkstraSshortestPathExample.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{,  }\item[{char \texorpdfstring{$\ast$}{*}}]{\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{find_dijkstra_sshortest_path_example_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{find_dijkstra_sshortest_path_example_8cpp_source}{find\+Dijkstra\+Sshortest\+Path\+Example.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \textcolor{keyword}{typedef}\ boost::adjacency\_list\ <boost::listS,\ boost::vecS,\ boost::directedS,\ boost::no\_property,\ }
+\DoxyCodeLine{00014\ \ \ \ \ \ \ boost::property<boost::edge\_weight\_t,\ int>\ >\ graph\_t;}
+\DoxyCodeLine{00015\ \ \ \textcolor{keyword}{typedef}\ boost::graph\_traits<graph\_t>::vertex\_descriptor\ vertex\_descriptor;}
+\DoxyCodeLine{00016\ \ \ \textcolor{keyword}{typedef}\ std::pair<int,\ int>\ Edge;}
+\DoxyCodeLine{00017\ \ }
+\DoxyCodeLine{00018\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_nodes\ =\ 5;}
+\DoxyCodeLine{00019\ \ \ \textcolor{keyword}{enum}\ nodes\ \{\ A,\ B,\ C,\ D,\ E\ \};}
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{char}\ name[]\ =\ \textcolor{stringliteral}{"{}ABCDE"{}};}
+\DoxyCodeLine{00021\ \ \ Edge\ edge\_array[]\ =\ \{\ Edge(A,\ C),\ Edge(B,\ B),\ Edge(B,\ D),\ Edge(B,\ E),}
+\DoxyCodeLine{00022\ \ \ \ \ Edge(C,\ B),\ Edge(C,\ D),\ Edge(D,\ E),\ Edge(E,\ A),\ Edge(E,\ B)}
+\DoxyCodeLine{00023\ \ \ \};}
+\DoxyCodeLine{00024\ \ }
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{int}\ weights[]\ =\ \{\ 1,\ 2,\ 1,\ 2,\ 7,\ 3,\ 1,\ 1,\ 1\ \};}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{int}\ num\_arcs\ =\ \textcolor{keyword}{sizeof}(edge\_array)\ /\ \textcolor{keyword}{sizeof}(Edge);}
+\DoxyCodeLine{00027\ \ }
+\DoxyCodeLine{00028\ \ \ \textcolor{comment}{//\ Graph\ created\ from\ the\ list\ of\ edges}}
+\DoxyCodeLine{00029\ \ \ graph\_t\ g(edge\_array,\ edge\_array\ +\ num\_arcs,\ weights,\ num\_nodes);}
+\DoxyCodeLine{00030\ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \textcolor{comment}{//\ Create\ property\_map\ from\ edges\ to\ weights}}
+\DoxyCodeLine{00032\ \ \ boost::property\_map<graph\_t,\ boost::edge\_weight\_t>::type\ weightmap\ =\ get(boost::edge\_weight,\ g);}
+\DoxyCodeLine{00033\ \ }
+\DoxyCodeLine{00034\ \ \ \textcolor{comment}{//\ Create\ vectors\ to\ store\ the\ predecessors\ (p)\ and\ the\ distances\ from\ the\ root\ (d)}}
+\DoxyCodeLine{00035\ \ \ std::vector<vertex\_descriptor>\ p(num\_vertices(g));}
+\DoxyCodeLine{00036\ \ \ std::vector<int>\ d(num\_vertices(g));}
+\DoxyCodeLine{00037\ \ }
+\DoxyCodeLine{00038\ \ \ \textcolor{comment}{//\ Create\ descriptor\ for\ the\ source\ node}}
+\DoxyCodeLine{00039\ \ \ vertex\_descriptor\ s\ =\ vertex(A,\ g);}
+\DoxyCodeLine{00040\ \ \ vertex\_descriptor\ goal\ =\ vertex(E,\ g);}
+\DoxyCodeLine{00041\ \ }
+\DoxyCodeLine{00042\ \ \ \textcolor{comment}{//\ Evaluate\ Dijkstra\ on\ graph\ g\ with\ source\ s,\ predecessor\_map\ p\ and\ distance\_map\ d}}
+\DoxyCodeLine{00043\ \ \ boost::dijkstra\_shortest\_paths(g,\ s,\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ boost::predecessor\_map(\&p[0]).distance\_map(\&d[0]));}
+\DoxyCodeLine{00045\ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//p[]\ is\ the\ predecessor\ map\ obtained\ through\ dijkstra}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//name[]\ is\ a\ vector\ with\ the\ names\ of\ the\ vertices}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//s\ and\ goal\ are\ vertex\ descriptors}}
+\DoxyCodeLine{00049\ \ \ \ \ std::vector<boost::graph\_traits<graph\_t>::vertex\_descriptor\ >\ path;}
+\DoxyCodeLine{00050\ \ \ \ \ boost::graph\_traits<graph\_t>::vertex\_descriptor\ current\ =\ goal;}
+\DoxyCodeLine{00051\ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{while}(current!=s)\ }
+\DoxyCodeLine{00053\ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ path.push\_back(current);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ current\ =\ p[current];}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ path.push\_back(s);}
+\DoxyCodeLine{00058\ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ Prints\ the\ path\ obtained\ in\ reverse}}
+\DoxyCodeLine{00060\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Path\ from\ "{}}\ <<\ name[s]\ <<\ \textcolor{stringliteral}{"{}\ to\ "{}}\ <<\ name[goal]\ <<\ std::endl;}
+\DoxyCodeLine{00061\ \ \ \ \ std::vector<boost::graph\_traits<graph\_t>::vertex\_descriptor\ >::reverse\_iterator\ it;}
+\DoxyCodeLine{00062\ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{for}\ (it\ =\ path.rbegin();\ it\ !=\ path.rend();\ ++it)\ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ std::cout\ <<\ name[*it]\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00067\ \ }
+\DoxyCodeLine{00068\ \ \ \textcolor{keywordflow}{return}\ EXIT\_SUCCESS;}
+\DoxyCodeLine{00069\ \}}
+
+\end{DoxyCode}

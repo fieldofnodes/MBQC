@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_prototype_lattice_creation_8cpp" xml:lang="en-US">
+<title>src/archive/prototypeLatticeCreation.cpp File Reference</title>
+<indexterm><primary>src/archive/prototypeLatticeCreation.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;stdexcept&gt;<?linebreak?>#include &lt;algorithm&gt;<?linebreak?>#include &lt;iterator&gt;<?linebreak?>#include &lt;set&gt;<?linebreak?>#include &lt;numeric&gt;<?linebreak?>#include &lt;cmath&gt;<?linebreak?>#include &lt;QuEST.h&gt;<?linebreak?>#include &lt;boost/graph/adjacency_list.hpp&gt;<?linebreak?>#include &lt;boost/graph/grid_graph.hpp&gt;<?linebreak?>#include &lt;boost/graph/graphviz.hpp&gt;<?linebreak?>#include &lt;boost/array.hpp&gt;<?linebreak?>#include &lt;boost/graph/graph_utility.hpp&gt;<?linebreak?>#include &lt;boost/container/vector.hpp&gt;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalAssertFunctions.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_prototype_lattice_creation_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_prototype_lattice_creation_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>prototypeLatticeCreation.cpp</secondary></indexterm>
+<indexterm><primary>prototypeLatticeCreation.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_prototype_lattice_creation_8cpp_source_1l00056">56</link> of file <link linkend="_prototype_lattice_creation_8cpp_source">prototypeLatticeCreation.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00057 &#32;&#32;&#32;&#32;
+00058 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;K&#32;=&#32;7;
+00059 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;L&#32;=&#32;3;
+00060 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;N&#32;=&#32;K*L;
+00061 
+00062 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;the&#32;lattice&#32;using&#32;create_lattice&#32;function</emphasis>
+00063 &#32;&#32;&#32;&#32;std::vector&lt;std::vector&lt;int&gt;&gt;&#32;lattice&#32;=&#32;<link linkend="_graph_constructions_8hpp_1a6e0974be2fa2e599ab591aa02f1c9eb2">create_lattice</link>(K,&#32;L);
+00064 
+00065 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">auto</emphasis>&amp;&#32;row&#32;:&#32;lattice)&#32;{
+00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;number&#32;:&#32;row)&#32;{
+00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;number&#32;&lt;&lt;&#32;<emphasis role="charliteral">&apos;\t&apos;</emphasis>;
+00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="charliteral">&apos;\n&apos;</emphasis>;
+00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00071 
+00072 
+00073 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Define&#32;the&#32;Boost&#32;Graph&#32;types</emphasis>
+00074 &#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;boost::adjacency_list&lt;boost::vecS,&#32;boost::vecS,&#32;boost::undirectedS&gt;&#32;Graph;
+00075 &#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;Graph&gt;::vertex_descriptor&#32;Vertex;
+00076 
+00077 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;Boost&#32;Graph</emphasis>
+00078 &#32;&#32;&#32;&#32;Graph&#32;graph(N);
+00079 &#32;&#32;&#32;&#32;
+00080 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Add&#32;edges&#32;to&#32;the&#32;graph</emphasis>
+00081 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;row&#32;=&#32;0;&#32;row&#32;&lt;&#32;K;&#32;row++)&#32;{
+00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;col&#32;=&#32;0;&#32;col&#32;&lt;&#32;L;&#32;col++)&#32;{
+00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(row&#32;+&#32;1&#32;&lt;&#32;K)&#32;{
+00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;boost::add_edge(lattice[row][col],&#32;lattice[row&#32;+&#32;1][col],&#32;graph);
+00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(col&#32;+&#32;1&#32;&lt;&#32;L)&#32;{
+00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;boost::add_edge(lattice[row][col],&#32;lattice[row][col&#32;+&#32;1],&#32;graph);
+00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00090 &#32;&#32;&#32;&#32;}
+00091 
+00092 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Num&#32;vertices:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;boost::num_vertices(graph)&#32;&lt;&lt;&#32;std::endl;
+00093 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Num&#32;edges:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;boost::num_edges(graph)&#32;&lt;&lt;&#32;std::endl;
+00094 &#32;&#32;&#32;&#32;print_graph(graph);
+00095 
+00096 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
+00097 &#32;&#32;&#32;&#32;std::string&#32;fileDir&#32;=&#32;<emphasis role="stringliteral">&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;</emphasis>;
+00098 &#32;&#32;&#32;&#32;std::string&#32;graphName&#32;=&#32;<emphasis role="stringliteral">&quot;lattice2DArrayGraph&quot;</emphasis>;
+00099 &#32;&#32;&#32;&#32;std::string&#32;format&#32;=&#32;<emphasis role="stringliteral">&quot;png&quot;</emphasis>;
+00100 &#32;&#32;&#32;&#32;<link linkend="_write_graph_graph_viz_dot_file_8hpp_1a3d553b54b16922ee146bfb33201a3993">printGraphToFile</link>(graph,fileDir,graphName,format);
+00101 
+00102 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+00103 }
+</programlisting></section>
+</section>
+</section>

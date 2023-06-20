@@ -1,0 +1,37 @@
+\doxysection{copy\+Qureq\+State.\+cpp}
+\hypertarget{copy_qureq_state_8cpp_source}{}\label{copy_qureq_state_8cpp_source}\index{src/archive/filesToGoThrough/copyQureqState.cpp@{src/archive/filesToGoThrough/copyQureqState.cpp}}
+\mbox{\hyperlink{copy_qureq_state_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <QuEST.h>}}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00003}\mbox{\hyperlink{copy_qureq_state_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00003}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{copy_qureq_state_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00004}00004\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ quantum\ register\ with\ 3\ qubits}}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00005}00005\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00006}00006\ \ \ \ \ Qureg\ qubits\ =\ createQureg(3,\ env);}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ Perform\ operations\ on\ the\ qubits}}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ Measure\ the\ second\ qubit}}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00011}00011\ \ \ \ \ \textcolor{keywordtype}{int}\ measurementOutcome\ =\ measure(qubits,\ 1);}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ new\ register\ with\ 4\ qubits}}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00014}00014\ \ \ \ \ Qureg\ newQubits\ =\ createQureg(4,\ env);}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Copy\ the\ state\ of\ the\ old\ register\ onto\ the\ new\ one}}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00017}00017\ \ \ \ \ copyState(qubits,\ newQubits);}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{comment}{//\ Destroy\ the\ old\ register}}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00020}00020\ \ \ \ \ destroyQureg(qubits,\ env);}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Perform\ operations\ on\ the\ new\ register}}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//\ Destroy\ the\ new\ register}}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00025}00025\ \ \ \ \ destroyQureg(newQubits,\ env);}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ Destroy\ the\ environment}}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00028}00028\ \ \ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{copy_qureq_state_8cpp_source_l00031}00031\ \}}
+
+\end{DoxyCode}

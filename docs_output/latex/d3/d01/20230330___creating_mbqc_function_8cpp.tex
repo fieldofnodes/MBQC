@@ -1,0 +1,109 @@
+\doxysection{src/archive/files\+To\+Go\+Through/20230330\+\_\+\+Creating\+Mbqc\+Function.cpp File Reference}
+\hypertarget{20230330___creating_mbqc_function_8cpp}{}\label{20230330___creating_mbqc_function_8cpp}\index{src/archive/filesToGoThrough/20230330\_CreatingMbqcFunction.cpp@{src/archive/filesToGoThrough/20230330\_CreatingMbqcFunction.cpp}}
+{\ttfamily \#include $<$Qu\+EST.\+h$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \"{}20230314\+\_\+\+Functions\+\_\+\+V1.\+hpp\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{20230330___creating_mbqc_function_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{20230330___creating_mbqc_function_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{20230330___creating_mbqc_function_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{20230330\_CreatingMbqcFunction.cpp@{20230330\_CreatingMbqcFunction.cpp}!main@{main}}
+\index{main@{main}!20230330\_CreatingMbqcFunction.cpp@{20230330\_CreatingMbqcFunction.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{20230330___creating_mbqc_function_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{20230330___creating_mbqc_function_8cpp_source}{20230330\+\_\+\+Creating\+Mbqc\+Function.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ vector<int>\ lastQubitOutcome;}
+\DoxyCodeLine{00016\ \ \ \ \ vector<int>\ allLastQubitZero;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ numberRealisations\ =\ 1;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ qubitNumber=5;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<numberRealisations;i++)}
+\DoxyCodeLine{00022\ \ \ \ \ \{\ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ QuEST\ environment}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ parameters}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numberQubits\ =\ qubitNumber;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ prepare\ our\ register}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ Qureg\ qureg\ =\ createQureg(numberQubits,\ env);}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ qureg\ -\/>\ |+><+|}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ initPlusState(qureg);\ \ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ vector\ representing\ a\ linear\ cluster\ graph}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ vector<int>\ pathGraph\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_aa6c7ea81b30e713a1f641e9a86e5f0a8}{getPathGraph}}(numberQubits);\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ vector<qreal>\ qubitAngles;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ apply\ CZ\ gate\ to\ entangle\ the\ circuit}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(std::vector<int>::size\_type\ q\ =\ 0;\ q\ !=\ pathGraph.size()-\/1;\ q++)\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{\ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ controlledPhaseFlip(qureg,q,q+1);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ initial\ angles}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<numberQubits;i++)\{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\ \%\ 2\ ==\ 0)\{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles.push\_back(2*M\_PI);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles.push\_back(0.0);\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ vector<int>\ outcomes\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_acdb0932776bd659eddba9f2942af2c15}{runMbqcPathGraph}}(qureg,pathGraph,qubitAngles);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i:\ outcomes)\{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ i\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00065\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ //\ Run\ MBQC}}
+\DoxyCodeLine{00066\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ //\ measure\ first\ qubit}}
+\DoxyCodeLine{00067\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00068\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00069\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00070\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00071\ \textcolor{comment}{}}
+\DoxyCodeLine{00072\ \textcolor{comment}{}}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ lastQubitOutcome.push\_back(measuredQubitsOutcomes.back());}}
+\DoxyCodeLine{00074\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00075\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00076\ \textcolor{comment}{}}
+\DoxyCodeLine{00077\ \textcolor{comment}{\ \ \ \ \ \ \ \ for(int\ i:lastQubitOutcome)\{}}
+\DoxyCodeLine{00078\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ i\ <<\ "{}\ "{};}}
+\DoxyCodeLine{00079\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}\ }}
+\DoxyCodeLine{00080\ \textcolor{comment}{}}
+\DoxyCodeLine{00081\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ Confirm\ all\ of\ the\ last\ qubits\ are\ 0}}
+\DoxyCodeLine{00082\ \textcolor{comment}{\ \ \ \ \ \ \ \ if\ (\ std::all\_of(}}
+\DoxyCodeLine{00083\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lastQubitOutcome.begin(),\ }}
+\DoxyCodeLine{00084\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lastQubitOutcome.end(),\ }}
+\DoxyCodeLine{00085\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [](int\ i)\{return\ i==0;\}))}}
+\DoxyCodeLine{00086\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{00087\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}All\ the\ elements\ on\ "{}\ <<\ qubitNumber\ <<\ "{}\ qubits\ are\ 1.\(\backslash\)n"{};}}
+\DoxyCodeLine{00088\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ allLastQubitZero.push\_back(1);}}
+\DoxyCodeLine{00089\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00090\ \textcolor{comment}{\ \ \ \ \ \ */}}
+\DoxyCodeLine{00091\ \}}
+
+\end{DoxyCode}

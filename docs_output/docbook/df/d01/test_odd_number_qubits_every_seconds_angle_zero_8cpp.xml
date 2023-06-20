@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp" xml:lang="en-US">
+<title>tests/testOddNumberQubitsEverySecondsAngleZero.cpp File Reference</title>
+<indexterm><primary>tests/testOddNumberQubitsEverySecondsAngleZero.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;sstream&gt;<?linebreak?>#include &lt;stdexcept&gt;<?linebreak?>#include &lt;algorithm&gt;<?linebreak?>#include &lt;iterator&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;set&gt;<?linebreak?>#include &lt;numeric&gt;<?linebreak?>#include &lt;cmath&gt;<?linebreak?>#include &lt;random&gt;<?linebreak?>#include &lt;filesystem&gt;<?linebreak?>#include &lt;QuEST.h&gt;<?linebreak?>#include &lt;boost/graph/adjacency_list.hpp&gt;<?linebreak?>#include &lt;boost/graph/grid_graph.hpp&gt;<?linebreak?>#include &lt;boost/graph/graphviz.hpp&gt;<?linebreak?>#include &lt;boost/array.hpp&gt;<?linebreak?>#include &lt;boost/graph/graph_utility.hpp&gt;<?linebreak?>#include &lt;boost/container/vector.hpp&gt;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/flowMeasurements.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/angleConstruction.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/quantumGraphClusterStates.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/generalAssertFunctions.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>typedef boost::adjacency_list&lt; boost::vecS, boost::vecS, boost::undirectedS &gt; <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1af845bf432b56cdda82dbde8011882168">undirectedGraph</link></para>
+</listitem>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ad413424ad598fbd91fde4dffeceda3c0">edgeIterator</link></para>
+</listitem>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ad100606fc4950dfc094fc60544838351">vertexIterator</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1a0cab6d0005870e6df565f2397afff231">assertFunc</link> (std::vector&lt; int &gt; measuredQubitsOutcomes, int assertValue)</para>
+</listitem>
+            <listitem><para>void <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ab91620d08875164bce42bdc604224ed3">testEveryOtherAnlgeZeroResults</link> (int assertValue, int piDenominator, int numberCols)</para>
+</listitem>
+            <listitem><para>int <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ad413424ad598fbd91fde4dffeceda3c0"/><section>
+    <title>edgeIterator</title>
+<indexterm><primary>edgeIterator</primary><secondary>testOddNumberQubitsEverySecondsAngleZero.cpp</secondary></indexterm>
+<indexterm><primary>testOddNumberQubitsEverySecondsAngleZero.cpp</primary><secondary>edgeIterator</secondary></indexterm>
+<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_packages_8hpp_1afccd45e2973698c37e8379f6b25a82bc">edgeIterator</link></computeroutput></para><para>
+Definition at line <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00067">67</link> of file <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source">testOddNumberQubitsEverySecondsAngleZero.cpp</link>.</para>
+</section>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1af845bf432b56cdda82dbde8011882168"/><section>
+    <title>undirectedGraph</title>
+<indexterm><primary>undirectedGraph</primary><secondary>testOddNumberQubitsEverySecondsAngleZero.cpp</secondary></indexterm>
+<indexterm><primary>testOddNumberQubitsEverySecondsAngleZero.cpp</primary><secondary>undirectedGraph</secondary></indexterm>
+<para><computeroutput>typedef boost::adjacency_list&lt;boost::vecS, boost::vecS,boost::undirectedS&gt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link></computeroutput></para><para>
+Definition at line <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00066">66</link> of file <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source">testOddNumberQubitsEverySecondsAngleZero.cpp</link>.</para>
+</section>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ad100606fc4950dfc094fc60544838351"/><section>
+    <title>vertexIterator</title>
+<indexterm><primary>vertexIterator</primary><secondary>testOddNumberQubitsEverySecondsAngleZero.cpp</secondary></indexterm>
+<indexterm><primary>testOddNumberQubitsEverySecondsAngleZero.cpp</primary><secondary>vertexIterator</secondary></indexterm>
+<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_packages_8hpp_1aad3f8f6369da7f36e6266fdcb1991169">vertexIterator</link></computeroutput></para><para>
+Definition at line <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00068">68</link> of file <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source">testOddNumberQubitsEverySecondsAngleZero.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1a0cab6d0005870e6df565f2397afff231"/><section>
+    <title>assertFunc()</title>
+<indexterm><primary>assertFunc</primary><secondary>testOddNumberQubitsEverySecondsAngleZero.cpp</secondary></indexterm>
+<indexterm><primary>testOddNumberQubitsEverySecondsAngleZero.cpp</primary><secondary>assertFunc</secondary></indexterm>
+<para><computeroutput>void assertFunc (std::vector&lt; int &gt; measuredQubitsOutcomes, int assertValue)</computeroutput></para><para>
+Definition at line <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00070">70</link> of file <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source">testOddNumberQubitsEverySecondsAngleZero.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00071 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(measuredQubitsOutcomes.back()&#32;!=&#32;assertValue)&#32;{
+00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::runtime_error(<emphasis role="stringliteral">&quot;The&#32;last&#32;qubit&#32;must&#32;be&#32;&quot;</emphasis>&#32;+&#32;std::to_string(assertValue)&#32;+&#32;<emphasis role="stringliteral">&quot;,&#32;it&#32;is&#32;not.&quot;</emphasis>);
+00073 &#32;&#32;&#32;&#32;}
+00074 }
+</programlisting></section>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>testOddNumberQubitsEverySecondsAngleZero.cpp</secondary></indexterm>
+<indexterm><primary>testOddNumberQubitsEverySecondsAngleZero.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00167">167</link> of file <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source">testOddNumberQubitsEverySecondsAngleZero.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00168 &#32;&#32;&#32;&#32;
+00169 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;i&#32;&lt;&#32;1e1;i++){
+00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ab91620d08875164bce42bdc604224ed3">testEveryOtherAnlgeZeroResults</link>(0,4,7);
+00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ab91620d08875164bce42bdc604224ed3">testEveryOtherAnlgeZeroResults</link>(1,4,7);
+00172 &#32;&#32;&#32;&#32;}
+00173 &#32;&#32;&#32;<emphasis role="comment">/*</emphasis>
+00174 <emphasis role="comment">&#32;&#32;&#32;&#32;for(int&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;1;&#32;i++)</emphasis>
+00175 <emphasis role="comment">&#32;&#32;&#32;&#32;{</emphasis>
+00176 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
+00177 <emphasis role="comment">&#32;&#32;&#32;&#32;int&#32;numRows;</emphasis>
+00178 <emphasis role="comment">&#32;&#32;&#32;&#32;int&#32;numCols;</emphasis>
+00179 <emphasis role="comment">&#32;&#32;&#32;&#32;undirectedGraph&#32;latticeGraph;</emphasis>
+00180 <emphasis role="comment">&#32;&#32;&#32;&#32;int&#32;numVertices;</emphasis>
+00181 <emphasis role="comment">&#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;</emphasis>
+00182 <emphasis role="comment">&#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;</emphasis>
+00183 <emphasis role="comment">&#32;&#32;&#32;&#32;int&#32;piDenominator;</emphasis>
+00184 <emphasis role="comment"></emphasis>
+00185 <emphasis role="comment"></emphasis>
+00186 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
+00187 <emphasis role="comment">&#32;&#32;&#32;&#32;numRows&#32;=&#32;1;</emphasis>
+00188 <emphasis role="comment">&#32;&#32;&#32;&#32;numCols&#32;=&#32;7;&#32;//&#32;Test&#32;on&#32;an&#32;odd&#32;number&#32;of&#32;qubits</emphasis>
+00189 <emphasis role="comment">&#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;createLatticeGraph(numRows,numCols);</emphasis>
+00190 <emphasis role="comment">&#32;&#32;&#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);</emphasis>
+00191 <emphasis role="comment"></emphasis>
+00192 <emphasis role="comment"></emphasis>
+00193 <emphasis role="comment"></emphasis>
+00194 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
+00195 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;Update&#32;with&#32;desired&#32;directory&#32;to&#32;view&#32;graph.</emphasis>
+00196 <emphasis role="comment">&#32;&#32;&#32;&#32;std::string&#32;fileDir&#32;=&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;;</emphasis>
+00197 <emphasis role="comment">&#32;&#32;&#32;&#32;std::string&#32;graphName&#32;=&#32;&quot;1DLatticeOddQubitsAnglesEveryOther0And2PiMultiple&quot;;</emphasis>
+00198 <emphasis role="comment">&#32;&#32;&#32;&#32;std::string&#32;format&#32;=&#32;&quot;png&quot;;</emphasis>
+00199 <emphasis role="comment">&#32;&#32;&#32;&#32;printGraphToFile(latticeGraph,fileDir,graphName,format);</emphasis>
+00200 <emphasis role="comment"></emphasis>
+00201 <emphasis role="comment"></emphasis>
+00202 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;load&#32;QuEST&#32;environment</emphasis>
+00203 <emphasis role="comment">&#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();</emphasis>
+00204 <emphasis role="comment"></emphasis>
+00205 <emphasis role="comment"></emphasis>
+00206 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+00207 <emphasis role="comment">&#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numVertices,&#32;env);</emphasis>
+00208 <emphasis role="comment"></emphasis>
+00209 <emphasis role="comment">&#32;&#32;&#32;&#32;</emphasis>
+00210 <emphasis role="comment"></emphasis>
+00211 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;set&#32;angles</emphasis>
+00212 <emphasis role="comment">&#32;&#32;&#32;&#32;piDenominator&#32;=&#32;4;</emphasis>
+00213 <emphasis role="comment">&#32;&#32;&#32;&#32;//qubitAngles&#32;=&#32;initRandomPiOnNEveryOtherAnglesMod2kPi(numVertices,piDenominator);&#32;//&#32;end&#32;in&#32;0</emphasis>
+00214 <emphasis role="comment">&#32;&#32;&#32;&#32;qubitAngles&#32;=&#32;initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi(numVertices,piDenominator);&#32;&#32;//&#32;end&#32;in&#32;1</emphasis>
+00215 <emphasis role="comment"></emphasis>
+00216 <emphasis role="comment"></emphasis>
+00217 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;initialise&#32;in&#32;the&#32;plus&#32;state</emphasis>
+00218 <emphasis role="comment">&#32;&#32;&#32;&#32;initPlusState(qureg);</emphasis>
+00219 <emphasis role="comment"></emphasis>
+00220 <emphasis role="comment">&#32;&#32;&#32;&#32;//Leave&#32;angle&#32;off&#32;qubits</emphasis>
+00221 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;add&#32;angles&#32;to&#32;the&#32;qubits</emphasis>
+00222 <emphasis role="comment">&#32;&#32;&#32;&#32;//addAngleRotateZgate(qureg,qubitAngles);</emphasis>
+00223 <emphasis role="comment"></emphasis>
+00224 <emphasis role="comment"></emphasis>
+00225 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;entangle&#32;graph</emphasis>
+00226 <emphasis role="comment">&#32;&#32;&#32;&#32;entangleGraph(qureg,latticeGraph);</emphasis>
+00227 <emphasis role="comment"></emphasis>
+00228 <emphasis role="comment"></emphasis>
+00229 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;measure&#32;graph</emphasis>
+00230 <emphasis role="comment">&#32;&#32;&#32;&#32;measuredQubitsOutcomes&#32;=&#32;measureGraph(</emphasis>
+00231 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qureg,</emphasis>
+00232 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;latticeGraph,</emphasis>
+00233 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles,</emphasis>
+00234 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numRows);</emphasis>
+00235 <emphasis role="comment"></emphasis>
+00236 <emphasis role="comment">&#32;&#32;&#32;&#32;assert((measuredQubitsOutcomes.back()==1)&#32;&amp;&amp;&#32;&quot;The&#32;last&#32;qubit&#32;must&#32;be&#32;1,&#32;it&#32;is&#32;not.&quot;);</emphasis>
+00237 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;print&#32;results&#32;to&#32;screen</emphasis>
+00238 <emphasis role="comment">&#32;&#32;&#32;&#32;printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);</emphasis>
+00239 <emphasis role="comment"></emphasis>
+00240 <emphasis role="comment"></emphasis>
+00241 <emphasis role="comment"></emphasis>
+00242 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;unload&#32;QuEST</emphasis>
+00243 <emphasis role="comment">&#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;</emphasis>
+00244 <emphasis role="comment">&#32;&#32;&#32;&#32;destroyQuESTEnv(env);</emphasis>
+00245 <emphasis role="comment">&#32;&#32;&#32;&#32;</emphasis>
+00246 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+00247 <emphasis role="comment">&#32;&#32;&#32;&#32;*/</emphasis>
+00248 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+00249 }
+</programlisting></section>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ab91620d08875164bce42bdc604224ed3"/><section>
+    <title>testEveryOtherAnlgeZeroResults()</title>
+<indexterm><primary>testEveryOtherAnlgeZeroResults</primary><secondary>testOddNumberQubitsEverySecondsAngleZero.cpp</secondary></indexterm>
+<indexterm><primary>testOddNumberQubitsEverySecondsAngleZero.cpp</primary><secondary>testEveryOtherAnlgeZeroResults</secondary></indexterm>
+<para><computeroutput>void testEveryOtherAnlgeZeroResults (int assertValue, int piDenominator, int numberCols)</computeroutput></para><para>
+Definition at line <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00076">76</link> of file <link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source">testOddNumberQubitsEverySecondsAngleZero.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00076 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00077 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
+00078 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows;
+00079 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols;
+00080 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+00081 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices;
+00082 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;
+00083 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;
+00084 &#32;&#32;&#32;&#32;
+00085 
+00086 
+00087 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
+00088 &#32;&#32;&#32;&#32;numRows&#32;=&#32;1;
+00089 &#32;&#32;&#32;&#32;numCols&#32;=&#32;numberCols;&#32;<emphasis role="comment">//&#32;Test&#32;on&#32;an&#32;odd&#32;number&#32;of&#32;qubits</emphasis>
+00090 &#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;<link linkend="_create_graph_8hpp_1aabb013bb6de93b1ca2ff83e1d7d200c7">createLatticeGraph</link>(numRows,numCols);
+00091 &#32;&#32;&#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);
+00092 
+00093 
+00094 
+00095 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
+00096 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Update&#32;with&#32;desired&#32;directory&#32;to&#32;view&#32;graph.</emphasis>
+00097 &#32;&#32;&#32;&#32;<emphasis role="comment">//std::string&#32;fileDir&#32;=&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;;</emphasis>
+00098 &#32;&#32;&#32;&#32;<emphasis role="comment">//std::string&#32;graphName&#32;=&#32;&quot;1DLatticeOddQubitsAnglesEveryOther0And2PiMultiple&quot;;</emphasis>
+00099 &#32;&#32;&#32;&#32;<emphasis role="comment">//std::string&#32;format&#32;=&#32;&quot;png&quot;;</emphasis>
+00100 &#32;&#32;&#32;&#32;<emphasis role="comment">//printGraphToFile(latticeGraph,fileDir,graphName,format);</emphasis>
+00101 
+00102 
+00103 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+00104 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+00105 
+00106 
+00107 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+00108 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numVertices,&#32;env);
+00109 
+00110 &#32;&#32;&#32;&#32;
+00111 
+00112 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;angles</emphasis>
+00113 &#32;&#32;&#32;&#32;
+00114 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(assertValue&#32;==&#32;0){
+00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles&#32;=&#32;<link linkend="_angle_construction_8hpp_1a0804b07ffb2bea2c7ac8cba482a88d62">initRandomPiOnNEveryOtherAnglesMod2kPi</link>(numVertices,piDenominator);&#32;<emphasis role="comment">//&#32;end&#32;in&#32;0</emphasis>
+00116 &#32;&#32;&#32;&#32;}<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(assertValue&#32;==&#32;1){
+00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles&#32;=&#32;<link linkend="_angle_construction_8hpp_1ac35939429a8657a1f33dad419e7812c1">initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi</link>(numVertices,piDenominator);&#32;&#32;<emphasis role="comment">//&#32;end&#32;in&#32;1</emphasis>
+00118 &#32;&#32;&#32;&#32;}<emphasis role="keywordflow">else</emphasis>{
+00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Nothing</emphasis>
+00120 &#32;&#32;&#32;&#32;}
+00121 
+00122 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(qubitAngles);
+00123 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;initialise&#32;in&#32;the&#32;plus&#32;state</emphasis>
+00124 &#32;&#32;&#32;&#32;initPlusState(qureg);
+00125 
+00126 &#32;&#32;&#32;&#32;<emphasis role="comment">//Leave&#32;angle&#32;off&#32;qubits</emphasis>
+00127 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;add&#32;angles&#32;to&#32;the&#32;qubits</emphasis>
+00128 &#32;&#32;&#32;&#32;<emphasis role="comment">//addAngleRotateZgate(qureg,qubitAngles);</emphasis>
+00129 
+00130 
+00131 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;entangle&#32;graph</emphasis>
+00132 &#32;&#32;&#32;&#32;<link linkend="_quantum_graph_cluster_states_8hpp_1a3f830234f9eb3a150a084b0f2b4aa056">entangleGraph</link>(qureg,latticeGraph);
+00133 
+00134 
+00135 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;graph</emphasis>
+00136 &#32;&#32;&#32;&#32;measuredQubitsOutcomes&#32;=&#32;<link linkend="_flow_measurements_8hpp_1a7231be9a1c347894c1d01c349f4b41c7">measureGraph</link>(
+00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qureg,
+00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;latticeGraph,
+00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles,
+00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numRows);
+00141 
+00142 &#32;&#32;&#32;&#32;
+00143 
+00144 
+00145 
+00146 
+00147 &#32;&#32;&#32;&#32;<emphasis role="comment">/*</emphasis>
+00148 <emphasis role="comment">&#32;&#32;&#32;&#32;try&#32;{</emphasis>
+00149 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assertFunc(measuredQubitsOutcomes,assertValue);</emphasis>
+00150 <emphasis role="comment">&#32;&#32;&#32;&#32;}&#32;catch&#32;(const&#32;std::runtime_error&amp;&#32;e)&#32;{</emphasis>
+00151 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Handle&#32;the&#32;exception</emphasis>
+00152 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Exception&#32;caught:&#32;&quot;&#32;&lt;&lt;&#32;e.what()&#32;&lt;&lt;&#32;std::endl;</emphasis>
+00153 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+00154 <emphasis role="comment">*/</emphasis>
+00155 &#32;&#32;&#32;&#32;
+00156 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;print&#32;results&#32;to&#32;screen</emphasis>
+00157 &#32;&#32;&#32;&#32;<emphasis role="comment">//printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);</emphasis>
+00158 
+00159 
+00160 
+00161 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+00162 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+00163 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+00164 }
+</programlisting></section>
+</section>
+</section>

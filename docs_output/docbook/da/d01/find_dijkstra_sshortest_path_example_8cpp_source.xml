@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_find_dijkstra_sshortest_path_example_8cpp_source" xml:lang="en-US">
+<title>findDijkstraSshortestPathExample.cpp</title>
+<indexterm><primary>src/archive/filesToGoThrough/findDijkstraSshortestPathExample.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00001"/>00001 
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00002"/>00002 
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&lt;boost/config.hpp&gt;</emphasis>
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00004"/>00004 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&lt;fstream&gt;</emphasis>
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00006"/>00006 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/graph_traits.hpp&gt;</emphasis>
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/adjacency_list.hpp&gt;</emphasis>
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00008"/>00008 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/dijkstra_shortest_paths.hpp&gt;</emphasis>
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00009"/>00009 <emphasis role="preprocessor">#include&#32;&lt;boost/property_map/property_map.hpp&gt;</emphasis>
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00010"/>00010 &#32;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00011"/><link linkend="_find_dijkstra_sshortest_path_example_8cpp_1a81ce304348a420752ee080480d2b3095">00011</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>(<emphasis role="keywordtype">int</emphasis>,&#32;<emphasis role="keywordtype">char</emphasis>&#32;*[])
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00012"/>00012 {
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00013"/>00013 &#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;boost::adjacency_list&#32;&lt;boost::listS,&#32;boost::vecS,&#32;boost::directedS,&#32;boost::no_property,&#32;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00014"/>00014 &#32;&#32;&#32;&#32;&#32;&#32;boost::property&lt;boost::edge_weight_t,&#32;int&gt;&#32;&gt;&#32;graph_t;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00015"/>00015 &#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;graph_t&gt;::vertex_descriptor&#32;vertex_descriptor;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00016"/>00016 &#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;std::pair&lt;int,&#32;int&gt;&#32;Edge;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00017"/>00017 &#32;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00018"/>00018 &#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;num_nodes&#32;=&#32;5;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00019"/>00019 &#32;&#32;<emphasis role="keyword">enum</emphasis>&#32;nodes&#32;{&#32;A,&#32;B,&#32;C,&#32;D,&#32;E&#32;};
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00020"/>00020 &#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;name[]&#32;=&#32;<emphasis role="stringliteral">&quot;ABCDE&quot;</emphasis>;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00021"/>00021 &#32;&#32;Edge&#32;edge_array[]&#32;=&#32;{&#32;Edge(A,&#32;C),&#32;Edge(B,&#32;B),&#32;Edge(B,&#32;D),&#32;Edge(B,&#32;E),
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;Edge(C,&#32;B),&#32;Edge(C,&#32;D),&#32;Edge(D,&#32;E),&#32;Edge(E,&#32;A),&#32;Edge(E,&#32;B)
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00023"/>00023 &#32;&#32;};
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00024"/>00024 &#32;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00025"/>00025 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;weights[]&#32;=&#32;{&#32;1,&#32;2,&#32;1,&#32;2,&#32;7,&#32;3,&#32;1,&#32;1,&#32;1&#32;};
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00026"/>00026 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num_arcs&#32;=&#32;<emphasis role="keyword">sizeof</emphasis>(edge_array)&#32;/&#32;<emphasis role="keyword">sizeof</emphasis>(Edge);
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00027"/>00027 &#32;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00028"/>00028 &#32;&#32;<emphasis role="comment">//&#32;Graph&#32;created&#32;from&#32;the&#32;list&#32;of&#32;edges</emphasis>
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00029"/>00029 &#32;&#32;graph_t&#32;g(edge_array,&#32;edge_array&#32;+&#32;num_arcs,&#32;weights,&#32;num_nodes);
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00031"/>00031 &#32;&#32;<emphasis role="comment">//&#32;Create&#32;property_map&#32;from&#32;edges&#32;to&#32;weights</emphasis>
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00032"/>00032 &#32;&#32;boost::property_map&lt;graph_t,&#32;boost::edge_weight_t&gt;::type&#32;weightmap&#32;=&#32;get(boost::edge_weight,&#32;g);
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00033"/>00033 &#32;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00034"/>00034 &#32;&#32;<emphasis role="comment">//&#32;Create&#32;vectors&#32;to&#32;store&#32;the&#32;predecessors&#32;(p)&#32;and&#32;the&#32;distances&#32;from&#32;the&#32;root&#32;(d)</emphasis>
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00035"/>00035 &#32;&#32;std::vector&lt;vertex_descriptor&gt;&#32;p(num_vertices(g));
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00036"/>00036 &#32;&#32;std::vector&lt;int&gt;&#32;d(num_vertices(g));
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00037"/>00037 &#32;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00038"/>00038 &#32;&#32;<emphasis role="comment">//&#32;Create&#32;descriptor&#32;for&#32;the&#32;source&#32;node</emphasis>
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00039"/>00039 &#32;&#32;vertex_descriptor&#32;s&#32;=&#32;vertex(A,&#32;g);
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00040"/>00040 &#32;&#32;vertex_descriptor&#32;goal&#32;=&#32;vertex(E,&#32;g);
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00041"/>00041 &#32;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00042"/>00042 &#32;&#32;<emphasis role="comment">//&#32;Evaluate&#32;Dijkstra&#32;on&#32;graph&#32;g&#32;with&#32;source&#32;s,&#32;predecessor_map&#32;p&#32;and&#32;distance_map&#32;d</emphasis>
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00043"/>00043 &#32;&#32;boost::dijkstra_shortest_paths(g,&#32;s,&#32;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;boost::predecessor_map(&amp;p[0]).distance_map(&amp;d[0]));
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00045"/>00045 &#32;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//p[]&#32;is&#32;the&#32;predecessor&#32;map&#32;obtained&#32;through&#32;dijkstra</emphasis>
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00047"/>00047 &#32;&#32;&#32;&#32;<emphasis role="comment">//name[]&#32;is&#32;a&#32;vector&#32;with&#32;the&#32;names&#32;of&#32;the&#32;vertices</emphasis>
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00048"/>00048 &#32;&#32;&#32;&#32;<emphasis role="comment">//s&#32;and&#32;goal&#32;are&#32;vertex&#32;descriptors</emphasis>
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00049"/>00049 &#32;&#32;&#32;&#32;std::vector&lt;boost::graph_traits&lt;graph_t&gt;::vertex_descriptor&#32;&gt;&#32;path;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00050"/>00050 &#32;&#32;&#32;&#32;boost::graph_traits&lt;graph_t&gt;::vertex_descriptor&#32;current&#32;=&#32;goal;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00051"/>00051 &#32;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00052"/>00052 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>(current!=s)&#32;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00053"/>00053 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;path.push_back(current);
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;current&#32;=&#32;p[current];
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00056"/>00056 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00057"/>00057 &#32;&#32;&#32;&#32;path.push_back(s);
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00058"/>00058 &#32;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00059"/>00059 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Prints&#32;the&#32;path&#32;obtained&#32;in&#32;reverse</emphasis>
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Path&#32;from&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;name[s]&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;to&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;name[goal]&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00061"/>00061 &#32;&#32;&#32;&#32;std::vector&lt;boost::graph_traits&lt;graph_t&gt;::vertex_descriptor&#32;&gt;::reverse_iterator&#32;it;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00062"/>00062 &#32;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00063"/>00063 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(it&#32;=&#32;path.rbegin();&#32;it&#32;!=&#32;path.rend();&#32;++it)&#32;{
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;name[*it]&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00065"/>00065 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00066"/>00066 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00067"/>00067 &#32;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00068"/>00068 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;EXIT_SUCCESS;
+<anchor xml:id="_find_dijkstra_sshortest_path_example_8cpp_source_1l00069"/>00069 }
+</programlisting></section>

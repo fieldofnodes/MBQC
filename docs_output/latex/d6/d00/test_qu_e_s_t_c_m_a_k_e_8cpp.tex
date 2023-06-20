@@ -1,0 +1,64 @@
+\doxysection{src/test\+Qu\+ESTCMAKE.cpp File Reference}
+\hypertarget{test_qu_e_s_t_c_m_a_k_e_8cpp}{}\label{test_qu_e_s_t_c_m_a_k_e_8cpp}\index{src/testQuESTCMAKE.cpp@{src/testQuESTCMAKE.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$boost/container/vector.\+hpp$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{test_qu_e_s_t_c_m_a_k_e_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{test_qu_e_s_t_c_m_a_k_e_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{test_qu_e_s_t_c_m_a_k_e_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{testQuESTCMAKE.cpp@{testQuESTCMAKE.cpp}!main@{main}}
+\index{main@{main}!testQuESTCMAKE.cpp@{testQuESTCMAKE.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test_qu_e_s_t_c_m_a_k_e_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{test_qu_e_s_t_c_m_a_k_e_8cpp_source}{test\+Qu\+ESTCMAKE.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00006\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00007\ \ \ \ \ std::vector<int>\ numbers;\ \textcolor{comment}{//\ Create\ a\ vector\ to\ store\ the\ numbers}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{comment}{//\ Populate\ the\ vector\ with\ numbers\ from\ 1\ to\ 10}}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <=\ 10;\ i++)\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ numbers.push\_back(i);}
+\DoxyCodeLine{00012\ \ \ \ \ \}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//\ Square\ each\ element\ in\ the\ vector}}
+\DoxyCodeLine{00015\ \ \ \ \ std::transform(numbers.begin(),\ numbers.end(),\ numbers.begin(),\ [](\textcolor{keywordtype}{int}\ num)\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ return\ num\ *\ num;}
+\DoxyCodeLine{00017\ \ \ \ \ \});}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ Print\ the\ squared\ numbers}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ num\ :\ numbers)\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ std::cout\ <<\ num\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ boost::container::vector<int>\ myVector;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Add\ elements\ to\ the\ vector}}
+\DoxyCodeLine{00030\ \ \ \ \ myVector.push\_back(10);}
+\DoxyCodeLine{00031\ \ \ \ \ myVector.push\_back(20);}
+\DoxyCodeLine{00032\ \ \ \ \ myVector.push\_back(30);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ Print\ the\ elements\ of\ the\ vector}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ element\ :\ myVector)\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ std::cout\ <<\ element\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00041\ \}}
+
+\end{DoxyCode}

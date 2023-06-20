@@ -1,0 +1,118 @@
+\doxysection{20230309\+\_\+\+MBQC\+\_\+\+Three\+Qubit\+GHZ\+\_\+\+V1.\+c}
+\hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source}{}\label{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source}\index{src/archive/20230309\_MBQC\_ThreeQubitGHZ\_V1.c@{src/archive/20230309\_MBQC\_ThreeQubitGHZ\_V1.c}}
+\mbox{\hyperlink{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00002}00002\ \textcolor{comment}{//\ Title\ \ \ \ \ :\ Three\ qubit\ in\ a\ line\ entangled}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00003}00003\ \textcolor{comment}{//\ Author\ \ \ \ :\ Jonathan\ Miller}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00004}00004\ \textcolor{comment}{//\ Date\ \ \ \ \ \ :\ 20230309}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00005}00005\ \textcolor{comment}{//\ Aim\ \ \ \ \ \ \ :\ Implement\ a\ simple\ MBQC\ circuit\ for\ ()-\/()-\/()\ circuit}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00006}00006\ \textcolor{comment}{//\ Flow\ \ \ \ \ \ :\ Same\ row,\ next\ column;\ }}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00007}00007\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ f(0)\ =\ 1,\ f(1)\ =\ 2,\ f(2)\ =\ 3}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00008}00008\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ f-\/1(3)\ =\ 2,\ f-\/1(2)\ =\ 1,\ f-\/1(1)\ =\ 0}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <QuEST.h>}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00017}\mbox{\hyperlink{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{00017}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00018}00018\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00019}00019\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00020}00020\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00021}00021\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ qubits}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00023}00023\ \ \ \ \ \textcolor{keywordtype}{int}\ numQubits\ =\ 3;}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00024}00024\ \ \ \ \ \textcolor{keywordtype}{int}\ qubits[]\ =\ \{0,1,2\};}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00025}00025\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00026}00026\ \ \ \ \ qreal\ outcomeProbs[1<<numQubits];}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00028}00028\ \ \ \ \textcolor{comment}{//\ Declare\ angle\ array\ and\ measure\ qubit\ array}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00029}00029\ \ \ \ \ qreal\ angles[numQubits];\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00030}00030\ \ \ \ \ \textcolor{keywordtype}{int}\ measured\_qubits[numQubits];}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00031}00031\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//\ set\ initial\ angles}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<numQubits;i++)}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ angles[i]\ =\ M\_PI\ /\ 4;\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00035}00035\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00036}00036\ \ \ \ \ \textcolor{comment}{//\ prepare\ our\ register}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00037}00037\ \ \ \ \ Qureg\ qureg\ =\ createQureg(numQubits,\ env);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ qureg\ -\/>\ |+><+|}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00041}00041\ \ \ \ \ initPlusState(qureg);\ \ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00042}00042\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//\ apply\ CZ\ gate\ to\ entangle\ the\ circuit}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00044}00044\ \ \ \ \ controlledPhaseFlip(qureg,0,1);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00045}00045\ \ \ \ \ controlledPhaseFlip(qureg,1,2);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00047}00047\ \ \ \ \ \textcolor{comment}{//\ measure\ first\ qubit}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00048}00048\ \ \ \ \ \textcolor{comment}{//\ ()-\/()-\/()\ -\/>\ X-\/()-\/(),\ for\ X\ being\ a\ removed\ qubit}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00049}00049\ \ \ \ \ rotateZ(qureg,0,\ angles[0]);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00050}00050\ \ \ \ \ hadamard(qureg,0);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00051}00051\ \ \ \ \ \textcolor{keywordtype}{int}\ s0\ =\ measure(qureg,0);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00052}00052\ \ \ \ \ measured\_qubits[0]\ =\ s0;}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00053}00053\ \ \ \ \ printf(\textcolor{stringliteral}{"{}first\ angle\ is\ \%f\(\backslash\)n"{}},angles[0]);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00054}00054\ \ \ \ \ printf(\textcolor{stringliteral}{"{}first\ qubit\ measure\ is\ \%d\(\backslash\)n"{}},s0);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ update\ second\ angle}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{int}\ sum\_neigh\_meas\_q0\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00059}00059\ \ \ \ \ qreal\ x\_correction\_q1\ =\ pow(-\/1,\ s0)*angles[1];}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00060}00060\ \ \ \ \ qreal\ z\_correction\_q1\ =\ M\_PI*(sum\_neigh\_meas\_q0);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00061}00061\ \ \ \ \ qreal\ updated\_angle\_q1\ =\ x\_correction\_q1\ +\ z\_correction\_q1;}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//\ measure\ second\ qubit}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ X-\/()-\/()\ -\/>\ X-\/X-\/(),\ for\ X\ being\ a\ removed\ qubit}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00065}00065\ \ \ \ \ rotateZ(qureg,1,\ (-\/1)*updated\_angle\_q1);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00066}00066\ \ \ \ \ hadamard(qureg,1);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00067}00067\ \ \ \ \ \textcolor{keywordtype}{int}\ s1\ =\ measure(qureg,1);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00068}00068\ \ \ \ \ measured\_qubits[1]\ =\ s1;}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00069}00069\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Original\ second\ angle\ is\ \%f\(\backslash\)n"{}},angles[1]);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00070}00070\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Updated\ second\ angle\ is\ \%f\(\backslash\)n"{}},updated\_angle\_q1);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00071}00071\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Second\ qubit\ measure\ is\ \%d\(\backslash\)n"{}},s1);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00074}00074\ \ \ \ \ \textcolor{comment}{//\ update\ third\ angle}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00075}00075\ \ \ \ \ \textcolor{keywordtype}{int}\ sum\_neigh\_meas\_q1\ =\ s0;}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00076}00076\ \ \ \ \ qreal\ x\_correction\_q2\ =\ pow(-\/1,\ s1)*angles[2];}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00077}00077\ \ \ \ \ qreal\ z\_correction\_q2\ =\ M\_PI*(sum\_neigh\_meas\_q1);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00078}00078\ \ \ \ \ qreal\ updated\_angle\_q2\ =\ x\_correction\_q2\ +\ z\_correction\_q2;}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00080}00080\ \ \ \ \ \textcolor{comment}{//\ measure\ third\ qubit}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//\ X-\/X-\/()\ -\/>\ X-\/X-\/X,\ for\ X\ being\ a\ removed\ qubit}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00082}00082\ \ \ \ \ rotateZ(qureg,2,\ (-\/1)*updated\_angle\_q2);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00083}00083\ \ \ \ \ hadamard(qureg,2);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{int}\ s2\ =\ measure(qureg,2);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00085}00085\ \ \ \ \ measured\_qubits[2]\ =\ s2;}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00086}00086\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Original\ third\ angle\ is\ \%f\(\backslash\)n"{}},angles[2]);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00087}00087\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Updated\ third\ angle\ is\ \%f\(\backslash\)n"{}},updated\_angle\_q2);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00088}00088\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Third\ qubit\ measure\ is\ \%d\(\backslash\)n"{}},s2);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00093}00093\ \ \ \ \ \textcolor{comment}{//calcProbOfAllOutcomes(outcomeProbs,\ qureg,\ qubits,\ numQubits);}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00094}00094\ \ \ \ \ qreal\ prob;}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numQubits;\ i++)}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00096}00096\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00097}00097\ \ \ \ \ \ \ \ \ prob\ =\ calcProbOfOutcome(qureg,i,0);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00098}00098\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Probability:\ \%f\(\backslash\)n\ "{}},\ prob);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00099}00099\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00102}00102\ \ \ \ \ \textcolor{comment}{//\ Print\ measured\ qubit\ vector}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00103}00103\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Measured\ array:"{}});}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ loop\ =\ 0;\ loop\ <\ numQubits;\ loop++)}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00105}00105\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%d\ "{}},\ measured\_qubits[loop]);}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00106}00106\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00107}00107\ \}}
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00112}00112\ }
+
+\end{DoxyCode}

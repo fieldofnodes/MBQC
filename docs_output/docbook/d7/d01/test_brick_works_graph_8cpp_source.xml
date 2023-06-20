@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test_brick_works_graph_8cpp_source" xml:lang="en-US">
+<title>testBrickWorksGraph.cpp</title>
+<indexterm><primary>tests/testBrickWorksGraph.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_test_brick_works_graph_8cpp_source_1l00001"/>00001 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Title&#32;&#32;:&#32;mbqcStarterFile.cpp&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00003"/>00003 <emphasis role="comment">//&#32;Author&#32;:&#32;Jonathan&#32;Miller&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00004"/>00004 <emphasis role="comment">//&#32;Date&#32;&#32;&#32;:&#32;20230503&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00005"/>00005 <emphasis role="comment">//&#32;Aim&#32;&#32;&#32;&#32;:&#32;Basic&#32;start&#32;file&#32;to&#32;run&#32;mbqc&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00006"/>00006 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Current&#32;implementation&#32;can&#32;only&#32;do&#32;square&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00007"/>00007 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;graph&#32;repeatedly.&#32;Will&#32;branch&#32;repo&#32;to&#32;make&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00008"/>00008 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;use&#32;different&#32;way&#32;to&#32;create&#32;graph&#32;by&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00009"/>00009 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;adjacency&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00011"/>00011 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00012"/>00012 <emphasis role="comment">//&#32;Standard&#32;libraries</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00013"/>00013 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00014"/>00014 <emphasis role="preprocessor">#include&#32;&lt;algorithm&gt;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00015"/>00015 <emphasis role="preprocessor">#include&#32;&lt;iterator&gt;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00016"/>00016 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00017"/>00017 <emphasis role="preprocessor">#include&#32;&lt;set&gt;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00018"/>00018 <emphasis role="preprocessor">#include&#32;&lt;numeric&gt;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00019"/>00019 <emphasis role="preprocessor">#include&#32;&lt;cmath&gt;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00020"/>00020 <emphasis role="preprocessor">#include&#32;&lt;random&gt;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00021"/>00021 <emphasis role="preprocessor">#include&#32;&lt;filesystem&gt;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00022"/>00022 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00023"/>00023 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00024"/>00024 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00025"/>00025 <emphasis role="comment">//&#32;QuEST</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00026"/>00026 <emphasis role="preprocessor">#include&#32;&lt;QuEST.h&gt;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00027"/>00027 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00028"/>00028 <emphasis role="comment">//&#32;Boost</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00029"/>00029 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/adjacency_list.hpp&gt;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/grid_graph.hpp&gt;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00031"/>00031 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/graphviz.hpp&gt;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&lt;boost/array.hpp&gt;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00033"/>00033 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/graph_utility.hpp&gt;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#include&#32;&lt;boost/container/vector.hpp&gt;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00035"/>00035 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00036"/>00036 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00037"/>00037 <emphasis role="comment">//&#32;Helper&#32;functions</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp&quot;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00039"/>00039 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp&quot;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00040"/>00040 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00041"/>00041 <emphasis role="comment">//&#32;Graph&#32;functions</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp&quot;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp&quot;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00044"/>00044 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00045"/>00045 <emphasis role="comment">//&#32;Quantum&#32;functions</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/flowMeasurements.hpp&quot;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/angleConstruction.hpp&quot;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/quantumGraphClusterStates.hpp&quot;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00049"/>00049 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00050"/>00050 <emphasis role="comment">//&#32;Assert&#32;functions</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/generalAssertFunctions.hpp&quot;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp&quot;</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00053"/>00053 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00054"/>00054 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00055"/>00055 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00056"/>00056 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00057"/>00057 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00058"/>00058 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>boost;
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00059"/><link linkend="_test_brick_works_graph_8cpp_1af845bf432b56cdda82dbde8011882168">00059</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::adjacency_list&lt;boost::vecS,&#32;boost::vecS,boost::undirectedS&gt;&#32;<link linkend="_test_brick_works_graph_8cpp_1af845bf432b56cdda82dbde8011882168">undirectedGraph</link>;
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00060"/><link linkend="_test_brick_works_graph_8cpp_1ad413424ad598fbd91fde4dffeceda3c0">00060</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::edge_iterator&#32;<link linkend="_test_brick_works_graph_8cpp_1ad413424ad598fbd91fde4dffeceda3c0">edgeIterator</link>;
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00061"/><link linkend="_test_brick_works_graph_8cpp_1ad100606fc4950dfc094fc60544838351">00061</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::vertex_iterator&#32;<link linkend="_test_brick_works_graph_8cpp_1ad100606fc4950dfc094fc60544838351">vertexIterator</link>;
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00062"/>00062 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00063"/>00063 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00064"/>00064 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00065"/>00065 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00066"/><link linkend="_test_brick_works_graph_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00066</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_test_brick_works_graph_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>(){
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00067"/>00067 
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00068"/>00068 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;brickWorkGraph;
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices&#32;=&#32;10;
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00070"/>00070 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00071"/>00071 &#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00072"/>00072 &#32;&#32;
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00073"/>00073 &#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00074"/>00074 &#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numVertices,&#32;env);
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00075"/>00075 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_test_brick_works_graph_8cpp_source_1l00076"/>00076 }
+</programlisting></section>

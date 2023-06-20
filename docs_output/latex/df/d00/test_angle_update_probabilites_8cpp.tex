@@ -1,0 +1,232 @@
+\doxysection{tests/test\+Angle\+Update\+Probabilites.cpp File Reference}
+\hypertarget{test_angle_update_probabilites_8cpp}{}\label{test_angle_update_probabilites_8cpp}\index{tests/testAngleUpdateProbabilites.cpp@{tests/testAngleUpdateProbabilites.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$numeric$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$filesystem$>$}\newline
+{\ttfamily \#include $<$Qu\+EST.\+h$>$}\newline
+{\ttfamily \#include $<$boost/graph/adjacency\+\_\+list.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/grid\+\_\+graph.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/graphviz.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/array.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/graph\+\_\+utility.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/container/vector.\+hpp$>$}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/generic\+Helper\+Functions/general\+Helper\+Functions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/generic\+Helper\+Functions/write\+Graph\+Graph\+Viz\+Dot\+File.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/graphs/graph\+Constructions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/graphs/graph\+Traversal\+Flows.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/quantum\+Graphs/flow\+Measurements.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/quantum\+Graphs/angle\+Construction.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/quantum\+Graphs/quantum\+Graph\+Cluster\+States.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/test\+Functions/general\+Assert\+Functions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/test\+Functions/graph\+Assert\+Functions.\+hpp\"{}}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef boost\+::adjacency\+\_\+list$<$ boost\+::vecS, boost\+::vecS, boost\+::undirectedS $>$ \mbox{\hyperlink{test_angle_update_probabilites_8cpp_af845bf432b56cdda82dbde8011882168}{undirected\+Graph}}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{test_angle_update_probabilites_8cpp_ad413424ad598fbd91fde4dffeceda3c0}{edge\+Iterator}}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{\+::vertex\+\_\+iterator}} \mbox{\hyperlink{test_angle_update_probabilites_8cpp_ad100606fc4950dfc094fc60544838351}{vertex\+Iterator}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ qreal $>$ \mbox{\hyperlink{test_angle_update_probabilites_8cpp_a3239399f882d9ea643c7862d70807d5c}{outcome\+Probabilities\+Single\+Qubit}} (Qureg qureg, int qubit)
+\item 
+int \mbox{\hyperlink{test_angle_update_probabilites_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{test_angle_update_probabilites_8cpp_ad413424ad598fbd91fde4dffeceda3c0}\label{test_angle_update_probabilites_8cpp_ad413424ad598fbd91fde4dffeceda3c0} 
+\index{testAngleUpdateProbabilites.cpp@{testAngleUpdateProbabilites.cpp}!edgeIterator@{edgeIterator}}
+\index{edgeIterator@{edgeIterator}!testAngleUpdateProbabilites.cpp@{testAngleUpdateProbabilites.cpp}}
+\doxysubsubsection{\texorpdfstring{edgeIterator}{edgeIterator}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}$>$\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{packages_8hpp_afccd45e2973698c37e8379f6b25a82bc}{edge\+Iterator}}}
+
+
+
+Definition at line \mbox{\hyperlink{test_angle_update_probabilites_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{test_angle_update_probabilites_8cpp_source}{test\+Angle\+Update\+Probabilites.\+cpp}}.
+
+\Hypertarget{test_angle_update_probabilites_8cpp_af845bf432b56cdda82dbde8011882168}\label{test_angle_update_probabilites_8cpp_af845bf432b56cdda82dbde8011882168} 
+\index{testAngleUpdateProbabilites.cpp@{testAngleUpdateProbabilites.cpp}!undirectedGraph@{undirectedGraph}}
+\index{undirectedGraph@{undirectedGraph}!testAngleUpdateProbabilites.cpp@{testAngleUpdateProbabilites.cpp}}
+\doxysubsubsection{\texorpdfstring{undirectedGraph}{undirectedGraph}}
+{\footnotesize\ttfamily typedef boost\+::adjacency\+\_\+list$<$boost\+::vecS, boost\+::vecS,boost\+::undirectedS$>$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}}
+
+
+
+Definition at line \mbox{\hyperlink{test_angle_update_probabilites_8cpp_source_l00059}{59}} of file \mbox{\hyperlink{test_angle_update_probabilites_8cpp_source}{test\+Angle\+Update\+Probabilites.\+cpp}}.
+
+\Hypertarget{test_angle_update_probabilites_8cpp_ad100606fc4950dfc094fc60544838351}\label{test_angle_update_probabilites_8cpp_ad100606fc4950dfc094fc60544838351} 
+\index{testAngleUpdateProbabilites.cpp@{testAngleUpdateProbabilites.cpp}!vertexIterator@{vertexIterator}}
+\index{vertexIterator@{vertexIterator}!testAngleUpdateProbabilites.cpp@{testAngleUpdateProbabilites.cpp}}
+\doxysubsubsection{\texorpdfstring{vertexIterator}{vertexIterator}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}$>$\mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{\+::vertex\+\_\+iterator}} \mbox{\hyperlink{packages_8hpp_aad3f8f6369da7f36e6266fdcb1991169}{vertex\+Iterator}}}
+
+
+
+Definition at line \mbox{\hyperlink{test_angle_update_probabilites_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{test_angle_update_probabilites_8cpp_source}{test\+Angle\+Update\+Probabilites.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{test_angle_update_probabilites_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{test_angle_update_probabilites_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{testAngleUpdateProbabilites.cpp@{testAngleUpdateProbabilites.cpp}!main@{main}}
+\index{main@{main}!testAngleUpdateProbabilites.cpp@{testAngleUpdateProbabilites.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test_angle_update_probabilites_8cpp_source_l00074}{74}} of file \mbox{\hyperlink{test_angle_update_probabilites_8cpp_source}{test\+Angle\+Update\+Probabilites.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{00078\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{00079\ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ create\ a\ quantum\ register}}
+\DoxyCodeLine{00081\ \ \ \ \ Qureg\ qureg\ =\ createQureg(1,\ env);}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{int}\ qubit\ =\ 0;}
+\DoxyCodeLine{00083\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Probability\ outcomes\ single\ qubit:\ "{}}\ <<\ std::endl;\ }
+\DoxyCodeLine{00084\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Initialised\ at\ 0:\ "{}}\ <<\ std::endl;\ }
+\DoxyCodeLine{00085\ \ \ \ \ std::vector<qreal>\ init\_probs\ =\ \mbox{\hyperlink{test_angle_update_probabilites_8cpp_a3239399f882d9ea643c7862d70807d5c}{outcomeProbabilitiesSingleQubit}}(qureg,qubit);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a721cdbc6bd980bd328255feba8168f26}{printVector}}(init\_probs);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Pauli\ X\ gate\ applied:\ "{}}\ <<\ std::endl;}
+\DoxyCodeLine{00090\ \ \ \ \ pauliX(qureg,0);}
+\DoxyCodeLine{00091\ \ \ \ \ }
+\DoxyCodeLine{00092\ \ \ \ \ std::vector<qreal>\ init\_probs\_gate\ =\ \mbox{\hyperlink{test_angle_update_probabilites_8cpp_a3239399f882d9ea643c7862d70807d5c}{outcomeProbabilitiesSingleQubit}}(qureg,qubit);}
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a721cdbc6bd980bd328255feba8168f26}{printVector}}(init\_probs\_gate);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Pauli\ X\ gate\ applied:\ "{}}\ <<\ std::endl;}
+\DoxyCodeLine{00096\ \ \ \ \ pauliX(qureg,0);}
+\DoxyCodeLine{00097\ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ std::vector<qreal>\ init\_probs\_gate\_1\ =\ \mbox{\hyperlink{test_angle_update_probabilites_8cpp_a3239399f882d9ea643c7862d70807d5c}{outcomeProbabilitiesSingleQubit}}(qureg,qubit);}
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a721cdbc6bd980bd328255feba8168f26}{printVector}}(init\_probs\_gate\_1);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00102\ \textcolor{comment}{}}
+\DoxyCodeLine{00103\ \textcolor{comment}{\ \ \ \ //\ Apply\ Hadamard\ and\ test\ probability}}
+\DoxyCodeLine{00104\ \textcolor{comment}{\ \ \ \ hadamard(qureg,0);}}
+\DoxyCodeLine{00105\ \textcolor{comment}{\ \ \ \ hadamard(qureg,1);}}
+\DoxyCodeLine{00106\ \textcolor{comment}{\ \ \ \ hadamard(qureg,2);}}
+\DoxyCodeLine{00107\ \textcolor{comment}{\ \ \ \ controlledPhaseFlip(qureg,0,1);}}
+\DoxyCodeLine{00108\ \textcolor{comment}{\ \ \ \ controlledPhaseFlip(qureg,1,2);}}
+\DoxyCodeLine{00109\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{00110\ \textcolor{comment}{}}
+\DoxyCodeLine{00111\ \textcolor{comment}{}}
+\DoxyCodeLine{00112\ \textcolor{comment}{\ \ \ \ qreal\ prob\_0\ =\ calcProbOfOutcome(qureg,0,0);}}
+\DoxyCodeLine{00113\ \textcolor{comment}{\ \ \ \ qreal\ prob\_1\ =\ calcProbOfOutcome(qureg,1,0);}}
+\DoxyCodeLine{00114\ \textcolor{comment}{\ \ \ \ qreal\ prob\_2\ =\ calcProbOfOutcome(qureg,2,0);}}
+\DoxyCodeLine{00115\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}Probability\ 0:\ "{}\ <<\ prob\_0\ <<\ std::endl;}}
+\DoxyCodeLine{00116\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}Probability\ 1:\ "{}\ <<\ prob\_1\ <<\ std::endl;}}
+\DoxyCodeLine{00117\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}Probability\ 2:\ "{}\ <<\ prob\_2\ <<\ std::endl;}}
+\DoxyCodeLine{00118\ \textcolor{comment}{}}
+\DoxyCodeLine{00119\ \textcolor{comment}{\ \ \ \ qreal\ tp\ =\ calcTotalProb(qureg);}}
+\DoxyCodeLine{00120\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}Total\ Probability\ qureg:\ "{}\ <<\ tp\ <<\ std::endl;}}
+\DoxyCodeLine{00121\ \textcolor{comment}{}}
+\DoxyCodeLine{00122\ \textcolor{comment}{}}
+\DoxyCodeLine{00123\ \textcolor{comment}{\ \ \ \ int\ m1\ =\ measure(qureg,0);}}
+\DoxyCodeLine{00124\ \textcolor{comment}{}}
+\DoxyCodeLine{00125\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{00128\ \ \ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00133\ \textcolor{comment}{\ \ //\ Initialise\ variable\ names\ and\ types}}
+\DoxyCodeLine{00134\ \textcolor{comment}{\ \ int\ numRows;}}
+\DoxyCodeLine{00135\ \textcolor{comment}{\ \ int\ numCols;}}
+\DoxyCodeLine{00136\ \textcolor{comment}{\ \ undirectedGraph\ latticeGraph;}}
+\DoxyCodeLine{00137\ \textcolor{comment}{\ \ int\ numVertices;}}
+\DoxyCodeLine{00138\ \textcolor{comment}{\ \ std::vector<qreal>\ qubitAngles;}}
+\DoxyCodeLine{00139\ \textcolor{comment}{\ \ std::vector<int>\ measuredQubitsOutcomes;}}
+\DoxyCodeLine{00140\ \textcolor{comment}{\ \ }}
+\DoxyCodeLine{00141\ \textcolor{comment}{\ \ }}
+\DoxyCodeLine{00142\ \textcolor{comment}{\ \ //\ Set\ values\ to\ variables}}
+\DoxyCodeLine{00143\ \textcolor{comment}{\ \ numRows\ =\ 1;}}
+\DoxyCodeLine{00144\ \textcolor{comment}{\ \ numCols\ =\ 2;}}
+\DoxyCodeLine{00145\ \textcolor{comment}{\ \ latticeGraph\ =\ createLatticeGraph(numRows,numCols);}}
+\DoxyCodeLine{00146\ \textcolor{comment}{\ \ numVertices\ =\ boost::num\_vertices(latticeGraph);}}
+\DoxyCodeLine{00147\ \textcolor{comment}{\ \ }}
+\DoxyCodeLine{00148\ \textcolor{comment}{\ \ }}
+\DoxyCodeLine{00149\ \textcolor{comment}{\ \ }}
+\DoxyCodeLine{00150\ \textcolor{comment}{\ \ //\ Print\ graph\ to\ file}}
+\DoxyCodeLine{00151\ \textcolor{comment}{\ \ //\ Update\ with\ desired\ directory\ to\ view\ graph.}}
+\DoxyCodeLine{00152\ \textcolor{comment}{\ \ std::string\ fileDir\ =\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs"{};}}
+\DoxyCodeLine{00153\ \textcolor{comment}{\ \ std::string\ graphName\ =\ "{}twoQubitGraph"{};}}
+\DoxyCodeLine{00154\ \textcolor{comment}{\ \ std::string\ format\ =\ "{}png"{};}}
+\DoxyCodeLine{00155\ \textcolor{comment}{\ \ printGraphToFile(latticeGraph,fileDir,graphName,format);}}
+\DoxyCodeLine{00156\ \textcolor{comment}{}}
+\DoxyCodeLine{00157\ \textcolor{comment}{\ \ //\ load\ QuEST\ environment}}
+\DoxyCodeLine{00158\ \textcolor{comment}{\ \ QuESTEnv\ env\ =\ createQuESTEnv();}}
+\DoxyCodeLine{00159\ \textcolor{comment}{\ \ }}
+\DoxyCodeLine{00160\ \textcolor{comment}{\ \ //\ create\ a\ quantum\ register}}
+\DoxyCodeLine{00161\ \textcolor{comment}{\ \ Qureg\ qureg\ =\ createQureg(numVertices,\ env);}}
+\DoxyCodeLine{00162\ \textcolor{comment}{\ \ }}
+\DoxyCodeLine{00163\ \textcolor{comment}{\ \ }}
+\DoxyCodeLine{00164\ \textcolor{comment}{\ \ //qubitAngles\ =\ initRandomPiOnNAnglesMod2kPi(numVertices,\ 4);}}
+\DoxyCodeLine{00165\ \textcolor{comment}{\ \ qubitAngles\ =\ initAllAnglesSame(numVertices,\ 0);}}
+\DoxyCodeLine{00166\ \textcolor{comment}{\ }}
+\DoxyCodeLine{00167\ \textcolor{comment}{}}
+\DoxyCodeLine{00168\ \textcolor{comment}{\ \ //\ initialise\ in\ the\ plus\ state}}
+\DoxyCodeLine{00169\ \textcolor{comment}{\ \ initPlusState(qureg);}}
+\DoxyCodeLine{00170\ \textcolor{comment}{}}
+\DoxyCodeLine{00171\ \textcolor{comment}{\ \ }}
+\DoxyCodeLine{00172\ \textcolor{comment}{\ \ //\ entangle\ graph}}
+\DoxyCodeLine{00173\ \textcolor{comment}{\ \ entangleGraph(qureg,latticeGraph);}}
+\DoxyCodeLine{00174\ \textcolor{comment}{}}
+\DoxyCodeLine{00175\ \textcolor{comment}{}}
+\DoxyCodeLine{00176\ \textcolor{comment}{\ \ //\ measure\ graph}}
+\DoxyCodeLine{00177\ \textcolor{comment}{\ \ measuredQubitsOutcomes\ =\ measureGraph(}}
+\DoxyCodeLine{00178\ \textcolor{comment}{\ \ \ \ \ \ \ \ qureg,}}
+\DoxyCodeLine{00179\ \textcolor{comment}{\ \ \ \ \ \ \ \ latticeGraph,}}
+\DoxyCodeLine{00180\ \textcolor{comment}{\ \ \ \ \ \ \ \ qubitAngles,}}
+\DoxyCodeLine{00181\ \textcolor{comment}{\ \ \ \ \ \ \ \ numRows);}}
+\DoxyCodeLine{00182\ \textcolor{comment}{}}
+\DoxyCodeLine{00183\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{00184\ \textcolor{comment}{\ \ //\ print\ results\ to\ screen}}
+\DoxyCodeLine{00185\ \textcolor{comment}{\ \ printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);}}
+\DoxyCodeLine{00186\ \textcolor{comment}{}}
+\DoxyCodeLine{00187\ \textcolor{comment}{}}
+\DoxyCodeLine{00188\ \textcolor{comment}{\ \ //\ unload\ QuEST}}
+\DoxyCodeLine{00189\ \textcolor{comment}{\ \ destroyQureg(qureg,\ env);\ }}
+\DoxyCodeLine{00190\ \textcolor{comment}{\ \ destroyQuESTEnv(env);}}
+\DoxyCodeLine{00191\ \textcolor{comment}{\ \ */}}
+\DoxyCodeLine{00192\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00193\ \}}
+
+\end{DoxyCode}
+\Hypertarget{test_angle_update_probabilites_8cpp_a3239399f882d9ea643c7862d70807d5c}\label{test_angle_update_probabilites_8cpp_a3239399f882d9ea643c7862d70807d5c} 
+\index{testAngleUpdateProbabilites.cpp@{testAngleUpdateProbabilites.cpp}!outcomeProbabilitiesSingleQubit@{outcomeProbabilitiesSingleQubit}}
+\index{outcomeProbabilitiesSingleQubit@{outcomeProbabilitiesSingleQubit}!testAngleUpdateProbabilites.cpp@{testAngleUpdateProbabilites.cpp}}
+\doxysubsubsection{\texorpdfstring{outcomeProbabilitiesSingleQubit()}{outcomeProbabilitiesSingleQubit()}}
+{\footnotesize\ttfamily std\+::vector$<$ qreal $>$ outcome\+Probabilities\+Single\+Qubit (\begin{DoxyParamCaption}\item[{Qureg}]{qureg,  }\item[{int}]{qubit }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test_angle_update_probabilites_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{test_angle_update_probabilites_8cpp_source}{test\+Angle\+Update\+Probabilites.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ qreal\ prob\_0\ =\ calcProbOfOutcome(qureg,0,0);}
+\DoxyCodeLine{00066\ \ \ \ \ qreal\ prob\_1\ =\ calcProbOfOutcome(qureg,0,1);}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{return}\ \{prob\_0,prob\_1\};}
+\DoxyCodeLine{00068\ \ \}}
+
+\end{DoxyCode}

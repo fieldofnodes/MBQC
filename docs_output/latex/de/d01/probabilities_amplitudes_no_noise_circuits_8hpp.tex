@@ -1,0 +1,241 @@
+\doxysection{src/test\+Functions/probabilities\+Amplitudes\+No\+Noise\+Circuits.hpp File Reference}
+\hypertarget{probabilities_amplitudes_no_noise_circuits_8hpp}{}\label{probabilities_amplitudes_no_noise_circuits_8hpp}\index{src/testFunctions/probabilitiesAmplitudesNoNoiseCircuits.hpp@{src/testFunctions/probabilitiesAmplitudesNoNoiseCircuits.hpp}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_a04cb99395192eeaaf6127a5566a1f0f2}{apply\+Single\+Qubit\+PauliX}} (std\+::string file\+Amp, std\+::string file\+Prob)
+\item 
+void \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_abcf93bff15914fce42420a9c180cb52b}{apply\+Single\+Qubit\+HGate}} (std\+::string file\+Amp, std\+::string file\+Prob)
+\item 
+void \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_a0a4ae0264fe447986b9ec9020be0b300}{apply\+Two\+Qubit\+Pauli\+XEach\+Qubit}} (std\+::string file\+Amp, std\+::string file\+Prob)
+\item 
+void \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_a83516056319fc01a2e77d10e1207db1b}{apply\+Two\+Qubit\+HGate\+Each\+Qubit}} (std\+::string file\+Amp, std\+::string file\+Prob)
+\item 
+void \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_a29e290b1295a652cd32caa8b1b9fadc1}{apply\+Two\+Qubit\+HCZGate\+Between\+Qubit}} (std\+::string file\+Amp, std\+::string file\+Prob)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{probabilities_amplitudes_no_noise_circuits_8hpp_abcf93bff15914fce42420a9c180cb52b}\label{probabilities_amplitudes_no_noise_circuits_8hpp_abcf93bff15914fce42420a9c180cb52b} 
+\index{probabilitiesAmplitudesNoNoiseCircuits.hpp@{probabilitiesAmplitudesNoNoiseCircuits.hpp}!applySingleQubitHGate@{applySingleQubitHGate}}
+\index{applySingleQubitHGate@{applySingleQubitHGate}!probabilitiesAmplitudesNoNoiseCircuits.hpp@{probabilitiesAmplitudesNoNoiseCircuits.hpp}}
+\doxysubsubsection{\texorpdfstring{applySingleQubitHGate()}{applySingleQubitHGate()}}
+{\footnotesize\ttfamily void apply\+Single\+Qubit\+HGate (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Amp,  }\item[{std\+::string}]{file\+Prob }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_source_l00042}{42}} of file \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_source}{probabilities\+Amplitudes\+No\+Noise\+Circuits.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numQubits\ =\ 1;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{00045\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{00046\ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ Create\ qureg}}
+\DoxyCodeLine{00048\ \ \ \ \ Qureg\ qureg\ =\ createDensityQureg(numQubits,\ env);}
+\DoxyCodeLine{00049\ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ Apply\ details\ to\ circuit}}
+\DoxyCodeLine{00051\ \ \ \ \ hadamard(qureg,0);}
+\DoxyCodeLine{00052\ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}{writeStateToFile}}(qureg,fileAmp);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ Compute\ probabilites}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ numProbs\ =\ 1<<numQubits;}
+\DoxyCodeLine{00059\ \ \ \ \ qreal\ outcomeProbs[1<<numProbs];}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ qubits[]\ =\ \{0\};}
+\DoxyCodeLine{00061\ \ \ \ \ calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);\ \ \ \ \ }
+\DoxyCodeLine{00062\ \ \ \ \ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ Write\ probabilities\ to\ file}}
+\DoxyCodeLine{00064\ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ std::string\ col\_name\ =\ \textcolor{stringliteral}{"{}probabilities"{}};}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}{writeArrayToFile}}(outcomeProbs,\ numProbs,\ fileProb,col\_name);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{00069\ \ \ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{00070\ \ \ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{00071\ \}}
+
+\end{DoxyCode}
+\Hypertarget{probabilities_amplitudes_no_noise_circuits_8hpp_a04cb99395192eeaaf6127a5566a1f0f2}\label{probabilities_amplitudes_no_noise_circuits_8hpp_a04cb99395192eeaaf6127a5566a1f0f2} 
+\index{probabilitiesAmplitudesNoNoiseCircuits.hpp@{probabilitiesAmplitudesNoNoiseCircuits.hpp}!applySingleQubitPauliX@{applySingleQubitPauliX}}
+\index{applySingleQubitPauliX@{applySingleQubitPauliX}!probabilitiesAmplitudesNoNoiseCircuits.hpp@{probabilitiesAmplitudesNoNoiseCircuits.hpp}}
+\doxysubsubsection{\texorpdfstring{applySingleQubitPauliX()}{applySingleQubitPauliX()}}
+{\footnotesize\ttfamily void apply\+Single\+Qubit\+PauliX (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Amp,  }\item[{std\+::string}]{file\+Prob }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_source_l00012}{12}} of file \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_source}{probabilities\+Amplitudes\+No\+Noise\+Circuits.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{int}\ numQubits\ =\ 1;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{00015\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{00016\ \ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ Create\ qureg}}
+\DoxyCodeLine{00018\ \ \ \ \ Qureg\ qureg\ =\ createDensityQureg(numQubits,\ env);}
+\DoxyCodeLine{00019\ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ Apply\ details\ to\ circuit}}
+\DoxyCodeLine{00021\ \ \ \ \ pauliX(qureg,0);}
+\DoxyCodeLine{00022\ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}{writeStateToFile}}(qureg,fileAmp);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Compute\ probabilites}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ numProbs\ =\ 1<<numQubits;}
+\DoxyCodeLine{00029\ \ \ \ \ qreal\ outcomeProbs[1<<numProbs];}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ qubits[]\ =\ \{0\};}
+\DoxyCodeLine{00031\ \ \ \ \ calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);\ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ Write\ probabilities\ to\ file}}
+\DoxyCodeLine{00034\ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ std::string\ col\_name\ =\ \textcolor{stringliteral}{"{}probabilities"{}};}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}{writeArrayToFile}}(outcomeProbs,\ numProbs,\ fileProb,col\_name);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{00039\ \ \ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{00040\ \ \ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{00041\ \}}
+
+\end{DoxyCode}
+\Hypertarget{probabilities_amplitudes_no_noise_circuits_8hpp_a29e290b1295a652cd32caa8b1b9fadc1}\label{probabilities_amplitudes_no_noise_circuits_8hpp_a29e290b1295a652cd32caa8b1b9fadc1} 
+\index{probabilitiesAmplitudesNoNoiseCircuits.hpp@{probabilitiesAmplitudesNoNoiseCircuits.hpp}!applyTwoQubitHCZGateBetweenQubit@{applyTwoQubitHCZGateBetweenQubit}}
+\index{applyTwoQubitHCZGateBetweenQubit@{applyTwoQubitHCZGateBetweenQubit}!probabilitiesAmplitudesNoNoiseCircuits.hpp@{probabilitiesAmplitudesNoNoiseCircuits.hpp}}
+\doxysubsubsection{\texorpdfstring{applyTwoQubitHCZGateBetweenQubit()}{applyTwoQubitHCZGateBetweenQubit()}}
+{\footnotesize\ttfamily void apply\+Two\+Qubit\+HCZGate\+Between\+Qubit (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Amp,  }\item[{std\+::string}]{file\+Prob }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_source_l00134}{134}} of file \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_source}{probabilities\+Amplitudes\+No\+Noise\+Circuits.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numQubits\ =\ 2;}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{00137\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{00138\ \ \ \ \ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//\ Create\ qureg}}
+\DoxyCodeLine{00140\ \ \ \ \ Qureg\ qureg\ =\ createDensityQureg(numQubits,\ env);}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{comment}{//\ Apply\ elements\ to\ circuit}}
+\DoxyCodeLine{00143\ \ \ \ \ hadamard(qureg,0);}
+\DoxyCodeLine{00144\ \ \ \ \ hadamard(qureg,1);}
+\DoxyCodeLine{00145\ \ \ \ \ controlledPhaseFlip(qureg,0,1);}
+\DoxyCodeLine{00146\ \ \ \ \ }
+\DoxyCodeLine{00147\ \ \ \ \ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{comment}{//\ Write\ amplitudes\ to\ file}}
+\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}{writeStateToFile}}(qureg,fileAmp);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{comment}{//\ Compute\ probabilities}}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{int}\ numProbs\ =\ 1<<numQubits;}
+\DoxyCodeLine{00153\ \ \ \ \ qreal\ outcomeProbs[numProbs];}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{int}\ qubits[]\ =\ \{0,1\};}
+\DoxyCodeLine{00155\ \ \ \ \ calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);\ \ \ \ \ }
+\DoxyCodeLine{00156\ \ \ \ \ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{comment}{//\ Write\ probabilities\ to\ file}}
+\DoxyCodeLine{00158\ \ \ \ \ std::string\ col\_name\ =\ \textcolor{stringliteral}{"{}probabilities"{}};}
+\DoxyCodeLine{00159\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}{writeArrayToFile}}(outcomeProbs,\ numProbs,\ fileProb,col\_name);}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{00162\ \ \ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{00163\ \ \ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{00164\ \}}
+
+\end{DoxyCode}
+\Hypertarget{probabilities_amplitudes_no_noise_circuits_8hpp_a83516056319fc01a2e77d10e1207db1b}\label{probabilities_amplitudes_no_noise_circuits_8hpp_a83516056319fc01a2e77d10e1207db1b} 
+\index{probabilitiesAmplitudesNoNoiseCircuits.hpp@{probabilitiesAmplitudesNoNoiseCircuits.hpp}!applyTwoQubitHGateEachQubit@{applyTwoQubitHGateEachQubit}}
+\index{applyTwoQubitHGateEachQubit@{applyTwoQubitHGateEachQubit}!probabilitiesAmplitudesNoNoiseCircuits.hpp@{probabilitiesAmplitudesNoNoiseCircuits.hpp}}
+\doxysubsubsection{\texorpdfstring{applyTwoQubitHGateEachQubit()}{applyTwoQubitHGateEachQubit()}}
+{\footnotesize\ttfamily void apply\+Two\+Qubit\+HGate\+Each\+Qubit (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Amp,  }\item[{std\+::string}]{file\+Prob }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_source_l00103}{103}} of file \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_source}{probabilities\+Amplitudes\+No\+Noise\+Circuits.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{int}\ numQubits\ =\ 2;}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{00106\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{00107\ \ \ \ \ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{comment}{//\ Create\ qureg}}
+\DoxyCodeLine{00109\ \ \ \ \ Qureg\ qureg\ =\ createDensityQureg(numQubits,\ env);}
+\DoxyCodeLine{00110\ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{//\ Apply\ details\ to\ circuit}}
+\DoxyCodeLine{00112\ \ \ \ \ hadamard(qureg,0);}
+\DoxyCodeLine{00113\ \ \ \ \ hadamard(qureg,1);}
+\DoxyCodeLine{00114\ \ \ \ \ }
+\DoxyCodeLine{00115\ \ \ \ \ }
+\DoxyCodeLine{00116\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}{writeStateToFile}}(qureg,fileAmp);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{comment}{//\ Compute\ probabilites}}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{int}\ numProbs\ =\ 1<<numQubits;}
+\DoxyCodeLine{00121\ \ \ \ \ qreal\ outcomeProbs[1<<numProbs];}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{int}\ qubits[]\ =\ \{0,1\};}
+\DoxyCodeLine{00123\ \ \ \ \ calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);\ \ \ \ \ }
+\DoxyCodeLine{00124\ \ \ \ \ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{//\ Write\ probabilities\ to\ file}}
+\DoxyCodeLine{00126\ \ \ \ \ }
+\DoxyCodeLine{00127\ \ \ \ \ std::string\ col\_name\ =\ \textcolor{stringliteral}{"{}probabilities"{}};}
+\DoxyCodeLine{00128\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}{writeArrayToFile}}(outcomeProbs,\ numProbs,\ fileProb,col\_name);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{00131\ \ \ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{00132\ \ \ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{00133\ \}}
+
+\end{DoxyCode}
+\Hypertarget{probabilities_amplitudes_no_noise_circuits_8hpp_a0a4ae0264fe447986b9ec9020be0b300}\label{probabilities_amplitudes_no_noise_circuits_8hpp_a0a4ae0264fe447986b9ec9020be0b300} 
+\index{probabilitiesAmplitudesNoNoiseCircuits.hpp@{probabilitiesAmplitudesNoNoiseCircuits.hpp}!applyTwoQubitPauliXEachQubit@{applyTwoQubitPauliXEachQubit}}
+\index{applyTwoQubitPauliXEachQubit@{applyTwoQubitPauliXEachQubit}!probabilitiesAmplitudesNoNoiseCircuits.hpp@{probabilitiesAmplitudesNoNoiseCircuits.hpp}}
+\doxysubsubsection{\texorpdfstring{applyTwoQubitPauliXEachQubit()}{applyTwoQubitPauliXEachQubit()}}
+{\footnotesize\ttfamily void apply\+Two\+Qubit\+Pauli\+XEach\+Qubit (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Amp,  }\item[{std\+::string}]{file\+Prob }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_source_l00072}{72}} of file \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_source}{probabilities\+Amplitudes\+No\+Noise\+Circuits.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{int}\ numQubits\ =\ 2;}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{00075\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{00076\ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{comment}{//\ Create\ qureg}}
+\DoxyCodeLine{00078\ \ \ \ \ Qureg\ qureg\ =\ createDensityQureg(numQubits,\ env);}
+\DoxyCodeLine{00079\ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ Apply\ details\ to\ circuit}}
+\DoxyCodeLine{00081\ \ \ \ \ pauliX(qureg,0);}
+\DoxyCodeLine{00082\ \ \ \ \ pauliX(qureg,1);}
+\DoxyCodeLine{00083\ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}{writeStateToFile}}(qureg,fileAmp);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ Compute\ probabilites}}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{int}\ numProbs\ =\ 1<<numQubits;}
+\DoxyCodeLine{00090\ \ \ \ \ qreal\ outcomeProbs[1<<numProbs];}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{int}\ qubits[]\ =\ \{0,1\};}
+\DoxyCodeLine{00092\ \ \ \ \ calcProbOfAllOutcomes(outcomeProbs,qureg,qubits,numQubits);\ \ \ \ \ }
+\DoxyCodeLine{00093\ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//\ Write\ probabilities\ to\ file}}
+\DoxyCodeLine{00095\ \ \ \ \ }
+\DoxyCodeLine{00096\ \ \ \ \ std::string\ col\_name\ =\ \textcolor{stringliteral}{"{}probabilities"{}};}
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}{writeArrayToFile}}(outcomeProbs,\ numProbs,\ fileProb,col\_name);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{00100\ \ \ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{00101\ \ \ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{00102\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,77 @@
+\doxysection{test\+No\+Noise\+Simple\+Circuits\+Qu\+EST.\+cpp}
+\hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source}{}\label{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source}\index{tests/testNoNoiseSimpleCircuitsQuEST.cpp@{tests/testNoNoiseSimpleCircuitsQuEST.cpp}}
+\mbox{\hyperlink{test_no_noise_simple_circuits_qu_e_s_t_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00002}00002\ \textcolor{comment}{//\ Title\ \ :\ testNoiseModelsQuEST.cpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00003}00003\ \textcolor{comment}{//\ Author\ :\ Jonathan\ Miller\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00004}00004\ \textcolor{comment}{//\ Date\ \ \ :\ 20230503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00005}00005\ \textcolor{comment}{//\ Aim\ \ \ \ :\ test\ noise\ models\ using\ QuEST\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00006}00006\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ Use\ CBQC\ first\ then\ apply\ to\ MBQC\ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00008}00008\ \textcolor{comment}{}\textcolor{comment}{//\ Include\ package\ header\ file}}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{packages_8hpp}{packages.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00012}\mbox{\hyperlink{test_no_noise_simple_circuits_qu_e_s_t_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00012}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{test_no_noise_simple_circuits_qu_e_s_t_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\{}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ Set\ probability}}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00014}00014\ \ \ \ \ qreal\ noProb\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00015}00015\ \ \ \ \ std::string\ dataDir;}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00017}00017\ \ \ \ \ std::string\ outputNoNoiseDir;}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00018}00018\ \ \ \ \ std::string\ qubitInfo;}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00019}00019\ \ \ \ \ std::string\ dataPath\ =\ \textcolor{stringliteral}{"{}Projects/exploringNoiseInQuEST/data"{}};\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00020}00020\ \ \ \ \ outputNoNoiseDir\ =\ \textcolor{stringliteral}{"{}no\_noise"{}};}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00022}00022\ \ \ \ \ std::vector<std::string>\ savePaths;}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00023}00023\ \ \ \ \ std::string\ fileAmp;}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00024}00024\ \ \ \ \ std::string\ fileProb;}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00025}00025\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//\ Run\ circuits\ save\ output\ to\ file\ no\ damping}}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00029}00029\ \ \ \ \ qubitInfo\ =\ \textcolor{stringliteral}{"{}applySingleQubitPauliX"{}};}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00030}00030\ \ \ \ \ savePaths\ =\ \mbox{\hyperlink{general_helper_functions_8hpp_a318982330941fb08021062d2593a62f9}{getPaths}}(dataPath,\ outputNoNoiseDir,\ qubitInfo,\ noProb);}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00031}00031\ \ \ \ \ fileAmp\ =\ savePaths[0];}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00032}00032\ \ \ \ \ fileProb\ =\ savePaths[1];}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00033}00033\ \ \ \ \ \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_a04cb99395192eeaaf6127a5566a1f0f2}{applySingleQubitPauliX}}(fileAmp,fileProb);}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00034}00034\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00035}00035\ \ \ \ \ qubitInfo\ =\ \textcolor{stringliteral}{"{}applySingleQubitHGate"{}};}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00036}00036\ \ \ \ \ savePaths\ =\ \mbox{\hyperlink{general_helper_functions_8hpp_a318982330941fb08021062d2593a62f9}{getPaths}}(dataPath,\ outputNoNoiseDir,\ qubitInfo,\ noProb);}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00037}00037\ \ \ \ \ fileAmp\ =\ savePaths[0];}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00038}00038\ \ \ \ \ fileProb\ =\ savePaths[1];}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00039}00039\ \ \ \ \ \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_abcf93bff15914fce42420a9c180cb52b}{applySingleQubitHGate}}(fileAmp,fileProb);}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00041}00041\ \ \ \ \ qubitInfo\ =\ \textcolor{stringliteral}{"{}applyTwoQubitPauliXEachQubit"{}};}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00042}00042\ \ \ \ \ savePaths\ =\ \mbox{\hyperlink{general_helper_functions_8hpp_a318982330941fb08021062d2593a62f9}{getPaths}}(dataPath,\ outputNoNoiseDir,\ qubitInfo,\ noProb);}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00043}00043\ \ \ \ \ fileAmp\ =\ savePaths[0];}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00044}00044\ \ \ \ \ fileProb\ =\ savePaths[1];}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00045}00045\ \ \ \ \ \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_a0a4ae0264fe447986b9ec9020be0b300}{applyTwoQubitPauliXEachQubit}}(fileAmp,fileProb);}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00047}00047\ \ \ \ \ qubitInfo\ =\ \textcolor{stringliteral}{"{}applyTwoQubitHGateEachQubit"{}};}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00048}00048\ \ \ \ \ savePaths\ =\ \mbox{\hyperlink{general_helper_functions_8hpp_a318982330941fb08021062d2593a62f9}{getPaths}}(dataPath,\ outputNoNoiseDir,\ qubitInfo,\ noProb);}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00049}00049\ \ \ \ \ fileAmp\ =\ savePaths[0];}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00050}00050\ \ \ \ \ fileProb\ =\ savePaths[1];}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00051}00051\ \ \ \ \ \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_a83516056319fc01a2e77d10e1207db1b}{applyTwoQubitHGateEachQubit}}(fileAmp,fileProb);}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00052}00052\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00053}00053\ \ \ \ \ qubitInfo\ =\ \textcolor{stringliteral}{"{}applyTwoQubitHCZGateBetweenQubit"{}};}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00054}00054\ \ \ \ \ savePaths\ =\ \mbox{\hyperlink{general_helper_functions_8hpp_a318982330941fb08021062d2593a62f9}{getPaths}}(dataPath,\ outputNoNoiseDir,\ qubitInfo,\ noProb);}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00055}00055\ \ \ \ \ fileAmp\ =\ savePaths[0];}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00056}00056\ \ \ \ \ fileProb\ =\ savePaths[1];}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00057}00057\ \ \ \ \ \mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp_a29e290b1295a652cd32caa8b1b9fadc1}{applyTwoQubitHCZGateBetweenQubit}}(fileAmp,fileProb);}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00062}00062\ \}}
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00070}00070\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{test_no_noise_simple_circuits_qu_e_s_t_8cpp_source_l00072}00072\ }
+
+\end{DoxyCode}

@@ -1,0 +1,158 @@
+\doxysection{20230314\+\_\+\+Test\+Linear\+Cluster\+State\+\_\+\+V1.\+cpp}
+\hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source}{}\label{20230314___test_linear_cluster_state___v1_8cpp_source}\index{src/archive/20230314\_TestLinearClusterState\_V1.cpp@{src/archive/20230314\_TestLinearClusterState\_V1.cpp}}
+\mbox{\hyperlink{20230314___test_linear_cluster_state___v1_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00002}00002\ \textcolor{comment}{//\ Title\ \ \ \ \ :\ Three\ qubit\ in\ a\ line\ entangled}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00003}00003\ \textcolor{comment}{//\ Author\ \ \ \ :\ Jonathan\ Miller}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00004}00004\ \textcolor{comment}{//\ Date\ \ \ \ \ \ :\ 20230309}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00005}00005\ \textcolor{comment}{//\ Aim\ \ \ \ \ \ \ :\ Implement\ a\ simple\ MBQC\ circuit\ for\ ()-\/()-\/()\ circuit}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00006}00006\ \textcolor{comment}{//\ Flow\ \ \ \ \ \ :\ Same\ row,\ next\ column;\ }}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00007}00007\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ f(0)\ =\ 1,\ f(1)\ =\ 2,\ f(2)\ =\ 3}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00008}00008\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ f-\/1(3)\ =\ 2,\ f-\/1(2)\ =\ 1,\ f-\/1(1)\ =\ 0}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <QuEST.h>}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00011}00011\ \textcolor{comment}{//\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00015}00015\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{20230314___functions___v1_8hpp}{20230314\_Functions\_V1.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00022}\mbox{\hyperlink{20230314___test_linear_cluster_state___v1_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00022}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{20230314___test_linear_cluster_state___v1_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00023}00023\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00024}00024\ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ set\ parameters}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordtype}{int}\ numberQubits\ =\ 5;}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00027}00027\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//\ Select\ a\ qubit\ index}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordtype}{int}\ currentQubit\ =\ 3;}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ vector\ representing\ a\ linear\ cluster\ graph}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00032}00032\ \ \ \ \ vector<int>\ pathGraph\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_aa6c7ea81b30e713a1f641e9a86e5f0a8}{getPathGraph}}(numberQubits);}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ future\ qubit\ using\ pathGraph\ and\ current\ qubit}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordtype}{int}\ future\_qubit\_linear\_cluster\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_adf1055c60f73eb56e5e51d97b15feeaf}{getFutureQubitPathGraph}}(pathGraph\ ,currentQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ past\ qubit\ using\ pathGraph\ and\ current\ qubit}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{int}\ qubitBefore\_linear\_cluster\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a1be0a6fc146b59a21929f000546f57a4}{getPastQubitPathGraph}}(pathGraph\ ,currentQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ neighbourhood\ size}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{int}\ size\_neighbour\_set\ =\ \mbox{\hyperlink{20230313___m_b_q_c___v2_8c_ab81ffa7099ed1d954baf7af535ab3143}{getOpenNeighbourhoodSizePathGraph}}(pathGraph\ ,currentQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00042}00042\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//\ Ger\ neighbours}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00044}00044\ \ \ \ \ vector<int>\ neighbours\ =\ \mbox{\hyperlink{20230313___m_b_q_c___v2_8c_a5aa77a698227173b06b1c3d363215699}{getOpenNeighbourhoodPathGraph}}(pathGraph\ ,currentQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00047}00047\ \ \ \ \ printf(\textcolor{stringliteral}{"{}The\ number\ of\ qubits\ is:\ \%d\(\backslash\)n"{}},\ numberQubits);}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00048}00048\ \ \ \ \ printf(\textcolor{stringliteral}{"{}The\ current\ qubit\ is:\ \%d\(\backslash\)n"{}},currentQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00049}00049\ \ \ \ \ printf(\textcolor{stringliteral}{"{}The\ Past\ qubit\ is:\ \%d\(\backslash\)n"{}},qubitBefore\_linear\_cluster);}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00050}00050\ \ \ \ \ printf(\textcolor{stringliteral}{"{}The\ future\ qubit\ is:\ \%d\(\backslash\)n"{}},future\_qubit\_linear\_cluster);}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00051}00051\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Size\ of\ neighbour\ set:\ \%d\(\backslash\)n"{}},size\_neighbour\_set);\ \ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00052}00052\ \ \ \ \ printf(\textcolor{stringliteral}{"{}The\ neighbourhoods\ are:\ "{}});}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00053}00053\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i:\ neighbours)}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00055}00055\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ cout\ <<\ i\ <<\ \textcolor{charliteral}{'\ '};}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00058}00058\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00059}00059\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00060}00060\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00061}00061\ \ \ \ \ printf(\textcolor{stringliteral}{"{}The\ linear\ cluster\ is\ written\ out\ as:\ \(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i:\ pathGraph)}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00063}00063\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ cout\ <<\ i\ <<\ \textcolor{charliteral}{'\ '};}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00065}00065\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{comment}{//\ Assert\ that\ the\ future\ qubit\ is\ equivalent\ to\ the\ current\ qubit\ +1}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00069}00069\ \ \ \ \ assert(future\_qubit\_linear\_cluster\ ==\ currentQubit\ +\ 1\ \&\&\ \textcolor{stringliteral}{"{}Incorrect\ future\ qubit"{}});}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//\ Assert\ that\ the\ future\ qubit\ is\ equivalent\ to\ the\ current\ qubit\ -\/1}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00072}00072\ \ \ \ \ assert(qubitBefore\_linear\_cluster\ ==\ currentQubit\ -\/\ 1\ \&\&\ \textcolor{stringliteral}{"{}Incorrect\ past\ qubit"{}});}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00075}00075\ \textcolor{comment}{\ \ \ \ \ \ \ \ Assert\ that\ the\ number\ of\ qubits\ initialised\ is\ equivalent\ to\ the\ }}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00076}00076\ \textcolor{comment}{\ \ \ \ \ \ \ \ size\ of\ the\ linear\ cluster\ vector}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00077}00077\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00078}00078\ \ \ \ \ assert(numberQubits\ ==\ pathGraph.size()\ \&\&\ \textcolor{stringliteral}{"{}The\ linear\ cluster\ is\ not\ the\ same\ size\ as\ the\ number\ of\ qubits\ initialised."{}});}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00082}00082\ \textcolor{comment}{\ \ \ \ \ \ \ \ Test\ that\ the\ size\ of\ the\ neighbours\ is\ equivalent\ to\ the}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00083}00083\ \textcolor{comment}{\ \ \ \ \ \ \ \ function\ output\ based\ on\ the\ qubit\ location\ in\ the\ vector}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00084}00084\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[0])}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00086}00086\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ assert(size\_neighbour\_set\ ==\ 1\ \&\&\ \textcolor{stringliteral}{"{}Neighbour\ set\ shoud\ be\ size\ 1"{}});}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00088}00088\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[pathGraph.size()-\/1])\{}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ assert(size\_neighbour\_set\ ==\ 1\ \&\&\ \textcolor{stringliteral}{"{}Neighbour\ set\ shoud\ be\ size\ 1"{}});}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00090}00090\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ assert(size\_neighbour\_set\ ==\ 2\ \&\&\ \textcolor{stringliteral}{"{}Neighbour\ set\ shoud\ be\ size\ 2"{}});}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00094}00094\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00095}00095\ \textcolor{comment}{\ \ \ \ \ \ \ \ Test\ that\ the\ size\ of\ the\ neighbours\ is\ equivalent\ to\ the}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00096}00096\ \textcolor{comment}{\ \ \ \ \ \ \ \ function\ output\ based\ on\ the\ qubit\ location\ in\ the\ vector\ and}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00097}00097\ \textcolor{comment}{\ \ \ \ \ \ \ \ the\ size\ of\ the\ size\ of\ the\ neighbours\ vector.}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00098}00098\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00099}00099\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[0])}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00100}00100\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ assert(neighbours.size()\ ==\ 1\ \&\&\ \textcolor{stringliteral}{"{}Neighbour\ set\ shoud\ be\ size\ 1"{}});}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00102}00102\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[pathGraph.size()-\/1])\{}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ assert(neighbours.size()\ ==\ 1\ \&\&\ \textcolor{stringliteral}{"{}Neighbour\ set\ shoud\ be\ size\ 1"{}});}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00104}00104\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ assert(neighbours.size()\ ==\ 2\ \&\&\ \textcolor{stringliteral}{"{}Neighbour\ set\ shoud\ be\ size\ 2"{}});}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00109}00109\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{comment}{//\ Iterate\ over\ path\ graph\ cluster\ p\_10}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00111}00111\ \ \ \ \ \textcolor{keywordtype}{int}\ NewNumberQubits\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00112}00112\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ vector\ representing\ a\ linear\ cluster\ graph}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00113}00113\ \ \ \ \ vector<int>\ NewLinearCluster\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_aa6c7ea81b30e713a1f641e9a86e5f0a8}{getPathGraph}}(NewNumberQubits);}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00115}00115\ \ \ \ \ \textcolor{comment}{//\ Iterate\ over\ all\ vertices,\ return\ neighbours}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00116}00116\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00117}00117\ \ \ \ \ \textcolor{comment}{//\ Iterate\ over\ the\ path\ cluster}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00118}00118\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ q:\ NewLinearCluster)}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00119}00119\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Qubit:\ "{}}\ <<\ q\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ vector<int>\ neighbours\ =\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{20230313___m_b_q_c___v2_8c_a5aa77a698227173b06b1c3d363215699}{getOpenNeighbourhoodPathGraph}}(}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NewLinearCluster\ ,q);}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Neighbours:\ "{}};}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ future\ qubit\ using\ pathGraph\ and\ current\ qubit}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ FutureQubit\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_adf1055c60f73eb56e5e51d97b15feeaf}{getFutureQubitPathGraph}}(NewLinearCluster\ ,q);}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Current\ qubit:\ \%d\ future\ qubit:\ \%d\(\backslash\)n"{}},q,FutureQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ past\ qubit\ using\ pathGraph\ and\ current\ qubit}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pastQubit\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a1be0a6fc146b59a21929f000546f57a4}{getPastQubitPathGraph}}(NewLinearCluster\ ,q);}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Current\ qubit:\ \%d\ past\ qubit:\ \%d\(\backslash\)n"{}},q,FutureQubit);}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ n:\ neighbours)}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ n\ <<\ \textcolor{charliteral}{'\ '};}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00141}00141\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00143}00143\ \}}
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_source_l00152}00152\ }
+
+\end{DoxyCode}

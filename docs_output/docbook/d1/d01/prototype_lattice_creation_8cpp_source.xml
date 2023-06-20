@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_prototype_lattice_creation_8cpp_source" xml:lang="en-US">
+<title>prototypeLatticeCreation.cpp</title>
+<indexterm><primary>src/archive/prototypeLatticeCreation.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00001"/>00001 
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Title&#32;&#32;:&#32;prototypeLatticeCreation.cpp&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00003"/>00003 <emphasis role="comment">//&#32;Author&#32;:&#32;Jonathan&#32;Miller&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00004"/>00004 <emphasis role="comment">//&#32;Date&#32;&#32;&#32;:&#32;20230515&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00005"/>00005 <emphasis role="comment">//&#32;Aim&#32;&#32;&#32;&#32;:&#32;File&#32;used&#32;to&#32;prototype&#32;the&#32;creation&#32;of&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00006"/>00006 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;an&#32;arbitrary&#32;lattice&#32;and&#32;presents&#32;rows&#32;and&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00007"/>00007 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;cols&#32;as&#32;needed.&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00009"/>00009 <emphasis role="comment"></emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00010"/>00010 
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00011"/>00011 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00012"/>00012 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00013"/>00013 <emphasis role="preprocessor">#include&#32;&lt;stdexcept&gt;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00014"/>00014 <emphasis role="preprocessor">#include&#32;&lt;algorithm&gt;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00015"/>00015 <emphasis role="preprocessor">#include&#32;&lt;iterator&gt;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00016"/>00016 <emphasis role="preprocessor">#include&#32;&lt;set&gt;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00017"/>00017 <emphasis role="preprocessor">#include&#32;&lt;numeric&gt;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00018"/>00018 <emphasis role="preprocessor">#include&#32;&lt;cmath&gt;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00019"/>00019 <emphasis role="preprocessor">#include&#32;&lt;QuEST.h&gt;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00020"/>00020 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/adjacency_list.hpp&gt;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00021"/>00021 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/grid_graph.hpp&gt;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00022"/>00022 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/graphviz.hpp&gt;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00023"/>00023 <emphasis role="preprocessor">#include&#32;&lt;boost/array.hpp&gt;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00024"/>00024 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/graph_utility.hpp&gt;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00025"/>00025 <emphasis role="preprocessor">#include&#32;&lt;boost/container/vector.hpp&gt;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00026"/>00026 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp&quot;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00027"/>00027 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp&quot;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00028"/>00028 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalAssertFunctions.hpp&quot;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00029"/>00029 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp&quot;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp&quot;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00031"/>00031 
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00032"/>00032 
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00033"/>00033 <emphasis role="comment">//&#32;Define&#32;the&#32;lattice&#32;creation&#32;function&#32;(same&#32;as&#32;before)</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00034"/>00034 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00035"/>00035 <emphasis role="comment">std::vector&lt;std::vector&lt;int&gt;&gt;&#32;create_lattice(int&#32;K,&#32;int&#32;L)&#32;{</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00036"/>00036 <emphasis role="comment">&#32;&#32;&#32;&#32;int&#32;N&#32;=&#32;K&#32;*&#32;L;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00037"/>00037 <emphasis role="comment">&#32;&#32;&#32;&#32;std::vector&lt;std::vector&lt;int&gt;&gt;&#32;lattice(K,&#32;std::vector&lt;int&gt;(L,&#32;-1));</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00038"/>00038 <emphasis role="comment">&#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;numbers(N);</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00039"/>00039 <emphasis role="comment">&#32;&#32;&#32;&#32;for&#32;(int&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;N;&#32;i++)&#32;{</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00040"/>00040 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numbers[i]&#32;=&#32;i;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00041"/>00041 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00042"/>00042 <emphasis role="comment"></emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00043"/>00043 <emphasis role="comment">&#32;&#32;&#32;&#32;for&#32;(int&#32;number&#32;:&#32;numbers)&#32;{</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00044"/>00044 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;int&#32;row&#32;=&#32;number&#32;%&#32;K;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00045"/>00045 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;int&#32;col&#32;=&#32;number&#32;/&#32;K;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00046"/>00046 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lattice[row][col]&#32;=&#32;number;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00047"/>00047 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00048"/>00048 <emphasis role="comment"></emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00049"/>00049 <emphasis role="comment">&#32;&#32;&#32;&#32;return&#32;lattice;</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00050"/>00050 <emphasis role="comment">}</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00051"/>00051 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00052"/>00052 
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00053"/>00053 
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00054"/>00054 
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00055"/>00055 
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00056"/><link linkend="_prototype_lattice_creation_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00056</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_prototype_lattice_creation_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00057"/>00057 &#32;&#32;&#32;&#32;
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00058"/>00058 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;K&#32;=&#32;7;
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00059"/>00059 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;L&#32;=&#32;3;
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;N&#32;=&#32;K*L;
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00061"/>00061 
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00062"/>00062 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;the&#32;lattice&#32;using&#32;create_lattice&#32;function</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00063"/>00063 &#32;&#32;&#32;&#32;std::vector&lt;std::vector&lt;int&gt;&gt;&#32;lattice&#32;=&#32;<link linkend="_graph_constructions_8hpp_1a6e0974be2fa2e599ab591aa02f1c9eb2">create_lattice</link>(K,&#32;L);
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00064"/>00064 
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00065"/>00065 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">auto</emphasis>&amp;&#32;row&#32;:&#32;lattice)&#32;{
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;number&#32;:&#32;row)&#32;{
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;number&#32;&lt;&lt;&#32;<emphasis role="charliteral">&apos;\t&apos;</emphasis>;
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="charliteral">&apos;\n&apos;</emphasis>;
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00071"/>00071 
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00072"/>00072 
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00073"/>00073 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Define&#32;the&#32;Boost&#32;Graph&#32;types</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00074"/>00074 &#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;boost::adjacency_list&lt;boost::vecS,&#32;boost::vecS,&#32;boost::undirectedS&gt;&#32;Graph;
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00075"/>00075 &#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;Graph&gt;::vertex_descriptor&#32;Vertex;
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00076"/>00076 
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00077"/>00077 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;Boost&#32;Graph</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00078"/>00078 &#32;&#32;&#32;&#32;Graph&#32;graph(N);
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00079"/>00079 &#32;&#32;&#32;&#32;
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Add&#32;edges&#32;to&#32;the&#32;graph</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;row&#32;=&#32;0;&#32;row&#32;&lt;&#32;K;&#32;row++)&#32;{
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;col&#32;=&#32;0;&#32;col&#32;&lt;&#32;L;&#32;col++)&#32;{
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00083"/>00083 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(row&#32;+&#32;1&#32;&lt;&#32;K)&#32;{
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00084"/>00084 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;boost::add_edge(lattice[row][col],&#32;lattice[row&#32;+&#32;1][col],&#32;graph);
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(col&#32;+&#32;1&#32;&lt;&#32;L)&#32;{
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;boost::add_edge(lattice[row][col],&#32;lattice[row][col&#32;+&#32;1],&#32;graph);
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00091"/>00091 
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00092"/>00092 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Num&#32;vertices:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;boost::num_vertices(graph)&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Num&#32;edges:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;boost::num_edges(graph)&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;print_graph(graph);
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00095"/>00095 
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00096"/>00096 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00097"/>00097 &#32;&#32;&#32;&#32;std::string&#32;fileDir&#32;=&#32;<emphasis role="stringliteral">&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;</emphasis>;
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;std::string&#32;graphName&#32;=&#32;<emphasis role="stringliteral">&quot;lattice2DArrayGraph&quot;</emphasis>;
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00099"/>00099 &#32;&#32;&#32;&#32;std::string&#32;format&#32;=&#32;<emphasis role="stringliteral">&quot;png&quot;</emphasis>;
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;<link linkend="_write_graph_graph_viz_dot_file_8hpp_1a3d553b54b16922ee146bfb33201a3993">printGraphToFile</link>(graph,fileDir,graphName,format);
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00101"/>00101 
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00102"/>00102 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_prototype_lattice_creation_8cpp_source_1l00103"/>00103 }
+</programlisting></section>

@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_20230314___functions___v1_8hpp" xml:lang="en-US">
+<title>src/archive/filesToGoThrough/20230314_Functions_V1.hpp File Reference</title>
+<indexterm><primary>src/archive/filesToGoThrough/20230314_Functions_V1.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;QuEST.h&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>vector&lt; int &gt; <link linkend="_20230314___functions___v1_8hpp_1aa6c7ea81b30e713a1f641e9a86e5f0a8">getPathGraph</link> (int numberQubits)</para>
+</listitem>
+            <listitem><para>int <link linkend="_20230314___functions___v1_8hpp_1a89ebfc1e65a5c1ee3c420843c016be0e">getFutureQubit</link> (int currentQubit)</para>
+</listitem>
+            <listitem><para>int <link linkend="_20230314___functions___v1_8hpp_1af44420884b989805a33b6b4cb35fb2e1">getPastQubit</link> (int currentQubit)</para>
+</listitem>
+            <listitem><para>int <link linkend="_20230314___functions___v1_8hpp_1adf1055c60f73eb56e5e51d97b15feeaf">getFutureQubitPathGraph</link> (vector&lt; int &gt; pathGraph, int currentQubit)</para>
+</listitem>
+            <listitem><para>int <link linkend="_20230314___functions___v1_8hpp_1a1be0a6fc146b59a21929f000546f57a4">getPastQubitPathGraph</link> (vector&lt; int &gt; pathGraph, int currentQubit)</para>
+</listitem>
+            <listitem><para>int <link linkend="_20230314___functions___v1_8hpp_1aebc14db121869c416ee59e033335ad63">getOpenNeighbourhoodSizePathGraph</link> (vector&lt; int &gt; pathGraph, int currentQubit)</para>
+</listitem>
+            <listitem><para>vector&lt; int &gt; <link linkend="_20230314___functions___v1_8hpp_1a1a2f9b091ffe6a2814a21e720faafbe7">getOpenNeighbourhoodPathGraph</link> (vector&lt; int &gt; pathGraph, int currentQubit)</para>
+</listitem>
+            <listitem><para>qreal <link linkend="_20230314___functions___v1_8hpp_1a9c227d82e03f906a192a861db4ddf6ab">computeXCorrectionAnglePathGraph</link> (vector&lt; int &gt; pathGraph, vector&lt; int &gt; measuredQubitsOutcomes, vector&lt; qreal &gt; qubitAngles, int currentQubit)</para>
+</listitem>
+            <listitem><para>qreal <link linkend="_20230314___functions___v1_8hpp_1acf8731fbf6fdc066d371b78a916dc431">computeZCorrectionAnglePathGraph</link> (vector&lt; int &gt; pathGraph, vector&lt; int &gt; measuredQubitsOutcomes, int currentQubit)</para>
+</listitem>
+            <listitem><para>int <link linkend="_20230314___functions___v1_8hpp_1a93cdcf18ac63c09cd8354e765238386a">countElements</link> (vector&lt; int &gt; v, int element)</para>
+</listitem>
+            <listitem><para>vector&lt; int &gt; <link linkend="_20230314___functions___v1_8hpp_1acdb0932776bd659eddba9f2942af2c15">runMbqcPathGraph</link> (Qureg qureg, vector&lt; int &gt; pathGraph, vector&lt; qreal &gt; qubitAngles)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_20230314___functions___v1_8hpp_1a9c227d82e03f906a192a861db4ddf6ab"/><section>
+    <title>computeXCorrectionAnglePathGraph()</title>
+<indexterm><primary>computeXCorrectionAnglePathGraph</primary><secondary>20230314_Functions_V1.hpp</secondary></indexterm>
+<indexterm><primary>20230314_Functions_V1.hpp</primary><secondary>computeXCorrectionAnglePathGraph</secondary></indexterm>
+<para><computeroutput>qreal computeXCorrectionAnglePathGraph (vector&lt; int &gt; pathGraph, vector&lt; int &gt; measuredQubitsOutcomes, vector&lt; qreal &gt; qubitAngles, int currentQubit)</computeroutput></para><para>
+Definition at line <link linkend="_20230314___functions___v1_8hpp_source_1l00131">131</link> of file <link linkend="_20230314___functions___v1_8hpp_source">20230314_Functions_V1.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00136 &#32;&#32;{
+00137 &#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;xCorrectionAngle;
+00138 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;pastQubit;
+00139 &#32;&#32;&#32;&#32;&#32;&#32;pastQubit&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1a1be0a6fc146b59a21929f000546f57a4">getPastQubitPathGraph</link>(pathGraph,currentQubit);
+00140 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;inverseFlowQubitOutcome&#32;=&#32;measuredQubitsOutcomes[pastQubit];
+00141 &#32;&#32;&#32;&#32;&#32;&#32;xCorrectionAngle&#32;=&#32;pow(-1,&#32;inverseFlowQubitOutcome)*qubitAngles[currentQubit];
+00142 
+00143 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;xCorrectionAngle;
+00144 &#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_20230314___functions___v1_8hpp_1acf8731fbf6fdc066d371b78a916dc431"/><section>
+    <title>computeZCorrectionAnglePathGraph()</title>
+<indexterm><primary>computeZCorrectionAnglePathGraph</primary><secondary>20230314_Functions_V1.hpp</secondary></indexterm>
+<indexterm><primary>20230314_Functions_V1.hpp</primary><secondary>computeZCorrectionAnglePathGraph</secondary></indexterm>
+<para><computeroutput>qreal computeZCorrectionAnglePathGraph (vector&lt; int &gt; pathGraph, vector&lt; int &gt; measuredQubitsOutcomes, int currentQubit)</computeroutput></para><para>
+Definition at line <link linkend="_20230314___functions___v1_8hpp_source_1l00148">148</link> of file <link linkend="_20230314___functions___v1_8hpp_source">20230314_Functions_V1.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00152 &#32;&#32;{&#32;&#32;&#32;
+00153 &#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;zCorrectionAngle;
+00154 &#32;&#32;&#32;&#32;&#32;&#32;
+00155 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;pastQubit;
+00156 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;pastPastQubit;
+00157 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;inverseFlowQubitOutcome;
+00158 &#32;&#32;&#32;&#32;&#32;&#32;pastQubit&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1a1be0a6fc146b59a21929f000546f57a4">getPastQubitPathGraph</link>(pathGraph,currentQubit);
+00159 &#32;&#32;&#32;&#32;&#32;&#32;pastPastQubit&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1a1be0a6fc146b59a21929f000546f57a4">getPastQubitPathGraph</link>(pathGraph,pastQubit);
+00160 &#32;&#32;&#32;&#32;&#32;&#32;inverseFlowQubitOutcome&#32;=&#32;measuredQubitsOutcomes[pastPastQubit];
+00161 &#32;&#32;&#32;&#32;&#32;&#32;zCorrectionAngle&#32;=&#32;M_PI*inverseFlowQubitOutcome;
+00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+00163 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;zCorrectionAngle;
+00164 &#32;&#32;}
+</programlisting></section>
+<anchor xml:id="_20230314___functions___v1_8hpp_1a93cdcf18ac63c09cd8354e765238386a"/><section>
+    <title>countElements()</title>
+<indexterm><primary>countElements</primary><secondary>20230314_Functions_V1.hpp</secondary></indexterm>
+<indexterm><primary>20230314_Functions_V1.hpp</primary><secondary>countElements</secondary></indexterm>
+<para><computeroutput>int countElements (vector&lt; int &gt; v, int element)</computeroutput></para><para>
+Definition at line <link linkend="_20230314___functions___v1_8hpp_source_1l00166">166</link> of file <link linkend="_20230314___functions___v1_8hpp_source">20230314_Functions_V1.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00167 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;count&#32;=&#32;0;
+00168 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;it&#32;=&#32;v.begin();&#32;it&#32;!=&#32;v.end();&#32;++it)&#32;{
+00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(*it&#32;==&#32;element)&#32;{
+00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;++count;
+00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00172 &#32;&#32;&#32;&#32;}
+00173 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;count;
+00174 }
+</programlisting></section>
+<anchor xml:id="_20230314___functions___v1_8hpp_1a89ebfc1e65a5c1ee3c420843c016be0e"/><section>
+    <title>getFutureQubit()</title>
+<indexterm><primary>getFutureQubit</primary><secondary>20230314_Functions_V1.hpp</secondary></indexterm>
+<indexterm><primary>20230314_Functions_V1.hpp</primary><secondary>getFutureQubit</secondary></indexterm>
+<para><computeroutput>int getFutureQubit (int currentQubit)</computeroutput></para><para>
+Definition at line <link linkend="_20230314___functions___v1_8hpp_source_1l00027">27</link> of file <link linkend="_20230314___functions___v1_8hpp_source">20230314_Functions_V1.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00028 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;futureQubit;
+00029 &#32;&#32;futureQubit&#32;=&#32;currentQubit&#32;+&#32;1;
+00030 
+00031 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;futureQubit;
+00032 }
+</programlisting></section>
+<anchor xml:id="_20230314___functions___v1_8hpp_1adf1055c60f73eb56e5e51d97b15feeaf"/><section>
+    <title>getFutureQubitPathGraph()</title>
+<indexterm><primary>getFutureQubitPathGraph</primary><secondary>20230314_Functions_V1.hpp</secondary></indexterm>
+<indexterm><primary>20230314_Functions_V1.hpp</primary><secondary>getFutureQubitPathGraph</secondary></indexterm>
+<para><computeroutput>int getFutureQubitPathGraph (vector&lt; int &gt; pathGraph, int currentQubit)</computeroutput></para><para>
+Definition at line <link linkend="_20230314___functions___v1_8hpp_source_1l00049">49</link> of file <link linkend="_20230314___functions___v1_8hpp_source">20230314_Functions_V1.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00050 {
+00051 <emphasis role="keywordtype">int</emphasis>&#32;futureQubit;
+00052 <emphasis role="keyword">auto</emphasis>&#32;graphSize&#32;=&#32;pathGraph.size();
+00053 <emphasis role="keywordflow">if</emphasis>&#32;(currentQubit&#32;==&#32;pathGraph[graphSize-1])&#32;{
+00054 &#32;&#32;&#32;&#32;futureQubit&#32;=&#32;currentQubit;
+00055 }&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+00056 &#32;&#32;futureQubit&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1a89ebfc1e65a5c1ee3c420843c016be0e">getFutureQubit</link>(currentQubit);
+00057 }
+00058 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;futureQubit;
+00059 }
+</programlisting></section>
+<anchor xml:id="_20230314___functions___v1_8hpp_1a1a2f9b091ffe6a2814a21e720faafbe7"/><section>
+    <title>getOpenNeighbourhoodPathGraph()</title>
+<indexterm><primary>getOpenNeighbourhoodPathGraph</primary><secondary>20230314_Functions_V1.hpp</secondary></indexterm>
+<indexterm><primary>20230314_Functions_V1.hpp</primary><secondary>getOpenNeighbourhoodPathGraph</secondary></indexterm>
+<para><computeroutput>vector&lt; int &gt; getOpenNeighbourhoodPathGraph (vector&lt; int &gt; pathGraph, int currentQubit)</computeroutput></para><para>
+Definition at line <link linkend="_20230314___functions___v1_8hpp_source_1l00107">107</link> of file <link linkend="_20230314___functions___v1_8hpp_source">20230314_Functions_V1.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00108 &#32;&#32;vector&lt;int&gt;&#32;neighbours;
+00109 &#32;&#32;<emphasis role="keyword">auto</emphasis>&#32;graphSize&#32;=&#32;pathGraph.size();
+00110 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;firstQubit;
+00111 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;pastQubit;
+00112 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;futureQubit;
+00113 
+00114 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(currentQubit&#32;==&#32;pathGraph[0])&#32;{&#32;<emphasis role="comment">//&#32;qubit&#32;is&#32;first&#32;in&#32;graph</emphasis>
+00115 &#32;&#32;&#32;&#32;firstQubit&#32;=&#32;currentQubit&#32;+&#32;1;
+00116 &#32;&#32;&#32;&#32;neighbours.push_back(firstQubit);
+00117 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(currentQubit&#32;==&#32;pathGraph[graphSize-1])&#32;{&#32;<emphasis role="comment">//&#32;qubit&#32;is&#32;last&#32;in&#32;graph</emphasis>
+00118 &#32;&#32;&#32;&#32;firstQubit&#32;=&#32;currentQubit&#32;-&#32;1;
+00119 &#32;&#32;&#32;&#32;neighbours.push_back(firstQubit);
+00120 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;<emphasis role="comment">//&#32;all&#32;else</emphasis>
+00121 &#32;&#32;&#32;&#32;pastQubit&#32;=&#32;currentQubit&#32;-&#32;1;
+00122 &#32;&#32;&#32;&#32;futureQubit&#32;=&#32;currentQubit&#32;+&#32;1;
+00123 &#32;&#32;&#32;&#32;neighbours.push_back(pastQubit);
+00124 &#32;&#32;&#32;&#32;neighbours.push_back(futureQubit);
+00125 &#32;&#32;}
+00126 
+00127 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;neighbours;
+00128 }
+</programlisting></section>
+<anchor xml:id="_20230314___functions___v1_8hpp_1aebc14db121869c416ee59e033335ad63"/><section>
+    <title>getOpenNeighbourhoodSizePathGraph()</title>
+<indexterm><primary>getOpenNeighbourhoodSizePathGraph</primary><secondary>20230314_Functions_V1.hpp</secondary></indexterm>
+<indexterm><primary>20230314_Functions_V1.hpp</primary><secondary>getOpenNeighbourhoodSizePathGraph</secondary></indexterm>
+<para><computeroutput>int getOpenNeighbourhoodSizePathGraph (vector&lt; int &gt; pathGraph, int currentQubit)</computeroutput></para><para>
+Definition at line <link linkend="_20230314___functions___v1_8hpp_source_1l00088">88</link> of file <link linkend="_20230314___functions___v1_8hpp_source">20230314_Functions_V1.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00089 &#32;&#32;<emphasis role="keyword">auto</emphasis>&#32;graphSize&#32;=&#32;pathGraph.size();
+00090 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;neighbourhoodSize;
+00091 &#32;&#32;<emphasis role="comment">//&#32;Logic&#32;for&#32;getting&#32;nieghbors</emphasis>
+00092 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(currentQubit&#32;==&#32;0)&#32;{&#32;<emphasis role="comment">//&#32;qubit&#32;is&#32;first</emphasis>
+00093 &#32;&#32;&#32;&#32;neighbourhoodSize&#32;=&#32;1;
+00094 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(currentQubit&#32;==&#32;pathGraph[graphSize-1])&#32;{&#32;<emphasis role="comment">//&#32;qubit&#32;is&#32;last</emphasis>
+00095 &#32;&#32;&#32;&#32;neighbourhoodSize&#32;=&#32;1;
+00096 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;<emphasis role="comment">//&#32;all&#32;else</emphasis>
+00097 &#32;&#32;&#32;&#32;neighbourhoodSize&#32;=&#32;2;
+00098 &#32;&#32;}
+00099 
+00100 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;neighbourhoodSize;
+00101 }
+</programlisting></section>
+<anchor xml:id="_20230314___functions___v1_8hpp_1af44420884b989805a33b6b4cb35fb2e1"/><section>
+    <title>getPastQubit()</title>
+<indexterm><primary>getPastQubit</primary><secondary>20230314_Functions_V1.hpp</secondary></indexterm>
+<indexterm><primary>20230314_Functions_V1.hpp</primary><secondary>getPastQubit</secondary></indexterm>
+<para><computeroutput>int getPastQubit (int currentQubit)</computeroutput></para><para>
+Definition at line <link linkend="_20230314___functions___v1_8hpp_source_1l00037">37</link> of file <link linkend="_20230314___functions___v1_8hpp_source">20230314_Functions_V1.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00038 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;pastQubit;
+00039 &#32;&#32;pastQubit&#32;=&#32;currentQubit&#32;-&#32;1;
+00040 
+00041 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;pastQubit;
+00042 }
+</programlisting></section>
+<anchor xml:id="_20230314___functions___v1_8hpp_1a1be0a6fc146b59a21929f000546f57a4"/><section>
+    <title>getPastQubitPathGraph()</title>
+<indexterm><primary>getPastQubitPathGraph</primary><secondary>20230314_Functions_V1.hpp</secondary></indexterm>
+<indexterm><primary>20230314_Functions_V1.hpp</primary><secondary>getPastQubitPathGraph</secondary></indexterm>
+<para><computeroutput>int getPastQubitPathGraph (vector&lt; int &gt; pathGraph, int currentQubit)</computeroutput></para><para>
+Definition at line <link linkend="_20230314___functions___v1_8hpp_source_1l00067">67</link> of file <link linkend="_20230314___functions___v1_8hpp_source">20230314_Functions_V1.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00068 {
+00069 <emphasis role="keywordtype">int</emphasis>&#32;pastQubit;
+00070 
+00071 <emphasis role="keywordflow">if</emphasis>&#32;(currentQubit&#32;==&#32;pathGraph[0])&#32;{
+00072 &#32;&#32;pastQubit&#32;=&#32;currentQubit;
+00073 
+00074 }&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+00075 &#32;&#32;pastQubit&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1af44420884b989805a33b6b4cb35fb2e1">getPastQubit</link>(currentQubit);
+00076 }
+00077 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;pastQubit;
+00078 }
+</programlisting></section>
+<anchor xml:id="_20230314___functions___v1_8hpp_1aa6c7ea81b30e713a1f641e9a86e5f0a8"/><section>
+    <title>getPathGraph()</title>
+<indexterm><primary>getPathGraph</primary><secondary>20230314_Functions_V1.hpp</secondary></indexterm>
+<indexterm><primary>20230314_Functions_V1.hpp</primary><secondary>getPathGraph</secondary></indexterm>
+<para><computeroutput>vector&lt; int &gt; getPathGraph (int numberQubits)</computeroutput></para><para>
+Definition at line <link linkend="_20230314___functions___v1_8hpp_source_1l00014">14</link> of file <link linkend="_20230314___functions___v1_8hpp_source">20230314_Functions_V1.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00015 {
+00016 &#32;&#32;vector&lt;int&gt;&#32;pathGraph;
+00017 &#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;numberQubits;&#32;i++&#32;)
+00018 &#32;&#32;{
+00019 &#32;&#32;&#32;&#32;pathGraph.push_back(i);&#32;&#32;
+00020 &#32;&#32;}
+00021 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;pathGraph;
+00022 }
+</programlisting></section>
+<anchor xml:id="_20230314___functions___v1_8hpp_1acdb0932776bd659eddba9f2942af2c15"/><section>
+    <title>runMbqcPathGraph()</title>
+<indexterm><primary>runMbqcPathGraph</primary><secondary>20230314_Functions_V1.hpp</secondary></indexterm>
+<indexterm><primary>20230314_Functions_V1.hpp</primary><secondary>runMbqcPathGraph</secondary></indexterm>
+<para><computeroutput>vector&lt; int &gt; runMbqcPathGraph (Qureg qureg, vector&lt; int &gt; pathGraph, vector&lt; qreal &gt; qubitAngles)</computeroutput></para><para>
+Definition at line <link linkend="_20230314___functions___v1_8hpp_source_1l00176">176</link> of file <link linkend="_20230314___functions___v1_8hpp_source">20230314_Functions_V1.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00180 
+00181 
+00182 &#32;&#32;&#32;&#32;vector&lt;qreal&gt;&#32;updatedQubitAngles;
+00183 &#32;&#32;&#32;&#32;vector&lt;int&gt;&#32;measuredQubitsOutcomes;
+00184 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numberQubits&#32;=&#32;pathGraph.size();
+00185 &#32;&#32;&#32;&#32;qreal&#32;X1;
+00186 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;firstQubitIndex=0;
+00187 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;secondQubitIndex=1;
+00188 &#32;&#32;&#32;&#32;
+00189 
+00190 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Measure&#32;first&#32;qubit&#32;and&#32;update&#32;angle</emphasis>
+00191 &#32;&#32;&#32;&#32;updatedQubitAngles.push_back(qubitAngles[firstQubitIndex]);
+00192 &#32;&#32;&#32;&#32;rotateZ(qureg,firstQubitIndex,&#32;(-1)*updatedQubitAngles[firstQubitIndex]);
+00193 &#32;&#32;&#32;&#32;hadamard(qureg,firstQubitIndex);
+00194 &#32;&#32;&#32;&#32;measuredQubitsOutcomes.push_back(measure(qureg,firstQubitIndex));
+00195 
+00196 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;second&#32;qubit</emphasis>
+00197 &#32;&#32;&#32;&#32;X1&#32;=&#32;pow((-1),measuredQubitsOutcomes[firstQubitIndex])*qubitAngles[secondQubitIndex];
+00198 &#32;&#32;&#32;&#32;updatedQubitAngles[secondQubitIndex]&#32;=&#32;X1;
+00199 &#32;&#32;&#32;&#32;rotateZ(qureg,secondQubitIndex,&#32;(-1)*updatedQubitAngles[secondQubitIndex]);
+00200 &#32;&#32;&#32;&#32;hadamard(qureg,secondQubitIndex);
+00201 &#32;&#32;&#32;&#32;measuredQubitsOutcomes.push_back(measure(qureg,secondQubitIndex));
+00202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+00203 
+00204 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;currentQubit=2;currentQubit&lt;numberQubits;currentQubit++)
+00205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+00206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;X;
+00207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;Z;
+00208 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;phiPrime;
+00209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;outcome;
+00210 
+00211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;X&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1a9c227d82e03f906a192a861db4ddf6ab">computeXCorrectionAnglePathGraph</link>(
+00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pathGraph,&#32;
+00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;measuredQubitsOutcomes,
+00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles,
+00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;currentQubit);
+00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Z&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1acf8731fbf6fdc066d371b78a916dc431">computeZCorrectionAnglePathGraph</link>(
+00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pathGraph,&#32;
+00218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;measuredQubitsOutcomes,
+00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;currentQubit);
+00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;phiPrime&#32;=&#32;X+Z;
+00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+00222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rotateZ(qureg,currentQubit,&#32;(-1)*phiPrime);
+00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hadamard(qureg,currentQubit);
+00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;outcome&#32;=&#32;measure(qureg,currentQubit);
+00225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+00226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;measuredQubitsOutcomes.push_back(outcome);
+00227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00228 
+00229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;measuredQubitsOutcomes;
+00230 }
+</programlisting></section>
+</section>
+</section>

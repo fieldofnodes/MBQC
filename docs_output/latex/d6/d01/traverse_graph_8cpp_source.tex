@@ -1,0 +1,47 @@
+\doxysection{traverse\+Graph.\+cpp}
+\hypertarget{traverse_graph_8cpp_source}{}\label{traverse_graph_8cpp_source}\index{src/archive/filesToGoThrough/traverseGraph.cpp@{src/archive/filesToGoThrough/traverseGraph.cpp}}
+\mbox{\hyperlink{traverse_graph_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <boost/graph/adjacency\_list.hpp>}}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{create_graph_8hpp}{createGraph.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00006}00006\ \textcolor{keyword}{using\ namespace\ }boost;}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00008}\mbox{\hyperlink{traverse_graph_8cpp_ad531f0530c52e2baed8840517b52b457}{00008}}\ \textcolor{keyword}{typedef}\ boost::property<boost::edge\_weight\_t,\ int>\ \mbox{\hyperlink{traverse_graph_8cpp_ad531f0530c52e2baed8840517b52b457}{EdgeWeightProperty}};}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00009}\mbox{\hyperlink{traverse_graph_8cpp_ae727d82d2665e0ccdbb85e29c841ba5f}{00009}}\ \textcolor{keyword}{typedef}\ boost::adjacency\_list<boost::listS,\ boost::vecS,boost::undirectedS,boost::no\_property,EdgeWeightProperty>\ \mbox{\hyperlink{traverse_graph_8cpp_ae727d82d2665e0ccdbb85e29c841ba5f}{undirectedGraph}};}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00010}\mbox{\hyperlink{traverse_graph_8cpp_af04c50f717d4bda41f0c58fe0eece059}{00010}}\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::edge\_iterator\ \mbox{\hyperlink{traverse_graph_8cpp_af04c50f717d4bda41f0c58fe0eece059}{edge\_iterator}};}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00011}\mbox{\hyperlink{traverse_graph_8cpp_a9451df0dac964b257bedb5e60547824e}{00011}}\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::vertex\_iterator\ \mbox{\hyperlink{traverse_graph_8cpp_a9451df0dac964b257bedb5e60547824e}{vertex\_iterator}};}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00015}\mbox{\hyperlink{traverse_graph_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00015}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{traverse_graph_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\{}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{keywordtype}{int}\ rows;}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{int}\ cols;}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{int}\ pathVertices;}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ pathGraph;}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00020}00020\ \ \ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph;}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00021}00021\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00022}00022\ \ \ \ \ rows\ =\ 100;}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00023}00023\ \ \ \ \ cols\ =\ 100;}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00024}00024\ \ \ \ \ pathVertices\ =\ 1000;}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00027}00027\ \ \ \ \ pathGraph\ =\ \mbox{\hyperlink{create_graph_8hpp_abe67d4f4ed1169c1376d3a14fd9d144d}{createPathGraph}}(pathVertices);}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00028}00028\ \ \ \ \ latticeGraph\ =\ \mbox{\hyperlink{create_graph_8hpp_aabb013bb6de93b1ca2ff83e1d7d200c7}{createLatticeGraph}}(rows,cols);}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//\ Call\ the\ function\ and\ print\ the\ adjacent\ vertices\ of\ vertex\ 0}}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;i<pathVertices;i++)}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00032}00032\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ std::vector<undirectedGraph::vertex\_descriptor>\ adj\_vertices\ =\ \mbox{\hyperlink{create_graph_8hpp_a95616ef95512e388dddbc756c8644c4d}{get\_adjacent\_vertices}}(pathGraph,\ i);}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ v\ :\ adj\_vertices)}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ v\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{traverse_graph_8cpp_source_l00041}00041\ \}}
+
+\end{DoxyCode}

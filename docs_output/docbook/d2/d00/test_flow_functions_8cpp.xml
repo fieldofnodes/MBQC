@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test_flow_functions_8cpp" xml:lang="en-US">
+<title>tests/testFlowFunctions.cpp File Reference</title>
+<indexterm><primary>tests/testFlowFunctions.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;algorithm&gt;<?linebreak?>#include &lt;iterator&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;set&gt;<?linebreak?>#include &lt;numeric&gt;<?linebreak?>#include &lt;cmath&gt;<?linebreak?>#include &lt;QuEST.h&gt;<?linebreak?>#include &lt;boost/graph/adjacency_list.hpp&gt;<?linebreak?>#include &lt;boost/graph/graph_utility.hpp&gt;<?linebreak?>#include &lt;boost/container/vector.hpp&gt;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalAssertFunctions.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp&quot;<?linebreak?>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>typedef boost::adjacency_list&lt; boost::vecS, boost::vecS, boost::undirectedS &gt; <link linkend="_test_flow_functions_8cpp_1af845bf432b56cdda82dbde8011882168">undirectedGraph</link></para>
+</listitem>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_test_flow_functions_8cpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link></para>
+</listitem>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_test_flow_functions_8cpp_1a9451df0dac964b257bedb5e60547824e">vertex_iterator</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>qreal <link linkend="_test_flow_functions_8cpp_1a36b23c23da3c64cf899626c72b8a0a81">correctionOutcomesForExampleNotPerm</link> (std::vector&lt; int &gt; outcomeVector, qreal inputAngle)</para>
+</listitem>
+            <listitem><para>int <link linkend="_test_flow_functions_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_test_flow_functions_8cpp_1af04c50f717d4bda41f0c58fe0eece059"/><section>
+    <title>edge_iterator</title>
+<indexterm><primary>edge_iterator</primary><secondary>testFlowFunctions.cpp</secondary></indexterm>
+<indexterm><primary>testFlowFunctions.cpp</primary><secondary>edge_iterator</secondary></indexterm>
+<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link></computeroutput></para><para>
+Definition at line <link linkend="_test_flow_functions_8cpp_source_1l00030">30</link> of file <link linkend="_test_flow_functions_8cpp_source">testFlowFunctions.cpp</link>.</para>
+</section>
+<anchor xml:id="_test_flow_functions_8cpp_1af845bf432b56cdda82dbde8011882168"/><section>
+    <title>undirectedGraph</title>
+<indexterm><primary>undirectedGraph</primary><secondary>testFlowFunctions.cpp</secondary></indexterm>
+<indexterm><primary>testFlowFunctions.cpp</primary><secondary>undirectedGraph</secondary></indexterm>
+<para><computeroutput>typedef boost::adjacency_list&lt;boost::vecS, boost::vecS,boost::undirectedS&gt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link></computeroutput></para><para>
+Definition at line <link linkend="_test_flow_functions_8cpp_source_1l00029">29</link> of file <link linkend="_test_flow_functions_8cpp_source">testFlowFunctions.cpp</link>.</para>
+</section>
+<anchor xml:id="_test_flow_functions_8cpp_1a9451df0dac964b257bedb5e60547824e"/><section>
+    <title>vertex_iterator</title>
+<indexterm><primary>vertex_iterator</primary><secondary>testFlowFunctions.cpp</secondary></indexterm>
+<indexterm><primary>testFlowFunctions.cpp</primary><secondary>vertex_iterator</secondary></indexterm>
+<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">vertex_iterator</link></computeroutput></para><para>
+Definition at line <link linkend="_test_flow_functions_8cpp_source_1l00031">31</link> of file <link linkend="_test_flow_functions_8cpp_source">testFlowFunctions.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_test_flow_functions_8cpp_1a36b23c23da3c64cf899626c72b8a0a81"/><section>
+    <title>correctionOutcomesForExampleNotPerm()</title>
+<indexterm><primary>correctionOutcomesForExampleNotPerm</primary><secondary>testFlowFunctions.cpp</secondary></indexterm>
+<indexterm><primary>testFlowFunctions.cpp</primary><secondary>correctionOutcomesForExampleNotPerm</secondary></indexterm>
+<para><computeroutput>qreal correctionOutcomesForExampleNotPerm (std::vector&lt; int &gt; outcomeVector, qreal inputAngle)</computeroutput></para><para>
+Definition at line <link linkend="_test_flow_functions_8cpp_source_1l00043">43</link> of file <link linkend="_test_flow_functions_8cpp_source">testFlowFunctions.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00044 &#32;&#32;&#32;&#32;qreal&#32;expectedCorrectedAngle;
+00045 &#32;&#32;&#32;&#32;expectedCorrectedAngle&#32;=&#32;(pow((-1),outcomeVector[6])*inputAngle)&#32;+&#32;M_PI*(outcomeVector[1]+outcomeVector[5]+outcomeVector[7]);
+00046 
+00047 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;expectedCorrectedAngle;
+00048 }
+</programlisting></section>
+<anchor xml:id="_test_flow_functions_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>testFlowFunctions.cpp</secondary></indexterm>
+<indexterm><primary>testFlowFunctions.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_test_flow_functions_8cpp_source_1l00051">51</link> of file <link linkend="_test_flow_functions_8cpp_source">testFlowFunctions.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00052 &#32;&#32;&#32;&#32;
+00053 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows&#32;=&#32;5;
+00054 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols&#32;=&#32;5;
+00055 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;expectedTotalVertices;
+00056 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;boostCallTotalVertices;
+00057 
+00058 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+00059 &#32;&#32;&#32;&#32;
+00060 &#32;&#32;&#32;&#32;
+00061 
+00062 &#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;<link linkend="_create_graph_8hpp_1aabb013bb6de93b1ca2ff83e1d7d200c7">createLatticeGraph</link>(numRows,&#32;numCols);
+00063 &#32;&#32;&#32;&#32;expectedTotalVertices&#32;=&#32;numRows*numCols;
+00064 &#32;&#32;&#32;&#32;boostCallTotalVertices&#32;=&#32;boost::num_vertices(latticeGraph);
+00065 
+00066 &#32;&#32;&#32;&#32;
+00067 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
+00068 &#32;&#32;&#32;&#32;std::string&#32;fileDir&#32;=&#32;<emphasis role="stringliteral">&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;</emphasis>;
+00069 &#32;&#32;&#32;&#32;std::string&#32;graphName&#32;=&#32;<emphasis role="stringliteral">&quot;lattice2DGraph&quot;</emphasis>;
+00070 &#32;&#32;&#32;&#32;std::string&#32;format&#32;=&#32;<emphasis role="stringliteral">&quot;png&quot;</emphasis>;
+00071 &#32;&#32;&#32;&#32;<link linkend="_write_graph_graph_viz_dot_file_8hpp_1a3d553b54b16922ee146bfb33201a3993">printGraphToFile</link>(latticeGraph,fileDir,graphName,format);
+00072 
+00073 
+00074 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Assert&#32;each&#32;vertex&#32;(forward&#32;and&#32;backward&#32;flow)&#32;give&#32;</emphasis>
+00075 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;as&#32;expectd&#32;by&#32;internal&#32;computation&#32;of&#32;function</emphasis>
+00076 &#32;&#32;&#32;&#32;<link linkend="_graph_assert_functions_8hpp_1a3241060bf4552dac98da626843460bb3">assertFlowFunctionsPerformExpected</link>(latticeGraph,numRows);
+00077 
+00078 
+00079 
+00080 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Test&#32;to&#32;confirm&#32;neighbours&#32;are&#32;correct</emphasis>
+00081 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Only&#32;asserting&#32;for&#32;a&#32;5x5&#32;graph</emphasis>
+00082 &#32;&#32;&#32;&#32;std::vector&lt;std::vector&lt;int&gt;&gt;&#32;expectedNeighbourhood&#32;=&#32;{{1,5},{0,6,2},{1,7,3},{2,8,4},{3,9},{0,6,10},{1,5,7,11},{2,6,8,12},{3,7,9,13},{4,8,14},{5,11,15},{6,10,12,16},{7,11,13,17},{8,12,14,18},{9,13,19},{10,16,20},{11,15,17,21},{12,16,18,22},{13,17,19,23},{14,18,24},{15,21},{16,20,22},{17,21,23},{18,22,24},{19,23}};
+00083 &#32;&#32;&#32;&#32;<link linkend="_graph_assert_functions_8hpp_1a5c3f8d6a6068b10ca7ca8f2f4515cbcd">assertNieghbours</link>(latticeGraph,expectedNeighbourhood);
+00084 &#32;&#32;&#32;&#32;
+00085 &#32;&#32;&#32;&#32;
+00086 
+00087 
+00088 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Need&#32;to&#32;write&#32;tests&#32;that&#32;comfirm&#32;the&#32;angle&#32;updates</emphasis>
+00089 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Select&#32;some&#32;corner&#32;vertices,edge&#32;vertices&#32;and&#32;middle&#32;vertices.</emphasis>
+00090 
+00091 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;outcomeVectorZeros(10,0);
+00092 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;outcomeVectorOnes(10,1);
+00093 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;outcomeVectorOnesAndZeros&#32;=&#32;{0,1,0,0,0,0,1,0,0,0};
+00094 &#32;&#32;&#32;&#32;qreal&#32;expectedCorrectedAngleZeros;
+00095 &#32;&#32;&#32;&#32;qreal&#32;expectedCorrectedAngleOnes;
+00096 &#32;&#32;&#32;&#32;qreal&#32;expectedCorrectedAngleOnesAndZeros;
+00097 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;vertex&#32;=&#32;11;
+00098 &#32;&#32;&#32;&#32;qreal&#32;inputAngle&#32;=&#32;M_PI&#32;/&#32;4.0;
+00099 &#32;&#32;&#32;&#32;
+00100 &#32;&#32;&#32;&#32;
+00101 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;All&#32;zero&#32;measurement&#32;outcomes</emphasis>
+00102 &#32;&#32;&#32;&#32;expectedCorrectedAngleZeros&#32;=&#32;<link linkend="_test_flow_functions_8cpp_1a36b23c23da3c64cf899626c72b8a0a81">correctionOutcomesForExampleNotPerm</link>(outcomeVectorZeros,inputAngle);
+00103 &#32;&#32;&#32;&#32;<link linkend="_graph_assert_functions_8hpp_1a67fc70f2265e3ca43a7871939ae44a95">assertCorrection</link>(latticeGraph,outcomeVectorZeros,vertex,numRows,inputAngle,expectedCorrectedAngleZeros);
+00104 
+00105 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;All&#32;one&#32;measurement&#32;outcomes</emphasis>
+00106 &#32;&#32;&#32;&#32;expectedCorrectedAngleOnes&#32;=&#32;<link linkend="_test_flow_functions_8cpp_1a36b23c23da3c64cf899626c72b8a0a81">correctionOutcomesForExampleNotPerm</link>(outcomeVectorOnes,inputAngle);
+00107 &#32;&#32;&#32;&#32;<link linkend="_graph_assert_functions_8hpp_1a67fc70f2265e3ca43a7871939ae44a95">assertCorrection</link>(latticeGraph,outcomeVectorOnes,vertex,numRows,inputAngle,expectedCorrectedAngleOnes);
+00108 
+00109 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Some&#32;ones&#32;and&#32;zeros&#32;outcomes</emphasis>
+00110 &#32;&#32;&#32;&#32;expectedCorrectedAngleOnesAndZeros&#32;=&#32;<link linkend="_test_flow_functions_8cpp_1a36b23c23da3c64cf899626c72b8a0a81">correctionOutcomesForExampleNotPerm</link>(outcomeVectorOnesAndZeros,inputAngle);
+00111 &#32;&#32;&#32;&#32;<link linkend="_graph_assert_functions_8hpp_1a67fc70f2265e3ca43a7871939ae44a95">assertCorrection</link>(latticeGraph,outcomeVectorOnesAndZeros,vertex,numRows,inputAngle,expectedCorrectedAngleOnesAndZeros);
+00112 
+00113 
+00114 
+00115 &#32;&#32;&#32;&#32;
+00116 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+00117 }
+</programlisting></section>
+</section>
+</section>

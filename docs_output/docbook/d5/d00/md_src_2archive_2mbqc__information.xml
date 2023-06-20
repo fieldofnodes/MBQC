@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_md_src_2archive_2mbqc__information" xml:lang="en-US">
+<title>mbqc_information</title>
+<indexterm><primary>mbqc_information</primary></indexterm>
+
+<para><anchor xml:id="_md_src_2archive_2mbqc__information_1autotoc_md7"/>Building an MBQC simulator. This page will be the landing page for building the MBQC simulator. Links, requirments, user stories, etc will be placed here.</para>
+
+<para>Repository documentation can be found <link xlink:href="https://ediparquantum.github.io/MBQC/">here</link>.</para>
+
+<para>From a quick google search there are very few examples of MBQC simmulators. The goal here is to take a</para>
+<section xml:id="_md_src_2archive_2mbqc__information_1autotoc_md8">
+<title>Best practices and QuEST</title>
+
+<para><orderedlist>
+<listitem>
+<para><link xlink:href="https://micro-os-plus.github.io/develop/sutter-101/">C++ Best practices for projects</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://quest-kit.github.io/QuEST/index.html">QuEST Documentation</link></para>
+</listitem></orderedlist>
+</para>
+</section>
+<section xml:id="_md_src_2archive_2mbqc__information_1autotoc_md9">
+<title>Plan for MBQC Development</title>
+
+<para><orderedlist>
+<listitem>
+<para>Arbitrary size &quot;linear cluster&quot;, like ()-()-()-&#8212;() for N vertices.</para>
+</listitem><listitem>
+<para>Analysis on the linear cluster.</para>
+</listitem><listitem>
+<para>Arbitrary size &quot;grid cluster&quot;</para>
+</listitem><listitem>
+<para>Analysis on grid cluster</para>
+</listitem><listitem>
+<para>Develop brickwork state<itemizedlist>
+<listitem>
+<para>Universal resource for BQP under X-Y plane measurements</para>
+</listitem><listitem>
+<para>Useful to encode arbitrary computations blindly.</para>
+</listitem><listitem>
+<para><link xlink:href="https://arxiv.org/abs/0807.4154">Brickwork graphs</link></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem>
+<para>Arbitrary graph cluster</para>
+</listitem><listitem>
+<para>Analysis on graph cluster</para>
+</listitem></orderedlist>
+</para>
+<section xml:id="_md_src_2archive_2mbqc__information_1autotoc_md10">
+<title>Linear Cluster example figure</title>
+
+<para></para>
+</section>
+<section xml:id="_md_src_2archive_2mbqc__information_1autotoc_md11">
+<title>Some testing options for linear cluster state</title>
+
+<para><orderedlist>
+<listitem>
+<para>The easiest thing one could do would be all zero angles (0,0,...). For an odd total number of qubits, this should always give the outcome 0 of the last qubit.<itemizedlist>
+<listitem>
+<para><link xlink:href="https://algassert.com/quirk#circuit={%22cols%22:[[%22H%22,%22H%22,%22H%22,%22H%22,%22H%22],[%22%E2%80%A2%22,%22Z%22],[1,%22%E2%80%A2%22,%22Z%22],[1,1,%22%E2%80%A2%22,%22Z%22],[1,1,1,%22%E2%80%A2%22,%22Z%22],[%22%E2%80%A6%22],[%22H%22],[%22|0%E2%9F%A9%E2%9F%A80|%22],[1,%22H%22],[1,%22|0%E2%9F%A9%E2%9F%A80|%22],[1,1,%22H%22],[1,1,%22|0%E2%9F%A9%E2%9F%A80|%22],[1,1,1,%22H%22],[1,1,1,%22|0%E2%9F%A9%E2%9F%A80|%22],[1,1,1,1,%22H%22],[1,1,1,1,%22Measure%22]]}">Circuit</link></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem>
+<para>Another thing that one could do on 2 qubits are angles (pi/2, pi/2). This should always give a 0 outcome of the second qubit.<itemizedlist>
+<listitem>
+<para><link xlink:href="https://algassert.com/quirk#circuit={%22cols%22:[[%22H%22,%22H%22],[%22%E2%80%A2%22,%22Z%22],[%22%E2%80%A6%22],[%22Z^-%C2%BD%22],[%22H%22],[%22|0%E2%9F%A9%E2%9F%A80|%22],[1,%22Z^-%C2%BD%22],[1,%22H%22],[1,%22Measure%22]]}">Circuit</link></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem>
+<para>One more thing that one could do, would be to set every second angle to 0: (alpha_1, 0, alpha_3, 0, alpha_5, 0, ...). If the total number of qubits is odd, and all angles add up to a multiple of 2*pi, then the last measurement outcome should always be 0. If the total number of qubits is odd, and all angles add up to (a multiple of 2*pi) + pi, then the last measurement outcome should always be 1.<itemizedlist>
+<listitem>
+<para><link xlink:href="https://algassert.com/quirk#circuit={%22cols%22:[[%22H%22,%22H%22,%22H%22,%22H%22,%22H%22],[%22%E2%80%A2%22,%22Z%22],[1,%22%E2%80%A2%22,%22Z%22],[1,1,%22%E2%80%A2%22,%22Z%22],[1,1,1,%22%E2%80%A2%22,%22Z%22],[%22%E2%80%A6%22],[%22Z%22],[%22Z^-%C2%BC%22],[%22H%22],[%22|0%E2%9F%A9%E2%9F%A80|%22],[1,%22H%22],[1,%22|0%E2%9F%A9%E2%9F%A80|%22],[1,1,%22Z^-%C2%BD%22],[1,1,%22H%22],[1,1,%22|0%E2%9F%A9%E2%9F%A80|%22],[1,1,1,%22H%22],[1,1,1,%22|0%E2%9F%A9%E2%9F%A80|%22],[1,1,1,1,%22Z^-%C2%BC%22],[1,1,1,1,%22H%22],[1,1,1,1,%22Measure%22]]}">Circuit</link></para>
+</listitem></itemizedlist>
+</para>
+</listitem></orderedlist>
+</para>
+<section xml:id="_md_src_2archive_2mbqc__information_1autotoc_md12">
+<title>Comments on links</title>
+
+<para><orderedlist>
+<listitem>
+<para>Instead of actual measurements, postselected for the 0 outcome. This avoids the need of corrections. In your code, you should use actual measurements and corrections, which should yield the same results.<itemizedlist>
+<listitem>
+<para>T-gate = pi/4-rotation around Z-axis</para>
+</listitem><listitem>
+<para>S-gate = pi/2-rotation around Z-axis</para>
+</listitem><listitem>
+<para>Z-gate = pi-rotation around Z-axis</para>
+</listitem><listitem>
+<para>The example circuit from 3.) uses angles (5*pi/4, 0, pi/2, 0, pi/4).</para>
+</listitem></itemizedlist>
+</para>
+</listitem></orderedlist>
+</para>
+</section>
+</section>
+</section>
+<section xml:id="_md_src_2archive_2mbqc__information_1autotoc_md13">
+<title>Links for a google search of &quot;MBQC software&quot;</title>
+
+<para><orderedlist>
+<listitem>
+<para><link xlink:href="https://arxiv.org/abs/2212.11975">Graphix: optimizing and simulating measurement-based quantum computation on local-Clifford decorated graph</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://pennylane.ai/qml/demos/tutorial_mbqc.html">Measurement-based quantum computation</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://ieeexplore.ieee.org/document/9779844">Qiskit As a Simulation Platform for Measurement-based Quantum Computation</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://quantumcomputing.stackexchange.com/questions/27239/understanding-paddle-quantums-mbqc-simulation">Quantum Computing Stack: Understanding Paddle Quantum&apos;s MBQC simulation</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://www.cs.yale.edu/homes/soule/pubs/arxiv2022.pdf">MCBeth: A Measurement Based Quantum Programming Language</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://tsgl.xyz/tundrasystems-quantum-software/">TundraSystems Quantum Software</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://inspirehep.net/literature/2617623">Graphix: optimizing and simulating measurement-based quantum computation on local-Clifford decorated graph different from before</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://pennylane.ai/blog/2022/07/how-to-create-and-visualize-a-cluster-state-in-flamingpy/">How to create and visualize a cluster state in FlamingPy</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://github.com/Quantomatic/sample-projects/releases/tag/qpc2018">Quantomatic/sample-projects</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://quantomatic.github.io/">Quantomatic</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://www.researchgate.net/publication/364126005_Q2Graph_a_modelling_tool_for_measurement-based_quantum_computing">Q2Graph: a modelling tool for measurement-based quantum computing</link></para>
+</listitem><listitem>
+<para>[]()</para>
+</listitem></orderedlist>
+</para>
+</section>
+<section xml:id="_md_src_2archive_2mbqc__information_1autotoc_md14">
+<title>Links for a google search of &quot;MBQC&quot;</title>
+
+<para><orderedlist>
+<listitem>
+<para><link xlink:href="https://en.wikipedia.org/wiki/One-way_quantum_computer">https://en.wikipedia.org/wiki/One-way_quantum_computer</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://qml.baidu.com/tutorials/measurement-based-quantum-computation/measurement-based-quantum-computation-module.html">https://qml.baidu.com/tutorials/measurement-based-quantum-computation/measurement-based-quantum-computation-module.html</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://github.com/PaddlePaddle/Quantum/tree/master/tutorials">https://github.com/PaddlePaddle/Quantum/tree/master/tutorials</link></para>
+</listitem><listitem>
+<para><link xlink:href="http://pwallden.gr/files/IQC_2018_2019/18_IQC_Lecture16.pdf">http://pwallden.gr/files/IQC_2018_2019/18_IQC_Lecture16.pdf</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://www.youtube.com/watch?v=zBjAoOW3xHk&amp;ab_channel=RobertRaussendorf">https://www.youtube.com/watch?v=zBjAoOW3xHk&amp;ab_channel=RobertRaussendorf</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://www.youtube.com/@robertraussendorf9379">https://www.youtube.com/@robertraussendorf9379</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://www.youtube.com/@robertraussendorf9379">https://www.youtube.com/@robertraussendorf9379</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://arxiv.org/abs/2209.06191">Universal measurement-based quantum computation in a one-dimensional architecture enabled by dual-unitary circuits</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://pennylane.ai/qml/demos/tutorial_mbqc.html">https://pennylane.ai/qml/demos/tutorial_mbqc.html</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://oxfordre.com/physics/display/10.1093/acrefore/9780190871994.001.0001/acrefore-9780190871994-e-31;jsessionid=F048084B725DF72127D45A588315A515">https://oxfordre.com/physics/display/10.1093/acrefore/9780190871994.001.0001/acrefore-9780190871994-e-31;jsessionid=F048084B725DF72127D45A588315A515</link></para>
+</listitem><listitem>
+<para><link xlink:href="https://www.uibk.ac.at/th-physik/mbqc2022/">https://www.uibk.ac.at/th-physik/mbqc2022/</link></para>
+</listitem></orderedlist>
+</para>
+</section>
+<section xml:id="_md_src_2archive_2mbqc__information_1autotoc_md15">
+<title>To use in C++ Cmake</title>
+
+<para><literallayout><computeroutput>#&#32;Use&#32;C++11
+set(CMAKE_CXX_STANDARD&#32;11)
+</computeroutput></literallayout> </para>
+</section>
+</section>

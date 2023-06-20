@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_create_lattice_graph_8cpp" xml:lang="en-US">
+<title>src/archive/filesToGoThrough/createLatticeGraph.cpp File Reference</title>
+<indexterm><primary>src/archive/filesToGoThrough/createLatticeGraph.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;boost/graph/adjacency_list.hpp&gt;<?linebreak?></programlisting><simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>typedef boost::property&lt; boost::edge_weight_t, int &gt; <link linkend="_create_lattice_graph_8cpp_1ad531f0530c52e2baed8840517b52b457">EdgeWeightProperty</link></para>
+</listitem>
+            <listitem><para>typedef boost::adjacency_list&lt; boost::listS, boost::vecS, boost::undirectedS, boost::no_property, <link linkend="_create_graph_8hpp_1ad531f0530c52e2baed8840517b52b457">EdgeWeightProperty</link> &gt; <link linkend="_create_lattice_graph_8cpp_1ae727d82d2665e0ccdbb85e29c841ba5f">undirectedGraph</link></para>
+</listitem>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_create_lattice_graph_8cpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link></para>
+</listitem>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_create_lattice_graph_8cpp_1a9451df0dac964b257bedb5e60547824e">vertex_iterator</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> <link linkend="_create_lattice_graph_8cpp_1a3cb55165ce6d84dde6bc711a07037ed9">create_grid_lattice_graph</link> (int n, int m)</para>
+</listitem>
+            <listitem><para>int <link linkend="_create_lattice_graph_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_create_lattice_graph_8cpp_1af04c50f717d4bda41f0c58fe0eece059"/><section>
+    <title>edge_iterator</title>
+<indexterm><primary>edge_iterator</primary><secondary>createLatticeGraph.cpp</secondary></indexterm>
+<indexterm><primary>createLatticeGraph.cpp</primary><secondary>edge_iterator</secondary></indexterm>
+<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link></computeroutput></para><para>
+Definition at line <link linkend="_create_lattice_graph_8cpp_source_1l00008">8</link> of file <link linkend="_create_lattice_graph_8cpp_source">createLatticeGraph.cpp</link>.</para>
+</section>
+<anchor xml:id="_create_lattice_graph_8cpp_1ad531f0530c52e2baed8840517b52b457"/><section>
+    <title>EdgeWeightProperty</title>
+<indexterm><primary>EdgeWeightProperty</primary><secondary>createLatticeGraph.cpp</secondary></indexterm>
+<indexterm><primary>createLatticeGraph.cpp</primary><secondary>EdgeWeightProperty</secondary></indexterm>
+<para><computeroutput>typedef boost::property&lt;boost::edge_weight_t, int&gt; <link linkend="_create_graph_8hpp_1ad531f0530c52e2baed8840517b52b457">EdgeWeightProperty</link></computeroutput></para><para>
+Definition at line <link linkend="_create_lattice_graph_8cpp_source_1l00006">6</link> of file <link linkend="_create_lattice_graph_8cpp_source">createLatticeGraph.cpp</link>.</para>
+</section>
+<anchor xml:id="_create_lattice_graph_8cpp_1ae727d82d2665e0ccdbb85e29c841ba5f"/><section>
+    <title>undirectedGraph</title>
+<indexterm><primary>undirectedGraph</primary><secondary>createLatticeGraph.cpp</secondary></indexterm>
+<indexterm><primary>createLatticeGraph.cpp</primary><secondary>undirectedGraph</secondary></indexterm>
+<para><computeroutput>typedef boost::adjacency_list&lt;boost::listS, boost::vecS,boost::undirectedS,boost::no_property,<link linkend="_create_graph_8hpp_1ad531f0530c52e2baed8840517b52b457">EdgeWeightProperty</link>&gt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link></computeroutput></para><para>
+Definition at line <link linkend="_create_lattice_graph_8cpp_source_1l00007">7</link> of file <link linkend="_create_lattice_graph_8cpp_source">createLatticeGraph.cpp</link>.</para>
+</section>
+<anchor xml:id="_create_lattice_graph_8cpp_1a9451df0dac964b257bedb5e60547824e"/><section>
+    <title>vertex_iterator</title>
+<indexterm><primary>vertex_iterator</primary><secondary>createLatticeGraph.cpp</secondary></indexterm>
+<indexterm><primary>createLatticeGraph.cpp</primary><secondary>vertex_iterator</secondary></indexterm>
+<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">vertex_iterator</link></computeroutput></para><para>
+Definition at line <link linkend="_create_lattice_graph_8cpp_source_1l00009">9</link> of file <link linkend="_create_lattice_graph_8cpp_source">createLatticeGraph.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_create_lattice_graph_8cpp_1a3cb55165ce6d84dde6bc711a07037ed9"/><section>
+    <title>create_grid_lattice_graph()</title>
+<indexterm><primary>create_grid_lattice_graph</primary><secondary>createLatticeGraph.cpp</secondary></indexterm>
+<indexterm><primary>createLatticeGraph.cpp</primary><secondary>create_grid_lattice_graph</secondary></indexterm>
+<para><computeroutput><link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> create_grid_lattice_graph (int n, int m)</computeroutput></para><para>
+Definition at line <link linkend="_create_lattice_graph_8cpp_source_1l00013">13</link> of file <link linkend="_create_lattice_graph_8cpp_source">createLatticeGraph.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;<emphasis role="comment">//&#32;create&#32;a&#32;grid&#32;lattice&#32;graph&#32;with&#32;n&#32;x&#32;m&#32;vertices</emphasis>
+00014 &#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;g(n&#32;*&#32;m);
+00015 
+00016 &#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;n;&#32;i++)&#32;{
+00017 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j&#32;=&#32;0;&#32;j&#32;&lt;&#32;m;&#32;j++)&#32;{
+00018 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(j&#32;&lt;&#32;m-1)&#32;add_edge(i*m+j,&#32;i*m+j+1,&#32;g);&#32;<emphasis role="comment">//&#32;add&#32;horizontal&#32;edges</emphasis>
+00019 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(i&#32;&lt;&#32;n-1)&#32;add_edge(i*m+j,&#32;(i+1)*m+j,&#32;g);&#32;<emphasis role="comment">//&#32;add&#32;vertical&#32;edges</emphasis>
+00020 &#32;&#32;&#32;&#32;}
+00021 &#32;&#32;}
+00022 
+00023 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;g;
+00024 }
+</programlisting></section>
+<anchor xml:id="_create_lattice_graph_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>createLatticeGraph.cpp</secondary></indexterm>
+<indexterm><primary>createLatticeGraph.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_create_lattice_graph_8cpp_source_1l00029">29</link> of file <link linkend="_create_lattice_graph_8cpp_source">createLatticeGraph.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00030 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;n&#32;=&#32;4,&#32;m&#32;=&#32;3;
+00031 &#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;g&#32;=&#32;<link linkend="_create_lattice_graph_8cpp_1a3cb55165ce6d84dde6bc711a07037ed9">create_grid_lattice_graph</link>(n,&#32;m);&#32;<emphasis role="comment">//&#32;create&#32;a&#32;3&#32;x&#32;4&#32;grid&#32;lattice&#32;graph</emphasis>
+00032 
+00033 &#32;&#32;&#32;&#32;std::pair&lt;edge_iterator,&#32;edge_iterator&gt;&#32;ei&#32;=&#32;edges(g);
+00034 &#32;
+00035 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Number&#32;of&#32;edges&#32;=&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;num_edges(g)&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>;
+00036 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Edge&#32;list:\n&quot;</emphasis>;
+00037 &#32;
+00038 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link>&#32;it&#32;=&#32;ei.first;&#32;it&#32;!=&#32;ei.second;&#32;++it&#32;)
+00039 &#32;&#32;&#32;&#32;{
+00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;*it&#32;&lt;&lt;&#32;std::endl;
+00041 &#32;&#32;&#32;&#32;}
+00042 &#32;
+00043 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+00044 
+00045 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">vertex_iterator</link>&#32;vi,&#32;vi_end;
+00046 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Vertex&#32;list:\n&quot;</emphasis>;
+00047 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(tie(vi,&#32;vi_end)&#32;=&#32;vertices(g);&#32;vi&#32;!=&#32;vi_end;&#32;++vi)&#32;{
+00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;*vi&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>;
+00049 &#32;&#32;&#32;&#32;}
+00050 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+00051 
+00052 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+00053 }
+</programlisting></section>
+</section>
+</section>

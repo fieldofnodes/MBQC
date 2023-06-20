@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c" xml:lang="en-US">
+<title>src/archive/20230309_MBQC_ThreeQubitGHZ_V1.c File Reference</title>
+<indexterm><primary>src/archive/20230309_MBQC_ThreeQubitGHZ_V1.c</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;QuEST.h&gt;<?linebreak?>#include &lt;stdio.h&gt;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>20230309_MBQC_ThreeQubitGHZ_V1.c</secondary></indexterm>
+<indexterm><primary>20230309_MBQC_ThreeQubitGHZ_V1.c</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_1l00017">17</link> of file <link linkend="_20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source">20230309_MBQC_ThreeQubitGHZ_V1.c</link>.</para>
+<programlisting linenumbering="unnumbered">00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00018 &#32;&#32;&#32;&#32;
+00019 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST</emphasis>
+00020 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+00021 &#32;&#32;&#32;&#32;
+00022 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;number&#32;of&#32;qubits</emphasis>
+00023 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numQubits&#32;=&#32;3;
+00024 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubits[]&#32;=&#32;{0,1,2};
+00025 &#32;&#32;&#32;&#32;
+00026 &#32;&#32;&#32;&#32;qreal&#32;outcomeProbs[1&lt;&lt;numQubits];
+00027 
+00028 &#32;&#32;&#32;<emphasis role="comment">//&#32;Declare&#32;angle&#32;array&#32;and&#32;measure&#32;qubit&#32;array</emphasis>
+00029 &#32;&#32;&#32;&#32;qreal&#32;angles[numQubits];&#32;
+00030 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;measured_qubits[numQubits];
+00031 &#32;&#32;&#32;&#32;
+00032 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;initial&#32;angles</emphasis>
+00033 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=0;i&lt;numQubits;i++)
+00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;angles[i]&#32;=&#32;M_PI&#32;/&#32;4;&#32;
+00035 &#32;&#32;&#32;&#32;
+00036 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;prepare&#32;our&#32;register</emphasis>
+00037 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numQubits,&#32;env);
+00038 
+00039 
+00040 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;qureg&#32;-&gt;&#32;|+&gt;&lt;+|</emphasis>
+00041 &#32;&#32;&#32;&#32;initPlusState(qureg);&#32;&#32;
+00042 &#32;&#32;&#32;&#32;
+00043 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;apply&#32;CZ&#32;gate&#32;to&#32;entangle&#32;the&#32;circuit</emphasis>
+00044 &#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,0,1);
+00045 &#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,1,2);
+00046 
+00047 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;first&#32;qubit</emphasis>
+00048 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;()-()-()&#32;-&gt;&#32;X-()-(),&#32;for&#32;X&#32;being&#32;a&#32;removed&#32;qubit</emphasis>
+00049 &#32;&#32;&#32;&#32;rotateZ(qureg,0,&#32;angles[0]);
+00050 &#32;&#32;&#32;&#32;hadamard(qureg,0);
+00051 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;s0&#32;=&#32;measure(qureg,0);
+00052 &#32;&#32;&#32;&#32;measured_qubits[0]&#32;=&#32;s0;
+00053 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;first&#32;angle&#32;is&#32;%f\n&quot;</emphasis>,angles[0]);
+00054 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;first&#32;qubit&#32;measure&#32;is&#32;%d\n&quot;</emphasis>,s0);
+00055 
+00056 
+00057 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;update&#32;second&#32;angle</emphasis>
+00058 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;sum_neigh_meas_q0&#32;=&#32;0;
+00059 &#32;&#32;&#32;&#32;qreal&#32;x_correction_q1&#32;=&#32;pow(-1,&#32;s0)*angles[1];
+00060 &#32;&#32;&#32;&#32;qreal&#32;z_correction_q1&#32;=&#32;M_PI*(sum_neigh_meas_q0);
+00061 &#32;&#32;&#32;&#32;qreal&#32;updated_angle_q1&#32;=&#32;x_correction_q1&#32;+&#32;z_correction_q1;
+00062 
+00063 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;second&#32;qubit</emphasis>
+00064 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;X-()-()&#32;-&gt;&#32;X-X-(),&#32;for&#32;X&#32;being&#32;a&#32;removed&#32;qubit</emphasis>
+00065 &#32;&#32;&#32;&#32;rotateZ(qureg,1,&#32;(-1)*updated_angle_q1);
+00066 &#32;&#32;&#32;&#32;hadamard(qureg,1);
+00067 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;s1&#32;=&#32;measure(qureg,1);
+00068 &#32;&#32;&#32;&#32;measured_qubits[1]&#32;=&#32;s1;
+00069 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Original&#32;second&#32;angle&#32;is&#32;%f\n&quot;</emphasis>,angles[1]);
+00070 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Updated&#32;second&#32;angle&#32;is&#32;%f\n&quot;</emphasis>,updated_angle_q1);
+00071 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Second&#32;qubit&#32;measure&#32;is&#32;%d\n&quot;</emphasis>,s1);
+00072 
+00073 
+00074 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;update&#32;third&#32;angle</emphasis>
+00075 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;sum_neigh_meas_q1&#32;=&#32;s0;
+00076 &#32;&#32;&#32;&#32;qreal&#32;x_correction_q2&#32;=&#32;pow(-1,&#32;s1)*angles[2];
+00077 &#32;&#32;&#32;&#32;qreal&#32;z_correction_q2&#32;=&#32;M_PI*(sum_neigh_meas_q1);
+00078 &#32;&#32;&#32;&#32;qreal&#32;updated_angle_q2&#32;=&#32;x_correction_q2&#32;+&#32;z_correction_q2;
+00079 
+00080 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;third&#32;qubit</emphasis>
+00081 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;X-X-()&#32;-&gt;&#32;X-X-X,&#32;for&#32;X&#32;being&#32;a&#32;removed&#32;qubit</emphasis>
+00082 &#32;&#32;&#32;&#32;rotateZ(qureg,2,&#32;(-1)*updated_angle_q2);
+00083 &#32;&#32;&#32;&#32;hadamard(qureg,2);
+00084 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;s2&#32;=&#32;measure(qureg,2);
+00085 &#32;&#32;&#32;&#32;measured_qubits[2]&#32;=&#32;s2;
+00086 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Original&#32;third&#32;angle&#32;is&#32;%f\n&quot;</emphasis>,angles[2]);
+00087 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Updated&#32;third&#32;angle&#32;is&#32;%f\n&quot;</emphasis>,updated_angle_q2);
+00088 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Third&#32;qubit&#32;measure&#32;is&#32;%d\n&quot;</emphasis>,s2);
+00089 
+00090 
+00091 
+00092 
+00093 &#32;&#32;&#32;&#32;<emphasis role="comment">//calcProbOfAllOutcomes(outcomeProbs,&#32;qureg,&#32;qubits,&#32;numQubits);</emphasis>
+00094 &#32;&#32;&#32;&#32;qreal&#32;prob;
+00095 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;numQubits;&#32;i++)
+00096 &#32;&#32;&#32;&#32;{
+00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;prob&#32;=&#32;calcProbOfOutcome(qureg,i,0);
+00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Probability:&#32;%f\n&#32;&quot;</emphasis>,&#32;prob);
+00099 &#32;&#32;&#32;&#32;}
+00100 
+00101 
+00102 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Print&#32;measured&#32;qubit&#32;vector</emphasis>
+00103 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Measured&#32;array:&quot;</emphasis>);
+00104 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;loop&#32;=&#32;0;&#32;loop&#32;&lt;&#32;numQubits;&#32;loop++)
+00105 &#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;%d&#32;&quot;</emphasis>,&#32;measured_qubits[loop]);
+00106 &#32;&#32;&#32;&#32;
+00107 }
+</programlisting></section>
+</section>
+</section>

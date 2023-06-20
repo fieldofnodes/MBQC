@@ -7,44 +7,67 @@
 
 
 
-/*
-    Initialise a vector of `qreal` values all set to 0.0
-*/
-std::vector<qreal> initAllAnglesZero(int numQubits){
-    std::vector<qreal> qubitAngles(numQubits,0.0); 
+
+/**
+ * @brief Initializes a vector of qreal values with all angles set to 0.0.
+ *
+ * This function creates a vector of qreal values with a size of `numQubits`,
+ * where each element is initialized to 0.0.
+ *
+ * @param numQubits The number of qubits.
+ * @return A vector of qreal values with all angles set to 0.0.
+ */
+std::vector<qreal> initAllAnglesZero(int numQubits) {
+    std::vector<qreal> qubitAngles(numQubits, 0.0);
     return qubitAngles;
 }
 
 
-/*
-    Initialise a vector of `qreal` values all set to some same `angle`
-*/
-std::vector<qreal> initAllAnglesSame(int numQubits, qreal angle){
-    std::vector<qreal> qubitAngles(numQubits,angle); 
+
+/**
+ * @brief Initializes a vector of qreal values with all angles set to the same value.
+ *
+ * This function creates a vector of qreal values with a size of `numQubits`,
+ * where each element is initialized to the specified `angle`.
+ *
+ * @param numQubits The number of qubits.
+ * @param angle The angle value to set for all elements.
+ * @return A vector of qreal values with all angles set to the same value.
+ */
+std::vector<qreal> initAllAnglesSame(int numQubits, qreal angle) {
+    std::vector<qreal> qubitAngles(numQubits, angle);
     return qubitAngles;
 }
 
 
-/*
-    Initialise a vector of `qreal` values all set to a random fraction
-    X*M_PI/piDenominator: X ~ Uniform(0,2*piDenominator)
-*/
-std::vector<qreal> initRandomPiOnNAngles(int numQubits, int piDenominator){
-    
+
+/**
+ * @brief Initializes a vector of qreal values with random angles.
+ *
+ * This function creates a vector of qreal values with a size of `numQubits`,
+ * where each element is initialized to a random fraction of X*M_PI/piDenominator,
+ * where X is uniformly distributed in the range [0, 2*piDenominator).
+ *
+ * @param numQubits The number of qubits.
+ * @param piDenominator The denominator value used to generate the random angles.
+ * @return A vector of qreal values with randomly generated angles.
+ */
+std::vector<qreal> initRandomPiOnNAngles(int numQubits, int piDenominator) {
     // Create a uniform distribution for the range
     int min = 0;
-    int max = 2*piDenominator - 1;
+    int max = 2 * piDenominator - 1;
     
     // Populate angle vector
     std::vector<qreal> qubitAngles(numQubits);
-    for(int i=0; i < numQubits; i++){
-        double numer = 1.0 * drawRandomUniformInteger(min,max); 
-        qreal angle = (double)(numer/piDenominator) * M_PI;
+    for (int i = 0; i < numQubits; i++) {
+        double numer = 1.0 * drawRandomUniformInteger(min, max);
+        qreal angle = (double)(numer / piDenominator) * M_PI;
         qubitAngles[i] = angle;
-    } 
+    }
     
     return qubitAngles;
 }
+
 
 
 

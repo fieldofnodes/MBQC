@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_graph_assert_functions_8hpp_source" xml:lang="en-US">
+<title>graphAssertFunctions.hpp</title>
+<indexterm><primary>src/testFunctions/graphAssertFunctions.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_graph_assert_functions_8hpp_source_1l00001"/>00001 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Title&#32;&#32;:&#32;graphAssertFunctions.hpp&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00003"/>00003 <emphasis role="comment">//&#32;Author&#32;:&#32;Jonathan&#32;Miller&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00004"/>00004 <emphasis role="comment">//&#32;Date&#32;&#32;&#32;:&#32;20230425&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00005"/>00005 <emphasis role="comment">//&#32;Aim&#32;&#32;&#32;&#32;:&#32;Construct&#32;assertion&#32;functions&#32;for&#32;graphs&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00007"/>00007 <emphasis role="comment"></emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00008"/>00008 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00009"/>00009 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00010"/>00010 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00011"/>00011 <emphasis role="comment">&#32;&#32;&#32;&#32;Functions&#32;to&#32;be&#32;used&#32;to&#32;test&#32;graph&#32;properties.&#32;</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00012"/>00012 <emphasis role="comment">&#32;&#32;&#32;&#32;List&#32;of&#32;functions&#32;used&#32;in&#32;general&#32;graph&#32;assertions</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00013"/>00013 <emphasis role="comment">&#32;&#32;&#32;&#32;1.&#32;assertHandShakeLemma</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00014"/>00014 <emphasis role="comment">&#32;&#32;&#32;&#32;2.&#32;assertPathGraphMinMaxDegrees</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00015"/>00015 <emphasis role="comment">&#32;&#32;&#32;&#32;3.&#32;assertDegreeSetLatticeGraph</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00016"/>00016 <emphasis role="comment"></emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00017"/>00017 <emphasis role="comment">&#32;&#32;&#32;&#32;assertHandShakeLemma</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00018"/>00018 <emphasis role="comment">&#32;&#32;&#32;&#32;The&#32;hand&#32;shake&#32;lemma&#32;states&#32;that&#32;the&#32;sum&#32;of&#32;degrees&#32;is&#32;equivalent&#32;to&#32;two&#32;times&#32;the&#32;number&#32;of&#32;edges</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00019"/>00019 <emphasis role="comment">&#32;&#32;&#32;&#32;sum(deg(v))&#32;=&#32;2|E|&#32;for&#32;v&#32;in&#32;V</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00020"/>00020 <emphasis role="comment"></emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00021"/>00021 <emphasis role="comment">&#32;&#32;&#32;&#32;assertPathGraphMinMaxDegrees</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00022"/>00022 <emphasis role="comment">&#32;&#32;&#32;&#32;A&#32;path&#32;graph&#32;will&#32;degrees&#32;1&#32;and&#32;2</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00023"/>00023 <emphasis role="comment"></emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00024"/>00024 <emphasis role="comment">&#32;&#32;&#32;&#32;assertDegreeSetLatticeGraph</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00025"/>00025 <emphasis role="comment">&#32;&#32;&#32;&#32;A&#32;lattice&#32;graph&#32;in&#32;2d&#32;will&#32;have&#32;degrees&#32;2,3&#32;and&#32;4</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00026"/>00026 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00027"/>00027 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00028"/>00028 <emphasis role="preprocessor">#include&#32;&lt;algorithm&gt;</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00029"/>00029 <emphasis role="preprocessor">#include&#32;&lt;iterator&gt;</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00030"/>00030 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00031"/>00031 <emphasis role="preprocessor">#include&#32;&lt;set&gt;</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&lt;numeric&gt;</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00033"/>00033 <emphasis role="preprocessor">#include&#32;&lt;boost/container/vector.hpp&gt;</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00034"/>00034 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/adjacency_list.hpp&gt;</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00035"/>00035 <emphasis role="preprocessor">#include&#32;&lt;boost/range/algorithm/unique.hpp&gt;</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00036"/>00036 <emphasis role="preprocessor">#include&#32;&lt;boost/range/algorithm.hpp&gt;</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00037"/>00037 <emphasis role="preprocessor">#include&#32;&lt;boost/range/adaptor/filtered.hpp&gt;</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00038"/>00038 <emphasis role="preprocessor">#include&#32;&lt;boost/range/adaptor/transformed.hpp&gt;</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00039"/>00039 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00040"/>00040 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00041"/>00041 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00042"/>00042 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00043"/>00043 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00044"/>00044 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>boost;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00045"/>00045 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00046"/>00046 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00047"/><link linkend="_graph_assert_functions_8hpp_1af845bf432b56cdda82dbde8011882168">00047</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::adjacency_list&lt;boost::vecS,&#32;boost::vecS,boost::undirectedS&gt;&#32;<link linkend="_graph_assert_functions_8hpp_1af845bf432b56cdda82dbde8011882168">undirectedGraph</link>;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00048"/><link linkend="_graph_assert_functions_8hpp_1af04c50f717d4bda41f0c58fe0eece059">00048</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::edge_iterator&#32;<link linkend="_graph_assert_functions_8hpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link>;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00049"/><link linkend="_graph_assert_functions_8hpp_1a9451df0dac964b257bedb5e60547824e">00049</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::vertex_iterator&#32;<link linkend="_graph_assert_functions_8hpp_1a9451df0dac964b257bedb5e60547824e">vertex_iterator</link>;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00050"/>00050 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00051"/>00051 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00052"/>00052 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00053"/>00053 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00054"/>00054 <emphasis role="comment">&#32;&#32;inthe&#32;hand&#32;shake&#32;lemma&#32;stipulates&#32;that&#32;the&#32;total&#32;degree&#32;of&#32;a&#32;graph&#32;G,</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00055"/>00055 <emphasis role="comment">&#32;&#32;is&#32;equivalent&#32;to&#32;2&#32;times&#32;the&#32;number&#32;of&#32;edges</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00056"/>00056 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00057"/><link linkend="_graph_assert_functions_8hpp_1a60966966368ac25fe48dbccd70490e98">00057</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1a60966966368ac25fe48dbccd70490e98">assertHandShakeLemma</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph)&#32;{
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00058"/>00058 &#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00059"/>00059 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num_vertices&#32;=&#32;boost::num_vertices(graph);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;boost::container::vector&lt;int&gt;&#32;degree_vector;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00061"/>00061 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00062"/>00062 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Call&#32;the&#32;function&#32;and&#32;print&#32;the&#32;adjacent&#32;vertices&#32;of&#32;vertex&#32;0</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00063"/>00063 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;num_vertices;&#32;i++)&#32;{
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;undirectedGraph::vertex_descriptor&#32;v;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;v&#32;=&#32;boost::vertex(i,&#32;graph);&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;degree_vector.push_back(boost::degree(v,&#32;graph));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00067"/>00067 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00068"/>00068 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num_edge&#32;=&#32;boost::num_edges(graph);&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00070"/>00070 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;sum&#32;=&#32;std::accumulate(degree_vector.begin(),&#32;degree_vector.end(),&#32;0);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00071"/>00071 &#32;&#32;&#32;&#32;assert((<emphasis role="stringliteral">&quot;total&#32;degree&#32;is&#32;two&#32;times&#32;the&#32;edge&#32;set&quot;</emphasis>&#32;&amp;&amp;&#32;sum&#32;==&#32;2&#32;*&#32;num_edge));
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00072"/>00072 }
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00073"/>00073 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00074"/>00074 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00075"/>00075 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00076"/>00076 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00077"/>00077 <emphasis role="comment">&#32;&#32;inthe&#32;hand&#32;shake&#32;lemma&#32;stipulates&#32;that&#32;the&#32;total&#32;degree&#32;of&#32;a&#32;graph&#32;G,</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00078"/>00078 <emphasis role="comment">&#32;&#32;is&#32;equivalent&#32;to&#32;2&#32;times&#32;the&#32;number&#32;of&#32;edges</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00079"/>00079 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00080"/><link linkend="_graph_assert_functions_8hpp_1a781ea29934c2f8c5c65a73075bc13da1">00080</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1a781ea29934c2f8c5c65a73075bc13da1">assertPathGraphMinMaxDegrees</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph)&#32;{
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num_vertices&#32;=&#32;boost::num_vertices(graph);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00083"/>00083 &#32;&#32;&#32;&#32;boost::container::vector&lt;int&gt;&#32;degree_vector;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00084"/>00084 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00085"/>00085 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Call&#32;the&#32;function&#32;and&#32;print&#32;the&#32;adjacent&#32;vertices&#32;of&#32;vertex&#32;0</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00086"/>00086 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;num_vertices;&#32;i++)&#32;{
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;undirectedGraph::vertex_descriptor&#32;v;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;v&#32;=&#32;boost::vertex(i,&#32;graph);&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;degree_vector.push_back(boost::degree(v,&#32;graph));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00091"/>00091 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00092"/>00092 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;min_it&#32;=&#32;<link linkend="_general_assert_functions_8hpp_1aaa5eeda4e79aa986d57c3256556b6e6c">getMin</link>(degree_vector);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;assert((<emphasis role="stringliteral">&quot;minimum&#32;degree&#32;is&#32;1&quot;</emphasis>&#32;&amp;&amp;&#32;min_it&#32;==&#32;1));
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;max_it&#32;=&#32;<link linkend="_general_assert_functions_8hpp_1af227e83a7360ec64f91773c37a905253">getMax</link>(degree_vector);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;assert((<emphasis role="stringliteral">&quot;maximum&#32;degree&#32;is&#32;1&quot;</emphasis>&#32;&amp;&amp;&#32;max_it&#32;==&#32;2));
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00096"/>00096 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00097"/>00097 }
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00098"/>00098 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00099"/>00099 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00100"/>00100 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00101"/>00101 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00102"/>00102 <emphasis role="comment">&#32;&#32;inthe&#32;hand&#32;shake&#32;lemma&#32;stipulates&#32;that&#32;the&#32;total&#32;degree&#32;of&#32;a&#32;graph&#32;G,</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00103"/>00103 <emphasis role="comment">&#32;&#32;is&#32;equivalent&#32;to&#32;2&#32;times&#32;the&#32;number&#32;of&#32;edges</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00104"/>00104 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00105"/><link linkend="_graph_assert_functions_8hpp_1ab7b459ddc7c532fc5a37abb8760d7ca6">00105</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1ab7b459ddc7c532fc5a37abb8760d7ca6">assertDegreeSetLatticeGraph</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph)&#32;{
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num_vertices&#32;=&#32;boost::num_vertices(graph);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00108"/>00108 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;degree_vector;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00109"/>00109 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;required_deg_vector&#32;=&#32;{2,3,4};
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00110"/>00110 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Call&#32;the&#32;function&#32;and&#32;print&#32;the&#32;adjacent&#32;vertices&#32;of&#32;vertex&#32;0</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00111"/>00111 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;num_vertices;&#32;i++)&#32;{
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;undirectedGraph::vertex_descriptor&#32;v;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;v&#32;=&#32;boost::vertex(i,&#32;graph);&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;d&#32;=&#32;boost::degree(v,&#32;graph);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;degree_vector.push_back(d);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00117"/>00117 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00118"/>00118 &#32;&#32;&#32;&#32;sort(&#32;degree_vector.begin(),&#32;degree_vector.end()&#32;);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;degree_vector.erase(std::unique(&#32;degree_vector.begin(),&#32;degree_vector.end()&#32;),&#32;degree_vector.end()&#32;);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00121"/>00121 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00122"/>00122 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00123"/>00123 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;filt;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00124"/>00124 &#32;&#32;&#32;&#32;std::copy_if(degree_vector.begin(),&#32;degree_vector.end(),&#32;std::back_inserter(filt),&#32;[](<emphasis role="keywordtype">int</emphasis>&#32;i)&#32;{
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;i&#32;==&#32;2&#32;||&#32;i&#32;==&#32;3&#32;||&#32;i&#32;==&#32;4;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;});
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00127"/>00127 &#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00128"/>00128 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;&amp;i:&#32;filt)&#32;{
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assert(<emphasis role="stringliteral">&quot;Degree&#32;must&#32;be&#32;either&#32;2,3&#32;or&#32;4&quot;</emphasis>&#32;&amp;&amp;&#32;i&#32;==&#32;2&#32;||&#32;i&#32;==&#32;3&#32;||&#32;i&#32;==&#32;4);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00130"/>00130 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00131"/>00131 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00132"/>00132 }
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00133"/>00133 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00134"/>00134 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00135"/>00135 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00136"/>00136 <emphasis role="comment">&#32;&#32;Assert&#32;that&#32;the&#32;number&#32;of&#32;vertices&#32;in&#32;a&#32;graph&#32;matches&#32;expected&#32;input&#32;</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00137"/>00137 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00138"/><link linkend="_graph_assert_functions_8hpp_1a026973ba07ba80213ede65e64a3eb614">00138</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1a026973ba07ba80213ede65e64a3eb614">assertGraphNumVertices</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph,&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices){
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00139"/>00139 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;num_vertices&#32;=&#32;boost::num_vertices(graph);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00140"/>00140 &#32;&#32;assert(<emphasis role="stringliteral">&quot;Number&#32;of&#32;vertices&#32;in&#32;graph&#32;must&#32;equal&#32;input&quot;</emphasis>&#32;&amp;&amp;&#32;numVertices&#32;==&#32;num_vertices);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00141"/>00141 }
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00142"/>00142 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00143"/>00143 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00144"/>00144 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00145"/>00145 <emphasis role="comment">&#32;&#32;Test&#32;for&#32;all&#32;flow&#32;on&#32;vertices</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00146"/>00146 <emphasis role="comment">&#32;&#32;Iterate&#32;over&#32;the&#32;vertices&#32;of&#32;the&#32;graph</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00147"/>00147 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00148"/><link linkend="_graph_assert_functions_8hpp_1a3241060bf4552dac98da626843460bb3">00148</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1a3241060bf4552dac98da626843460bb3">assertFlowFunctionsPerformExpected</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph,<emphasis role="keywordtype">int</emphasis>&#32;numRows){
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00149"/>00149 &#32;&#32;&#32;&#32;undirectedGraph::vertex_iterator&#32;vi,&#32;vi_end;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00150"/>00150 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;size_graph&#32;=&#32;boost::num_vertices(graph);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00151"/>00151 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00152"/>00152 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(boost::tie(vi,&#32;vi_end)&#32;=&#32;boost::vertices(graph);&#32;vi&#32;!=&#32;vi_end;&#32;++vi)&#32;{
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;skip&#32;vertices&#32;that&#32;are&#32;in&#32;the&#32;first&#32;column</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(*vi&#32;&gt;=&#32;numRows){
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;computedVi&#32;=&#32;<link linkend="_graph_traversal_flows_8hpp_1a7b014587f20137aff522774eb1a05947">getLattice2DPastVertexGraph</link>(graph,*vi,numRows);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00156"/>00156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;expectedVi&#32;=&#32;*vi&#32;-&#32;numRows;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assert(((expectedVi&#32;==&#32;computedVi)&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;Expected&#32;vertex&#32;does&#32;not&#32;match&#32;computed&#32;vertex&#32;from&#32;getLattice2DPastVertexGraph&#32;function&quot;</emphasis>));
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00158"/>00158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00159"/>00159 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00160"/>00160 &#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00161"/>00161 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(boost::tie(vi,&#32;vi_end)&#32;=&#32;boost::vertices(graph);&#32;vi&#32;!=&#32;vi_end;&#32;++vi)&#32;{
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;skip&#32;vertices&#32;that&#32;are&#32;in&#32;the&#32;first&#32;column</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(*vi&#32;&lt;&#32;(size_graph-numRows)){
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;computedVi&#32;=&#32;<link linkend="_graph_traversal_flows_8hpp_1aafe3849a9ad4cb18d843d73c89936bb3">getLattice2DFutureVertexGraph</link>(graph,*vi,numRows);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;expectedVi&#32;=&#32;*vi&#32;+&#32;numRows;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00166"/>00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assert(((expectedVi&#32;==&#32;computedVi)&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;Expected&#32;vertex&#32;does&#32;not&#32;match&#32;computed&#32;vertex&#32;from&#32;getLattice2DPastVertexGraph&#32;function&quot;</emphasis>));
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00168"/>00168 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00169"/>00169 &#32;&#32;&#32;&#32;return&#32;;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00170"/>00170 }
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00171"/>00171 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00172"/>00172 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00173"/>00173 <emphasis role="comment">&#32;&#32;Assert&#32;each&#32;vertex&#32;neighbour&#32;has&#32;a&#32;matchin&#32;neighbour&#32;to&#32;the&#32;input</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00174"/>00174 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00175"/><link linkend="_graph_assert_functions_8hpp_1a5c3f8d6a6068b10ca7ca8f2f4515cbcd">00175</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1a5c3f8d6a6068b10ca7ca8f2f4515cbcd">assertNieghbours</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph,std::vector&lt;std::vector&lt;int&gt;&gt;&#32;expectedNeighbourhood){&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00176"/>00176 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;size_graph&#32;=&#32;boost::num_vertices(graph);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00177"/>00177 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;vertexIter&#32;=&#32;0;&#32;vertexIter&#32;&lt;&#32;size_graph;&#32;vertexIter++){
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;computedNeighbours&#32;=&#32;<link linkend="_graph_traversal_flows_8hpp_1a954183dad806b30b05e526c37284768b">getVertexNeighbours</link>(graph,vertexIter);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;expectedNeighbours;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;expectedNeighbours&#32;=&#32;expectedNeighbourhood[vertexIter];
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00181"/>00181 &#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::sort(expectedNeighbours.begin(),&#32;expectedNeighbours.end());
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::sort(computedNeighbours.begin(),&#32;computedNeighbours.end());
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assert(expectedNeighbours.size()&#32;==&#32;computedNeighbours.size()&#32;&amp;&amp;&#32;std::equal(expectedNeighbours.begin(),&#32;expectedNeighbours.end(),&#32;computedNeighbours.begin()));
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00185"/>00185 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00186"/>00186 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00187"/>00187 }
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00188"/>00188 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00189"/>00189 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00190"/>00190 <emphasis role="comment">&#32;&#32;Assert&#32;the&#32;correction&#32;angle&#32;is&#32;the&#32;same&#32;as&#32;the&#32;inputted&#32;correction&#32;angle</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00191"/>00191 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00192"/><link linkend="_graph_assert_functions_8hpp_1a67fc70f2265e3ca43a7871939ae44a95">00192</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1a67fc70f2265e3ca43a7871939ae44a95">assertCorrection</link>(
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00193"/>00193 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph,
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00194"/>00194 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;outcomeVector,&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00195"/>00195 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;vertex,
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00196"/>00196 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows,
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00197"/>00197 &#32;&#32;&#32;&#32;qreal&#32;inputAngle,
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00198"/>00198 &#32;&#32;&#32;&#32;qreal&#32;expectedCorrectedAngle){
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00199"/>00199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00200"/>00200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;computedCorrectedAngle&#32;=&#32;<link linkend="_graph_traversal_flows_8hpp_1a2b29f1efbcbccfbe77481e5b1a9647c8">computeCorrectedAngle</link>(
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00201"/>00201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;graph,
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00202"/>00202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;outcomeVector,&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00203"/>00203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;vertex,
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00204"/>00204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numRows,
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00205"/>00205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;inputAngle);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00206"/>00206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00207"/>00207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assert((<emphasis role="stringliteral">&quot;New&#32;angle&#32;and&#32;original&#32;angle&#32;do&#32;not&#32;match&quot;</emphasis>&#32;&amp;&amp;&#32;computedCorrectedAngle&#32;==&#32;expectedCorrectedAngle));
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00208"/>00208 }
+</programlisting></section>

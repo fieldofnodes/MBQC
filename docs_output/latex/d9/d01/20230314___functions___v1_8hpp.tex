@@ -1,0 +1,348 @@
+\doxysection{src/archive/files\+To\+Go\+Through/20230314\+\_\+\+Functions\+\_\+\+V1.hpp File Reference}
+\hypertarget{20230314___functions___v1_8hpp}{}\label{20230314___functions___v1_8hpp}\index{src/archive/filesToGoThrough/20230314\_Functions\_V1.hpp@{src/archive/filesToGoThrough/20230314\_Functions\_V1.hpp}}
+{\ttfamily \#include $<$Qu\+EST.\+h$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ int $>$ \mbox{\hyperlink{20230314___functions___v1_8hpp_aa6c7ea81b30e713a1f641e9a86e5f0a8}{get\+Path\+Graph}} (int number\+Qubits)
+\item 
+int \mbox{\hyperlink{20230314___functions___v1_8hpp_a89ebfc1e65a5c1ee3c420843c016be0e}{get\+Future\+Qubit}} (int current\+Qubit)
+\item 
+int \mbox{\hyperlink{20230314___functions___v1_8hpp_af44420884b989805a33b6b4cb35fb2e1}{get\+Past\+Qubit}} (int current\+Qubit)
+\item 
+int \mbox{\hyperlink{20230314___functions___v1_8hpp_adf1055c60f73eb56e5e51d97b15feeaf}{get\+Future\+Qubit\+Path\+Graph}} (vector$<$ int $>$ path\+Graph, int current\+Qubit)
+\item 
+int \mbox{\hyperlink{20230314___functions___v1_8hpp_a1be0a6fc146b59a21929f000546f57a4}{get\+Past\+Qubit\+Path\+Graph}} (vector$<$ int $>$ path\+Graph, int current\+Qubit)
+\item 
+int \mbox{\hyperlink{20230314___functions___v1_8hpp_aebc14db121869c416ee59e033335ad63}{get\+Open\+Neighbourhood\+Size\+Path\+Graph}} (vector$<$ int $>$ path\+Graph, int current\+Qubit)
+\item 
+vector$<$ int $>$ \mbox{\hyperlink{20230314___functions___v1_8hpp_a1a2f9b091ffe6a2814a21e720faafbe7}{get\+Open\+Neighbourhood\+Path\+Graph}} (vector$<$ int $>$ path\+Graph, int current\+Qubit)
+\item 
+qreal \mbox{\hyperlink{20230314___functions___v1_8hpp_a9c227d82e03f906a192a861db4ddf6ab}{compute\+XCorrection\+Angle\+Path\+Graph}} (vector$<$ int $>$ path\+Graph, vector$<$ int $>$ measured\+Qubits\+Outcomes, vector$<$ qreal $>$ qubit\+Angles, int current\+Qubit)
+\item 
+qreal \mbox{\hyperlink{20230314___functions___v1_8hpp_acf8731fbf6fdc066d371b78a916dc431}{compute\+ZCorrection\+Angle\+Path\+Graph}} (vector$<$ int $>$ path\+Graph, vector$<$ int $>$ measured\+Qubits\+Outcomes, int current\+Qubit)
+\item 
+int \mbox{\hyperlink{20230314___functions___v1_8hpp_a93cdcf18ac63c09cd8354e765238386a}{count\+Elements}} (vector$<$ int $>$ v, int element)
+\item 
+vector$<$ int $>$ \mbox{\hyperlink{20230314___functions___v1_8hpp_acdb0932776bd659eddba9f2942af2c15}{run\+Mbqc\+Path\+Graph}} (Qureg qureg, vector$<$ int $>$ path\+Graph, vector$<$ qreal $>$ qubit\+Angles)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{20230314___functions___v1_8hpp_a9c227d82e03f906a192a861db4ddf6ab}\label{20230314___functions___v1_8hpp_a9c227d82e03f906a192a861db4ddf6ab} 
+\index{20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}!computeXCorrectionAnglePathGraph@{computeXCorrectionAnglePathGraph}}
+\index{computeXCorrectionAnglePathGraph@{computeXCorrectionAnglePathGraph}!20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}}
+\doxysubsubsection{\texorpdfstring{computeXCorrectionAnglePathGraph()}{computeXCorrectionAnglePathGraph()}}
+{\footnotesize\ttfamily qreal compute\+XCorrection\+Angle\+Path\+Graph (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{path\+Graph,  }\item[{vector$<$ int $>$}]{measured\+Qubits\+Outcomes,  }\item[{vector$<$ qreal $>$}]{qubit\+Angles,  }\item[{int}]{current\+Qubit }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{20230314___functions___v1_8hpp_source_l00131}{131}} of file \mbox{\hyperlink{20230314___functions___v1_8hpp_source}{20230314\+\_\+\+Functions\+\_\+\+V1.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00136\ \ \ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ qreal\ xCorrectionAngle;}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ pastQubit\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a1be0a6fc146b59a21929f000546f57a4}{getPastQubitPathGraph}}(pathGraph,currentQubit);}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ inverseFlowQubitOutcome\ =\ measuredQubitsOutcomes[pastQubit];}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ xCorrectionAngle\ =\ pow(-\/1,\ inverseFlowQubitOutcome)*qubitAngles[currentQubit];}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ xCorrectionAngle;}
+\DoxyCodeLine{00144\ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{20230314___functions___v1_8hpp_acf8731fbf6fdc066d371b78a916dc431}\label{20230314___functions___v1_8hpp_acf8731fbf6fdc066d371b78a916dc431} 
+\index{20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}!computeZCorrectionAnglePathGraph@{computeZCorrectionAnglePathGraph}}
+\index{computeZCorrectionAnglePathGraph@{computeZCorrectionAnglePathGraph}!20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}}
+\doxysubsubsection{\texorpdfstring{computeZCorrectionAnglePathGraph()}{computeZCorrectionAnglePathGraph()}}
+{\footnotesize\ttfamily qreal compute\+ZCorrection\+Angle\+Path\+Graph (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{path\+Graph,  }\item[{vector$<$ int $>$}]{measured\+Qubits\+Outcomes,  }\item[{int}]{current\+Qubit }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{20230314___functions___v1_8hpp_source_l00148}{148}} of file \mbox{\hyperlink{20230314___functions___v1_8hpp_source}{20230314\+\_\+\+Functions\+\_\+\+V1.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00152\ \ \ \{\ \ \ }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ qreal\ zCorrectionAngle;}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pastPastQubit;}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ inverseFlowQubitOutcome;}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ pastQubit\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a1be0a6fc146b59a21929f000546f57a4}{getPastQubitPathGraph}}(pathGraph,currentQubit);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ pastPastQubit\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a1be0a6fc146b59a21929f000546f57a4}{getPastQubitPathGraph}}(pathGraph,pastQubit);}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ inverseFlowQubitOutcome\ =\ measuredQubitsOutcomes[pastPastQubit];}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ zCorrectionAngle\ =\ M\_PI*inverseFlowQubitOutcome;}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ zCorrectionAngle;}
+\DoxyCodeLine{00164\ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{20230314___functions___v1_8hpp_a93cdcf18ac63c09cd8354e765238386a}\label{20230314___functions___v1_8hpp_a93cdcf18ac63c09cd8354e765238386a} 
+\index{20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}!countElements@{countElements}}
+\index{countElements@{countElements}!20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}}
+\doxysubsubsection{\texorpdfstring{countElements()}{countElements()}}
+{\footnotesize\ttfamily int count\+Elements (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{v,  }\item[{int}]{element }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{20230314___functions___v1_8hpp_source_l00166}{166}} of file \mbox{\hyperlink{20230314___functions___v1_8hpp_source}{20230314\+\_\+\+Functions\+\_\+\+V1.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =\ 0;}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ v.begin();\ it\ !=\ v.end();\ ++it)\ \{}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*it\ ==\ element)\ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ ++count;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00172\ \ \ \ \ \}}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordflow}{return}\ count;}
+\DoxyCodeLine{00174\ \}}
+
+\end{DoxyCode}
+\Hypertarget{20230314___functions___v1_8hpp_a89ebfc1e65a5c1ee3c420843c016be0e}\label{20230314___functions___v1_8hpp_a89ebfc1e65a5c1ee3c420843c016be0e} 
+\index{20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}!getFutureQubit@{getFutureQubit}}
+\index{getFutureQubit@{getFutureQubit}!20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}}
+\doxysubsubsection{\texorpdfstring{getFutureQubit()}{getFutureQubit()}}
+{\footnotesize\ttfamily int get\+Future\+Qubit (\begin{DoxyParamCaption}\item[{int}]{current\+Qubit }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{20230314___functions___v1_8hpp_source_l00027}{27}} of file \mbox{\hyperlink{20230314___functions___v1_8hpp_source}{20230314\+\_\+\+Functions\+\_\+\+V1.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{int}\ futureQubit;}
+\DoxyCodeLine{00029\ \ \ futureQubit\ =\ currentQubit\ +\ 1;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordflow}{return}\ futureQubit;}
+\DoxyCodeLine{00032\ \}}
+
+\end{DoxyCode}
+\Hypertarget{20230314___functions___v1_8hpp_adf1055c60f73eb56e5e51d97b15feeaf}\label{20230314___functions___v1_8hpp_adf1055c60f73eb56e5e51d97b15feeaf} 
+\index{20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}!getFutureQubitPathGraph@{getFutureQubitPathGraph}}
+\index{getFutureQubitPathGraph@{getFutureQubitPathGraph}!20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}}
+\doxysubsubsection{\texorpdfstring{getFutureQubitPathGraph()}{getFutureQubitPathGraph()}}
+{\footnotesize\ttfamily int get\+Future\+Qubit\+Path\+Graph (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{path\+Graph,  }\item[{int}]{current\+Qubit }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{20230314___functions___v1_8hpp_source_l00049}{49}} of file \mbox{\hyperlink{20230314___functions___v1_8hpp_source}{20230314\+\_\+\+Functions\+\_\+\+V1.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00050\ \{}
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{int}\ futureQubit;}
+\DoxyCodeLine{00052\ \textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
+\DoxyCodeLine{00053\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[graphSize-\/1])\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ futureQubit\ =\ currentQubit;}
+\DoxyCodeLine{00055\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00056\ \ \ futureQubit\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a89ebfc1e65a5c1ee3c420843c016be0e}{getFutureQubit}}(currentQubit);}
+\DoxyCodeLine{00057\ \}}
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordflow}{return}\ futureQubit;}
+\DoxyCodeLine{00059\ \}}
+
+\end{DoxyCode}
+\Hypertarget{20230314___functions___v1_8hpp_a1a2f9b091ffe6a2814a21e720faafbe7}\label{20230314___functions___v1_8hpp_a1a2f9b091ffe6a2814a21e720faafbe7} 
+\index{20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}!getOpenNeighbourhoodPathGraph@{getOpenNeighbourhoodPathGraph}}
+\index{getOpenNeighbourhoodPathGraph@{getOpenNeighbourhoodPathGraph}!20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}}
+\doxysubsubsection{\texorpdfstring{getOpenNeighbourhoodPathGraph()}{getOpenNeighbourhoodPathGraph()}}
+{\footnotesize\ttfamily vector$<$ int $>$ get\+Open\+Neighbourhood\+Path\+Graph (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{path\+Graph,  }\item[{int}]{current\+Qubit }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{20230314___functions___v1_8hpp_source_l00107}{107}} of file \mbox{\hyperlink{20230314___functions___v1_8hpp_source}{20230314\+\_\+\+Functions\+\_\+\+V1.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ vector<int>\ neighbours;}
+\DoxyCodeLine{00109\ \ \ \textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
+\DoxyCodeLine{00110\ \ \ \textcolor{keywordtype}{int}\ firstQubit;}
+\DoxyCodeLine{00111\ \ \ \textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{00112\ \ \ \textcolor{keywordtype}{int}\ futureQubit;}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[0])\ \{\ \textcolor{comment}{//\ qubit\ is\ first\ in\ graph}}
+\DoxyCodeLine{00115\ \ \ \ \ firstQubit\ =\ currentQubit\ +\ 1;}
+\DoxyCodeLine{00116\ \ \ \ \ neighbours.push\_back(firstQubit);}
+\DoxyCodeLine{00117\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[graphSize-\/1])\ \{\ \textcolor{comment}{//\ qubit\ is\ last\ in\ graph}}
+\DoxyCodeLine{00118\ \ \ \ \ firstQubit\ =\ currentQubit\ -\/\ 1;}
+\DoxyCodeLine{00119\ \ \ \ \ neighbours.push\_back(firstQubit);}
+\DoxyCodeLine{00120\ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{//\ all\ else}}
+\DoxyCodeLine{00121\ \ \ \ \ pastQubit\ =\ currentQubit\ -\/\ 1;}
+\DoxyCodeLine{00122\ \ \ \ \ futureQubit\ =\ currentQubit\ +\ 1;}
+\DoxyCodeLine{00123\ \ \ \ \ neighbours.push\_back(pastQubit);}
+\DoxyCodeLine{00124\ \ \ \ \ neighbours.push\_back(futureQubit);}
+\DoxyCodeLine{00125\ \ \ \}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \textcolor{keywordflow}{return}\ neighbours;}
+\DoxyCodeLine{00128\ \}}
+
+\end{DoxyCode}
+\Hypertarget{20230314___functions___v1_8hpp_aebc14db121869c416ee59e033335ad63}\label{20230314___functions___v1_8hpp_aebc14db121869c416ee59e033335ad63} 
+\index{20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}!getOpenNeighbourhoodSizePathGraph@{getOpenNeighbourhoodSizePathGraph}}
+\index{getOpenNeighbourhoodSizePathGraph@{getOpenNeighbourhoodSizePathGraph}!20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}}
+\doxysubsubsection{\texorpdfstring{getOpenNeighbourhoodSizePathGraph()}{getOpenNeighbourhoodSizePathGraph()}}
+{\footnotesize\ttfamily int get\+Open\+Neighbourhood\+Size\+Path\+Graph (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{path\+Graph,  }\item[{int}]{current\+Qubit }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{20230314___functions___v1_8hpp_source_l00088}{88}} of file \mbox{\hyperlink{20230314___functions___v1_8hpp_source}{20230314\+\_\+\+Functions\+\_\+\+V1.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \textcolor{keyword}{auto}\ graphSize\ =\ pathGraph.size();}
+\DoxyCodeLine{00090\ \ \ \textcolor{keywordtype}{int}\ neighbourhoodSize;}
+\DoxyCodeLine{00091\ \ \ \textcolor{comment}{//\ Logic\ for\ getting\ nieghbors}}
+\DoxyCodeLine{00092\ \ \ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ 0)\ \{\ \textcolor{comment}{//\ qubit\ is\ first}}
+\DoxyCodeLine{00093\ \ \ \ \ neighbourhoodSize\ =\ 1;}
+\DoxyCodeLine{00094\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[graphSize-\/1])\ \{\ \textcolor{comment}{//\ qubit\ is\ last}}
+\DoxyCodeLine{00095\ \ \ \ \ neighbourhoodSize\ =\ 1;}
+\DoxyCodeLine{00096\ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{//\ all\ else}}
+\DoxyCodeLine{00097\ \ \ \ \ neighbourhoodSize\ =\ 2;}
+\DoxyCodeLine{00098\ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \textcolor{keywordflow}{return}\ neighbourhoodSize;}
+\DoxyCodeLine{00101\ \}}
+
+\end{DoxyCode}
+\Hypertarget{20230314___functions___v1_8hpp_af44420884b989805a33b6b4cb35fb2e1}\label{20230314___functions___v1_8hpp_af44420884b989805a33b6b4cb35fb2e1} 
+\index{20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}!getPastQubit@{getPastQubit}}
+\index{getPastQubit@{getPastQubit}!20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}}
+\doxysubsubsection{\texorpdfstring{getPastQubit()}{getPastQubit()}}
+{\footnotesize\ttfamily int get\+Past\+Qubit (\begin{DoxyParamCaption}\item[{int}]{current\+Qubit }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{20230314___functions___v1_8hpp_source_l00037}{37}} of file \mbox{\hyperlink{20230314___functions___v1_8hpp_source}{20230314\+\_\+\+Functions\+\_\+\+V1.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{00039\ \ \ pastQubit\ =\ currentQubit\ -\/\ 1;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordflow}{return}\ pastQubit;}
+\DoxyCodeLine{00042\ \}}
+
+\end{DoxyCode}
+\Hypertarget{20230314___functions___v1_8hpp_a1be0a6fc146b59a21929f000546f57a4}\label{20230314___functions___v1_8hpp_a1be0a6fc146b59a21929f000546f57a4} 
+\index{20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}!getPastQubitPathGraph@{getPastQubitPathGraph}}
+\index{getPastQubitPathGraph@{getPastQubitPathGraph}!20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}}
+\doxysubsubsection{\texorpdfstring{getPastQubitPathGraph()}{getPastQubitPathGraph()}}
+{\footnotesize\ttfamily int get\+Past\+Qubit\+Path\+Graph (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{path\+Graph,  }\item[{int}]{current\+Qubit }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{20230314___functions___v1_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{20230314___functions___v1_8hpp_source}{20230314\+\_\+\+Functions\+\_\+\+V1.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00068\ \{}
+\DoxyCodeLine{00069\ \textcolor{keywordtype}{int}\ pastQubit;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[0])\ \{}
+\DoxyCodeLine{00072\ \ \ pastQubit\ =\ currentQubit;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00075\ \ \ pastQubit\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_af44420884b989805a33b6b4cb35fb2e1}{getPastQubit}}(currentQubit);}
+\DoxyCodeLine{00076\ \}}
+\DoxyCodeLine{00077\ \ \ \textcolor{keywordflow}{return}\ pastQubit;}
+\DoxyCodeLine{00078\ \}}
+
+\end{DoxyCode}
+\Hypertarget{20230314___functions___v1_8hpp_aa6c7ea81b30e713a1f641e9a86e5f0a8}\label{20230314___functions___v1_8hpp_aa6c7ea81b30e713a1f641e9a86e5f0a8} 
+\index{20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}!getPathGraph@{getPathGraph}}
+\index{getPathGraph@{getPathGraph}!20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}}
+\doxysubsubsection{\texorpdfstring{getPathGraph()}{getPathGraph()}}
+{\footnotesize\ttfamily vector$<$ int $>$ get\+Path\+Graph (\begin{DoxyParamCaption}\item[{int}]{number\+Qubits }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{20230314___functions___v1_8hpp_source_l00014}{14}} of file \mbox{\hyperlink{20230314___functions___v1_8hpp_source}{20230314\+\_\+\+Functions\+\_\+\+V1.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ vector<int>\ pathGraph;}
+\DoxyCodeLine{00017\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numberQubits;\ i++\ )}
+\DoxyCodeLine{00018\ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ pathGraph.push\_back(i);\ \ }
+\DoxyCodeLine{00020\ \ \ \}}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordflow}{return}\ pathGraph;}
+\DoxyCodeLine{00022\ \}}
+
+\end{DoxyCode}
+\Hypertarget{20230314___functions___v1_8hpp_acdb0932776bd659eddba9f2942af2c15}\label{20230314___functions___v1_8hpp_acdb0932776bd659eddba9f2942af2c15} 
+\index{20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}!runMbqcPathGraph@{runMbqcPathGraph}}
+\index{runMbqcPathGraph@{runMbqcPathGraph}!20230314\_Functions\_V1.hpp@{20230314\_Functions\_V1.hpp}}
+\doxysubsubsection{\texorpdfstring{runMbqcPathGraph()}{runMbqcPathGraph()}}
+{\footnotesize\ttfamily vector$<$ int $>$ run\+Mbqc\+Path\+Graph (\begin{DoxyParamCaption}\item[{Qureg}]{qureg,  }\item[{vector$<$ int $>$}]{path\+Graph,  }\item[{vector$<$ qreal $>$}]{qubit\+Angles }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{20230314___functions___v1_8hpp_source_l00176}{176}} of file \mbox{\hyperlink{20230314___functions___v1_8hpp_source}{20230314\+\_\+\+Functions\+\_\+\+V1.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \ \ vector<qreal>\ updatedQubitAngles;}
+\DoxyCodeLine{00183\ \ \ \ \ vector<int>\ measuredQubitsOutcomes;}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordtype}{int}\ numberQubits\ =\ pathGraph.size();}
+\DoxyCodeLine{00185\ \ \ \ \ qreal\ X1;}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordtype}{int}\ firstQubitIndex=0;}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordtype}{int}\ secondQubitIndex=1;}
+\DoxyCodeLine{00188\ \ \ \ \ }
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{comment}{//\ Measure\ first\ qubit\ and\ update\ angle}}
+\DoxyCodeLine{00191\ \ \ \ \ updatedQubitAngles.push\_back(qubitAngles[firstQubitIndex]);}
+\DoxyCodeLine{00192\ \ \ \ \ rotateZ(qureg,firstQubitIndex,\ (-\/1)*updatedQubitAngles[firstQubitIndex]);}
+\DoxyCodeLine{00193\ \ \ \ \ hadamard(qureg,firstQubitIndex);}
+\DoxyCodeLine{00194\ \ \ \ \ measuredQubitsOutcomes.push\_back(measure(qureg,firstQubitIndex));}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{comment}{//\ measure\ second\ qubit}}
+\DoxyCodeLine{00197\ \ \ \ \ X1\ =\ pow((-\/1),measuredQubitsOutcomes[firstQubitIndex])*qubitAngles[secondQubitIndex];}
+\DoxyCodeLine{00198\ \ \ \ \ updatedQubitAngles[secondQubitIndex]\ =\ X1;}
+\DoxyCodeLine{00199\ \ \ \ \ rotateZ(qureg,secondQubitIndex,\ (-\/1)*updatedQubitAngles[secondQubitIndex]);}
+\DoxyCodeLine{00200\ \ \ \ \ hadamard(qureg,secondQubitIndex);}
+\DoxyCodeLine{00201\ \ \ \ \ measuredQubitsOutcomes.push\_back(measure(qureg,secondQubitIndex));}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ currentQubit=2;currentQubit<numberQubits;currentQubit++)}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ X;}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ Z;}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ phiPrime;}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ outcome;}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ X\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a9c227d82e03f906a192a861db4ddf6ab}{computeXCorrectionAnglePathGraph}}(}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathGraph,\ }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes,}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles,}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentQubit);}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ Z\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_acf8731fbf6fdc066d371b78a916dc431}{computeZCorrectionAnglePathGraph}}(}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathGraph,\ }
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes,}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentQubit);}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ phiPrime\ =\ X+Z;}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ rotateZ(qureg,currentQubit,\ (-\/1)*phiPrime);}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ hadamard(qureg,currentQubit);}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ outcome\ =\ measure(qureg,currentQubit);}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes.push\_back(outcome);}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ measuredQubitsOutcomes;}
+\DoxyCodeLine{00230\ \}}
+
+\end{DoxyCode}

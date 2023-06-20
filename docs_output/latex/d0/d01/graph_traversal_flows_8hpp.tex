@@ -1,0 +1,345 @@
+\doxysection{src/graphs/graph\+Traversal\+Flows.hpp File Reference}
+\hypertarget{graph_traversal_flows_8hpp}{}\label{graph_traversal_flows_8hpp}\index{src/graphs/graphTraversalFlows.hpp@{src/graphs/graphTraversalFlows.hpp}}
+
+
+Construct graphs and perform various graph traversal operations.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{graph_traversal_flows_8hpp_a0f7ce92e965a947ec82300d194d76f4d}{get\+Lattice2\+DFuture\+Vertex}} (int present\+Vertex, int num\+Rows)
+\begin{DoxyCompactList}\small\item\em Computes the future vertex in a 2D lattice graph based on a flow function. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graph_traversal_flows_8hpp_a626f9a06defdfeec52b82251cef22702}{get\+Lattice2\+DPast\+Vertex}} (int present\+Vertex, int num\+Rows)
+\begin{DoxyCompactList}\small\item\em Computes the past vertex in a 2D lattice graph based on a flow function. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{graph_traversal_flows_8hpp_a954183dad806b30b05e526c37284768b}{get\+Vertex\+Neighbours}} (const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&graph, int vertex)
+\begin{DoxyCompactList}\small\item\em Retrieves the neighboring vertices of a given vertex in an undirected graph. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graph_traversal_flows_8hpp_aafe3849a9ad4cb18d843d73c89936bb3}{get\+Lattice2\+DFuture\+Vertex\+Graph}} (const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&graph, int vertex, int num\+Rows)
+\begin{DoxyCompactList}\small\item\em Computes the future vertex in a 2D lattice graph based on a flow function for a given vertex in the graph. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graph_traversal_flows_8hpp_a7b014587f20137aff522774eb1a05947}{get\+Lattice2\+DPast\+Vertex\+Graph}} (const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&graph, int vertex, int num\+Rows)
+\begin{DoxyCompactList}\small\item\em Computes the past vertex in a 2D lattice graph based on a flow function for a given vertex in the graph. \end{DoxyCompactList}\item 
+qreal \mbox{\hyperlink{graph_traversal_flows_8hpp_a2b29f1efbcbccfbe77481e5b1a9647c8}{compute\+Corrected\+Angle}} (const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&graph, std\+::vector$<$ int $>$ measured\+Outcomes, int vertex, int num\+Rows, qreal angle)
+\begin{DoxyCompactList}\small\item\em Computes the corrected angle based on measured outcomes and flow functions in an undirected graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Construct graphs and perform various graph traversal operations. 
+
+\begin{DoxyAuthor}{Author}
+Jonathan Miller 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+20230425 
+\end{DoxyDate}
+
+
+Definition in file \mbox{\hyperlink{graph_traversal_flows_8hpp_source}{graph\+Traversal\+Flows.\+hpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{graph_traversal_flows_8hpp_a2b29f1efbcbccfbe77481e5b1a9647c8}\label{graph_traversal_flows_8hpp_a2b29f1efbcbccfbe77481e5b1a9647c8} 
+\index{graphTraversalFlows.hpp@{graphTraversalFlows.hpp}!computeCorrectedAngle@{computeCorrectedAngle}}
+\index{computeCorrectedAngle@{computeCorrectedAngle}!graphTraversalFlows.hpp@{graphTraversalFlows.hpp}}
+\doxysubsubsection{\texorpdfstring{computeCorrectedAngle()}{computeCorrectedAngle()}}
+{\footnotesize\ttfamily qreal compute\+Corrected\+Angle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{graph,  }\item[{std\+::vector$<$ int $>$}]{measured\+Outcomes,  }\item[{int}]{vertex,  }\item[{int}]{num\+Rows,  }\item[{qreal}]{angle }\end{DoxyParamCaption})}
+
+
+
+Computes the corrected angle based on measured outcomes and flow functions in an undirected graph. 
+
+This function computes the corrected angle by considering the measured outcomes and flow functions of vertices in an undirected graph. It takes into account the neighboring vertices, past vertices, and various correction factors to calculate the updated angle.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The undirected graph. \\
+\hline
+{\em measured\+Outcomes} & The vector of measured outcomes. \\
+\hline
+{\em vertex} & The vertex for which the corrected angle is computed. \\
+\hline
+{\em num\+Rows} & The number of rows in the 2D lattice graph. \\
+\hline
+{\em angle} & The initial angle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The corrected angle. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graph_traversal_flows_8hpp_source_l00153}{153}} of file \mbox{\hyperlink{graph_traversal_flows_8hpp_source}{graph\+Traversal\+Flows.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ std::vector<int>\ neighbourhood\ =\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a954183dad806b30b05e526c37284768b}{getVertexNeighbours}}(graph,vertex);}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{int}\ xCorrectionVertex;}
+\DoxyCodeLine{00162\ \ \ \ \ std::vector<int>\ zCorrectionVertices;}
+\DoxyCodeLine{00163\ \ \ \ \ qreal\ updatedAngle;}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordflow}{if}\ (vertex\ <\ numRows)\{\ \textcolor{comment}{//\ First\ column\ -\/\ no\ x\ correction\ no\ z\ correction}}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ updatedAngle\ =\ angle;}
+\DoxyCodeLine{00167\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (vertex\ >=\ numRows)\{\ \textcolor{comment}{//\ ensure\ we\ are\ in\ second\ column}}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ xCorrectionVertex\ =\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a7b014587f20137aff522774eb1a05947}{getLattice2DPastVertexGraph}}(graph,vertex,numRows);}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i:\ neighbourhood)\{}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ past;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\ >=\ numRows)\{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ past\ =\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a7b014587f20137aff522774eb1a05947}{getLattice2DPastVertexGraph}}(graph,i,numRows);}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ zCorrectionVertices.push\_back(past);}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Remove\ vertex\ in\ neigbourhood\ if\ it\ is\ the\ vertrex}}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ we\ want\ to\ measure}}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ zCorrectionVertices.erase(}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::remove(}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ zCorrectionVertices.begin(),\ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ zCorrectionVertices.end(),\ vertex),\ }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ zCorrectionVertices.end());}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ exponent\ =\ measuredOutcomes[xCorrectionVertex];}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}f-\/1(j):\ "{}\ <<\ xCorrectionVertex\ <<\ std::endl;}}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{comment}{//std::cout\ <<\ "{}s\_f-\/1(j):\ "{}\ <<\ exponent\ <<\ std::endl;}}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ qreal\ xAngle\ =\ std::pow((-\/1),\ exponent)*angle;}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ std::vector<int>\ outcomesForZ;}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i:zCorrectionVertices)\{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ outcomesForZ.push\_back(measuredOutcomes[i]);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ sum\ =\ std::accumulate(outcomesForZ.begin(),\ outcomesForZ.end(),\ 0);}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ qreal\ zAngle\ =\ M\_PI*sum;}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ updatedAngle\ =\ xAngle\ +\ zAngle;}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ updatedAngle;}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00206\ \}}
+
+\end{DoxyCode}
+\Hypertarget{graph_traversal_flows_8hpp_a0f7ce92e965a947ec82300d194d76f4d}\label{graph_traversal_flows_8hpp_a0f7ce92e965a947ec82300d194d76f4d} 
+\index{graphTraversalFlows.hpp@{graphTraversalFlows.hpp}!getLattice2DFutureVertex@{getLattice2DFutureVertex}}
+\index{getLattice2DFutureVertex@{getLattice2DFutureVertex}!graphTraversalFlows.hpp@{graphTraversalFlows.hpp}}
+\doxysubsubsection{\texorpdfstring{getLattice2DFutureVertex()}{getLattice2DFutureVertex()}}
+{\footnotesize\ttfamily int get\+Lattice2\+DFuture\+Vertex (\begin{DoxyParamCaption}\item[{int}]{present\+Vertex,  }\item[{int}]{num\+Rows }\end{DoxyParamCaption})}
+
+
+
+Computes the future vertex in a 2D lattice graph based on a flow function. 
+
+For a 2D lattice graph, the flow function for a vertex returns the future vertex. The future vertex is calculated as present\+Vertex + num\+Rows, where num\+Rows is the number of rows in the lattice.
+
+
+\begin{DoxyParams}{Parameters}
+{\em present\+Vertex} & The present vertex for which the future vertex is computed. \\
+\hline
+{\em num\+Rows} & The number of rows in the 2D lattice graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The future vertex. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graph_traversal_flows_8hpp_source_l00031}{31}} of file \mbox{\hyperlink{graph_traversal_flows_8hpp_source}{graph\+Traversal\+Flows.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ For\ a\ 2D\ lattice\ graph\ }}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ (1)-\/(4)-\/(7)}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ (2)-\/(5)-\/(8)}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ (3)-\/(6)-\/(9)}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ a\ flow\ function\ for\ vertex\ 5}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ has\ future\ vertex\ 8}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ f(i)\ =\ i\ +\ r,\ r\ is\ numRows}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ futureVertex\ =\ presentVertex\ +\ numRows;}
+\DoxyCodeLine{00040\ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{return}\ futureVertex;}
+\DoxyCodeLine{00042\ \}}
+
+\end{DoxyCode}
+\Hypertarget{graph_traversal_flows_8hpp_aafe3849a9ad4cb18d843d73c89936bb3}\label{graph_traversal_flows_8hpp_aafe3849a9ad4cb18d843d73c89936bb3} 
+\index{graphTraversalFlows.hpp@{graphTraversalFlows.hpp}!getLattice2DFutureVertexGraph@{getLattice2DFutureVertexGraph}}
+\index{getLattice2DFutureVertexGraph@{getLattice2DFutureVertexGraph}!graphTraversalFlows.hpp@{graphTraversalFlows.hpp}}
+\doxysubsubsection{\texorpdfstring{getLattice2DFutureVertexGraph()}{getLattice2DFutureVertexGraph()}}
+{\footnotesize\ttfamily int get\+Lattice2\+DFuture\+Vertex\+Graph (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{graph,  }\item[{int}]{vertex,  }\item[{int}]{num\+Rows }\end{DoxyParamCaption})}
+
+
+
+Computes the future vertex in a 2D lattice graph based on a flow function for a given vertex in the graph. 
+
+This function calculates the future vertex for a given vertex in a 2D lattice graph based on a flow function. It performs validation checks to ensure the input vertex and the computed future vertex satisfy certain conditions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The 2D lattice graph. \\
+\hline
+{\em vertex} & The vertex for which the future vertex is computed. \\
+\hline
+{\em num\+Rows} & The number of rows in the 2D lattice graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The future vertex. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+The vertex inputted needs to be less than the number of vertices minus the number of rows. 
+
+The flow function produced a vertex that is in the input vertex neighborhood. 
+\end{DoxyPrecond}
+
+
+Definition at line \mbox{\hyperlink{graph_traversal_flows_8hpp_source_l00105}{105}} of file \mbox{\hyperlink{graph_traversal_flows_8hpp_source}{graph\+Traversal\+Flows.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordtype}{int}\ size\_graph\ =\ boost::num\_vertices(graph);}
+\DoxyCodeLine{00107\ \ \ \ \ assert(\textcolor{stringliteral}{"{}The\ vertex\ inputted\ needs\ to\ be\ less\ than\ the\ number\ of\ vertices\ -\/\ the\ number\ of\ the\ rows,\ but\ it\ is\ not"{}}\ \&\&\ vertex\ <\ (size\_graph\ -\/\ numRows));}
+\DoxyCodeLine{00108\ \ \ \ \ std::vector<int>\ vertexNeighbours\ =\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a954183dad806b30b05e526c37284768b}{getVertexNeighbours}}(graph,vertex);}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{int}\ futureVertex\ =\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a0f7ce92e965a947ec82300d194d76f4d}{getLattice2DFutureVertex}}(vertex,numRows);}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ std::find(vertexNeighbours.begin(),\ vertexNeighbours.end(),\ futureVertex);}
+\DoxyCodeLine{00111\ \ \ \ \ assert((\textcolor{stringliteral}{"{}flow\ function\ produced\ a\ vertex\ not\ in\ the\ input\ v\ neighbourhodd"{}}\ \&\&\ it\ !=\ vertexNeighbours.end()));}
+\DoxyCodeLine{00112\ \ \ \ \ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordflow}{return}\ futureVertex;}
+\DoxyCodeLine{00114\ \}}
+
+\end{DoxyCode}
+\Hypertarget{graph_traversal_flows_8hpp_a626f9a06defdfeec52b82251cef22702}\label{graph_traversal_flows_8hpp_a626f9a06defdfeec52b82251cef22702} 
+\index{graphTraversalFlows.hpp@{graphTraversalFlows.hpp}!getLattice2DPastVertex@{getLattice2DPastVertex}}
+\index{getLattice2DPastVertex@{getLattice2DPastVertex}!graphTraversalFlows.hpp@{graphTraversalFlows.hpp}}
+\doxysubsubsection{\texorpdfstring{getLattice2DPastVertex()}{getLattice2DPastVertex()}}
+{\footnotesize\ttfamily int get\+Lattice2\+DPast\+Vertex (\begin{DoxyParamCaption}\item[{int}]{present\+Vertex,  }\item[{int}]{num\+Rows }\end{DoxyParamCaption})}
+
+
+
+Computes the past vertex in a 2D lattice graph based on a flow function. 
+
+For a 2D lattice graph, the flow function for a vertex returns the past vertex. The past vertex is calculated as present\+Vertex -\/ num\+Rows, where num\+Rows is the number of rows in the lattice.
+
+
+\begin{DoxyParams}{Parameters}
+{\em present\+Vertex} & The present vertex for which the past vertex is computed. \\
+\hline
+{\em num\+Rows} & The number of rows in the 2D lattice graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The past vertex. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graph_traversal_flows_8hpp_source_l00054}{54}} of file \mbox{\hyperlink{graph_traversal_flows_8hpp_source}{graph\+Traversal\+Flows.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ For\ a\ 2D\ lattice\ graph\ }}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ (1)-\/(4)-\/(7)}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ (2)-\/(5)-\/(8)}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ (3)-\/(6)-\/(9)}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ a\ flow\ function\ for\ vertex\ 5}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ has\ past\ vertex\ 2}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//\ f(i)\ =\ i\ -\/\ r,\ r\ is\ numRows}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ pastVertex\ =\ presentVertex\ -\/\ numRows;}
+\DoxyCodeLine{00063\ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{return}\ pastVertex;}
+\DoxyCodeLine{00065\ \}}
+
+\end{DoxyCode}
+\Hypertarget{graph_traversal_flows_8hpp_a7b014587f20137aff522774eb1a05947}\label{graph_traversal_flows_8hpp_a7b014587f20137aff522774eb1a05947} 
+\index{graphTraversalFlows.hpp@{graphTraversalFlows.hpp}!getLattice2DPastVertexGraph@{getLattice2DPastVertexGraph}}
+\index{getLattice2DPastVertexGraph@{getLattice2DPastVertexGraph}!graphTraversalFlows.hpp@{graphTraversalFlows.hpp}}
+\doxysubsubsection{\texorpdfstring{getLattice2DPastVertexGraph()}{getLattice2DPastVertexGraph()}}
+{\footnotesize\ttfamily int get\+Lattice2\+DPast\+Vertex\+Graph (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{graph,  }\item[{int}]{vertex,  }\item[{int}]{num\+Rows }\end{DoxyParamCaption})}
+
+
+
+Computes the past vertex in a 2D lattice graph based on a flow function for a given vertex in the graph. 
+
+This function calculates the past vertex for a given vertex in a 2D lattice graph based on a flow function. It performs validation checks to ensure the input vertex and the computed past vertex satisfy certain conditions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The 2D lattice graph. \\
+\hline
+{\em vertex} & The vertex for which the past vertex is computed. \\
+\hline
+{\em num\+Rows} & The number of rows in the 2D lattice graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The past vertex. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+The inputted vertex needs to be greater than or equal to the number of rows. 
+
+The flow function produced a vertex that is in the input vertex neighborhood. 
+\end{DoxyPrecond}
+
+
+Definition at line \mbox{\hyperlink{graph_traversal_flows_8hpp_source_l00130}{130}} of file \mbox{\hyperlink{graph_traversal_flows_8hpp_source}{graph\+Traversal\+Flows.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ assert((\textcolor{stringliteral}{"{}The\ inputted\ vertex\ needs\ to\ be\ greater\ than\ or\ equal\ to\ the\ number\ of\ rows."{}}\ \&\&\ vertex\ >=\ numRows));}
+\DoxyCodeLine{00132\ \ \ \ \ std::vector<int>\ vertexNeighbours\ =\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a954183dad806b30b05e526c37284768b}{getVertexNeighbours}}(graph,vertex);}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{int}\ pastVertex\ =\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a626f9a06defdfeec52b82251cef22702}{getLattice2DPastVertex}}(vertex,numRows);}
+\DoxyCodeLine{00134\ \ \ \ \ std::vector<int>::iterator\ it\ =\ std::find(vertexNeighbours.begin(),\ vertexNeighbours.end(),\ pastVertex);}
+\DoxyCodeLine{00135\ \ \ \ \ assert((\textcolor{stringliteral}{"{}flow\ function\ produced\ a\ vertex\ not\ in\ the\ input\ vertex\ neighbourhodd"{}}\ \&\&\ it\ !=\ vertexNeighbours.end()));}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordflow}{return}\ pastVertex;}
+\DoxyCodeLine{00137\ \}}
+
+\end{DoxyCode}
+\Hypertarget{graph_traversal_flows_8hpp_a954183dad806b30b05e526c37284768b}\label{graph_traversal_flows_8hpp_a954183dad806b30b05e526c37284768b} 
+\index{graphTraversalFlows.hpp@{graphTraversalFlows.hpp}!getVertexNeighbours@{getVertexNeighbours}}
+\index{getVertexNeighbours@{getVertexNeighbours}!graphTraversalFlows.hpp@{graphTraversalFlows.hpp}}
+\doxysubsubsection{\texorpdfstring{getVertexNeighbours()}{getVertexNeighbours()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ get\+Vertex\+Neighbours (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&}]{graph,  }\item[{int}]{vertex }\end{DoxyParamCaption})}
+
+
+
+Retrieves the neighboring vertices of a given vertex in an undirected graph. 
+
+Given an undirected graph and a vertex, this function returns a vector containing the neighboring vertices of the given vertex.
+
+
+\begin{DoxyParams}{Parameters}
+{\em graph} & The undirected graph. \\
+\hline
+{\em vertex} & The vertex for which the neighboring vertices are retrieved. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing the neighboring vertices. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graph_traversal_flows_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{graph_traversal_flows_8hpp_source}{graph\+Traversal\+Flows.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//\ Choose\ a\ vertex\ to\ find\ its\ adjacent\ vertices}}
+\DoxyCodeLine{00079\ \ \ \ \ undirectedGraph::vertex\_descriptor\ v\ =\ vertex;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ Find\ the\ range\ of\ adjacent\ vertices}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::adjacency\_iterator\ adjacency\_iterator;}
+\DoxyCodeLine{00082\ \ \ \ \ std::pair<adjacency\_iterator,\ adjacency\_iterator>\ neighbors\ =\ adjacent\_vertices(v,\ graph);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ std::vector<int>\ neighbourVector;}
+\DoxyCodeLine{00085\ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordflow}{for}\ (adjacency\_iterator\ it\ =\ neighbors.first;\ it\ !=\ neighbors.second;\ ++it)\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ neighbourVector.push\_back(*it);}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordflow}{return}\ neighbourVector;}
+\DoxyCodeLine{00090\ \}}
+
+\end{DoxyCode}

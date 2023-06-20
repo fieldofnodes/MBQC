@@ -1,0 +1,150 @@
+\doxysection{test\+Two\+Qubits\+Angles\+Pi\+On\+Two.\+cpp}
+\hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source}{}\label{test_two_qubits_angles_pi_on_two_8cpp_source}\index{tests/testTwoQubitsAnglesPiOnTwo.cpp@{tests/testTwoQubitsAnglesPiOnTwo.cpp}}
+\mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00002}00002\ \textcolor{comment}{//\ Title\ \ :\ testOddNumberQubitAnglesAllZero.cpp\ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00003}00003\ \textcolor{comment}{//\ Author\ :\ Jonathan\ Miller\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00004}00004\ \textcolor{comment}{//\ Date\ \ \ :\ 20230503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00005}00005\ \textcolor{comment}{//\ Aim\ \ \ \ :\ Basic\ start\ file\ to\ run\ mbqc\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00006}00006\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ Current\ implementation\ can\ only\ do\ square\ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00007}00007\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ graph\ repeatedly.\ Will\ branch\ repo\ to\ make\ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00008}00008\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ use\ different\ way\ to\ create\ graph\ by\ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00009}00009\ \textcolor{comment}{//\ \ \ \ \ \ \ \ :\ adjacency\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00011}00011\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00012}00012\ \textcolor{comment}{//\ To\ run}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00013}00013\ \textcolor{comment}{//\ cmake\ ..\ -\/DUSER\_SOURCE="{}QuEST/projects/MBQC/tests/testTwoQubitsAnglesPiOnTwo.cpp"{}\ -\/DOUTPUT\_EXE="{}testTwoQubitsAnglesPiOnTwo"{}\ \&\&\ make\ \&\&\ ./testTwoQubitsAnglesPiOnTwo}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00016}00016\ \textcolor{comment}{//\ Standard\ libraries}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <numeric>}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00024}00024\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00025}00025\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00029}00029\ \textcolor{comment}{//\ QuEST}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ <QuEST.h>}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00032}00032\ \textcolor{comment}{//\ Boost}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#include\ <boost/graph/adjacency\_list.hpp>}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#include\ <boost/graph/grid\_graph.hpp>}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00035}00035\ \textcolor{preprocessor}{\#include\ <boost/graph/graphviz.hpp>}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ <boost/array.hpp>}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#include\ <boost/graph/graph\_utility.hpp>}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ <boost/container/vector.hpp>}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00041}00041\ \textcolor{comment}{//\ Helper\ functions}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00045}00045\ \textcolor{comment}{//\ Graph\ functions}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00049}00049\ \textcolor{comment}{//\ Quantum\ functions}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/flowMeasurements.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00051}00051\ \textcolor{preprocessor}{\#include\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/angleConstruction.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00052}00052\ \textcolor{preprocessor}{\#include\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/quantumGraphClusterStates.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00054}00054\ \textcolor{comment}{//\ Assert\ functions}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00055}00055\ \textcolor{preprocessor}{\#include\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/generalAssertFunctions.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00056}00056\ \textcolor{preprocessor}{\#include\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00062}00062\ \textcolor{keyword}{using\ namespace\ }boost;}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00063}\mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_af845bf432b56cdda82dbde8011882168}{00063}}\ \textcolor{keyword}{typedef}\ boost::adjacency\_list<boost::vecS,\ boost::vecS,boost::undirectedS>\ \mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_af845bf432b56cdda82dbde8011882168}{undirectedGraph}};}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00064}\mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_ad413424ad598fbd91fde4dffeceda3c0}{00064}}\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::edge\_iterator\ \mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_ad413424ad598fbd91fde4dffeceda3c0}{edgeIterator}};}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00065}\mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_ad100606fc4950dfc094fc60544838351}{00065}}\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::vertex\_iterator\ \mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_ad100606fc4950dfc094fc60544838351}{vertexIterator}};}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00069}00069\ \textcolor{comment}{//\ Set\ up\ the\ main\ function}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00070}\mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00070}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 1e6;\ i++)}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00072}00072\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ Initialise\ variable\ names\ and\ types}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{keywordtype}{int}\ numRows;}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00075}00075\ \ \ \ \ \textcolor{keywordtype}{int}\ numCols;}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00076}00076\ \ \ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph;}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices;}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00078}00078\ \ \ \ \ std::vector<qreal>\ qubitAngles;}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00079}00079\ \ \ \ \ std::vector<int>\ measuredQubitsOutcomes;}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00082}00082\ \ \ \ \ \textcolor{comment}{//\ Set\ values\ to\ variables}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00083}00083\ \ \ \ \ numRows\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00084}00084\ \ \ \ \ numCols\ =\ 2;\ \textcolor{comment}{//\ Test\ on\ an\ odd\ number\ of\ qubits}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00085}00085\ \ \ \ \ latticeGraph\ =\ \mbox{\hyperlink{create_graph_8hpp_aabb013bb6de93b1ca2ff83e1d7d200c7}{createLatticeGraph}}(numRows,numCols);}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00086}00086\ \ \ \ \ numVertices\ =\ boost::num\_vertices(latticeGraph);}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00090}00090\ \ \ \ \ \textcolor{comment}{//\ Print\ graph\ to\ file}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{comment}{//\ Update\ with\ desired\ directory\ to\ view\ graph.}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{comment}{//std::string\ fileDir\ =\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs"{};}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00093}00093\ \ \ \ \ \textcolor{comment}{//std::string\ graphName\ =\ "{}1DLattice2QubitsAnglesPiOn2"{};}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00094}00094\ \ \ \ \ \textcolor{comment}{//std::string\ format\ =\ "{}png"{};}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{comment}{//printGraphToFile(latticeGraph,fileDir,graphName,format);}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00098}00098\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00099}00099\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00102}00102\ \ \ \ \ \textcolor{comment}{//\ create\ a\ quantum\ register}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00103}00103\ \ \ \ \ Qureg\ qureg\ =\ createQureg(numVertices,\ env);}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00106}00106\ \ \ \ \ \textcolor{comment}{//\ set\ angles}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00107}00107\ \ \ \ \ qubitAngles\ =\ \mbox{\hyperlink{angle_construction_8hpp_ac940c0b993f5f0e21dc74a2ac2f3fc7a}{initAllAnglesSame}}(numVertices,\ M\_PI/2);}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{comment}{//\ initialise\ in\ the\ plus\ state}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00111}00111\ \ \ \ \ initPlusState(qureg);}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00113}00113\ \ \ \ \ \textcolor{comment}{//Leave\ angle\ off\ qubits}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00114}00114\ \ \ \ \ \textcolor{comment}{//\ add\ angles\ to\ the\ qubits}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00115}00115\ \ \ \ \ \textcolor{comment}{//addAngleRotateZgate(qureg,qubitAngles);}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00118}00118\ \ \ \ \ \textcolor{comment}{//\ entangle\ graph}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00119}00119\ \ \ \ \ \mbox{\hyperlink{quantum_graph_cluster_states_8hpp_a3f830234f9eb3a150a084b0f2b4aa056}{entangleGraph}}(qureg,latticeGraph);}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00122}00122\ \ \ \ \ \textcolor{comment}{//\ measure\ graph}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00123}00123\ \ \ \ \ measuredQubitsOutcomes\ =\ \mbox{\hyperlink{flow_measurements_8hpp_a7231be9a1c347894c1d01c349f4b41c7}{measureGraph}}(}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ qureg,}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ latticeGraph,}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ qubitAngles,}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ numRows);}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00129}00129\ \ \ \ \ assert((measuredQubitsOutcomes.back()==0)\ \&\&\ \textcolor{stringliteral}{"{}The\ last\ qubit\ must\ be\ 0,\ it\ is\ not."{}});}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00130}00130\ \ \ \ \ \textcolor{comment}{//\ print\ results\ to\ screen}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00131}00131\ \ \ \ \ \textcolor{comment}{//printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00135}00135\ \ \ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00136}00136\ \ \ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00137}00137\ \ \ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00138}00138\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00139}00139\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00140}00140\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00141}00141\ \}}
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_source_l00145}00145\ }
+
+\end{DoxyCode}

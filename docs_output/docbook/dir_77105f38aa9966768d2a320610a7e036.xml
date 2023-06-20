@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_77105f38aa9966768d2a320610a7e036" xml:lang="en-US">
+<title>src/graphs Directory Reference</title>
+<indexterm><primary>src/graphs Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_graph_constructions_8hpp">graphConstructions.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_graph_flow_definition_8hpp">graphFlowDefinition.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_graph_traversal_flows_8hpp">graphTraversalFlows.hpp</link></para>
+
+<para>Construct graphs and perform various graph traversal operations. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

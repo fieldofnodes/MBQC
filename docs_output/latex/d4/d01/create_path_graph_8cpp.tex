@@ -1,0 +1,112 @@
+\doxysection{src/archive/files\+To\+Go\+Through/create\+Path\+Graph.cpp File Reference}
+\hypertarget{create_path_graph_8cpp}{}\label{create_path_graph_8cpp}\index{src/archive/filesToGoThrough/createPathGraph.cpp@{src/archive/filesToGoThrough/createPathGraph.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$boost/graph/adjacency\+\_\+list.\+hpp$>$}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef boost\+::property$<$ boost\+::edge\+\_\+weight\+\_\+t, int $>$ \mbox{\hyperlink{create_path_graph_8cpp_ad531f0530c52e2baed8840517b52b457}{Edge\+Weight\+Property}}
+\item 
+typedef boost\+::adjacency\+\_\+list$<$ boost\+::listS, boost\+::vecS, boost\+::undirectedS, boost\+::no\+\_\+property, \mbox{\hyperlink{create_graph_8hpp_ad531f0530c52e2baed8840517b52b457}{Edge\+Weight\+Property}} $>$ \mbox{\hyperlink{create_path_graph_8cpp_ae727d82d2665e0ccdbb85e29c841ba5f}{undirected\+Graph}}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{create_path_graph_8cpp_af04c50f717d4bda41f0c58fe0eece059}{edge\+\_\+iterator}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \mbox{\hyperlink{create_path_graph_8cpp_a7be0ea99a39ac1e9e8d423a6c2d3e51b}{create\+\_\+path\+\_\+graph}} (int n)
+\item 
+int \mbox{\hyperlink{create_path_graph_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{create_path_graph_8cpp_af04c50f717d4bda41f0c58fe0eece059}\label{create_path_graph_8cpp_af04c50f717d4bda41f0c58fe0eece059} 
+\index{createPathGraph.cpp@{createPathGraph.cpp}!edge\_iterator@{edge\_iterator}}
+\index{edge\_iterator@{edge\_iterator}!createPathGraph.cpp@{createPathGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{edge\_iterator}{edge\_iterator}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}$>$\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{edge\+\_\+iterator}}}
+
+
+
+Definition at line \mbox{\hyperlink{create_path_graph_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{create_path_graph_8cpp_source}{create\+Path\+Graph.\+cpp}}.
+
+\Hypertarget{create_path_graph_8cpp_ad531f0530c52e2baed8840517b52b457}\label{create_path_graph_8cpp_ad531f0530c52e2baed8840517b52b457} 
+\index{createPathGraph.cpp@{createPathGraph.cpp}!EdgeWeightProperty@{EdgeWeightProperty}}
+\index{EdgeWeightProperty@{EdgeWeightProperty}!createPathGraph.cpp@{createPathGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{EdgeWeightProperty}{EdgeWeightProperty}}
+{\footnotesize\ttfamily typedef boost\+::property$<$boost\+::edge\+\_\+weight\+\_\+t, int$>$ \mbox{\hyperlink{create_graph_8hpp_ad531f0530c52e2baed8840517b52b457}{Edge\+Weight\+Property}}}
+
+
+
+Definition at line \mbox{\hyperlink{create_path_graph_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{create_path_graph_8cpp_source}{create\+Path\+Graph.\+cpp}}.
+
+\Hypertarget{create_path_graph_8cpp_ae727d82d2665e0ccdbb85e29c841ba5f}\label{create_path_graph_8cpp_ae727d82d2665e0ccdbb85e29c841ba5f} 
+\index{createPathGraph.cpp@{createPathGraph.cpp}!undirectedGraph@{undirectedGraph}}
+\index{undirectedGraph@{undirectedGraph}!createPathGraph.cpp@{createPathGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{undirectedGraph}{undirectedGraph}}
+{\footnotesize\ttfamily typedef boost\+::adjacency\+\_\+list$<$boost\+::listS, boost\+::vecS,boost\+::undirectedS,boost\+::no\+\_\+property,\mbox{\hyperlink{create_graph_8hpp_ad531f0530c52e2baed8840517b52b457}{Edge\+Weight\+Property}}$>$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}}
+
+
+
+Definition at line \mbox{\hyperlink{create_path_graph_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{create_path_graph_8cpp_source}{create\+Path\+Graph.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{create_path_graph_8cpp_a7be0ea99a39ac1e9e8d423a6c2d3e51b}\label{create_path_graph_8cpp_a7be0ea99a39ac1e9e8d423a6c2d3e51b} 
+\index{createPathGraph.cpp@{createPathGraph.cpp}!create\_path\_graph@{create\_path\_graph}}
+\index{create\_path\_graph@{create\_path\_graph}!createPathGraph.cpp@{createPathGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{create\_path\_graph()}{create\_path\_graph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} create\+\_\+path\+\_\+graph (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{create_path_graph_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{create_path_graph_8cpp_source}{create\+Path\+Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \textcolor{comment}{//\ create\ a\ path\ graph\ with\ n\ vertices}}
+\DoxyCodeLine{00014\ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ g(n);}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n-\/1;\ i++)\ \{\ \ \textcolor{comment}{//\ add\ edges\ to\ create\ a\ path\ graph}}
+\DoxyCodeLine{00017\ \ \ \ \ add\_edge(i,\ i+1,\ g);}
+\DoxyCodeLine{00018\ \ \ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordflow}{return}\ g;}
+\DoxyCodeLine{00021\ \}}
+
+\end{DoxyCode}
+\Hypertarget{create_path_graph_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{create_path_graph_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{createPathGraph.cpp@{createPathGraph.cpp}!main@{main}}
+\index{main@{main}!createPathGraph.cpp@{createPathGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{create_path_graph_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{create_path_graph_8cpp_source}{create\+Path\+Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ 100;}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ g\ =\ \mbox{\hyperlink{create_path_graph_8cpp_a7be0ea99a39ac1e9e8d423a6c2d3e51b}{create\_path\_graph}}(n);\ \textcolor{comment}{//\ create\ a\ path\ graph\ with\ 5\ vertices}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ std::pair<edge\_iterator,\ edge\_iterator>\ ei\ =\ edges(g);}
+\DoxyCodeLine{00028\ \ }
+\DoxyCodeLine{00029\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Number\ of\ edges\ =\ "{}}\ <<\ num\_edges(g)\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00030\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Edge\ list:\(\backslash\)n"{}};}
+\DoxyCodeLine{00031\ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{edge\_iterator}}\ it\ =\ ei.first;\ it\ !=\ ei.second;\ ++it\ )}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ std::cout\ <<\ *it\ <<\ std::endl;}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ }
+\DoxyCodeLine{00037\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00038\ \ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00041\ \}}
+
+\end{DoxyCode}

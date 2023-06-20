@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_68267d1309a1af8e8297ef4c3efbcdba" xml:lang="en-US">
+<title>src Directory Reference</title>
+<indexterm><primary>src Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Directories    </title>
+        <itemizedlist>
+            <listitem><para>directory <link linkend="_dir_05f47c3b30cbd06df5261c168690a0c6">archive</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_8dd1b576351d4498b09b7653aa979055">genericHelperFunctions</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_77105f38aa9966768d2a320610a7e036">graphs</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_b546cf57ff779f8e98b34a37a252bf8b">quantumGraphs</link></para>
+</listitem>
+            <listitem><para>directory <link linkend="_dir_5e94d188cba95e774cdc9d0c259e64a6">testFunctions</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_src_2mbqc_starter_file_8cpp">mbqcStarterFile.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_packages_8hpp">packages.hpp</link></para>
+
+<para>Contains the inclusion of various packages and libraries used in the project. </para>
+</listitem>
+            <listitem><para>file <link linkend="_test_qu_e_s_t_c_m_a_k_e_8cpp">testQuESTCMAKE.cpp</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

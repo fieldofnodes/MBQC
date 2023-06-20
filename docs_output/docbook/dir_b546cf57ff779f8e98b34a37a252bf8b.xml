@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_b546cf57ff779f8e98b34a37a252bf8b" xml:lang="en-US">
+<title>src/quantumGraphs Directory Reference</title>
+<indexterm><primary>src/quantumGraphs Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_angle_construction_8hpp">angleConstruction.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_circuit_based_graph_actions_8hpp">circuitBasedGraphActions.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_flow_measurements_8hpp">flowMeasurements.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_quantum_graph_cluster_states_8hpp">quantumGraphClusterStates.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_state_construction_8hpp">stateConstruction.hpp</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

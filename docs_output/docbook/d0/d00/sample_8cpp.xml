@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_sample_8cpp" xml:lang="en-US">
+<title>src/archive/filesToGoThrough/sample.cpp File Reference</title>
+<indexterm><primary>src/archive/filesToGoThrough/sample.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;QuEST.h&gt;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_sample_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_sample_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>sample.cpp</secondary></indexterm>
+<indexterm><primary>sample.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_sample_8cpp_source_1l00003">3</link> of file <link linkend="_sample_8cpp_source">sample.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00003 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00004 
+00005 &#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST</emphasis>
+00006 &#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+00007 &#32;&#32;
+00008 &#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;2&#32;qubit&#32;register&#32;in&#32;the&#32;zero&#32;state</emphasis>
+00009 &#32;&#32;Qureg&#32;qubits&#32;=&#32;createQureg(2,&#32;env);
+00010 &#32;&#32;initZeroState(qubits);
+00011 &#32;&#32;&#32;&#32;
+00012 &#32;&#32;<emphasis role="comment">//&#32;apply&#32;circuit</emphasis>
+00013 &#32;&#32;hadamard(qubits,&#32;0);
+00014 &#32;&#32;controlledNot(qubits,&#32;0,&#32;1);
+00015 &#32;&#32;measure(qubits,&#32;1);
+00016 &#32;&#32;&#32;&#32;
+00017 &#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+00018 &#32;&#32;destroyQureg(qubits,&#32;env);&#32;
+00019 &#32;&#32;destroyQuESTEnv(env);
+00020 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+00021 }
+</programlisting></section>
+</section>
+</section>

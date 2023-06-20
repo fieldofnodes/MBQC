@@ -1,0 +1,130 @@
+\doxysection{20230328\+\_\+\+Odd\+Path\+Graph0\+Angles\+Last\+Qubit\+Outcome.\+cpp}
+\hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source}{}\label{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source}\index{src/archive/filesToGoThrough/20230328\_OddPathGraph0AnglesLastQubitOutcome.cpp@{src/archive/filesToGoThrough/20230328\_OddPathGraph0AnglesLastQubitOutcome.cpp}}
+\mbox{\hyperlink{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <QuEST.h>}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00002}00002\ \textcolor{comment}{//\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <algorithm>}\ \ \ \ \textcolor{comment}{//\ std::all\_of}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{20230314___functions___v1_8hpp}{20230314\_Functions\_V1.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00008}00008\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00012}\mbox{\hyperlink{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00012}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00014}00014\ \ \ \ \ vector<int>\ lastQubitOutcome;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00015}00015\ \ \ \ \ vector<int>\ allLastQubitZero;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{keywordtype}{int}\ numberRealisations\ =\ 1E6;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{int}\ totalQubitNumberIter\ =\ 6;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j=1;j<totalQubitNumberIter;j++)}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ qubitNumber=2*j\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<numberRealisations;i++)}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ \{\ \ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ parameters}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numberQubits\ =\ qubitNumber;\textcolor{comment}{//11;}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ prepare\ our\ register}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ Qureg\ qureg\ =\ createQureg(numberQubits,\ env);}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ qureg\ -\/>\ |+><+|}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ initPlusState(qureg);\ \ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ vector\ representing\ a\ linear\ cluster\ graph}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ vector<int>\ pathGraph\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_aa6c7ea81b30e713a1f641e9a86e5f0a8}{getPathGraph}}(numberQubits);\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ vector<int>\ measuredQubitsOutcomes;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ vector<qreal>\ qubitAngles;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ vector<qreal>\ updatedQubitAngles;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ apply\ CZ\ gate\ to\ entangle\ the\ circuit}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(std::vector<int>::size\_type\ q\ =\ 0;\ q\ !=\ pathGraph.size()-\/1;\ q++)\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ controlledPhaseFlip(qureg,q,q+1);}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ initial\ angles}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<numberQubits;i++)}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles.push\_back(0.0);\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Run\ MBQC}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ measure\ first\ qubit}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ firstQubitIndex=0;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ updatedQubitAngles.push\_back(qubitAngles[firstQubitIndex]);}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ rotateZ(qureg,firstQubitIndex,\ (-\/1)*updatedQubitAngles[firstQubitIndex]);}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ hadamard(qureg,firstQubitIndex);}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes.push\_back(measure(qureg,firstQubitIndex));}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ measure\ second\ qubit}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ X1;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//qreal\ Z1;}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ secondQubitIndex=1;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ X1\ =\ pow((-\/1),measuredQubitsOutcomes[firstQubitIndex])*qubitAngles[secondQubitIndex];}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ updatedQubitAngles[secondQubitIndex]\ =\ X1;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ rotateZ(qureg,secondQubitIndex,\ (-\/1)*updatedQubitAngles[secondQubitIndex]);}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ hadamard(qureg,secondQubitIndex);}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes.push\_back(measure(qureg,secondQubitIndex));}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ currentQubit=2;currentQubit<numberQubits;currentQubit++)}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ X;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ Z;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//qreal\ phi;}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ phiPrime;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ outcome;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ X\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a9c227d82e03f906a192a861db4ddf6ab}{computeXCorrectionAnglePathGraph}}(}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathGraph,\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes,}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles,}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentQubit);}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Z\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_acf8731fbf6fdc066d371b78a916dc431}{computeZCorrectionAnglePathGraph}}(}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pathGraph,\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes,}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentQubit);}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ phiPrime\ =\ X+Z;}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rotateZ(qureg,currentQubit,\ (-\/1)*phiPrime);}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hadamard(qureg,currentQubit);}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ outcome\ =\ measure(qureg,currentQubit);}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes.push\_back(outcome);}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ lastQubitOutcome.push\_back(measuredQubitsOutcomes.back());}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Confirm\ all\ of\ the\ last\ qubits\ are\ 0}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\ std::all\_of(}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lastQubitOutcome.begin(),\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lastQubitOutcome.end(),\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [](\textcolor{keywordtype}{int}\ i)\{return\ i==0;\}))}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}All\ the\ elements\ on\ "{}}\ <<\ qubitNumber\ <<\ \textcolor{stringliteral}{"{}\ qubits\ are\ 0.\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ allLastQubitZero.push\_back(1);}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00113}00113\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00114}00114\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ std::all\_of(}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ allLastQubitZero.begin(),\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ allLastQubitZero.end(),\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [](\textcolor{keywordtype}{int}\ i)\{return\ i==1;\}))}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}All\ the\ odd\ number\ qubits\ circuits\ returned\ last\ qubit\ as\ 0.\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00121}00121\ \}}
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00123}00123\ \ \ }
+\DoxyCodeLine{\Hypertarget{20230328___odd_path_graph0_angles_last_qubit_outcome_8cpp_source_l00124}00124\ }
+
+\end{DoxyCode}

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_create_mbqc_graph_8cpp_source" xml:lang="en-US">
+<title>createMbqcGraph.cpp</title>
+<indexterm><primary>src/archive/filesToGoThrough/createMbqcGraph.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_create_mbqc_graph_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/adjacency_list.hpp&gt;</emphasis>
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&lt;QuEST.h&gt;</emphasis>
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00004"/>00004 
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00005"/>00005 <emphasis role="comment">//&#32;Define&#32;a&#32;struct&#32;to&#32;hold&#32;the&#32;properties&#32;of&#32;the&#32;vertices</emphasis>
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00006"/><link linkend="_struct_vertex_properties">00006</link> <emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_vertex_properties">VertexProperties</link>&#32;{
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00007"/><link linkend="_struct_vertex_properties_1a9529d752f2f361d68137d410f83f6c07">00007</link> &#32;&#32;&#32;&#32;Qureg&#32;<link linkend="_struct_vertex_properties_1a9529d752f2f361d68137d410f83f6c07">qubit</link>;
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00008"/>00008 };
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00009"/>00009 
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00010"/>00010 <emphasis role="comment">//&#32;Define&#32;a&#32;struct&#32;to&#32;hold&#32;the&#32;properties&#32;of&#32;the&#32;edges</emphasis>
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00011"/><link linkend="_struct_edge_properties">00011</link> <emphasis role="keyword">struct&#32;</emphasis><link linkend="_struct_edge_properties">EdgeProperties</link>&#32;{
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00012"/><link linkend="_struct_edge_properties_1ab4b82d800607098e7c3bedce65bd9a75">00012</link> &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;<link linkend="_struct_edge_properties_1ab4b82d800607098e7c3bedce65bd9a75">angle</link>;
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00013"/>00013 };
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00014"/>00014 
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00015"/>00015 <emphasis role="comment">//&#32;Define&#32;the&#32;graph&#32;type</emphasis>
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00016"/><link linkend="_create_mbqc_graph_8cpp_1aecb5240937295d7d862af72b714284a3">00016</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::adjacency_list&lt;boost::vecS,&#32;boost::vecS,&#32;boost::bidirectionalS,&#32;VertexProperties,&#32;EdgeProperties&gt;&#32;<link linkend="_create_mbqc_graph_8cpp_1aecb5240937295d7d862af72b714284a3">CircuitGraph</link>;
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00017"/>00017 
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00018"/><link linkend="_create_mbqc_graph_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00018</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_create_mbqc_graph_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;quantum&#32;register&#32;with&#32;3&#32;qubits</emphasis>
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;Qureg&#32;qubits&#32;=&#32;createQureg(3,&#32;env);
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00022"/>00022 
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;the&#32;graph</emphasis>
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;<link linkend="_create_mbqc_graph_8cpp_1aecb5240937295d7d862af72b714284a3">CircuitGraph</link>&#32;circuit(3);
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00025"/>00025 
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Add&#32;the&#32;qubits&#32;as&#32;vertices&#32;and&#32;attach&#32;them&#32;to&#32;the&#32;graph</emphasis>
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;3;&#32;i++)&#32;{
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_vertex_properties">VertexProperties</link>&#32;vp&#32;=&#32;{qubits};
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;boost::add_vertex(vp,&#32;circuit);
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00031"/>00031 
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00032"/>00032 
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Add&#32;the&#32;controlled-Z&#32;gates&#32;as&#32;edges&#32;and&#32;attach&#32;them&#32;to&#32;the&#32;graph</emphasis>
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00034"/>00034 
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;boost::add_edge(0,&#32;1,&#32;{M_PI},&#32;circuit);
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;boost::add_edge(1,&#32;2,&#32;{M_PI/2},&#32;circuit);
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00037"/>00037 
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Perform&#32;some&#32;operations&#32;on&#32;the&#32;qubits&#32;using&#32;the&#32;graph</emphasis>
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;m&#32;=&#32;measure(qubits,0);
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;m&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>;
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00042"/>00042 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00043"/>00043 
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Destroy&#32;the&#32;quantum&#32;register&#32;and&#32;the&#32;environment</emphasis>
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;destroyQureg(qubits,&#32;env);
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00047"/>00047 
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00048"/>00048 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_create_mbqc_graph_8cpp_source_1l00049"/>00049 }
+</programlisting></section>

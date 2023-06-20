@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_write_graph_graph_viz_dot_file_8hpp" xml:lang="en-US">
+<title>src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp File Reference</title>
+<indexterm><primary>src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp</primary></indexterm>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>std::string <link linkend="_write_graph_graph_viz_dot_file_8hpp_1a1409ed3eb04c88533bec225163b568ea">updateTextFile</link> (std::string inputPath)</para>
+
+<para>Updates a text file with additional content. </para>
+</listitem>
+            <listitem><para>void <link linkend="_write_graph_graph_viz_dot_file_8hpp_1a3d553b54b16922ee146bfb33201a3993">printGraphToFile</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, std::string fileDir, std::string graphName, std::string format)</para>
+
+<para>Prints a graph to a file using Graphviz. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_1a3d553b54b16922ee146bfb33201a3993"/><section>
+    <title>printGraphToFile()</title>
+<indexterm><primary>printGraphToFile</primary><secondary>writeGraphGraphVizDotFile.hpp</secondary></indexterm>
+<indexterm><primary>writeGraphGraphVizDotFile.hpp</primary><secondary>printGraphToFile</secondary></indexterm>
+<para><computeroutput>void printGraphToFile (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, std::string fileDir, std::string graphName, std::string format)</computeroutput></para><para>
+
+<para>Prints a graph to a file using Graphviz. </para>
+</para>
+
+<para>This function writes a Boost undirected graph to a Graphviz DOT file. It then converts the DOT file to the specified output format (e.g., PNG, SVG) using the Graphviz &quot;dot&quot; command. The resulting file is saved in the specified directory with the given graph name.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>graph</entry><entry>
+<para>The undirected graph to print. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>fileDir</entry><entry>
+<para>The directory where the output file will be saved. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>graphName</entry><entry>
+<para>The name of the output file without the file extension. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>format</entry><entry>
+<para>The desired output format (&quot;png&quot;, &quot;svg&quot;, or any other format to generate both). </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_write_graph_graph_viz_dot_file_8hpp_source_1l00079">79</link> of file <link linkend="_write_graph_graph_viz_dot_file_8hpp_source">writeGraphGraphVizDotFile.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00079 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00080 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;Graphviz&#32;output&#32;stream</emphasis>
+00081 &#32;&#32;&#32;&#32;std::stringstream&#32;outputFile;
+00082 &#32;&#32;&#32;&#32;outputFile&#32;&lt;&lt;&#32;fileDir&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>&#32;&lt;&lt;&#32;graphName;
+00083 &#32;&#32;&#32;&#32;
+00084 
+00085 &#32;&#32;&#32;&#32;std::ofstream&#32;dot_file(outputFile.str()+<emphasis role="stringliteral">&quot;.dot&quot;</emphasis>);
+00086 &#32;&#32;&#32;&#32;
+00087 
+00088 &#32;&#32;&#32;&#32;
+00089 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;to&#32;file</emphasis>
+00090 &#32;&#32;&#32;&#32;boost::write_graphviz(
+00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;dot_file,&#32;
+00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;graph);
+00093 &#32;&#32;&#32;&#32;
+00094 &#32;&#32;&#32;&#32;std::string&#32;updatedDotFile&#32;=&#32;<link linkend="_write_graph_graph_viz_dot_file_8hpp_1a1409ed3eb04c88533bec225163b568ea">updateTextFile</link>(outputFile.str()+<emphasis role="stringliteral">&quot;.dot&quot;</emphasis>);
+00095 
+00096 
+00097 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(format&#32;==&#32;<emphasis role="stringliteral">&quot;png&quot;</emphasis>){
+00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Convert&#32;the&#32;DOT&#32;file&#32;to&#32;PNG</emphasis>
+00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;dotPath;&#32;
+00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;pngPath;
+00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;sysString;
+00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;dotPath&#32;&lt;&lt;&#32;outputFile.str()&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;.dot&quot;</emphasis>;
+00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pngPath&#32;&lt;&lt;&#32;outputFile.str()&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;.png&quot;</emphasis>;
+00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sysString&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;dot&#32;-Tpng&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;updatedDotFile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;-o&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;pngPath.str();
+00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::system(sysString.str().c_str());
+00106 
+00107 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(format&#32;==&#32;<emphasis role="stringliteral">&quot;svg&quot;</emphasis>){
+00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Convert&#32;the&#32;DOT&#32;file&#32;to&#32;SVG</emphasis>
+00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;dotPath;&#32;
+00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;svgPath;
+00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;sysString;
+00112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;dotPath&#32;&lt;&lt;&#32;outputFile.str()&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;.dot&quot;</emphasis>;
+00113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;svgPath&#32;&lt;&lt;&#32;outputFile.str()&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;.svg&quot;</emphasis>;
+00114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sysString&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;dot&#32;-Tpng&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;updatedDotFile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;-o&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;svgPath.str();
+00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::system(sysString.str().c_str());
+00116 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Convert&#32;the&#32;DOT&#32;file&#32;to&#32;PNG&#32;and&#32;SVG</emphasis>
+00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;dotPath;&#32;
+00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;pngPath;
+00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;svgPath;
+00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;pngSysString;
+00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::stringstream&#32;svgSysString;
+00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;dotPath&#32;&lt;&lt;&#32;outputFile.str()&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;.dot&quot;</emphasis>;
+00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pngPath&#32;&lt;&lt;&#32;outputFile.str()&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;.png&quot;</emphasis>;
+00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;svgPath&#32;&lt;&lt;&#32;outputFile.str()&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;.svg&quot;</emphasis>;
+00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pngSysString&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;dot&#32;-Tpng&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;updatedDotFile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;-o&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;pngPath.str();
+00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;svgSysString&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;dot&#32;-Tpng&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;updatedDotFile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;-o&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;svgPath.str();
+00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::system(pngSysString.str().c_str());
+00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::system(svgSysString.str().c_str());
+00130 &#32;&#32;&#32;&#32;}
+00131 }
+</programlisting></section>
+<anchor xml:id="_write_graph_graph_viz_dot_file_8hpp_1a1409ed3eb04c88533bec225163b568ea"/><section>
+    <title>updateTextFile()</title>
+<indexterm><primary>updateTextFile</primary><secondary>writeGraphGraphVizDotFile.hpp</secondary></indexterm>
+<indexterm><primary>writeGraphGraphVizDotFile.hpp</primary><secondary>updateTextFile</secondary></indexterm>
+<para><computeroutput>std::string updateTextFile (std::string inputPath)</computeroutput></para><para>
+
+<para>Updates a text file with additional content. </para>
+</para>
+
+<para>This function reads the content of the input file, inserts new text at a specific line, and writes the updated content to a new output file. The new file name is derived by appending &quot;Updated&quot; to the original file name. The input file should exist and be accessible.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>inputPath</entry><entry>
+<para>The path to the input file. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>The path to the updated output file. </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_write_graph_graph_viz_dot_file_8hpp_source_1l00024">24</link> of file <link linkend="_write_graph_graph_viz_dot_file_8hpp_source">writeGraphGraphVizDotFile.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00025 &#32;&#32;&#32;&#32;std::ifstream&#32;infile(inputPath);
+00026 &#32;&#32;&#32;&#32;std::size_t&#32;pos&#32;=&#32;inputPath.find_last_of(<emphasis role="stringliteral">&quot;.&quot;</emphasis>);
+00027 &#32;&#32;&#32;&#32;std::string&#32;outputPath;
+00028 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(pos&#32;!=&#32;std::string::npos)&#32;{
+00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;prefix&#32;=&#32;inputPath.substr(0,&#32;pos);
+00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;suffix&#32;=&#32;inputPath.substr(pos);
+00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;outputPath&#32;=&#32;prefix&#32;+&#32;<emphasis role="stringliteral">&quot;Updated&quot;</emphasis>&#32;+&#32;suffix;
+00032 &#32;&#32;&#32;&#32;}
+00033 
+00034 &#32;&#32;&#32;&#32;std::ofstream&#32;outfile(outputPath);
+00035 
+00036 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Read&#32;and&#32;write&#32;the&#32;first&#32;line</emphasis>
+00037 &#32;&#32;&#32;&#32;std::string&#32;line;
+00038 &#32;&#32;&#32;&#32;std::getline(infile,&#32;line);
+00039 &#32;&#32;&#32;&#32;outfile&#32;&lt;&lt;&#32;line&#32;&lt;&lt;&#32;std::endl;
+00040 
+00041 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Insert&#32;new&#32;text&#32;at&#32;line&#32;2</emphasis>
+00042 &#32;&#32;&#32;&#32;outfile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;graph&#32;[layout&#32;=&#32;neato]&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00043 &#32;&#32;&#32;&#32;outfile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;node&#32;[shape&#32;=&#32;circle,&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00044 &#32;&#32;&#32;&#32;outfile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;style&#32;=&#32;filled,&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00045 &#32;&#32;&#32;&#32;outfile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;style&#32;=&#32;filled,&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00046 &#32;&#32;&#32;&#32;outfile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;color&#32;=&#32;lightblue]&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00047 &#32;&#32;&#32;&#32;outfile&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;edge&#32;[color&#32;=&#32;silver]&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00048 &#32;&#32;&#32;&#32;
+00049 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Write&#32;the&#32;remaining&#32;lines</emphasis>
+00050 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>&#32;(std::getline(infile,&#32;line))&#32;{
+00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;outfile&#32;&lt;&lt;&#32;line&#32;&lt;&lt;&#32;std::endl;
+00052 &#32;&#32;&#32;&#32;}
+00053 
+00054 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Close&#32;the&#32;files</emphasis>
+00055 &#32;&#32;&#32;&#32;infile.close();
+00056 &#32;&#32;&#32;&#32;outfile.close();
+00057 &#32;&#32;&#32;&#32;
+00058 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;outputPath;
+00059 }
+</programlisting></section>
+</section>
+</section>

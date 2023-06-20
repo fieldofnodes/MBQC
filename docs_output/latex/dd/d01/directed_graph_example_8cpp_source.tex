@@ -1,0 +1,41 @@
+\doxysection{directed\+Graph\+Example.\+cpp}
+\hypertarget{directed_graph_example_8cpp_source}{}\label{directed_graph_example_8cpp_source}\index{src/archive/filesToGoThrough/directedGraphExample.cpp@{src/archive/filesToGoThrough/directedGraphExample.cpp}}
+\mbox{\hyperlink{directed_graph_example_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <boost/graph/adjacency\_list.hpp>}}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00003}00003\ \ }
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00004}\mbox{\hyperlink{directed_graph_example_8cpp_ad531f0530c52e2baed8840517b52b457}{00004}}\ \textcolor{keyword}{typedef}\ boost::property<boost::edge\_weight\_t,\ int>\ \mbox{\hyperlink{directed_graph_example_8cpp_ad531f0530c52e2baed8840517b52b457}{EdgeWeightProperty}};}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00005}\mbox{\hyperlink{directed_graph_example_8cpp_ab97a20c591cf136432a636de4c3cd064}{00005}}\ \textcolor{keyword}{typedef}\ boost::adjacency\_list<boost::listS,\ boost::vecS,\ boost::directedS,\ boost::no\_property,\ EdgeWeightProperty\ >\ \mbox{\hyperlink{directed_graph_example_8cpp_ab97a20c591cf136432a636de4c3cd064}{DirectedGraph}};}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00006}\mbox{\hyperlink{directed_graph_example_8cpp_ade5cc4a36796b77ccb880d558beaf9a9}{00006}}\ \textcolor{keyword}{typedef}\ boost::graph\_traits<DirectedGraph>::edge\_iterator\ \mbox{\hyperlink{directed_graph_example_8cpp_ade5cc4a36796b77ccb880d558beaf9a9}{edge\_iterator}};}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00007}00007\ \ }
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00008}\mbox{\hyperlink{directed_graph_example_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00008}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{directed_graph_example_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00010}00010\ \ \ \ \ \mbox{\hyperlink{directed_graph_example_8cpp_ab97a20c591cf136432a636de4c3cd064}{DirectedGraph}}\ g;}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00011}00011\ \ }
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00012}00012\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00013}00013\ \ \ \ \ boost::add\_edge\ (0,\ 1,\ 8,\ g);}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00014}00014\ \ \ \ \ boost::add\_edge\ (0,\ 3,\ 18,\ g);}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00015}00015\ \ \ \ \ boost::add\_edge\ (1,\ 2,\ 20,\ g);}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00016}00016\ \ \ \ \ boost::add\_edge\ (2,\ 3,\ 2,\ g);}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00017}00017\ \ \ \ \ boost::add\_edge\ (3,\ 1,\ 1,\ g);}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00018}00018\ \ \ \ \ boost::add\_edge\ (1,\ 3,\ 7,\ g);}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00019}00019\ \ \ \ \ boost::add\_edge\ (1,\ 4,\ 1,\ g);}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00020}00020\ \ \ \ \ boost::add\_edge\ (4,\ 5,\ 6,\ g);}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00021}00021\ \ \ \ \ boost::add\_edge\ (2,\ 5,\ 7,\ g);}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00022}00022\ \ }
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00023}00023\ \ \ \ \ std::pair<edge\_iterator,\ edge\_iterator>\ ei\ =\ edges(g);}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00024}00024\ \ }
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00025}00025\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Number\ of\ edges\ =\ "{}}\ <<\ num\_edges(g)\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00026}00026\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Edge\ list:\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00027}00027\ \ }
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00028}00028\ \ \ \ \ std::copy(\ ei.first,\ ei.second,}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::ostream\_iterator<boost::adjacency\_list<>::edge\_descriptor>\{}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}\});}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00031}00031\ \ }
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00032}00032\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00033}00033\ \ }
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{directed_graph_example_8cpp_source_l00035}00035\ \}}
+
+\end{DoxyCode}

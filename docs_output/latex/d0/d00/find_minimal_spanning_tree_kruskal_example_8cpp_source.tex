@@ -1,0 +1,50 @@
+\doxysection{find\+Minimal\+Spanning\+Tree\+Kruskal\+Example.\+cpp}
+\hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source}{}\label{find_minimal_spanning_tree_kruskal_example_8cpp_source}\index{src/archive/filesToGoThrough/findMinimalSpanningTreeKruskalExample.cpp@{src/archive/filesToGoThrough/findMinimalSpanningTreeKruskalExample.cpp}}
+\mbox{\hyperlink{find_minimal_spanning_tree_kruskal_example_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <boost/graph/adjacency\_list.hpp>}}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <boost/graph/kruskal\_min\_spanning\_tree.hpp>}}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00005}00005\ \ }
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00006}\mbox{\hyperlink{find_minimal_spanning_tree_kruskal_example_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00006}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{find_minimal_spanning_tree_kruskal_example_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00008}00008\ \ \ \textcolor{keyword}{typedef}\ boost::adjacency\_list<\ boost::vecS,\ boost::vecS,\ boost::undirectedS,}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00009}00009\ \ \ \ \ boost::no\_property,\ boost::property<boost::edge\_weight\_t,\ int>\ >\ Graph;}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00010}00010\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00011}00011\ \ \ \textcolor{keyword}{typedef}\ boost::graph\_traits\ <Graph>::edge\_descriptor\ Edge;}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00012}00012\ \ \ \textcolor{keyword}{typedef}\ boost::graph\_traits\ <Graph>::vertex\_descriptor\ Vertex;}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00013}00013\ \ \ \textcolor{keyword}{typedef}\ std::pair<int,\ int>\ E;}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00014}00014\ \ }
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00015}00015\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_nodes\ =\ 5;}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00016}00016\ \ \ E\ edge\_array[]\ =\ \{\ E(0,\ 2),\ E(1,\ 3),\ E(1,\ 4),\ E(2,\ 1),\ E(2,\ 3),}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00017}00017\ \ \ \ \ E(3,\ 4),\ E(4,\ 0),\ E(4,\ 1)}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00018}00018\ \ \ \};}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00019}00019\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00020}00020\ \ \ \textcolor{keywordtype}{int}\ weights[]\ =\ \{\ 1,\ 1,\ 2,\ 7,\ 3,\ 1,\ 1,\ 1\ \};}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00021}00021\ \ \ std::size\_t\ num\_edges\ =\ \textcolor{keyword}{sizeof}(edge\_array)\ /\ \textcolor{keyword}{sizeof}(E);}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00022}00022\ \ }
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00023}00023\ \ \ Graph\ g(edge\_array,\ edge\_array\ +\ num\_edges,\ weights,\ num\_nodes);}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00024}00024\ \ }
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00025}00025\ \ \ boost::property\_map<Graph,\ boost::edge\_weight\_t\ >::type\ weight\ =\ get(boost::edge\_weight,\ g);}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00026}00026\ \ \ std::vector\ <\ Edge\ >\ spanning\_tree;}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00027}00027\ \ }
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00028}00028\ \ \ boost::kruskal\_minimum\_spanning\_tree(g,\ std::back\_inserter(spanning\_tree));}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00029}00029\ \ }
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00030}00030\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Print\ the\ edges\ in\ the\ MST:"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00031}00031\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00032}00032\ \ \ \textcolor{keywordflow}{for}\ (std::vector\ <\ Edge\ >::iterator\ ei\ =\ spanning\_tree.begin();}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ ei\ !=\ spanning\_tree.end();\ ++ei)\ }
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00034}00034\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00035}00035\ \ \ \ \ std::cout\ <<\ source(*ei,\ g)\ }
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ <-\/-\/>\ "{}}}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ target(*ei,\ g)}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ with\ weight\ of\ "{}}}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ weight[*ei]}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00041}00041\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00042}00042\ \ }
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00043}00043\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00044}00044\ \}\ }
+
+\end{DoxyCode}

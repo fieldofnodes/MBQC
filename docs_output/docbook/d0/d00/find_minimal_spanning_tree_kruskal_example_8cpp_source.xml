@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source" xml:lang="en-US">
+<title>findMinimalSpanningTreeKruskalExample.cpp</title>
+<indexterm><primary>src/archive/filesToGoThrough/findMinimalSpanningTreeKruskalExample.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/adjacency_list.hpp&gt;</emphasis>
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/kruskal_min_spanning_tree.hpp&gt;</emphasis>
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00004"/>00004 <emphasis role="preprocessor">#include&#32;&lt;fstream&gt;</emphasis>
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00005"/>00005 &#32;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00006"/><link linkend="_find_minimal_spanning_tree_kruskal_example_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00006</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_find_minimal_spanning_tree_kruskal_example_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00007"/>00007 {
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00008"/>00008 &#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;boost::adjacency_list&lt;&#32;boost::vecS,&#32;boost::vecS,&#32;boost::undirectedS,
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00009"/>00009 &#32;&#32;&#32;&#32;boost::no_property,&#32;boost::property&lt;boost::edge_weight_t,&#32;int&gt;&#32;&gt;&#32;Graph;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00010"/>00010 &#32;&#32;&#32;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00011"/>00011 &#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&#32;&lt;Graph&gt;::edge_descriptor&#32;Edge;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00012"/>00012 &#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&#32;&lt;Graph&gt;::vertex_descriptor&#32;Vertex;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00013"/>00013 &#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;std::pair&lt;int,&#32;int&gt;&#32;E;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00014"/>00014 &#32;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00015"/>00015 &#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;num_nodes&#32;=&#32;5;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00016"/>00016 &#32;&#32;E&#32;edge_array[]&#32;=&#32;{&#32;E(0,&#32;2),&#32;E(1,&#32;3),&#32;E(1,&#32;4),&#32;E(2,&#32;1),&#32;E(2,&#32;3),
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;E(3,&#32;4),&#32;E(4,&#32;0),&#32;E(4,&#32;1)
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00018"/>00018 &#32;&#32;};
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00020"/>00020 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;weights[]&#32;=&#32;{&#32;1,&#32;1,&#32;2,&#32;7,&#32;3,&#32;1,&#32;1,&#32;1&#32;};
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00021"/>00021 &#32;&#32;std::size_t&#32;num_edges&#32;=&#32;<emphasis role="keyword">sizeof</emphasis>(edge_array)&#32;/&#32;<emphasis role="keyword">sizeof</emphasis>(E);
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00022"/>00022 &#32;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00023"/>00023 &#32;&#32;Graph&#32;g(edge_array,&#32;edge_array&#32;+&#32;num_edges,&#32;weights,&#32;num_nodes);
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00024"/>00024 &#32;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00025"/>00025 &#32;&#32;boost::property_map&lt;Graph,&#32;boost::edge_weight_t&#32;&gt;::type&#32;weight&#32;=&#32;get(boost::edge_weight,&#32;g);
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00026"/>00026 &#32;&#32;std::vector&#32;&lt;&#32;Edge&#32;&gt;&#32;spanning_tree;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00027"/>00027 &#32;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00028"/>00028 &#32;&#32;boost::kruskal_minimum_spanning_tree(g,&#32;std::back_inserter(spanning_tree));
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00029"/>00029 &#32;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00030"/>00030 &#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Print&#32;the&#32;edges&#32;in&#32;the&#32;MST:&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00032"/>00032 &#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(std::vector&#32;&lt;&#32;Edge&#32;&gt;::iterator&#32;ei&#32;=&#32;spanning_tree.begin();
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ei&#32;!=&#32;spanning_tree.end();&#32;++ei)&#32;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00034"/>00034 &#32;&#32;{
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;source(*ei,&#32;g)&#32;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&lt;--&gt;&#32;&quot;</emphasis>
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;target(*ei,&#32;g)
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;with&#32;weight&#32;of&#32;&quot;</emphasis>
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;weight[*ei]
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00041"/>00041 &#32;&#32;}
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00042"/>00042 &#32;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00043"/>00043 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00044"/>00044 }&#32;
+</programlisting></section>

@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source" xml:lang="en-US">
+<title>testOddNumberQubitsEverySecondsAngleZero.cpp</title>
+<indexterm><primary>tests/testOddNumberQubitsEverySecondsAngleZero.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00001"/>00001 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00003"/>00003 <emphasis role="comment">//&#32;Title&#32;&#32;:&#32;testOddNumberQubitsEverySecondsAngleZero.cpp&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00004"/>00004 <emphasis role="comment">//&#32;Author&#32;:&#32;Jonathan&#32;Miller&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00005"/>00005 <emphasis role="comment">//&#32;Date&#32;&#32;&#32;:&#32;20230503&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00006"/>00006 <emphasis role="comment">//&#32;Aim&#32;&#32;&#32;&#32;:&#32;Basic&#32;start&#32;file&#32;to&#32;run&#32;mbqc&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00007"/>00007 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Current&#32;implementation&#32;can&#32;only&#32;do&#32;square&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00008"/>00008 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;graph&#32;repeatedly.&#32;Will&#32;branch&#32;repo&#32;to&#32;make&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00009"/>00009 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;use&#32;different&#32;way&#32;to&#32;create&#32;graph&#32;by&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00010"/>00010 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;adjacency&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00012"/>00012 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00013"/>00013 <emphasis role="comment">//&#32;To&#32;run</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00014"/>00014 <emphasis role="comment">//&#32;cmake&#32;..&#32;-DUSER_SOURCE=&quot;QuEST/projects/MBQC/tests/testOddNumberQubitsEverySecondsAngleZero.cpp&quot;&#32;-DOUTPUT_EXE=&quot;testOddNumberQubitsEverySecondsAngleZero&quot;&#32;&amp;&amp;&#32;make&#32;&amp;&amp;&#32;./testOddNumberQubitsEverySecondsAngleZero</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00015"/>00015 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00016"/>00016 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00017"/>00017 <emphasis role="comment">//&#32;Standard&#32;libraries</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00018"/>00018 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00019"/>00019 <emphasis role="preprocessor">#include&#32;&lt;sstream&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00020"/>00020 <emphasis role="preprocessor">#include&#32;&lt;stdexcept&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00021"/>00021 <emphasis role="preprocessor">#include&#32;&lt;algorithm&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00022"/>00022 <emphasis role="preprocessor">#include&#32;&lt;iterator&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00023"/>00023 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00024"/>00024 <emphasis role="preprocessor">#include&#32;&lt;set&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00025"/>00025 <emphasis role="preprocessor">#include&#32;&lt;numeric&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00026"/>00026 <emphasis role="preprocessor">#include&#32;&lt;cmath&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00027"/>00027 <emphasis role="preprocessor">#include&#32;&lt;random&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00028"/>00028 <emphasis role="preprocessor">#include&#32;&lt;filesystem&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00029"/>00029 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00030"/>00030 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00031"/>00031 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00032"/>00032 <emphasis role="comment">//&#32;QuEST</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00033"/>00033 <emphasis role="preprocessor">#include&#32;&lt;QuEST.h&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00034"/>00034 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00035"/>00035 <emphasis role="comment">//&#32;Boost</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00036"/>00036 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/adjacency_list.hpp&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00037"/>00037 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/grid_graph.hpp&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/graphviz.hpp&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00039"/>00039 <emphasis role="preprocessor">#include&#32;&lt;boost/array.hpp&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/graph_utility.hpp&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00041"/>00041 <emphasis role="preprocessor">#include&#32;&lt;boost/container/vector.hpp&gt;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00042"/>00042 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00043"/>00043 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00044"/>00044 <emphasis role="comment">//&#32;Helper&#32;functions</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp&quot;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp&quot;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00047"/>00047 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00048"/>00048 <emphasis role="comment">//&#32;Graph&#32;functions</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp&quot;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp&quot;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00051"/>00051 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00052"/>00052 <emphasis role="comment">//&#32;Quantum&#32;functions</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/flowMeasurements.hpp&quot;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/angleConstruction.hpp&quot;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/quantumGraphClusterStates.hpp&quot;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00056"/>00056 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00057"/>00057 <emphasis role="comment">//&#32;Assert&#32;functions</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/generalAssertFunctions.hpp&quot;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp&quot;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00060"/>00060 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00061"/>00061 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00062"/>00062 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00063"/>00063 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00064"/>00064 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00065"/>00065 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>boost;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00066"/><link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1af845bf432b56cdda82dbde8011882168">00066</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::adjacency_list&lt;boost::vecS,&#32;boost::vecS,boost::undirectedS&gt;&#32;<link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1af845bf432b56cdda82dbde8011882168">undirectedGraph</link>;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00067"/><link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ad413424ad598fbd91fde4dffeceda3c0">00067</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::edge_iterator&#32;<link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ad413424ad598fbd91fde4dffeceda3c0">edgeIterator</link>;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00068"/><link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ad100606fc4950dfc094fc60544838351">00068</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::vertex_iterator&#32;<link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ad100606fc4950dfc094fc60544838351">vertexIterator</link>;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00069"/>00069 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00070"/><link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1a0cab6d0005870e6df565f2397afff231">00070</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1a0cab6d0005870e6df565f2397afff231">assertFunc</link>(std::vector&lt;int&gt;&#32;measuredQubitsOutcomes,<emphasis role="keywordtype">int</emphasis>&#32;assertValue)&#32;{
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00071"/>00071 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(measuredQubitsOutcomes.back()&#32;!=&#32;assertValue)&#32;{
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::runtime_error(<emphasis role="stringliteral">&quot;The&#32;last&#32;qubit&#32;must&#32;be&#32;&quot;</emphasis>&#32;+&#32;std::to_string(assertValue)&#32;+&#32;<emphasis role="stringliteral">&quot;,&#32;it&#32;is&#32;not.&quot;</emphasis>);
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00073"/>00073 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00074"/>00074 }
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00075"/>00075 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00076"/><link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ab91620d08875164bce42bdc604224ed3">00076</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ab91620d08875164bce42bdc604224ed3">testEveryOtherAnlgeZeroResults</link>(<emphasis role="keywordtype">int</emphasis>&#32;assertValue,<emphasis role="keywordtype">int</emphasis>&#32;piDenominator,<emphasis role="keywordtype">int</emphasis>&#32;numberCols){
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00077"/>00077 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00078"/>00078 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00079"/>00079 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00083"/>00083 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00084"/>00084 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00085"/>00085 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00086"/>00086 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00087"/>00087 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;numRows&#32;=&#32;1;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;numCols&#32;=&#32;numberCols;&#32;<emphasis role="comment">//&#32;Test&#32;on&#32;an&#32;odd&#32;number&#32;of&#32;qubits</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;<link linkend="_create_graph_8hpp_1aabb013bb6de93b1ca2ff83e1d7d200c7">createLatticeGraph</link>(numRows,numCols);
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00092"/>00092 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00093"/>00093 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00094"/>00094 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00096"/>00096 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Update&#32;with&#32;desired&#32;directory&#32;to&#32;view&#32;graph.</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00097"/>00097 &#32;&#32;&#32;&#32;<emphasis role="comment">//std::string&#32;fileDir&#32;=&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;<emphasis role="comment">//std::string&#32;graphName&#32;=&#32;&quot;1DLatticeOddQubitsAnglesEveryOther0And2PiMultiple&quot;;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00099"/>00099 &#32;&#32;&#32;&#32;<emphasis role="comment">//std::string&#32;format&#32;=&#32;&quot;png&quot;;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;<emphasis role="comment">//printGraphToFile(latticeGraph,fileDir,graphName,format);</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00101"/>00101 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00102"/>00102 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00105"/>00105 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00106"/>00106 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00108"/>00108 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numVertices,&#32;env);
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00109"/>00109 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00110"/>00110 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00111"/>00111 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00112"/>00112 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;angles</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00113"/>00113 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00114"/>00114 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(assertValue&#32;==&#32;0){
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles&#32;=&#32;<link linkend="_angle_construction_8hpp_1a0804b07ffb2bea2c7ac8cba482a88d62">initRandomPiOnNEveryOtherAnglesMod2kPi</link>(numVertices,piDenominator);&#32;<emphasis role="comment">//&#32;end&#32;in&#32;0</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;}<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(assertValue&#32;==&#32;1){
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles&#32;=&#32;<link linkend="_angle_construction_8hpp_1ac35939429a8657a1f33dad419e7812c1">initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi</link>(numVertices,piDenominator);&#32;&#32;<emphasis role="comment">//&#32;end&#32;in&#32;1</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00118"/>00118 &#32;&#32;&#32;&#32;}<emphasis role="keywordflow">else</emphasis>{
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Nothing</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00121"/>00121 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00122"/>00122 &#32;&#32;&#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(qubitAngles);
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00123"/>00123 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;initialise&#32;in&#32;the&#32;plus&#32;state</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00124"/>00124 &#32;&#32;&#32;&#32;initPlusState(qureg);
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00125"/>00125 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;<emphasis role="comment">//Leave&#32;angle&#32;off&#32;qubits</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;add&#32;angles&#32;to&#32;the&#32;qubits</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00128"/>00128 &#32;&#32;&#32;&#32;<emphasis role="comment">//addAngleRotateZgate(qureg,qubitAngles);</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00129"/>00129 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00130"/>00130 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00131"/>00131 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;entangle&#32;graph</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00132"/>00132 &#32;&#32;&#32;&#32;<link linkend="_quantum_graph_cluster_states_8hpp_1a3f830234f9eb3a150a084b0f2b4aa056">entangleGraph</link>(qureg,latticeGraph);
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00133"/>00133 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00134"/>00134 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00135"/>00135 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;graph</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00136"/>00136 &#32;&#32;&#32;&#32;measuredQubitsOutcomes&#32;=&#32;<link linkend="_flow_measurements_8hpp_1a7231be9a1c347894c1d01c349f4b41c7">measureGraph</link>(
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qureg,
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;latticeGraph,
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles,
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numRows);
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00141"/>00141 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00142"/>00142 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00143"/>00143 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00144"/>00144 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00145"/>00145 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00146"/>00146 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00147"/>00147 &#32;&#32;&#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00148"/>00148 <emphasis role="comment">&#32;&#32;&#32;&#32;try&#32;{</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00149"/>00149 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assertFunc(measuredQubitsOutcomes,assertValue);</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00150"/>00150 <emphasis role="comment">&#32;&#32;&#32;&#32;}&#32;catch&#32;(const&#32;std::runtime_error&amp;&#32;e)&#32;{</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00151"/>00151 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;Handle&#32;the&#32;exception</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00152"/>00152 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;Exception&#32;caught:&#32;&quot;&#32;&lt;&lt;&#32;e.what()&#32;&lt;&lt;&#32;std::endl;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00153"/>00153 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00154"/>00154 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00155"/>00155 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00156"/>00156 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;print&#32;results&#32;to&#32;screen</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00157"/>00157 &#32;&#32;&#32;&#32;<emphasis role="comment">//printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00158"/>00158 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00159"/>00159 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00160"/>00160 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00161"/>00161 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00162"/>00162 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00163"/>00163 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00164"/>00164 }
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00165"/>00165 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00166"/>00166 <emphasis role="comment">//&#32;Set&#32;up&#32;the&#32;main&#32;function</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00167"/><link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00167</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00168"/>00168 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00169"/>00169 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;i&#32;&lt;&#32;1e1;i++){
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ab91620d08875164bce42bdc604224ed3">testEveryOtherAnlgeZeroResults</link>(0,4,7);
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_1ab91620d08875164bce42bdc604224ed3">testEveryOtherAnlgeZeroResults</link>(1,4,7);
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00172"/>00172 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00173"/>00173 &#32;&#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00174"/>00174 <emphasis role="comment">&#32;&#32;&#32;&#32;for(int&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;1;&#32;i++)</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00175"/>00175 <emphasis role="comment">&#32;&#32;&#32;&#32;{</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00176"/>00176 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00177"/>00177 <emphasis role="comment">&#32;&#32;&#32;&#32;int&#32;numRows;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00178"/>00178 <emphasis role="comment">&#32;&#32;&#32;&#32;int&#32;numCols;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00179"/>00179 <emphasis role="comment">&#32;&#32;&#32;&#32;undirectedGraph&#32;latticeGraph;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00180"/>00180 <emphasis role="comment">&#32;&#32;&#32;&#32;int&#32;numVertices;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00181"/>00181 <emphasis role="comment">&#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00182"/>00182 <emphasis role="comment">&#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00183"/>00183 <emphasis role="comment">&#32;&#32;&#32;&#32;int&#32;piDenominator;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00184"/>00184 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00185"/>00185 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00186"/>00186 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00187"/>00187 <emphasis role="comment">&#32;&#32;&#32;&#32;numRows&#32;=&#32;1;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00188"/>00188 <emphasis role="comment">&#32;&#32;&#32;&#32;numCols&#32;=&#32;7;&#32;//&#32;Test&#32;on&#32;an&#32;odd&#32;number&#32;of&#32;qubits</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00189"/>00189 <emphasis role="comment">&#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;createLatticeGraph(numRows,numCols);</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00190"/>00190 <emphasis role="comment">&#32;&#32;&#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00191"/>00191 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00192"/>00192 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00193"/>00193 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00194"/>00194 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00195"/>00195 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;Update&#32;with&#32;desired&#32;directory&#32;to&#32;view&#32;graph.</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00196"/>00196 <emphasis role="comment">&#32;&#32;&#32;&#32;std::string&#32;fileDir&#32;=&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00197"/>00197 <emphasis role="comment">&#32;&#32;&#32;&#32;std::string&#32;graphName&#32;=&#32;&quot;1DLatticeOddQubitsAnglesEveryOther0And2PiMultiple&quot;;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00198"/>00198 <emphasis role="comment">&#32;&#32;&#32;&#32;std::string&#32;format&#32;=&#32;&quot;png&quot;;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00199"/>00199 <emphasis role="comment">&#32;&#32;&#32;&#32;printGraphToFile(latticeGraph,fileDir,graphName,format);</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00200"/>00200 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00201"/>00201 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00202"/>00202 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;load&#32;QuEST&#32;environment</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00203"/>00203 <emphasis role="comment">&#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00204"/>00204 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00205"/>00205 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00206"/>00206 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00207"/>00207 <emphasis role="comment">&#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numVertices,&#32;env);</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00208"/>00208 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00209"/>00209 <emphasis role="comment">&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00210"/>00210 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00211"/>00211 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;set&#32;angles</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00212"/>00212 <emphasis role="comment">&#32;&#32;&#32;&#32;piDenominator&#32;=&#32;4;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00213"/>00213 <emphasis role="comment">&#32;&#32;&#32;&#32;//qubitAngles&#32;=&#32;initRandomPiOnNEveryOtherAnglesMod2kPi(numVertices,piDenominator);&#32;//&#32;end&#32;in&#32;0</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00214"/>00214 <emphasis role="comment">&#32;&#32;&#32;&#32;qubitAngles&#32;=&#32;initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi(numVertices,piDenominator);&#32;&#32;//&#32;end&#32;in&#32;1</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00215"/>00215 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00216"/>00216 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00217"/>00217 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;initialise&#32;in&#32;the&#32;plus&#32;state</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00218"/>00218 <emphasis role="comment">&#32;&#32;&#32;&#32;initPlusState(qureg);</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00219"/>00219 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00220"/>00220 <emphasis role="comment">&#32;&#32;&#32;&#32;//Leave&#32;angle&#32;off&#32;qubits</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00221"/>00221 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;add&#32;angles&#32;to&#32;the&#32;qubits</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00222"/>00222 <emphasis role="comment">&#32;&#32;&#32;&#32;//addAngleRotateZgate(qureg,qubitAngles);</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00223"/>00223 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00224"/>00224 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00225"/>00225 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;entangle&#32;graph</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00226"/>00226 <emphasis role="comment">&#32;&#32;&#32;&#32;entangleGraph(qureg,latticeGraph);</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00227"/>00227 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00228"/>00228 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00229"/>00229 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;measure&#32;graph</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00230"/>00230 <emphasis role="comment">&#32;&#32;&#32;&#32;measuredQubitsOutcomes&#32;=&#32;measureGraph(</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00231"/>00231 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qureg,</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00232"/>00232 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;latticeGraph,</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00233"/>00233 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles,</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00234"/>00234 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numRows);</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00235"/>00235 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00236"/>00236 <emphasis role="comment">&#32;&#32;&#32;&#32;assert((measuredQubitsOutcomes.back()==1)&#32;&amp;&amp;&#32;&quot;The&#32;last&#32;qubit&#32;must&#32;be&#32;1,&#32;it&#32;is&#32;not.&quot;);</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00237"/>00237 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;print&#32;results&#32;to&#32;screen</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00238"/>00238 <emphasis role="comment">&#32;&#32;&#32;&#32;printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00239"/>00239 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00240"/>00240 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00241"/>00241 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00242"/>00242 <emphasis role="comment">&#32;&#32;&#32;&#32;//&#32;unload&#32;QuEST</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00243"/>00243 <emphasis role="comment">&#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00244"/>00244 <emphasis role="comment">&#32;&#32;&#32;&#32;destroyQuESTEnv(env);</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00245"/>00245 <emphasis role="comment">&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00246"/>00246 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00247"/>00247 <emphasis role="comment">&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00248"/>00248 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00249"/>00249 }
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00250"/>00250 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00251"/>00251 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00252"/>00252 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00253"/>00253 
+<anchor xml:id="_test_odd_number_qubits_every_seconds_angle_zero_8cpp_source_1l00254"/>00254 
+</programlisting></section>

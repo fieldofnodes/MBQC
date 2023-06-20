@@ -1,0 +1,163 @@
+\doxysection{tests/test\+Two\+Qubits\+Angles\+Pi\+On\+Two.cpp File Reference}
+\hypertarget{test_two_qubits_angles_pi_on_two_8cpp}{}\label{test_two_qubits_angles_pi_on_two_8cpp}\index{tests/testTwoQubitsAnglesPiOnTwo.cpp@{tests/testTwoQubitsAnglesPiOnTwo.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$numeric$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$filesystem$>$}\newline
+{\ttfamily \#include $<$Qu\+EST.\+h$>$}\newline
+{\ttfamily \#include $<$boost/graph/adjacency\+\_\+list.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/grid\+\_\+graph.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/graphviz.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/array.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/graph\+\_\+utility.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/container/vector.\+hpp$>$}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/generic\+Helper\+Functions/general\+Helper\+Functions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/generic\+Helper\+Functions/write\+Graph\+Graph\+Viz\+Dot\+File.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/graphs/graph\+Constructions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/graphs/graph\+Traversal\+Flows.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/quantum\+Graphs/flow\+Measurements.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/quantum\+Graphs/angle\+Construction.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/quantum\+Graphs/quantum\+Graph\+Cluster\+States.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/test\+Functions/general\+Assert\+Functions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/test\+Functions/graph\+Assert\+Functions.\+hpp\"{}}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef boost\+::adjacency\+\_\+list$<$ boost\+::vecS, boost\+::vecS, boost\+::undirectedS $>$ \mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_af845bf432b56cdda82dbde8011882168}{undirected\+Graph}}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_ad413424ad598fbd91fde4dffeceda3c0}{edge\+Iterator}}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{\+::vertex\+\_\+iterator}} \mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_ad100606fc4950dfc094fc60544838351}{vertex\+Iterator}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_ad413424ad598fbd91fde4dffeceda3c0}\label{test_two_qubits_angles_pi_on_two_8cpp_ad413424ad598fbd91fde4dffeceda3c0} 
+\index{testTwoQubitsAnglesPiOnTwo.cpp@{testTwoQubitsAnglesPiOnTwo.cpp}!edgeIterator@{edgeIterator}}
+\index{edgeIterator@{edgeIterator}!testTwoQubitsAnglesPiOnTwo.cpp@{testTwoQubitsAnglesPiOnTwo.cpp}}
+\doxysubsubsection{\texorpdfstring{edgeIterator}{edgeIterator}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}$>$\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{packages_8hpp_afccd45e2973698c37e8379f6b25a82bc}{edge\+Iterator}}}
+
+
+
+Definition at line \mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_source}{test\+Two\+Qubits\+Angles\+Pi\+On\+Two.\+cpp}}.
+
+\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_af845bf432b56cdda82dbde8011882168}\label{test_two_qubits_angles_pi_on_two_8cpp_af845bf432b56cdda82dbde8011882168} 
+\index{testTwoQubitsAnglesPiOnTwo.cpp@{testTwoQubitsAnglesPiOnTwo.cpp}!undirectedGraph@{undirectedGraph}}
+\index{undirectedGraph@{undirectedGraph}!testTwoQubitsAnglesPiOnTwo.cpp@{testTwoQubitsAnglesPiOnTwo.cpp}}
+\doxysubsubsection{\texorpdfstring{undirectedGraph}{undirectedGraph}}
+{\footnotesize\ttfamily typedef boost\+::adjacency\+\_\+list$<$boost\+::vecS, boost\+::vecS,boost\+::undirectedS$>$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}}
+
+
+
+Definition at line \mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_source_l00063}{63}} of file \mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_source}{test\+Two\+Qubits\+Angles\+Pi\+On\+Two.\+cpp}}.
+
+\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_ad100606fc4950dfc094fc60544838351}\label{test_two_qubits_angles_pi_on_two_8cpp_ad100606fc4950dfc094fc60544838351} 
+\index{testTwoQubitsAnglesPiOnTwo.cpp@{testTwoQubitsAnglesPiOnTwo.cpp}!vertexIterator@{vertexIterator}}
+\index{vertexIterator@{vertexIterator}!testTwoQubitsAnglesPiOnTwo.cpp@{testTwoQubitsAnglesPiOnTwo.cpp}}
+\doxysubsubsection{\texorpdfstring{vertexIterator}{vertexIterator}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}$>$\mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{\+::vertex\+\_\+iterator}} \mbox{\hyperlink{packages_8hpp_aad3f8f6369da7f36e6266fdcb1991169}{vertex\+Iterator}}}
+
+
+
+Definition at line \mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_source}{test\+Two\+Qubits\+Angles\+Pi\+On\+Two.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{test_two_qubits_angles_pi_on_two_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{test_two_qubits_angles_pi_on_two_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{testTwoQubitsAnglesPiOnTwo.cpp@{testTwoQubitsAnglesPiOnTwo.cpp}!main@{main}}
+\index{main@{main}!testTwoQubitsAnglesPiOnTwo.cpp@{testTwoQubitsAnglesPiOnTwo.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{test_two_qubits_angles_pi_on_two_8cpp_source}{test\+Two\+Qubits\+Angles\+Pi\+On\+Two.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 1e6;\ i++)}
+\DoxyCodeLine{00072\ \ \ \ \ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{//\ Initialise\ variable\ names\ and\ types}}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{int}\ numRows;}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{int}\ numCols;}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph;}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices;}
+\DoxyCodeLine{00078\ \ \ \ \ std::vector<qreal>\ qubitAngles;}
+\DoxyCodeLine{00079\ \ \ \ \ std::vector<int>\ measuredQubitsOutcomes;}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{comment}{//\ Set\ values\ to\ variables}}
+\DoxyCodeLine{00083\ \ \ \ \ numRows\ =\ 1;}
+\DoxyCodeLine{00084\ \ \ \ \ numCols\ =\ 2;\ \textcolor{comment}{//\ Test\ on\ an\ odd\ number\ of\ qubits}}
+\DoxyCodeLine{00085\ \ \ \ \ latticeGraph\ =\ \mbox{\hyperlink{create_graph_8hpp_aabb013bb6de93b1ca2ff83e1d7d200c7}{createLatticeGraph}}(numRows,numCols);}
+\DoxyCodeLine{00086\ \ \ \ \ numVertices\ =\ boost::num\_vertices(latticeGraph);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{//\ Print\ graph\ to\ file}}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//\ Update\ with\ desired\ directory\ to\ view\ graph.}}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{comment}{//std::string\ fileDir\ =\ "{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs"{};}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{//std::string\ graphName\ =\ "{}1DLattice2QubitsAnglesPiOn2"{};}}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//std::string\ format\ =\ "{}png"{};}}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//printGraphToFile(latticeGraph,fileDir,graphName,format);}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{00099\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{comment}{//\ create\ a\ quantum\ register}}
+\DoxyCodeLine{00103\ \ \ \ \ Qureg\ qureg\ =\ createQureg(numVertices,\ env);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{comment}{//\ set\ angles}}
+\DoxyCodeLine{00107\ \ \ \ \ qubitAngles\ =\ \mbox{\hyperlink{angle_construction_8hpp_ac940c0b993f5f0e21dc74a2ac2f3fc7a}{initAllAnglesSame}}(numVertices,\ M\_PI/2);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{//\ initialise\ in\ the\ plus\ state}}
+\DoxyCodeLine{00111\ \ \ \ \ initPlusState(qureg);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{//Leave\ angle\ off\ qubits}}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{//\ add\ angles\ to\ the\ qubits}}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{comment}{//addAngleRotateZgate(qureg,qubitAngles);}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{comment}{//\ entangle\ graph}}
+\DoxyCodeLine{00119\ \ \ \ \ \mbox{\hyperlink{quantum_graph_cluster_states_8hpp_a3f830234f9eb3a150a084b0f2b4aa056}{entangleGraph}}(qureg,latticeGraph);}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{comment}{//\ measure\ graph}}
+\DoxyCodeLine{00123\ \ \ \ \ measuredQubitsOutcomes\ =\ \mbox{\hyperlink{flow_measurements_8hpp_a7231be9a1c347894c1d01c349f4b41c7}{measureGraph}}(}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ qureg,}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ latticeGraph,}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ qubitAngles,}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ numRows);}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ assert((measuredQubitsOutcomes.back()==0)\ \&\&\ \textcolor{stringliteral}{"{}The\ last\ qubit\ must\ be\ 0,\ it\ is\ not."{}});}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{comment}{//\ print\ results\ to\ screen}}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{comment}{//printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{00136\ \ \ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{00137\ \ \ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{00138\ \ \ \ \ }
+\DoxyCodeLine{00139\ \ \ \ \ \}}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00141\ \}}
+
+\end{DoxyCode}

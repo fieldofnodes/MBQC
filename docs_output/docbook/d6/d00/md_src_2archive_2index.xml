@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_md_src_2archive_2index" xml:lang="en-US">
+<title>MBQC</title>
+<indexterm><primary>MBQC</primary></indexterm>
+
+<para><anchor xml:id="_md_src_2archive_2index_1autotoc_md0"/> </para>
+<section xml:id="_md_src_2archive_2index_1autotoc_md1">
+<title>Measurement Based Quantum Computation</title>
+<section xml:id="_md_src_2archive_2index_1autotoc_md2">
+<title>Linear Cluster</title>
+<section xml:id="_md_src_2archive_2index_1autotoc_md3">
+<title>Used this libraries</title>
+
+<para><literallayout><computeroutput>#include&#32;&lt;QuEST.h&gt;
+#include&#32;&lt;vector&gt;
+#include&#32;&lt;iostream&gt;
+#include&#32;&lt;string&gt;
+using&#32;namespace&#32;std;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md_src_2archive_2index_1autotoc_md4">
+<title>Create a linear cluster</title>
+
+<para>Create vector of digits from $0$ to $N-1$, separated by $1$ to represent a cluster state by a line of nodes connected by edges, similar to this asci art <computeroutput>()-()-()- - - -()</computeroutput> where each <computeroutput>()</computeroutput> represent a node or a qubit when this structure is used to generate the cluster state of qubits. $(0,2,3,...,N-1)$</para>
+
+<para><literallayout><computeroutput>vector&lt;int&gt;&#32;getPathGraph(int&#32;numberQubits)
+{
+&#32;&#32;vector&lt;int&gt;&#32;pathGraph;
+&#32;&#32;for&#32;(int&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;numberQubits;&#32;i++&#32;)
+&#32;&#32;{
+&#32;&#32;&#32;&#32;pathGraph.push_back(i);&#32;&#32;
+&#32;&#32;}
+&#32;&#32;return&#32;pathGraph;
+}
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md_src_2archive_2index_1autotoc_md5">
+<title>Flow function</title>
+
+<para>Linear cluster state flow is defined as, $f(i) = i + 1$, where $i$ is the current qubit. Consider the graph as a line of qubits, then the flow foward is the next qubit according to the labelled index.</para>
+
+<para><literallayout><computeroutput>int&#32;getFutureQubit(int&#32;currentQubit){
+&#32;&#32;int&#32;futureQubit;
+&#32;&#32;futureQubit&#32;=&#32;currentQubit&#32;+&#32;1;
+
+&#32;&#32;return&#32;futureQubit;
+}
+</computeroutput></literallayout></para>
+
+<para>Linear flow backwards is defined as, $f^{-1}(i) = i - 1$.</para>
+
+<para><literallayout><computeroutput>int&#32;getPastQubit(int&#32;currentQubit){
+&#32;&#32;int&#32;pastQubit;
+&#32;&#32;pastQubit&#32;=&#32;currentQubit&#32;-&#32;1;
+
+&#32;&#32;return&#32;pastQubit;
+}
+</computeroutput></literallayout></para>
+
+<para>Linear cluster vector with the flow, $f$, $f(i) = i + 1$, if $i$ is last element of vector, then throw error.</para>
+
+<para><literallayout><computeroutput>int&#32;getFutureQubitPathGraph(vector&lt;int&gt;&#32;pathGraph&#32;,int&#32;currentQubit)
+{
+int&#32;futureQubit;
+auto&#32;graphSize&#32;=&#32;pathGraph.size();
+if&#32;(currentQubit&#32;==&#32;pathGraph[graphSize-1])&#32;{
+&#32;&#32;&#32;&#32;assert(currentQubit&#32;!=&#32;pathGraph[graphSize-1]&#32;&amp;&amp;&#32;&quot;No&#32;past&#32;qubit&#32;here,&#32;re-check&#32;your&#32;program&quot;);
+}&#32;else&#32;{
+&#32;&#32;futureQubit&#32;=&#32;getFutureQubit(currentQubit);
+}
+&#32;&#32;return&#32;futureQubit;
+}
+</computeroutput></literallayout></para>
+
+<para>Linear cluster vector with the flow, $f$, $f^{-1}(i) = i - 1$, if $i$ is first element of vector, then throw error.</para>
+
+<para><literallayout><computeroutput>int&#32;getPastQubitPathGraph(vector&lt;int&gt;&#32;pathGraph&#32;,int&#32;currentQubit)
+{
+int&#32;pastQubit;
+
+if&#32;(currentQubit&#32;==&#32;pathGraph[0])&#32;{
+&#32;&#32;assert(currentQubit&#32;!=&#32;pathGraph[0]&#32;&amp;&amp;&#32;&quot;No&#32;past&#32;qubit&#32;here,&#32;re-check&#32;your&#32;program&quot;);
+
+}&#32;else&#32;{
+&#32;&#32;pastQubit&#32;=&#32;getPastQubit(currentQubit);
+}
+&#32;&#32;return&#32;pastQubit;
+}
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_md_src_2archive_2index_1autotoc_md6">
+<title>Neighborhood</title>
+
+<para>The neighbor set in a cluster state is technically the open neighbours set, as we do not consider the present or current qubit. Here we get the neighbourhood size by looking at the linear cluster state vector and the current qubit. The logic determines if there are $1$ or $2$ neighbours to the current qubit, based on the qubit position in the linear cluster.</para>
+
+<para><literallayout><computeroutput>int&#32;getOpenNeighbourhoodSizePathGraph(vector&lt;int&gt;&#32;pathGraph&#32;,int&#32;currentQubit){
+&#32;&#32;auto&#32;graphSize&#32;=&#32;pathGraph.size();
+&#32;&#32;int&#32;neighbourhoodSize;
+&#32;&#32;//&#32;Logic&#32;for&#32;getting&#32;nieghbors
+&#32;&#32;if&#32;(currentQubit&#32;==&#32;0)&#32;{&#32;//&#32;qubit&#32;is&#32;first
+&#32;&#32;&#32;&#32;neighbourhoodSize&#32;=&#32;1;
+&#32;&#32;}&#32;else&#32;if&#32;(currentQubit&#32;==&#32;pathGraph[graphSize-1])&#32;{&#32;//&#32;qubit&#32;is&#32;last
+&#32;&#32;&#32;&#32;neighbourhoodSize&#32;=&#32;1;
+&#32;&#32;}&#32;else&#32;{&#32;//&#32;all&#32;else
+&#32;&#32;&#32;&#32;neighbourhoodSize&#32;=&#32;2;
+&#32;&#32;}
+
+&#32;&#32;return&#32;neighbourhoodSize;
+}
+</computeroutput></literallayout></para>
+
+<para>Get the neighbor set of qubits based on the linear cluster and the current qubit</para>
+
+<para><literallayout><computeroutput>vector&lt;int&gt;&#32;getOpenNeighbourhoodPathGraph(vector&lt;int&gt;&#32;pathGraph&#32;,int&#32;currentQubit){
+&#32;&#32;vector&lt;int&gt;&#32;neighbours;
+&#32;&#32;auto&#32;graphSize&#32;=&#32;pathGraph.size();
+&#32;&#32;int&#32;firstQubit;
+&#32;&#32;int&#32;pastQubit;
+&#32;&#32;int&#32;futureQubit;
+
+&#32;&#32;if&#32;(currentQubit&#32;==&#32;pathGraph[0])&#32;{&#32;//&#32;qubit&#32;is&#32;first&#32;in&#32;graph
+&#32;&#32;&#32;&#32;firstQubit&#32;=&#32;currentQubit&#32;+&#32;1;
+&#32;&#32;&#32;&#32;neighbours.push_back(firstQubit);
+&#32;&#32;}&#32;else&#32;if&#32;(currentQubit&#32;==&#32;pathGraph[graphSize-1])&#32;{&#32;//&#32;qubit&#32;is&#32;last&#32;in&#32;graph
+&#32;&#32;&#32;&#32;firstQubit&#32;=&#32;currentQubit&#32;-&#32;1;
+&#32;&#32;&#32;&#32;neighbours.push_back(firstQubit);
+&#32;&#32;}&#32;else&#32;{&#32;//&#32;all&#32;else
+&#32;&#32;&#32;&#32;pastQubit&#32;=&#32;currentQubit&#32;-&#32;1;
+&#32;&#32;&#32;&#32;futureQubit&#32;=&#32;currentQubit&#32;+&#32;1;
+&#32;&#32;&#32;&#32;neighbours.push_back(pastQubit);
+&#32;&#32;&#32;&#32;neighbours.push_back(futureQubit);
+&#32;&#32;}
+
+&#32;&#32;return&#32;neighbours;
+}
+</computeroutput></literallayout> </para>
+</section>
+</section>
+</section>
+</section>

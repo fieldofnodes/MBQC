@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_undirected_graph_example_8cpp" xml:lang="en-US">
+<title>src/archive/filesToGoThrough/undirectedGraphExample.cpp File Reference</title>
+<indexterm><primary>src/archive/filesToGoThrough/undirectedGraphExample.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;boost/graph/adjacency_list.hpp&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?></programlisting><simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>typedef boost::property&lt; boost::edge_weight_t, int &gt; <link linkend="_undirected_graph_example_8cpp_1ad531f0530c52e2baed8840517b52b457">EdgeWeightProperty</link></para>
+</listitem>
+            <listitem><para>typedef boost::adjacency_list&lt; boost::listS, boost::vecS, boost::undirectedS, boost::no_property, <link linkend="_create_graph_8hpp_1ad531f0530c52e2baed8840517b52b457">EdgeWeightProperty</link> &gt; <link linkend="_undirected_graph_example_8cpp_1ae727d82d2665e0ccdbb85e29c841ba5f">undirectedGraph</link></para>
+</listitem>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_undirected_graph_example_8cpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_undirected_graph_example_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_undirected_graph_example_8cpp_1af04c50f717d4bda41f0c58fe0eece059"/><section>
+    <title>edge_iterator</title>
+<indexterm><primary>edge_iterator</primary><secondary>undirectedGraphExample.cpp</secondary></indexterm>
+<indexterm><primary>undirectedGraphExample.cpp</primary><secondary>edge_iterator</secondary></indexterm>
+<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link></computeroutput></para><para>
+Definition at line <link linkend="_undirected_graph_example_8cpp_source_1l00006">6</link> of file <link linkend="_undirected_graph_example_8cpp_source">undirectedGraphExample.cpp</link>.</para>
+</section>
+<anchor xml:id="_undirected_graph_example_8cpp_1ad531f0530c52e2baed8840517b52b457"/><section>
+    <title>EdgeWeightProperty</title>
+<indexterm><primary>EdgeWeightProperty</primary><secondary>undirectedGraphExample.cpp</secondary></indexterm>
+<indexterm><primary>undirectedGraphExample.cpp</primary><secondary>EdgeWeightProperty</secondary></indexterm>
+<para><computeroutput>typedef boost::property&lt;boost::edge_weight_t, int&gt; <link linkend="_create_graph_8hpp_1ad531f0530c52e2baed8840517b52b457">EdgeWeightProperty</link></computeroutput></para><para>
+Definition at line <link linkend="_undirected_graph_example_8cpp_source_1l00004">4</link> of file <link linkend="_undirected_graph_example_8cpp_source">undirectedGraphExample.cpp</link>.</para>
+</section>
+<anchor xml:id="_undirected_graph_example_8cpp_1ae727d82d2665e0ccdbb85e29c841ba5f"/><section>
+    <title>undirectedGraph</title>
+<indexterm><primary>undirectedGraph</primary><secondary>undirectedGraphExample.cpp</secondary></indexterm>
+<indexterm><primary>undirectedGraphExample.cpp</primary><secondary>undirectedGraph</secondary></indexterm>
+<para><computeroutput>typedef boost::adjacency_list&lt;boost::listS, boost::vecS,boost::undirectedS,boost::no_property,<link linkend="_create_graph_8hpp_1ad531f0530c52e2baed8840517b52b457">EdgeWeightProperty</link>&gt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link></computeroutput></para><para>
+Definition at line <link linkend="_undirected_graph_example_8cpp_source_1l00005">5</link> of file <link linkend="_undirected_graph_example_8cpp_source">undirectedGraphExample.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_undirected_graph_example_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>undirectedGraphExample.cpp</secondary></indexterm>
+<indexterm><primary>undirectedGraphExample.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_undirected_graph_example_8cpp_source_1l00008">8</link> of file <link linkend="_undirected_graph_example_8cpp_source">undirectedGraphExample.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00009 {
+00010 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;g;
+00011 &#32;
+00012 &#32;&#32;&#32;&#32;boost::add_edge&#32;(0,&#32;1,&#32;8,&#32;g);
+00013 &#32;&#32;&#32;&#32;boost::add_edge&#32;(0,&#32;3,&#32;18,&#32;g);
+00014 &#32;&#32;&#32;&#32;boost::add_edge&#32;(1,&#32;2,&#32;20,&#32;g);
+00015 &#32;&#32;&#32;&#32;boost::add_edge&#32;(2,&#32;3,&#32;2,&#32;g);
+00016 &#32;&#32;&#32;&#32;boost::add_edge&#32;(1,&#32;3,&#32;7,&#32;g);
+00017 &#32;&#32;&#32;&#32;boost::add_edge&#32;(1,&#32;4,&#32;1,&#32;g);
+00018 &#32;&#32;&#32;&#32;boost::add_edge&#32;(4,&#32;5,&#32;6,&#32;g);
+00019 &#32;&#32;&#32;&#32;boost::add_edge&#32;(2,&#32;5,&#32;7,&#32;g);
+00020 &#32;
+00021 &#32;&#32;&#32;&#32;std::pair&lt;edge_iterator,&#32;edge_iterator&gt;&#32;ei&#32;=&#32;edges(g);
+00022 &#32;
+00023 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Number&#32;of&#32;edges&#32;=&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;num_edges(g)&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>;
+00024 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Edge&#32;list:\n&quot;</emphasis>;
+00025 &#32;
+00026 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link>&#32;it&#32;=&#32;ei.first;&#32;it&#32;!=&#32;ei.second;&#32;++it&#32;)
+00027 &#32;&#32;&#32;&#32;{
+00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;*it&#32;&lt;&lt;&#32;std::endl;
+00029 &#32;&#32;&#32;&#32;}
+00030 &#32;
+00031 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+00032 &#32;
+00033 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+00034 &#32;}
+</programlisting></section>
+</section>
+</section>

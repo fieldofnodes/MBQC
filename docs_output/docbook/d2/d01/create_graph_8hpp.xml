@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_create_graph_8hpp" xml:lang="en-US">
+<title>src/archive/filesToGoThrough/createGraph.hpp File Reference</title>
+<indexterm><primary>src/archive/filesToGoThrough/createGraph.hpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;boost/graph/adjacency_list.hpp&gt;<?linebreak?></programlisting><simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>typedef boost::property&lt; boost::edge_weight_t, int &gt; <link linkend="_create_graph_8hpp_1ad531f0530c52e2baed8840517b52b457">EdgeWeightProperty</link></para>
+</listitem>
+            <listitem><para>typedef boost::adjacency_list&lt; boost::listS, boost::vecS, boost::undirectedS, boost::no_property, <link linkend="_create_graph_8hpp_1ad531f0530c52e2baed8840517b52b457">EdgeWeightProperty</link> &gt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link></para>
+
+<para>Alias for an undirected graph using boost::adjacency_list. </para>
+</listitem>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link></para>
+</listitem>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">vertex_iterator</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> <link linkend="_create_graph_8hpp_1abe67d4f4ed1169c1376d3a14fd9d144d">createPathGraph</link> (int n)</para>
+</listitem>
+            <listitem><para><link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> <link linkend="_create_graph_8hpp_1aabb013bb6de93b1ca2ff83e1d7d200c7">createLatticeGraph</link> (int n, int m)</para>
+</listitem>
+            <listitem><para>std::vector&lt; undirectedGraph::vertex_descriptor &gt; <link linkend="_create_graph_8hpp_1a95616ef95512e388dddbc756c8644c4d">get_adjacent_vertices</link> (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;g, const undirectedGraph::vertex_descriptor v)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059"/><section>
+    <title>edge_iterator</title>
+<indexterm><primary>edge_iterator</primary><secondary>createGraph.hpp</secondary></indexterm>
+<indexterm><primary>createGraph.hpp</primary><secondary>edge_iterator</secondary></indexterm>
+<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link></computeroutput></para><para>
+Definition at line <link linkend="_create_graph_8hpp_source_1l00008">8</link> of file <link linkend="_create_graph_8hpp_source">createGraph.hpp</link>.</para>
+</section>
+<anchor xml:id="_create_graph_8hpp_1ad531f0530c52e2baed8840517b52b457"/><section>
+    <title>EdgeWeightProperty</title>
+<indexterm><primary>EdgeWeightProperty</primary><secondary>createGraph.hpp</secondary></indexterm>
+<indexterm><primary>createGraph.hpp</primary><secondary>EdgeWeightProperty</secondary></indexterm>
+<para><computeroutput>typedef boost::property&lt;boost::edge_weight_t, int&gt; <link linkend="_create_graph_8hpp_1ad531f0530c52e2baed8840517b52b457">EdgeWeightProperty</link></computeroutput></para><para>
+Definition at line <link linkend="_create_graph_8hpp_source_1l00006">6</link> of file <link linkend="_create_graph_8hpp_source">createGraph.hpp</link>.</para>
+</section>
+<anchor xml:id="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125"/><section>
+    <title>undirectedGraph</title>
+<indexterm><primary>undirectedGraph</primary><secondary>createGraph.hpp</secondary></indexterm>
+<indexterm><primary>createGraph.hpp</primary><secondary>undirectedGraph</secondary></indexterm>
+<para><computeroutput><link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link></computeroutput></para><para>
+
+<para>Alias for an undirected graph using boost::adjacency_list. </para>
+</para>
+
+<para>This typedef represents an undirected graph using the boost::adjacency_list data structure with boost::vecS as the vertex container and boost::undirectedS as the graph type. It provides an interface for creating and manipulating undirected graphs. </para>
+<para>
+Definition at line <link linkend="_create_graph_8hpp_source_1l00007">7</link> of file <link linkend="_create_graph_8hpp_source">createGraph.hpp</link>.</para>
+</section>
+<anchor xml:id="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e"/><section>
+    <title>vertex_iterator</title>
+<indexterm><primary>vertex_iterator</primary><secondary>createGraph.hpp</secondary></indexterm>
+<indexterm><primary>createGraph.hpp</primary><secondary>vertex_iterator</secondary></indexterm>
+<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">::vertex_iterator</link> <link linkend="_create_graph_8hpp_1a9451df0dac964b257bedb5e60547824e">vertex_iterator</link></computeroutput></para><para>
+Definition at line <link linkend="_create_graph_8hpp_source_1l00009">9</link> of file <link linkend="_create_graph_8hpp_source">createGraph.hpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_create_graph_8hpp_1aabb013bb6de93b1ca2ff83e1d7d200c7"/><section>
+    <title>createLatticeGraph()</title>
+<indexterm><primary>createLatticeGraph</primary><secondary>createGraph.hpp</secondary></indexterm>
+<indexterm><primary>createGraph.hpp</primary><secondary>createLatticeGraph</secondary></indexterm>
+<para><computeroutput><link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> createLatticeGraph (int n, int m)</computeroutput></para><para>
+Definition at line <link linkend="_create_graph_8hpp_source_1l00025">25</link> of file <link linkend="_create_graph_8hpp_source">createGraph.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;
+00026 &#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;g(n&#32;*&#32;m);
+00027 
+00028 &#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;n;&#32;i++)&#32;{
+00029 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;j&#32;=&#32;0;&#32;j&#32;&lt;&#32;m;&#32;j++)&#32;{
+00030 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(j&#32;&lt;&#32;m-1)&#32;add_edge(i*m+j,&#32;i*m+j+1,&#32;g);&#32;<emphasis role="comment">//&#32;add&#32;horizontal&#32;edges</emphasis>
+00031 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(i&#32;&lt;&#32;n-1)&#32;add_edge(i*m+j,&#32;(i+1)*m+j,&#32;g);&#32;<emphasis role="comment">//&#32;add&#32;vertical&#32;edges</emphasis>
+00032 &#32;&#32;&#32;&#32;}
+00033 &#32;&#32;}
+00034 
+00035 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;g;
+00036 }
+</programlisting></section>
+<anchor xml:id="_create_graph_8hpp_1abe67d4f4ed1169c1376d3a14fd9d144d"/><section>
+    <title>createPathGraph()</title>
+<indexterm><primary>createPathGraph</primary><secondary>createGraph.hpp</secondary></indexterm>
+<indexterm><primary>createGraph.hpp</primary><secondary>createPathGraph</secondary></indexterm>
+<para><computeroutput><link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> createPathGraph (int n)</computeroutput></para><para>
+Definition at line <link linkend="_create_graph_8hpp_source_1l00014">14</link> of file <link linkend="_create_graph_8hpp_source">createGraph.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;
+00015 &#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;g(n);
+00016 
+00017 &#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;n-1;&#32;i++)&#32;{&#32;&#32;<emphasis role="comment">//&#32;add&#32;edges&#32;to&#32;create&#32;a&#32;path&#32;graph</emphasis>
+00018 &#32;&#32;&#32;&#32;add_edge(i,&#32;i+1,&#32;g);
+00019 &#32;&#32;}
+00020 
+00021 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;g;
+00022 }
+</programlisting></section>
+<anchor xml:id="_create_graph_8hpp_1a95616ef95512e388dddbc756c8644c4d"/><section>
+    <title>get_adjacent_vertices()</title>
+<indexterm><primary>get_adjacent_vertices</primary><secondary>createGraph.hpp</secondary></indexterm>
+<indexterm><primary>createGraph.hpp</primary><secondary>get_adjacent_vertices</secondary></indexterm>
+<para><computeroutput>std::vector&lt; undirectedGraph::vertex_descriptor &gt; get_adjacent_vertices (const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; g, const undirectedGraph::vertex_descriptor v)</computeroutput></para><para>
+Definition at line <link linkend="_create_graph_8hpp_source_1l00040">40</link> of file <link linkend="_create_graph_8hpp_source">createGraph.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00041 {
+00042 &#32;&#32;&#32;&#32;std::vector&lt;undirectedGraph::vertex_descriptor&gt;&#32;adjacent_vertices;
+00043 &#32;&#32;&#32;&#32;undirectedGraph::adjacency_iterator&#32;ai,&#32;ai_end;
+00044 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(boost::tie(ai,&#32;ai_end)&#32;=&#32;boost::adjacent_vertices(v,&#32;g);&#32;ai&#32;!=&#32;ai_end;&#32;++ai)
+00045 &#32;&#32;&#32;&#32;{
+00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;adjacent_vertices.push_back(*ai);
+00047 &#32;&#32;&#32;&#32;}
+00048 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;adjacent_vertices;
+00049 }
+</programlisting></section>
+</section>
+</section>

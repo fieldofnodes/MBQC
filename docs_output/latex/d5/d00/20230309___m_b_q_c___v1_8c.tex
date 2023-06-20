@@ -1,0 +1,58 @@
+\doxysection{src/archive/20230309\+\_\+\+MBQC\+\_\+\+V1.c File Reference}
+\hypertarget{20230309___m_b_q_c___v1_8c}{}\label{20230309___m_b_q_c___v1_8c}\index{src/archive/20230309\_MBQC\_V1.c@{src/archive/20230309\_MBQC\_V1.c}}
+{\ttfamily \#include $<$Qu\+EST.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{20230309___m_b_q_c___v1_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{20230309___m_b_q_c___v1_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{20230309___m_b_q_c___v1_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{20230309\_MBQC\_V1.c@{20230309\_MBQC\_V1.c}!main@{main}}
+\index{main@{main}!20230309\_MBQC\_V1.c@{20230309\_MBQC\_V1.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{20230309___m_b_q_c___v1_8c_source_l00008}{8}} of file \mbox{\hyperlink{20230309___m_b_q_c___v1_8c_source}{20230309\+\_\+\+MBQC\+\_\+\+V1.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00009\ \ \ \ \ }
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST}}
+\DoxyCodeLine{00011\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{int}\ numQubits\ =\ 3;}
+\DoxyCodeLine{00013\ \ \ \ \ qreal\ angle\ =\ M\_PI\ /\ 4;}
+\DoxyCodeLine{00014\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Angle\ is\ measured\ as\ \%f\(\backslash\)n"{}},angle);}
+\DoxyCodeLine{00015\ \ \ \ \ \ \textcolor{comment}{//\ prepare\ our\ register}}
+\DoxyCodeLine{00016\ \ \ \ \ Qureg\ qureg\ =\ createQureg(numQubits,\ env);}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ qureg\ -\/>\ |+><+|}}
+\DoxyCodeLine{00020\ \ \ \ \ initPlusState(qureg);\ \ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ apply\ CZ\ gate\ to\ entangle\ the\ circuit}}
+\DoxyCodeLine{00024\ \ \ \ \ controlledPhaseFlip(qureg,0,1);}
+\DoxyCodeLine{00025\ \ \ \ \ controlledPhaseFlip(qureg,1,2);}
+\DoxyCodeLine{00026\ \ \ \ \ controlledPhaseFlip(qureg,0,2);}
+\DoxyCodeLine{00027\ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Initialising\ \%d\ qubits\(\backslash\)n"{}},numQubits);}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ m0\ =\ measure(qureg,0);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ m1\ =\ measure(qureg,1);}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ m2\ =\ measure(qureg,2);}
+\DoxyCodeLine{00034\ \ \ \ \ printf(\textcolor{stringliteral}{"{}qubit\ 0\ is\ measured\ as\ \%d\(\backslash\)n"{}},m0);}
+\DoxyCodeLine{00035\ \ \ \ \ printf(\textcolor{stringliteral}{"{}qubit\ 1\ is\ measured\ as\ \%d\(\backslash\)n"{}},m1);}
+\DoxyCodeLine{00036\ \ \ \ \ printf(\textcolor{stringliteral}{"{}qubit\ 2\ is\ measured\ as\ \%d\(\backslash\)n"{}},m2);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \}}
+
+\end{DoxyCode}

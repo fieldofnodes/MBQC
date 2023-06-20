@@ -1,0 +1,117 @@
+\doxysection{src/archive/20230309\+\_\+\+MBQC\+\_\+\+Three\+Qubit\+GHZ\+\_\+\+V1.c File Reference}
+\hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c}{}\label{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c}\index{src/archive/20230309\_MBQC\_ThreeQubitGHZ\_V1.c@{src/archive/20230309\_MBQC\_ThreeQubitGHZ\_V1.c}}
+{\ttfamily \#include $<$Qu\+EST.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{20230309\_MBQC\_ThreeQubitGHZ\_V1.c@{20230309\_MBQC\_ThreeQubitGHZ\_V1.c}!main@{main}}
+\index{main@{main}!20230309\_MBQC\_ThreeQubitGHZ\_V1.c@{20230309\_MBQC\_ThreeQubitGHZ\_V1.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source_l00017}{17}} of file \mbox{\hyperlink{20230309___m_b_q_c___three_qubit_g_h_z___v1_8c_source}{20230309\+\_\+\+MBQC\+\_\+\+Three\+Qubit\+GHZ\+\_\+\+V1.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST}}
+\DoxyCodeLine{00020\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{00021\ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ set\ number\ of\ qubits}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ numQubits\ =\ 3;}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ qubits[]\ =\ \{0,1,2\};}
+\DoxyCodeLine{00025\ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ qreal\ outcomeProbs[1<<numQubits];}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \textcolor{comment}{//\ Declare\ angle\ array\ and\ measure\ qubit\ array}}
+\DoxyCodeLine{00029\ \ \ \ \ qreal\ angles[numQubits];\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ measured\_qubits[numQubits];}
+\DoxyCodeLine{00031\ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ set\ initial\ angles}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;i<numQubits;i++)}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ angles[i]\ =\ M\_PI\ /\ 4;\ }
+\DoxyCodeLine{00035\ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ prepare\ our\ register}}
+\DoxyCodeLine{00037\ \ \ \ \ Qureg\ qureg\ =\ createQureg(numQubits,\ env);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ qureg\ -\/>\ |+><+|}}
+\DoxyCodeLine{00041\ \ \ \ \ initPlusState(qureg);\ \ }
+\DoxyCodeLine{00042\ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ apply\ CZ\ gate\ to\ entangle\ the\ circuit}}
+\DoxyCodeLine{00044\ \ \ \ \ controlledPhaseFlip(qureg,0,1);}
+\DoxyCodeLine{00045\ \ \ \ \ controlledPhaseFlip(qureg,1,2);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ measure\ first\ qubit}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ ()-\/()-\/()\ -\/>\ X-\/()-\/(),\ for\ X\ being\ a\ removed\ qubit}}
+\DoxyCodeLine{00049\ \ \ \ \ rotateZ(qureg,0,\ angles[0]);}
+\DoxyCodeLine{00050\ \ \ \ \ hadamard(qureg,0);}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ s0\ =\ measure(qureg,0);}
+\DoxyCodeLine{00052\ \ \ \ \ measured\_qubits[0]\ =\ s0;}
+\DoxyCodeLine{00053\ \ \ \ \ printf(\textcolor{stringliteral}{"{}first\ angle\ is\ \%f\(\backslash\)n"{}},angles[0]);}
+\DoxyCodeLine{00054\ \ \ \ \ printf(\textcolor{stringliteral}{"{}first\ qubit\ measure\ is\ \%d\(\backslash\)n"{}},s0);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ update\ second\ angle}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ sum\_neigh\_meas\_q0\ =\ 0;}
+\DoxyCodeLine{00059\ \ \ \ \ qreal\ x\_correction\_q1\ =\ pow(-\/1,\ s0)*angles[1];}
+\DoxyCodeLine{00060\ \ \ \ \ qreal\ z\_correction\_q1\ =\ M\_PI*(sum\_neigh\_meas\_q0);}
+\DoxyCodeLine{00061\ \ \ \ \ qreal\ updated\_angle\_q1\ =\ x\_correction\_q1\ +\ z\_correction\_q1;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ measure\ second\ qubit}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//\ X-\/()-\/()\ -\/>\ X-\/X-\/(),\ for\ X\ being\ a\ removed\ qubit}}
+\DoxyCodeLine{00065\ \ \ \ \ rotateZ(qureg,1,\ (-\/1)*updated\_angle\_q1);}
+\DoxyCodeLine{00066\ \ \ \ \ hadamard(qureg,1);}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{int}\ s1\ =\ measure(qureg,1);}
+\DoxyCodeLine{00068\ \ \ \ \ measured\_qubits[1]\ =\ s1;}
+\DoxyCodeLine{00069\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Original\ second\ angle\ is\ \%f\(\backslash\)n"{}},angles[1]);}
+\DoxyCodeLine{00070\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Updated\ second\ angle\ is\ \%f\(\backslash\)n"{}},updated\_angle\_q1);}
+\DoxyCodeLine{00071\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Second\ qubit\ measure\ is\ \%d\(\backslash\)n"{}},s1);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//\ update\ third\ angle}}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{int}\ sum\_neigh\_meas\_q1\ =\ s0;}
+\DoxyCodeLine{00076\ \ \ \ \ qreal\ x\_correction\_q2\ =\ pow(-\/1,\ s1)*angles[2];}
+\DoxyCodeLine{00077\ \ \ \ \ qreal\ z\_correction\_q2\ =\ M\_PI*(sum\_neigh\_meas\_q1);}
+\DoxyCodeLine{00078\ \ \ \ \ qreal\ updated\_angle\_q2\ =\ x\_correction\_q2\ +\ z\_correction\_q2;}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ measure\ third\ qubit}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//\ X-\/X-\/()\ -\/>\ X-\/X-\/X,\ for\ X\ being\ a\ removed\ qubit}}
+\DoxyCodeLine{00082\ \ \ \ \ rotateZ(qureg,2,\ (-\/1)*updated\_angle\_q2);}
+\DoxyCodeLine{00083\ \ \ \ \ hadamard(qureg,2);}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{int}\ s2\ =\ measure(qureg,2);}
+\DoxyCodeLine{00085\ \ \ \ \ measured\_qubits[2]\ =\ s2;}
+\DoxyCodeLine{00086\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Original\ third\ angle\ is\ \%f\(\backslash\)n"{}},angles[2]);}
+\DoxyCodeLine{00087\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Updated\ third\ angle\ is\ \%f\(\backslash\)n"{}},updated\_angle\_q2);}
+\DoxyCodeLine{00088\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Third\ qubit\ measure\ is\ \%d\(\backslash\)n"{}},s2);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{//calcProbOfAllOutcomes(outcomeProbs,\ qureg,\ qubits,\ numQubits);}}
+\DoxyCodeLine{00094\ \ \ \ \ qreal\ prob;}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numQubits;\ i++)}
+\DoxyCodeLine{00096\ \ \ \ \ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ prob\ =\ calcProbOfOutcome(qureg,i,0);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Probability:\ \%f\(\backslash\)n\ "{}},\ prob);}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{comment}{//\ Print\ measured\ qubit\ vector}}
+\DoxyCodeLine{00103\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Measured\ array:"{}});}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ loop\ =\ 0;\ loop\ <\ numQubits;\ loop++)}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%d\ "{}},\ measured\_qubits[loop]);}
+\DoxyCodeLine{00106\ \ \ \ \ }
+\DoxyCodeLine{00107\ \}}
+
+\end{DoxyCode}

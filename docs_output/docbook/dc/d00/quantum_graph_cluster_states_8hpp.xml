@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_quantum_graph_cluster_states_8hpp" xml:lang="en-US">
+<title>src/quantumGraphs/quantumGraphClusterStates.hpp File Reference</title>
+<indexterm><primary>src/quantumGraphs/quantumGraphClusterStates.hpp</primary></indexterm>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>typedef boost::graph_traits&lt; <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_quantum_graph_cluster_states_8hpp_1ad413424ad598fbd91fde4dffeceda3c0">edgeIterator</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_quantum_graph_cluster_states_8hpp_1a3f830234f9eb3a150a084b0f2b4aa056">entangleGraph</link> (Qureg qureg, const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_quantum_graph_cluster_states_8hpp_1ad413424ad598fbd91fde4dffeceda3c0"/><section>
+    <title>edgeIterator</title>
+<indexterm><primary>edgeIterator</primary><secondary>quantumGraphClusterStates.hpp</secondary></indexterm>
+<indexterm><primary>quantumGraphClusterStates.hpp</primary><secondary>edgeIterator</secondary></indexterm>
+<para><computeroutput>typedef boost::graph_traits&lt;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&gt;<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</link> <link linkend="_packages_8hpp_1afccd45e2973698c37e8379f6b25a82bc">edgeIterator</link></computeroutput></para><para>
+Definition at line <link linkend="_quantum_graph_cluster_states_8hpp_source_1l00010">10</link> of file <link linkend="_quantum_graph_cluster_states_8hpp_source">quantumGraphClusterStates.hpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_quantum_graph_cluster_states_8hpp_1a3f830234f9eb3a150a084b0f2b4aa056"/><section>
+    <title>entangleGraph()</title>
+<indexterm><primary>entangleGraph</primary><secondary>quantumGraphClusterStates.hpp</secondary></indexterm>
+<indexterm><primary>quantumGraphClusterStates.hpp</primary><secondary>entangleGraph</secondary></indexterm>
+<para><computeroutput>void entangleGraph (Qureg qureg, const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph)</computeroutput></para><para>
+Definition at line <link linkend="_quantum_graph_cluster_states_8hpp_source_1l00012">12</link> of file <link linkend="_quantum_graph_cluster_states_8hpp_source">quantumGraphClusterStates.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00014 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;entangle&#32;qureg&#32;according&#32;to&#32;the&#32;graph&#32;with&#32;CZ&#32;gates</emphasis>
+00015 &#32;&#32;&#32;&#32;<link linkend="_packages_8hpp_1afccd45e2973698c37e8379f6b25a82bc">edgeIterator</link>&#32;ei,&#32;ei_end;
+00016 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(boost::tie(ei,&#32;ei_end)&#32;=&#32;edges(graph);&#32;ei&#32;!=&#32;ei_end;&#32;++ei)&#32;{
+00017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">auto</emphasis>&#32;source&#32;=&#32;boost::source(*ei,&#32;graph);
+00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">auto</emphasis>&#32;target&#32;=&#32;boost::target(*ei,&#32;graph);
+00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;controlledPhaseFlip&#32;(qureg,source,target);
+00020 &#32;&#32;&#32;&#32;}
+00021 
+00022 &#32;
+00023 }
+</programlisting></section>
+</section>
+</section>

@@ -1,0 +1,114 @@
+\doxysection{tests/test\+Graph\+Properties.cpp File Reference}
+\hypertarget{test_graph_properties_8cpp}{}\label{test_graph_properties_8cpp}\index{tests/testGraphProperties.cpp@{tests/testGraphProperties.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$numeric$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$boost/graph/adjacency\+\_\+list.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/container/vector.\+hpp$>$}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/generic\+Helper\+Functions/general\+Assert\+Functions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/graphs/graph\+Constructions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/test\+Functions/graph\+Assert\+Functions.\+hpp\"{}}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef boost\+::adjacency\+\_\+list$<$ boost\+::vecS, boost\+::vecS, boost\+::undirectedS $>$ \mbox{\hyperlink{test_graph_properties_8cpp_af845bf432b56cdda82dbde8011882168}{undirected\+Graph}}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{test_graph_properties_8cpp_af04c50f717d4bda41f0c58fe0eece059}{edge\+\_\+iterator}}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{\+::vertex\+\_\+iterator}} \mbox{\hyperlink{test_graph_properties_8cpp_a9451df0dac964b257bedb5e60547824e}{vertex\+\_\+iterator}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{test_graph_properties_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{test_graph_properties_8cpp_af04c50f717d4bda41f0c58fe0eece059}\label{test_graph_properties_8cpp_af04c50f717d4bda41f0c58fe0eece059} 
+\index{testGraphProperties.cpp@{testGraphProperties.cpp}!edge\_iterator@{edge\_iterator}}
+\index{edge\_iterator@{edge\_iterator}!testGraphProperties.cpp@{testGraphProperties.cpp}}
+\doxysubsubsection{\texorpdfstring{edge\_iterator}{edge\_iterator}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}$>$\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{edge\+\_\+iterator}}}
+
+
+
+Definition at line \mbox{\hyperlink{test_graph_properties_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{test_graph_properties_8cpp_source}{test\+Graph\+Properties.\+cpp}}.
+
+\Hypertarget{test_graph_properties_8cpp_af845bf432b56cdda82dbde8011882168}\label{test_graph_properties_8cpp_af845bf432b56cdda82dbde8011882168} 
+\index{testGraphProperties.cpp@{testGraphProperties.cpp}!undirectedGraph@{undirectedGraph}}
+\index{undirectedGraph@{undirectedGraph}!testGraphProperties.cpp@{testGraphProperties.cpp}}
+\doxysubsubsection{\texorpdfstring{undirectedGraph}{undirectedGraph}}
+{\footnotesize\ttfamily typedef boost\+::adjacency\+\_\+list$<$boost\+::vecS, boost\+::vecS,boost\+::undirectedS$>$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}}
+
+
+
+Definition at line \mbox{\hyperlink{test_graph_properties_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{test_graph_properties_8cpp_source}{test\+Graph\+Properties.\+cpp}}.
+
+\Hypertarget{test_graph_properties_8cpp_a9451df0dac964b257bedb5e60547824e}\label{test_graph_properties_8cpp_a9451df0dac964b257bedb5e60547824e} 
+\index{testGraphProperties.cpp@{testGraphProperties.cpp}!vertex\_iterator@{vertex\_iterator}}
+\index{vertex\_iterator@{vertex\_iterator}!testGraphProperties.cpp@{testGraphProperties.cpp}}
+\doxysubsubsection{\texorpdfstring{vertex\_iterator}{vertex\_iterator}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}$>$\mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{\+::vertex\+\_\+iterator}} \mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{vertex\+\_\+iterator}}}
+
+
+
+Definition at line \mbox{\hyperlink{test_graph_properties_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{test_graph_properties_8cpp_source}{test\+Graph\+Properties.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{test_graph_properties_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{test_graph_properties_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{testGraphProperties.cpp@{testGraphProperties.cpp}!main@{main}}
+\index{main@{main}!testGraphProperties.cpp@{testGraphProperties.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test_graph_properties_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{test_graph_properties_8cpp_source}{test\+Graph\+Properties.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ rows;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ cols;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ totalVertices;}
+\DoxyCodeLine{00033\ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ pathGraph;}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph;}
+\DoxyCodeLine{00036\ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ rows\ =\ 10;}
+\DoxyCodeLine{00038\ \ \ \ \ cols\ =\ 10;}
+\DoxyCodeLine{00039\ \ \ \ \ totalVertices\ =\ rows*cols;}
+\DoxyCodeLine{00040\ \ \ \ \ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ pathGraph\ =\ \mbox{\hyperlink{create_graph_8hpp_aabb013bb6de93b1ca2ff83e1d7d200c7}{createLatticeGraph}}(1,cols);}
+\DoxyCodeLine{00045\ \ \ \ \ latticeGraph\ =\ \mbox{\hyperlink{create_graph_8hpp_aabb013bb6de93b1ca2ff83e1d7d200c7}{createLatticeGraph}}(rows,cols);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ Test\ that\ the\ total\ degree\ is\ equivalent\ to\ }}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ 2\ times\ the\ number\ of\ edges}}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{graph_assert_functions_8hpp_a60966966368ac25fe48dbccd70490e98}{assertHandShakeLemma}}(pathGraph);}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{graph_assert_functions_8hpp_a60966966368ac25fe48dbccd70490e98}{assertHandShakeLemma}}(latticeGraph);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ Test\ minimum\ and\ maximum\ degree\ of\ a\ path\ graph\ is}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ 1\ and\ 2\ respectively\ }}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{graph_assert_functions_8hpp_a781ea29934c2f8c5c65a73075bc13da1}{assertPathGraphMinMaxDegrees}}(pathGraph);}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{graph_assert_functions_8hpp_ab7b459ddc7c532fc5a37abb8760d7ca6}{assertDegreeSetLatticeGraph}}(latticeGraph);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ Assert\ the\ number\ of\ vertices\ in\ the\ graph}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ equal\ the\ inputted\ number}}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{graph_assert_functions_8hpp_a026973ba07ba80213ede65e64a3eb614}{assertGraphNumVertices}}(pathGraph,cols);}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{graph_assert_functions_8hpp_a026973ba07ba80213ede65e64a3eb614}{assertGraphNumVertices}}(latticeGraph,totalVertices);}
+\DoxyCodeLine{00063\ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00067\ \}}
+
+\end{DoxyCode}

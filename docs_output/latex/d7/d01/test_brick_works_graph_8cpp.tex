@@ -1,0 +1,102 @@
+\doxysection{tests/test\+Brick\+Works\+Graph.cpp File Reference}
+\hypertarget{test_brick_works_graph_8cpp}{}\label{test_brick_works_graph_8cpp}\index{tests/testBrickWorksGraph.cpp@{tests/testBrickWorksGraph.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$numeric$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$random$>$}\newline
+{\ttfamily \#include $<$filesystem$>$}\newline
+{\ttfamily \#include $<$Qu\+EST.\+h$>$}\newline
+{\ttfamily \#include $<$boost/graph/adjacency\+\_\+list.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/grid\+\_\+graph.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/graphviz.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/array.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/graph\+\_\+utility.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/container/vector.\+hpp$>$}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/generic\+Helper\+Functions/general\+Helper\+Functions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/generic\+Helper\+Functions/write\+Graph\+Graph\+Viz\+Dot\+File.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/graphs/graph\+Constructions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/graphs/graph\+Traversal\+Flows.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/quantum\+Graphs/flow\+Measurements.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/quantum\+Graphs/angle\+Construction.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/quantum\+Graphs/quantum\+Graph\+Cluster\+States.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/test\+Functions/general\+Assert\+Functions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/test\+Functions/graph\+Assert\+Functions.\+hpp\"{}}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef boost\+::adjacency\+\_\+list$<$ boost\+::vecS, boost\+::vecS, boost\+::undirectedS $>$ \mbox{\hyperlink{test_brick_works_graph_8cpp_af845bf432b56cdda82dbde8011882168}{undirected\+Graph}}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{test_brick_works_graph_8cpp_ad413424ad598fbd91fde4dffeceda3c0}{edge\+Iterator}}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{\+::vertex\+\_\+iterator}} \mbox{\hyperlink{test_brick_works_graph_8cpp_ad100606fc4950dfc094fc60544838351}{vertex\+Iterator}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{test_brick_works_graph_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{test_brick_works_graph_8cpp_ad413424ad598fbd91fde4dffeceda3c0}\label{test_brick_works_graph_8cpp_ad413424ad598fbd91fde4dffeceda3c0} 
+\index{testBrickWorksGraph.cpp@{testBrickWorksGraph.cpp}!edgeIterator@{edgeIterator}}
+\index{edgeIterator@{edgeIterator}!testBrickWorksGraph.cpp@{testBrickWorksGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{edgeIterator}{edgeIterator}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}$>$\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{packages_8hpp_afccd45e2973698c37e8379f6b25a82bc}{edge\+Iterator}}}
+
+
+
+Definition at line \mbox{\hyperlink{test_brick_works_graph_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{test_brick_works_graph_8cpp_source}{test\+Brick\+Works\+Graph.\+cpp}}.
+
+\Hypertarget{test_brick_works_graph_8cpp_af845bf432b56cdda82dbde8011882168}\label{test_brick_works_graph_8cpp_af845bf432b56cdda82dbde8011882168} 
+\index{testBrickWorksGraph.cpp@{testBrickWorksGraph.cpp}!undirectedGraph@{undirectedGraph}}
+\index{undirectedGraph@{undirectedGraph}!testBrickWorksGraph.cpp@{testBrickWorksGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{undirectedGraph}{undirectedGraph}}
+{\footnotesize\ttfamily typedef boost\+::adjacency\+\_\+list$<$boost\+::vecS, boost\+::vecS,boost\+::undirectedS$>$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}}
+
+
+
+Definition at line \mbox{\hyperlink{test_brick_works_graph_8cpp_source_l00059}{59}} of file \mbox{\hyperlink{test_brick_works_graph_8cpp_source}{test\+Brick\+Works\+Graph.\+cpp}}.
+
+\Hypertarget{test_brick_works_graph_8cpp_ad100606fc4950dfc094fc60544838351}\label{test_brick_works_graph_8cpp_ad100606fc4950dfc094fc60544838351} 
+\index{testBrickWorksGraph.cpp@{testBrickWorksGraph.cpp}!vertexIterator@{vertexIterator}}
+\index{vertexIterator@{vertexIterator}!testBrickWorksGraph.cpp@{testBrickWorksGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{vertexIterator}{vertexIterator}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}$>$\mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{\+::vertex\+\_\+iterator}} \mbox{\hyperlink{packages_8hpp_aad3f8f6369da7f36e6266fdcb1991169}{vertex\+Iterator}}}
+
+
+
+Definition at line \mbox{\hyperlink{test_brick_works_graph_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{test_brick_works_graph_8cpp_source}{test\+Brick\+Works\+Graph.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{test_brick_works_graph_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{test_brick_works_graph_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{testBrickWorksGraph.cpp@{testBrickWorksGraph.cpp}!main@{main}}
+\index{main@{main}!testBrickWorksGraph.cpp@{testBrickWorksGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test_brick_works_graph_8cpp_source_l00066}{66}} of file \mbox{\hyperlink{test_brick_works_graph_8cpp_source}{test\+Brick\+Works\+Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ brickWorkGraph;}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ 10;}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{00071\ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{00072\ \ \ }
+\DoxyCodeLine{00073\ \ \ \textcolor{comment}{//\ create\ a\ quantum\ register}}
+\DoxyCodeLine{00074\ \ \ Qureg\ qureg\ =\ createQureg(numVertices,\ env);}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00076\ \}}
+
+\end{DoxyCode}

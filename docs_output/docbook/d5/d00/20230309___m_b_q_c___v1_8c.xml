@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_20230309___m_b_q_c___v1_8c" xml:lang="en-US">
+<title>src/archive/20230309_MBQC_V1.c File Reference</title>
+<indexterm><primary>src/archive/20230309_MBQC_V1.c</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;QuEST.h&gt;<?linebreak?>#include &lt;stdio.h&gt;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_20230309___m_b_q_c___v1_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>20230309_MBQC_V1.c</secondary></indexterm>
+<indexterm><primary>20230309_MBQC_V1.c</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_20230309___m_b_q_c___v1_8c_source_1l00008">8</link> of file <link linkend="_20230309___m_b_q_c___v1_8c_source">20230309_MBQC_V1.c</link>.</para>
+<programlisting linenumbering="unnumbered">00008 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00009 &#32;&#32;&#32;&#32;
+00010 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST</emphasis>
+00011 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+00012 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numQubits&#32;=&#32;3;
+00013 &#32;&#32;&#32;&#32;qreal&#32;angle&#32;=&#32;M_PI&#32;/&#32;4;
+00014 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Angle&#32;is&#32;measured&#32;as&#32;%f\n&quot;</emphasis>,angle);
+00015 &#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;prepare&#32;our&#32;register</emphasis>
+00016 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numQubits,&#32;env);
+00017 
+00018 
+00019 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;qureg&#32;-&gt;&#32;|+&gt;&lt;+|</emphasis>
+00020 &#32;&#32;&#32;&#32;initPlusState(qureg);&#32;&#32;
+00021 
+00022 
+00023 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;apply&#32;CZ&#32;gate&#32;to&#32;entangle&#32;the&#32;circuit</emphasis>
+00024 &#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,0,1);
+00025 &#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,1,2);
+00026 &#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,0,2);
+00027 &#32;&#32;&#32;&#32;
+00028 &#32;&#32;&#32;&#32;
+00029 &#32;&#32;&#32;&#32;
+00030 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Initialising&#32;%d&#32;qubits\n&quot;</emphasis>,numQubits);
+00031 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;m0&#32;=&#32;measure(qureg,0);
+00032 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;m1&#32;=&#32;measure(qureg,1);
+00033 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;m2&#32;=&#32;measure(qureg,2);
+00034 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;qubit&#32;0&#32;is&#32;measured&#32;as&#32;%d\n&quot;</emphasis>,m0);
+00035 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;qubit&#32;1&#32;is&#32;measured&#32;as&#32;%d\n&quot;</emphasis>,m1);
+00036 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;qubit&#32;2&#32;is&#32;measured&#32;as&#32;%d\n&quot;</emphasis>,m2);
+00037 
+00038 
+00039 }
+</programlisting></section>
+</section>
+</section>

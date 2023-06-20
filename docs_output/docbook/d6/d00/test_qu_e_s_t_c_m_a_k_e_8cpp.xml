@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test_qu_e_s_t_c_m_a_k_e_8cpp" xml:lang="en-US">
+<title>src/testQuESTCMAKE.cpp File Reference</title>
+<indexterm><primary>src/testQuESTCMAKE.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;iostream&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;algorithm&gt;<?linebreak?>#include &lt;boost/container/vector.hpp&gt;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_test_qu_e_s_t_c_m_a_k_e_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_test_qu_e_s_t_c_m_a_k_e_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>testQuESTCMAKE.cpp</secondary></indexterm>
+<indexterm><primary>testQuESTCMAKE.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_test_qu_e_s_t_c_m_a_k_e_8cpp_source_1l00006">6</link> of file <link linkend="_test_qu_e_s_t_c_m_a_k_e_8cpp_source">testQuESTCMAKE.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00006 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00007 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;numbers;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;vector&#32;to&#32;store&#32;the&#32;numbers</emphasis>
+00008 
+00009 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Populate&#32;the&#32;vector&#32;with&#32;numbers&#32;from&#32;1&#32;to&#32;10</emphasis>
+00010 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;1;&#32;i&#32;&lt;=&#32;10;&#32;i++)&#32;{
+00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numbers.push_back(i);
+00012 &#32;&#32;&#32;&#32;}
+00013 
+00014 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Square&#32;each&#32;element&#32;in&#32;the&#32;vector</emphasis>
+00015 &#32;&#32;&#32;&#32;std::transform(numbers.begin(),&#32;numbers.end(),&#32;numbers.begin(),&#32;[](<emphasis role="keywordtype">int</emphasis>&#32;num)&#32;{
+00016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;return&#32;num&#32;*&#32;num;
+00017 &#32;&#32;&#32;&#32;});
+00018 
+00019 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Print&#32;the&#32;squared&#32;numbers</emphasis>
+00020 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;num&#32;:&#32;numbers)&#32;{
+00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;num&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>;
+00022 &#32;&#32;&#32;&#32;}
+00023 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+00024 
+00025 
+00026 
+00027 &#32;&#32;&#32;&#32;&#32;boost::container::vector&lt;int&gt;&#32;myVector;
+00028 
+00029 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Add&#32;elements&#32;to&#32;the&#32;vector</emphasis>
+00030 &#32;&#32;&#32;&#32;myVector.push_back(10);
+00031 &#32;&#32;&#32;&#32;myVector.push_back(20);
+00032 &#32;&#32;&#32;&#32;myVector.push_back(30);
+00033 
+00034 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Print&#32;the&#32;elements&#32;of&#32;the&#32;vector</emphasis>
+00035 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">auto</emphasis>&amp;&#32;element&#32;:&#32;myVector)&#32;{
+00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;element&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>;
+00037 &#32;&#32;&#32;&#32;}
+00038 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+00039 
+00040 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+00041 }
+</programlisting></section>
+</section>
+</section>

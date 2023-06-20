@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_mainpage" xml:lang="en-US">
+<title>MBQC</title>
+<indexterm><primary>MBQC</primary></indexterm>
+
+<para><anchor xml:id="_index_1md_docs_2mainpage"/></para>
+<section xml:id="_index_1autotoc_md17">
+<title>Measurement Based Quantum Computation (MBQC) Simulator (MBQC V0.01)</title>
+
+<para>Measurement-based quantum computation (MBQC) is an alternative computational model to the circuit-based quantum computation (CBQC) model. While many quantum computing simulators like</para>
+
+<para><itemizedlist>
+<listitem>
+<para>Qiskit-aer,</para>
+</listitem><listitem>
+<para>PyQuil-qvm, and</para>
+</listitem><listitem>
+<para>QuEST</para>
+</listitem></itemizedlist>
+</para>
+
+<para>are based on the CBQC model. QuEST stands out by offering flexibility with mid-circuit measurement and the ability to perform feed-forward actions, such as adaptive basis measurements for future qubits.</para>
+
+<para>This repository aims to simulate a general MBQC framework using QuEST and leveraging the Boost Graph Library (<link xlink:href="https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/index.html">BGL</link>), which is developed under the <link xlink:href="https://www.boost.org/">Boost</link> library in C++.</para>
+
+<para>By combining QuEST&apos;s capabilities with the power of the Boost Graph Library, this project provides a versatile MBQC simulator.</para>
+
+<para><itemizedlist>
+<listitem>
+<para>Currently, MBQC++ offers variable sized one and two dimensional lattices.</para>
+</listitem></itemizedlist>
+</para>
+<section xml:id="_index_1autotoc_md18">
+<title>What is MBQC</title>
+
+<para>**TODO: Some brief MBQC overview content**</para>
+</section>
+<section xml:id="_index_1autotoc_md19">
+<title>Project status</title>
+
+<para>This project is in active development, labelled as version 0.01. There is some basic functionality in this repositors, but by no means is a complete simulator. To run this repository see below for external library requirements.</para>
+<section xml:id="_index_1autotoc_md20">
+<title>External library requirements</title>
+
+<para>Along with the standard C/C++ libraries there are two additional external libraries. Since MBQC is a graph theoretic based paradigm, the numerical library, Boost is called and with it, its graph library. To performthe quantum computation the current backend simulator is QuEST. Each of these libraries can be found here:</para>
+
+<para><orderedlist>
+<listitem>
+<para>Boost: <link xlink:href="https://www.boost.org/">https://www.boost.org/</link><orderedlist>
+<listitem>
+<para>Boost graph library: <link xlink:href="https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/index.html">https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/index.html</link></para>
+</listitem><listitem>
+<para>Download: <link xlink:href="https://www.boost.org/users/download/">https://www.boost.org/users/download/</link></para>
+</listitem><listitem>
+<para>Homebrew: <link xlink:href="https://formulae.brew.sh/formula/boost">https://formulae.brew.sh/formula/boost</link></para>
+</listitem></orderedlist>
+</para>
+</listitem><listitem>
+<para>GraphViz<orderedlist>
+<listitem>
+<para>Page: <link xlink:href="https://graphviz.org/">https://graphviz.org/</link></para>
+</listitem><listitem>
+<para>Downloads: <link xlink:href="https://graphviz.org/download/">https://graphviz.org/download/</link></para>
+</listitem></orderedlist>
+</para>
+</listitem><listitem>
+<para>QuEST: <link xlink:href="https://quest.qtechtheory.org/">https://quest.qtechtheory.org/</link><orderedlist>
+<listitem>
+<para>Download page: <link xlink:href="https://quest.qtechtheory.org/download/">https://quest.qtechtheory.org/download/</link></para>
+</listitem><listitem>
+<para>Github: <link xlink:href="https://github.com/QuEST-Kit/QuEST">https://github.com/QuEST-Kit/QuEST</link></para>
+</listitem><listitem>
+<para>Github organisation: <link xlink:href="https://github.com/QuEST-Kit">https://github.com/QuEST-Kit</link></para>
+</listitem><listitem>
+<para>Documentation: <link xlink:href="https://quest-kit.github.io/QuEST/modules.html">https://quest-kit.github.io/QuEST/modules.html</link></para>
+</listitem></orderedlist>
+</para>
+</listitem></orderedlist>
+</para>
+
+<para>These (Boost and QuEST) are both REQUIRED to run this MBQC. GraphViz is required to print graphs to file.</para>
+
+<para><orderedlist>
+<listitem>
+<para>Download boost, the <computeroutput>CMakeLists.txt</computeroutput> file in the root of this repository attempts to find Boost. For any trouble with this step please open and issue and we will respond as soon as possible.</para>
+</listitem><listitem>
+<para>Download the QuEST repository from GitHub and save the folder to <computeroutput>$HOME/Projects/QuEST/</computeroutput> and <computeroutput>CMakeLists.txt</computeroutput> should be able to load it. For any trouble with this step please open and issue and we will respond as soon as possible. (Note that <computeroutput>$HOME</computeroutput> is used in Linux to represent the home directory such as <computeroutput>/home/username/</computeroutput></para>
+</listitem></orderedlist>
+</para>
+</section>
+<section xml:id="_index_1autotoc_md21">
+<title>Compile and execute a starter file</title>
+
+<para>To run a simple script executing a two dimensional lattice graph and measuring every qubit do the following</para>
+
+<para><orderedlist>
+<listitem>
+<para>Clone this repos with <computeroutput>git clone git@github.com:ediparquantum/MBQC.git</computeroutput> (I use ssh, use what works for you) to <computeroutput>$HOME/Projects</computeroutput></para>
+</listitem><listitem>
+<para>Navigate to <computeroutput>$HOME/Projects</computeroutput> (eg <computeroutput>cd $HOME/Projects/MBQC</computeroutput>)</para>
+</listitem><listitem>
+<para>Make a directory called <computeroutput>build</computeroutput> in <computeroutput>$HOME/Projects/MBQC</computeroutput> with <computeroutput>mkdir build</computeroutput>.</para>
+</listitem><listitem>
+<para>Navigate to <computeroutput>build</computeroutput> (eg <computeroutput>cd build</computeroutput> assuming you are already in <computeroutput>cd $HOME/Projects/MBQC</computeroutput>)</para>
+</listitem></orderedlist>
+</para>
+
+<para>Now you are ready to run cmake: <computeroutput>cmake ..</computeroutput> and should see</para>
+
+<para></para>
+
+<para>Now run <computeroutput>make</computeroutput> and should see</para>
+
+<para></para>
+
+<para>Now run <computeroutput>./mbqcStarterFile</computeroutput> and should see</para>
+
+<para></para>
+
+<para>For any trouble with this step please open and issue and we will respond as soon as possible. </para>
+</section>
+</section>
+</section>
+</chapter>

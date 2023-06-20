@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp" xml:lang="en-US">
+<title>src/archive/filesToGoThrough/2023028_TwoQubitsEachPiOn2Angle.cpp File Reference</title>
+<indexterm><primary>src/archive/filesToGoThrough/2023028_TwoQubitsEachPiOn2Angle.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;QuEST.h&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &lt;algorithm&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?>#include &quot;20230314_Functions_V1.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_2023028___two_qubits_each_pi_on2_angle_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>2023028_TwoQubitsEachPiOn2Angle.cpp</secondary></indexterm>
+<indexterm><primary>2023028_TwoQubitsEachPiOn2Angle.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00011">11</link> of file <link linkend="_2023028___two_qubits_each_pi_on2_angle_8cpp_source">2023028_TwoQubitsEachPiOn2Angle.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00011 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00012 
+00013 &#32;&#32;&#32;&#32;
+00014 &#32;&#32;&#32;&#32;vector&lt;int&gt;&#32;lastQubitOutcome;
+00015 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numberRealisations&#32;=&#32;1E6;
+00016 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numberQubits&#32;=&#32;2;
+00017 
+00018 &#32;&#32;&#32;&#32;
+00019 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=0;i&lt;numberRealisations;i++)
+00020 &#32;&#32;&#32;&#32;{&#32;&#32;
+00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;parameters</emphasis>
+00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numberQubits&#32;=&#32;numberQubits;<emphasis role="comment">//11;</emphasis>
+00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;prepare&#32;our&#32;register</emphasis>
+00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numberQubits,&#32;env);
+00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;qureg&#32;-&gt;&#32;|+&gt;&lt;+|</emphasis>
+00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;initPlusState(qureg);&#32;&#32;
+00028 
+00029 
+00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;vector&#32;representing&#32;a&#32;linear&#32;cluster&#32;graph</emphasis>
+00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;vector&lt;int&gt;&#32;pathGraph&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1aa6c7ea81b30e713a1f641e9a86e5f0a8">getPathGraph</link>(numberQubits);&#32;
+00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;vector&lt;int&gt;&#32;measuredQubitsOutcomes;
+00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;vector&lt;qreal&gt;&#32;qubitAngles;
+00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;vector&lt;qreal&gt;&#32;updatedQubitAngles;
+00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+00036 
+00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;apply&#32;CZ&#32;gate&#32;to&#32;entangle&#32;the&#32;circuit</emphasis>
+00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(std::vector&lt;int&gt;::size_type&#32;q&#32;=&#32;0;&#32;q&#32;!=&#32;pathGraph.size()-1;&#32;q++)&#32;
+00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;
+00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,q,q+1);
+00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00042 
+00043 
+00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;initial&#32;angles</emphasis>
+00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=0;i&lt;numberQubits;i++)
+00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles.push_back(M_PI/2);&#32;
+00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;
+00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Run&#32;MBQC</emphasis>
+00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;first&#32;qubit</emphasis>
+00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;firstQubitIndex=0;
+00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;updatedQubitAngles.push_back(qubitAngles[firstQubitIndex]);
+00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rotateZ(qureg,firstQubitIndex,&#32;(-1)*updatedQubitAngles[firstQubitIndex]);
+00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hadamard(qureg,firstQubitIndex);
+00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;measuredQubitsOutcomes.push_back(measure(qureg,firstQubitIndex));
+00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;second&#32;qubit</emphasis>
+00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;X1;
+00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//qreal&#32;Z1;</emphasis>
+00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;secondQubitIndex=1;
+00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;X1&#32;=&#32;pow((-1),measuredQubitsOutcomes[firstQubitIndex])*qubitAngles[secondQubitIndex];
+00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;updatedQubitAngles[secondQubitIndex]&#32;=&#32;X1;
+00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rotateZ(qureg,secondQubitIndex,&#32;(-1)*updatedQubitAngles[secondQubitIndex]);
+00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hadamard(qureg,secondQubitIndex);
+00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;measuredQubitsOutcomes.push_back(measure(qureg,secondQubitIndex));
+00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//vectUpdatedAngles.push_back(updatedQubitAngles);</emphasis>
+00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lastQubitOutcome.push_back(measuredQubitsOutcomes.back());
+00075 &#32;&#32;&#32;&#32;}
+00076 
+00077 &#32;&#32;&#32;&#32;
+00078 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numberZeros&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1a93cdcf18ac63c09cd8354e765238386a">countElements</link>(lastQubitOutcome,&#32;0);
+00079 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numberOnes&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1a93cdcf18ac63c09cd8354e765238386a">countElements</link>(lastQubitOutcome,&#32;1);
+00080 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;ratioZeros&#32;=&#32;(numberZeros*(1.0))/numberRealisations*(1.0);
+00081 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;ratioOnes&#32;=&#32;(numberOnes*(1.0))/numberRealisations*(1.0);
+00082 &#32;&#32;&#32;&#32;cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Number&#32;last&#32;qubits&#32;=&#32;0:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;numberZeros&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>;
+00083 &#32;&#32;&#32;&#32;cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Number&#32;last&#32;qubits&#32;=&#32;1:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;numberOnes&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>;
+00084 &#32;&#32;&#32;&#32;cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Ratio&#32;last&#32;qubits&#32;=&#32;0:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;ratioZeros&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>;
+00085 &#32;&#32;&#32;&#32;cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Ratio&#32;last&#32;qubits&#32;=&#32;1:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;ratioOnes&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>;
+00086 &#32;&#32;&#32;&#32;
+00087 &#32;&#32;&#32;&#32;
+00088 }
+</programlisting></section>
+</section>
+</section>

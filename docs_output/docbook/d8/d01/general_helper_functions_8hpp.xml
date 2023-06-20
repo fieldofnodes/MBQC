@@ -1,0 +1,595 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_general_helper_functions_8hpp" xml:lang="en-US">
+<title>src/genericHelperFunctions/generalHelperFunctions.hpp File Reference</title>
+<indexterm><primary>src/genericHelperFunctions/generalHelperFunctions.hpp</primary></indexterm>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_general_helper_functions_8hpp_1ac42846f45bd917af1aef32178df53bbf">markPosition</link> ()</para>
+
+<para>Marks the current position. </para>
+</listitem>
+            <listitem><para>int <link linkend="_general_helper_functions_8hpp_1a4c07ccd9e75d9522fb31bd4155bc5c46">drawRandomUniformInteger</link> (int min, int max)</para>
+
+<para>Draws a random integer from a uniform distribution within a specified range. </para>
+</listitem>
+            <listitem><para>std::vector&lt; double &gt; <link linkend="_general_helper_functions_8hpp_1a7162e6559cb0f6cd2c76ebee85fe113d">calculateColumnRatios</link> (const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;matrix)</para>
+
+<para>Calculates the ratios of ones in each column of a matrix. </para>
+</listitem>
+            <listitem><para>std::vector&lt; std::string &gt; <link linkend="_general_helper_functions_8hpp_1a318982330941fb08021062d2593a62f9">getPaths</link> (std::string dataPath, std::string outputDir, std::string qubitInfo, qreal probability)</para>
+
+<para>Create probability and amplitude paths. </para>
+</listitem>
+            <listitem><para>template&lt;typename T &gt; </para><para>void <link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link> (const std::vector&lt; T &gt; &amp;vec)</para>
+
+<para>Prints the elements of a vector. </para>
+</listitem>
+            <listitem><para>template&lt;typename T &gt; </para><para>void <link linkend="_general_helper_functions_8hpp_1ac0434b40f8b6ac7962d760550c133c8f">writeVectorToFile</link> (const std::vector&lt; T &gt; &amp;values, const std::string &amp;filename, const std::string &amp;col_name)</para>
+
+<para>Writes the elements of a vector to a file. </para>
+</listitem>
+            <listitem><para>template&lt;typename T &gt; </para><para>void <link linkend="_general_helper_functions_8hpp_1a41a7ac4a876af2866b1d6ab915ecdfb2">writeArrayToFile</link> (const T *values, size_t size, const std::string &amp;filename, const std::string &amp;col_name)</para>
+
+<para>Writes the elements of an array to a file. </para>
+</listitem>
+            <listitem><para>void <link linkend="_general_helper_functions_8hpp_1a7465cffdfd3bf3b9d59175e8194b4588">writeStateToFile</link> (const Qureg &amp;qureg, const std::string &amp;filepath)</para>
+
+<para>Writes the state vector of a quantum register to a file. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_general_helper_functions_8hpp_1a7162e6559cb0f6cd2c76ebee85fe113d"/><section>
+    <title>calculateColumnRatios()</title>
+<indexterm><primary>calculateColumnRatios</primary><secondary>generalHelperFunctions.hpp</secondary></indexterm>
+<indexterm><primary>generalHelperFunctions.hpp</primary><secondary>calculateColumnRatios</secondary></indexterm>
+<para><computeroutput>std::vector&lt; double &gt; calculateColumnRatios (const std::vector&lt; std::vector&lt; int &gt; &gt; &amp; matrix)</computeroutput></para><para>
+
+<para>Calculates the ratios of ones in each column of a matrix. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>matrix</entry><entry>
+<para>The matrix for which to calculate the column ratios. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>A vector containing the ratios of ones in each column of the matrix.</para>
+</formalpara>
+This function calculates the ratios of ones in each column of the given matrix. It takes a 2D matrix represented by a vector of vectors as input. If the matrix is empty or any of its rows is empty, an empty ratios vector is returned. The function iterates over each column and counts the number of ones in that column. The ratio of ones is calculated by dividing the count by the total number of rows in the matrix. The ratios are stored in a vector, which is then returned.</para>
+
+<para>Example usage: <literallayout><computeroutput>std::vector&lt;std::vector&lt;int&gt;&gt;&#32;matrix&#32;=&#32;{
+&#32;&#32;&#32;&#32;{1,&#32;0,&#32;1},
+&#32;&#32;&#32;&#32;{0,&#32;1,&#32;0},
+&#32;&#32;&#32;&#32;{1,&#32;1,&#32;1}
+};
+std::vector&lt;double&gt;&#32;ratios&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a7162e6559cb0f6cd2c76ebee85fe113d">calculateColumnRatios</link>(matrix);
+ratios:&#32;[0.666667,&#32;0.333333,&#32;0.666667]
+</computeroutput></literallayout></para>
+
+<para>
+                <formalpara>
+                    <title>
+Template Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>T</entry><entry>
+<para>The type of elements stored in the matrix (should be convertible to int). </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00091">91</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00092 &#32;&#32;&#32;&#32;std::vector&lt;double&gt;&#32;ratios;
+00093 
+00094 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(matrix.empty()&#32;||&#32;matrix[0].empty())&#32;{
+00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ratios;&#32;&#32;<emphasis role="comment">//&#32;Empty&#32;matrix,&#32;return&#32;empty&#32;ratios&#32;vector</emphasis>
+00096 &#32;&#32;&#32;&#32;}
+00097 
+00098 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows&#32;=&#32;matrix.size();
+00099 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols&#32;=&#32;matrix[0].size();
+00100 
+00101 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;col&#32;=&#32;0;&#32;col&#32;&lt;&#32;numCols;&#32;col++)&#32;{
+00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;count&#32;=&#32;0;
+00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;row&#32;=&#32;0;&#32;row&#32;&lt;&#32;numRows;&#32;row++)&#32;{
+00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(matrix[row][col]&#32;==&#32;1)&#32;{
+00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;count++;
+00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;ratio&#32;=&#32;<emphasis role="keyword">static_cast&lt;</emphasis><emphasis role="keywordtype">double</emphasis><emphasis role="keyword">&gt;</emphasis>(count)&#32;/&#32;numRows;
+00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ratios.push_back(ratio);
+00110 &#32;&#32;&#32;&#32;}
+00111 
+00112 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ratios;
+00113 }
+</programlisting></section>
+<anchor xml:id="_general_helper_functions_8hpp_1a4c07ccd9e75d9522fb31bd4155bc5c46"/><section>
+    <title>drawRandomUniformInteger()</title>
+<indexterm><primary>drawRandomUniformInteger</primary><secondary>generalHelperFunctions.hpp</secondary></indexterm>
+<indexterm><primary>generalHelperFunctions.hpp</primary><secondary>drawRandomUniformInteger</secondary></indexterm>
+<para><computeroutput>int drawRandomUniformInteger (int min, int max)</computeroutput></para><para>
+
+<para>Draws a random integer from a uniform distribution within a specified range. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>min</entry><entry>
+<para>The minimum value of the range (inclusive). </para>
+</entry>
+                            </row>
+                            <row>
+<entry>max</entry><entry>
+<para>The maximum value of the range (inclusive). </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>A randomly generated integer within the specified range.</para>
+</formalpara>
+This function uses the Mersenne Twister pseudo-random number generator to draw a random integer from a uniform distribution within the specified range [min, max]. The minimum and maximum values are inclusive. The function initializes a random device, creates a Mersenne Twister generator, and uses a uniform integer distribution to generate the random number. The generated random integer is then returned. </para>
+<para>
+Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00053">53</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00054 &#32;&#32;&#32;&#32;std::random_device&#32;rd;
+00055 &#32;&#32;&#32;&#32;std::mt19937&#32;generator(rd());
+00056 &#32;&#32;&#32;&#32;std::uniform_int_distribution&lt;int&gt;&#32;distribution(min,&#32;max);
+00057 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;randomInt&#32;=&#32;distribution(generator);
+00058 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;randomInt;
+00059 }
+</programlisting></section>
+<anchor xml:id="_general_helper_functions_8hpp_1a318982330941fb08021062d2593a62f9"/><section>
+    <title>getPaths()</title>
+<indexterm><primary>getPaths</primary><secondary>generalHelperFunctions.hpp</secondary></indexterm>
+<indexterm><primary>generalHelperFunctions.hpp</primary><secondary>getPaths</secondary></indexterm>
+<para><computeroutput>std::vector&lt; std::string &gt; getPaths (std::string dataPath, std::string outputDir, std::string qubitInfo, qreal probability)</computeroutput></para><para>
+
+<para>Create probability and amplitude paths. </para>
+</para>
+
+<para>This function creates the paths for probability and amplitude files based on the provided parameters.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>dataPath</entry><entry>
+<para>The data path. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>outputDir</entry><entry>
+<para>The output directory. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>qubitInfo</entry><entry>
+<para>The qubit information. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>probability</entry><entry>
+<para>The probability value. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>A vector containing the generated paths for probability and amplitude files. </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00131">131</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00132 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*&#32;homeDir&#32;=&#32;std::getenv(<emphasis role="stringliteral">&quot;HOME&quot;</emphasis>);
+00133 &#32;&#32;&#32;&#32;std::string&#32;fslash&#32;=&#32;<emphasis role="stringliteral">&quot;/&quot;</emphasis>;
+00134 &#32;&#32;&#32;&#32;std::string&#32;uscore&#32;=&#32;<emphasis role="stringliteral">&quot;_&quot;</emphasis>;
+00135 &#32;&#32;&#32;&#32;std::string&#32;root&#32;=&#32;homeDir;
+00136 &#32;&#32;&#32;&#32;std::string&#32;amps&#32;=&#32;<emphasis role="stringliteral">&quot;amplitudes&quot;</emphasis>;
+00137 &#32;&#32;&#32;&#32;std::string&#32;probs&#32;=&#32;<emphasis role="stringliteral">&quot;probabilities&quot;</emphasis>;
+00138 &#32;&#32;&#32;&#32;std::string&#32;damps;
+00139 &#32;&#32;&#32;&#32;std::string&#32;csv&#32;=&#32;<emphasis role="stringliteral">&quot;.csv&quot;</emphasis>;
+00140 &#32;&#32;&#32;&#32;
+00141 &#32;&#32;&#32;&#32;
+00142 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(probability&#32;&lt;&#32;0){
+00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;damps&#32;=&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>;
+00144 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>{
+00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;precisionVal&#32;=&#32;2;
+00146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::string&#32;prob_str&#32;=&#32;std::to_string(probability).substr(0,&#32;std::to_string(probability).find(<emphasis role="stringliteral">&quot;.&quot;</emphasis>)&#32;+&#32;precisionVal&#32;+&#32;1);
+00147 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;damps&#32;=&#32;<emphasis role="stringliteral">&quot;mix_damping_prob-&quot;</emphasis>+prob_str;
+00148 &#32;&#32;&#32;&#32;}
+00149 &#32;&#32;&#32;&#32;
+00150 &#32;&#32;&#32;&#32;std::string&#32;dataDirPath&#32;=&#32;homeDir&#32;+&#32;fslash&#32;+&#32;dataPath&#32;+&#32;fslash&#32;+&#32;outputDir&#32;+&#32;fslash;
+00151 &#32;&#32;&#32;&#32;std::string&#32;fileAmp&#32;=&#32;&#32;dataDirPath&#32;+&#32;amps&#32;+&#32;uscore&#32;+&#32;qubitInfo&#32;+&#32;uscore&#32;+&#32;damps&#32;+&#32;csv;
+00152 &#32;&#32;&#32;&#32;std::string&#32;fileProb&#32;=&#32;dataDirPath&#32;+&#32;probs&#32;+&#32;uscore&#32;+&#32;qubitInfo&#32;+&#32;uscore&#32;+&#32;damps&#32;+&#32;csv;
+00153 
+00154 &#32;&#32;&#32;&#32;std::vector&lt;std::string&gt;&#32;paths&#32;=&#32;{fileAmp,&#32;fileProb};
+00155 
+00156 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;paths;
+00157 }
+</programlisting></section>
+<anchor xml:id="_general_helper_functions_8hpp_1ac42846f45bd917af1aef32178df53bbf"/><section>
+    <title>markPosition()</title>
+<indexterm><primary>markPosition</primary><secondary>generalHelperFunctions.hpp</secondary></indexterm>
+<indexterm><primary>generalHelperFunctions.hpp</primary><secondary>markPosition</secondary></indexterm>
+<para><computeroutput>void markPosition ( )</computeroutput></para><para>
+
+<para>Marks the current position. </para>
+</para>
+
+<para>This function marks the current position by printing &quot;Here&quot; to the standard output. </para>
+<para>
+Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00032">32</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00033 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Here&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00034 }
+</programlisting></section>
+<anchor xml:id="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26"/><section>
+    <title>printVector()</title>
+<indexterm><primary>printVector</primary><secondary>generalHelperFunctions.hpp</secondary></indexterm>
+<indexterm><primary>generalHelperFunctions.hpp</primary><secondary>printVector</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>void printVector (const std::vector&lt; T &gt; &amp; vec)</computeroutput></para><para>
+
+<para>Prints the elements of a vector. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>vec</entry><entry>
+<para>The vector to be printed.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                This function prints the elements of a given vector to the standard output, separated by spaces. It takes a vector as input and iterates over each element, printing it followed by a space. After printing all the elements, it outputs a newline character to create a new line.</para>
+
+<para>Example usage: <literallayout><computeroutput>std::vector&lt;int&gt;&#32;numbers&#32;=&#32;{1,&#32;2,&#32;3,&#32;4,&#32;5};
+<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(numbers);&#32;<emphasis role="comment">//&#32;Output:&#32;1&#32;2&#32;3&#32;4&#32;5</emphasis>
+</computeroutput></literallayout></para>
+
+<para>
+                <formalpara>
+                    <title>
+Template Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>T</entry><entry>
+<para>The type of elements stored in the vector. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00182">182</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00183 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">const</emphasis>&#32;T&amp;&#32;element&#32;:&#32;vec)&#32;{
+00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;element&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>;
+00185 &#32;&#32;&#32;&#32;}
+00186 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+00187 }
+</programlisting></section>
+<anchor xml:id="_general_helper_functions_8hpp_1a41a7ac4a876af2866b1d6ab915ecdfb2"/><section>
+    <title>writeArrayToFile()</title>
+<indexterm><primary>writeArrayToFile</primary><secondary>generalHelperFunctions.hpp</secondary></indexterm>
+<indexterm><primary>generalHelperFunctions.hpp</primary><secondary>writeArrayToFile</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>void writeArrayToFile (const T * values, size_t size, const std::string &amp; filename, const std::string &amp; col_name)</computeroutput></para><para>
+
+<para>Writes the elements of an array to a file. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>values</entry><entry>
+<para>The array containing the values to be written. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>size</entry><entry>
+<para>The size of the array. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>filename</entry><entry>
+<para>The name of the file to write the values to. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>col_name</entry><entry>
+<para>The name of the column to be written as a header in the file.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                This function writes the elements of the given array to a file. It takes an array of values, the size of the array, a filename, and a column name as inputs. The function creates a file with the specified filename and writes the column name as a header. Then, it iterates over each element in the array and writes it to a new line in the file. If the file cannot be opened, an error message is displayed. After writing the values, the file is closed, and a success message is displayed on the standard output.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Template Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>T</entry><entry>
+<para>The type of elements stored in the array. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00244">244</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00245 &#32;&#32;&#32;&#32;std::ofstream&#32;file(filename);
+00246 &#32;&#32;&#32;&#32;file&#32;&lt;&lt;&#32;col_name&#32;&lt;&lt;&#32;std::endl;
+00247 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(file.is_open())&#32;{
+00248 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">size_t</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;size;&#32;++i)&#32;{
+00249 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;file&#32;&lt;&lt;&#32;values[i]&#32;&lt;&lt;&#32;std::endl;
+00250 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00251 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;file.close();
+00252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Values&#32;written&#32;to&#32;file&#32;successfully.&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00253 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+00254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Unable&#32;to&#32;open&#32;the&#32;file.&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00255 &#32;&#32;&#32;&#32;}
+00256 }
+</programlisting></section>
+<anchor xml:id="_general_helper_functions_8hpp_1a7465cffdfd3bf3b9d59175e8194b4588"/><section>
+    <title>writeStateToFile()</title>
+<indexterm><primary>writeStateToFile</primary><secondary>generalHelperFunctions.hpp</secondary></indexterm>
+<indexterm><primary>generalHelperFunctions.hpp</primary><secondary>writeStateToFile</secondary></indexterm>
+<para><computeroutput>void writeStateToFile (const Qureg &amp; qureg, const std::string &amp; filepath)</computeroutput></para><para>
+
+<para>Writes the state vector of a quantum register to a file. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>qureg</entry><entry>
+<para>The quantum register whose state vector to write. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>filepath</entry><entry>
+<para>The path of the file to write the state vector to.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                This function writes the state vector of the given quantum register to a file. It takes a quantum register and a filepath as inputs. The function opens the file in write mode and checks if it was opened successfully. If the file is opened successfully, it writes the real and imaginary parts of each amplitude of the quantum register&apos;s state vector to a new line in the file. The format used for writing depends on the precision defined by the <computeroutput>QuEST_PREC</computeroutput> preprocessor macro. After writing the state vector, the file is closed, and a success message is displayed on the standard output. If the file cannot be opened, an error message is displayed.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>qureg</entry><entry>
+<para>The quantum register whose state vector to write. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>filepath</entry><entry>
+<para>The path of the file to write the state vector to. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00278">278</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00279 &#32;&#32;&#32;&#32;FILE*&#32;state&#32;=&#32;std::fopen(filepath.c_str(),&#32;<emphasis role="stringliteral">&quot;w&quot;</emphasis>);
+00280 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">long</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;index;
+00281 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(state&#32;==&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;{
+00282 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::perror(<emphasis role="stringliteral">&quot;Failed&#32;to&#32;open&#32;file&quot;</emphasis>);
+00283 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+00284 &#32;&#32;&#32;&#32;}
+00285 
+00286 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(qureg.chunkId&#32;==&#32;0)&#32;{
+00287 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::fprintf(state,&#32;<emphasis role="stringliteral">&quot;real,&#32;imag\n&quot;</emphasis>);
+00288 &#32;&#32;&#32;&#32;}
+00289 
+00290 &#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(index=0;&#32;index&lt;qureg.numAmpsPerChunk;&#32;index++){
+00291 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#&#32;if&#32;QuEST_PREC==1&#32;||&#32;QuEST_PREC==2</emphasis>
+00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fprintf(state,&#32;<emphasis role="stringliteral">&quot;%.12f,&#32;%.12f\n&quot;</emphasis>,&#32;qureg.stateVec.real[index],&#32;qureg.stateVec.imag[index]);
+00293 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#&#32;elif&#32;QuEST_PREC&#32;==&#32;4</emphasis>
+00294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fprintf(state,&#32;<emphasis role="stringliteral">&quot;%.12Lf,&#32;%.12Lf\n&quot;</emphasis>,&#32;qureg.stateVec.real[index],&#32;qureg.stateVec.imag[index]);
+00295 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+00296 &#32;&#32;&#32;&#32;&#32;}
+00297 &#32;&#32;&#32;&#32;&#32;fclose(state);
+00298 &#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Values&#32;written&#32;to&#32;file&#32;successfully.&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00299 }
+</programlisting></section>
+<anchor xml:id="_general_helper_functions_8hpp_1ac0434b40f8b6ac7962d760550c133c8f"/><section>
+    <title>writeVectorToFile()</title>
+<indexterm><primary>writeVectorToFile</primary><secondary>generalHelperFunctions.hpp</secondary></indexterm>
+<indexterm><primary>generalHelperFunctions.hpp</primary><secondary>writeVectorToFile</secondary></indexterm>
+<computeroutput>template&lt;typename T &gt; </computeroutput><para><computeroutput>void writeVectorToFile (const std::vector&lt; T &gt; &amp; values, const std::string &amp; filename, const std::string &amp; col_name)</computeroutput></para><para>
+
+<para>Writes the elements of a vector to a file. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>values</entry><entry>
+<para>The vector containing the values to be written. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>filename</entry><entry>
+<para>The name of the file to write the values to. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>col_name</entry><entry>
+<para>The name of the column to be written as a header in the file.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                This function writes the elements of the given vector to a file. It takes a vector of values, a filename, and a column name as inputs. The function creates a file with the specified filename and writes the column name as a header. Then, it iterates over each element in the vector and writes it to a new line in the file. If the file cannot be opened, an error message is displayed. After writing the values, the file is closed, and a success message is displayed on the standard output.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Template Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>T</entry><entry>
+<para>The type of elements stored in the vector. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_general_helper_functions_8hpp_source_1l00209">209</link> of file <link linkend="_general_helper_functions_8hpp_source">generalHelperFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00210 &#32;&#32;&#32;&#32;std::ofstream&#32;file(filename);
+00211 &#32;&#32;&#32;&#32;file&#32;&lt;&lt;&#32;col_name&#32;&lt;&lt;&#32;std::endl;
+00212 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(file.is_open())&#32;{
+00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">const</emphasis>&#32;T&amp;&#32;value&#32;:&#32;values)&#32;{
+00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;file&#32;&lt;&lt;&#32;value&#32;&lt;&lt;&#32;std::endl;
+00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;file.close();
+00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Values&#32;written&#32;to&#32;file&#32;successfully.&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00218 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Unable&#32;to&#32;open&#32;the&#32;file.&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00220 &#32;&#32;&#32;&#32;}
+00221 }
+</programlisting></section>
+</section>
+</section>

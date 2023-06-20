@@ -1,0 +1,109 @@
+\doxysection{mbqc\+Starter\+File.\+cpp}
+\hypertarget{src_2mbqc_starter_file_8cpp_source}{}\label{src_2mbqc_starter_file_8cpp_source}\index{src/mbqcStarterFile.cpp@{src/mbqcStarterFile.cpp}}
+\mbox{\hyperlink{src_2mbqc_starter_file_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00002}00002\ \textcolor{comment}{//\ Filename\ \ :\ mbqcStarterFile.cpp}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00003}00003\ \textcolor{comment}{//\ Author\ \ \ \ :\ Jonathan\ Miller}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00004}00004\ \textcolor{comment}{//\ Date\ \ \ \ \ \ :\ 2023-\/06-\/19}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00005}00005\ \textcolor{comment}{//\ Aim\ \ \ \ \ \ \ :\ aim\_script}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00006}00006\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ Lattice\ graph\ NxM}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00007}00007\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ Flow:\ same\ row\ -\/>\ column\ (i+num\_rows)}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00008}00008\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ Script\ overview:}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00009}00009\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ \ \ \ +\ It\ includes\ the\ necessary\ package\ header\ file.}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00010}00010\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ \ \ \ +\ The\ main()\ function\ serves\ as\ the\ entry\ point\ for\ the\ program.}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00011}00011\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ \ \ \ +\ Several\ variables\ of\ different\ types\ are\ declared\ and\ initialized.}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00012}00012\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ \ \ \ +\ The\ program\ creates\ a\ lattice\ graph\ based\ on\ the\ specified\ number\ of\ rows\ and\ columns.}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00013}00013\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ \ \ \ +\ The\ graph\ is\ printed\ to\ a\ file.}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00014}00014\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ \ \ \ +\ The\ QuEST\ environment\ is\ initialized.}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00015}00015\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ \ \ \ +\ A\ quantum\ register\ is\ created\ with\ the\ specified\ number\ of\ vertices.}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00016}00016\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ \ \ \ +\ Random\ angles\ in\ the\ range\ of\ π\ on\ N\ angles\ are\ initialized\ and\ assigned\ to\ the\ qubitAngles\ vector.}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00017}00017\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ \ \ \ +\ The\ quantum\ register\ is\ initialized\ in\ the\ plus\ state.}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00018}00018\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ \ \ \ +\ Angle\ rotations\ around\ the\ Z-\/axis\ are\ applied\ to\ the\ qubits\ based\ on\ the\ qubitAngles\ vector.}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00019}00019\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ \ \ \ +\ The\ graph\ is\ entangled\ using\ the\ entangleGraph\ function.}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00020}00020\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ \ \ \ +\ The\ graph\ is\ measured,\ and\ the\ outcomes\ are\ stored\ in\ the\ measuredQubitsOutcomes\ vector.}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00021}00021\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ \ \ \ +\ The\ results\ are\ printed\ to\ the\ screen.}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00022}00022\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ \ \ \ +\ The\ QuEST\ environment\ and\ the\ quantum\ register\ are\ deallocated.}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00023}00023\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ \ \ \ +\ The\ program\ returns\ 0\ to\ indicate\ successful\ execution.}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00025}00025\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00029}00029\ \textcolor{comment}{//\ Include\ package\ header\ file}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{packages_8hpp}{packages.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00033}00033\ \textcolor{comment}{//\ Set\ up\ the\ main\ function}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00034}\mbox{\hyperlink{src_2mbqc_starter_file_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00034}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{src_2mbqc_starter_file_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00035}00035\ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00036}00036\ \ \ \textcolor{comment}{//\ Initialise\ variable\ names\ and\ types}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00037}00037\ \ \ \textcolor{keywordtype}{int}\ numRows;}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00038}00038\ \ \ \textcolor{keywordtype}{int}\ numCols;}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00039}00039\ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph;}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00040}00040\ \ \ \textcolor{keywordtype}{int}\ numVertices;}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00041}00041\ \ \ std::vector<qreal>\ qubitAngles;}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00042}00042\ \ \ std::vector<int>\ measuredQubitsOutcomes;}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00043}00043\ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00044}00044\ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00045}00045\ \ \ \textcolor{comment}{//\ Set\ values\ to\ variables}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00046}00046\ \ \ numRows\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00047}00047\ \ \ numCols\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00048}00048\ \ \ latticeGraph\ =\ \mbox{\hyperlink{create_graph_8hpp_aabb013bb6de93b1ca2ff83e1d7d200c7}{createLatticeGraph}}(numRows,numCols);}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00049}00049\ \ \ numVertices\ =\ boost::num\_vertices(latticeGraph);}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00050}00050\ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00051}00051\ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00052}00052\ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00053}00053\ \ \ \textcolor{comment}{//\ Print\ graph\ to\ file}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00054}00054\ \ \ \textcolor{comment}{//\ Update\ with\ desired\ directory\ to\ view\ graph.}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00055}00055\ \ \ std::string\ figsDir\ =\ MBQC\_FIGS\_DIR;}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00056}00056\ \ \ std::string\ graphName\ =\ \textcolor{stringliteral}{"{}lattice2DGraphCmakeV2"{}};}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00057}00057\ \ \ std::string\ format\ =\ PNG\_FORMAT;}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00058}00058\ \ \ \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_a3d553b54b16922ee146bfb33201a3993}{printGraphToFile}}(latticeGraph,figsDir,graphName,format);}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00060}00060\ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00061}00061\ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00062}00062\ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00063}00063\ \ \ \textcolor{comment}{//\ create\ a\ quantum\ register}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00064}00064\ \ \ Qureg\ qureg\ =\ createQureg(numVertices,\ env);}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00065}00065\ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00066}00066\ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00067}00067\ \ \ \textcolor{comment}{//qubitAngles\ =\ initRandomPiOnNAnglesMod2kPi(numVertices,\ 4);}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00068}00068\ \ \ qubitAngles\ =\ \mbox{\hyperlink{angle_construction_8hpp_adde2e56cefa79b49346bc9e560b4430b}{initRandomPiOnNAnglesMod2kPiPlusPi}}(numVertices,\ 4);}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00069}00069\ \ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00071}00071\ \ \ \textcolor{comment}{//\ initialise\ in\ the\ plus\ state}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00072}00072\ \ \ initPlusState(qureg);}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00074}00074\ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00075}00075\ \ \ \textcolor{comment}{//\ add\ angles\ to\ the\ qubits}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00076}00076\ \ \ \mbox{\hyperlink{angle_construction_8hpp_a6647ed996ec54a9137e68e6c6317e8ee}{addAngleRotateZgate}}(qureg,qubitAngles);}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00077}00077\ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00078}00078\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00079}00079\ \ \ \textcolor{comment}{//\ entangle\ graph}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00080}00080\ \ \ \mbox{\hyperlink{quantum_graph_cluster_states_8hpp_a3f830234f9eb3a150a084b0f2b4aa056}{entangleGraph}}(qureg,latticeGraph);}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00083}00083\ \ \ \textcolor{comment}{//\ measure\ graph}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00084}00084\ \ \ measuredQubitsOutcomes\ =\ \mbox{\hyperlink{flow_measurements_8hpp_a7231be9a1c347894c1d01c349f4b41c7}{measureGraph}}(}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ qureg,}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ latticeGraph,}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ qubitAngles,}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ numRows);}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00090}00090\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00091}00091\ \ \ \textcolor{comment}{//\ print\ results\ to\ screen}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00092}00092\ \ \ \mbox{\hyperlink{flow_measurements_8hpp_a202e2cd0edb82aacb879f3ad4360dc36}{printResultsToScreen}}(measuredQubitsOutcomes,numRows,numCols);}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00094}00094\ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00095}00095\ \ \ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00096}00096\ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00097}00097\ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00098}00098\ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00099}00099\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00100}00100\ \}}
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{src_2mbqc_starter_file_8cpp_source_l00104}00104\ }
+
+\end{DoxyCode}

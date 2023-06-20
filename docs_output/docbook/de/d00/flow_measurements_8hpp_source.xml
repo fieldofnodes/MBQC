@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_flow_measurements_8hpp_source" xml:lang="en-US">
+<title>flowMeasurements.hpp</title>
+<indexterm><primary>src/quantumGraphs/flowMeasurements.hpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_flow_measurements_8hpp_source_1l00001"/>00001 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Title&#32;&#32;:&#32;flowMeasurements.hpp&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_flow_measurements_8hpp_source_1l00003"/>00003 <emphasis role="comment">//&#32;Author&#32;:&#32;Jonathan&#32;Miller&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_flow_measurements_8hpp_source_1l00004"/>00004 <emphasis role="comment">//&#32;Date&#32;&#32;&#32;:&#32;20230425&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_flow_measurements_8hpp_source_1l00005"/>00005 <emphasis role="comment">//&#32;Aim&#32;&#32;&#32;&#32;:&#32;Construct&#32;flow&#32;actions&#32;reflected&#32;in&#32;graph&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_flow_measurements_8hpp_source_1l00007"/>00007 <emphasis role="comment"></emphasis>
+<anchor xml:id="_flow_measurements_8hpp_source_1l00008"/>00008 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00009"/>00009 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00010"/>00010 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00011"/>00011 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_flow_measurements_8hpp_source_1l00012"/>00012 <emphasis role="comment">&#32;&#32;Fill&#32;lattice&#32;with&#32;qubit&#32;measurements</emphasis>
+<anchor xml:id="_flow_measurements_8hpp_source_1l00013"/>00013 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="_flow_measurements_8hpp_source_1l00014"/><link linkend="_flow_measurements_8hpp_1a794636e4b832401d96581e54141cbcba">00014</link> std::vector&lt;std::vector&lt;int&gt;&gt;&#32;<link linkend="_flow_measurements_8hpp_1a794636e4b832401d96581e54141cbcba">returnMeasQubitOutcomesLattice</link>(std::vector&lt;int&gt;&#32;measOutcomes,<emphasis role="keywordtype">int</emphasis>&#32;numRows,&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols)&#32;{
+<anchor xml:id="_flow_measurements_8hpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices&#32;=&#32;numRows&#32;*&#32;numCols;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;std::vector&lt;std::vector&lt;int&gt;&gt;&#32;lattice(numRows,&#32;std::vector&lt;int&gt;(numCols,&#32;-1));
+<anchor xml:id="_flow_measurements_8hpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;numbers(numVertices);
+<anchor xml:id="_flow_measurements_8hpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;numVertices;&#32;i++)&#32;{
+<anchor xml:id="_flow_measurements_8hpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numbers[i]&#32;=&#32;i;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_flow_measurements_8hpp_source_1l00021"/>00021 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;number&#32;:&#32;numbers)&#32;{
+<anchor xml:id="_flow_measurements_8hpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;row&#32;=&#32;number&#32;%&#32;numRows;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;col&#32;=&#32;number&#32;/&#32;numRows;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lattice[row][col]&#32;=&#32;measOutcomes[number];
+<anchor xml:id="_flow_measurements_8hpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_flow_measurements_8hpp_source_1l00027"/>00027 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;lattice;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00029"/>00029 }
+<anchor xml:id="_flow_measurements_8hpp_source_1l00030"/>00030 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00031"/>00031 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00032"/>00032 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00033"/><link linkend="_flow_measurements_8hpp_1a7231be9a1c347894c1d01c349f4b41c7">00033</link> std::vector&lt;int&gt;&#32;<link linkend="_flow_measurements_8hpp_1a7231be9a1c347894c1d01c349f4b41c7">measureGraph</link>(
+<anchor xml:id="_flow_measurements_8hpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;Qureg&#32;qureg,
+<anchor xml:id="_flow_measurements_8hpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&amp;&#32;graph,
+<anchor xml:id="_flow_measurements_8hpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles,
+<anchor xml:id="_flow_measurements_8hpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows){
+<anchor xml:id="_flow_measurements_8hpp_source_1l00038"/>00038 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;undirectedGraph::vertex_iterator&#32;vi,&#32;vi_end;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(boost::tie(vi,&#32;vi_end)&#32;=&#32;boost::vertices(graph);&#32;vi&#32;!=&#32;vi_end;&#32;vi++)&#32;{
+<anchor xml:id="_flow_measurements_8hpp_source_1l00042"/>00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;skip&#32;vertices&#32;that&#32;are&#32;in&#32;the&#32;first&#32;column</emphasis>
+<anchor xml:id="_flow_measurements_8hpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(*vi&#32;&lt;&#32;numRows){
+<anchor xml:id="_flow_measurements_8hpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rotateZ(qureg,*vi,&#32;(-1)*qubitAngles[*vi]);
+<anchor xml:id="_flow_measurements_8hpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hadamard(qureg,*vi);
+<anchor xml:id="_flow_measurements_8hpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;m&#32;=&#32;measure(qureg,*vi);
+<anchor xml:id="_flow_measurements_8hpp_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;measuredQubitsOutcomes.push_back(m);
+<anchor xml:id="_flow_measurements_8hpp_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>(*vi&#32;&gt;=&#32;numRows){
+<anchor xml:id="_flow_measurements_8hpp_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;correctedAngle;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;correctedAngle&#32;=&#32;<link linkend="_graph_traversal_flows_8hpp_1a2b29f1efbcbccfbe77481e5b1a9647c8">computeCorrectedAngle</link>(graph,measuredQubitsOutcomes,*vi,numRows,qubitAngles[*vi]);
+<anchor xml:id="_flow_measurements_8hpp_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rotateZ(qureg,*vi,&#32;(-1)*correctedAngle);
+<anchor xml:id="_flow_measurements_8hpp_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hadamard(qureg,*vi);
+<anchor xml:id="_flow_measurements_8hpp_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;m&#32;=&#32;measure(qureg,*vi);
+<anchor xml:id="_flow_measurements_8hpp_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;measuredQubitsOutcomes.push_back(m);
+<anchor xml:id="_flow_measurements_8hpp_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="_flow_measurements_8hpp_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;attempting&#32;to&#32;measure&#32;nothing?&quot;</emphasis>;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_flow_measurements_8hpp_source_1l00058"/>00058 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_flow_measurements_8hpp_source_1l00059"/>00059 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00060"/>00060 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00061"/>00061 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;measuredQubitsOutcomes;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00062"/>00062 }
+<anchor xml:id="_flow_measurements_8hpp_source_1l00063"/>00063 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00064"/>00064 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00065"/>00065 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00066"/>00066 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_flow_measurements_8hpp_source_1l00067"/>00067 <emphasis role="comment">&#32;&#32;Print&#32;results&#32;to&#32;scree</emphasis>
+<anchor xml:id="_flow_measurements_8hpp_source_1l00068"/>00068 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="_flow_measurements_8hpp_source_1l00069"/><link linkend="_flow_measurements_8hpp_1a202e2cd0edb82aacb879f3ad4360dc36">00069</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_flow_measurements_8hpp_1a202e2cd0edb82aacb879f3ad4360dc36">printResultsToScreen</link>(
+<anchor xml:id="_flow_measurements_8hpp_source_1l00070"/>00070 &#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes,
+<anchor xml:id="_flow_measurements_8hpp_source_1l00071"/>00071 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows,
+<anchor xml:id="_flow_measurements_8hpp_source_1l00072"/>00072 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols){
+<anchor xml:id="_flow_measurements_8hpp_source_1l00073"/>00073 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00074"/>00074 &#32;&#32;<emphasis role="comment">//&#32;Print&#32;results&#32;to&#32;screen</emphasis>
+<anchor xml:id="_flow_measurements_8hpp_source_1l00075"/>00075 &#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00076"/>00076 &#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00077"/>00077 &#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Measured&#32;outcome&#32;vector&#32;has&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;measuredQubitsOutcomes.size()&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;qubits.&quot;</emphasis>&#32;&#32;&lt;&lt;&#32;std::endl;&#32;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00078"/>00078 &#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;The&#32;measurements&#32;are:&#32;&quot;</emphasis>;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00079"/>00079 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i:measuredQubitsOutcomes){
+<anchor xml:id="_flow_measurements_8hpp_source_1l00080"/>00080 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;i&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00081"/>00081 &#32;&#32;}
+<anchor xml:id="_flow_measurements_8hpp_source_1l00082"/>00082 &#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00083"/>00083 &#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00084"/>00084 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00085"/>00085 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00086"/>00086 std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Measured&#32;outcome&#32;lattice:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00087"/>00087 &#32;&#32;std::vector&lt;std::vector&lt;int&gt;&gt;&#32;latticeOutcomes&#32;=&#32;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;<link linkend="_flow_measurements_8hpp_1a794636e4b832401d96581e54141cbcba">returnMeasQubitOutcomesLattice</link>(measuredQubitsOutcomes,numRows,numCols);
+<anchor xml:id="_flow_measurements_8hpp_source_1l00089"/>00089 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00090"/>00090 &#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">auto</emphasis>&amp;&#32;row&#32;:&#32;latticeOutcomes)&#32;{
+<anchor xml:id="_flow_measurements_8hpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;number&#32;:&#32;row)&#32;{
+<anchor xml:id="_flow_measurements_8hpp_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;number&#32;&lt;&lt;&#32;<emphasis role="charliteral">&apos;&#32;&apos;</emphasis>;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_flow_measurements_8hpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="charliteral">&apos;\n&apos;</emphasis>;
+<anchor xml:id="_flow_measurements_8hpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_flow_measurements_8hpp_source_1l00096"/>00096 
+<anchor xml:id="_flow_measurements_8hpp_source_1l00097"/>00097 }
+</programlisting></section>

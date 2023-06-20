@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_traverse_graph_8cpp_source" xml:lang="en-US">
+<title>traverseGraph.cpp</title>
+<indexterm><primary>src/archive/filesToGoThrough/traverseGraph.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_traverse_graph_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_traverse_graph_8cpp_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/adjacency_list.hpp&gt;</emphasis>
+<anchor xml:id="_traverse_graph_8cpp_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_create_graph_8hpp">createGraph.hpp</link>&quot;</emphasis>
+<anchor xml:id="_traverse_graph_8cpp_source_1l00004"/>00004 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+<anchor xml:id="_traverse_graph_8cpp_source_1l00005"/>00005 
+<anchor xml:id="_traverse_graph_8cpp_source_1l00006"/>00006 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>boost;
+<anchor xml:id="_traverse_graph_8cpp_source_1l00007"/>00007 
+<anchor xml:id="_traverse_graph_8cpp_source_1l00008"/><link linkend="_traverse_graph_8cpp_1ad531f0530c52e2baed8840517b52b457">00008</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::property&lt;boost::edge_weight_t,&#32;int&gt;&#32;<link linkend="_traverse_graph_8cpp_1ad531f0530c52e2baed8840517b52b457">EdgeWeightProperty</link>;
+<anchor xml:id="_traverse_graph_8cpp_source_1l00009"/><link linkend="_traverse_graph_8cpp_1ae727d82d2665e0ccdbb85e29c841ba5f">00009</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::adjacency_list&lt;boost::listS,&#32;boost::vecS,boost::undirectedS,boost::no_property,EdgeWeightProperty&gt;&#32;<link linkend="_traverse_graph_8cpp_1ae727d82d2665e0ccdbb85e29c841ba5f">undirectedGraph</link>;
+<anchor xml:id="_traverse_graph_8cpp_source_1l00010"/><link linkend="_traverse_graph_8cpp_1af04c50f717d4bda41f0c58fe0eece059">00010</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::edge_iterator&#32;<link linkend="_traverse_graph_8cpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link>;
+<anchor xml:id="_traverse_graph_8cpp_source_1l00011"/><link linkend="_traverse_graph_8cpp_1a9451df0dac964b257bedb5e60547824e">00011</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::vertex_iterator&#32;<link linkend="_traverse_graph_8cpp_1a9451df0dac964b257bedb5e60547824e">vertex_iterator</link>;
+<anchor xml:id="_traverse_graph_8cpp_source_1l00012"/>00012 
+<anchor xml:id="_traverse_graph_8cpp_source_1l00013"/>00013 
+<anchor xml:id="_traverse_graph_8cpp_source_1l00014"/>00014 
+<anchor xml:id="_traverse_graph_8cpp_source_1l00015"/><link linkend="_traverse_graph_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00015</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_traverse_graph_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>(){
+<anchor xml:id="_traverse_graph_8cpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;rows;
+<anchor xml:id="_traverse_graph_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;cols;
+<anchor xml:id="_traverse_graph_8cpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;pathVertices;
+<anchor xml:id="_traverse_graph_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;pathGraph;
+<anchor xml:id="_traverse_graph_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+<anchor xml:id="_traverse_graph_8cpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;
+<anchor xml:id="_traverse_graph_8cpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;rows&#32;=&#32;100;
+<anchor xml:id="_traverse_graph_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;cols&#32;=&#32;100;
+<anchor xml:id="_traverse_graph_8cpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;pathVertices&#32;=&#32;1000;
+<anchor xml:id="_traverse_graph_8cpp_source_1l00025"/>00025 
+<anchor xml:id="_traverse_graph_8cpp_source_1l00026"/>00026 
+<anchor xml:id="_traverse_graph_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;pathGraph&#32;=&#32;<link linkend="_create_graph_8hpp_1abe67d4f4ed1169c1376d3a14fd9d144d">createPathGraph</link>(pathVertices);
+<anchor xml:id="_traverse_graph_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;<link linkend="_create_graph_8hpp_1aabb013bb6de93b1ca2ff83e1d7d200c7">createLatticeGraph</link>(rows,cols);
+<anchor xml:id="_traverse_graph_8cpp_source_1l00029"/>00029 
+<anchor xml:id="_traverse_graph_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Call&#32;the&#32;function&#32;and&#32;print&#32;the&#32;adjacent&#32;vertices&#32;of&#32;vertex&#32;0</emphasis>
+<anchor xml:id="_traverse_graph_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i=0;i&lt;pathVertices;i++)
+<anchor xml:id="_traverse_graph_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_traverse_graph_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::vector&lt;undirectedGraph::vertex_descriptor&gt;&#32;adj_vertices&#32;=&#32;<link linkend="_create_graph_8hpp_1a95616ef95512e388dddbc756c8644c4d">get_adjacent_vertices</link>(pathGraph,&#32;i);
+<anchor xml:id="_traverse_graph_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">auto</emphasis>&#32;v&#32;:&#32;adj_vertices)
+<anchor xml:id="_traverse_graph_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_traverse_graph_8cpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;v&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>;
+<anchor xml:id="_traverse_graph_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_traverse_graph_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_traverse_graph_8cpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_traverse_graph_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_traverse_graph_8cpp_source_1l00041"/>00041 }
+</programlisting></section>

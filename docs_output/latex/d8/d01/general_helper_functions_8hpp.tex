@@ -1,0 +1,409 @@
+\doxysection{src/generic\+Helper\+Functions/general\+Helper\+Functions.hpp File Reference}
+\hypertarget{general_helper_functions_8hpp}{}\label{general_helper_functions_8hpp}\index{src/genericHelperFunctions/generalHelperFunctions.hpp@{src/genericHelperFunctions/generalHelperFunctions.hpp}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{general_helper_functions_8hpp_ac42846f45bd917af1aef32178df53bbf}{mark\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Marks the current position. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{general_helper_functions_8hpp_a4c07ccd9e75d9522fb31bd4155bc5c46}{draw\+Random\+Uniform\+Integer}} (int min, int max)
+\begin{DoxyCompactList}\small\item\em Draws a random integer from a uniform distribution within a specified range. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{general_helper_functions_8hpp_a7162e6559cb0f6cd2c76ebee85fe113d}{calculate\+Column\+Ratios}} (const std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \&matrix)
+\begin{DoxyCompactList}\small\item\em Calculates the ratios of ones in each column of a matrix. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{general_helper_functions_8hpp_a318982330941fb08021062d2593a62f9}{get\+Paths}} (std\+::string data\+Path, std\+::string output\+Dir, std\+::string qubit\+Info, qreal probability)
+\begin{DoxyCompactList}\small\item\em Create probability and amplitude paths. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{general_helper_functions_8hpp_a721cdbc6bd980bd328255feba8168f26}{print\+Vector}} (const std\+::vector$<$ T $>$ \&vec)
+\begin{DoxyCompactList}\small\item\em Prints the elements of a vector. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{general_helper_functions_8hpp_ac0434b40f8b6ac7962d760550c133c8f}{write\+Vector\+To\+File}} (const std\+::vector$<$ T $>$ \&values, const std\+::string \&filename, const std\+::string \&col\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Writes the elements of a vector to a file. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}{write\+Array\+To\+File}} (const T \texorpdfstring{$\ast$}{*}values, size\+\_\+t size, const std\+::string \&filename, const std\+::string \&col\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Writes the elements of an array to a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}{write\+State\+To\+File}} (const Qureg \&qureg, const std\+::string \&filepath)
+\begin{DoxyCompactList}\small\item\em Writes the state vector of a quantum register to a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{general_helper_functions_8hpp_a7162e6559cb0f6cd2c76ebee85fe113d}\label{general_helper_functions_8hpp_a7162e6559cb0f6cd2c76ebee85fe113d} 
+\index{generalHelperFunctions.hpp@{generalHelperFunctions.hpp}!calculateColumnRatios@{calculateColumnRatios}}
+\index{calculateColumnRatios@{calculateColumnRatios}!generalHelperFunctions.hpp@{generalHelperFunctions.hpp}}
+\doxysubsubsection{\texorpdfstring{calculateColumnRatios()}{calculateColumnRatios()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ calculate\+Column\+Ratios (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \&}]{matrix }\end{DoxyParamCaption})}
+
+
+
+Calculates the ratios of ones in each column of a matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrix} & The matrix for which to calculate the column ratios. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing the ratios of ones in each column of the matrix.
+\end{DoxyReturn}
+This function calculates the ratios of ones in each column of the given matrix. It takes a 2D matrix represented by a vector of vectors as input. If the matrix is empty or any of its rows is empty, an empty ratios vector is returned. The function iterates over each column and counts the number of ones in that column. The ratio of ones is calculated by dividing the count by the total number of rows in the matrix. The ratios are stored in a vector, which is then returned.
+
+Example usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::vector<std::vector<int>>\ matrix\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \{1,\ 0,\ 1\},}
+\DoxyCodeLine{\ \ \ \ \{0,\ 1,\ 0\},}
+\DoxyCodeLine{\ \ \ \ \{1,\ 1,\ 1\}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{std::vector<double>\ ratios\ =\ \mbox{\hyperlink{general_helper_functions_8hpp_a7162e6559cb0f6cd2c76ebee85fe113d}{calculateColumnRatios}}(matrix);}
+\DoxyCodeLine{ratios:\ [0.666667,\ 0.333333,\ 0.666667]}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of elements stored in the matrix (should be convertible to int). \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00091}{91}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ std::vector<double>\ ratios;}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix.empty()\ ||\ matrix[0].empty())\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ratios;\ \ \textcolor{comment}{//\ Empty\ matrix,\ return\ empty\ ratios\ vector}}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ numRows\ =\ matrix.size();}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ numCols\ =\ matrix[0].size();}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ col\ =\ 0;\ col\ <\ numCols;\ col++)\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ count\ =\ 0;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ row\ =\ 0;\ row\ <\ numRows;\ row++)\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix[row][col]\ ==\ 1)\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count++;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ ratio\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(count)\ /\ numRows;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ ratios.push\_back(ratio);}
+\DoxyCodeLine{00110\ \ \ \ \ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordflow}{return}\ ratios;}
+\DoxyCodeLine{00113\ \}}
+
+\end{DoxyCode}
+\Hypertarget{general_helper_functions_8hpp_a4c07ccd9e75d9522fb31bd4155bc5c46}\label{general_helper_functions_8hpp_a4c07ccd9e75d9522fb31bd4155bc5c46} 
+\index{generalHelperFunctions.hpp@{generalHelperFunctions.hpp}!drawRandomUniformInteger@{drawRandomUniformInteger}}
+\index{drawRandomUniformInteger@{drawRandomUniformInteger}!generalHelperFunctions.hpp@{generalHelperFunctions.hpp}}
+\doxysubsubsection{\texorpdfstring{drawRandomUniformInteger()}{drawRandomUniformInteger()}}
+{\footnotesize\ttfamily int draw\+Random\+Uniform\+Integer (\begin{DoxyParamCaption}\item[{int}]{min,  }\item[{int}]{max }\end{DoxyParamCaption})}
+
+
+
+Draws a random integer from a uniform distribution within a specified range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min} & The minimum value of the range (inclusive). \\
+\hline
+{\em max} & The maximum value of the range (inclusive). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A randomly generated integer within the specified range.
+\end{DoxyReturn}
+This function uses the Mersenne Twister pseudo-\/random number generator to draw a random integer from a uniform distribution within the specified range \mbox{[}min, max\mbox{]}. The minimum and maximum values are inclusive. The function initializes a random device, creates a Mersenne Twister generator, and uses a uniform integer distribution to generate the random number. The generated random integer is then returned. 
+
+Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00053}{53}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ std::random\_device\ rd;}
+\DoxyCodeLine{00055\ \ \ \ \ std::mt19937\ generator(rd());}
+\DoxyCodeLine{00056\ \ \ \ \ std::uniform\_int\_distribution<int>\ distribution(min,\ max);}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ randomInt\ =\ distribution(generator);}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{return}\ randomInt;}
+\DoxyCodeLine{00059\ \}}
+
+\end{DoxyCode}
+\Hypertarget{general_helper_functions_8hpp_a318982330941fb08021062d2593a62f9}\label{general_helper_functions_8hpp_a318982330941fb08021062d2593a62f9} 
+\index{generalHelperFunctions.hpp@{generalHelperFunctions.hpp}!getPaths@{getPaths}}
+\index{getPaths@{getPaths}!generalHelperFunctions.hpp@{generalHelperFunctions.hpp}}
+\doxysubsubsection{\texorpdfstring{getPaths()}{getPaths()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ get\+Paths (\begin{DoxyParamCaption}\item[{std\+::string}]{data\+Path,  }\item[{std\+::string}]{output\+Dir,  }\item[{std\+::string}]{qubit\+Info,  }\item[{qreal}]{probability }\end{DoxyParamCaption})}
+
+
+
+Create probability and amplitude paths. 
+
+This function creates the paths for probability and amplitude files based on the provided parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Path} & The data path. \\
+\hline
+{\em output\+Dir} & The output directory. \\
+\hline
+{\em qubit\+Info} & The qubit information. \\
+\hline
+{\em probability} & The probability value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing the generated paths for probability and amplitude files. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00131}{131}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ homeDir\ =\ std::getenv(\textcolor{stringliteral}{"{}HOME"{}});}
+\DoxyCodeLine{00133\ \ \ \ \ std::string\ fslash\ =\ \textcolor{stringliteral}{"{}/"{}};}
+\DoxyCodeLine{00134\ \ \ \ \ std::string\ uscore\ =\ \textcolor{stringliteral}{"{}\_"{}};}
+\DoxyCodeLine{00135\ \ \ \ \ std::string\ root\ =\ homeDir;}
+\DoxyCodeLine{00136\ \ \ \ \ std::string\ amps\ =\ \textcolor{stringliteral}{"{}amplitudes"{}};}
+\DoxyCodeLine{00137\ \ \ \ \ std::string\ probs\ =\ \textcolor{stringliteral}{"{}probabilities"{}};}
+\DoxyCodeLine{00138\ \ \ \ \ std::string\ damps;}
+\DoxyCodeLine{00139\ \ \ \ \ std::string\ csv\ =\ \textcolor{stringliteral}{"{}.csv"{}};}
+\DoxyCodeLine{00140\ \ \ \ \ }
+\DoxyCodeLine{00141\ \ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordflow}{if}(probability\ <\ 0)\{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ damps\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00144\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ precisionVal\ =\ 2;}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ std::string\ prob\_str\ =\ std::to\_string(probability).substr(0,\ std::to\_string(probability).find(\textcolor{stringliteral}{"{}."{}})\ +\ precisionVal\ +\ 1);}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ damps\ =\ \textcolor{stringliteral}{"{}mix\_damping\_prob-\/"{}}+prob\_str;}
+\DoxyCodeLine{00148\ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ }
+\DoxyCodeLine{00150\ \ \ \ \ std::string\ dataDirPath\ =\ homeDir\ +\ fslash\ +\ dataPath\ +\ fslash\ +\ outputDir\ +\ fslash;}
+\DoxyCodeLine{00151\ \ \ \ \ std::string\ fileAmp\ =\ \ dataDirPath\ +\ amps\ +\ uscore\ +\ qubitInfo\ +\ uscore\ +\ damps\ +\ csv;}
+\DoxyCodeLine{00152\ \ \ \ \ std::string\ fileProb\ =\ dataDirPath\ +\ probs\ +\ uscore\ +\ qubitInfo\ +\ uscore\ +\ damps\ +\ csv;}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ std::vector<std::string>\ paths\ =\ \{fileAmp,\ fileProb\};}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordflow}{return}\ paths;}
+\DoxyCodeLine{00157\ \}}
+
+\end{DoxyCode}
+\Hypertarget{general_helper_functions_8hpp_ac42846f45bd917af1aef32178df53bbf}\label{general_helper_functions_8hpp_ac42846f45bd917af1aef32178df53bbf} 
+\index{generalHelperFunctions.hpp@{generalHelperFunctions.hpp}!markPosition@{markPosition}}
+\index{markPosition@{markPosition}!generalHelperFunctions.hpp@{generalHelperFunctions.hpp}}
+\doxysubsubsection{\texorpdfstring{markPosition()}{markPosition()}}
+{\footnotesize\ttfamily void mark\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Marks the current position. 
+
+This function marks the current position by printing \"{}\+Here\"{} to the standard output. 
+
+Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Here"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00034\ \}}
+
+\end{DoxyCode}
+\Hypertarget{general_helper_functions_8hpp_a721cdbc6bd980bd328255feba8168f26}\label{general_helper_functions_8hpp_a721cdbc6bd980bd328255feba8168f26} 
+\index{generalHelperFunctions.hpp@{generalHelperFunctions.hpp}!printVector@{printVector}}
+\index{printVector@{printVector}!generalHelperFunctions.hpp@{generalHelperFunctions.hpp}}
+\doxysubsubsection{\texorpdfstring{printVector()}{printVector()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void print\+Vector (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+
+
+Prints the elements of a vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & The vector to be printed.\\
+\hline
+\end{DoxyParams}
+This function prints the elements of a given vector to the standard output, separated by spaces. It takes a vector as input and iterates over each element, printing it followed by a space. After printing all the elements, it outputs a newline character to create a new line.
+
+Example usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::vector<int>\ numbers\ =\ \{1,\ 2,\ 3,\ 4,\ 5\};}
+\DoxyCodeLine{\mbox{\hyperlink{general_helper_functions_8hpp_a721cdbc6bd980bd328255feba8168f26}{printVector}}(numbers);\ \textcolor{comment}{//\ Output:\ 1\ 2\ 3\ 4\ 5}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of elements stored in the vector. \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00182}{182}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ T\&\ element\ :\ vec)\ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ std::cout\ <<\ element\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00185\ \ \ \ \ \}}
+\DoxyCodeLine{00186\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00187\ \}}
+
+\end{DoxyCode}
+\Hypertarget{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}\label{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2} 
+\index{generalHelperFunctions.hpp@{generalHelperFunctions.hpp}!writeArrayToFile@{writeArrayToFile}}
+\index{writeArrayToFile@{writeArrayToFile}!generalHelperFunctions.hpp@{generalHelperFunctions.hpp}}
+\doxysubsubsection{\texorpdfstring{writeArrayToFile()}{writeArrayToFile()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void write\+Array\+To\+File (\begin{DoxyParamCaption}\item[{const T \texorpdfstring{$\ast$}{*}}]{values,  }\item[{size\+\_\+t}]{size,  }\item[{const std\+::string \&}]{filename,  }\item[{const std\+::string \&}]{col\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Writes the elements of an array to a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em values} & The array containing the values to be written. \\
+\hline
+{\em size} & The size of the array. \\
+\hline
+{\em filename} & The name of the file to write the values to. \\
+\hline
+{\em col\+\_\+name} & The name of the column to be written as a header in the file.\\
+\hline
+\end{DoxyParams}
+This function writes the elements of the given array to a file. It takes an array of values, the size of the array, a filename, and a column name as inputs. The function creates a file with the specified filename and writes the column name as a header. Then, it iterates over each element in the array and writes it to a new line in the file. If the file cannot be opened, an error message is displayed. After writing the values, the file is closed, and a success message is displayed on the standard output.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of elements stored in the array. \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00244}{244}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00245\ \ \ \ \ std::ofstream\ file(filename);}
+\DoxyCodeLine{00246\ \ \ \ \ file\ <<\ col\_name\ <<\ std::endl;}
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ size;\ ++i)\ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ values[i]\ <<\ std::endl;}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00253\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ open\ the\ file."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00255\ \ \ \ \ \}}
+\DoxyCodeLine{00256\ \}}
+
+\end{DoxyCode}
+\Hypertarget{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}\label{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588} 
+\index{generalHelperFunctions.hpp@{generalHelperFunctions.hpp}!writeStateToFile@{writeStateToFile}}
+\index{writeStateToFile@{writeStateToFile}!generalHelperFunctions.hpp@{generalHelperFunctions.hpp}}
+\doxysubsubsection{\texorpdfstring{writeStateToFile()}{writeStateToFile()}}
+{\footnotesize\ttfamily void write\+State\+To\+File (\begin{DoxyParamCaption}\item[{const Qureg \&}]{qureg,  }\item[{const std\+::string \&}]{filepath }\end{DoxyParamCaption})}
+
+
+
+Writes the state vector of a quantum register to a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em qureg} & The quantum register whose state vector to write. \\
+\hline
+{\em filepath} & The path of the file to write the state vector to.\\
+\hline
+\end{DoxyParams}
+This function writes the state vector of the given quantum register to a file. It takes a quantum register and a filepath as inputs. The function opens the file in write mode and checks if it was opened successfully. If the file is opened successfully, it writes the real and imaginary parts of each amplitude of the quantum register\textquotesingle{}s state vector to a new line in the file. The format used for writing depends on the precision defined by the {\ttfamily Qu\+EST\+\_\+\+PREC} preprocessor macro. After writing the state vector, the file is closed, and a success message is displayed on the standard output. If the file cannot be opened, an error message is displayed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em qureg} & The quantum register whose state vector to write. \\
+\hline
+{\em filepath} & The path of the file to write the state vector to. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00278}{278}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00279\ \ \ \ \ FILE*\ state\ =\ std::fopen(filepath.c\_str(),\ \textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{00280\ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ index;}
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ std::perror(\textcolor{stringliteral}{"{}Failed\ to\ open\ file"{}});}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00284\ \ \ \ \ \}}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ \ \ \ \ \textcolor{keywordflow}{if}\ (qureg.chunkId\ ==\ 0)\ \{}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ std::fprintf(state,\ \textcolor{stringliteral}{"{}real,\ imag\(\backslash\)n"{}});}
+\DoxyCodeLine{00288\ \ \ \ \ \}}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \ \ \ \ \ \textcolor{keywordflow}{for}(index=0;\ index<qureg.numAmpsPerChunk;\ index++)\{}
+\DoxyCodeLine{00291\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#\ if\ QuEST\_PREC==1\ ||\ QuEST\_PREC==2}}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ fprintf(state,\ \textcolor{stringliteral}{"{}\%.12f,\ \%.12f\(\backslash\)n"{}},\ qureg.stateVec.real[index],\ qureg.stateVec.imag[index]);}
+\DoxyCodeLine{00293\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#\ elif\ QuEST\_PREC\ ==\ 4}}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ fprintf(state,\ \textcolor{stringliteral}{"{}\%.12Lf,\ \%.12Lf\(\backslash\)n"{}},\ qureg.stateVec.real[index],\ qureg.stateVec.imag[index]);}
+\DoxyCodeLine{00295\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00296\ \ \ \ \ \ \}}
+\DoxyCodeLine{00297\ \ \ \ \ \ fclose(state);}
+\DoxyCodeLine{00298\ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00299\ \}}
+
+\end{DoxyCode}
+\Hypertarget{general_helper_functions_8hpp_ac0434b40f8b6ac7962d760550c133c8f}\label{general_helper_functions_8hpp_ac0434b40f8b6ac7962d760550c133c8f} 
+\index{generalHelperFunctions.hpp@{generalHelperFunctions.hpp}!writeVectorToFile@{writeVectorToFile}}
+\index{writeVectorToFile@{writeVectorToFile}!generalHelperFunctions.hpp@{generalHelperFunctions.hpp}}
+\doxysubsubsection{\texorpdfstring{writeVectorToFile()}{writeVectorToFile()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void write\+Vector\+To\+File (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ T $>$ \&}]{values,  }\item[{const std\+::string \&}]{filename,  }\item[{const std\+::string \&}]{col\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Writes the elements of a vector to a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em values} & The vector containing the values to be written. \\
+\hline
+{\em filename} & The name of the file to write the values to. \\
+\hline
+{\em col\+\_\+name} & The name of the column to be written as a header in the file.\\
+\hline
+\end{DoxyParams}
+This function writes the elements of the given vector to a file. It takes a vector of values, a filename, and a column name as inputs. The function creates a file with the specified filename and writes the column name as a header. Then, it iterates over each element in the vector and writes it to a new line in the file. If the file cannot be opened, an error message is displayed. After writing the values, the file is closed, and a success message is displayed on the standard output.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of elements stored in the vector. \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line \mbox{\hyperlink{general_helper_functions_8hpp_source_l00209}{209}} of file \mbox{\hyperlink{general_helper_functions_8hpp_source}{general\+Helper\+Functions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00210\ \ \ \ \ std::ofstream\ file(filename);}
+\DoxyCodeLine{00211\ \ \ \ \ file\ <<\ col\_name\ <<\ std::endl;}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ T\&\ value\ :\ values)\ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ value\ <<\ std::endl;}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00218\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ open\ the\ file."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00220\ \ \ \ \ \}}
+\DoxyCodeLine{00221\ \}}
+
+\end{DoxyCode}

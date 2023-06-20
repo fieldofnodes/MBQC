@@ -1,0 +1,133 @@
+\doxysection{src/archive/files\+To\+Go\+Through/create\+Lattice\+Graph.cpp File Reference}
+\hypertarget{create_lattice_graph_8cpp}{}\label{create_lattice_graph_8cpp}\index{src/archive/filesToGoThrough/createLatticeGraph.cpp@{src/archive/filesToGoThrough/createLatticeGraph.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$boost/graph/adjacency\+\_\+list.\+hpp$>$}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef boost\+::property$<$ boost\+::edge\+\_\+weight\+\_\+t, int $>$ \mbox{\hyperlink{create_lattice_graph_8cpp_ad531f0530c52e2baed8840517b52b457}{Edge\+Weight\+Property}}
+\item 
+typedef boost\+::adjacency\+\_\+list$<$ boost\+::listS, boost\+::vecS, boost\+::undirectedS, boost\+::no\+\_\+property, \mbox{\hyperlink{create_graph_8hpp_ad531f0530c52e2baed8840517b52b457}{Edge\+Weight\+Property}} $>$ \mbox{\hyperlink{create_lattice_graph_8cpp_ae727d82d2665e0ccdbb85e29c841ba5f}{undirected\+Graph}}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{create_lattice_graph_8cpp_af04c50f717d4bda41f0c58fe0eece059}{edge\+\_\+iterator}}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{\+::vertex\+\_\+iterator}} \mbox{\hyperlink{create_lattice_graph_8cpp_a9451df0dac964b257bedb5e60547824e}{vertex\+\_\+iterator}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \mbox{\hyperlink{create_lattice_graph_8cpp_a3cb55165ce6d84dde6bc711a07037ed9}{create\+\_\+grid\+\_\+lattice\+\_\+graph}} (int n, int m)
+\item 
+int \mbox{\hyperlink{create_lattice_graph_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{create_lattice_graph_8cpp_af04c50f717d4bda41f0c58fe0eece059}\label{create_lattice_graph_8cpp_af04c50f717d4bda41f0c58fe0eece059} 
+\index{createLatticeGraph.cpp@{createLatticeGraph.cpp}!edge\_iterator@{edge\_iterator}}
+\index{edge\_iterator@{edge\_iterator}!createLatticeGraph.cpp@{createLatticeGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{edge\_iterator}{edge\_iterator}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}$>$\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{edge\+\_\+iterator}}}
+
+
+
+Definition at line \mbox{\hyperlink{create_lattice_graph_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{create_lattice_graph_8cpp_source}{create\+Lattice\+Graph.\+cpp}}.
+
+\Hypertarget{create_lattice_graph_8cpp_ad531f0530c52e2baed8840517b52b457}\label{create_lattice_graph_8cpp_ad531f0530c52e2baed8840517b52b457} 
+\index{createLatticeGraph.cpp@{createLatticeGraph.cpp}!EdgeWeightProperty@{EdgeWeightProperty}}
+\index{EdgeWeightProperty@{EdgeWeightProperty}!createLatticeGraph.cpp@{createLatticeGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{EdgeWeightProperty}{EdgeWeightProperty}}
+{\footnotesize\ttfamily typedef boost\+::property$<$boost\+::edge\+\_\+weight\+\_\+t, int$>$ \mbox{\hyperlink{create_graph_8hpp_ad531f0530c52e2baed8840517b52b457}{Edge\+Weight\+Property}}}
+
+
+
+Definition at line \mbox{\hyperlink{create_lattice_graph_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{create_lattice_graph_8cpp_source}{create\+Lattice\+Graph.\+cpp}}.
+
+\Hypertarget{create_lattice_graph_8cpp_ae727d82d2665e0ccdbb85e29c841ba5f}\label{create_lattice_graph_8cpp_ae727d82d2665e0ccdbb85e29c841ba5f} 
+\index{createLatticeGraph.cpp@{createLatticeGraph.cpp}!undirectedGraph@{undirectedGraph}}
+\index{undirectedGraph@{undirectedGraph}!createLatticeGraph.cpp@{createLatticeGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{undirectedGraph}{undirectedGraph}}
+{\footnotesize\ttfamily typedef boost\+::adjacency\+\_\+list$<$boost\+::listS, boost\+::vecS,boost\+::undirectedS,boost\+::no\+\_\+property,\mbox{\hyperlink{create_graph_8hpp_ad531f0530c52e2baed8840517b52b457}{Edge\+Weight\+Property}}$>$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}}
+
+
+
+Definition at line \mbox{\hyperlink{create_lattice_graph_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{create_lattice_graph_8cpp_source}{create\+Lattice\+Graph.\+cpp}}.
+
+\Hypertarget{create_lattice_graph_8cpp_a9451df0dac964b257bedb5e60547824e}\label{create_lattice_graph_8cpp_a9451df0dac964b257bedb5e60547824e} 
+\index{createLatticeGraph.cpp@{createLatticeGraph.cpp}!vertex\_iterator@{vertex\_iterator}}
+\index{vertex\_iterator@{vertex\_iterator}!createLatticeGraph.cpp@{createLatticeGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{vertex\_iterator}{vertex\_iterator}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}$>$\mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{\+::vertex\+\_\+iterator}} \mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{vertex\+\_\+iterator}}}
+
+
+
+Definition at line \mbox{\hyperlink{create_lattice_graph_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{create_lattice_graph_8cpp_source}{create\+Lattice\+Graph.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{create_lattice_graph_8cpp_a3cb55165ce6d84dde6bc711a07037ed9}\label{create_lattice_graph_8cpp_a3cb55165ce6d84dde6bc711a07037ed9} 
+\index{createLatticeGraph.cpp@{createLatticeGraph.cpp}!create\_grid\_lattice\_graph@{create\_grid\_lattice\_graph}}
+\index{create\_grid\_lattice\_graph@{create\_grid\_lattice\_graph}!createLatticeGraph.cpp@{createLatticeGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{create\_grid\_lattice\_graph()}{create\_grid\_lattice\_graph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} create\+\_\+grid\+\_\+lattice\+\_\+graph (\begin{DoxyParamCaption}\item[{int}]{n,  }\item[{int}]{m }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{create_lattice_graph_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{create_lattice_graph_8cpp_source}{create\+Lattice\+Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ create\ a\ grid\ lattice\ graph\ with\ n\ x\ m\ vertices}}
+\DoxyCodeLine{00014\ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ g(n\ *\ m);}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ i++)\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ m;\ j++)\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ <\ m-\/1)\ add\_edge(i*m+j,\ i*m+j+1,\ g);\ \textcolor{comment}{//\ add\ horizontal\ edges}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ n-\/1)\ add\_edge(i*m+j,\ (i+1)*m+j,\ g);\ \textcolor{comment}{//\ add\ vertical\ edges}}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+\DoxyCodeLine{00021\ \ \ \}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordflow}{return}\ g;}
+\DoxyCodeLine{00024\ \}}
+
+\end{DoxyCode}
+\Hypertarget{create_lattice_graph_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{create_lattice_graph_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{createLatticeGraph.cpp@{createLatticeGraph.cpp}!main@{main}}
+\index{main@{main}!createLatticeGraph.cpp@{createLatticeGraph.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{create_lattice_graph_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{create_lattice_graph_8cpp_source}{create\+Lattice\+Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{int}\ n\ =\ 4,\ m\ =\ 3;}
+\DoxyCodeLine{00031\ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ g\ =\ \mbox{\hyperlink{create_lattice_graph_8cpp_a3cb55165ce6d84dde6bc711a07037ed9}{create\_grid\_lattice\_graph}}(n,\ m);\ \textcolor{comment}{//\ create\ a\ 3\ x\ 4\ grid\ lattice\ graph}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ std::pair<edge\_iterator,\ edge\_iterator>\ ei\ =\ edges(g);}
+\DoxyCodeLine{00034\ \ }
+\DoxyCodeLine{00035\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Number\ of\ edges\ =\ "{}}\ <<\ num\_edges(g)\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00036\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Edge\ list:\(\backslash\)n"{}};}
+\DoxyCodeLine{00037\ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{edge\_iterator}}\ it\ =\ ei.first;\ it\ !=\ ei.second;\ ++it\ )}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ std::cout\ <<\ *it\ <<\ std::endl;}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ }
+\DoxyCodeLine{00043\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{vertex\_iterator}}\ vi,\ vi\_end;}
+\DoxyCodeLine{00046\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Vertex\ list:\(\backslash\)n"{}};}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{for}\ (tie(vi,\ vi\_end)\ =\ vertices(g);\ vi\ !=\ vi\_end;\ ++vi)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::cout\ <<\ *vi\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00053\ \}}
+
+\end{DoxyCode}

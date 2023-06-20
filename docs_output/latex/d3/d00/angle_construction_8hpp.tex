@@ -1,0 +1,320 @@
+\doxysection{src/quantum\+Graphs/angle\+Construction.hpp File Reference}
+\hypertarget{angle_construction_8hpp}{}\label{angle_construction_8hpp}\index{src/quantumGraphs/angleConstruction.hpp@{src/quantumGraphs/angleConstruction.hpp}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ qreal $>$ \mbox{\hyperlink{angle_construction_8hpp_aabc90c9d60fe6133e0143eda8db51906}{init\+All\+Angles\+Zero}} (int num\+Qubits)
+\item 
+std\+::vector$<$ qreal $>$ \mbox{\hyperlink{angle_construction_8hpp_ac940c0b993f5f0e21dc74a2ac2f3fc7a}{init\+All\+Angles\+Same}} (int num\+Qubits, qreal angle)
+\item 
+std\+::vector$<$ qreal $>$ \mbox{\hyperlink{angle_construction_8hpp_aad84f8117e971acc869f15e6a616f195}{init\+Random\+Pi\+On\+NAngles}} (int num\+Qubits, int pi\+Denominator)
+\item 
+std\+::vector$<$ qreal $>$ \mbox{\hyperlink{angle_construction_8hpp_a4711c7e692e9e1c3dd07c4e5255b41d1}{init\+Random\+Pi\+On\+NAngles\+Mod2k\+Pi}} (int num\+Qubits, int pi\+Denominator)
+\item 
+std\+::vector$<$ qreal $>$ \mbox{\hyperlink{angle_construction_8hpp_adde2e56cefa79b49346bc9e560b4430b}{init\+Random\+Pi\+On\+NAngles\+Mod2k\+Pi\+Plus\+Pi}} (int num\+Qubits, int pi\+Denominator)
+\item 
+void \mbox{\hyperlink{angle_construction_8hpp_a6647ed996ec54a9137e68e6c6317e8ee}{add\+Angle\+Rotate\+Zgate}} (Qureg qureg, std\+::vector$<$ qreal $>$ qubit\+Angles)
+\item 
+std\+::vector$<$ qreal $>$ \mbox{\hyperlink{angle_construction_8hpp_a0804b07ffb2bea2c7ac8cba482a88d62}{init\+Random\+Pi\+On\+NEvery\+Other\+Angles\+Mod2k\+Pi}} (int num\+Qubits, int pi\+Denominator)
+\item 
+std\+::vector$<$ qreal $>$ \mbox{\hyperlink{angle_construction_8hpp_ac35939429a8657a1f33dad419e7812c1}{init\+Random\+Pi\+On\+NEvery\+Other\+Angles\+Mod2k\+Pi\+Plus\+Pi}} (int num\+Qubits, int pi\+Denominator)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{angle_construction_8hpp_a6647ed996ec54a9137e68e6c6317e8ee}\label{angle_construction_8hpp_a6647ed996ec54a9137e68e6c6317e8ee} 
+\index{angleConstruction.hpp@{angleConstruction.hpp}!addAngleRotateZgate@{addAngleRotateZgate}}
+\index{addAngleRotateZgate@{addAngleRotateZgate}!angleConstruction.hpp@{angleConstruction.hpp}}
+\doxysubsubsection{\texorpdfstring{addAngleRotateZgate()}{addAngleRotateZgate()}}
+{\footnotesize\ttfamily void add\+Angle\+Rotate\+Zgate (\begin{DoxyParamCaption}\item[{Qureg}]{qureg,  }\item[{std\+::vector$<$ qreal $>$}]{qubit\+Angles }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{angle_construction_8hpp_source_l00143}{143}} of file \mbox{\hyperlink{angle_construction_8hpp_source}{angle\+Construction.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =0;\ i\ <\ qureg.numQubitsRepresented;\ i++)\{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ rotateZ\ (qureg,\ i,\ qubitAngles[i]);}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
+\DoxyCodeLine{00147\ \}}
+
+\end{DoxyCode}
+\Hypertarget{angle_construction_8hpp_ac940c0b993f5f0e21dc74a2ac2f3fc7a}\label{angle_construction_8hpp_ac940c0b993f5f0e21dc74a2ac2f3fc7a} 
+\index{angleConstruction.hpp@{angleConstruction.hpp}!initAllAnglesSame@{initAllAnglesSame}}
+\index{initAllAnglesSame@{initAllAnglesSame}!angleConstruction.hpp@{angleConstruction.hpp}}
+\doxysubsubsection{\texorpdfstring{initAllAnglesSame()}{initAllAnglesSame()}}
+{\footnotesize\ttfamily std\+::vector$<$ qreal $>$ init\+All\+Angles\+Same (\begin{DoxyParamCaption}\item[{int}]{num\+Qubits,  }\item[{qreal}]{angle }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{angle_construction_8hpp_source_l00022}{22}} of file \mbox{\hyperlink{angle_construction_8hpp_source}{angle\+Construction.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ std::vector<qreal>\ qubitAngles(numQubits,angle);\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{return}\ qubitAngles;}
+\DoxyCodeLine{00025\ \}}
+
+\end{DoxyCode}
+\Hypertarget{angle_construction_8hpp_aabc90c9d60fe6133e0143eda8db51906}\label{angle_construction_8hpp_aabc90c9d60fe6133e0143eda8db51906} 
+\index{angleConstruction.hpp@{angleConstruction.hpp}!initAllAnglesZero@{initAllAnglesZero}}
+\index{initAllAnglesZero@{initAllAnglesZero}!angleConstruction.hpp@{angleConstruction.hpp}}
+\doxysubsubsection{\texorpdfstring{initAllAnglesZero()}{initAllAnglesZero()}}
+{\footnotesize\ttfamily std\+::vector$<$ qreal $>$ init\+All\+Angles\+Zero (\begin{DoxyParamCaption}\item[{int}]{num\+Qubits }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{angle_construction_8hpp_source_l00013}{13}} of file \mbox{\hyperlink{angle_construction_8hpp_source}{angle\+Construction.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ std::vector<qreal>\ qubitAngles(numQubits,0.0);\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordflow}{return}\ qubitAngles;}
+\DoxyCodeLine{00016\ \}}
+
+\end{DoxyCode}
+\Hypertarget{angle_construction_8hpp_aad84f8117e971acc869f15e6a616f195}\label{angle_construction_8hpp_aad84f8117e971acc869f15e6a616f195} 
+\index{angleConstruction.hpp@{angleConstruction.hpp}!initRandomPiOnNAngles@{initRandomPiOnNAngles}}
+\index{initRandomPiOnNAngles@{initRandomPiOnNAngles}!angleConstruction.hpp@{angleConstruction.hpp}}
+\doxysubsubsection{\texorpdfstring{initRandomPiOnNAngles()}{initRandomPiOnNAngles()}}
+{\footnotesize\ttfamily std\+::vector$<$ qreal $>$ init\+Random\+Pi\+On\+NAngles (\begin{DoxyParamCaption}\item[{int}]{num\+Qubits,  }\item[{int}]{pi\+Denominator }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{angle_construction_8hpp_source_l00032}{32}} of file \mbox{\hyperlink{angle_construction_8hpp_source}{angle\+Construction.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ uniform\ distribution\ for\ the\ range}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ min\ =\ 0;}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ max\ =\ 2*piDenominator\ -\/\ 1;}
+\DoxyCodeLine{00037\ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ Populate\ angle\ vector}}
+\DoxyCodeLine{00039\ \ \ \ \ std::vector<qreal>\ qubitAngles(numQubits);}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i\ <\ numQubits;\ i++)\{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ numer\ =\ 1.0\ *\ \mbox{\hyperlink{general_helper_functions_8hpp_a4c07ccd9e75d9522fb31bd4155bc5c46}{drawRandomUniformInteger}}(min,max);\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ qreal\ angle\ =\ (double)(numer/piDenominator)\ *\ M\_PI;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ qubitAngles[i]\ =\ angle;}
+\DoxyCodeLine{00044\ \ \ \ \ \}\ }
+\DoxyCodeLine{00045\ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{return}\ qubitAngles;}
+\DoxyCodeLine{00047\ \}}
+
+\end{DoxyCode}
+\Hypertarget{angle_construction_8hpp_a4711c7e692e9e1c3dd07c4e5255b41d1}\label{angle_construction_8hpp_a4711c7e692e9e1c3dd07c4e5255b41d1} 
+\index{angleConstruction.hpp@{angleConstruction.hpp}!initRandomPiOnNAnglesMod2kPi@{initRandomPiOnNAnglesMod2kPi}}
+\index{initRandomPiOnNAnglesMod2kPi@{initRandomPiOnNAnglesMod2kPi}!angleConstruction.hpp@{angleConstruction.hpp}}
+\doxysubsubsection{\texorpdfstring{initRandomPiOnNAnglesMod2kPi()}{initRandomPiOnNAnglesMod2kPi()}}
+{\footnotesize\ttfamily std\+::vector$<$ qreal $>$ init\+Random\+Pi\+On\+NAngles\+Mod2k\+Pi (\begin{DoxyParamCaption}\item[{int}]{num\+Qubits,  }\item[{int}]{pi\+Denominator }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{angle_construction_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{angle_construction_8hpp_source}{angle\+Construction.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ uniform\ distribution\ for\ the\ range}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ min\ =\ 0;}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ max\ =\ 2*piDenominator\ -\/\ 1;}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{int}\ totalPositions\ =\ 2*piDenominator;}
+\DoxyCodeLine{00064\ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ Populate\ angle\ vector}}
+\DoxyCodeLine{00066\ \ \ \ \ std::vector<qreal>\ qubitAngles(numQubits);}
+\DoxyCodeLine{00067\ \ \ \ \ std::vector<int>\ numeratorVector(numQubits);}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i\ <\ numQubits-\/1;\ i++)\{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ numer\ =\ 1.0\ *\ \mbox{\hyperlink{general_helper_functions_8hpp_a4c07ccd9e75d9522fb31bd4155bc5c46}{drawRandomUniformInteger}}(min,max);\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ numeratorVector[i]\ =\ numer;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ qreal\ angle\ =\ (double)(numer/piDenominator)\ *\ M\_PI;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ qubitAngles[i]\ =\ angle;}
+\DoxyCodeLine{00073\ \ \ \ \ \}\ }
+\DoxyCodeLine{00074\ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ Compute\ some\ of\ random\ numerators}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{int}\ totalNumerator\ =\ std::accumulate(numeratorVector.begin(),\ numeratorVector.end(),\ 0);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//\ Get\ remainingPositions}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{int}\ remainingPositions\ =\ totalPositions\ -\/\ (totalNumerator\ \%\ totalPositions);}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{int}\ totalNumeratorAndRemainingModPositions\ =\ (remainingPositions\ +\ totalNumerator)\ \%\ totalPositions;}
+\DoxyCodeLine{00081\ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ assert((totalNumeratorAndRemainingModPositions\ ==\ 0)\ \&\&\ \textcolor{stringliteral}{"{}Total\ numerator\ values\ should\ be\ \ mod\ total\ positions\ equal\ to\ 0,\ indicating\ 2kPi\ multiple"{}});}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ qreal\ finalAngle\ =\ (1.0)*(remainingPositions/piDenominator)*M\_PI;}
+\DoxyCodeLine{00085\ \ \ \ \ qubitAngles[numQubits-\/1]\ =\ finalAngle;}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordflow}{return}\ qubitAngles;}
+\DoxyCodeLine{00091\ \ \ \ \ }
+\DoxyCodeLine{00092\ \}}
+
+\end{DoxyCode}
+\Hypertarget{angle_construction_8hpp_adde2e56cefa79b49346bc9e560b4430b}\label{angle_construction_8hpp_adde2e56cefa79b49346bc9e560b4430b} 
+\index{angleConstruction.hpp@{angleConstruction.hpp}!initRandomPiOnNAnglesMod2kPiPlusPi@{initRandomPiOnNAnglesMod2kPiPlusPi}}
+\index{initRandomPiOnNAnglesMod2kPiPlusPi@{initRandomPiOnNAnglesMod2kPiPlusPi}!angleConstruction.hpp@{angleConstruction.hpp}}
+\doxysubsubsection{\texorpdfstring{initRandomPiOnNAnglesMod2kPiPlusPi()}{initRandomPiOnNAnglesMod2kPiPlusPi()}}
+{\footnotesize\ttfamily std\+::vector$<$ qreal $>$ init\+Random\+Pi\+On\+NAngles\+Mod2k\+Pi\+Plus\+Pi (\begin{DoxyParamCaption}\item[{int}]{num\+Qubits,  }\item[{int}]{pi\+Denominator }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{angle_construction_8hpp_source_l00103}{103}} of file \mbox{\hyperlink{angle_construction_8hpp_source}{angle\+Construction.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ }
+\DoxyCodeLine{00105\ \ \ \ \ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ uniform\ distribution\ for\ the\ range}}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{int}\ min\ =\ 0;}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{int}\ max\ =\ 2*piDenominator\ -\/\ 1;}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{int}\ totalPositions\ =\ 2*piDenominator;}
+\DoxyCodeLine{00110\ \ \ \ \ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{//\ Populate\ angle\ vector}}
+\DoxyCodeLine{00112\ \ \ \ \ std::vector<qreal>\ qubitAngles(numQubits);}
+\DoxyCodeLine{00113\ \ \ \ \ std::vector<int>\ numeratorVector(numQubits);}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i\ <\ numQubits-\/1;\ i++)\{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ numer\ =\ 1.0\ *\ \mbox{\hyperlink{general_helper_functions_8hpp_a4c07ccd9e75d9522fb31bd4155bc5c46}{drawRandomUniformInteger}}(min,max);\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ numeratorVector[i]\ =\ numer;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ qreal\ angle\ =\ (double)(numer/piDenominator)\ *\ M\_PI;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ qubitAngles[i]\ =\ angle;}
+\DoxyCodeLine{00119\ \ \ \ \ \}\ }
+\DoxyCodeLine{00120\ \ \ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{//\ Compute\ some\ of\ random\ numerators}}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{int}\ totalNumerator\ =\ std::accumulate(numeratorVector.begin(),\ numeratorVector.end(),\ 0);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ Get\ remainingPositions}}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{int}\ remainingPositions\ =\ totalPositions\ -\/\ (totalNumerator\ \%\ totalPositions);}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{int}\ totalNumeratorAndRemainingModPositions\ =\ (remainingPositions\ +\ totalNumerator)\ \%\ totalPositions;}
+\DoxyCodeLine{00127\ \ \ \ \ }
+\DoxyCodeLine{00128\ \ \ \ \ assert((totalNumeratorAndRemainingModPositions\ ==\ 0)\ \&\&\ \textcolor{stringliteral}{"{}Total\ numerator\ values\ should\ be\ \ mod\ total\ positions\ equal\ to\ 0,\ indicating\ 2kPi\ multiple"{}});}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ qreal\ finalAngle\ =\ (1.0)*(remainingPositions/piDenominator)*M\_PI\ +\ M\_PI;}
+\DoxyCodeLine{00131\ \ \ \ \ qubitAngles[numQubits-\/1]\ =\ finalAngle;}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordflow}{return}\ qubitAngles;}
+\DoxyCodeLine{00137\ \ \ \ \ }
+\DoxyCodeLine{00138\ \}}
+
+\end{DoxyCode}
+\Hypertarget{angle_construction_8hpp_a0804b07ffb2bea2c7ac8cba482a88d62}\label{angle_construction_8hpp_a0804b07ffb2bea2c7ac8cba482a88d62} 
+\index{angleConstruction.hpp@{angleConstruction.hpp}!initRandomPiOnNEveryOtherAnglesMod2kPi@{initRandomPiOnNEveryOtherAnglesMod2kPi}}
+\index{initRandomPiOnNEveryOtherAnglesMod2kPi@{initRandomPiOnNEveryOtherAnglesMod2kPi}!angleConstruction.hpp@{angleConstruction.hpp}}
+\doxysubsubsection{\texorpdfstring{initRandomPiOnNEveryOtherAnglesMod2kPi()}{initRandomPiOnNEveryOtherAnglesMod2kPi()}}
+{\footnotesize\ttfamily std\+::vector$<$ qreal $>$ init\+Random\+Pi\+On\+NEvery\+Other\+Angles\+Mod2k\+Pi (\begin{DoxyParamCaption}\item[{int}]{num\+Qubits,  }\item[{int}]{pi\+Denominator }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{angle_construction_8hpp_source_l00153}{153}} of file \mbox{\hyperlink{angle_construction_8hpp_source}{angle\+Construction.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00154\ \ \ \ \ }
+\DoxyCodeLine{00155\ \ \ \ \ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ uniform\ distribution\ for\ the\ range}}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{int}\ min\ =\ 0;}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{int}\ max\ =\ 2*piDenominator\ -\/\ 1;}
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordtype}{int}\ totalPositions\ =\ 2*piDenominator;}
+\DoxyCodeLine{00160\ \ \ \ \ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{comment}{//\ Populate\ angle\ vector}}
+\DoxyCodeLine{00162\ \ \ \ \ std::vector<qreal>\ qubitAngles(numQubits);}
+\DoxyCodeLine{00163\ \ \ \ \ std::vector<int>\ numeratorVector(numQubits);}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i\ <\ numQubits-\/1;\ i++)\{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\%2==0)\{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ numer\ =\ 1.0\ *\ \mbox{\hyperlink{general_helper_functions_8hpp_a4c07ccd9e75d9522fb31bd4155bc5c46}{drawRandomUniformInteger}}(min+1,max);\ }
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ numeratorVector[i]\ =\ numer;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ angle\ =\ (double)(numer/piDenominator)\ *\ M\_PI;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles[i]\ =\ angle;}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(i\%2==1)\{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles[i]\ =\ 0.0;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//nothing}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00176\ \ \ \ \ \}\ }
+\DoxyCodeLine{00177\ \ \ }
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{comment}{//\ Compute\ some\ of\ random\ numerators}}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordtype}{int}\ totalNumerator\ =\ std::accumulate(numeratorVector.begin(),\ numeratorVector.end(),\ 0);}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{comment}{//\ Get\ remainingPositions}}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordtype}{int}\ remainingPositions\ =\ totalPositions\ -\/\ (totalNumerator\ \%\ totalPositions);}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordtype}{int}\ totalNumeratorAndRemainingModPositions\ =\ (remainingPositions\ +\ totalNumerator)\ \%\ totalPositions;}
+\DoxyCodeLine{00184\ \ \ \ \ }
+\DoxyCodeLine{00185\ \ \ \ \ assert((totalNumeratorAndRemainingModPositions\ ==\ 0)\ \&\&\ \textcolor{stringliteral}{"{}Total\ numerator\ values\ should\ be\ \ mod\ total\ positions\ equal\ to\ 0,\ indicating\ 2kPi\ multiple"{}});}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \ \ \ \ qreal\ finalAngle\ =\ (1.0)*(remainingPositions/piDenominator)*M\_PI;}
+\DoxyCodeLine{00188\ \ \ \ \ qubitAngles[numQubits-\/1]\ =\ finalAngle;}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordflow}{return}\ qubitAngles;}
+\DoxyCodeLine{00192\ \ \ \ \ }
+\DoxyCodeLine{00193\ \}}
+
+\end{DoxyCode}
+\Hypertarget{angle_construction_8hpp_ac35939429a8657a1f33dad419e7812c1}\label{angle_construction_8hpp_ac35939429a8657a1f33dad419e7812c1} 
+\index{angleConstruction.hpp@{angleConstruction.hpp}!initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi@{initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi}}
+\index{initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi@{initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi}!angleConstruction.hpp@{angleConstruction.hpp}}
+\doxysubsubsection{\texorpdfstring{initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi()}{initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi()}}
+{\footnotesize\ttfamily std\+::vector$<$ qreal $>$ init\+Random\+Pi\+On\+NEvery\+Other\+Angles\+Mod2k\+Pi\+Plus\+Pi (\begin{DoxyParamCaption}\item[{int}]{num\+Qubits,  }\item[{int}]{pi\+Denominator }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{angle_construction_8hpp_source_l00200}{200}} of file \mbox{\hyperlink{angle_construction_8hpp_source}{angle\+Construction.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00201\ \ \ \ \ }
+\DoxyCodeLine{00202\ \ \ \ \ }
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ uniform\ distribution\ for\ the\ range}}
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keywordtype}{int}\ min\ =\ 0;}
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordtype}{int}\ max\ =\ 2*piDenominator\ -\/\ 1;}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keywordtype}{int}\ totalPositions\ =\ 2*piDenominator;}
+\DoxyCodeLine{00207\ \ \ \ \ }
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{comment}{//\ Populate\ angle\ vector}}
+\DoxyCodeLine{00209\ \ \ \ \ std::vector<qreal>\ qubitAngles(numQubits);}
+\DoxyCodeLine{00210\ \ \ \ \ std::vector<int>\ numeratorVector(numQubits);}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i\ <\ numQubits-\/1;\ i++)\{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\%2==0)\{}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ numer\ =\ 1.0\ *\ \mbox{\hyperlink{general_helper_functions_8hpp_a4c07ccd9e75d9522fb31bd4155bc5c46}{drawRandomUniformInteger}}(min+1,max);\ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ numeratorVector[i]\ =\ numer;}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ angle\ =\ (double)(numer/piDenominator)\ *\ M\_PI;}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles[i]\ =\ angle;}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(i\%2==1)\{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ qubitAngles[i]\ =\ 0.0;}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//nothing}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00222\ \ \ \ \ \}\ }
+\DoxyCodeLine{00223\ \ \ }
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{comment}{//\ Compute\ some\ of\ random\ numerators}}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordtype}{int}\ totalNumerator\ =\ std::accumulate(numeratorVector.begin(),\ numeratorVector.end(),\ 0);}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{comment}{//\ Get\ remainingPositions}}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keywordtype}{int}\ remainingPositions\ =\ totalPositions\ -\/\ (totalNumerator\ \%\ totalPositions);}
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{keywordtype}{int}\ totalNumeratorAndRemainingModPositions\ =\ (remainingPositions\ +\ totalNumerator)\ \%\ totalPositions;}
+\DoxyCodeLine{00230\ \ \ \ \ }
+\DoxyCodeLine{00231\ \ \ \ \ assert((totalNumeratorAndRemainingModPositions\ ==\ 0)\ \&\&\ \textcolor{stringliteral}{"{}Total\ numerator\ values\ should\ be\ \ mod\ total\ positions\ equal\ to\ 0,\ indicating\ 2kPi\ multiple"{}});}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \ \ \ \ qreal\ finalAngle\ =\ (1.0)*(remainingPositions/piDenominator)*M\_PI\ +\ M\_PI;}
+\DoxyCodeLine{00234\ \ \ \ \ qubitAngles[numQubits-\/1]\ =\ finalAngle;}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ }
+\DoxyCodeLine{00237\ \ \ \ \ }
+\DoxyCodeLine{00238\ \ \ \ \ }
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keywordflow}{return}\ qubitAngles;}
+\DoxyCodeLine{00240\ \ \ \ \ }
+\DoxyCodeLine{00241\ \}}
+
+\end{DoxyCode}

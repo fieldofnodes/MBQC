@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_create_mbqc_graph_8cpp" xml:lang="en-US">
+<title>src/archive/filesToGoThrough/createMbqcGraph.cpp File Reference</title>
+<indexterm><primary>src/archive/filesToGoThrough/createMbqcGraph.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;boost/graph/adjacency_list.hpp&gt;<?linebreak?>#include &lt;QuEST.h&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?></programlisting><simplesect>
+    <title>Data Structures    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_struct_vertex_properties">VertexProperties</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_struct_edge_properties">EdgeProperties</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Typedefs    </title>
+        <itemizedlist>
+            <listitem><para>typedef boost::adjacency_list&lt; boost::vecS, boost::vecS, boost::bidirectionalS, <link linkend="_struct_vertex_properties">VertexProperties</link>, <link linkend="_struct_edge_properties">EdgeProperties</link> &gt; <link linkend="_create_mbqc_graph_8cpp_1aecb5240937295d7d862af72b714284a3">CircuitGraph</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_create_mbqc_graph_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Typedef Documentation</title>
+<anchor xml:id="_create_mbqc_graph_8cpp_1aecb5240937295d7d862af72b714284a3"/><section>
+    <title>CircuitGraph</title>
+<indexterm><primary>CircuitGraph</primary><secondary>createMbqcGraph.cpp</secondary></indexterm>
+<indexterm><primary>createMbqcGraph.cpp</primary><secondary>CircuitGraph</secondary></indexterm>
+<para><computeroutput>typedef boost::adjacency_list&lt;boost::vecS, boost::vecS, boost::bidirectionalS, <link linkend="_struct_vertex_properties">VertexProperties</link>, <link linkend="_struct_edge_properties">EdgeProperties</link>&gt; <link linkend="_create_mbqc_graph_8cpp_1aecb5240937295d7d862af72b714284a3">CircuitGraph</link></computeroutput></para><para>
+Definition at line <link linkend="_create_mbqc_graph_8cpp_source_1l00016">16</link> of file <link linkend="_create_mbqc_graph_8cpp_source">createMbqcGraph.cpp</link>.</para>
+</section>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_create_mbqc_graph_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>createMbqcGraph.cpp</secondary></indexterm>
+<indexterm><primary>createMbqcGraph.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_create_mbqc_graph_8cpp_source_1l00018">18</link> of file <link linkend="_create_mbqc_graph_8cpp_source">createMbqcGraph.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00019 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;quantum&#32;register&#32;with&#32;3&#32;qubits</emphasis>
+00020 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+00021 &#32;&#32;&#32;&#32;Qureg&#32;qubits&#32;=&#32;createQureg(3,&#32;env);
+00022 
+00023 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;the&#32;graph</emphasis>
+00024 &#32;&#32;&#32;&#32;<link linkend="_create_mbqc_graph_8cpp_1aecb5240937295d7d862af72b714284a3">CircuitGraph</link>&#32;circuit(3);
+00025 
+00026 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Add&#32;the&#32;qubits&#32;as&#32;vertices&#32;and&#32;attach&#32;them&#32;to&#32;the&#32;graph</emphasis>
+00027 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;3;&#32;i++)&#32;{
+00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_vertex_properties">VertexProperties</link>&#32;vp&#32;=&#32;{qubits};
+00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;boost::add_vertex(vp,&#32;circuit);
+00030 &#32;&#32;&#32;&#32;}
+00031 
+00032 
+00033 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Add&#32;the&#32;controlled-Z&#32;gates&#32;as&#32;edges&#32;and&#32;attach&#32;them&#32;to&#32;the&#32;graph</emphasis>
+00034 
+00035 &#32;&#32;&#32;&#32;boost::add_edge(0,&#32;1,&#32;{M_PI},&#32;circuit);
+00036 &#32;&#32;&#32;&#32;boost::add_edge(1,&#32;2,&#32;{M_PI/2},&#32;circuit);
+00037 
+00038 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Perform&#32;some&#32;operations&#32;on&#32;the&#32;qubits&#32;using&#32;the&#32;graph</emphasis>
+00039 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;m&#32;=&#32;measure(qubits,0);
+00040 &#32;&#32;&#32;&#32;
+00041 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;m&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>;
+00042 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+00043 
+00044 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Destroy&#32;the&#32;quantum&#32;register&#32;and&#32;the&#32;environment</emphasis>
+00045 &#32;&#32;&#32;&#32;destroyQureg(qubits,&#32;env);
+00046 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+00047 
+00048 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+00049 }
+</programlisting></section>
+</section>
+</section>

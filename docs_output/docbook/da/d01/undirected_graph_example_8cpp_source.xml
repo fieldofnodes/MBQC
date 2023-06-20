@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_undirected_graph_example_8cpp_source" xml:lang="en-US">
+<title>undirectedGraphExample.cpp</title>
+<indexterm><primary>src/archive/filesToGoThrough/undirectedGraphExample.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_undirected_graph_example_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/adjacency_list.hpp&gt;</emphasis>
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00003"/>00003 &#32;
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00004"/><link linkend="_undirected_graph_example_8cpp_1ad531f0530c52e2baed8840517b52b457">00004</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::property&lt;boost::edge_weight_t,&#32;int&gt;&#32;<link linkend="_undirected_graph_example_8cpp_1ad531f0530c52e2baed8840517b52b457">EdgeWeightProperty</link>;
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00005"/><link linkend="_undirected_graph_example_8cpp_1ae727d82d2665e0ccdbb85e29c841ba5f">00005</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::adjacency_list&lt;boost::listS,&#32;boost::vecS,boost::undirectedS,boost::no_property,EdgeWeightProperty&gt;&#32;<link linkend="_undirected_graph_example_8cpp_1ae727d82d2665e0ccdbb85e29c841ba5f">undirectedGraph</link>;
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00006"/><link linkend="_undirected_graph_example_8cpp_1af04c50f717d4bda41f0c58fe0eece059">00006</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::edge_iterator&#32;<link linkend="_undirected_graph_example_8cpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link>;
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00007"/>00007 &#32;
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00008"/><link linkend="_undirected_graph_example_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00008</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_undirected_graph_example_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00009"/>00009 {
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;g;
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00011"/>00011 &#32;
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00012"/>00012 &#32;&#32;&#32;&#32;boost::add_edge&#32;(0,&#32;1,&#32;8,&#32;g);
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00013"/>00013 &#32;&#32;&#32;&#32;boost::add_edge&#32;(0,&#32;3,&#32;18,&#32;g);
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00014"/>00014 &#32;&#32;&#32;&#32;boost::add_edge&#32;(1,&#32;2,&#32;20,&#32;g);
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;boost::add_edge&#32;(2,&#32;3,&#32;2,&#32;g);
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;boost::add_edge&#32;(1,&#32;3,&#32;7,&#32;g);
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;boost::add_edge&#32;(1,&#32;4,&#32;1,&#32;g);
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;boost::add_edge&#32;(4,&#32;5,&#32;6,&#32;g);
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;boost::add_edge&#32;(2,&#32;5,&#32;7,&#32;g);
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00020"/>00020 &#32;
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;std::pair&lt;edge_iterator,&#32;edge_iterator&gt;&#32;ei&#32;=&#32;edges(g);
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00022"/>00022 &#32;
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Number&#32;of&#32;edges&#32;=&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;num_edges(g)&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>;
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Edge&#32;list:\n&quot;</emphasis>;
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00025"/>00025 &#32;
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<link linkend="_create_graph_8hpp_1af04c50f717d4bda41f0c58fe0eece059">edge_iterator</link>&#32;it&#32;=&#32;ei.first;&#32;it&#32;!=&#32;ei.second;&#32;++it&#32;)
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;*it&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00030"/>00030 &#32;
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00032"/>00032 &#32;
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_undirected_graph_example_8cpp_source_1l00034"/>00034 &#32;}
+</programlisting></section>

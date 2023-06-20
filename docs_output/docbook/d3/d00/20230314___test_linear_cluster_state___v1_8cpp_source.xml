@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source" xml:lang="en-US">
+<title>20230314_TestLinearClusterState_V1.cpp</title>
+<indexterm><primary>src/archive/20230314_TestLinearClusterState_V1.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00001"/>00001 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Title&#32;&#32;&#32;&#32;&#32;:&#32;Three&#32;qubit&#32;in&#32;a&#32;line&#32;entangled</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00003"/>00003 <emphasis role="comment">//&#32;Author&#32;&#32;&#32;&#32;:&#32;Jonathan&#32;Miller</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00004"/>00004 <emphasis role="comment">//&#32;Date&#32;&#32;&#32;&#32;&#32;&#32;:&#32;20230309</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00005"/>00005 <emphasis role="comment">//&#32;Aim&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Implement&#32;a&#32;simple&#32;MBQC&#32;circuit&#32;for&#32;()-()-()&#32;circuit</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00006"/>00006 <emphasis role="comment">//&#32;Flow&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Same&#32;row,&#32;next&#32;column;&#32;</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00007"/>00007 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;f(0)&#32;=&#32;1,&#32;f(1)&#32;=&#32;2,&#32;f(2)&#32;=&#32;3</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00008"/>00008 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;f-1(3)&#32;=&#32;2,&#32;f-1(2)&#32;=&#32;1,&#32;f-1(1)&#32;=&#32;0</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00009"/>00009 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00010"/>00010 <emphasis role="preprocessor">#include&#32;&lt;QuEST.h&gt;</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00011"/>00011 <emphasis role="comment">//#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00012"/>00012 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00013"/>00013 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00014"/>00014 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00015"/>00015 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>std;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00016"/>00016 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_20230314___functions___v1_8hpp">20230314_Functions_V1.hpp</link>&quot;</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00017"/>00017 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00018"/>00018 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00019"/>00019 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00020"/>00020 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00021"/>00021 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00022"/><link linkend="_20230314___test_linear_cluster_state___v1_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00022</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_20230314___test_linear_cluster_state___v1_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00024"/>00024 &#32;&#32;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;parameters</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numberQubits&#32;=&#32;5;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Select&#32;a&#32;qubit&#32;index</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00029"/>00029 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;currentQubit&#32;=&#32;3;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00030"/>00030 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;vector&#32;representing&#32;a&#32;linear&#32;cluster&#32;graph</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;vector&lt;int&gt;&#32;pathGraph&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1aa6c7ea81b30e713a1f641e9a86e5f0a8">getPathGraph</link>(numberQubits);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00033"/>00033 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Get&#32;the&#32;future&#32;qubit&#32;using&#32;pathGraph&#32;and&#32;current&#32;qubit</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;future_qubit_linear_cluster&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1adf1055c60f73eb56e5e51d97b15feeaf">getFutureQubitPathGraph</link>(pathGraph&#32;,currentQubit);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00036"/>00036 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Get&#32;the&#32;past&#32;qubit&#32;using&#32;pathGraph&#32;and&#32;current&#32;qubit</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;qubitBefore_linear_cluster&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1a1be0a6fc146b59a21929f000546f57a4">getPastQubitPathGraph</link>(pathGraph&#32;,currentQubit);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00039"/>00039 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Get&#32;the&#32;neighbourhood&#32;size</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;size_neighbour_set&#32;=&#32;<link linkend="_20230313___m_b_q_c___v2_8c_1ab81ffa7099ed1d954baf7af535ab3143">getOpenNeighbourhoodSizePathGraph</link>(pathGraph&#32;,currentQubit);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00042"/>00042 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Ger&#32;neighbours</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;vector&lt;int&gt;&#32;neighbours&#32;=&#32;<link linkend="_20230313___m_b_q_c___v2_8c_1a5aa77a698227173b06b1c3d363215699">getOpenNeighbourhoodPathGraph</link>(pathGraph&#32;,currentQubit);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00045"/>00045 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00046"/>00046 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00047"/>00047 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;The&#32;number&#32;of&#32;qubits&#32;is:&#32;%d\n&quot;</emphasis>,&#32;numberQubits);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00048"/>00048 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;The&#32;current&#32;qubit&#32;is:&#32;%d\n&quot;</emphasis>,currentQubit);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00049"/>00049 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;The&#32;Past&#32;qubit&#32;is:&#32;%d\n&quot;</emphasis>,qubitBefore_linear_cluster);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00050"/>00050 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;The&#32;future&#32;qubit&#32;is:&#32;%d\n&quot;</emphasis>,future_qubit_linear_cluster);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00051"/>00051 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Size&#32;of&#32;neighbour&#32;set:&#32;%d\n&quot;</emphasis>,size_neighbour_set);&#32;&#32;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00052"/>00052 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;The&#32;neighbourhoods&#32;are:&#32;&quot;</emphasis>);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00053"/>00053 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00054"/>00054 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i:&#32;neighbours)
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00055"/>00055 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cout&#32;&lt;&lt;&#32;i&#32;&lt;&lt;&#32;<emphasis role="charliteral">&apos;&#32;&apos;</emphasis>;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00057"/>00057 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00058"/>00058 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00059"/>00059 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00061"/>00061 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;The&#32;linear&#32;cluster&#32;is&#32;written&#32;out&#32;as:&#32;\n&quot;</emphasis>);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00062"/>00062 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i:&#32;pathGraph)
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00063"/>00063 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cout&#32;&lt;&lt;&#32;i&#32;&lt;&lt;&#32;<emphasis role="charliteral">&apos;&#32;&apos;</emphasis>;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00065"/>00065 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00066"/>00066 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00067"/>00067 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00068"/>00068 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Assert&#32;that&#32;the&#32;future&#32;qubit&#32;is&#32;equivalent&#32;to&#32;the&#32;current&#32;qubit&#32;+1</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;assert(future_qubit_linear_cluster&#32;==&#32;currentQubit&#32;+&#32;1&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;Incorrect&#32;future&#32;qubit&quot;</emphasis>);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00070"/>00070 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00071"/>00071 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Assert&#32;that&#32;the&#32;future&#32;qubit&#32;is&#32;equivalent&#32;to&#32;the&#32;current&#32;qubit&#32;-1</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00072"/>00072 &#32;&#32;&#32;&#32;assert(qubitBefore_linear_cluster&#32;==&#32;currentQubit&#32;-&#32;1&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;Incorrect&#32;past&#32;qubit&quot;</emphasis>);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00073"/>00073 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00074"/>00074 &#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00075"/>00075 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Assert&#32;that&#32;the&#32;number&#32;of&#32;qubits&#32;initialised&#32;is&#32;equivalent&#32;to&#32;the&#32;</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00076"/>00076 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;size&#32;of&#32;the&#32;linear&#32;cluster&#32;vector</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00077"/>00077 <emphasis role="comment">&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00078"/>00078 &#32;&#32;&#32;&#32;assert(numberQubits&#32;==&#32;pathGraph.size()&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;The&#32;linear&#32;cluster&#32;is&#32;not&#32;the&#32;same&#32;size&#32;as&#32;the&#32;number&#32;of&#32;qubits&#32;initialised.&quot;</emphasis>);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00079"/>00079 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00080"/>00080 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00082"/>00082 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Test&#32;that&#32;the&#32;size&#32;of&#32;the&#32;neighbours&#32;is&#32;equivalent&#32;to&#32;the</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00083"/>00083 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;function&#32;output&#32;based&#32;on&#32;the&#32;qubit&#32;location&#32;in&#32;the&#32;vector</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00084"/>00084 <emphasis role="comment">&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00085"/>00085 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(currentQubit&#32;==&#32;pathGraph[0])
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00086"/>00086 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assert(size_neighbour_set&#32;==&#32;1&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;Neighbour&#32;set&#32;shoud&#32;be&#32;size&#32;1&quot;</emphasis>);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(currentQubit&#32;==&#32;pathGraph[pathGraph.size()-1]){
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assert(size_neighbour_set&#32;==&#32;1&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;Neighbour&#32;set&#32;shoud&#32;be&#32;size&#32;1&quot;</emphasis>);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assert(size_neighbour_set&#32;==&#32;2&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;Neighbour&#32;set&#32;shoud&#32;be&#32;size&#32;2&quot;</emphasis>);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00092"/>00092 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00093"/>00093 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00095"/>00095 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Test&#32;that&#32;the&#32;size&#32;of&#32;the&#32;neighbours&#32;is&#32;equivalent&#32;to&#32;the</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00096"/>00096 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;function&#32;output&#32;based&#32;on&#32;the&#32;qubit&#32;location&#32;in&#32;the&#32;vector&#32;and</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00097"/>00097 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;the&#32;size&#32;of&#32;the&#32;size&#32;of&#32;the&#32;neighbours&#32;vector.</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00098"/>00098 <emphasis role="comment">&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00099"/>00099 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(currentQubit&#32;==&#32;pathGraph[0])
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assert(neighbours.size()&#32;==&#32;1&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;Neighbour&#32;set&#32;shoud&#32;be&#32;size&#32;1&quot;</emphasis>);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00102"/>00102 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(currentQubit&#32;==&#32;pathGraph[pathGraph.size()-1]){
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assert(neighbours.size()&#32;==&#32;1&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;Neighbour&#32;set&#32;shoud&#32;be&#32;size&#32;1&quot;</emphasis>);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assert(neighbours.size()&#32;==&#32;2&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;Neighbour&#32;set&#32;shoud&#32;be&#32;size&#32;2&quot;</emphasis>);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00107"/>00107 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00108"/>00108 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00109"/>00109 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00110"/>00110 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Iterate&#32;over&#32;path&#32;graph&#32;cluster&#32;p_10</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00111"/>00111 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;NewNumberQubits&#32;=&#32;10;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00112"/>00112 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;vector&#32;representing&#32;a&#32;linear&#32;cluster&#32;graph</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00113"/>00113 &#32;&#32;&#32;&#32;vector&lt;int&gt;&#32;NewLinearCluster&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1aa6c7ea81b30e713a1f641e9a86e5f0a8">getPathGraph</link>(NewNumberQubits);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00114"/>00114 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Iterate&#32;over&#32;all&#32;vertices,&#32;return&#32;neighbours</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00117"/>00117 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Iterate&#32;over&#32;the&#32;path&#32;cluster</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00118"/>00118 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;q:&#32;NewLinearCluster)
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Qubit:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;q&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;vector&lt;int&gt;&#32;neighbours&#32;=&#32;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_20230313___m_b_q_c___v2_8c_1a5aa77a698227173b06b1c3d363215699">getOpenNeighbourhoodPathGraph</link>(
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;NewLinearCluster&#32;,q);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Neighbours:&#32;&quot;</emphasis>;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Get&#32;the&#32;future&#32;qubit&#32;using&#32;pathGraph&#32;and&#32;current&#32;qubit</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;FutureQubit&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1adf1055c60f73eb56e5e51d97b15feeaf">getFutureQubitPathGraph</link>(NewLinearCluster&#32;,q);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Current&#32;qubit:&#32;%d&#32;future&#32;qubit:&#32;%d\n&quot;</emphasis>,q,FutureQubit);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Get&#32;the&#32;past&#32;qubit&#32;using&#32;pathGraph&#32;and&#32;current&#32;qubit</emphasis>
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;pastQubit&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1a1be0a6fc146b59a21929f000546f57a4">getPastQubitPathGraph</link>(NewLinearCluster&#32;,q);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Current&#32;qubit:&#32;%d&#32;past&#32;qubit:&#32;%d\n&quot;</emphasis>,q,FutureQubit);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;n:&#32;neighbours)
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cout&#32;&lt;&lt;&#32;n&#32;&lt;&lt;&#32;<emphasis role="charliteral">&apos;&#32;&apos;</emphasis>;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\n&quot;</emphasis>);
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00137"/>00137 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00138"/>00138 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00139"/>00139 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00140"/>00140 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00141"/>00141 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00142"/>00142 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00143"/>00143 }
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00144"/>00144 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00145"/>00145 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00146"/>00146 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00147"/>00147 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00148"/>00148 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00149"/>00149 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00150"/>00150 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00151"/>00151 
+<anchor xml:id="_20230314___test_linear_cluster_state___v1_8cpp_source_1l00152"/>00152 
+</programlisting></section>

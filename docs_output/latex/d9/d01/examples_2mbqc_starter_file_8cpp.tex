@@ -1,0 +1,92 @@
+\doxysection{examples/mbqc\+Starter\+File.cpp File Reference}
+\hypertarget{examples_2mbqc_starter_file_8cpp}{}\label{examples_2mbqc_starter_file_8cpp}\index{examples/mbqcStarterFile.cpp@{examples/mbqcStarterFile.cpp}}
+{\ttfamily \#include \"{}packages.\+hpp\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{examples_2mbqc_starter_file_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{examples_2mbqc_starter_file_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{examples_2mbqc_starter_file_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{mbqcStarterFile.cpp@{mbqcStarterFile.cpp}!main@{main}}
+\index{main@{main}!mbqcStarterFile.cpp@{mbqcStarterFile.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{examples_2mbqc_starter_file_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{examples_2mbqc_starter_file_8cpp_source}{mbqc\+Starter\+File.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ }
+\DoxyCodeLine{00018\ \ \ \textcolor{comment}{//\ Initialise\ variable\ names\ and\ types}}
+\DoxyCodeLine{00019\ \ \ \textcolor{keywordtype}{int}\ numRows;}
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{int}\ numCols;}
+\DoxyCodeLine{00021\ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph;}
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{int}\ numVertices;}
+\DoxyCodeLine{00023\ \ \ std::vector<qreal>\ qubitAngles;}
+\DoxyCodeLine{00024\ \ \ std::vector<int>\ measuredQubitsOutcomes;}
+\DoxyCodeLine{00025\ \ \ }
+\DoxyCodeLine{00026\ \ \ }
+\DoxyCodeLine{00027\ \ \ \textcolor{comment}{//\ Set\ values\ to\ variables}}
+\DoxyCodeLine{00028\ \ \ numRows\ =\ 4;}
+\DoxyCodeLine{00029\ \ \ numCols\ =\ 4;}
+\DoxyCodeLine{00030\ \ \ latticeGraph\ =\ \mbox{\hyperlink{create_graph_8hpp_aabb013bb6de93b1ca2ff83e1d7d200c7}{createLatticeGraph}}(numRows,numCols);}
+\DoxyCodeLine{00031\ \ \ numVertices\ =\ boost::num\_vertices(latticeGraph);}
+\DoxyCodeLine{00032\ \ \ }
+\DoxyCodeLine{00033\ \ \ }
+\DoxyCodeLine{00034\ \ \ }
+\DoxyCodeLine{00035\ \ \ \textcolor{comment}{//\ Print\ graph\ to\ file}}
+\DoxyCodeLine{00036\ \ \ \textcolor{comment}{//\ Update\ with\ desired\ directory\ to\ view\ graph.}}
+\DoxyCodeLine{00037\ \ \ std::string\ figsDir\ =\ MBQC\_FIGS\_DIR;}
+\DoxyCodeLine{00038\ \ \ std::string\ graphName\ =\ \textcolor{stringliteral}{"{}lattice2DGraphCmakeV2"{}};}
+\DoxyCodeLine{00039\ \ \ std::string\ format\ =\ PNG\_FORMAT;}
+\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_a3d553b54b16922ee146bfb33201a3993}{printGraphToFile}}(latticeGraph,figsDir,graphName,format);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{00043\ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{00044\ \ \ }
+\DoxyCodeLine{00045\ \ \ \textcolor{comment}{//\ create\ a\ quantum\ register}}
+\DoxyCodeLine{00046\ \ \ Qureg\ qureg\ =\ createQureg(numVertices,\ env);}
+\DoxyCodeLine{00047\ \ \ }
+\DoxyCodeLine{00048\ \ \ }
+\DoxyCodeLine{00049\ \ \ \textcolor{comment}{//qubitAngles\ =\ initRandomPiOnNAnglesMod2kPi(numVertices,\ 4);}}
+\DoxyCodeLine{00050\ \ \ qubitAngles\ =\ \mbox{\hyperlink{angle_construction_8hpp_adde2e56cefa79b49346bc9e560b4430b}{initRandomPiOnNAnglesMod2kPiPlusPi}}(numVertices,\ 4);}
+\DoxyCodeLine{00051\ \ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \textcolor{comment}{//\ initialise\ in\ the\ plus\ state}}
+\DoxyCodeLine{00054\ \ \ initPlusState(qureg);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ }
+\DoxyCodeLine{00057\ \ \ \textcolor{comment}{//\ add\ angles\ to\ the\ qubits}}
+\DoxyCodeLine{00058\ \ \ \mbox{\hyperlink{angle_construction_8hpp_a6647ed996ec54a9137e68e6c6317e8ee}{addAngleRotateZgate}}(qureg,qubitAngles);}
+\DoxyCodeLine{00059\ \ \ }
+\DoxyCodeLine{00060\ \ \ \ }
+\DoxyCodeLine{00061\ \ \ \textcolor{comment}{//\ entangle\ graph}}
+\DoxyCodeLine{00062\ \ \ \mbox{\hyperlink{quantum_graph_cluster_states_8hpp_a3f830234f9eb3a150a084b0f2b4aa056}{entangleGraph}}(qureg,latticeGraph);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \textcolor{comment}{//\ measure\ graph}}
+\DoxyCodeLine{00066\ \ \ measuredQubitsOutcomes\ =\ \mbox{\hyperlink{flow_measurements_8hpp_a7231be9a1c347894c1d01c349f4b41c7}{measureGraph}}(}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ qureg,}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ latticeGraph,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ qubitAngles,}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ numRows);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \textcolor{comment}{//\ print\ results\ to\ screen}}
+\DoxyCodeLine{00074\ \ \ \mbox{\hyperlink{flow_measurements_8hpp_a202e2cd0edb82aacb879f3ad4360dc36}{printResultsToScreen}}(measuredQubitsOutcomes,numRows,numCols);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ }
+\DoxyCodeLine{00077\ \ \ }
+\DoxyCodeLine{00078\ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{00079\ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{00080\ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00082\ \}}
+
+\end{DoxyCode}

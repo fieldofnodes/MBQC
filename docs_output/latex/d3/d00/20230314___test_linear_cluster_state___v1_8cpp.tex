@@ -1,0 +1,151 @@
+\doxysection{src/archive/20230314\+\_\+\+Test\+Linear\+Cluster\+State\+\_\+\+V1.cpp File Reference}
+\hypertarget{20230314___test_linear_cluster_state___v1_8cpp}{}\label{20230314___test_linear_cluster_state___v1_8cpp}\index{src/archive/20230314\_TestLinearClusterState\_V1.cpp@{src/archive/20230314\_TestLinearClusterState\_V1.cpp}}
+{\ttfamily \#include $<$Qu\+EST.\+h$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \"{}20230314\+\_\+\+Functions\+\_\+\+V1.\+hpp\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{20230314___test_linear_cluster_state___v1_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{20230314___test_linear_cluster_state___v1_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{20230314___test_linear_cluster_state___v1_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{20230314\_TestLinearClusterState\_V1.cpp@{20230314\_TestLinearClusterState\_V1.cpp}!main@{main}}
+\index{main@{main}!20230314\_TestLinearClusterState\_V1.cpp@{20230314\_TestLinearClusterState\_V1.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{20230314___test_linear_cluster_state___v1_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{20230314___test_linear_cluster_state___v1_8cpp_source}{20230314\+\_\+\+Test\+Linear\+Cluster\+State\+\_\+\+V1.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ set\ parameters}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ numberQubits\ =\ 5;}
+\DoxyCodeLine{00027\ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ Select\ a\ qubit\ index}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ currentQubit\ =\ 3;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ vector\ representing\ a\ linear\ cluster\ graph}}
+\DoxyCodeLine{00032\ \ \ \ \ vector<int>\ pathGraph\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_aa6c7ea81b30e713a1f641e9a86e5f0a8}{getPathGraph}}(numberQubits);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ future\ qubit\ using\ pathGraph\ and\ current\ qubit}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ future\_qubit\_linear\_cluster\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_adf1055c60f73eb56e5e51d97b15feeaf}{getFutureQubitPathGraph}}(pathGraph\ ,currentQubit);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ past\ qubit\ using\ pathGraph\ and\ current\ qubit}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ qubitBefore\_linear\_cluster\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a1be0a6fc146b59a21929f000546f57a4}{getPastQubitPathGraph}}(pathGraph\ ,currentQubit);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ neighbourhood\ size}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ size\_neighbour\_set\ =\ \mbox{\hyperlink{20230313___m_b_q_c___v2_8c_ab81ffa7099ed1d954baf7af535ab3143}{getOpenNeighbourhoodSizePathGraph}}(pathGraph\ ,currentQubit);}
+\DoxyCodeLine{00042\ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ Ger\ neighbours}}
+\DoxyCodeLine{00044\ \ \ \ \ vector<int>\ neighbours\ =\ \mbox{\hyperlink{20230313___m_b_q_c___v2_8c_a5aa77a698227173b06b1c3d363215699}{getOpenNeighbourhoodPathGraph}}(pathGraph\ ,currentQubit);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ printf(\textcolor{stringliteral}{"{}The\ number\ of\ qubits\ is:\ \%d\(\backslash\)n"{}},\ numberQubits);}
+\DoxyCodeLine{00048\ \ \ \ \ printf(\textcolor{stringliteral}{"{}The\ current\ qubit\ is:\ \%d\(\backslash\)n"{}},currentQubit);}
+\DoxyCodeLine{00049\ \ \ \ \ printf(\textcolor{stringliteral}{"{}The\ Past\ qubit\ is:\ \%d\(\backslash\)n"{}},qubitBefore\_linear\_cluster);}
+\DoxyCodeLine{00050\ \ \ \ \ printf(\textcolor{stringliteral}{"{}The\ future\ qubit\ is:\ \%d\(\backslash\)n"{}},future\_qubit\_linear\_cluster);}
+\DoxyCodeLine{00051\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Size\ of\ neighbour\ set:\ \%d\(\backslash\)n"{}},size\_neighbour\_set);\ \ }
+\DoxyCodeLine{00052\ \ \ \ \ printf(\textcolor{stringliteral}{"{}The\ neighbourhoods\ are:\ "{}});}
+\DoxyCodeLine{00053\ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i:\ neighbours)}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ cout\ <<\ i\ <<\ \textcolor{charliteral}{'\ '};}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00060\ \ \ \ \ }
+\DoxyCodeLine{00061\ \ \ \ \ printf(\textcolor{stringliteral}{"{}The\ linear\ cluster\ is\ written\ out\ as:\ \(\backslash\)n"{}});}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i:\ pathGraph)}
+\DoxyCodeLine{00063\ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ cout\ <<\ i\ <<\ \textcolor{charliteral}{'\ '};}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//\ Assert\ that\ the\ future\ qubit\ is\ equivalent\ to\ the\ current\ qubit\ +1}}
+\DoxyCodeLine{00069\ \ \ \ \ assert(future\_qubit\_linear\_cluster\ ==\ currentQubit\ +\ 1\ \&\&\ \textcolor{stringliteral}{"{}Incorrect\ future\ qubit"{}});}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ Assert\ that\ the\ future\ qubit\ is\ equivalent\ to\ the\ current\ qubit\ -\/1}}
+\DoxyCodeLine{00072\ \ \ \ \ assert(qubitBefore\_linear\_cluster\ ==\ currentQubit\ -\/\ 1\ \&\&\ \textcolor{stringliteral}{"{}Incorrect\ past\ qubit"{}});}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{00075\ \textcolor{comment}{\ \ \ \ \ \ \ \ Assert\ that\ the\ number\ of\ qubits\ initialised\ is\ equivalent\ to\ the\ }}
+\DoxyCodeLine{00076\ \textcolor{comment}{\ \ \ \ \ \ \ \ size\ of\ the\ linear\ cluster\ vector}}
+\DoxyCodeLine{00077\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00078\ \ \ \ \ assert(numberQubits\ ==\ pathGraph.size()\ \&\&\ \textcolor{stringliteral}{"{}The\ linear\ cluster\ is\ not\ the\ same\ size\ as\ the\ number\ of\ qubits\ initialised."{}});}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00082\ \textcolor{comment}{\ \ \ \ \ \ \ \ Test\ that\ the\ size\ of\ the\ neighbours\ is\ equivalent\ to\ the}}
+\DoxyCodeLine{00083\ \textcolor{comment}{\ \ \ \ \ \ \ \ function\ output\ based\ on\ the\ qubit\ location\ in\ the\ vector}}
+\DoxyCodeLine{00084\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[0])}
+\DoxyCodeLine{00086\ \ \ \ \ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ assert(size\_neighbour\_set\ ==\ 1\ \&\&\ \textcolor{stringliteral}{"{}Neighbour\ set\ shoud\ be\ size\ 1"{}});}
+\DoxyCodeLine{00088\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[pathGraph.size()-\/1])\{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ assert(size\_neighbour\_set\ ==\ 1\ \&\&\ \textcolor{stringliteral}{"{}Neighbour\ set\ shoud\ be\ size\ 1"{}});}
+\DoxyCodeLine{00090\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ assert(size\_neighbour\_set\ ==\ 2\ \&\&\ \textcolor{stringliteral}{"{}Neighbour\ set\ shoud\ be\ size\ 2"{}});}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00095\ \textcolor{comment}{\ \ \ \ \ \ \ \ Test\ that\ the\ size\ of\ the\ neighbours\ is\ equivalent\ to\ the}}
+\DoxyCodeLine{00096\ \textcolor{comment}{\ \ \ \ \ \ \ \ function\ output\ based\ on\ the\ qubit\ location\ in\ the\ vector\ and}}
+\DoxyCodeLine{00097\ \textcolor{comment}{\ \ \ \ \ \ \ \ the\ size\ of\ the\ size\ of\ the\ neighbours\ vector.}}
+\DoxyCodeLine{00098\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[0])}
+\DoxyCodeLine{00100\ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ assert(neighbours.size()\ ==\ 1\ \&\&\ \textcolor{stringliteral}{"{}Neighbour\ set\ shoud\ be\ size\ 1"{}});}
+\DoxyCodeLine{00102\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (currentQubit\ ==\ pathGraph[pathGraph.size()-\/1])\{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ assert(neighbours.size()\ ==\ 1\ \&\&\ \textcolor{stringliteral}{"{}Neighbour\ set\ shoud\ be\ size\ 1"{}});}
+\DoxyCodeLine{00104\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ assert(neighbours.size()\ ==\ 2\ \&\&\ \textcolor{stringliteral}{"{}Neighbour\ set\ shoud\ be\ size\ 2"{}});}
+\DoxyCodeLine{00106\ \ \ \ \ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{//\ Iterate\ over\ path\ graph\ cluster\ p\_10}}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{int}\ NewNumberQubits\ =\ 10;}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{comment}{//\ Create\ a\ vector\ representing\ a\ linear\ cluster\ graph}}
+\DoxyCodeLine{00113\ \ \ \ \ vector<int>\ NewLinearCluster\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_aa6c7ea81b30e713a1f641e9a86e5f0a8}{getPathGraph}}(NewNumberQubits);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{comment}{//\ Iterate\ over\ all\ vertices,\ return\ neighbours}}
+\DoxyCodeLine{00116\ \ \ \ \ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{comment}{//\ Iterate\ over\ the\ path\ cluster}}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ q:\ NewLinearCluster)}
+\DoxyCodeLine{00119\ \ \ \ \ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Qubit:\ "{}}\ <<\ q\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ vector<int>\ neighbours\ =\ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{20230313___m_b_q_c___v2_8c_a5aa77a698227173b06b1c3d363215699}{getOpenNeighbourhoodPathGraph}}(}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NewLinearCluster\ ,q);}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Neighbours:\ "{}};}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ future\ qubit\ using\ pathGraph\ and\ current\ qubit}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ FutureQubit\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_adf1055c60f73eb56e5e51d97b15feeaf}{getFutureQubitPathGraph}}(NewLinearCluster\ ,q);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Current\ qubit:\ \%d\ future\ qubit:\ \%d\(\backslash\)n"{}},q,FutureQubit);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ past\ qubit\ using\ pathGraph\ and\ current\ qubit}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pastQubit\ =\ \mbox{\hyperlink{20230314___functions___v1_8hpp_a1be0a6fc146b59a21929f000546f57a4}{getPastQubitPathGraph}}(NewLinearCluster\ ,q);}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Current\ qubit:\ \%d\ past\ qubit:\ \%d\(\backslash\)n"{}},q,FutureQubit);}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ n:\ neighbours)}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ n\ <<\ \textcolor{charliteral}{'\ '};}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \ \}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ }
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \}}
+
+\end{DoxyCode}

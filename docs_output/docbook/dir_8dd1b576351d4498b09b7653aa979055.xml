@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_8dd1b576351d4498b09b7653aa979055" xml:lang="en-US">
+<title>src/genericHelperFunctions Directory Reference</title>
+<indexterm><primary>src/genericHelperFunctions Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_general_helper_functions_8hpp">generalHelperFunctions.hpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_write_graph_graph_viz_dot_file_8hpp">writeGraphGraphVizDotFile.hpp</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

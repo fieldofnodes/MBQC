@@ -1,0 +1,66 @@
+\doxysection{src/archive/files\+To\+Go\+Through/find\+Minimal\+Spanning\+Tree\+Kruskal\+Example.cpp File Reference}
+\hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp}{}\label{find_minimal_spanning_tree_kruskal_example_8cpp}\index{src/archive/filesToGoThrough/findMinimalSpanningTreeKruskalExample.cpp@{src/archive/filesToGoThrough/findMinimalSpanningTreeKruskalExample.cpp}}
+{\ttfamily \#include $<$boost/graph/adjacency\+\_\+list.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/kruskal\+\_\+min\+\_\+spanning\+\_\+tree.\+hpp$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{find_minimal_spanning_tree_kruskal_example_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{find_minimal_spanning_tree_kruskal_example_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{find_minimal_spanning_tree_kruskal_example_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{findMinimalSpanningTreeKruskalExample.cpp@{findMinimalSpanningTreeKruskalExample.cpp}!main@{main}}
+\index{main@{main}!findMinimalSpanningTreeKruskalExample.cpp@{findMinimalSpanningTreeKruskalExample.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{find_minimal_spanning_tree_kruskal_example_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{find_minimal_spanning_tree_kruskal_example_8cpp_source}{find\+Minimal\+Spanning\+Tree\+Kruskal\+Example.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \textcolor{keyword}{typedef}\ boost::adjacency\_list<\ boost::vecS,\ boost::vecS,\ boost::undirectedS,}
+\DoxyCodeLine{00009\ \ \ \ \ boost::no\_property,\ boost::property<boost::edge\_weight\_t,\ int>\ >\ Graph;}
+\DoxyCodeLine{00010\ \ \ \ }
+\DoxyCodeLine{00011\ \ \ \textcolor{keyword}{typedef}\ boost::graph\_traits\ <Graph>::edge\_descriptor\ Edge;}
+\DoxyCodeLine{00012\ \ \ \textcolor{keyword}{typedef}\ boost::graph\_traits\ <Graph>::vertex\_descriptor\ Vertex;}
+\DoxyCodeLine{00013\ \ \ \textcolor{keyword}{typedef}\ std::pair<int,\ int>\ E;}
+\DoxyCodeLine{00014\ \ }
+\DoxyCodeLine{00015\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_nodes\ =\ 5;}
+\DoxyCodeLine{00016\ \ \ E\ edge\_array[]\ =\ \{\ E(0,\ 2),\ E(1,\ 3),\ E(1,\ 4),\ E(2,\ 1),\ E(2,\ 3),}
+\DoxyCodeLine{00017\ \ \ \ \ E(3,\ 4),\ E(4,\ 0),\ E(4,\ 1)}
+\DoxyCodeLine{00018\ \ \ \};}
+\DoxyCodeLine{00019\ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{int}\ weights[]\ =\ \{\ 1,\ 1,\ 2,\ 7,\ 3,\ 1,\ 1,\ 1\ \};}
+\DoxyCodeLine{00021\ \ \ std::size\_t\ num\_edges\ =\ \textcolor{keyword}{sizeof}(edge\_array)\ /\ \textcolor{keyword}{sizeof}(E);}
+\DoxyCodeLine{00022\ \ }
+\DoxyCodeLine{00023\ \ \ Graph\ g(edge\_array,\ edge\_array\ +\ num\_edges,\ weights,\ num\_nodes);}
+\DoxyCodeLine{00024\ \ }
+\DoxyCodeLine{00025\ \ \ boost::property\_map<Graph,\ boost::edge\_weight\_t\ >::type\ weight\ =\ get(boost::edge\_weight,\ g);}
+\DoxyCodeLine{00026\ \ \ std::vector\ <\ Edge\ >\ spanning\_tree;}
+\DoxyCodeLine{00027\ \ }
+\DoxyCodeLine{00028\ \ \ boost::kruskal\_minimum\_spanning\_tree(g,\ std::back\_inserter(spanning\_tree));}
+\DoxyCodeLine{00029\ \ }
+\DoxyCodeLine{00030\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Print\ the\ edges\ in\ the\ MST:"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00031\ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordflow}{for}\ (std::vector\ <\ Edge\ >::iterator\ ei\ =\ spanning\_tree.begin();}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ ei\ !=\ spanning\_tree.end();\ ++ei)\ }
+\DoxyCodeLine{00034\ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ std::cout\ <<\ source(*ei,\ g)\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ <-\/-\/>\ "{}}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ target(*ei,\ g)}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ with\ weight\ of\ "{}}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ weight[*ei]}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::endl;}
+\DoxyCodeLine{00041\ \ \ \}}
+\DoxyCodeLine{00042\ \ }
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00044\ \}}
+
+\end{DoxyCode}

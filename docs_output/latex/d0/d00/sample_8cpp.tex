@@ -1,0 +1,44 @@
+\doxysection{src/archive/files\+To\+Go\+Through/sample.cpp File Reference}
+\hypertarget{sample_8cpp}{}\label{sample_8cpp}\index{src/archive/filesToGoThrough/sample.cpp@{src/archive/filesToGoThrough/sample.cpp}}
+{\ttfamily \#include $<$Qu\+EST.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{sample_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sample_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{sample_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{sample.cpp@{sample.cpp}!main@{main}}
+\index{main@{main}!sample.cpp@{sample.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sample_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{sample_8cpp_source}{sample.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \ \ \textcolor{comment}{//\ load\ QuEST}}
+\DoxyCodeLine{00006\ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{00007\ \ \ }
+\DoxyCodeLine{00008\ \ \ \textcolor{comment}{//\ create\ a\ 2\ qubit\ register\ in\ the\ zero\ state}}
+\DoxyCodeLine{00009\ \ \ Qureg\ qubits\ =\ createQureg(2,\ env);}
+\DoxyCodeLine{00010\ \ \ initZeroState(qubits);}
+\DoxyCodeLine{00011\ \ \ \ \ }
+\DoxyCodeLine{00012\ \ \ \textcolor{comment}{//\ apply\ circuit}}
+\DoxyCodeLine{00013\ \ \ hadamard(qubits,\ 0);}
+\DoxyCodeLine{00014\ \ \ controlledNot(qubits,\ 0,\ 1);}
+\DoxyCodeLine{00015\ \ \ measure(qubits,\ 1);}
+\DoxyCodeLine{00016\ \ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{00018\ \ \ destroyQureg(qubits,\ env);\ }
+\DoxyCodeLine{00019\ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00021\ \}}
+
+\end{DoxyCode}

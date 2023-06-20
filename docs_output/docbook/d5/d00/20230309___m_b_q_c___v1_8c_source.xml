@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_20230309___m_b_q_c___v1_8c_source" xml:lang="en-US">
+<title>20230309_MBQC_V1.c</title>
+<indexterm><primary>src/archive/20230309_MBQC_V1.c</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&lt;QuEST.h&gt;</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00003"/>00003 
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00004"/>00004 
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00005"/>00005 
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00006"/>00006 
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00007"/>00007 
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00008"/><link linkend="_20230309___m_b_q_c___v1_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4">00008</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_20230309___m_b_q_c___v1_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00009"/>00009 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00010"/>00010 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00011"/>00011 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00012"/>00012 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numQubits&#32;=&#32;3;
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00013"/>00013 &#32;&#32;&#32;&#32;qreal&#32;angle&#32;=&#32;M_PI&#32;/&#32;4;
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00014"/>00014 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Angle&#32;is&#32;measured&#32;as&#32;%f\n&quot;</emphasis>,angle);
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00015"/>00015 &#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;prepare&#32;our&#32;register</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00016"/>00016 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numQubits,&#32;env);
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00017"/>00017 
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00018"/>00018 
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;qureg&#32;-&gt;&#32;|+&gt;&lt;+|</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00020"/>00020 &#32;&#32;&#32;&#32;initPlusState(qureg);&#32;&#32;
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00021"/>00021 
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00022"/>00022 
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00023"/>00023 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;apply&#32;CZ&#32;gate&#32;to&#32;entangle&#32;the&#32;circuit</emphasis>
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00024"/>00024 &#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,0,1);
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00025"/>00025 &#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,1,2);
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00026"/>00026 &#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,0,2);
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00027"/>00027 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00028"/>00028 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00029"/>00029 &#32;&#32;&#32;&#32;
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00030"/>00030 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Initialising&#32;%d&#32;qubits\n&quot;</emphasis>,numQubits);
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00031"/>00031 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;m0&#32;=&#32;measure(qureg,0);
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00032"/>00032 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;m1&#32;=&#32;measure(qureg,1);
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;m2&#32;=&#32;measure(qureg,2);
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00034"/>00034 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;qubit&#32;0&#32;is&#32;measured&#32;as&#32;%d\n&quot;</emphasis>,m0);
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00035"/>00035 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;qubit&#32;1&#32;is&#32;measured&#32;as&#32;%d\n&quot;</emphasis>,m1);
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00036"/>00036 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;qubit&#32;2&#32;is&#32;measured&#32;as&#32;%d\n&quot;</emphasis>,m2);
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00037"/>00037 
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00038"/>00038 
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00039"/>00039 }
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00040"/>00040 
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00041"/>00041 
+<anchor xml:id="_20230309___m_b_q_c___v1_8c_source_1l00042"/>00042 
+</programlisting></section>

@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source" xml:lang="en-US">
+<title>testTwoQubitsAnglesPiOnTwo.cpp</title>
+<indexterm><primary>tests/testTwoQubitsAnglesPiOnTwo.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00001"/>00001 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Title&#32;&#32;:&#32;testOddNumberQubitAnglesAllZero.cpp&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00003"/>00003 <emphasis role="comment">//&#32;Author&#32;:&#32;Jonathan&#32;Miller&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00004"/>00004 <emphasis role="comment">//&#32;Date&#32;&#32;&#32;:&#32;20230503&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00005"/>00005 <emphasis role="comment">//&#32;Aim&#32;&#32;&#32;&#32;:&#32;Basic&#32;start&#32;file&#32;to&#32;run&#32;mbqc&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00006"/>00006 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Current&#32;implementation&#32;can&#32;only&#32;do&#32;square&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00007"/>00007 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;graph&#32;repeatedly.&#32;Will&#32;branch&#32;repo&#32;to&#32;make&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00008"/>00008 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;use&#32;different&#32;way&#32;to&#32;create&#32;graph&#32;by&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00009"/>00009 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;adjacency&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00011"/>00011 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00012"/>00012 <emphasis role="comment">//&#32;To&#32;run</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00013"/>00013 <emphasis role="comment">//&#32;cmake&#32;..&#32;-DUSER_SOURCE=&quot;QuEST/projects/MBQC/tests/testTwoQubitsAnglesPiOnTwo.cpp&quot;&#32;-DOUTPUT_EXE=&quot;testTwoQubitsAnglesPiOnTwo&quot;&#32;&amp;&amp;&#32;make&#32;&amp;&amp;&#32;./testTwoQubitsAnglesPiOnTwo</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00014"/>00014 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00015"/>00015 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00016"/>00016 <emphasis role="comment">//&#32;Standard&#32;libraries</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00017"/>00017 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00018"/>00018 <emphasis role="preprocessor">#include&#32;&lt;algorithm&gt;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00019"/>00019 <emphasis role="preprocessor">#include&#32;&lt;iterator&gt;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00020"/>00020 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00021"/>00021 <emphasis role="preprocessor">#include&#32;&lt;set&gt;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00022"/>00022 <emphasis role="preprocessor">#include&#32;&lt;numeric&gt;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00023"/>00023 <emphasis role="preprocessor">#include&#32;&lt;cmath&gt;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00024"/>00024 <emphasis role="preprocessor">#include&#32;&lt;random&gt;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00025"/>00025 <emphasis role="preprocessor">#include&#32;&lt;filesystem&gt;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00026"/>00026 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00027"/>00027 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00028"/>00028 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00029"/>00029 <emphasis role="comment">//&#32;QuEST</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#include&#32;&lt;QuEST.h&gt;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00031"/>00031 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00032"/>00032 <emphasis role="comment">//&#32;Boost</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00033"/>00033 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/adjacency_list.hpp&gt;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/grid_graph.hpp&gt;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00035"/>00035 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/graphviz.hpp&gt;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00036"/>00036 <emphasis role="preprocessor">#include&#32;&lt;boost/array.hpp&gt;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00037"/>00037 <emphasis role="preprocessor">#include&#32;&lt;boost/graph/graph_utility.hpp&gt;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#include&#32;&lt;boost/container/vector.hpp&gt;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00039"/>00039 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00040"/>00040 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00041"/>00041 <emphasis role="comment">//&#32;Helper&#32;functions</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp&quot;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp&quot;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00044"/>00044 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00045"/>00045 <emphasis role="comment">//&#32;Graph&#32;functions</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp&quot;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp&quot;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00048"/>00048 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00049"/>00049 <emphasis role="comment">//&#32;Quantum&#32;functions</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/flowMeasurements.hpp&quot;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/angleConstruction.hpp&quot;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/quantumGraphClusterStates.hpp&quot;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00053"/>00053 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00054"/>00054 <emphasis role="comment">//&#32;Assert&#32;functions</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/generalAssertFunctions.hpp&quot;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#include&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp&quot;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00057"/>00057 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00058"/>00058 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00059"/>00059 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00060"/>00060 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00061"/>00061 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00062"/>00062 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>boost;
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00063"/><link linkend="_test_two_qubits_angles_pi_on_two_8cpp_1af845bf432b56cdda82dbde8011882168">00063</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::adjacency_list&lt;boost::vecS,&#32;boost::vecS,boost::undirectedS&gt;&#32;<link linkend="_test_two_qubits_angles_pi_on_two_8cpp_1af845bf432b56cdda82dbde8011882168">undirectedGraph</link>;
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00064"/><link linkend="_test_two_qubits_angles_pi_on_two_8cpp_1ad413424ad598fbd91fde4dffeceda3c0">00064</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::edge_iterator&#32;<link linkend="_test_two_qubits_angles_pi_on_two_8cpp_1ad413424ad598fbd91fde4dffeceda3c0">edgeIterator</link>;
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00065"/><link linkend="_test_two_qubits_angles_pi_on_two_8cpp_1ad100606fc4950dfc094fc60544838351">00065</link> <emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&lt;undirectedGraph&gt;::vertex_iterator&#32;<link linkend="_test_two_qubits_angles_pi_on_two_8cpp_1ad100606fc4950dfc094fc60544838351">vertexIterator</link>;
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00066"/>00066 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00067"/>00067 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00068"/>00068 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00069"/>00069 <emphasis role="comment">//&#32;Set&#32;up&#32;the&#32;main&#32;function</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00070"/><link linkend="_test_two_qubits_angles_pi_on_two_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00070</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_test_two_qubits_angles_pi_on_two_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00071"/>00071 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;1e6;&#32;i++)
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00072"/>00072 &#32;&#32;&#32;&#32;{
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00073"/>00073 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00074"/>00074 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows;
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00075"/>00075 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols;
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00076"/>00076 &#32;&#32;&#32;&#32;<link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00077"/>00077 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices;
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00078"/>00078 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00079"/>00079 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00080"/>00080 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00081"/>00081 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00083"/>00083 &#32;&#32;&#32;&#32;numRows&#32;=&#32;1;
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00084"/>00084 &#32;&#32;&#32;&#32;numCols&#32;=&#32;2;&#32;<emphasis role="comment">//&#32;Test&#32;on&#32;an&#32;odd&#32;number&#32;of&#32;qubits</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00085"/>00085 &#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;<link linkend="_create_graph_8hpp_1aabb013bb6de93b1ca2ff83e1d7d200c7">createLatticeGraph</link>(numRows,numCols);
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00086"/>00086 &#32;&#32;&#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00087"/>00087 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00088"/>00088 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00089"/>00089 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Update&#32;with&#32;desired&#32;directory&#32;to&#32;view&#32;graph.</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00092"/>00092 &#32;&#32;&#32;&#32;<emphasis role="comment">//std::string&#32;fileDir&#32;=&#32;&quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;<emphasis role="comment">//std::string&#32;graphName&#32;=&#32;&quot;1DLattice2QubitsAnglesPiOn2&quot;;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;<emphasis role="comment">//std::string&#32;format&#32;=&#32;&quot;png&quot;;</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;<emphasis role="comment">//printGraphToFile(latticeGraph,fileDir,graphName,format);</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00096"/>00096 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00097"/>00097 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00099"/>00099 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00100"/>00100 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00101"/>00101 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00102"/>00102 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numVertices,&#32;env);
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00104"/>00104 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00105"/>00105 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;angles</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;qubitAngles&#32;=&#32;<link linkend="_angle_construction_8hpp_1ac940c0b993f5f0e21dc74a2ac2f3fc7a">initAllAnglesSame</link>(numVertices,&#32;M_PI/2);
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00108"/>00108 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00109"/>00109 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00110"/>00110 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;initialise&#32;in&#32;the&#32;plus&#32;state</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00111"/>00111 &#32;&#32;&#32;&#32;initPlusState(qureg);
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00112"/>00112 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00113"/>00113 &#32;&#32;&#32;&#32;<emphasis role="comment">//Leave&#32;angle&#32;off&#32;qubits</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00114"/>00114 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;add&#32;angles&#32;to&#32;the&#32;qubits</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;<emphasis role="comment">//addAngleRotateZgate(qureg,qubitAngles);</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00116"/>00116 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00117"/>00117 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00118"/>00118 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;entangle&#32;graph</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;<link linkend="_quantum_graph_cluster_states_8hpp_1a3f830234f9eb3a150a084b0f2b4aa056">entangleGraph</link>(qureg,latticeGraph);
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00120"/>00120 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00121"/>00121 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00122"/>00122 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;graph</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00123"/>00123 &#32;&#32;&#32;&#32;measuredQubitsOutcomes&#32;=&#32;<link linkend="_flow_measurements_8hpp_1a7231be9a1c347894c1d01c349f4b41c7">measureGraph</link>(
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qureg,
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;latticeGraph,
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles,
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numRows);
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00128"/>00128 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00129"/>00129 &#32;&#32;&#32;&#32;assert((measuredQubitsOutcomes.back()==0)&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;The&#32;last&#32;qubit&#32;must&#32;be&#32;0,&#32;it&#32;is&#32;not.&quot;</emphasis>);
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00130"/>00130 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;print&#32;results&#32;to&#32;screen</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00131"/>00131 &#32;&#32;&#32;&#32;<emphasis role="comment">//printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00132"/>00132 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00133"/>00133 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00134"/>00134 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00135"/>00135 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00136"/>00136 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00137"/>00137 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00138"/>00138 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00139"/>00139 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00140"/>00140 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00141"/>00141 }
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00142"/>00142 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00143"/>00143 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00144"/>00144 
+<anchor xml:id="_test_two_qubits_angles_pi_on_two_8cpp_source_1l00145"/>00145 
+</programlisting></section>

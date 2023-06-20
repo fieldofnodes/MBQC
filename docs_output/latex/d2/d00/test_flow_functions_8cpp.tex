@@ -1,0 +1,171 @@
+\doxysection{tests/test\+Flow\+Functions.cpp File Reference}
+\hypertarget{test_flow_functions_8cpp}{}\label{test_flow_functions_8cpp}\index{tests/testFlowFunctions.cpp@{tests/testFlowFunctions.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$numeric$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$Qu\+EST.\+h$>$}\newline
+{\ttfamily \#include $<$boost/graph/adjacency\+\_\+list.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/graph\+\_\+utility.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/container/vector.\+hpp$>$}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/graphs/graph\+Constructions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/graphs/graph\+Traversal\+Flows.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/generic\+Helper\+Functions/general\+Assert\+Functions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/test\+Functions/graph\+Assert\+Functions.\+hpp\"{}}\newline
+{\ttfamily \#include \"{}/\+Users/jmille15/\+Projects/\+Qu\+EST/\+Qu\+EST/projects/\+MBQC/src/generic\+Helper\+Functions/write\+Graph\+Graph\+Viz\+Dot\+File.\+hpp\"{}}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef boost\+::adjacency\+\_\+list$<$ boost\+::vecS, boost\+::vecS, boost\+::undirectedS $>$ \mbox{\hyperlink{test_flow_functions_8cpp_af845bf432b56cdda82dbde8011882168}{undirected\+Graph}}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{test_flow_functions_8cpp_af04c50f717d4bda41f0c58fe0eece059}{edge\+\_\+iterator}}
+\item 
+typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{\+::vertex\+\_\+iterator}} \mbox{\hyperlink{test_flow_functions_8cpp_a9451df0dac964b257bedb5e60547824e}{vertex\+\_\+iterator}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+qreal \mbox{\hyperlink{test_flow_functions_8cpp_a36b23c23da3c64cf899626c72b8a0a81}{correction\+Outcomes\+For\+Example\+Not\+Perm}} (std\+::vector$<$ int $>$ outcome\+Vector, qreal input\+Angle)
+\item 
+int \mbox{\hyperlink{test_flow_functions_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{test_flow_functions_8cpp_af04c50f717d4bda41f0c58fe0eece059}\label{test_flow_functions_8cpp_af04c50f717d4bda41f0c58fe0eece059} 
+\index{testFlowFunctions.cpp@{testFlowFunctions.cpp}!edge\_iterator@{edge\_iterator}}
+\index{edge\_iterator@{edge\_iterator}!testFlowFunctions.cpp@{testFlowFunctions.cpp}}
+\doxysubsubsection{\texorpdfstring{edge\_iterator}{edge\_iterator}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}$>$\mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{create_graph_8hpp_af04c50f717d4bda41f0c58fe0eece059}{edge\+\_\+iterator}}}
+
+
+
+Definition at line \mbox{\hyperlink{test_flow_functions_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{test_flow_functions_8cpp_source}{test\+Flow\+Functions.\+cpp}}.
+
+\Hypertarget{test_flow_functions_8cpp_af845bf432b56cdda82dbde8011882168}\label{test_flow_functions_8cpp_af845bf432b56cdda82dbde8011882168} 
+\index{testFlowFunctions.cpp@{testFlowFunctions.cpp}!undirectedGraph@{undirectedGraph}}
+\index{undirectedGraph@{undirectedGraph}!testFlowFunctions.cpp@{testFlowFunctions.cpp}}
+\doxysubsubsection{\texorpdfstring{undirectedGraph}{undirectedGraph}}
+{\footnotesize\ttfamily typedef boost\+::adjacency\+\_\+list$<$boost\+::vecS, boost\+::vecS,boost\+::undirectedS$>$ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}}
+
+
+
+Definition at line \mbox{\hyperlink{test_flow_functions_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{test_flow_functions_8cpp_source}{test\+Flow\+Functions.\+cpp}}.
+
+\Hypertarget{test_flow_functions_8cpp_a9451df0dac964b257bedb5e60547824e}\label{test_flow_functions_8cpp_a9451df0dac964b257bedb5e60547824e} 
+\index{testFlowFunctions.cpp@{testFlowFunctions.cpp}!vertex\_iterator@{vertex\_iterator}}
+\index{vertex\_iterator@{vertex\_iterator}!testFlowFunctions.cpp@{testFlowFunctions.cpp}}
+\doxysubsubsection{\texorpdfstring{vertex\_iterator}{vertex\_iterator}}
+{\footnotesize\ttfamily typedef boost\+::graph\+\_\+traits$<$\mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}}$>$\mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{\+::vertex\+\_\+iterator}} \mbox{\hyperlink{create_graph_8hpp_a9451df0dac964b257bedb5e60547824e}{vertex\+\_\+iterator}}}
+
+
+
+Definition at line \mbox{\hyperlink{test_flow_functions_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{test_flow_functions_8cpp_source}{test\+Flow\+Functions.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{test_flow_functions_8cpp_a36b23c23da3c64cf899626c72b8a0a81}\label{test_flow_functions_8cpp_a36b23c23da3c64cf899626c72b8a0a81} 
+\index{testFlowFunctions.cpp@{testFlowFunctions.cpp}!correctionOutcomesForExampleNotPerm@{correctionOutcomesForExampleNotPerm}}
+\index{correctionOutcomesForExampleNotPerm@{correctionOutcomesForExampleNotPerm}!testFlowFunctions.cpp@{testFlowFunctions.cpp}}
+\doxysubsubsection{\texorpdfstring{correctionOutcomesForExampleNotPerm()}{correctionOutcomesForExampleNotPerm()}}
+{\footnotesize\ttfamily qreal correction\+Outcomes\+For\+Example\+Not\+Perm (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{outcome\+Vector,  }\item[{qreal}]{input\+Angle }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test_flow_functions_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{test_flow_functions_8cpp_source}{test\+Flow\+Functions.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ qreal\ expectedCorrectedAngle;}
+\DoxyCodeLine{00045\ \ \ \ \ expectedCorrectedAngle\ =\ (pow((-\/1),outcomeVector[6])*inputAngle)\ +\ M\_PI*(outcomeVector[1]+outcomeVector[5]+outcomeVector[7]);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{return}\ expectedCorrectedAngle;}
+\DoxyCodeLine{00048\ \}}
+
+\end{DoxyCode}
+\Hypertarget{test_flow_functions_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{test_flow_functions_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{testFlowFunctions.cpp@{testFlowFunctions.cpp}!main@{main}}
+\index{main@{main}!testFlowFunctions.cpp@{testFlowFunctions.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test_flow_functions_8cpp_source_l00051}{51}} of file \mbox{\hyperlink{test_flow_functions_8cpp_source}{test\+Flow\+Functions.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ numRows\ =\ 5;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ numCols\ =\ 5;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ expectedTotalVertices;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ boostCallTotalVertices;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph;}
+\DoxyCodeLine{00059\ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ latticeGraph\ =\ \mbox{\hyperlink{create_graph_8hpp_aabb013bb6de93b1ca2ff83e1d7d200c7}{createLatticeGraph}}(numRows,\ numCols);}
+\DoxyCodeLine{00063\ \ \ \ \ expectedTotalVertices\ =\ numRows*numCols;}
+\DoxyCodeLine{00064\ \ \ \ \ boostCallTotalVertices\ =\ boost::num\_vertices(latticeGraph);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//\ Print\ graph\ to\ file}}
+\DoxyCodeLine{00068\ \ \ \ \ std::string\ fileDir\ =\ \textcolor{stringliteral}{"{}/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs"{}};}
+\DoxyCodeLine{00069\ \ \ \ \ std::string\ graphName\ =\ \textcolor{stringliteral}{"{}lattice2DGraph"{}};}
+\DoxyCodeLine{00070\ \ \ \ \ std::string\ format\ =\ \textcolor{stringliteral}{"{}png"{}};}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_a3d553b54b16922ee146bfb33201a3993}{printGraphToFile}}(latticeGraph,fileDir,graphName,format);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//\ Assert\ each\ vertex\ (forward\ and\ backward\ flow)\ give\ }}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ as\ expectd\ by\ internal\ computation\ of\ function}}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{graph_assert_functions_8hpp_a3241060bf4552dac98da626843460bb3}{assertFlowFunctionsPerformExpected}}(latticeGraph,numRows);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ Test\ to\ confirm\ neighbours\ are\ correct}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//\ Only\ asserting\ for\ a\ 5x5\ graph}}
+\DoxyCodeLine{00082\ \ \ \ \ std::vector<std::vector<int>>\ expectedNeighbourhood\ =\ \{\{1,5\},\{0,6,2\},\{1,7,3\},\{2,8,4\},\{3,9\},\{0,6,10\},\{1,5,7,11\},\{2,6,8,12\},\{3,7,9,13\},\{4,8,14\},\{5,11,15\},\{6,10,12,16\},\{7,11,13,17\},\{8,12,14,18\},\{9,13,19\},\{10,16,20\},\{11,15,17,21\},\{12,16,18,22\},\{13,17,19,23\},\{14,18,24\},\{15,21\},\{16,20,22\},\{17,21,23\},\{18,22,24\},\{19,23\}\};}
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{graph_assert_functions_8hpp_a5c3f8d6a6068b10ca7ca8f2f4515cbcd}{assertNieghbours}}(latticeGraph,expectedNeighbourhood);}
+\DoxyCodeLine{00084\ \ \ \ \ }
+\DoxyCodeLine{00085\ \ \ \ \ }
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ Need\ to\ write\ tests\ that\ comfirm\ the\ angle\ updates}}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{comment}{//\ Select\ some\ corner\ vertices,edge\ vertices\ and\ middle\ vertices.}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ std::vector<int>\ outcomeVectorZeros(10,0);}
+\DoxyCodeLine{00092\ \ \ \ \ std::vector<int>\ outcomeVectorOnes(10,1);}
+\DoxyCodeLine{00093\ \ \ \ \ std::vector<int>\ outcomeVectorOnesAndZeros\ =\ \{0,1,0,0,0,0,1,0,0,0\};}
+\DoxyCodeLine{00094\ \ \ \ \ qreal\ expectedCorrectedAngleZeros;}
+\DoxyCodeLine{00095\ \ \ \ \ qreal\ expectedCorrectedAngleOnes;}
+\DoxyCodeLine{00096\ \ \ \ \ qreal\ expectedCorrectedAngleOnesAndZeros;}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{int}\ vertex\ =\ 11;}
+\DoxyCodeLine{00098\ \ \ \ \ qreal\ inputAngle\ =\ M\_PI\ /\ 4.0;}
+\DoxyCodeLine{00099\ \ \ \ \ }
+\DoxyCodeLine{00100\ \ \ \ \ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{//\ All\ zero\ measurement\ outcomes}}
+\DoxyCodeLine{00102\ \ \ \ \ expectedCorrectedAngleZeros\ =\ \mbox{\hyperlink{test_flow_functions_8cpp_a36b23c23da3c64cf899626c72b8a0a81}{correctionOutcomesForExampleNotPerm}}(outcomeVectorZeros,inputAngle);}
+\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{graph_assert_functions_8hpp_a67fc70f2265e3ca43a7871939ae44a95}{assertCorrection}}(latticeGraph,outcomeVectorZeros,vertex,numRows,inputAngle,expectedCorrectedAngleZeros);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//\ All\ one\ measurement\ outcomes}}
+\DoxyCodeLine{00106\ \ \ \ \ expectedCorrectedAngleOnes\ =\ \mbox{\hyperlink{test_flow_functions_8cpp_a36b23c23da3c64cf899626c72b8a0a81}{correctionOutcomesForExampleNotPerm}}(outcomeVectorOnes,inputAngle);}
+\DoxyCodeLine{00107\ \ \ \ \ \mbox{\hyperlink{graph_assert_functions_8hpp_a67fc70f2265e3ca43a7871939ae44a95}{assertCorrection}}(latticeGraph,outcomeVectorOnes,vertex,numRows,inputAngle,expectedCorrectedAngleOnes);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{comment}{//\ Some\ ones\ and\ zeros\ outcomes}}
+\DoxyCodeLine{00110\ \ \ \ \ expectedCorrectedAngleOnesAndZeros\ =\ \mbox{\hyperlink{test_flow_functions_8cpp_a36b23c23da3c64cf899626c72b8a0a81}{correctionOutcomesForExampleNotPerm}}(outcomeVectorOnesAndZeros,inputAngle);}
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{graph_assert_functions_8hpp_a67fc70f2265e3ca43a7871939ae44a95}{assertCorrection}}(latticeGraph,outcomeVectorOnesAndZeros,vertex,numRows,inputAngle,expectedCorrectedAngleOnesAndZeros);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00117\ \}}
+
+\end{DoxyCode}

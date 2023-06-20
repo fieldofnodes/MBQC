@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__prepare_measure_single_qubit_8c_source" xml:lang="en-US">
+<title>PrepareMeasureSingleQubit.c</title>
+<indexterm><primary>src/archive/filesToGoThrough/PrepareMeasureSingleQubit.c</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&lt;QuEST.h&gt;</emphasis>
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00002"/>00002 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00003"/>00003 
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00004"/>00004 
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00005"/>00005 
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00006"/>00006 
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00007"/>00007 
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00008"/>00008 
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00009"/>00009 
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00010"/><link linkend="__prepare_measure_single_qubit_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4">00010</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__prepare_measure_single_qubit_8c_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00011"/>00011 &#32;&#32;&#32;&#32;
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00012"/>00012 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST</emphasis>
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00013"/>00013 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00014"/>00014 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numQubits&#32;=&#32;2;
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00015"/>00015 &#32;&#32;&#32;&#32;
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00016"/>00016 
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00017"/>00017 &#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;prepare&#32;our&#32;register</emphasis>
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00018"/>00018 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numQubits,&#32;env);
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00019"/>00019 
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00020"/>00020 
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00021"/>00021 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;qureg&#32;-&gt;&#32;|+&gt;&lt;+|</emphasis>
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00022"/>00022 &#32;&#32;&#32;&#32;initPlusState(qureg);&#32;&#32;
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00023"/>00023 
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00024"/>00024 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Initialising&#32;%d&#32;qubits\n&quot;</emphasis>,numQubits);
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00025"/>00025 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;m0&#32;=&#32;measure(qureg,0);
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00026"/>00026 
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00027"/>00027 &#32;&#32;&#32;&#32;
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00028"/>00028 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;m1&#32;=&#32;measure(qureg,1);
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00029"/>00029 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;qubit&#32;0&#32;is&#32;measured&#32;as&#32;%d\n&quot;</emphasis>,m0);
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00030"/>00030 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;qubit&#32;1&#32;is&#32;measured&#32;as&#32;%d\n&quot;</emphasis>,m1);
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00031"/>00031 
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00032"/>00032 &#32;&#32;&#32;&#32;
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00033"/>00033 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;*qsr&#32;=&#32;qureg.stateVec.imag;
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00034"/>00034 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;qureg.stateVec.real&#32;is&#32;%f\n&quot;</emphasis>,*qsr);
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00035"/>00035 
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00036"/>00036 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numqubits&#32;=&#32;Qureg.numQubitsRepresented(qureg);
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00037"/>00037 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Number&#32;of&#32;qubits&#32;in&#32;quantum&#32;register&#32;is&#32;%d\n&quot;</emphasis>,numqubits);
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00038"/>00038 
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00039"/>00039 }
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00040"/>00040 
+<anchor xml:id="__prepare_measure_single_qubit_8c_source_1l00041"/>00041 
+</programlisting></section>

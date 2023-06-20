@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test_damping_simple_circuits_qu_e_s_t_8cpp" xml:lang="en-US">
+<title>tests/testDampingSimpleCircuitsQuEST.cpp File Reference</title>
+<indexterm><primary>tests/testDampingSimpleCircuitsQuEST.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;packages.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_test_damping_simple_circuits_qu_e_s_t_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_test_damping_simple_circuits_qu_e_s_t_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>testDampingSimpleCircuitsQuEST.cpp</secondary></indexterm>
+<indexterm><primary>testDampingSimpleCircuitsQuEST.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_test_damping_simple_circuits_qu_e_s_t_8cpp_source_1l00012">12</link> of file <link linkend="_test_damping_simple_circuits_qu_e_s_t_8cpp_source">testDampingSimpleCircuitsQuEST.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00013 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Set&#32;probability</emphasis>
+00014 &#32;
+00015 &#32;&#32;&#32;&#32;qreal&#32;prob&#32;=&#32;0.1;
+00016 &#32;&#32;&#32;&#32;std::string&#32;dataDir;
+00017 
+00018 &#32;&#32;&#32;&#32;std::string&#32;outputDampingDir;
+00019 &#32;&#32;&#32;&#32;std::string&#32;qubitInfo;
+00020 &#32;&#32;&#32;&#32;std::string&#32;dataPath&#32;=&#32;<emphasis role="stringliteral">&quot;Projects/exploringNoiseInQuEST/data&quot;</emphasis>;&#32;
+00021 &#32;&#32;&#32;&#32;outputDampingDir&#32;=&#32;<emphasis role="stringliteral">&quot;damping&quot;</emphasis>;
+00022 
+00023 &#32;&#32;&#32;&#32;std::vector&lt;std::string&gt;&#32;savePaths;
+00024 &#32;&#32;&#32;&#32;std::string&#32;fileAmp;
+00025 &#32;&#32;&#32;&#32;std::string&#32;fileProb;
+00026 &#32;&#32;&#32;&#32;
+00027 
+00028 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Damping&#32;applied&#32;now</emphasis>
+00029 &#32;&#32;&#32;&#32;qubitInfo&#32;=&#32;<emphasis role="stringliteral">&quot;applySingleQubitPauliXMixDamping&quot;</emphasis>;
+00030 &#32;&#32;&#32;&#32;savePaths&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a318982330941fb08021062d2593a62f9">getPaths</link>(dataPath,&#32;outputDampingDir,&#32;qubitInfo,&#32;prob);
+00031 &#32;&#32;&#32;&#32;fileAmp&#32;=&#32;savePaths[0];
+00032 &#32;&#32;&#32;&#32;fileProb&#32;=&#32;savePaths[1];
+00033 &#32;&#32;&#32;&#32;<link linkend="_probabilities_amplitudes_damping_circuits_8hpp_1aa20aa58ec759d87b836c19d8140445dc">applySingleQubitPauliXMixDamping</link>(prob,fileAmp,fileProb);
+00034 
+00035 &#32;&#32;&#32;&#32;qubitInfo&#32;=&#32;<emphasis role="stringliteral">&quot;applySingleQubitHGateMixDamping&quot;</emphasis>;
+00036 &#32;&#32;&#32;&#32;savePaths&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a318982330941fb08021062d2593a62f9">getPaths</link>(dataPath,&#32;outputDampingDir,&#32;qubitInfo,&#32;prob);
+00037 &#32;&#32;&#32;&#32;fileAmp&#32;=&#32;savePaths[0];
+00038 &#32;&#32;&#32;&#32;fileProb&#32;=&#32;savePaths[1];
+00039 &#32;&#32;&#32;&#32;<link linkend="_probabilities_amplitudes_damping_circuits_8hpp_1a2c742a3dbd13ecb76c32ea605ace9c5a">applySingleQubitHGateMixDamping</link>(prob,fileAmp,fileProb);
+00040 
+00041 &#32;&#32;&#32;&#32;qubitInfo&#32;=&#32;<emphasis role="stringliteral">&quot;applyOnTwoQubitPauliXEachQubitMixDamping&quot;</emphasis>;
+00042 &#32;&#32;&#32;&#32;savePaths&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a318982330941fb08021062d2593a62f9">getPaths</link>(dataPath,&#32;outputDampingDir,&#32;qubitInfo,&#32;prob);
+00043 &#32;&#32;&#32;&#32;fileAmp&#32;=&#32;savePaths[0];
+00044 &#32;&#32;&#32;&#32;fileProb&#32;=&#32;savePaths[1];
+00045 &#32;&#32;&#32;&#32;<link linkend="_probabilities_amplitudes_damping_circuits_8hpp_1a5b32b75a35ce71806d1c4dd09e316d32">applyOnTwoQubitPauliXEachQubitMixDamping</link>(prob,fileAmp,fileProb);
+00046 
+00047 &#32;&#32;&#32;&#32;qubitInfo&#32;=&#32;<emphasis role="stringliteral">&quot;applyOnTwoQubitHGateEachQubitMixDamping&quot;</emphasis>;
+00048 &#32;&#32;&#32;&#32;savePaths&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a318982330941fb08021062d2593a62f9">getPaths</link>(dataPath,&#32;outputDampingDir,&#32;qubitInfo,&#32;prob);
+00049 &#32;&#32;&#32;&#32;fileAmp&#32;=&#32;savePaths[0];
+00050 &#32;&#32;&#32;&#32;fileProb&#32;=&#32;savePaths[1];
+00051 &#32;&#32;&#32;&#32;<link linkend="_probabilities_amplitudes_damping_circuits_8hpp_1a0e0364e3829b875d9fdf4dcd405ce17b">applyOnTwoQubitHGateEachQubitMixDamping</link>(prob,fileAmp,fileProb);
+00052 
+00053 &#32;&#32;&#32;&#32;qubitInfo&#32;=&#32;<emphasis role="stringliteral">&quot;applyTwoQubitHCZGateBetweenQubitMixDamping&quot;</emphasis>;
+00054 &#32;&#32;&#32;&#32;savePaths&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a318982330941fb08021062d2593a62f9">getPaths</link>(dataPath,&#32;outputDampingDir,&#32;qubitInfo,&#32;prob);
+00055 &#32;&#32;&#32;&#32;fileAmp&#32;=&#32;savePaths[0];
+00056 &#32;&#32;&#32;&#32;fileProb&#32;=&#32;savePaths[1];
+00057 &#32;&#32;&#32;&#32;<link linkend="_probabilities_amplitudes_damping_circuits_8hpp_1a5831b982783a400e7bc0ab09fe410f10">applyTwoQubitHCZGateBetweenQubitMixDamping</link>(prob,fileAmp,fileProb);
+00058 
+00059 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+00060 
+00061 
+00062 
+00063 }
+</programlisting></section>
+</section>
+</section>

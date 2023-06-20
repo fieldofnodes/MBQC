@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp" xml:lang="en-US">
+<title>src/archive/filesToGoThrough/findMinimalSpanningTreeKruskalExample.cpp File Reference</title>
+<indexterm><primary>src/archive/filesToGoThrough/findMinimalSpanningTreeKruskalExample.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;boost/graph/adjacency_list.hpp&gt;<?linebreak?>#include &lt;boost/graph/kruskal_min_spanning_tree.hpp&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &lt;fstream&gt;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_find_minimal_spanning_tree_kruskal_example_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_find_minimal_spanning_tree_kruskal_example_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>findMinimalSpanningTreeKruskalExample.cpp</secondary></indexterm>
+<indexterm><primary>findMinimalSpanningTreeKruskalExample.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_find_minimal_spanning_tree_kruskal_example_8cpp_source_1l00006">6</link> of file <link linkend="_find_minimal_spanning_tree_kruskal_example_8cpp_source">findMinimalSpanningTreeKruskalExample.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00007 {
+00008 &#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;boost::adjacency_list&lt;&#32;boost::vecS,&#32;boost::vecS,&#32;boost::undirectedS,
+00009 &#32;&#32;&#32;&#32;boost::no_property,&#32;boost::property&lt;boost::edge_weight_t,&#32;int&gt;&#32;&gt;&#32;Graph;
+00010 &#32;&#32;&#32;
+00011 &#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&#32;&lt;Graph&gt;::edge_descriptor&#32;Edge;
+00012 &#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;boost::graph_traits&#32;&lt;Graph&gt;::vertex_descriptor&#32;Vertex;
+00013 &#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;std::pair&lt;int,&#32;int&gt;&#32;E;
+00014 &#32;
+00015 &#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;num_nodes&#32;=&#32;5;
+00016 &#32;&#32;E&#32;edge_array[]&#32;=&#32;{&#32;E(0,&#32;2),&#32;E(1,&#32;3),&#32;E(1,&#32;4),&#32;E(2,&#32;1),&#32;E(2,&#32;3),
+00017 &#32;&#32;&#32;&#32;E(3,&#32;4),&#32;E(4,&#32;0),&#32;E(4,&#32;1)
+00018 &#32;&#32;};
+00019 &#32;&#32;&#32;
+00020 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;weights[]&#32;=&#32;{&#32;1,&#32;1,&#32;2,&#32;7,&#32;3,&#32;1,&#32;1,&#32;1&#32;};
+00021 &#32;&#32;std::size_t&#32;num_edges&#32;=&#32;<emphasis role="keyword">sizeof</emphasis>(edge_array)&#32;/&#32;<emphasis role="keyword">sizeof</emphasis>(E);
+00022 &#32;
+00023 &#32;&#32;Graph&#32;g(edge_array,&#32;edge_array&#32;+&#32;num_edges,&#32;weights,&#32;num_nodes);
+00024 &#32;
+00025 &#32;&#32;boost::property_map&lt;Graph,&#32;boost::edge_weight_t&#32;&gt;::type&#32;weight&#32;=&#32;get(boost::edge_weight,&#32;g);
+00026 &#32;&#32;std::vector&#32;&lt;&#32;Edge&#32;&gt;&#32;spanning_tree;
+00027 &#32;
+00028 &#32;&#32;boost::kruskal_minimum_spanning_tree(g,&#32;std::back_inserter(spanning_tree));
+00029 &#32;
+00030 &#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Print&#32;the&#32;edges&#32;in&#32;the&#32;MST:&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00031 &#32;&#32;&#32;
+00032 &#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(std::vector&#32;&lt;&#32;Edge&#32;&gt;::iterator&#32;ei&#32;=&#32;spanning_tree.begin();
+00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ei&#32;!=&#32;spanning_tree.end();&#32;++ei)&#32;
+00034 &#32;&#32;{
+00035 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;source(*ei,&#32;g)&#32;
+00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&lt;--&gt;&#32;&quot;</emphasis>
+00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;target(*ei,&#32;g)
+00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;with&#32;weight&#32;of&#32;&quot;</emphasis>
+00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;weight[*ei]
+00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&lt;&lt;&#32;std::endl;
+00041 &#32;&#32;}
+00042 &#32;
+00043 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+00044 }
+</programlisting></section>
+</section>
+</section>

@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source" xml:lang="en-US">
+<title>2023028_TwoQubitsEachPiOn2Angle.cpp</title>
+<indexterm><primary>src/archive/filesToGoThrough/2023028_TwoQubitsEachPiOn2Angle.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&lt;QuEST.h&gt;</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00002"/>00002 <emphasis role="comment">//#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00003"/>00003 <emphasis role="preprocessor">#include&#32;&lt;vector&gt;</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00004"/>00004 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00005"/>00005 <emphasis role="preprocessor">#include&#32;&lt;algorithm&gt;</emphasis>&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;std::all_of</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00006"/>00006 <emphasis role="preprocessor">#include&#32;&lt;string&gt;</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00007"/>00007 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_20230314___functions___v1_8hpp">20230314_Functions_V1.hpp</link>&quot;</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00008"/>00008 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>std;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00009"/>00009 
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00010"/>00010 
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00011"/><link linkend="_2023028___two_qubits_each_pi_on2_angle_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00011</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_2023028___two_qubits_each_pi_on2_angle_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00012"/>00012 
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00013"/>00013 &#32;&#32;&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00014"/>00014 &#32;&#32;&#32;&#32;vector&lt;int&gt;&#32;lastQubitOutcome;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00015"/>00015 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numberRealisations&#32;=&#32;1E6;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numberQubits&#32;=&#32;2;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00017"/>00017 
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=0;i&lt;numberRealisations;i++)
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;{&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00021"/>00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;parameters</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numberQubits&#32;=&#32;numberQubits;<emphasis role="comment">//11;</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;prepare&#32;our&#32;register</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numberQubits,&#32;env);
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;qureg&#32;-&gt;&#32;|+&gt;&lt;+|</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;initPlusState(qureg);&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00028"/>00028 
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00029"/>00029 
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;vector&#32;representing&#32;a&#32;linear&#32;cluster&#32;graph</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;vector&lt;int&gt;&#32;pathGraph&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1aa6c7ea81b30e713a1f641e9a86e5f0a8">getPathGraph</link>(numberQubits);&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;vector&lt;int&gt;&#32;measuredQubitsOutcomes;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00033"/>00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;vector&lt;qreal&gt;&#32;qubitAngles;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;vector&lt;qreal&gt;&#32;updatedQubitAngles;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00036"/>00036 
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;apply&#32;CZ&#32;gate&#32;to&#32;entangle&#32;the&#32;circuit</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(std::vector&lt;int&gt;::size_type&#32;q&#32;=&#32;0;&#32;q&#32;!=&#32;pathGraph.size()-1;&#32;q++)&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,q,q+1);
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00042"/>00042 
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00043"/>00043 
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;initial&#32;angles</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=0;i&lt;numberQubits;i++)
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles.push_back(M_PI/2);&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00048"/>00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00049"/>00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Run&#32;MBQC</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00051"/>00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;first&#32;qubit</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00052"/>00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;firstQubitIndex=0;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00053"/>00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;updatedQubitAngles.push_back(qubitAngles[firstQubitIndex]);
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00054"/>00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rotateZ(qureg,firstQubitIndex,&#32;(-1)*updatedQubitAngles[firstQubitIndex]);
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hadamard(qureg,firstQubitIndex);
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;measuredQubitsOutcomes.push_back(measure(qureg,firstQubitIndex));
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00058"/>00058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00059"/>00059 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00061"/>00061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00062"/>00062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00063"/>00063 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;second&#32;qubit</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00064"/>00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;X1;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00065"/>00065 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//qreal&#32;Z1;</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;secondQubitIndex=1;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00067"/>00067 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;X1&#32;=&#32;pow((-1),measuredQubitsOutcomes[firstQubitIndex])*qubitAngles[secondQubitIndex];
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00068"/>00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;updatedQubitAngles[secondQubitIndex]&#32;=&#32;X1;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rotateZ(qureg,secondQubitIndex,&#32;(-1)*updatedQubitAngles[secondQubitIndex]);
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00070"/>00070 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hadamard(qureg,secondQubitIndex);
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;measuredQubitsOutcomes.push_back(measure(qureg,secondQubitIndex));
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//vectUpdatedAngles.push_back(updatedQubitAngles);</emphasis>
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00074"/>00074 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lastQubitOutcome.push_back(measuredQubitsOutcomes.back());
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00075"/>00075 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00076"/>00076 
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00077"/>00077 &#32;&#32;&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00078"/>00078 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numberZeros&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1a93cdcf18ac63c09cd8354e765238386a">countElements</link>(lastQubitOutcome,&#32;0);
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00079"/>00079 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numberOnes&#32;=&#32;<link linkend="_20230314___functions___v1_8hpp_1a93cdcf18ac63c09cd8354e765238386a">countElements</link>(lastQubitOutcome,&#32;1);
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00080"/>00080 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;ratioZeros&#32;=&#32;(numberZeros*(1.0))/numberRealisations*(1.0);
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00081"/>00081 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;ratioOnes&#32;=&#32;(numberOnes*(1.0))/numberRealisations*(1.0);
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00082"/>00082 &#32;&#32;&#32;&#32;cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Number&#32;last&#32;qubits&#32;=&#32;0:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;numberZeros&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00083"/>00083 &#32;&#32;&#32;&#32;cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Number&#32;last&#32;qubits&#32;=&#32;1:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;numberOnes&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00084"/>00084 &#32;&#32;&#32;&#32;cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Ratio&#32;last&#32;qubits&#32;=&#32;0:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;ratioZeros&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00085"/>00085 &#32;&#32;&#32;&#32;cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Ratio&#32;last&#32;qubits&#32;=&#32;1:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;ratioOnes&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;\n&quot;</emphasis>;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00086"/>00086 &#32;&#32;&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00087"/>00087 &#32;&#32;&#32;&#32;
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00088"/>00088 }
+<anchor xml:id="_2023028___two_qubits_each_pi_on2_angle_8cpp_source_1l00089"/>00089 
+</programlisting></section>

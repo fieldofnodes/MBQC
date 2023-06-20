@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_20230313___m_b_q_c___v2_8cpp" xml:lang="en-US">
+<title>src/archive/20230313_MBQC_V2.cpp File Reference</title>
+<indexterm><primary>src/archive/20230313_MBQC_V2.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &lt;QuEST.h&gt;<?linebreak?>#include &lt;vector&gt;<?linebreak?>#include &lt;iostream&gt;<?linebreak?>#include &lt;string&gt;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_20230313___m_b_q_c___v2_8cpp_1a9bbb075b5400c4e2f4ce9967fb0e0f7b">print</link> (std::vector&lt; int &gt; const &amp;input)</para>
+</listitem>
+            <listitem><para>int <link linkend="_20230313___m_b_q_c___v2_8cpp_1a89ebfc1e65a5c1ee3c420843c016be0e">getFutureQubit</link> (int currentQubit)</para>
+</listitem>
+            <listitem><para>int <link linkend="_20230313___m_b_q_c___v2_8cpp_1af44420884b989805a33b6b4cb35fb2e1">getPastQubit</link> (int currentQubit)</para>
+</listitem>
+            <listitem><para>int <link linkend="_20230313___m_b_q_c___v2_8cpp_1ab81ffa7099ed1d954baf7af535ab3143">getOpenNeighbourhoodSizePathGraph</link> (int currentQubit, int numberQubits)</para>
+</listitem>
+            <listitem><para>vector&lt; int &gt; <link linkend="_20230313___m_b_q_c___v2_8cpp_1aeb8d17870fa054dbe4201fd02f6ac791">getOpenNeighbourhoodPathGraph</link> (int currentQubit, int numberQubits)</para>
+</listitem>
+            <listitem><para>int <link linkend="_20230313___m_b_q_c___v2_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_20230313___m_b_q_c___v2_8cpp_1a89ebfc1e65a5c1ee3c420843c016be0e"/><section>
+    <title>getFutureQubit()</title>
+<indexterm><primary>getFutureQubit</primary><secondary>20230313_MBQC_V2.cpp</secondary></indexterm>
+<indexterm><primary>20230313_MBQC_V2.cpp</primary><secondary>getFutureQubit</secondary></indexterm>
+<para><computeroutput>int getFutureQubit (int currentQubit)</computeroutput></para><para>
+Definition at line <link linkend="_20230313___m_b_q_c___v2_8cpp_source_1l00026">26</link> of file <link linkend="_20230313___m_b_q_c___v2_8cpp_source">20230313_MBQC_V2.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00026 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00027 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;new_qubit;
+00028 &#32;&#32;new_qubit&#32;=&#32;currentQubit&#32;+&#32;1;
+00029 
+00030 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;new_qubit;
+00031 }
+</programlisting></section>
+<anchor xml:id="_20230313___m_b_q_c___v2_8cpp_1aeb8d17870fa054dbe4201fd02f6ac791"/><section>
+    <title>getOpenNeighbourhoodPathGraph()</title>
+<indexterm><primary>getOpenNeighbourhoodPathGraph</primary><secondary>20230313_MBQC_V2.cpp</secondary></indexterm>
+<indexterm><primary>20230313_MBQC_V2.cpp</primary><secondary>getOpenNeighbourhoodPathGraph</secondary></indexterm>
+<para><computeroutput>vector&lt; int &gt; getOpenNeighbourhoodPathGraph (int currentQubit, int numberQubits)</computeroutput></para><para>
+Definition at line <link linkend="_20230313___m_b_q_c___v2_8cpp_source_1l00054">54</link> of file <link linkend="_20230313___m_b_q_c___v2_8cpp_source">20230313_MBQC_V2.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00055 &#32;&#32;vector&lt;int&gt;&#32;neighbours;
+00056 &#32;&#32;
+00057 &#32;&#32;
+00058 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(currentQubit&#32;==&#32;0)&#32;{&#32;<emphasis role="comment">//&#32;qubit&#32;is&#32;first&#32;in&#32;graph</emphasis>
+00059 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;firstQubit&#32;=&#32;currentQubit&#32;+&#32;1;
+00060 &#32;&#32;&#32;&#32;neighbours.push_back(firstQubit);
+00061 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(currentQubit&#32;==&#32;numberQubits-1)&#32;{&#32;<emphasis role="comment">//&#32;qubit&#32;is&#32;last&#32;in&#32;graph</emphasis>
+00062 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;firstQubit&#32;=&#32;currentQubit&#32;-&#32;1;
+00063 &#32;&#32;&#32;&#32;neighbours.push_back(firstQubit);
+00064 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;<emphasis role="comment">//&#32;all&#32;else</emphasis>
+00065 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;pastQubit&#32;=&#32;currentQubit&#32;-&#32;1;
+00066 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;futureQubit&#32;=&#32;currentQubit&#32;+&#32;1;
+00067 &#32;&#32;&#32;&#32;neighbours.push_back(pastQubit);
+00068 &#32;&#32;&#32;&#32;neighbours.push_back(futureQubit);
+00069 &#32;&#32;}
+00070 
+00071 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;neighbours;
+00072 }
+</programlisting></section>
+<anchor xml:id="_20230313___m_b_q_c___v2_8cpp_1ab81ffa7099ed1d954baf7af535ab3143"/><section>
+    <title>getOpenNeighbourhoodSizePathGraph()</title>
+<indexterm><primary>getOpenNeighbourhoodSizePathGraph</primary><secondary>20230313_MBQC_V2.cpp</secondary></indexterm>
+<indexterm><primary>20230313_MBQC_V2.cpp</primary><secondary>getOpenNeighbourhoodSizePathGraph</secondary></indexterm>
+<para><computeroutput>int getOpenNeighbourhoodSizePathGraph (int currentQubit, int numberQubits)</computeroutput></para><para>
+Definition at line <link linkend="_20230313___m_b_q_c___v2_8cpp_source_1l00040">40</link> of file <link linkend="_20230313___m_b_q_c___v2_8cpp_source">20230313_MBQC_V2.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00041 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;number_qubits;
+00042 &#32;&#32;<emphasis role="comment">//&#32;Logic&#32;for&#32;getting&#32;nieghbors</emphasis>
+00043 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(currentQubit&#32;==&#32;0)&#32;{&#32;<emphasis role="comment">//&#32;qubit&#32;is&#32;first</emphasis>
+00044 &#32;&#32;&#32;&#32;number_qubits&#32;=&#32;1;
+00045 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(currentQubit&#32;==&#32;numberQubits-1)&#32;{&#32;<emphasis role="comment">//&#32;qubit&#32;is&#32;last</emphasis>
+00046 &#32;&#32;&#32;&#32;number_qubits&#32;=&#32;1;
+00047 &#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{&#32;<emphasis role="comment">//&#32;all&#32;else</emphasis>
+00048 &#32;&#32;&#32;&#32;number_qubits&#32;=&#32;2;
+00049 &#32;&#32;}
+00050 
+00051 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;number_qubits;
+00052 }
+</programlisting></section>
+<anchor xml:id="_20230313___m_b_q_c___v2_8cpp_1af44420884b989805a33b6b4cb35fb2e1"/><section>
+    <title>getPastQubit()</title>
+<indexterm><primary>getPastQubit</primary><secondary>20230313_MBQC_V2.cpp</secondary></indexterm>
+<indexterm><primary>20230313_MBQC_V2.cpp</primary><secondary>getPastQubit</secondary></indexterm>
+<para><computeroutput>int getPastQubit (int currentQubit)</computeroutput></para><para>
+Definition at line <link linkend="_20230313___m_b_q_c___v2_8cpp_source_1l00033">33</link> of file <link linkend="_20230313___m_b_q_c___v2_8cpp_source">20230313_MBQC_V2.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00033 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00034 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;new_qubit;
+00035 &#32;&#32;new_qubit&#32;=&#32;currentQubit&#32;-&#32;1;
+00036 
+00037 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;new_qubit;
+00038 }
+</programlisting></section>
+<anchor xml:id="_20230313___m_b_q_c___v2_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>20230313_MBQC_V2.cpp</secondary></indexterm>
+<indexterm><primary>20230313_MBQC_V2.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_20230313___m_b_q_c___v2_8cpp_source_1l00075">75</link> of file <link linkend="_20230313___m_b_q_c___v2_8cpp_source">20230313_MBQC_V2.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00075 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00076 &#32;&#32;&#32;&#32;
+00077 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST</emphasis>
+00078 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+00079 &#32;&#32;&#32;&#32;
+00080 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;parameters</emphasis>
+00081 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numberQubits&#32;=&#32;3;
+00082 &#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;angles[numberQubits];&#32;
+00083 &#32;&#32;&#32;&#32;qreal&#32;x_corrections[numberQubits];
+00084 &#32;&#32;&#32;&#32;qreal&#32;z_corrections[numberQubits];
+00085 &#32;&#32;&#32;&#32;qreal&#32;updated_angles[numberQubits];&#32;
+00086 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;measured_qubits[numberQubits];
+00087 &#32;&#32;&#32;&#32;
+00088 &#32;&#32;&#32;&#32;
+00089 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;initial&#32;angles</emphasis>
+00090 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i=0;i&lt;numberQubits;i++)
+00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;angles[i]&#32;=&#32;M_PI&#32;/&#32;4;&#32;
+00092 &#32;&#32;&#32;&#32;
+00093 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Set&#32;first&#32;updated&#32;angle&#32;to&#32;match&#32;first&#32;original&#32;angle</emphasis>
+00094 &#32;&#32;&#32;&#32;updated_angles[0]&#32;=&#32;angles[0];
+00095 
+00096 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;prepare&#32;our&#32;register</emphasis>
+00097 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numberQubits,&#32;env);
+00098 
+00099 
+00100 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;qureg&#32;-&gt;&#32;|+&gt;&lt;+|</emphasis>
+00101 &#32;&#32;&#32;&#32;initPlusState(qureg);&#32;&#32;
+00102 &#32;&#32;&#32;&#32;
+00103 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;apply&#32;CZ&#32;gate&#32;to&#32;entangle&#32;the&#32;circuit</emphasis>
+00104 &#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,0,1);
+00105 &#32;&#32;&#32;&#32;controlledPhaseFlip(qureg,1,2);
+00106 
+00107 &#32;&#32;&#32;&#32;
+00108 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;first&#32;qubit</emphasis>
+00109 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;()-()-()&#32;-&gt;&#32;X-()-(),&#32;for&#32;X&#32;being&#32;a&#32;removed&#32;qubit</emphasis>
+00110 &#32;&#32;&#32;&#32;rotateZ(qureg,0,&#32;angles[0]);
+00111 &#32;&#32;&#32;&#32;hadamard(qureg,0);
+00112 &#32;&#32;&#32;&#32;measured_qubits[0]&#32;=&#32;measure(qureg,0);
+00113 &#32;&#32;&#32;&#32;x_corrections[0]&#32;=&#32;0;
+00114 &#32;&#32;&#32;&#32;z_corrections[0]&#32;=&#32;0;
+00115 
+00116 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;update&#32;second&#32;angle</emphasis>
+00117 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;sum_neigh_meas_q0&#32;=&#32;0;
+00118 &#32;&#32;&#32;&#32;x_corrections[1]&#32;=&#32;pow(-1,&#32;measured_qubits[0])*angles[1];
+00119 &#32;&#32;&#32;&#32;z_corrections[1]&#32;=&#32;M_PI*(sum_neigh_meas_q0);
+00120 &#32;&#32;&#32;&#32;updated_angles[1]&#32;=&#32;x_corrections[1]&#32;+&#32;z_corrections[1];
+00121 &#32;&#32;&#32;&#32;
+00122 
+00123 
+00124 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;second&#32;qubit</emphasis>
+00125 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;X-()-()&#32;-&gt;&#32;X-X-(),&#32;for&#32;X&#32;being&#32;a&#32;removed&#32;qubit</emphasis>
+00126 &#32;&#32;&#32;&#32;rotateZ(qureg,1,&#32;(-1)*updated_angles[1]);
+00127 &#32;&#32;&#32;&#32;hadamard(qureg,1);
+00128 &#32;&#32;&#32;&#32;measured_qubits[1]&#32;=&#32;measure(qureg,1);
+00129 &#32;&#32;&#32;&#32;
+00130 &#32;&#32;&#32;&#32;
+00131 &#32;&#32;&#32;&#32;
+00132 
+00133 
+00134 
+00135 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;update&#32;third&#32;angle</emphasis>
+00136 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;sum_neigh_meas_q1&#32;=&#32;measured_qubits[0];
+00137 &#32;&#32;&#32;&#32;x_corrections[2]&#32;=&#32;pow(-1,&#32;measured_qubits[1])*angles[2];
+00138 &#32;&#32;&#32;&#32;z_corrections[2]&#32;=&#32;M_PI*(sum_neigh_meas_q1);
+00139 &#32;&#32;&#32;&#32;updated_angles[2]&#32;=&#32;x_corrections[2]&#32;+&#32;z_corrections[2];
+00140 
+00141 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;third&#32;qubit</emphasis>
+00142 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;X-X-()&#32;-&gt;&#32;X-X-X,&#32;for&#32;X&#32;being&#32;a&#32;removed&#32;qubit</emphasis>
+00143 &#32;&#32;&#32;&#32;rotateZ(qureg,2,&#32;(-1)*updated_angles[2]);
+00144 &#32;&#32;&#32;&#32;hadamard(qureg,2);
+00145 &#32;&#32;&#32;&#32;measured_qubits[2]&#32;=&#32;measure(qureg,2);
+00146 &#32;&#32;&#32;&#32;&#32;
+00147 &#32;&#32;&#32;&#32;
+00148 
+00149 &#32;&#32;&#32;&#32;
+00150 
+00151 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Print&#32;data&#32;to&#32;screen</emphasis>
+00152 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Original&#32;angles:&#32;&quot;</emphasis>);
+00153 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;numberQubits;&#32;i++)
+00154 &#32;&#32;&#32;&#32;{
+00155 &#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;%f&#32;&quot;</emphasis>,&#32;angles[i]);
+00156 &#32;&#32;&#32;&#32;}
+00157 
+00158 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\nUpdated&#32;angles:&#32;&quot;</emphasis>);
+00159 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;numberQubits;&#32;i++)
+00160 &#32;&#32;&#32;&#32;{
+00161 &#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;%f&#32;&quot;</emphasis>,&#32;updated_angles[i]);
+00162 &#32;&#32;&#32;&#32;}
+00163 
+00164 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\nMeasured&#32;array:&#32;&quot;</emphasis>);
+00165 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;numberQubits;&#32;i++)
+00166 &#32;&#32;&#32;&#32;{
+00167 &#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;%d&#32;&quot;</emphasis>,&#32;measured_qubits[i]);
+00168 &#32;&#32;&#32;&#32;}
+00169 
+00170 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\nProbability&#32;of&#32;each&#32;outcome:&#32;&quot;</emphasis>);
+00171 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;numberQubits;&#32;i++)
+00172 &#32;&#32;&#32;&#32;{
+00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;prob&#32;=&#32;calcProbOfOutcome(qureg,i,0);
+00174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;%f&#32;&quot;</emphasis>,&#32;prob);
+00175 &#32;&#32;&#32;&#32;}
+00176 
+00177 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\nX&#32;corection:&#32;&quot;</emphasis>);
+00178 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;numberQubits;&#32;i++)
+00179 &#32;&#32;&#32;&#32;{
+00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;%f&#32;&quot;</emphasis>,&#32;x_corrections[i]);
+00181 &#32;&#32;&#32;&#32;}
+00182 
+00183 
+00184 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\nZ&#32;corection:&#32;&quot;</emphasis>);
+00185 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;numberQubits;&#32;i++)
+00186 &#32;&#32;&#32;&#32;{
+00187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;%f&#32;&quot;</emphasis>,&#32;z_corrections[i]);
+00188 &#32;&#32;&#32;&#32;}
+00189 &#32;
+00190 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;currentQubit&#32;=&#32;0;
+00191 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;futureQubit&#32;=&#32;<link linkend="_20230313___m_b_q_c___v2_8cpp_1a89ebfc1e65a5c1ee3c420843c016be0e">getFutureQubit</link>(currentQubit);
+00192 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;pastQubit&#32;=&#32;<link linkend="_20230313___m_b_q_c___v2_8cpp_1af44420884b989805a33b6b4cb35fb2e1">getPastQubit</link>(currentQubit);
+00193 
+00194 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;\nPast&#32;qubit&#32;is&#32;%d\n&quot;</emphasis>,pastQubit);
+00195 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Current&#32;qubit&#32;is&#32;%d\n&quot;</emphasis>,currentQubit);
+00196 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Future&#32;qubit&#32;is&#32;%d\n&quot;</emphasis>,futureQubit);
+00197 
+00198 &#32;&#32;&#32;&#32;
+00199 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;size_neighbour_set;
+00200 &#32;&#32;&#32;&#32;size_neighbour_set&#32;=&#32;<link linkend="_20230313___m_b_q_c___v2_8cpp_1ab81ffa7099ed1d954baf7af535ab3143">getOpenNeighbourhoodSizePathGraph</link>(currentQubit,numberQubits);
+00201 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;Size&#32;of&#32;neighbour&#32;set:&#32;%d\n&quot;</emphasis>,size_neighbour_set);&#32;&#32;
+00202 
+00203 &#32;&#32;&#32;&#32;vector&lt;int&gt;&#32;neighbours;
+00204 &#32;&#32;&#32;&#32;neighbours&#32;=&#32;<link linkend="_20230313___m_b_q_c___v2_8cpp_1aeb8d17870fa054dbe4201fd02f6ac791">getOpenNeighbourhoodPathGraph</link>(currentQubit,numberQubits);
+00205 
+00206 &#32;&#32;&#32;&#32;printf(<emphasis role="stringliteral">&quot;For&#32;current&#32;qubit,&#32;%d,&#32;the&#32;neighbours&#32;are&#32;&quot;</emphasis>,currentQubit);
+00207 &#32;&#32;&#32;&#32;
+00208 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i:&#32;neighbours)
+00209 &#32;&#32;&#32;&#32;{
+00210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cout&#32;&lt;&lt;&#32;i&#32;&lt;&lt;&#32;<emphasis role="charliteral">&apos;&#32;&apos;</emphasis>;
+00211 &#32;&#32;&#32;&#32;}
+00212 
+00213 &#32;&#32;&#32;&#32;
+00214 &#32;&#32;
+00215 }
+</programlisting></section>
+<anchor xml:id="_20230313___m_b_q_c___v2_8cpp_1a9bbb075b5400c4e2f4ce9967fb0e0f7b"/><section>
+    <title>print()</title>
+<indexterm><primary>print</primary><secondary>20230313_MBQC_V2.cpp</secondary></indexterm>
+<indexterm><primary>20230313_MBQC_V2.cpp</primary><secondary>print</secondary></indexterm>
+<para><computeroutput>void print (std::vector&lt; int &gt; const &amp; input)</computeroutput></para><para>
+Definition at line <link linkend="_20230313___m_b_q_c___v2_8cpp_source_1l00018">18</link> of file <link linkend="_20230313___m_b_q_c___v2_8cpp_source">20230313_MBQC_V2.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00019 {
+00020 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;input.size();&#32;i++)&#32;{
+00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;input.at(i)&#32;&lt;&lt;&#32;<emphasis role="charliteral">&apos;&#32;&apos;</emphasis>;
+00022 &#32;&#32;&#32;&#32;}
+00023 }
+</programlisting></section>
+</section>
+</section>

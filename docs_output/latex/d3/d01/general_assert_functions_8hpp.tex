@@ -1,0 +1,106 @@
+\doxysection{src/test\+Functions/general\+Assert\+Functions.hpp File Reference}
+\hypertarget{general_assert_functions_8hpp}{}\label{general_assert_functions_8hpp}\index{src/testFunctions/generalAssertFunctions.hpp@{src/testFunctions/generalAssertFunctions.hpp}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{general_assert_functions_8hpp_ab8bc2aa68695d561b6a3d544658b5c70}{test\+Two\+Value\+Equate}} (int i, int j)
+\item 
+int \mbox{\hyperlink{general_assert_functions_8hpp_aaa5eeda4e79aa986d57c3256556b6e6c}{get\+Min}} (const boost\+::container\+::vector$<$ int $>$ \&vec)
+\item 
+int \mbox{\hyperlink{general_assert_functions_8hpp_af227e83a7360ec64f91773c37a905253}{get\+Max}} (const boost\+::container\+::vector$<$ int $>$ \&vec)
+\item 
+bool \mbox{\hyperlink{general_assert_functions_8hpp_a4a6a933e01029d0c61bce553817a0feb}{is\+Int\+In\+Vector}} (int value, const std\+::vector$<$ int $>$ \&vec)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{general_assert_functions_8hpp_af227e83a7360ec64f91773c37a905253}\label{general_assert_functions_8hpp_af227e83a7360ec64f91773c37a905253} 
+\index{generalAssertFunctions.hpp@{generalAssertFunctions.hpp}!getMax@{getMax}}
+\index{getMax@{getMax}!generalAssertFunctions.hpp@{generalAssertFunctions.hpp}}
+\doxysubsubsection{\texorpdfstring{getMax()}{getMax()}}
+{\footnotesize\ttfamily int get\+Max (\begin{DoxyParamCaption}\item[{const boost\+::container\+::vector$<$ int $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{general_assert_functions_8hpp_source_l00048}{48}} of file \mbox{\hyperlink{general_assert_functions_8hpp_source}{general\+Assert\+Functions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (vec.empty())\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Cannot\ get\ max\ of\ empty\ vector"{}});}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_val\ =\ vec[0];}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ vec.size();\ i++)\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vec[i]\ >\ max\_val)\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ max\_val\ =\ vec[i];}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{return}\ max\_val;}
+\DoxyCodeLine{00061\ \}}
+
+\end{DoxyCode}
+\Hypertarget{general_assert_functions_8hpp_aaa5eeda4e79aa986d57c3256556b6e6c}\label{general_assert_functions_8hpp_aaa5eeda4e79aa986d57c3256556b6e6c} 
+\index{generalAssertFunctions.hpp@{generalAssertFunctions.hpp}!getMin@{getMin}}
+\index{getMin@{getMin}!generalAssertFunctions.hpp@{generalAssertFunctions.hpp}}
+\doxysubsubsection{\texorpdfstring{getMin()}{getMin()}}
+{\footnotesize\ttfamily int get\+Min (\begin{DoxyParamCaption}\item[{const boost\+::container\+::vector$<$ int $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{general_assert_functions_8hpp_source_l00029}{29}} of file \mbox{\hyperlink{general_assert_functions_8hpp_source}{general\+Assert\+Functions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (vec.empty())\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Cannot\ get\ max\ of\ empty\ vector"{}});}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ min\_val\ =\ vec[0];}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ vec.size();\ i++)\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vec[i]\ <\ min\_val)\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ min\_val\ =\ vec[i];}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{return}\ min\_val;}
+\DoxyCodeLine{00042\ \}}
+
+\end{DoxyCode}
+\Hypertarget{general_assert_functions_8hpp_a4a6a933e01029d0c61bce553817a0feb}\label{general_assert_functions_8hpp_a4a6a933e01029d0c61bce553817a0feb} 
+\index{generalAssertFunctions.hpp@{generalAssertFunctions.hpp}!isIntInVector@{isIntInVector}}
+\index{isIntInVector@{isIntInVector}!generalAssertFunctions.hpp@{generalAssertFunctions.hpp}}
+\doxysubsubsection{\texorpdfstring{isIntInVector()}{isIntInVector()}}
+{\footnotesize\ttfamily bool is\+Int\+In\+Vector (\begin{DoxyParamCaption}\item[{int}]{value,  }\item[{const std\+::vector$<$ int $>$ \&}]{vec }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{general_assert_functions_8hpp_source_l00068}{68}} of file \mbox{\hyperlink{general_assert_functions_8hpp_source}{general\+Assert\+Functions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordflow}{return}\ std::find(vec.begin(),\ vec.end(),\ value)\ !=\ vec.end();}
+\DoxyCodeLine{00070\ \}}
+
+\end{DoxyCode}
+\Hypertarget{general_assert_functions_8hpp_ab8bc2aa68695d561b6a3d544658b5c70}\label{general_assert_functions_8hpp_ab8bc2aa68695d561b6a3d544658b5c70} 
+\index{generalAssertFunctions.hpp@{generalAssertFunctions.hpp}!testTwoValueEquate@{testTwoValueEquate}}
+\index{testTwoValueEquate@{testTwoValueEquate}!generalAssertFunctions.hpp@{generalAssertFunctions.hpp}}
+\doxysubsubsection{\texorpdfstring{testTwoValueEquate()}{testTwoValueEquate()}}
+{\footnotesize\ttfamily bool test\+Two\+Value\+Equate (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{general_assert_functions_8hpp_source_l00021}{21}} of file \mbox{\hyperlink{general_assert_functions_8hpp_source}{general\+Assert\+Functions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordflow}{return}\ (i==j);}
+\DoxyCodeLine{00023\ \}}
+
+\end{DoxyCode}

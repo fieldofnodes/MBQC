@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_d28a4824dc47e487b107a5db32ef43c4" xml:lang="en-US">
+<title>examples Directory Reference</title>
+<indexterm><primary>examples Directory Reference</primary></indexterm>
+<simplesect>
+    <title>Files    </title>
+        <itemizedlist>
+            <listitem><para>file <link linkend="_examples_2mbqc_starter_file_8cpp">mbqcStarterFile.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_mbqc_starter_file_density_matrix_8cpp">mbqcStarterFileDensityMatrix.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_mbqc_starter_file_mac_8cpp">mbqcStarterFileMac.cpp</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

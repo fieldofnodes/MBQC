@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_flow_measurements_8hpp" xml:lang="en-US">
+<title>src/quantumGraphs/flowMeasurements.hpp File Reference</title>
+<indexterm><primary>src/quantumGraphs/flowMeasurements.hpp</primary></indexterm>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>std::vector&lt; std::vector&lt; int &gt; &gt; <link linkend="_flow_measurements_8hpp_1a794636e4b832401d96581e54141cbcba">returnMeasQubitOutcomesLattice</link> (std::vector&lt; int &gt; measOutcomes, int numRows, int numCols)</para>
+</listitem>
+            <listitem><para>std::vector&lt; int &gt; <link linkend="_flow_measurements_8hpp_1a7231be9a1c347894c1d01c349f4b41c7">measureGraph</link> (Qureg qureg, const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp;graph, std::vector&lt; qreal &gt; qubitAngles, int numRows)</para>
+</listitem>
+            <listitem><para>void <link linkend="_flow_measurements_8hpp_1a202e2cd0edb82aacb879f3ad4360dc36">printResultsToScreen</link> (std::vector&lt; int &gt; measuredQubitsOutcomes, int numRows, int numCols)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_flow_measurements_8hpp_1a7231be9a1c347894c1d01c349f4b41c7"/><section>
+    <title>measureGraph()</title>
+<indexterm><primary>measureGraph</primary><secondary>flowMeasurements.hpp</secondary></indexterm>
+<indexterm><primary>flowMeasurements.hpp</primary><secondary>measureGraph</secondary></indexterm>
+<para><computeroutput>std::vector&lt; int &gt; measureGraph (Qureg qureg, const <link linkend="_create_graph_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link> &amp; graph, std::vector&lt; qreal &gt; qubitAngles, int numRows)</computeroutput></para><para>
+Definition at line <link linkend="_flow_measurements_8hpp_source_1l00033">33</link> of file <link linkend="_flow_measurements_8hpp_source">flowMeasurements.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00038 
+00039 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;
+00040 &#32;&#32;&#32;&#32;undirectedGraph::vertex_iterator&#32;vi,&#32;vi_end;
+00041 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(boost::tie(vi,&#32;vi_end)&#32;=&#32;boost::vertices(graph);&#32;vi&#32;!=&#32;vi_end;&#32;vi++)&#32;{
+00042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;skip&#32;vertices&#32;that&#32;are&#32;in&#32;the&#32;first&#32;column</emphasis>
+00043 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(*vi&#32;&lt;&#32;numRows){
+00044 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rotateZ(qureg,*vi,&#32;(-1)*qubitAngles[*vi]);
+00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hadamard(qureg,*vi);
+00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;m&#32;=&#32;measure(qureg,*vi);
+00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;measuredQubitsOutcomes.push_back(m);
+00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>(*vi&#32;&gt;=&#32;numRows){
+00049 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;correctedAngle;
+00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;correctedAngle&#32;=&#32;<link linkend="_graph_traversal_flows_8hpp_1a2b29f1efbcbccfbe77481e5b1a9647c8">computeCorrectedAngle</link>(graph,measuredQubitsOutcomes,*vi,numRows,qubitAngles[*vi]);
+00051 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rotateZ(qureg,*vi,&#32;(-1)*correctedAngle);
+00052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hadamard(qureg,*vi);
+00053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;m&#32;=&#32;measure(qureg,*vi);
+00054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;measuredQubitsOutcomes.push_back(m);
+00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;{
+00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;attempting&#32;to&#32;measure&#32;nothing?&quot;</emphasis>;
+00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00058 &#32;&#32;&#32;&#32;}
+00059 
+00060 
+00061 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;measuredQubitsOutcomes;
+00062 }
+</programlisting></section>
+<anchor xml:id="_flow_measurements_8hpp_1a202e2cd0edb82aacb879f3ad4360dc36"/><section>
+    <title>printResultsToScreen()</title>
+<indexterm><primary>printResultsToScreen</primary><secondary>flowMeasurements.hpp</secondary></indexterm>
+<indexterm><primary>flowMeasurements.hpp</primary><secondary>printResultsToScreen</secondary></indexterm>
+<para><computeroutput>void printResultsToScreen (std::vector&lt; int &gt; measuredQubitsOutcomes, int numRows, int numCols)</computeroutput></para><para>
+Definition at line <link linkend="_flow_measurements_8hpp_source_1l00069">69</link> of file <link linkend="_flow_measurements_8hpp_source">flowMeasurements.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00073 
+00074 &#32;&#32;<emphasis role="comment">//&#32;Print&#32;results&#32;to&#32;screen</emphasis>
+00075 &#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+00076 &#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+00077 &#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Measured&#32;outcome&#32;vector&#32;has&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;measuredQubitsOutcomes.size()&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;qubits.&quot;</emphasis>&#32;&#32;&lt;&lt;&#32;std::endl;&#32;
+00078 &#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;The&#32;measurements&#32;are:&#32;&quot;</emphasis>;
+00079 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i:measuredQubitsOutcomes){
+00080 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;i&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>;
+00081 &#32;&#32;}
+00082 &#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+00083 &#32;&#32;std::cout&#32;&lt;&lt;&#32;std::endl;
+00084 
+00085 
+00086 std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Measured&#32;outcome&#32;lattice:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00087 &#32;&#32;std::vector&lt;std::vector&lt;int&gt;&gt;&#32;latticeOutcomes&#32;=&#32;
+00088 &#32;&#32;&#32;&#32;<link linkend="_flow_measurements_8hpp_1a794636e4b832401d96581e54141cbcba">returnMeasQubitOutcomesLattice</link>(measuredQubitsOutcomes,numRows,numCols);
+00089 
+00090 &#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keyword">auto</emphasis>&amp;&#32;row&#32;:&#32;latticeOutcomes)&#32;{
+00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;number&#32;:&#32;row)&#32;{
+00092 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;number&#32;&lt;&lt;&#32;<emphasis role="charliteral">&apos;&#32;&apos;</emphasis>;
+00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="charliteral">&apos;\n&apos;</emphasis>;
+00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00096 
+00097 }
+</programlisting></section>
+<anchor xml:id="_flow_measurements_8hpp_1a794636e4b832401d96581e54141cbcba"/><section>
+    <title>returnMeasQubitOutcomesLattice()</title>
+<indexterm><primary>returnMeasQubitOutcomesLattice</primary><secondary>flowMeasurements.hpp</secondary></indexterm>
+<indexterm><primary>flowMeasurements.hpp</primary><secondary>returnMeasQubitOutcomesLattice</secondary></indexterm>
+<para><computeroutput>std::vector&lt; std::vector&lt; int &gt; &gt; returnMeasQubitOutcomesLattice (std::vector&lt; int &gt; measOutcomes, int numRows, int numCols)</computeroutput></para><para>
+Definition at line <link linkend="_flow_measurements_8hpp_source_1l00014">14</link> of file <link linkend="_flow_measurements_8hpp_source">flowMeasurements.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00015 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices&#32;=&#32;numRows&#32;*&#32;numCols;
+00016 &#32;&#32;&#32;&#32;std::vector&lt;std::vector&lt;int&gt;&gt;&#32;lattice(numRows,&#32;std::vector&lt;int&gt;(numCols,&#32;-1));
+00017 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;numbers(numVertices);
+00018 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;numVertices;&#32;i++)&#32;{
+00019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numbers[i]&#32;=&#32;i;
+00020 &#32;&#32;&#32;&#32;}
+00021 
+00022 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;number&#32;:&#32;numbers)&#32;{
+00023 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;row&#32;=&#32;number&#32;%&#32;numRows;
+00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;col&#32;=&#32;number&#32;/&#32;numRows;
+00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lattice[row][col]&#32;=&#32;measOutcomes[number];
+00026 &#32;&#32;&#32;&#32;}
+00027 
+00028 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;lattice;
+00029 }
+</programlisting></section>
+</section>
+</section>
