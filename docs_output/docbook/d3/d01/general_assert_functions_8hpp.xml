@@ -6,12 +6,20 @@
     <title>Functions    </title>
         <itemizedlist>
             <listitem><para>bool <link linkend="_general_assert_functions_8hpp_1ab8bc2aa68695d561b6a3d544658b5c70">testTwoValueEquate</link> (int i, int j)</para>
+
+<para>Tests if two values are equal. </para>
 </listitem>
             <listitem><para>int <link linkend="_general_assert_functions_8hpp_1aaa5eeda4e79aa986d57c3256556b6e6c">getMin</link> (const boost::container::vector&lt; int &gt; &amp;vec)</para>
+
+<para>Retrieves the minimum value from a vector. </para>
 </listitem>
             <listitem><para>int <link linkend="_general_assert_functions_8hpp_1af227e83a7360ec64f91773c37a905253">getMax</link> (const boost::container::vector&lt; int &gt; &amp;vec)</para>
+
+<para>Retrieves the maximum value from a vector. </para>
 </listitem>
             <listitem><para>bool <link linkend="_general_assert_functions_8hpp_1a4a6a933e01029d0c61bce553817a0feb">isIntInVector</link> (int value, const std::vector&lt; int &gt; &amp;vec)</para>
+
+<para>Checks if an integer value is present in a vector. </para>
 </listitem>
         </itemizedlist>
 </simplesect>
@@ -22,62 +30,240 @@
 <indexterm><primary>getMax</primary><secondary>generalAssertFunctions.hpp</secondary></indexterm>
 <indexterm><primary>generalAssertFunctions.hpp</primary><secondary>getMax</secondary></indexterm>
 <para><computeroutput>int getMax (const boost::container::vector&lt; int &gt; &amp; vec)</computeroutput></para><para>
-Definition at line <link linkend="_general_assert_functions_8hpp_source_1l00048">48</link> of file <link linkend="_general_assert_functions_8hpp_source">generalAssertFunctions.hpp</link>.</para>
-<programlisting linenumbering="unnumbered">00048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-00049 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(vec.empty())&#32;{
-00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::invalid_argument(<emphasis role="stringliteral">&quot;Cannot&#32;get&#32;max&#32;of&#32;empty&#32;vector&quot;</emphasis>);
-00051 &#32;&#32;&#32;&#32;}
-00052 
-00053 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;max_val&#32;=&#32;vec[0];
-00054 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;1;&#32;i&#32;&lt;&#32;vec.size();&#32;i++)&#32;{
-00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(vec[i]&#32;&gt;&#32;max_val)&#32;{
-00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;max_val&#32;=&#32;vec[i];
-00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-00058 &#32;&#32;&#32;&#32;}
-00059 
-00060 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;max_val;
-00061 }
+
+<para>Retrieves the maximum value from a vector. </para>
+</para>
+
+<para>This function returns the maximum value from a vector of integers.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>vec</entry><entry>
+<para>The vector of integers. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>The maximum value in the vector. </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>std::invalid_argument</entry><entry>
+<para>if the vector is empty. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_general_assert_functions_8hpp_source_1l00064">64</link> of file <link linkend="_general_assert_functions_8hpp_source">generalAssertFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00064 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00065 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(vec.empty())&#32;{
+00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::invalid_argument(<emphasis role="stringliteral">&quot;Cannot&#32;get&#32;max&#32;of&#32;empty&#32;vector&quot;</emphasis>);
+00067 &#32;&#32;&#32;&#32;}
+00068 
+00069 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;max_val&#32;=&#32;vec[0];
+00070 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;1;&#32;i&#32;&lt;&#32;vec.size();&#32;i++)&#32;{
+00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(vec[i]&#32;&gt;&#32;max_val)&#32;{
+00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;max_val&#32;=&#32;vec[i];
+00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00074 &#32;&#32;&#32;&#32;}
+00075 
+00076 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;max_val;
+00077 }
 </programlisting></section>
 <anchor xml:id="_general_assert_functions_8hpp_1aaa5eeda4e79aa986d57c3256556b6e6c"/><section>
     <title>getMin()</title>
 <indexterm><primary>getMin</primary><secondary>generalAssertFunctions.hpp</secondary></indexterm>
 <indexterm><primary>generalAssertFunctions.hpp</primary><secondary>getMin</secondary></indexterm>
 <para><computeroutput>int getMin (const boost::container::vector&lt; int &gt; &amp; vec)</computeroutput></para><para>
-Definition at line <link linkend="_general_assert_functions_8hpp_source_1l00029">29</link> of file <link linkend="_general_assert_functions_8hpp_source">generalAssertFunctions.hpp</link>.</para>
-<programlisting linenumbering="unnumbered">00029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-00030 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(vec.empty())&#32;{
-00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::invalid_argument(<emphasis role="stringliteral">&quot;Cannot&#32;get&#32;max&#32;of&#32;empty&#32;vector&quot;</emphasis>);
-00032 &#32;&#32;&#32;&#32;}
-00033 
-00034 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;min_val&#32;=&#32;vec[0];
-00035 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;1;&#32;i&#32;&lt;&#32;vec.size();&#32;i++)&#32;{
-00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(vec[i]&#32;&lt;&#32;min_val)&#32;{
-00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;min_val&#32;=&#32;vec[i];
-00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-00039 &#32;&#32;&#32;&#32;}
-00040 
-00041 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;min_val;
-00042 }
+
+<para>Retrieves the minimum value from a vector. </para>
+</para>
+
+<para>This function returns the minimum value from a vector of integers.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>vec</entry><entry>
+<para>The vector of integers. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>The minimum value in the vector. </para>
+</formalpara>
+
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>std::invalid_argument</entry><entry>
+<para>if the vector is empty. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_general_assert_functions_8hpp_source_1l00038">38</link> of file <link linkend="_general_assert_functions_8hpp_source">generalAssertFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00039 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(vec.empty())&#32;{
+00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::invalid_argument(<emphasis role="stringliteral">&quot;Cannot&#32;get&#32;min&#32;of&#32;empty&#32;vector&quot;</emphasis>);
+00041 &#32;&#32;&#32;&#32;}
+00042 
+00043 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;min_val&#32;=&#32;vec[0];
+00044 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;1;&#32;i&#32;&lt;&#32;vec.size();&#32;i++)&#32;{
+00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(vec[i]&#32;&lt;&#32;min_val)&#32;{
+00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;min_val&#32;=&#32;vec[i];
+00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+00048 &#32;&#32;&#32;&#32;}
+00049 
+00050 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;min_val;
+00051 }
 </programlisting></section>
 <anchor xml:id="_general_assert_functions_8hpp_1a4a6a933e01029d0c61bce553817a0feb"/><section>
     <title>isIntInVector()</title>
 <indexterm><primary>isIntInVector</primary><secondary>generalAssertFunctions.hpp</secondary></indexterm>
 <indexterm><primary>generalAssertFunctions.hpp</primary><secondary>isIntInVector</secondary></indexterm>
 <para><computeroutput>bool isIntInVector (int value, const std::vector&lt; int &gt; &amp; vec)</computeroutput></para><para>
-Definition at line <link linkend="_general_assert_functions_8hpp_source_1l00068">68</link> of file <link linkend="_general_assert_functions_8hpp_source">generalAssertFunctions.hpp</link>.</para>
-<programlisting linenumbering="unnumbered">00068 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-00069 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;std::find(vec.begin(),&#32;vec.end(),&#32;value)&#32;!=&#32;vec.end();
-00070 }
+
+<para>Checks if an integer value is present in a vector. </para>
+</para>
+
+<para>This function checks if a given integer value is present in a vector of integers.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>The integer value to search for. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>vec</entry><entry>
+<para>The vector of integers. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>True if the value is found in the vector, false otherwise. </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_general_assert_functions_8hpp_source_1l00090">90</link> of file <link linkend="_general_assert_functions_8hpp_source">generalAssertFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00091 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;std::find(vec.begin(),&#32;vec.end(),&#32;value)&#32;!=&#32;vec.end();
+00092 }
 </programlisting></section>
 <anchor xml:id="_general_assert_functions_8hpp_1ab8bc2aa68695d561b6a3d544658b5c70"/><section>
     <title>testTwoValueEquate()</title>
 <indexterm><primary>testTwoValueEquate</primary><secondary>generalAssertFunctions.hpp</secondary></indexterm>
 <indexterm><primary>generalAssertFunctions.hpp</primary><secondary>testTwoValueEquate</secondary></indexterm>
 <para><computeroutput>bool testTwoValueEquate (int i, int j)</computeroutput></para><para>
-Definition at line <link linkend="_general_assert_functions_8hpp_source_1l00021">21</link> of file <link linkend="_general_assert_functions_8hpp_source">generalAssertFunctions.hpp</link>.</para>
-<programlisting linenumbering="unnumbered">00021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
-00022 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(i==j);
-00023 }
+
+<para>Tests if two values are equal. </para>
+</para>
+
+<para>This function compares two values and returns true if they are equal, and false otherwise.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>i</entry><entry>
+<para>The first value to compare. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>j</entry><entry>
+<para>The second value to compare. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>True if i is equal to j, false otherwise. </para>
+</formalpara>
+</para>
+<para>
+Definition at line <link linkend="_general_assert_functions_8hpp_source_1l00025">25</link> of file <link linkend="_general_assert_functions_8hpp_source">generalAssertFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00026 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(i&#32;==&#32;j);
+00027 }
 </programlisting></section>
 </section>
 </section>

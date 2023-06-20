@@ -4,11 +4,11 @@
 \begin{DoxyCompactItemize}
 \item 
 std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \mbox{\hyperlink{flow_measurements_8hpp_a794636e4b832401d96581e54141cbcba}{return\+Meas\+Qubit\+Outcomes\+Lattice}} (std\+::vector$<$ int $>$ meas\+Outcomes, int num\+Rows, int num\+Cols)
-\item 
+\begin{DoxyCompactList}\small\item\em Constructs a lattice representation of qubit measurement outcomes. \end{DoxyCompactList}\item 
 std\+::vector$<$ int $>$ \mbox{\hyperlink{flow_measurements_8hpp_a7231be9a1c347894c1d01c349f4b41c7}{measure\+Graph}} (Qureg qureg, const \mbox{\hyperlink{create_graph_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&graph, std\+::vector$<$ qreal $>$ qubit\+Angles, int num\+Rows)
-\item 
+\begin{DoxyCompactList}\small\item\em Measures qubits in a graph-\/based quantum state. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{flow_measurements_8hpp_a202e2cd0edb82aacb879f3ad4360dc36}{print\+Results\+To\+Screen}} (std\+::vector$<$ int $>$ measured\+Qubits\+Outcomes, int num\+Rows, int num\+Cols)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Prints the measurement results to the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -20,36 +20,56 @@ void \mbox{\hyperlink{flow_measurements_8hpp_a202e2cd0edb82aacb879f3ad4360dc36}{
 
 
 
-Definition at line \mbox{\hyperlink{flow_measurements_8hpp_source_l00033}{33}} of file \mbox{\hyperlink{flow_measurements_8hpp_source}{flow\+Measurements.\+hpp}}.
+Measures qubits in a graph-\/based quantum state. 
+
+This function measures qubits in a graph-\/based quantum state represented by the provided {\ttfamily qureg} and {\ttfamily graph}. The qubit measurement outcomes are stored in the {\ttfamily measured\+Qubits\+Outcomes} vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em qureg} & The quantum register representing the quantum state. \\
+\hline
+{\em graph} & The undirected graph representing the connectivity of qubits. \\
+\hline
+{\em qubit\+Angles} & A vector containing the angles for qubit rotations. \\
+\hline
+{\em num\+Rows} & The number of rows in the graph layout. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing the outcomes of qubit measurements. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{flow_measurements_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{flow_measurements_8hpp_source}{flow\+Measurements.\+hpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ std::vector<int>\ measuredQubitsOutcomes;}
-\DoxyCodeLine{00040\ \ \ \ \ undirectedGraph::vertex\_iterator\ vi,\ vi\_end;}
-\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{for}\ (boost::tie(vi,\ vi\_end)\ =\ boost::vertices(graph);\ vi\ !=\ vi\_end;\ vi++)\ \{}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ skip\ vertices\ that\ are\ in\ the\ first\ column}}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(*vi\ <\ numRows)\{}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ rotateZ(qureg,*vi,\ (-\/1)*qubitAngles[*vi]);}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ hadamard(qureg,*vi);}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ m\ =\ measure(qureg,*vi);}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes.push\_back(m);}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(*vi\ >=\ numRows)\{}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ correctedAngle;}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ correctedAngle\ =\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a2b29f1efbcbccfbe77481e5b1a9647c8}{computeCorrectedAngle}}(graph,measuredQubitsOutcomes,*vi,numRows,qubitAngles[*vi]);}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ rotateZ(qureg,*vi,\ (-\/1)*correctedAngle);}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ hadamard(qureg,*vi);}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ m\ =\ measure(qureg,*vi);}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes.push\_back(m);}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}attempting\ to\ measure\ nothing?"{}};}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00058\ \ \ \ \ \}}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{return}\ measuredQubitsOutcomes;}
-\DoxyCodeLine{00062\ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ std::vector<int>\ measuredQubitsOutcomes;}
+\DoxyCodeLine{00064\ \ \ \ \ undirectedGraph::vertex\_iterator\ vi,\ vi\_end;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{for}\ (boost::tie(vi,\ vi\_end)\ =\ boost::vertices(graph);\ vi\ !=\ vi\_end;\ vi++)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ skip\ vertices\ that\ are\ in\ the\ first\ column}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(*vi\ <\ numRows)\{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ rotateZ(qureg,*vi,\ (-\/1)*qubitAngles[*vi]);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ hadamard(qureg,*vi);}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ m\ =\ measure(qureg,*vi);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes.push\_back(m);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(*vi\ >=\ numRows)\{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ qreal\ correctedAngle;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ correctedAngle\ =\ \mbox{\hyperlink{graph_traversal_flows_8hpp_a2b29f1efbcbccfbe77481e5b1a9647c8}{computeCorrectedAngle}}(graph,measuredQubitsOutcomes,*vi,numRows,qubitAngles[*vi]);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ rotateZ(qureg,*vi,\ (-\/1)*correctedAngle);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ hadamard(qureg,*vi);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ m\ =\ measure(qureg,*vi);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes.push\_back(m);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}attempting\ to\ measure\ nothing?"{}};}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordflow}{return}\ measuredQubitsOutcomes;}
+\DoxyCodeLine{00086\ \}}
 
 \end{DoxyCode}
 \Hypertarget{flow_measurements_8hpp_a202e2cd0edb82aacb879f3ad4360dc36}\label{flow_measurements_8hpp_a202e2cd0edb82aacb879f3ad4360dc36} 
@@ -60,36 +80,54 @@ Definition at line \mbox{\hyperlink{flow_measurements_8hpp_source_l00033}{33}} o
 
 
 
-Definition at line \mbox{\hyperlink{flow_measurements_8hpp_source_l00069}{69}} of file \mbox{\hyperlink{flow_measurements_8hpp_source}{flow\+Measurements.\+hpp}}.
+Prints the measurement results to the screen. 
+
+This function prints the measurement results to the screen, including the measured qubit outcomes and the outcome lattice.
+
+
+\begin{DoxyParams}{Parameters}
+{\em measured\+Qubits\+Outcomes} & A vector containing the outcomes of qubit measurements. \\
+\hline
+{\em num\+Rows} & The number of rows in the outcome lattice. \\
+\hline
+{\em num\+Cols} & The number of columns in the outcome lattice. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{flow_measurements_8hpp_source_l00099}{99}} of file \mbox{\hyperlink{flow_measurements_8hpp_source}{flow\+Measurements.\+hpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \ \ \textcolor{comment}{//\ Print\ results\ to\ screen}}
-\DoxyCodeLine{00075\ \ \ std::cout\ <<\ std::endl;}
-\DoxyCodeLine{00076\ \ \ std::cout\ <<\ std::endl;}
-\DoxyCodeLine{00077\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Measured\ outcome\ vector\ has\ "{}}\ <<\ measuredQubitsOutcomes.size()\ <<\ \textcolor{stringliteral}{"{}\ qubits."{}}\ \ <<\ std::endl;\ }
-\DoxyCodeLine{00078\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}The\ measurements\ are:\ "{}};}
-\DoxyCodeLine{00079\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i:measuredQubitsOutcomes)\{}
-\DoxyCodeLine{00080\ \ \ \ \ std::cout\ <<\ i\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
-\DoxyCodeLine{00081\ \ \ \}}
-\DoxyCodeLine{00082\ \ \ std::cout\ <<\ std::endl;}
-\DoxyCodeLine{00083\ \ \ std::cout\ <<\ std::endl;}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00085\ }
-\DoxyCodeLine{00086\ std::cout\ <<\ \textcolor{stringliteral}{"{}Measured\ outcome\ lattice:\ "{}}\ <<\ std::endl;}
-\DoxyCodeLine{00087\ \ \ std::vector<std::vector<int>>\ latticeOutcomes\ =\ }
-\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{flow_measurements_8hpp_a794636e4b832401d96581e54141cbcba}{returnMeasQubitOutcomesLattice}}(measuredQubitsOutcomes,numRows,numCols);}
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00090\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ row\ :\ latticeOutcomes)\ \{}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ number\ :\ row)\ \{}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ number\ <<\ \textcolor{charliteral}{'\ '};}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00096\ }
-\DoxyCodeLine{00097\ \}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00103\ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00104\ \textcolor{comment}{\ \ Print\ results\ to\ scree}}
+\DoxyCodeLine{00105\ \textcolor{comment}{\ \ */}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \textcolor{comment}{//\ Print\ results\ to\ screen}}
+\DoxyCodeLine{00108\ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00109\ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00110\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Measured\ outcome\ vector\ has\ "{}}\ <<\ measuredQubitsOutcomes.size()\ <<\ \textcolor{stringliteral}{"{}\ qubits."{}}\ \ <<\ std::endl;\ }
+\DoxyCodeLine{00111\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}The\ measurements\ are:\ "{}};}
+\DoxyCodeLine{00112\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i:measuredQubitsOutcomes)\{}
+\DoxyCodeLine{00113\ \ \ \ \ std::cout\ <<\ i\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00114\ \ \ \}}
+\DoxyCodeLine{00115\ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00116\ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ std::cout\ <<\ \textcolor{stringliteral}{"{}Measured\ outcome\ lattice:\ "{}}\ <<\ std::endl;}
+\DoxyCodeLine{00120\ \ \ std::vector<std::vector<int>>\ latticeOutcomes\ =\ }
+\DoxyCodeLine{00121\ \ \ \ \ \mbox{\hyperlink{flow_measurements_8hpp_a794636e4b832401d96581e54141cbcba}{returnMeasQubitOutcomesLattice}}(measuredQubitsOutcomes,numRows,numCols);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ row\ :\ latticeOutcomes)\ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ number\ :\ row)\ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ number\ <<\ \textcolor{charliteral}{'\ '};}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \}}
 
 \end{DoxyCode}
 \Hypertarget{flow_measurements_8hpp_a794636e4b832401d96581e54141cbcba}\label{flow_measurements_8hpp_a794636e4b832401d96581e54141cbcba} 
@@ -100,25 +138,49 @@ Definition at line \mbox{\hyperlink{flow_measurements_8hpp_source_l00069}{69}} o
 
 
 
-Definition at line \mbox{\hyperlink{flow_measurements_8hpp_source_l00014}{14}} of file \mbox{\hyperlink{flow_measurements_8hpp_source}{flow\+Measurements.\+hpp}}.
+Constructs a lattice representation of qubit measurement outcomes. 
+
+This function constructs a lattice representation of qubit measurement outcomes based on the provided {\ttfamily meas\+Outcomes} vector, number of rows ({\ttfamily num\+Rows}), and number of columns ({\ttfamily num\+Cols}).
+
+
+\begin{DoxyParams}{Parameters}
+{\em meas\+Outcomes} & A vector containing the outcomes of qubit measurements. \\
+\hline
+{\em num\+Rows} & The number of rows in the lattice. \\
+\hline
+{\em num\+Cols} & The number of columns in the lattice. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A two-\/dimensional vector representing the lattice with qubit measurement outcomes. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+{\ttfamily meas\+Outcomes} must contain {\ttfamily num\+Rows \texorpdfstring{$\ast$}{*} num\+Cols} elements. 
+\end{DoxyPrecond}
+
+
+Definition at line \mbox{\hyperlink{flow_measurements_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{flow_measurements_8hpp_source}{flow\+Measurements.\+hpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ numRows\ *\ numCols;}
-\DoxyCodeLine{00016\ \ \ \ \ std::vector<std::vector<int>>\ lattice(numRows,\ std::vector<int>(numCols,\ -\/1));}
-\DoxyCodeLine{00017\ \ \ \ \ std::vector<int>\ numbers(numVertices);}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numVertices;\ i++)\ \{}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ numbers[i]\ =\ i;}
-\DoxyCodeLine{00020\ \ \ \ \ \}}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ number\ :\ numbers)\ \{}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ row\ =\ number\ \%\ numRows;}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ col\ =\ number\ /\ numRows;}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ lattice[row][col]\ =\ measOutcomes[number];}
-\DoxyCodeLine{00026\ \ \ \ \ \}}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{return}\ lattice;}
-\DoxyCodeLine{00029\ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00026\ \textcolor{comment}{\ \ \ \ Fill\ lattice\ with\ qubit\ measurements}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ \ */}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ numRows\ *\ numCols;}
+\DoxyCodeLine{00029\ \ \ \ \ std::vector<std::vector<int>>\ lattice(numRows,\ std::vector<int>(numCols,\ -\/1));}
+\DoxyCodeLine{00030\ \ \ \ \ std::vector<int>\ numbers(numVertices);}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numVertices;\ i++)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ numbers[i]\ =\ i;}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ number\ :\ numbers)\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ row\ =\ number\ \%\ numRows;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ col\ =\ number\ /\ numRows;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ lattice[row][col]\ =\ measOutcomes[number];}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{return}\ lattice;}
+\DoxyCodeLine{00042\ \}}
 
 \end{DoxyCode}

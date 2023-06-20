@@ -12,63 +12,49 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_general_assert_functions_8hpp_source_1l00009"/>00009 
 <anchor xml:id="_general_assert_functions_8hpp_source_1l00010"/>00010 
 <anchor xml:id="_general_assert_functions_8hpp_source_1l00011"/>00011 
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00012"/>00012 <emphasis role="keyword">using&#32;namespace&#32;</emphasis>boost;
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00012"/>00012 
 <anchor xml:id="_general_assert_functions_8hpp_source_1l00013"/>00013 
 <anchor xml:id="_general_assert_functions_8hpp_source_1l00014"/>00014 
 <anchor xml:id="_general_assert_functions_8hpp_source_1l00015"/>00015 
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00016"/>00016 
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00017"/>00017 
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00018"/>00018 <emphasis role="comment">/*</emphasis>
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00019"/>00019 <emphasis role="comment">&#32;&#32;Return&#32;true&#32;if&#32;i&#32;==&#32;j,&#32;else&#32;false</emphasis>
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00020"/>00020 <emphasis role="comment">*/</emphasis>
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00021"/><link linkend="_general_assert_functions_8hpp_1ab8bc2aa68695d561b6a3d544658b5c70">00021</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_general_assert_functions_8hpp_1ab8bc2aa68695d561b6a3d544658b5c70">testTwoValueEquate</link>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i,&#32;<emphasis role="keywordtype">int</emphasis>&#32;j)&#32;{
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00022"/>00022 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(i==j);
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00023"/>00023 }
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00024"/>00024 
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00025"/>00025 
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00026"/>00026 <emphasis role="comment">/*</emphasis>
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00027"/>00027 <emphasis role="comment">&#32;&#32;Get&#32;minimum&#32;value&#32;inside&#32;a&#32;vector</emphasis>
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00028"/>00028 <emphasis role="comment">*/</emphasis>
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00029"/><link linkend="_general_assert_functions_8hpp_1aaa5eeda4e79aa986d57c3256556b6e6c">00029</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_general_assert_functions_8hpp_1aaa5eeda4e79aa986d57c3256556b6e6c">getMin</link>(<emphasis role="keyword">const</emphasis>&#32;boost::container::vector&lt;int&gt;&amp;&#32;vec)&#32;{
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(vec.empty())&#32;{
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00031"/>00031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::invalid_argument(<emphasis role="stringliteral">&quot;Cannot&#32;get&#32;max&#32;of&#32;empty&#32;vector&quot;</emphasis>);
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00032"/>00032 &#32;&#32;&#32;&#32;}
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00033"/>00033 
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00034"/>00034 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;min_val&#32;=&#32;vec[0];
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00035"/>00035 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;1;&#32;i&#32;&lt;&#32;vec.size();&#32;i++)&#32;{
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00036"/>00036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(vec[i]&#32;&lt;&#32;min_val)&#32;{
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00037"/>00037 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;min_val&#32;=&#32;vec[i];
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00038"/>00038 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;}
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00040"/>00040 
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;min_val;
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00042"/>00042 }
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00043"/>00043 
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00044"/>00044 
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00045"/>00045 <emphasis role="comment">/*</emphasis>
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00046"/>00046 <emphasis role="comment">&#32;&#32;Get&#32;maximum&#32;value&#32;inside&#32;a&#32;vector</emphasis>
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00047"/>00047 <emphasis role="comment">*/</emphasis>
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00048"/><link linkend="_general_assert_functions_8hpp_1af227e83a7360ec64f91773c37a905253">00048</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_general_assert_functions_8hpp_1af227e83a7360ec64f91773c37a905253">getMax</link>(<emphasis role="keyword">const</emphasis>&#32;boost::container::vector&lt;int&gt;&amp;&#32;vec)&#32;{
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00049"/>00049 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(vec.empty())&#32;{
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00050"/>00050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::invalid_argument(<emphasis role="stringliteral">&quot;Cannot&#32;get&#32;max&#32;of&#32;empty&#32;vector&quot;</emphasis>);
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00051"/>00051 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00025"/><link linkend="_general_assert_functions_8hpp_1ab8bc2aa68695d561b6a3d544658b5c70">00025</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_general_assert_functions_8hpp_1ab8bc2aa68695d561b6a3d544658b5c70">testTwoValueEquate</link>(<emphasis role="keywordtype">int</emphasis>&#32;i,&#32;<emphasis role="keywordtype">int</emphasis>&#32;j)&#32;{
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(i&#32;==&#32;j);
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00027"/>00027 }
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00028"/>00028 
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00038"/><link linkend="_general_assert_functions_8hpp_1aaa5eeda4e79aa986d57c3256556b6e6c">00038</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_general_assert_functions_8hpp_1aaa5eeda4e79aa986d57c3256556b6e6c">getMin</link>(<emphasis role="keyword">const</emphasis>&#32;boost::container::vector&lt;int&gt;&amp;&#32;vec)&#32;{
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00039"/>00039 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(vec.empty())&#32;{
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00040"/>00040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::invalid_argument(<emphasis role="stringliteral">&quot;Cannot&#32;get&#32;min&#32;of&#32;empty&#32;vector&quot;</emphasis>);
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00041"/>00041 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00042"/>00042 
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00043"/>00043 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;min_val&#32;=&#32;vec[0];
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00044"/>00044 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;1;&#32;i&#32;&lt;&#32;vec.size();&#32;i++)&#32;{
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00045"/>00045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(vec[i]&#32;&lt;&#32;min_val)&#32;{
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00046"/>00046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;min_val&#32;=&#32;vec[i];
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00047"/>00047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00048"/>00048 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00049"/>00049 
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00050"/>00050 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;min_val;
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00051"/>00051 }
 <anchor xml:id="_general_assert_functions_8hpp_source_1l00052"/>00052 
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00053"/>00053 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;max_val&#32;=&#32;vec[0];
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00054"/>00054 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;1;&#32;i&#32;&lt;&#32;vec.size();&#32;i++)&#32;{
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00055"/>00055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(vec[i]&#32;&gt;&#32;max_val)&#32;{
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00056"/>00056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;max_val&#32;=&#32;vec[i];
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00057"/>00057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00058"/>00058 &#32;&#32;&#32;&#32;}
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00059"/>00059 
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00060"/>00060 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;max_val;
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00061"/>00061 }
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00062"/>00062 
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00063"/>00063 
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00064"/>00064 
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00065"/>00065 <emphasis role="comment">/*</emphasis>
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00066"/>00066 <emphasis role="comment">&#32;&#32;Check&#32;if&#32;an&#32;element&#32;Int&#32;is&#32;in&#32;a&#32;vector&#32;std::vector&lt;int&gt;</emphasis>
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00067"/>00067 <emphasis role="comment">*/</emphasis>
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00068"/><link linkend="_general_assert_functions_8hpp_1a4a6a933e01029d0c61bce553817a0feb">00068</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_general_assert_functions_8hpp_1a4a6a933e01029d0c61bce553817a0feb">isIntInVector</link>(<emphasis role="keywordtype">int</emphasis>&#32;value,&#32;<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;int&gt;&amp;&#32;vec)&#32;{
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;std::find(vec.begin(),&#32;vec.end(),&#32;value)&#32;!=&#32;vec.end();
-<anchor xml:id="_general_assert_functions_8hpp_source_1l00070"/>00070 }
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00053"/>00053 
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00054"/>00054 
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00064"/><link linkend="_general_assert_functions_8hpp_1af227e83a7360ec64f91773c37a905253">00064</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_general_assert_functions_8hpp_1af227e83a7360ec64f91773c37a905253">getMax</link>(<emphasis role="keyword">const</emphasis>&#32;boost::container::vector&lt;int&gt;&amp;&#32;vec)&#32;{
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00065"/>00065 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(vec.empty())&#32;{
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00066"/>00066 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::invalid_argument(<emphasis role="stringliteral">&quot;Cannot&#32;get&#32;max&#32;of&#32;empty&#32;vector&quot;</emphasis>);
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00067"/>00067 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00068"/>00068 
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00069"/>00069 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;max_val&#32;=&#32;vec[0];
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00070"/>00070 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;1;&#32;i&#32;&lt;&#32;vec.size();&#32;i++)&#32;{
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00071"/>00071 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(vec[i]&#32;&gt;&#32;max_val)&#32;{
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00072"/>00072 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;max_val&#32;=&#32;vec[i];
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00073"/>00073 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00074"/>00074 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00075"/>00075 
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00076"/>00076 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;max_val;
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00077"/>00077 }
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00078"/>00078 
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00079"/>00079 
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00080"/>00080 
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00090"/><link linkend="_general_assert_functions_8hpp_1a4a6a933e01029d0c61bce553817a0feb">00090</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_general_assert_functions_8hpp_1a4a6a933e01029d0c61bce553817a0feb">isIntInVector</link>(<emphasis role="keywordtype">int</emphasis>&#32;value,&#32;<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;int&gt;&amp;&#32;vec)&#32;{
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;std::find(vec.begin(),&#32;vec.end(),&#32;value)&#32;!=&#32;vec.end();
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00092"/>00092 }
 </programlisting></section>

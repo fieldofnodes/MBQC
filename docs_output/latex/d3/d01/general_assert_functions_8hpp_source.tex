@@ -12,64 +12,50 @@
 \DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00009}00009\ }
 \DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00010}00010\ }
 \DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00011}00011\ }
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00012}00012\ \textcolor{keyword}{using\ namespace\ }boost;}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00012}00012\ }
 \DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00013}00013\ }
 \DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00014}00014\ }
 \DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00015}00015\ }
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00016}00016\ }
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00017}00017\ }
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00018}00018\ \textcolor{comment}{/*}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00019}00019\ \textcolor{comment}{\ \ Return\ true\ if\ i\ ==\ j,\ else\ false}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00020}00020\ \textcolor{comment}{*/}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00021}\mbox{\hyperlink{general_assert_functions_8hpp_ab8bc2aa68695d561b6a3d544658b5c70}{00021}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{general_assert_functions_8hpp_ab8bc2aa68695d561b6a3d544658b5c70}{testTwoValueEquate}}\ (\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j)\ \{}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00022}00022\ \ \ \textcolor{keywordflow}{return}\ (i==j);}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00023}00023\ \}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00024}00024\ }
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00025}00025\ }
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00026}00026\ \textcolor{comment}{/*}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00027}00027\ \textcolor{comment}{\ \ Get\ minimum\ value\ inside\ a\ vector}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00028}00028\ \textcolor{comment}{*/}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00029}\mbox{\hyperlink{general_assert_functions_8hpp_aaa5eeda4e79aa986d57c3256556b6e6c}{00029}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{general_assert_functions_8hpp_aaa5eeda4e79aa986d57c3256556b6e6c}{getMin}}(\textcolor{keyword}{const}\ boost::container::vector<int>\&\ vec)\ \{}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{if}\ (vec.empty())\ \{}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Cannot\ get\ max\ of\ empty\ vector"{}});}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00032}00032\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00033}00033\ }
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00034}00034\ \ \ \ \ \textcolor{keywordtype}{int}\ min\_val\ =\ vec[0];}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ vec.size();\ i++)\ \{}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vec[i]\ <\ min\_val)\ \{}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ min\_val\ =\ vec[i];}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00039}00039\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00040}00040\ }
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{return}\ min\_val;}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00042}00042\ \}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00043}00043\ }
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00044}00044\ }
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00045}00045\ \textcolor{comment}{/*}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00046}00046\ \textcolor{comment}{\ \ Get\ maximum\ value\ inside\ a\ vector}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00047}00047\ \textcolor{comment}{*/}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00048}\mbox{\hyperlink{general_assert_functions_8hpp_af227e83a7360ec64f91773c37a905253}{00048}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{general_assert_functions_8hpp_af227e83a7360ec64f91773c37a905253}{getMax}}(\textcolor{keyword}{const}\ boost::container::vector<int>\&\ vec)\ \{}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{if}\ (vec.empty())\ \{}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Cannot\ get\ max\ of\ empty\ vector"{}});}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00025}\mbox{\hyperlink{general_assert_functions_8hpp_ab8bc2aa68695d561b6a3d544658b5c70}{00025}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{general_assert_functions_8hpp_ab8bc2aa68695d561b6a3d544658b5c70}{testTwoValueEquate}}(\textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ j)\ \{}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{return}\ (i\ ==\ j);}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00038}\mbox{\hyperlink{general_assert_functions_8hpp_aaa5eeda4e79aa986d57c3256556b6e6c}{00038}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{general_assert_functions_8hpp_aaa5eeda4e79aa986d57c3256556b6e6c}{getMin}}(\textcolor{keyword}{const}\ boost::container::vector<int>\&\ vec)\ \{}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{if}\ (vec.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Cannot\ get\ min\ of\ empty\ vector"{}});}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordtype}{int}\ min\_val\ =\ vec[0];}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ vec.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vec[i]\ <\ min\_val)\ \{}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ min\_val\ =\ vec[i];}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{return}\ min\_val;}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00051}00051\ \}}
 \DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00052}00052\ }
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_val\ =\ vec[0];}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ vec.size();\ i++)\ \{}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vec[i]\ >\ max\_val)\ \{}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ max\_val\ =\ vec[i];}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00058}00058\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00059}00059\ }
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{return}\ max\_val;}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00061}00061\ \}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00062}00062\ }
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00063}00063\ }
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00064}00064\ }
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00065}00065\ \textcolor{comment}{/*}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00066}00066\ \textcolor{comment}{\ \ Check\ if\ an\ element\ Int\ is\ in\ a\ vector\ std::vector<int>}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00067}00067\ \textcolor{comment}{*/}}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00068}\mbox{\hyperlink{general_assert_functions_8hpp_a4a6a933e01029d0c61bce553817a0feb}{00068}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{general_assert_functions_8hpp_a4a6a933e01029d0c61bce553817a0feb}{isIntInVector}}(\textcolor{keywordtype}{int}\ value,\ \textcolor{keyword}{const}\ std::vector<int>\&\ vec)\ \{}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordflow}{return}\ std::find(vec.begin(),\ vec.end(),\ value)\ !=\ vec.end();}
-\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00070}00070\ \}}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00064}\mbox{\hyperlink{general_assert_functions_8hpp_af227e83a7360ec64f91773c37a905253}{00064}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{general_assert_functions_8hpp_af227e83a7360ec64f91773c37a905253}{getMax}}(\textcolor{keyword}{const}\ boost::container::vector<int>\&\ vec)\ \{}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{if}\ (vec.empty())\ \{}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Cannot\ get\ max\ of\ empty\ vector"{}});}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_val\ =\ vec[0];}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ vec.size();\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vec[i]\ >\ max\_val)\ \{}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ max\_val\ =\ vec[i];}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{return}\ max\_val;}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00090}\mbox{\hyperlink{general_assert_functions_8hpp_a4a6a933e01029d0c61bce553817a0feb}{00090}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{general_assert_functions_8hpp_a4a6a933e01029d0c61bce553817a0feb}{isIntInVector}}(\textcolor{keywordtype}{int}\ value,\ \textcolor{keyword}{const}\ std::vector<int>\&\ vec)\ \{}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00091}00091\ \ \ \ \ \textcolor{keywordflow}{return}\ std::find(vec.begin(),\ vec.end(),\ value)\ !=\ vec.end();}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00092}00092\ \}}
 
 \end{DoxyCode}
