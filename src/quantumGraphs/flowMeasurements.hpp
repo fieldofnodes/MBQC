@@ -8,10 +8,23 @@
 
 
 
-/*
-  Fill lattice with qubit measurements
-*/
+
+/**
+ * @brief Constructs a lattice representation of qubit measurement outcomes.
+ *
+ * This function constructs a lattice representation of qubit measurement outcomes based on the provided `measOutcomes` vector,
+ * number of rows (`numRows`), and number of columns (`numCols`).
+ *
+ * @param measOutcomes A vector containing the outcomes of qubit measurements.
+ * @param numRows The number of rows in the lattice.
+ * @param numCols The number of columns in the lattice.
+ * @return A two-dimensional vector representing the lattice with qubit measurement outcomes.
+ * @pre `measOutcomes` must contain `numRows * numCols` elements.
+ */
 std::vector<std::vector<int>> returnMeasQubitOutcomesLattice(std::vector<int> measOutcomes,int numRows, int numCols) {
+  /*
+    Fill lattice with qubit measurements
+  */
     int numVertices = numRows * numCols;
     std::vector<std::vector<int>> lattice(numRows, std::vector<int>(numCols, -1));
     std::vector<int> numbers(numVertices);
@@ -29,7 +42,18 @@ std::vector<std::vector<int>> returnMeasQubitOutcomesLattice(std::vector<int> me
 }
 
 
-
+/**
+ * @brief Measures qubits in a graph-based quantum state.
+ *
+ * This function measures qubits in a graph-based quantum state represented by the provided `qureg` and `graph`.
+ * The qubit measurement outcomes are stored in the `measuredQubitsOutcomes` vector.
+ *
+ * @param qureg The quantum register representing the quantum state.
+ * @param graph The undirected graph representing the connectivity of qubits.
+ * @param qubitAngles A vector containing the angles for qubit rotations.
+ * @param numRows The number of rows in the graph layout.
+ * @return A vector containing the outcomes of qubit measurements.
+ */
 std::vector<int> measureGraph(
     Qureg qureg,
     const undirectedGraph& graph,
@@ -63,13 +87,22 @@ std::vector<int> measureGraph(
 
 
 
-/*
-  Print results to scree
-*/
+/**
+ * @brief Prints the measurement results to the screen.
+ *
+ * This function prints the measurement results to the screen, including the measured qubit outcomes and the outcome lattice.
+ *
+ * @param measuredQubitsOutcomes A vector containing the outcomes of qubit measurements.
+ * @param numRows The number of rows in the outcome lattice.
+ * @param numCols The number of columns in the outcome lattice.
+ */
 void printResultsToScreen(
   std::vector<int> measuredQubitsOutcomes,
   int numRows,
   int numCols){
+  /*
+  Print results to scree
+  */
 
   // Print results to screen
   std::cout << std::endl;
