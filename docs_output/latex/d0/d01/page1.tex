@@ -1,0 +1,179 @@
+\chapter{Tutorial 0\+: Getting Started}
+\hypertarget{page1}{}\label{page1}\index{Tutorial 0: Getting Started@{Tutorial 0: Getting Started}}
+\hypertarget{page3_intro}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{page3_intro}
+This tutorial demonstrates the how-\/to of getting started. This includes the the usage of {\ttfamily cmake} to compile and run executable programs and algorithms in the MBQC + Qu\+EST + Boost framework. Before proceeding, ensure that you have the following dependencies installed\+:\hypertarget{page1_dependencies}{}\doxysubsection{\texorpdfstring{Dependencies}{Dependencies}}\label{page1_dependencies}
+Note\+: MBQC was developed using the Unix and Linux operating systems, there is no specific reason this software should not work on Windows OS, but it has not been tested.
+
+
+\begin{DoxyItemize}
+\item Make
+\begin{DoxyItemize}
+\item See official Make website for download instructions by clicking \href{https://www.gnu.org/software/make/}{\texttt{ here}}
+\item MBQC uses {\ttfamily GNU Make 3.\+81}
+\end{DoxyItemize}
+\item CMake
+\begin{DoxyItemize}
+\item See official CMake website for download instructions by clicking \href{https://cmake.org/}{\texttt{ here}}
+\item MBQC uses {\ttfamily cmake version 3.\+25.\+1} and requires minimum {\ttfamily cmake version 3.\+12}.
+\end{DoxyItemize}
+\item Graphviz
+\begin{DoxyItemize}
+\item See official Graphviz website for download instructions by clicking \href{https://graphviz.org/}{\texttt{ here}}
+\item MBQC uses {\ttfamily dot -\/ graphviz version 8.\+0.\+5 (20230430.\+1635)}
+\end{DoxyItemize}
+\item Qu\+EST
+\begin{DoxyItemize}
+\item See Qu\+EST Git\+Hub repository for download instructions by clicking \href{https://github.com/QuEST-Kit/QuEST}{\texttt{ here}}
+\item See Qu\+EST website for download instructions by clicking \href{https://quest.qtechtheory.org/}{\texttt{ here}}
+\item Follow the Qu\+EST documentation for downloading and running.
+\item Qu\+EST is capable of being used with many different hardware backends, but development of MBQC has been done in vanilla Qu\+EST used as-\/is from Git\+Hub.
+\item MBQC uses the {\ttfamily master} branch supplied at Git\+Hub.
+\end{DoxyItemize}
+\item Boost
+\begin{DoxyItemize}
+\item See Boost official website for download instruction by clicking \href{https://www.boost.org/}{\texttt{ here}}
+\item Depending on OS there are different pathways to download Boost, in mac Homebrew (\href{https://brew.sh/}{\texttt{ here}}) is a popular package manager, as well as Mac\+Ports (\href{https://www.macports.org/}{\texttt{ here}})
+\item MBQC uses {\ttfamily boost version 1.\+81}
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+Once you have the necessary dependencies, you can continue with the build process.\hypertarget{page1_gettingStarted}{}\doxysubsection{\texorpdfstring{Getting MBQC}{Getting MBQC}}\label{page1_gettingStarted}
+Once the dependencies have been met, the MBQC software {\ttfamily code} needs to be stored on your device. To obtain the MBQC repository, you can follow these steps\+:
+
+
+\begin{DoxyEnumerate}
+\item Go to the MBQC repository on Git\+Hub\+: \href{https://github.com/ediparquantum/MBQC}{\texttt{ MBQC Repository}}
+\item Locate the green \"{}\+Code\"{} button and select your preferred method to download the repository\+:
+\begin{DoxyItemize}
+\item HTTPS\+: {\ttfamily \href{https://github.com/ediparquantum/MBQC.git}{\texttt{ https\+://github.\+com/ediparquantum/\+MBQC.\+git}}}
+\item SSH\+: {\ttfamily git@github.\+com\+:ediparquantum/\+MBQC.\+git}
+\item Git\+Hub CLI\+: {\ttfamily gh repo clone ediparquantum/\+MBQC}
+\end{DoxyItemize}
+\end{DoxyEnumerate}
+
+In your terminal, navigate to the folder where you want to access the project, for example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ /home/username/projects/}
+
+\end{DoxyCode}
+
+
+Clone the repository using one of the provided methods, such as the SSH method\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ git@github.com:ediparquantum/MBQC.git}
+
+\end{DoxyCode}
+\hypertarget{page1_runningMBQC}{}\doxysubsection{\texorpdfstring{Running MBQC}{Running MBQC}}\label{page1_runningMBQC}
+Navigate to the MBQC directory\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ MBQC}
+
+\end{DoxyCode}
+
+
+Create a \"{}build\"{} directory\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build}
+
+\end{DoxyCode}
+
+
+Change to the build directory\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ build}
+
+\end{DoxyCode}
+
+
+At this point, your current directory should be something like\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/home/username/projects/MBQC/build}
+
+\end{DoxyCode}
+
+
+Build the project
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ ..}
+
+\end{DoxyCode}
+
+
+If there are no problems, then after some text is printed to the scree, the following should appear and the {\ttfamily cmake ..} has been successfully executed. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/\ Configuring\ done}
+\DoxyCodeLine{-\/-\/\ Generating\ done}
+\DoxyCodeLine{-\/-\/\ Build\ files\ have\ been\ written\ to:\ /home/username/projects/MBQC/build}
+
+\end{DoxyCode}
+
+
+According the the file {\ttfamily CMake\+Lists.\+txt} located in {\ttfamily /home/username/projects/\+MBQC/} when no {\ttfamily USER\+\_\+\+SOURCE} file is issued at cmake ({\ttfamily cmake .. -\/DUSER\+\_\+\+SOURCE=\"{}some\+\_\+path/to/a/file.\+cpp\"{}) the an example script}\doxylink{mbqc_starter_8cpp}{examples/mbqc\+Starter.\+cpp}\`{} that is chosen to be compiled. Next in the terminal run
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+
+
+Then run the executable 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./mbqcStarter}
+
+\end{DoxyCode}
+
+
+The output should look something like this.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Measured\ outcome\ vector\ has\ 16\ qubits.}
+\DoxyCodeLine{The\ measurements\ are:\ 0\ 1\ 1\ 1\ 0\ 0\ 1\ 0\ 0\ 0\ 1\ 0\ 1\ 0\ 1\ 1\ }
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{Measured\ outcome\ lattice:\ }
+\DoxyCodeLine{0\ 0\ 0\ 1\ }
+\DoxyCodeLine{1\ 0\ 0\ 0\ }
+\DoxyCodeLine{1\ 1\ 1\ 1\ }
+\DoxyCodeLine{1\ 0\ 0\ 1\ }
+
+\end{DoxyCode}
+\hypertarget{page1_runningOtherFile}{}\doxysubsection{\texorpdfstring{Running Other Files}{Running Other Files}}\label{page1_runningOtherFile}
+In the process of development many files will no doubt be created. To run these make use of the two options during {\ttfamily cmake}
+
+
+\begin{DoxyEnumerate}
+\item {\ttfamily USER\+\_\+\+SOURCE}
+\item {\ttfamily OUTPUT\+\_\+\+EXE}
+\end{DoxyEnumerate}
+
+Run the {\ttfamily cmake} with these options. Note I chose to make the executable the same name as the file, but this is not needed, choose what suits. See CMake website for background. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ ..\ -\/DUSER\_SOURCE="{}fileToBeExecuted.cpp"{}\ -\/DOUTPUT\_EXE=fileToBeExecuted}
+
+\end{DoxyCode}
+
+
+Run the {\ttfamily make} command 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+
+
+Execute the executable script. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./fileToBeExecuted}
+
+\end{DoxyCode}
+
+
+This is how you run a file. For any help, questions or problems see the \href{https://github.com/ediparquantum/MBQC}{\texttt{ MBQC}} repository site to create an
+\begin{DoxyItemize}
+\item \href{https://github.com/ediparquantum/MBQC/issues}{\texttt{ issue}},
+\item \href{https://github.com/ediparquantum/MBQC/pulls}{\texttt{ pull-\/request}} or
+\item open a \href{https://github.com/ediparquantum/MBQC/discussions}{\texttt{ discussion}}. 
+\end{DoxyItemize}

@@ -1,7 +1,9 @@
 # 
 
 
-# Measurement Based Quantum Computation (MBQC) Simulator (MBQC V0.01)
+# MBQC
+
+wMeasurement Based Quantum Computation (MBQC) Simulator (MBQC V0.01)
 
 Measurement-based quantum computation (MBQC) is an alternative computational model to the circuit-based quantum computation (CBQC) model. While many quantum computing simulators like 
 

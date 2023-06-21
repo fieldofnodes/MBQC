@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_page1" xml:lang="en-US">
+<title>Tutorial 0: Getting Started</title>
+<indexterm><primary>Tutorial 0: Getting Started</primary></indexterm>
+<section xml:id="_page3_1intro">
+<title>Introduction</title>
+
+<para>This tutorial demonstrates the how-to of getting started. This includes the the usage of <computeroutput>cmake</computeroutput> to compile and run executable programs and algorithms in the MBQC + QuEST + Boost framework. Before proceeding, ensure that you have the following dependencies installed:</para>
+<section xml:id="_page1_1dependencies">
+<title>Dependencies</title>
+
+<para>Note: MBQC was developed using the Unix and Linux operating systems, there is no specific reason this software should not work on Windows OS, but it has not been tested.</para>
+
+<para><itemizedlist>
+<listitem>
+<para>Make<itemizedlist>
+<listitem>
+<para>See official Make website for download instructions by clicking <link xlink:href="https://www.gnu.org/software/make/">here</link></para>
+</listitem><listitem>
+<para>MBQC uses <computeroutput>GNU Make 3.81</computeroutput></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem>
+<para>CMake<itemizedlist>
+<listitem>
+<para>See official CMake website for download instructions by clicking <link xlink:href="https://cmake.org/">here</link></para>
+</listitem><listitem>
+<para>MBQC uses <computeroutput>cmake version 3.25.1</computeroutput> and requires minimum <computeroutput>cmake version 3.12</computeroutput>.</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem>
+<para>Graphviz<itemizedlist>
+<listitem>
+<para>See official Graphviz website for download instructions by clicking <link xlink:href="https://graphviz.org/">here</link></para>
+</listitem><listitem>
+<para>MBQC uses <computeroutput>dot - graphviz version 8.0.5 (20230430.1635)</computeroutput></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem>
+<para>QuEST<itemizedlist>
+<listitem>
+<para>See QuEST GitHub repository for download instructions by clicking <link xlink:href="https://github.com/QuEST-Kit/QuEST">here</link></para>
+</listitem><listitem>
+<para>See QuEST website for download instructions by clicking <link xlink:href="https://quest.qtechtheory.org/">here</link></para>
+</listitem><listitem>
+<para>Follow the QuEST documentation for downloading and running.</para>
+</listitem><listitem>
+<para>QuEST is capable of being used with many different hardware backends, but development of MBQC has been done in vanilla QuEST used as-is from GitHub.</para>
+</listitem><listitem>
+<para>MBQC uses the <computeroutput>master</computeroutput> branch supplied at GitHub.</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem>
+<para>Boost<itemizedlist>
+<listitem>
+<para>See Boost official website for download instruction by clicking <link xlink:href="https://www.boost.org/">here</link></para>
+</listitem><listitem>
+<para>Depending on OS there are different pathways to download Boost, in mac Homebrew (<link xlink:href="https://brew.sh/">here</link>) is a popular package manager, as well as MacPorts (<link xlink:href="https://www.macports.org/">here</link>)</para>
+</listitem><listitem>
+<para>MBQC uses <computeroutput>boost version 1.81</computeroutput></para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+
+<para>Once you have the necessary dependencies, you can continue with the build process.</para>
+</section>
+<section xml:id="_page1_1gettingStarted">
+<title>Getting MBQC</title>
+
+<para>Once the dependencies have been met, the MBQC software <computeroutput>code</computeroutput> needs to be stored on your device. To obtain the MBQC repository, you can follow these steps:</para>
+
+<para><orderedlist>
+<listitem>
+<para>Go to the MBQC repository on GitHub: <link xlink:href="https://github.com/ediparquantum/MBQC">MBQC Repository</link></para>
+</listitem><listitem>
+<para>Locate the green &quot;Code&quot; button and select your preferred method to download the repository:<itemizedlist>
+<listitem>
+<para>HTTPS: <computeroutput><link xlink:href="https://github.com/ediparquantum/MBQC.git">https://github.com/ediparquantum/MBQC.git</link></computeroutput></para>
+</listitem><listitem>
+<para>SSH: <computeroutput>git@github.com:ediparquantum/MBQC.git</computeroutput></para>
+</listitem><listitem>
+<para>GitHub CLI: <computeroutput>gh repo clone ediparquantum/MBQC</computeroutput></para>
+</listitem></itemizedlist>
+</para>
+</listitem></orderedlist>
+</para>
+
+<para>In your terminal, navigate to the folder where you want to access the project, for example: <literallayout><computeroutput>cd&#32;/home/username/projects/
+</computeroutput></literallayout></para>
+
+<para>Clone the repository using one of the provided methods, such as the SSH method: <literallayout><computeroutput>git&#32;clone&#32;git@github.com:ediparquantum/MBQC.git
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_page1_1runningMBQC">
+<title>Running MBQC</title>
+
+<para>Navigate to the MBQC directory: <literallayout><computeroutput>cd&#32;MBQC
+</computeroutput></literallayout></para>
+
+<para>Create a &quot;build&quot; directory: <literallayout><computeroutput>mkdir&#32;build
+</computeroutput></literallayout></para>
+
+<para>Change to the build directory: <literallayout><computeroutput>cd&#32;build
+</computeroutput></literallayout></para>
+
+<para>At this point, your current directory should be something like: <literallayout><computeroutput>/home/username/projects/MBQC/build
+</computeroutput></literallayout></para>
+
+<para>Build the project</para>
+
+<para><literallayout><computeroutput>cmake&#32;..
+</computeroutput></literallayout></para>
+
+<para>If there are no problems, then after some text is printed to the scree, the following should appear and the <computeroutput>cmake ..</computeroutput> has been successfully executed. <literallayout><computeroutput>--&#32;Configuring&#32;done
+--&#32;Generating&#32;done
+--&#32;Build&#32;files&#32;have&#32;been&#32;written&#32;to:&#32;/home/username/projects/MBQC/build
+</computeroutput></literallayout></para>
+
+<para>According the the file <computeroutput>CMakeLists.txt</computeroutput> located in <computeroutput>/home/username/projects/MBQC/</computeroutput> when no <computeroutput>USER_SOURCE</computeroutput> file is issued at cmake (<computeroutput>cmake .. -DUSER_SOURCE=&quot;some_path/to/a/file.cpp&quot;) the an example script</computeroutput><link linkend="_mbqc_starter_8cpp">examples/mbqcStarter.cpp</link>` that is chosen to be compiled. Next in the terminal run</para>
+
+<para><literallayout><computeroutput>make
+</computeroutput></literallayout></para>
+
+<para>Then run the executable <literallayout><computeroutput>./mbqcStarter
+</computeroutput></literallayout></para>
+
+<para>The output should look something like this.</para>
+
+<para><literallayout><computeroutput>Measured&#32;outcome&#32;vector&#32;has&#32;16&#32;qubits.
+The&#32;measurements&#32;are:&#32;0&#32;1&#32;1&#32;1&#32;0&#32;0&#32;1&#32;0&#32;0&#32;0&#32;1&#32;0&#32;1&#32;0&#32;1&#32;1&#32;
+
+
+Measured&#32;outcome&#32;lattice:&#32;
+0&#32;0&#32;0&#32;1&#32;
+1&#32;0&#32;0&#32;0&#32;
+1&#32;1&#32;1&#32;1&#32;
+1&#32;0&#32;0&#32;1&#32;
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_page1_1runningOtherFile">
+<title>Running Other Files</title>
+
+<para>In the process of development many files will no doubt be created. To run these make use of the two options during <computeroutput>cmake</computeroutput></para>
+
+<para><orderedlist>
+<listitem>
+<para><computeroutput>USER_SOURCE</computeroutput></para>
+</listitem><listitem>
+<para><computeroutput>OUTPUT_EXE</computeroutput></para>
+</listitem></orderedlist>
+</para>
+
+<para>Run the <computeroutput>cmake</computeroutput> with these options. Note I chose to make the executable the same name as the file, but this is not needed, choose what suits. See CMake website for background. <literallayout><computeroutput>cmake&#32;..&#32;-DUSER_SOURCE=<emphasis role="stringliteral">&quot;fileToBeExecuted.cpp&quot;</emphasis>&#32;-DOUTPUT_EXE=fileToBeExecuted
+</computeroutput></literallayout></para>
+
+<para>Run the <computeroutput>make</computeroutput> command <literallayout><computeroutput>make
+</computeroutput></literallayout></para>
+
+<para>Execute the executable script. <literallayout><computeroutput>./fileToBeExecuted
+</computeroutput></literallayout></para>
+
+<para>This is how you run a file. For any help, questions or problems see the <link xlink:href="https://github.com/ediparquantum/MBQC">MBQC</link> repository site to create an<itemizedlist>
+<listitem>
+<para><link xlink:href="https://github.com/ediparquantum/MBQC/issues">issue</link>,</para>
+</listitem><listitem>
+<para><link xlink:href="https://github.com/ediparquantum/MBQC/pulls">pull-request</link> or</para>
+</listitem><listitem>
+<para>open a <link xlink:href="https://github.com/ediparquantum/MBQC/discussions">discussion</link>. </para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
+</section>

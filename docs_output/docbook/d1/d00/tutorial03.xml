@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_tutorial03" xml:lang="en-US">
+<title>Tutorial 3: 1D Odd size angles 0</title>
+<indexterm><primary>Tutorial 3: 1D Odd size angles 0</primary></indexterm>
+<section xml:id="_tutorial03_1intro">
+<title>Introduction</title>
+
+<para>This tutorial demonstrates the creation of a 1D lattice in MBQC where each qubit is initialized with an H gate to be |+&gt;, and each qubit has an angle of 0 on the z-axis. The goal is to show that with an odd number of qubits and specific flow and basis measurements, the final qubit should always be 0.</para>
+
+<para>The source code can be foubd at <link linkend="_test_odd_number_qubit_angles_all_zero_8cpp">tests/testOddNumberQubitAnglesAllZero.cpp</link>. In the code there is a loop, which iterates the test 1e6 times and runs the assert command each iteration. Simply change 1e6 to 1 and you will run the simulation once.</para>
+
+<para><literallayout><computeroutput><emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;1e6;&#32;i++)
+&#32;{}
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_tutorial03_1code">
+<title>Code Description</title>
+<section xml:id="_tutorial03_1include">
+<title>Include Package Header File</title>
+
+<para>The script starts by including the necessary package header file:</para>
+
+<para><literallayout><computeroutput><emphasis role="preprocessor">#include&#32;&quot;<link linkend="_packages_8hpp">packages.hpp</link>&quot;</emphasis>
+</computeroutput></literallayout></para>
+</section>
+<section xml:id="_tutorial03_1initValues">
+<title>The following code initializes the necessary variables and sets values for the 1D lattice:</title>
+
+<para><literallayout><computeroutput><emphasis role="keywordtype">int</emphasis>&#32;numRows;
+<emphasis role="keywordtype">int</emphasis>&#32;numCols;
+<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+<emphasis role="keywordtype">int</emphasis>&#32;numVertices;
+std::vector&lt;qreal&gt;&#32;qubitAngles;
+std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;
+
+<emphasis role="comment">//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
+numRows&#32;=&#32;1;
+numCols&#32;=&#32;11;&#32;<emphasis role="comment">//&#32;Test&#32;on&#32;an&#32;odd&#32;number&#32;of&#32;qubits</emphasis>
+latticeGraph&#32;=&#32;<link linkend="_graph_constructions_8hpp_1a74f9014929a19ec558c3bc766754f1c3">createLatticeGraph</link>(numRows,&#32;numCols);
+numVertices&#32;=&#32;boost::num_vertices(latticeGraph);
+</computeroutput></literallayout></para>
+
+<para>The quantum circuit is created and initialized:</para>
+
+<para><literallayout><computeroutput><emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+
+<emphasis role="comment">//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+Qureg&#32;qureg&#32;=&#32;createQureg(numVertices,&#32;env);
+
+<emphasis role="comment">//&#32;Initialize&#32;qubit&#32;angles&#32;to&#32;0</emphasis>
+qubitAngles&#32;=&#32;<link linkend="_angle_construction_8hpp_1aabc90c9d60fe6133e0143eda8db51906">initAllAnglesZero</link>(numVertices);
+
+<emphasis role="comment">//&#32;Initialise&#32;in&#32;the&#32;plus&#32;state</emphasis>
+initPlusState(qureg);
+
+<emphasis role="comment">//&#32;Add&#32;angles&#32;to&#32;the&#32;qubits</emphasis>
+<link linkend="_angle_construction_8hpp_1a6647ed996ec54a9137e68e6c6317e8ee">addAngleRotateZgate</link>(qureg,&#32;qubitAngles);
+</computeroutput></literallayout></para>
+
+<para>The graph is entangled and measurements are performed on the lattice:</para>
+
+<para><literallayout><computeroutput><emphasis role="comment">//&#32;Entangle&#32;graph</emphasis>
+<link linkend="_quantum_graph_cluster_states_8hpp_1a3f830234f9eb3a150a084b0f2b4aa056">entangleGraph</link>(qureg,&#32;latticeGraph);
+
+<emphasis role="comment">//&#32;Measure&#32;graph</emphasis>
+measuredQubitsOutcomes&#32;=&#32;<link linkend="_flow_measurements_8hpp_1a7231be9a1c347894c1d01c349f4b41c7">measureGraph</link>(qureg,&#32;latticeGraph,&#32;qubitAngles,&#32;numRows);
+
+assert((measuredQubitsOutcomes.back()&#32;==&#32;0)&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;The&#32;last&#32;qubit&#32;must&#32;be&#32;0,&#32;it&#32;is&#32;not.&quot;</emphasis>);
+</computeroutput></literallayout></para>
+</section>
+</section>
+<section xml:id="_tutorial03_1conclusion">
+<title>Conclusion</title>
+
+<para>This tutorial demonstrates the creation of a 1D lattice in MBQC where all qubit angles are 0. By following the specified flow and basis measurements, it ensures that the final qubit is always 0. </para>
+</section>
+</section>

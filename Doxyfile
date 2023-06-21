@@ -1271,7 +1271,7 @@ VERBATIM_HEADERS       = YES
 # classes, structs, unions or interfaces.
 # The default value is: YES.
 
-ALPHABETICAL_INDEX     = YES
+ALPHABETICAL_INDEX     = NO
 
 # The IGNORE_PREFIX tag can be used to specify a prefix (or a list of prefixes)
 # that should be ignored while generating the index headers. The IGNORE_PREFIX
@@ -1437,7 +1437,7 @@ HTML_DYNAMIC_MENUS     = YES
 # The default value is: NO.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_DYNAMIC_SECTIONS  = YES
+HTML_DYNAMIC_SECTIONS  = GettingStarted=10 TutorialGroup=20
 
 # With HTML_INDEX_NUM_ENTRIES one can control the preferred number of entries
 # shown in the various tree structured indices initially; the user can expand

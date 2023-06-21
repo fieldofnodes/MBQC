@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_mbqc_starter_8cpp_source" xml:lang="en-US">
+<title>mbqcStarter.cpp</title>
+<indexterm><primary>examples/mbqcStarter.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_mbqc_starter_8cpp_source_1l00001"/>00001 
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Filename&#32;&#32;:&#32;mbqcStarterFile.cpp</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00003"/>00003 <emphasis role="comment">//&#32;Author&#32;&#32;&#32;&#32;:&#32;Jonathan&#32;Miller</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00004"/>00004 <emphasis role="comment">//&#32;Date&#32;&#32;&#32;&#32;&#32;&#32;:&#32;2023-06-19</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00005"/>00005 <emphasis role="comment">//&#32;Aim&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;aim_script</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00006"/>00006 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Lattice&#32;graph&#32;NxM</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00007"/>00007 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Flow:&#32;same&#32;row&#32;-&gt;&#32;column&#32;(i+num_rows)</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00008"/>00008 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Script&#32;overview:</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00009"/>00009 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;&#32;&#32;+&#32;It&#32;includes&#32;the&#32;necessary&#32;package&#32;header&#32;file.</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00010"/>00010 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;&#32;&#32;+&#32;The&#32;main()&#32;function&#32;serves&#32;as&#32;the&#32;entry&#32;point&#32;for&#32;the&#32;program.</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00011"/>00011 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;&#32;&#32;+&#32;Several&#32;variables&#32;of&#32;different&#32;types&#32;are&#32;declared&#32;and&#32;initialized.</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00012"/>00012 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;&#32;&#32;+&#32;The&#32;program&#32;creates&#32;a&#32;lattice&#32;graph&#32;based&#32;on&#32;the&#32;specified&#32;number&#32;of&#32;rows&#32;and&#32;columns.</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00013"/>00013 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;&#32;&#32;+&#32;The&#32;graph&#32;is&#32;printed&#32;to&#32;a&#32;file.</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00014"/>00014 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;&#32;&#32;+&#32;The&#32;QuEST&#32;environment&#32;is&#32;initialized.</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00015"/>00015 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;&#32;&#32;+&#32;A&#32;quantum&#32;register&#32;is&#32;created&#32;with&#32;the&#32;specified&#32;number&#32;of&#32;vertices.</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00016"/>00016 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;&#32;&#32;+&#32;Random&#32;angles&#32;in&#32;the&#32;range&#32;of&#32;π&#32;on&#32;N&#32;angles&#32;are&#32;initialized&#32;and&#32;assigned&#32;to&#32;the&#32;qubitAngles&#32;vector.</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00017"/>00017 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;&#32;&#32;+&#32;The&#32;quantum&#32;register&#32;is&#32;initialized&#32;in&#32;the&#32;plus&#32;state.</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00018"/>00018 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;&#32;&#32;+&#32;Angle&#32;rotations&#32;around&#32;the&#32;Z-axis&#32;are&#32;applied&#32;to&#32;the&#32;qubits&#32;based&#32;on&#32;the&#32;qubitAngles&#32;vector.</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00019"/>00019 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;&#32;&#32;+&#32;The&#32;graph&#32;is&#32;entangled&#32;using&#32;the&#32;entangleGraph&#32;function.</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00020"/>00020 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;&#32;&#32;+&#32;The&#32;graph&#32;is&#32;measured,&#32;and&#32;the&#32;outcomes&#32;are&#32;stored&#32;in&#32;the&#32;measuredQubitsOutcomes&#32;vector.</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00021"/>00021 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;&#32;&#32;+&#32;The&#32;results&#32;are&#32;printed&#32;to&#32;the&#32;screen.</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00022"/>00022 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;&#32;&#32;+&#32;The&#32;QuEST&#32;environment&#32;and&#32;the&#32;quantum&#32;register&#32;are&#32;deallocated.</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00023"/>00023 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;&#32;&#32;+&#32;The&#32;program&#32;returns&#32;0&#32;to&#32;indicate&#32;successful&#32;execution.</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00025"/>00025 <emphasis role="comment"></emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00026"/>00026 
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00027"/>00027 
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00028"/>00028 
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00029"/>00029 <emphasis role="comment">//&#32;Include&#32;package&#32;header&#32;file</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_packages_8hpp">packages.hpp</link>&quot;</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00031"/>00031 
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00032"/>00032 
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00033"/>00033 <emphasis role="comment">//&#32;Set&#32;up&#32;the&#32;main&#32;function</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00034"/><link linkend="_mbqc_starter_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00034</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_mbqc_starter_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00035"/>00035 &#32;&#32;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00036"/>00036 &#32;&#32;<emphasis role="comment">//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00037"/>00037 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00038"/>00038 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00039"/>00039 &#32;&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00040"/>00040 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00041"/>00041 &#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00042"/>00042 &#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00043"/>00043 &#32;&#32;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00044"/>00044 &#32;&#32;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00045"/>00045 &#32;&#32;<emphasis role="comment">//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00046"/>00046 &#32;&#32;numRows&#32;=&#32;4;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00047"/>00047 &#32;&#32;numCols&#32;=&#32;4;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00048"/>00048 &#32;&#32;latticeGraph&#32;=&#32;<link linkend="_graph_constructions_8hpp_1a74f9014929a19ec558c3bc766754f1c3">createLatticeGraph</link>(numRows,numCols);
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00049"/>00049 &#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00050"/>00050 &#32;&#32;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00051"/>00051 &#32;&#32;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00052"/>00052 &#32;&#32;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00053"/>00053 &#32;&#32;<emphasis role="comment">//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00054"/>00054 &#32;&#32;<emphasis role="comment">//&#32;Update&#32;with&#32;desired&#32;directory&#32;to&#32;view&#32;graph.</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00055"/>00055 &#32;&#32;std::string&#32;figsDir&#32;=&#32;MBQC_FIGS_DIR;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00056"/>00056 &#32;&#32;std::string&#32;graphName&#32;=&#32;<emphasis role="stringliteral">&quot;lattice2DGraphCmakeV2&quot;</emphasis>;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00057"/>00057 &#32;&#32;std::string&#32;format&#32;=&#32;PNG_FORMAT;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00058"/>00058 &#32;&#32;<link linkend="_write_graph_graph_viz_dot_file_8hpp_1a3d553b54b16922ee146bfb33201a3993">printGraphToFile</link>(latticeGraph,figsDir,graphName,format);
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00059"/>00059 
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00060"/>00060 &#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00061"/>00061 &#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00062"/>00062 &#32;&#32;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00063"/>00063 &#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00064"/>00064 &#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numVertices,&#32;env);
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00065"/>00065 &#32;&#32;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00066"/>00066 &#32;&#32;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00067"/>00067 &#32;&#32;<emphasis role="comment">//qubitAngles&#32;=&#32;initRandomPiOnNAnglesMod2kPi(numVertices,&#32;4);</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00068"/>00068 &#32;&#32;qubitAngles&#32;=&#32;<link linkend="_angle_construction_8hpp_1adde2e56cefa79b49346bc9e560b4430b">initRandomPiOnNAnglesMod2kPiPlusPi</link>(numVertices,&#32;4);
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00069"/>00069 &#32;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00070"/>00070 
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00071"/>00071 &#32;&#32;<emphasis role="comment">//&#32;initialise&#32;in&#32;the&#32;plus&#32;state</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00072"/>00072 &#32;&#32;initPlusState(qureg);
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00073"/>00073 
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00074"/>00074 &#32;&#32;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00075"/>00075 &#32;&#32;<emphasis role="comment">//&#32;add&#32;angles&#32;to&#32;the&#32;qubits</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00076"/>00076 &#32;&#32;<link linkend="_angle_construction_8hpp_1a6647ed996ec54a9137e68e6c6317e8ee">addAngleRotateZgate</link>(qureg,qubitAngles);
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00077"/>00077 &#32;&#32;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00078"/>00078 &#32;&#32;&#32;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00079"/>00079 &#32;&#32;<emphasis role="comment">//&#32;entangle&#32;graph</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00080"/>00080 &#32;&#32;<link linkend="_quantum_graph_cluster_states_8hpp_1a3f830234f9eb3a150a084b0f2b4aa056">entangleGraph</link>(qureg,latticeGraph);
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00081"/>00081 
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00082"/>00082 
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00083"/>00083 &#32;&#32;<emphasis role="comment">//&#32;measure&#32;graph</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00084"/>00084 &#32;&#32;measuredQubitsOutcomes&#32;=&#32;<link linkend="_flow_measurements_8hpp_1a7231be9a1c347894c1d01c349f4b41c7">measureGraph</link>(
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00085"/>00085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qureg,
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00086"/>00086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;latticeGraph,
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles,
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numRows);
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00089"/>00089 
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00091"/>00091 &#32;&#32;<emphasis role="comment">//&#32;print&#32;results&#32;to&#32;screen</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00092"/>00092 &#32;&#32;<link linkend="_flow_measurements_8hpp_1a202e2cd0edb82aacb879f3ad4360dc36">printResultsToScreen</link>(measuredQubitsOutcomes,numRows,numCols);
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00093"/>00093 
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00094"/>00094 &#32;&#32;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00095"/>00095 &#32;&#32;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00096"/>00096 &#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00097"/>00097 &#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00098"/>00098 &#32;&#32;destroyQuESTEnv(env);
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00099"/>00099 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00100"/>00100 }
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00101"/>00101 
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00102"/>00102 
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00103"/>00103 
+<anchor xml:id="_mbqc_starter_8cpp_source_1l00104"/>00104 
+</programlisting></section>

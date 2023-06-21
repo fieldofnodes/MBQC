@@ -9,5 +9,8 @@ var searchData=
   ['testoddnumberqubitanglesallzero_2ecpp_6',['testOddNumberQubitAnglesAllZero.cpp',['../de/d01/test_odd_number_qubit_angles_all_zero_8cpp.html',1,'']]],
   ['testoddnumberqubitseverysecondsanglezero_2ecpp_7',['testOddNumberQubitsEverySecondsAngleZero.cpp',['../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp.html',1,'']]],
   ['testquestcmake_2ecpp_8',['testQuESTCMAKE.cpp',['../d6/d00/test_qu_e_s_t_c_m_a_k_e_8cpp.html',1,'']]],
-  ['testtwoqubitsanglespiontwo_2ecpp_9',['testTwoQubitsAnglesPiOnTwo.cpp',['../dd/d00/test_two_qubits_angles_pi_on_two_8cpp.html',1,'']]]
+  ['testtwoqubitsanglespiontwo_2ecpp_9',['testTwoQubitsAnglesPiOnTwo.cpp',['../dd/d00/test_two_qubits_angles_pi_on_two_8cpp.html',1,'']]],
+  ['tutorial01_2ecpp_10',['tutorial01.cpp',['../d7/d00/tutorial01_8cpp.html',1,'']]],
+  ['tutorial02_2ecpp_11',['tutorial02.cpp',['../d6/d00/tutorial02_8cpp.html',1,'']]],
+  ['tutorial03_2ecpp_12',['tutorial03.cpp',['../d5/d00/tutorial03_8cpp.html',1,'']]]
 ];

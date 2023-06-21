@@ -5,7 +5,13 @@
 <simplesect>
     <title>Files    </title>
         <itemizedlist>
-            <listitem><para>file <link linkend="_examples_2mbqc_starter_file_8cpp">mbqcStarterFile.cpp</link></para>
+            <listitem><para>file <link linkend="_mbqc_starter_8cpp">mbqcStarter.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_tutorial01_8cpp">tutorial01.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_tutorial02_8cpp">tutorial02.cpp</link></para>
+</listitem>
+            <listitem><para>file <link linkend="_tutorial03_8cpp">tutorial03.cpp</link></para>
 </listitem>
         </itemizedlist>
 </simplesect>

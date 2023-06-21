@@ -25,31 +25,44 @@
 var NAVTREE =
 [
   [ "MBQC", "index.html", [
-    [ "Measurement Based Quantum Computation (MBQC) Simulator (MBQC V0.01)", "index.html#autotoc_md1", [
+    [ "MBQC", "index.html#autotoc_md1", [
       [ "What is MBQC", "index.html#autotoc_md2", null ],
       [ "Project status", "index.html#autotoc_md3", [
         [ "External library requirements", "index.html#autotoc_md4", null ],
         [ "Compile and execute a starter file", "index.html#autotoc_md5", null ]
       ] ]
     ] ],
-    [ "Tutorial 1: MBQC Starter File", "df/d01/mbqc_starter_file.html", [
-      [ "Introduction", "df/d01/mbqc_starter_file.html#intro", null ],
-      [ "Script Overview", "df/d01/mbqc_starter_file.html#overview", null ],
-      [ "Usage", "df/d01/mbqc_starter_file.html#usage", [
-        [ "Include Package Header File", "df/d01/mbqc_starter_file.html#include", null ],
-        [ "Set up the Main Function", "df/d01/mbqc_starter_file.html#main", null ],
-        [ "Set Values to Variables", "df/d01/mbqc_starter_file.html#setvalues", null ],
-        [ "Print Graph to File", "df/d01/mbqc_starter_file.html#printgraph", null ],
-        [ "Load QuEST Environment", "df/d01/mbqc_starter_file.html#loadenv", null ],
-        [ "Create Quantum Register", "df/d01/mbqc_starter_file.html#createqreg", null ],
-        [ "Initialize Random Angles", "df/d01/mbqc_starter_file.html#initangles", null ],
-        [ "Initialize in Plus State", "df/d01/mbqc_starter_file.html#initstate", null ],
-        [ "Add Angles to Qubits", "df/d01/mbqc_starter_file.html#addangles", null ],
-        [ "Entangle Graph", "df/d01/mbqc_starter_file.html#entangle", null ],
-        [ "Measure Graph", "df/d01/mbqc_starter_file.html#measure", null ],
-        [ "Print Results to Screen", "df/d01/mbqc_starter_file.html#printresults", null ],
-        [ "Unload QuEST", "df/d01/mbqc_starter_file.html#unloadenv", null ]
+    [ "Tutorial 1: Getting Started", "d4/d00/tutorial01.html", [
+      [ "Introduction", "d4/d00/tutorial01.html#intro", [
+        [ "Dependencies", "d4/d00/tutorial01.html#dependencies", null ],
+        [ "Getting MBQC", "d4/d00/tutorial01.html#gettingStarted", null ],
+        [ "Running MBQC", "d4/d00/tutorial01.html#runningMBQC", null ],
+        [ "Running Other Files", "d4/d00/tutorial01.html#runningOtherFile", null ]
       ] ]
+    ] ],
+    [ "Tutorial 2: MBQC Starter", "d7/d00/tutorial02.html", [
+      [ "Script Overview", "d7/d00/tutorial02.html#overview", null ],
+      [ "Usage", "d7/d00/tutorial02.html#usage", [
+        [ "Include Package Header File", "d7/d00/tutorial02.html#include", null ],
+        [ "Set up the Main Function", "d7/d00/tutorial02.html#main", null ],
+        [ "Set Values to Variables", "d7/d00/tutorial02.html#setvalues", null ],
+        [ "Print Graph to File", "d7/d00/tutorial02.html#printgraph", null ],
+        [ "Load QuEST Environment", "d7/d00/tutorial02.html#loadenv", null ],
+        [ "Create Quantum Register", "d7/d00/tutorial02.html#createqreg", null ],
+        [ "Initialize Random Angles", "d7/d00/tutorial02.html#initangles", null ],
+        [ "Initialize in Plus State", "d7/d00/tutorial02.html#initstate", null ],
+        [ "Add Angles to Qubits", "d7/d00/tutorial02.html#addangles", null ],
+        [ "Entangle Graph", "d7/d00/tutorial02.html#entangle", null ],
+        [ "Measure Graph", "d7/d00/tutorial02.html#measure", null ],
+        [ "Print Results to Screen", "d7/d00/tutorial02.html#printresults", null ],
+        [ "Unload QuEST", "d7/d00/tutorial02.html#unloadenv", null ]
+      ] ]
+    ] ],
+    [ "Tutorial 3: 1D Odd size angles 0", "d1/d00/tutorial03.html", [
+      [ "Code Description", "d1/d00/tutorial03.html#code", [
+        [ "The following code initializes the necessary variables and sets values for the 1D lattice:", "d1/d00/tutorial03.html#initValues", null ]
+      ] ],
+      [ "Conclusion", "d1/d00/tutorial03.html#conclusion", null ]
     ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],

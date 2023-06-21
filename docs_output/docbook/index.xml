@@ -4,10 +4,20 @@
     <title>MBQC</title>
     </info>
     <xi:include href="mainpage.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-    <xi:include href="df/d01/mbqc_starter_file.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d4/d00/tutorial01.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d7/d00/tutorial02.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d1/d00/tutorial03.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 <chapter>
     <title>File Documentation</title>
     <xi:include href="dc/d00/mainpage_8md.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="df/d00/mbqc_starter_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="df/d00/mbqc_starter_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d7/d00/tutorial01_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d7/d00/tutorial01_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d6/d00/tutorial02_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d6/d00/tutorial02_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d5/d00/tutorial03_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d5/d00/tutorial03_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d8/d01/general_helper_functions_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d8/d01/general_helper_functions_8hpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="dd/d00/write_graph_graph_viz_dot_file_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
@@ -18,10 +28,8 @@
     <xi:include href="d4/d00/graph_flow_definition_8hpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d0/d01/graph_traversal_flows_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d0/d01/graph_traversal_flows_8hpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-    <xi:include href="d9/d01/examples_2mbqc_starter_file_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-    <xi:include href="d9/d01/examples_2mbqc_starter_file_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-    <xi:include href="d5/d00/src_2mbqc_starter_file_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-    <xi:include href="d5/d00/src_2mbqc_starter_file_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d8/d00/mbqc_starter_file_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d8/d00/mbqc_starter_file_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="de/d01/packages_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="de/d01/packages_8hpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d3/d00/angle_construction_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>

@@ -1,0 +1,78 @@
+\chapter{Tutorial 2\+: 1D Odd size angles 0}
+\hypertarget{page3}{}\label{page3}\index{Tutorial 2: 1D Odd size angles 0@{Tutorial 2: 1D Odd size angles 0}}
+\hypertarget{page3_intro}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{page3_intro}
+This tutorial demonstrates the creation of a 1D lattice in MBQC where each qubit is initialized with an H gate to be \texorpdfstring{$\vert$}{|}+\texorpdfstring{$>$}{>}, and each qubit has an angle of 0 on the z-\/axis. The goal is to show that with an odd number of qubits and specific flow and basis measurements, the final qubit should always be 0.
+
+The source code can be foubd at \doxylink{test_odd_number_qubit_angles_all_zero_8cpp}{tests/test\+Odd\+Number\+Qubit\+Angles\+All\+Zero.\+cpp}. In the code there is a loop, which iterates the test 1e6 times and runs the assert command each iteration. Simply change 1e6 to 1 and you will run the simulation once.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 1e6;\ i++)}
+\DoxyCodeLine{\ \{\}}
+
+\end{DoxyCode}
+\hypertarget{page3_code}{}\doxysection{\texorpdfstring{Code Description}{Code Description}}\label{page3_code}
+\hypertarget{page3_include}{}\doxysubsection{\texorpdfstring{Include Package Header File}{Include Package Header File}}\label{page3_include}
+The script starts by including the necessary package header file\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{packages_8hpp}{packages.hpp}}"{}}}
+
+\end{DoxyCode}
+\hypertarget{page3_initValues}{}\doxysubsection{\texorpdfstring{The following code initializes the necessary variables and sets values for the 1\+D lattice\+:}{The following code initializes the necessary variables and sets values for the 1D lattice:}}\label{page3_initValues}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ numRows;}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ numCols;}
+\DoxyCodeLine{\mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph;}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ numVertices;}
+\DoxyCodeLine{std::vector<qreal>\ qubitAngles;}
+\DoxyCodeLine{std::vector<int>\ measuredQubitsOutcomes;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Set\ values\ to\ variables}}
+\DoxyCodeLine{numRows\ =\ 1;}
+\DoxyCodeLine{numCols\ =\ 11;\ \textcolor{comment}{//\ Test\ on\ an\ odd\ number\ of\ qubits}}
+\DoxyCodeLine{latticeGraph\ =\ \mbox{\hyperlink{graph_constructions_8hpp_a74f9014929a19ec558c3bc766754f1c3}{createLatticeGraph}}(numRows,\ numCols);}
+\DoxyCodeLine{numVertices\ =\ boost::num\_vertices(latticeGraph);}
+
+\end{DoxyCode}
+
+
+The quantum circuit is created and initialized\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ create\ a\ quantum\ register}}
+\DoxyCodeLine{Qureg\ qureg\ =\ createQureg(numVertices,\ env);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Initialize\ qubit\ angles\ to\ 0}}
+\DoxyCodeLine{qubitAngles\ =\ \mbox{\hyperlink{angle_construction_8hpp_aabc90c9d60fe6133e0143eda8db51906}{initAllAnglesZero}}(numVertices);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Initialise\ in\ the\ plus\ state}}
+\DoxyCodeLine{initPlusState(qureg);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Add\ angles\ to\ the\ qubits}}
+\DoxyCodeLine{\mbox{\hyperlink{angle_construction_8hpp_a6647ed996ec54a9137e68e6c6317e8ee}{addAngleRotateZgate}}(qureg,\ qubitAngles);}
+
+\end{DoxyCode}
+
+
+The graph is entangled and measurements are performed on the lattice\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Entangle\ graph}}
+\DoxyCodeLine{\mbox{\hyperlink{quantum_graph_cluster_states_8hpp_a3f830234f9eb3a150a084b0f2b4aa056}{entangleGraph}}(qureg,\ latticeGraph);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Measure\ graph}}
+\DoxyCodeLine{measuredQubitsOutcomes\ =\ \mbox{\hyperlink{flow_measurements_8hpp_a7231be9a1c347894c1d01c349f4b41c7}{measureGraph}}(qureg,\ latticeGraph,\ qubitAngles,\ numRows);}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert((measuredQubitsOutcomes.back()\ ==\ 0)\ \&\&\ \textcolor{stringliteral}{"{}The\ last\ qubit\ must\ be\ 0,\ it\ is\ not."{}});}
+
+\end{DoxyCode}
+\hypertarget{page3_conclusion}{}\doxysection{\texorpdfstring{Conclusion}{Conclusion}}\label{page3_conclusion}
+This tutorial demonstrates the creation of a 1D lattice in MBQC where all qubit angles are 0. By following the specified flow and basis measurements, it ensures that the final qubit is always 0. 

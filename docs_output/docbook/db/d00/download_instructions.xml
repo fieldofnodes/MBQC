@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_download_instructions" xml:lang="en-US">
+<title>Download Instructions</title>
+<indexterm><primary>Download Instructions</primary></indexterm>
+
+<para>To obtain the MBQC repository, you can follow these steps:</para>
+
+<para><orderedlist>
+<listitem>
+<para>Go to the MBQC repository on GitHub: <link xlink:href="https://github.com/ediparquantum/MBQC">MBQC Repository</link></para>
+</listitem><listitem>
+<para>Locate the green &quot;Code&quot; button and select your preferred method to download the repository:<itemizedlist>
+<listitem>
+<para>HTTPS: <computeroutput><link xlink:href="https://github.com/ediparquantum/MBQC.git">https://github.com/ediparquantum/MBQC.git</link></computeroutput></para>
+</listitem><listitem>
+<para>SSH: <computeroutput>git@github.com:ediparquantum/MBQC.git</computeroutput></para>
+</listitem><listitem>
+<para>GitHub CLI: <computeroutput>gh repo clone ediparquantum/MBQC</computeroutput></para>
+</listitem></itemizedlist>
+</para>
+</listitem></orderedlist>
+</para>
+
+<para>In your terminal, navigate to the folder where you want to access the project, for example: <literallayout><computeroutput>cd&#32;/home/username/projects/
+</computeroutput></literallayout></para>
+
+<para>Clone the repository using one of the provided methods, such as the SSH method: <literallayout><computeroutput>git&#32;clone&#32;git@github.com:ediparquantum/MBQC.git
+</computeroutput></literallayout></para>
+
+<para>Navigate to the MBQC directory: <literallayout><computeroutput>cd&#32;MBQC
+</computeroutput></literallayout></para>
+
+<para>Create a &quot;build&quot; directory: <literallayout><computeroutput>mkdir&#32;build
+</computeroutput></literallayout></para>
+
+<para>Change to the build directory: <literallayout><computeroutput>cd&#32;build
+</computeroutput></literallayout></para>
+
+<para>At this point, your current directory should be: <computeroutput>/home/username/projects/MBQC/build</computeroutput></para>
+
+<para>Before proceeding, ensure that you have the following dependencies installed:<itemizedlist>
+<listitem>
+<para>CMake</para>
+</listitem><listitem>
+<para>Graphviz</para>
+</listitem><listitem>
+<para>QuEST</para>
+</listitem><listitem>
+<para>Boost</para>
+</listitem></itemizedlist>
+</para>
+
+<para>Once you have the necessary dependencies, you can continue with the build process. </para>
+</section>

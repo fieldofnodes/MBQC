@@ -18,7 +18,7 @@
 <simplesect>
     <title>Files    </title>
         <itemizedlist>
-            <listitem><para>file <link linkend="_src_2mbqc_starter_file_8cpp">mbqcStarterFile.cpp</link></para>
+            <listitem><para>file <link linkend="_mbqc_starter_file_8cpp">mbqcStarterFile.cpp</link></para>
 </listitem>
             <listitem><para>file <link linkend="_packages_8hpp">packages.hpp</link></para>
 

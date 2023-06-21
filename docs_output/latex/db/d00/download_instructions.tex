@@ -1,0 +1,61 @@
+\chapter{Download Instructions}
+\hypertarget{download_instructions}{}\label{download_instructions}\index{Download Instructions@{Download Instructions}}
+To obtain the MBQC repository, you can follow these steps\+:
+
+
+\begin{DoxyEnumerate}
+\item Go to the MBQC repository on Git\+Hub\+: \href{https://github.com/ediparquantum/MBQC}{\texttt{ MBQC Repository}}
+\item Locate the green \"{}\+Code\"{} button and select your preferred method to download the repository\+:
+\begin{DoxyItemize}
+\item HTTPS\+: {\ttfamily \href{https://github.com/ediparquantum/MBQC.git}{\texttt{ https\+://github.\+com/ediparquantum/\+MBQC.\+git}}}
+\item SSH\+: {\ttfamily git@github.\+com\+:ediparquantum/\+MBQC.\+git}
+\item Git\+Hub CLI\+: {\ttfamily gh repo clone ediparquantum/\+MBQC}
+\end{DoxyItemize}
+\end{DoxyEnumerate}
+
+In your terminal, navigate to the folder where you want to access the project, for example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ /home/username/projects/}
+
+\end{DoxyCode}
+
+
+Clone the repository using one of the provided methods, such as the SSH method\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ git@github.com:ediparquantum/MBQC.git}
+
+\end{DoxyCode}
+
+
+Navigate to the MBQC directory\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ MBQC}
+
+\end{DoxyCode}
+
+
+Create a \"{}build\"{} directory\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build}
+
+\end{DoxyCode}
+
+
+Change to the build directory\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ build}
+
+\end{DoxyCode}
+
+
+At this point, your current directory should be\+: {\ttfamily /home/username/projects/\+MBQC/build}
+
+Before proceeding, ensure that you have the following dependencies installed\+:
+\begin{DoxyItemize}
+\item CMake
+\item Graphviz
+\item Qu\+EST
+\item Boost
+\end{DoxyItemize}
+
+Once you have the necessary dependencies, you can continue with the build process. 

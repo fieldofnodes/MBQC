@@ -5,7 +5,9 @@
 
 <para><anchor xml:id="_index_1md_docs_2mainpage"/></para>
 <section xml:id="_index_1autotoc_md1">
-<title>Measurement Based Quantum Computation (MBQC) Simulator (MBQC V0.01)</title>
+<title>MBQC</title>
+
+<para>wMeasurement Based Quantum Computation (MBQC) Simulator (MBQC V0.01)</para>
 
 <para>Measurement-based quantum computation (MBQC) is an alternative computational model to the circuit-based quantum computation (CBQC) model. While many quantum computing simulators like</para>
 

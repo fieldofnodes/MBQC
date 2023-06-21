@@ -1,0 +1,158 @@
+\chapter{Tutorial 2\+: MBQC Starter}
+\hypertarget{tutorial02}{}\label{tutorial02}\index{Tutorial 2: MBQC Starter@{Tutorial 2: MBQC Starter}}
+\hypertarget{tutorial03_intro}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{tutorial03_intro}
+This tutorial provides an overview of the MBQC Starter File script. The script demonstrates the implementation of Measurement-\/\+Based Quantum Computing (MBQC) using the Qu\+EST library. It creates a lattice graph, initializes a quantum register, applies rotations to the qubits, entangles the graph, performs measurements, and prints the results.
+
+For the source code of the tutorial, see the file \doxylink{mbqc_starter_8cpp}{examples/mbqc\+Starter.\+cpp}\hypertarget{tutorial02_overview}{}\doxysection{\texorpdfstring{Script Overview}{Script Overview}}\label{tutorial02_overview}
+The script performs the following steps\+:
+\begin{DoxyItemize}
+\item Includes the necessary package header file.
+\item Declares and initializes variables of different types.
+\item Creates a lattice graph based on the specified number of rows and columns.
+\item Prints the graph to a file.
+\item Initializes the Qu\+EST environment and creates a quantum register with the specified number of vertices.
+\item Initializes random angles in the range of π on N angles and assigns them to the qubit\+Angles vector.
+\item Initializes the quantum register in the plus state.
+\item Applies angle rotations around the Z-\/axis to the qubits based on the qubit\+Angles vector.
+\item Entangles the graph using the entangle\+Graph function.
+\item Measures the graph, and stores the outcomes in the measured\+Qubits\+Outcomes vector.
+\item Prints the results to the screen.
+\item Deallocates the Qu\+EST environment and the quantum register.
+\end{DoxyItemize}\hypertarget{tutorial02_usage}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{tutorial02_usage}
+To use the MBQC Starter File script\+:
+\begin{DoxyItemize}
+\item Modify the values of num\+Rows and num\+Cols to set the desired number of rows and columns for the lattice graph.
+\item Set the figs\+Dir variable to the desired directory to view the graph.
+\item Compile and run the script.
+\end{DoxyItemize}\hypertarget{tutorial03_include}{}\doxysubsection{\texorpdfstring{Include Package Header File}{Include Package Header File}}\label{tutorial03_include}
+The script starts by including the necessary package header file\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{packages_8hpp}{packages.hpp}}"{}}}
+
+\end{DoxyCode}
+\hypertarget{tutorial02_main}{}\doxysubsection{\texorpdfstring{Set up the Main Function}{Set up the Main Function}}\label{tutorial02_main}
+The main function is set up as follows\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{mbqc_starter_file_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Initialise\ variable\ names\ and\ types}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ numRows;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ numCols;}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ numVertices;}
+\DoxyCodeLine{\ \ \ \ std::vector<qreal>\ qubitAngles;}
+\DoxyCodeLine{\ \ \ \ std::vector<int>\ measuredQubitsOutcomes;}
+
+\end{DoxyCode}
+\hypertarget{tutorial02_setvalues}{}\doxysubsection{\texorpdfstring{Set Values to Variables}{Set Values to Variables}}\label{tutorial02_setvalues}
+The values for {\ttfamily num\+Rows}, {\ttfamily num\+Cols}, and {\ttfamily lattice\+Graph} are set as follows\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{numRows\ =\ 4;}
+\DoxyCodeLine{numCols\ =\ 4;}
+\DoxyCodeLine{latticeGraph\ =\ \mbox{\hyperlink{graph_constructions_8hpp_a74f9014929a19ec558c3bc766754f1c3}{createLatticeGraph}}(numRows,\ numCols);}
+\DoxyCodeLine{numVertices\ =\ boost::num\_vertices(latticeGraph);}
+
+\end{DoxyCode}
+\hypertarget{tutorial02_printgraph}{}\doxysubsection{\texorpdfstring{Print Graph to File}{Print Graph to File}}\label{tutorial02_printgraph}
+The graph is printed to a file using the specified directory, graph name, and format\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Print\ graph\ to\ file}}
+\DoxyCodeLine{\textcolor{comment}{//\ Update\ with\ desired\ directory\ to\ view\ graph.}}
+\DoxyCodeLine{std::string\ figsDir\ =\ MBQC\_FIGS\_DIR;}
+\DoxyCodeLine{std::string\ graphName\ =\ \textcolor{stringliteral}{"{}lattice2DGraphCmakeV2"{}};}
+\DoxyCodeLine{std::string\ format\ =\ PNG\_FORMAT;}
+\DoxyCodeLine{\mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_a3d553b54b16922ee146bfb33201a3993}{printGraphToFile}}(latticeGraph,\ figsDir,\ graphName,\ format);}
+
+\end{DoxyCode}
+\hypertarget{tutorial02_loadenv}{}\doxysubsection{\texorpdfstring{Load Qu\+EST Environment}{Load QuEST Environment}}\label{tutorial02_loadenv}
+The Qu\+EST environment is loaded using the {\ttfamily create\+Qu\+ESTEnv} function\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{QuESTEnv\ env\ =\ createQuESTEnv();}
+
+\end{DoxyCode}
+\hypertarget{tutorial02_createqreg}{}\doxysubsection{\texorpdfstring{Create Quantum Register}{Create Quantum Register}}\label{tutorial02_createqreg}
+The quantum register is created using the specified number of vertices\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ create\ a\ quantum\ register}}
+\DoxyCodeLine{Qureg\ qureg\ =\ createQureg(numVertices,\ env);}
+
+\end{DoxyCode}
+\hypertarget{tutorial02_initangles}{}\doxysubsection{\texorpdfstring{Initialize Random Angles}{Initialize Random Angles}}\label{tutorial02_initangles}
+Random angles in the range of π on N angles are initialized and assigned to the {\ttfamily qubit\+Angles} vector\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//qubitAngles\ =\ initRandomPiOnNAnglesMod2kPi(numVertices,\ 4);}}
+\DoxyCodeLine{qubitAngles\ =\ \mbox{\hyperlink{angle_construction_8hpp_adde2e56cefa79b49346bc9e560b4430b}{initRandomPiOnNAnglesMod2kPiPlusPi}}(numVertices,\ 4);}
+
+\end{DoxyCode}
+\hypertarget{tutorial02_initstate}{}\doxysubsection{\texorpdfstring{Initialize in Plus State}{Initialize in Plus State}}\label{tutorial02_initstate}
+The quantum register is initialized in the plus state using the {\ttfamily init\+Plus\+State} function\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ initialise\ in\ the\ plus\ state}}
+\DoxyCodeLine{initPlusState(qureg);}
+
+\end{DoxyCode}
+\hypertarget{tutorial02_addangles}{}\doxysubsection{\texorpdfstring{Add Angles to Qubits}{Add Angles to Qubits}}\label{tutorial02_addangles}
+Angle rotations around the Z-\/axis are added to the qubits based on the {\ttfamily qubit\+Angles} vector\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ add\ angles\ to\ the\ qubits}}
+\DoxyCodeLine{\mbox{\hyperlink{angle_construction_8hpp_a6647ed996ec54a9137e68e6c6317e8ee}{addAngleRotateZgate}}(qureg,\ qubitAngles);}
+
+\end{DoxyCode}
+\hypertarget{tutorial02_entangle}{}\doxysubsection{\texorpdfstring{Entangle Graph}{Entangle Graph}}\label{tutorial02_entangle}
+The graph is entangled using the {\ttfamily entangle\+Graph} function\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ entangle\ graph}}
+\DoxyCodeLine{\mbox{\hyperlink{quantum_graph_cluster_states_8hpp_a3f830234f9eb3a150a084b0f2b4aa056}{entangleGraph}}(qureg,\ latticeGraph);}
+
+\end{DoxyCode}
+\hypertarget{tutorial02_measure}{}\doxysubsection{\texorpdfstring{Measure Graph}{Measure Graph}}\label{tutorial02_measure}
+The graph is measured, and the outcomes are stored in the {\ttfamily measured\+Qubits\+Outcomes} vector\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ measure\ graph}}
+\DoxyCodeLine{measuredQubitsOutcomes\ =\ \mbox{\hyperlink{flow_measurements_8hpp_a7231be9a1c347894c1d01c349f4b41c7}{measureGraph}}(qureg,\ latticeGraph,\ qubitAngles,\ numRows);}
+
+\end{DoxyCode}
+\hypertarget{tutorial02_printresults}{}\doxysubsection{\texorpdfstring{Print Results to Screen}{Print Results to Screen}}\label{tutorial02_printresults}
+The results are printed to the screen using the {\ttfamily print\+Results\+To\+Screen} function\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ print\ results\ to\ screen}}
+\DoxyCodeLine{\mbox{\hyperlink{flow_measurements_8hpp_a202e2cd0edb82aacb879f3ad4360dc36}{printResultsToScreen}}(measuredQubitsOutcomes,\ numRows,\ numCols);}
+
+\end{DoxyCode}
+\hypertarget{tutorial02_unloadenv}{}\doxysubsection{\texorpdfstring{Unload Qu\+EST}{Unload QuEST}}\label{tutorial02_unloadenv}
+The Qu\+EST environment and the quantum register are deallocated\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{\ \ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{\ \ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
