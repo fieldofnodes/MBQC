@@ -117,41 +117,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named mbqcStarter
+# Target rules for targets named testOddNumberQubitsEverySecondsAngleZero
 
 # Build rule for target.
-mbqcStarter: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mbqcStarter
-.PHONY : mbqcStarter
+testOddNumberQubitsEverySecondsAngleZero: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 testOddNumberQubitsEverySecondsAngleZero
+.PHONY : testOddNumberQubitsEverySecondsAngleZero
 
 # fast build rule for target.
-mbqcStarter/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarter.dir/build.make CMakeFiles/mbqcStarter.dir/build
-.PHONY : mbqcStarter/fast
+testOddNumberQubitsEverySecondsAngleZero/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build.make CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build
+.PHONY : testOddNumberQubitsEverySecondsAngleZero/fast
 
-examples/mbqcStarter.o: examples/mbqcStarter.cpp.o
-.PHONY : examples/mbqcStarter.o
+tests/testOddNumberQubitsEverySecondsAngleZero.o: tests/testOddNumberQubitsEverySecondsAngleZero.cpp.o
+.PHONY : tests/testOddNumberQubitsEverySecondsAngleZero.o
 
 # target to build an object file
-examples/mbqcStarter.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarter.dir/build.make CMakeFiles/mbqcStarter.dir/examples/mbqcStarter.cpp.o
-.PHONY : examples/mbqcStarter.cpp.o
+tests/testOddNumberQubitsEverySecondsAngleZero.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build.make CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/tests/testOddNumberQubitsEverySecondsAngleZero.cpp.o
+.PHONY : tests/testOddNumberQubitsEverySecondsAngleZero.cpp.o
 
-examples/mbqcStarter.i: examples/mbqcStarter.cpp.i
-.PHONY : examples/mbqcStarter.i
+tests/testOddNumberQubitsEverySecondsAngleZero.i: tests/testOddNumberQubitsEverySecondsAngleZero.cpp.i
+.PHONY : tests/testOddNumberQubitsEverySecondsAngleZero.i
 
 # target to preprocess a source file
-examples/mbqcStarter.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarter.dir/build.make CMakeFiles/mbqcStarter.dir/examples/mbqcStarter.cpp.i
-.PHONY : examples/mbqcStarter.cpp.i
+tests/testOddNumberQubitsEverySecondsAngleZero.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build.make CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/tests/testOddNumberQubitsEverySecondsAngleZero.cpp.i
+.PHONY : tests/testOddNumberQubitsEverySecondsAngleZero.cpp.i
 
-examples/mbqcStarter.s: examples/mbqcStarter.cpp.s
-.PHONY : examples/mbqcStarter.s
+tests/testOddNumberQubitsEverySecondsAngleZero.s: tests/testOddNumberQubitsEverySecondsAngleZero.cpp.s
+.PHONY : tests/testOddNumberQubitsEverySecondsAngleZero.s
 
 # target to generate assembly for a file
-examples/mbqcStarter.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarter.dir/build.make CMakeFiles/mbqcStarter.dir/examples/mbqcStarter.cpp.s
-.PHONY : examples/mbqcStarter.cpp.s
+tests/testOddNumberQubitsEverySecondsAngleZero.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build.make CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/tests/testOddNumberQubitsEverySecondsAngleZero.cpp.s
+.PHONY : tests/testOddNumberQubitsEverySecondsAngleZero.cpp.s
 
 # Help Target
 help:
@@ -161,10 +161,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... mbqcStarter"
-	@echo "... examples/mbqcStarter.o"
-	@echo "... examples/mbqcStarter.i"
-	@echo "... examples/mbqcStarter.s"
+	@echo "... testOddNumberQubitsEverySecondsAngleZero"
+	@echo "... tests/testOddNumberQubitsEverySecondsAngleZero.o"
+	@echo "... tests/testOddNumberQubitsEverySecondsAngleZero.i"
+	@echo "... tests/testOddNumberQubitsEverySecondsAngleZero.s"
 .PHONY : help
 
 

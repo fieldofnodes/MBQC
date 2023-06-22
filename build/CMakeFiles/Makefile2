@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /Users/jmille15/Projects/MBQC/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/mbqcStarter.dir/all
+all: CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/mbqcStarter.dir/clean
+clean: CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/mbqcStarter.dir
+# Target rules for target CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir
 
 # All Build rule for target.
-CMakeFiles/mbqcStarter.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarter.dir/build.make CMakeFiles/mbqcStarter.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarter.dir/build.make CMakeFiles/mbqcStarter.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jmille15/Projects/MBQC/build/CMakeFiles --progress-num=1,2 "Built target mbqcStarter"
-.PHONY : CMakeFiles/mbqcStarter.dir/all
+CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build.make CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build.make CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jmille15/Projects/MBQC/build/CMakeFiles --progress-num=1,2 "Built target testOddNumberQubitsEverySecondsAngleZero"
+.PHONY : CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/mbqcStarter.dir/rule: cmake_check_build_system
+CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jmille15/Projects/MBQC/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/mbqcStarter.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jmille15/Projects/MBQC/build/CMakeFiles 0
-.PHONY : CMakeFiles/mbqcStarter.dir/rule
+.PHONY : CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/rule
 
 # Convenience name for target.
-mbqcStarter: CMakeFiles/mbqcStarter.dir/rule
-.PHONY : mbqcStarter
+testOddNumberQubitsEverySecondsAngleZero: CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/rule
+.PHONY : testOddNumberQubitsEverySecondsAngleZero
 
 # clean rule for target.
-CMakeFiles/mbqcStarter.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mbqcStarter.dir/build.make CMakeFiles/mbqcStarter.dir/clean
-.PHONY : CMakeFiles/mbqcStarter.dir/clean
+CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build.make CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/clean
+.PHONY : CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
