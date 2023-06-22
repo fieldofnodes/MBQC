@@ -1,30 +1,88 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_tutorial03" xml:lang="en-US">
-<title>Tutorial 3: 1D Odd size angles 0</title>
-<indexterm><primary>Tutorial 3: 1D Odd size angles 0</primary></indexterm>
+<title>Tutorial 3: 1D Lattice</title>
+<indexterm><primary>Tutorial 3: 1D Lattice</primary></indexterm>
 <section xml:id="_tutorial03_1intro">
 <title>Introduction</title>
 
-<para>This tutorial demonstrates the creation of a 1D lattice in MBQC where each qubit is initialized with an H gate to be |+&gt;, and each qubit has an angle of 0 on the z-axis. The goal is to show that with an odd number of qubits and specific flow and basis measurements, the final qubit should always be 0.</para>
+<para>This tutorial demonstrates some consequences of implementing a MBQC pattern on a one dimensional lattice graph.</para>
 
-<para>The source code can be foubd at <link linkend="_test_odd_number_qubit_angles_all_zero_8cpp">tests/testOddNumberQubitAnglesAllZero.cpp</link>. In the code there is a loop, which iterates the test 1e6 times and runs the assert command each iteration. Simply change 1e6 to 1 and you will run the simulation once.</para>
+<para></para>
+
+<para>By creating a quantum register, either with a state vector or density matrix in QuEST, applying the Hadamard gate and some rotational angle <inlinemediaobject>
+            <imageobject>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="../../form_0.png"/>
+            </imageobject>
+</inlinemediaobject>
+ on a Pauli-Z gate to each qubit, then entangling the register according the graph <inlinemediaobject>
+            <imageobject>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="../../form_1.png"/>
+            </imageobject>
+</inlinemediaobject>
+ with the controlled Z gate, we obtain a MBQC graph-circuit. The following code implements the circuit represented by the &quot;Example 1D Lattice&quot; figure.</para>
+
+<para><literallayout><computeroutput>QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<emphasis role="keywordtype">int</emphasis>&#32;numQubits&#32;=&#32;3;
+Qureg&#32;qubits&#32;=&#32;createQureg(numQubits,&#32;env);
+initPlusState(qubits);
+rotateZ(qureg,0,0);
+rotateZ(qureg,1,0);
+rotateZ(qureg,2,0);
+controlledPhaseFlip(qureg,0,1);
+controlledPhaseFlip(qureg,1,2);&#32;&#32;&#32;&#32;&#32;
+</computeroutput></literallayout></para>
+
+<para>QuEST performs mid-circuit measurements that are destructive, thus allowing for projective measurements to be simulated. In the figure, the vertex to the far left will be measured first. Its outcome will inform the basis angle associated with the middle vertex and depending on the first outcome being a <inlinemediaobject>
+            <imageobject>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="../../form_2.png"/>
+            </imageobject>
+</inlinemediaobject>
+ or <inlinemediaobject>
+            <imageobject>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="../../form_3.png"/>
+            </imageobject>
+</inlinemediaobject>
+. The basis of measurement adapts to previous measurements in relation to the graph flow. Finally the far right vertex will be informed by the first two measurment outcomes (see Tutorial <link linkend="_tutorial04_8cpp">examples/tutorial04.cpp</link> for a discussion on flow).</para>
+</section>
+<section xml:id="_tutorial03_1oneDLatticeResults">
+<title>One Dimensional Results</title>
+<section xml:id="_tutorial03_1oddQubitsZeroAngles">
+<title>Odd number of qubits</title>
+
+<para>In the case there the number of vertices in the graph is an odd number and the angle applied to every qubit is <inlinemediaobject>
+            <imageobject>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="../../form_2.png"/>
+            </imageobject>
+</inlinemediaobject>
+, then the final measurement of the graph, the last qubit will have an outcome of <inlinemediaobject>
+            <imageobject>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="../../form_2.png"/>
+            </imageobject>
+</inlinemediaobject>
+. The source code can be foubd at <link linkend="_test_odd_number_qubit_angles_all_zero_8cpp">tests/testOddNumberQubitAnglesAllZero.cpp</link>.</para>
+
+<para>In this referenced script there is a loop, which iterates the test <inlinemediaobject>
+            <imageobject>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="../../form_4.png"/>
+            </imageobject>
+</inlinemediaobject>
+ times and runs the <computeroutput>assert</computeroutput> command each iteration to verify the last qubit of the graph is <inlinemediaobject>
+            <imageobject>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="../../form_2.png"/>
+            </imageobject>
+</inlinemediaobject>
+. Simply change 1e6 to 1 and you will run the simulation once.</para>
 
 <para><literallayout><computeroutput><emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;1e6;&#32;i++)
 &#32;{}
 </computeroutput></literallayout></para>
-</section>
-<section xml:id="_tutorial03_1code">
-<title>Code Description</title>
-<section xml:id="_tutorial03_1include">
-<title>Include Package Header File</title>
 
 <para>The script starts by including the necessary package header file:</para>
 
 <para><literallayout><computeroutput><emphasis role="preprocessor">#include&#32;&quot;<link linkend="_packages_8hpp">packages.hpp</link>&quot;</emphasis>
 </computeroutput></literallayout></para>
-</section>
-<section xml:id="_tutorial03_1initValues">
-<title>The following code initializes the necessary variables and sets values for the 1D lattice:</title>
+
+<para>Initialise the following code with the necessary variables and sets values for the 1D lattice:</para>
 
 <para><literallayout><computeroutput><emphasis role="keywordtype">int</emphasis>&#32;numRows;
 <emphasis role="keywordtype">int</emphasis>&#32;numCols;
@@ -68,11 +126,16 @@ measuredQubitsOutcomes&#32;=&#32;<link linkend="_flow_measurements_8hpp_1a7231be
 
 assert((measuredQubitsOutcomes.back()&#32;==&#32;0)&#32;&amp;&amp;&#32;<emphasis role="stringliteral">&quot;The&#32;last&#32;qubit&#32;must&#32;be&#32;0,&#32;it&#32;is&#32;not.&quot;</emphasis>);
 </computeroutput></literallayout></para>
-</section>
-</section>
-<section xml:id="_tutorial03_1conclusion">
-<title>Conclusion</title>
 
-<para>This tutorial demonstrates the creation of a 1D lattice in MBQC where all qubit angles are 0. By following the specified flow and basis measurements, it ensures that the final qubit is always 0. </para>
+<para>This test indeen shows that the final qubit is always measured as a <inlinemediaobject>
+            <imageobject>
+                <imagedata align="center" valign="middle" scalefit="0" fileref="../../form_2.png"/>
+            </imageobject>
+</inlinemediaobject>
+ outcome.</para>
+</section>
+<section xml:id="_tutorial03_1twoQubiTsPi">
+<title>Two Qubits with angle Pi</title>
+</section>
 </section>
 </section>

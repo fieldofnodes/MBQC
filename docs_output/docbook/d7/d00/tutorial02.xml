@@ -52,7 +52,7 @@
 <para>Compile and run the script.</para>
 </listitem></itemizedlist>
 </para>
-<section xml:id="_tutorial03_1include">
+<section xml:id="_tutorial02_1include">
 <title>Include Package Header File</title>
 
 <para>The script starts by including the necessary package header file:</para>

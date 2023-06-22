@@ -18,6 +18,8 @@
     <xi:include href="d6/d00/tutorial02_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d5/d00/tutorial03_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d5/d00/tutorial03_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d0/d01/tutorial04_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d0/d01/tutorial04_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d8/d01/general_helper_functions_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d8/d01/general_helper_functions_8hpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="dd/d00/write_graph_graph_viz_dot_file_8hpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>

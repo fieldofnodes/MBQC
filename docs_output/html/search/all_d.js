@@ -14,8 +14,9 @@ var searchData=
   ['testtwovalueequate_11',['testTwoValueEquate',['../d3/d01/general_assert_functions_8hpp.html#ab8bc2aa68695d561b6a3d544658b5c70',1,'generalAssertFunctions.hpp']]],
   ['tutorial_201_3a_20getting_20started_12',['Tutorial 1: Getting Started',['../d4/d00/tutorial01.html',1,'']]],
   ['tutorial_202_3a_20mbqc_20starter_13',['Tutorial 2: MBQC Starter',['../d7/d00/tutorial02.html',1,'']]],
-  ['tutorial_203_3a_201d_20odd_20size_20angles_200_14',['Tutorial 3: 1D Odd size angles 0',['../d1/d00/tutorial03.html',1,'']]],
+  ['tutorial_203_3a_201d_20lattice_14',['Tutorial 3: 1D Lattice',['../d1/d00/tutorial03.html',1,'']]],
   ['tutorial01_2ecpp_15',['tutorial01.cpp',['../d7/d00/tutorial01_8cpp.html',1,'']]],
   ['tutorial02_2ecpp_16',['tutorial02.cpp',['../d6/d00/tutorial02_8cpp.html',1,'']]],
-  ['tutorial03_2ecpp_17',['tutorial03.cpp',['../d5/d00/tutorial03_8cpp.html',1,'']]]
+  ['tutorial03_2ecpp_17',['tutorial03.cpp',['../d5/d00/tutorial03_8cpp.html',1,'']]],
+  ['tutorial04_2ecpp_18',['tutorial04.cpp',['../d0/d01/tutorial04_8cpp.html',1,'']]]
 ];

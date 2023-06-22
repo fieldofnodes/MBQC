@@ -1,9 +1,32 @@
-\chapter{Tutorial 3\+: 1D Odd size angles 0}
-\hypertarget{tutorial03}{}\label{tutorial03}\index{Tutorial 3: 1D Odd size angles 0@{Tutorial 3: 1D Odd size angles 0}}
+\chapter{Tutorial 3\+: 1D Lattice}
+\hypertarget{tutorial03}{}\label{tutorial03}\index{Tutorial 3: 1D Lattice@{Tutorial 3: 1D Lattice}}
 \hypertarget{tutorial03_intro}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{tutorial03_intro}
-This tutorial demonstrates the creation of a 1D lattice in MBQC where each qubit is initialized with an H gate to be \texorpdfstring{$\vert$}{|}+\texorpdfstring{$>$}{>}, and each qubit has an angle of 0 on the z-\/axis. The goal is to show that with an odd number of qubits and specific flow and basis measurements, the final qubit should always be 0.
+This tutorial demonstrates some consequences of implementing a MBQC pattern on a one dimensional lattice graph.
 
-The source code can be foubd at \doxylink{test_odd_number_qubit_angles_all_zero_8cpp}{tests/test\+Odd\+Number\+Qubit\+Angles\+All\+Zero.\+cpp}. In the code there is a loop, which iterates the test 1e6 times and runs the assert command each iteration. Simply change 1e6 to 1 and you will run the simulation once.
+
+
+By creating a quantum register, either with a state vector or density matrix in Qu\+EST, applying the Hadamard gate and some rotational angle $\theta$ on a Pauli-\/Z gate to each qubit, then entangling the register according the graph $G$ with the controlled Z gate, we obtain a MBQC graph-\/circuit. The following code implements the circuit represented by the \"{}\+Example 1\+D Lattice\"{} figure.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ numQubits\ =\ 3;}
+\DoxyCodeLine{Qureg\ qubits\ =\ createQureg(numQubits,\ env);}
+\DoxyCodeLine{initPlusState(qubits);}
+\DoxyCodeLine{rotateZ(qureg,0,0);}
+\DoxyCodeLine{rotateZ(qureg,1,0);}
+\DoxyCodeLine{rotateZ(qureg,2,0);}
+\DoxyCodeLine{controlledPhaseFlip(qureg,0,1);}
+\DoxyCodeLine{controlledPhaseFlip(qureg,1,2);\ \ \ \ \ }
+
+\end{DoxyCode}
+
+
+Qu\+EST performs mid-\/circuit measurements that are destructive, thus allowing for projective measurements to be simulated. In the figure, the vertex to the far left will be measured first. Its outcome will inform the basis angle associated with the middle vertex and depending on the first outcome being a $0$ or $1$. The basis of measurement adapts to previous measurements in relation to the graph flow. Finally the far right vertex will be informed by the first two measurment outcomes (see Tutorial \doxylink{tutorial04_8cpp}{examples/tutorial04.\+cpp} for a discussion on flow).\hypertarget{tutorial03_oneDLatticeResults}{}\doxysection{\texorpdfstring{One Dimensional Results}{One Dimensional Results}}\label{tutorial03_oneDLatticeResults}
+\hypertarget{tutorial03_oddQubitsZeroAngles}{}\doxysubsection{\texorpdfstring{Odd number of qubits}{Odd number of qubits}}\label{tutorial03_oddQubitsZeroAngles}
+In the case there the number of vertices in the graph is an odd number and the angle applied to every qubit is $0$, then the final measurement of the graph, the last qubit will have an outcome of $0$. The source code can be foubd at \doxylink{test_odd_number_qubit_angles_all_zero_8cpp}{tests/test\+Odd\+Number\+Qubit\+Angles\+All\+Zero.\+cpp}.
+
+In this referenced script there is a loop, which iterates the test $1,000,000$ times and runs the {\ttfamily assert} command each iteration to verify the last qubit of the graph is $0$. Simply change 1e6 to 1 and you will run the simulation once.
 
 
 \begin{DoxyCode}{0}
@@ -11,8 +34,8 @@ The source code can be foubd at \doxylink{test_odd_number_qubit_angles_all_zero_
 \DoxyCodeLine{\ \{\}}
 
 \end{DoxyCode}
-\hypertarget{tutorial03_code}{}\doxysection{\texorpdfstring{Code Description}{Code Description}}\label{tutorial03_code}
-\hypertarget{tutorial03_include}{}\doxysubsection{\texorpdfstring{Include Package Header File}{Include Package Header File}}\label{tutorial03_include}
+
+
 The script starts by including the necessary package header file\+:
 
 
@@ -20,7 +43,10 @@ The script starts by including the necessary package header file\+:
 \DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{packages_8hpp}{packages.hpp}}"{}}}
 
 \end{DoxyCode}
-\hypertarget{tutorial03_initValues}{}\doxysubsection{\texorpdfstring{The following code initializes the necessary variables and sets values for the 1\+D lattice\+:}{The following code initializes the necessary variables and sets values for the 1D lattice:}}\label{tutorial03_initValues}
+
+
+Initialise the following code with the necessary variables and sets values for the 1D lattice\+:
+
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{keywordtype}{int}\ numRows;}
@@ -74,5 +100,6 @@ The graph is entangled and measurements are performed on the lattice\+:
 \DoxyCodeLine{assert((measuredQubitsOutcomes.back()\ ==\ 0)\ \&\&\ \textcolor{stringliteral}{"{}The\ last\ qubit\ must\ be\ 0,\ it\ is\ not."{}});}
 
 \end{DoxyCode}
-\hypertarget{tutorial03_conclusion}{}\doxysection{\texorpdfstring{Conclusion}{Conclusion}}\label{tutorial03_conclusion}
-This tutorial demonstrates the creation of a 1D lattice in MBQC where all qubit angles are 0. By following the specified flow and basis measurements, it ensures that the final qubit is always 0. 
+
+
+This test indeen shows that the final qubit is always measured as a $0$ outcome.\hypertarget{tutorial03_twoQubiTsPi}{}\doxysubsection{\texorpdfstring{Two Qubits with angle Pi}{Two Qubits with angle Pi}}\label{tutorial03_twoQubiTsPi}

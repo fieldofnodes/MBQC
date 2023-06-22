@@ -1,5 +1,6 @@
 warning: Specified markdown mainpage 'mainpage.md' does not exist/Users/jmille15/Projects/MBQC/examples/tutorial02.cpp:5: warning: multiple use of section label 'intro' while adding section, (first occurrence: /Users/jmille15/Projects/MBQC/examples/tutorial01.cpp, line 5)
 /Users/jmille15/Projects/MBQC/examples/tutorial03.cpp:5: warning: multiple use of section label 'intro' while adding section, (first occurrence: /Users/jmille15/Projects/MBQC/examples/tutorial01.cpp, line 5)
-/Users/jmille15/Projects/MBQC/examples/tutorial03.cpp:20: warning: multiple use of section label 'include' while adding section, (first occurrence: /Users/jmille15/Projects/MBQC/examples/tutorial02.cpp, line 34)
+/Users/jmille15/Projects/MBQC/examples/tutorial04.cpp:6: warning: Reached end of file while still inside a (nested) comment. Nesting level 1 (probable line reference: 1)
+error: Problems running latex. Check your installation or look for typos in _formulas.tex and check _formulas.log!
 /Users/jmille15/Projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp:277: warning: argument 'qureg' from the argument list of writeStateToFile has multiple @param documentation sections
 /Users/jmille15/Projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp:277: warning: argument 'filepath' from the argument list of writeStateToFile has multiple @param documentation sections

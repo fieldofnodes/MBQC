@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MBQC: Tutorial 3: 1D Odd size angles 0</title>
+<title>MBQC: Tutorial 3: 1D Lattice</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -98,24 +98,39 @@ $(document).ready(function(){initNavTree('d1/d00/tutorial03.html','../../'); ini
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Tutorial 3: 1D Odd size angles 0</div></div>
+  <div class="headertitle"><div class="title">Tutorial 3: 1D Lattice</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="intro"></a>
 Introduction</h1>
-<p>This tutorial demonstrates the creation of a 1D lattice in MBQC where each qubit is initialized with an H gate to be |+&gt;, and each qubit has an angle of 0 on the z-axis. The goal is to show that with an odd number of qubits and specific flow and basis measurements, the final qubit should always be 0.</p>
-<p>The source code can be foubd at <a class="el" href="../../de/d01/test_odd_number_qubit_angles_all_zero_8cpp.html">tests/testOddNumberQubitAnglesAllZero.cpp</a>. In the code there is a loop, which iterates the test 1e6 times and runs the assert command each iteration. Simply change 1e6 to 1 and you will run the simulation once.</p>
+<p>This tutorial demonstrates some consequences of implementing a MBQC pattern on a one dimensional lattice graph.</p>
+<div class="image">
+<img src="../../ghz_mbqc.png" alt=""/>
+<div class="caption">
+Example 1D Lattice</div></div>
+<p>By creating a quantum register, either with a state vector or density matrix in QuEST, applying the Hadamard gate and some rotational angle \(\theta\) on a Pauli-Z gate to each qubit, then entangling the register according the graph \(G\) with the controlled Z gate, we obtain a MBQC graph-circuit. The following code implements the circuit represented by the "Example 1D Lattice" figure.</p>
+<div class="fragment"><div class="line">QuESTEnv env = createQuESTEnv();</div>
+<div class="line"><span class="keywordtype">int</span> numQubits = 3;</div>
+<div class="line">Qureg qubits = createQureg(numQubits, env);</div>
+<div class="line">initPlusState(qubits);</div>
+<div class="line">rotateZ(qureg,0,0);</div>
+<div class="line">rotateZ(qureg,1,0);</div>
+<div class="line">rotateZ(qureg,2,0);</div>
+<div class="line">controlledPhaseFlip(qureg,0,1);</div>
+<div class="line">controlledPhaseFlip(qureg,1,2);     </div>
+</div><!-- fragment --><p>QuEST performs mid-circuit measurements that are destructive, thus allowing for projective measurements to be simulated. In the figure, the vertex to the far left will be measured first. Its outcome will inform the basis angle associated with the middle vertex and depending on the first outcome being a \(0\) or \(1\). The basis of measurement adapts to previous measurements in relation to the graph flow. Finally the far right vertex will be informed by the first two measurment outcomes (see Tutorial <a class="el" href="../../d0/d01/tutorial04_8cpp.html">examples/tutorial04.cpp</a> for a discussion on flow).</p>
+<h1><a class="anchor" id="oneDLatticeResults"></a>
+One Dimensional Results</h1>
+<h2><a class="anchor" id="oddQubitsZeroAngles"></a>
+Odd number of qubits</h2>
+<p>In the case there the number of vertices in the graph is an odd number and the angle applied to every qubit is \(0\), then the final measurement of the graph, the last qubit will have an outcome of \(0\). The source code can be foubd at <a class="el" href="../../de/d01/test_odd_number_qubit_angles_all_zero_8cpp.html">tests/testOddNumberQubitAnglesAllZero.cpp</a>.</p>
+<p>In this referenced script there is a loop, which iterates the test \(1,000,000\) times and runs the <code>assert</code> command each iteration to verify the last qubit of the graph is \(0\). Simply change 1e6 to 1 and you will run the simulation once.</p>
 <div class="fragment"><div class="line"><span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; 1e6; i++)</div>
 <div class="line"> {}</div>
-</div><!-- fragment --><h1><a class="anchor" id="code"></a>
-Code Description</h1>
-<h2><a class="anchor" id="include"></a>
-Include Package Header File</h2>
-<p>The script starts by including the necessary package header file:</p>
+</div><!-- fragment --><p>The script starts by including the necessary package header file:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="../../de/d01/packages_8hpp.html">packages.hpp</a>&quot;</span></div>
 <div class="ttc" id="apackages_8hpp_html"><div class="ttname"><a href="../../de/d01/packages_8hpp.html">packages.hpp</a></div><div class="ttdoc">Contains the inclusion of various packages and libraries used in the project.</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="initValues"></a>
-The following code initializes the necessary variables and sets values for the 1D lattice:</h2>
+</div><!-- fragment --><p>Initialise the following code with the necessary variables and sets values for the 1D lattice:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> numRows;</div>
 <div class="line"><span class="keywordtype">int</span> numCols;</div>
 <div class="line"><a class="code hl_typedef" href="../../de/d01/packages_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a> latticeGraph;</div>
@@ -157,9 +172,9 @@ The following code initializes the necessary variables and sets values for the 1
 <div class="line">assert((measuredQubitsOutcomes.back() == 0) &amp;&amp; <span class="stringliteral">&quot;The last qubit must be 0, it is not.&quot;</span>);</div>
 <div class="ttc" id="aflow_measurements_8hpp_html_a7231be9a1c347894c1d01c349f4b41c7"><div class="ttname"><a href="../../de/d00/flow_measurements_8hpp.html#a7231be9a1c347894c1d01c349f4b41c7">measureGraph</a></div><div class="ttdeci">std::vector&lt; int &gt; measureGraph(Qureg qureg, const undirectedGraph &amp;graph, std::vector&lt; qreal &gt; qubitAngles, int numRows)</div><div class="ttdoc">Measures qubits in a graph-based quantum state.</div><div class="ttdef"><b>Definition</b> <a href="../../de/d00/flow_measurements_8hpp_source.html#l00057">flowMeasurements.hpp:57</a></div></div>
 <div class="ttc" id="aquantum_graph_cluster_states_8hpp_html_a3f830234f9eb3a150a084b0f2b4aa056"><div class="ttname"><a href="../../dc/d00/quantum_graph_cluster_states_8hpp.html#a3f830234f9eb3a150a084b0f2b4aa056">entangleGraph</a></div><div class="ttdeci">void entangleGraph(Qureg qureg, const undirectedGraph &amp;graph)</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d00/quantum_graph_cluster_states_8hpp_source.html#l00012">quantumGraphClusterStates.hpp:12</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="conclusion"></a>
-Conclusion</h1>
-<p>This tutorial demonstrates the creation of a 1D lattice in MBQC where all qubit angles are 0. By following the specified flow and basis measurements, it ensures that the final qubit is always 0. </p>
+</div><!-- fragment --><p>This test indeen shows that the final qubit is always measured as a \(0\) outcome.</p>
+<h2><a class="anchor" id="twoQubiTsPi"></a>
+Two Qubits with angle Pi</h2>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
