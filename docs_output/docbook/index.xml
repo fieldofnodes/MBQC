@@ -7,6 +7,7 @@
     <xi:include href="d4/d00/tutorial01.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d7/d00/tutorial02.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d1/d00/tutorial03.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="dc/d00/tutorial04.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 <chapter>
     <title>File Documentation</title>
     <xi:include href="dc/d00/mainpage_8md.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>

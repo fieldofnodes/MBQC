@@ -2,7 +2,7 @@
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_tutorial01" xml:lang="en-US">
 <title>Tutorial 1: Getting Started</title>
 <indexterm><primary>Tutorial 1: Getting Started</primary></indexterm>
-<section xml:id="_tutorial03_1intro">
+<section xml:id="_tutorial04_1intro">
 <title>Introduction</title>
 
 <para>This tutorial demonstrates the how-to of getting started. This includes the the usage of <computeroutput>cmake</computeroutput> to compile and run executable programs and algorithms in the MBQC + QuEST + Boost framework. Before proceeding, ensure that you have the following dependencies installed:</para>

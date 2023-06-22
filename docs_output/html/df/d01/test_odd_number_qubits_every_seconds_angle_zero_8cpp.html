@@ -99,144 +99,20 @@ $(document).ready(function(){initNavTree('df/d01/test_odd_number_qubits_every_se
 
 <div class="header">
   <div class="summary">
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">testOddNumberQubitsEverySecondsAngleZero.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;sstream&gt;</code><br />
-<code>#include &lt;stdexcept&gt;</code><br />
-<code>#include &lt;algorithm&gt;</code><br />
-<code>#include &lt;iterator&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;set&gt;</code><br />
-<code>#include &lt;numeric&gt;</code><br />
-<code>#include &lt;cmath&gt;</code><br />
-<code>#include &lt;random&gt;</code><br />
-<code>#include &lt;filesystem&gt;</code><br />
-<code>#include &lt;QuEST.h&gt;</code><br />
-<code>#include &lt;boost/graph/adjacency_list.hpp&gt;</code><br />
-<code>#include &lt;boost/graph/grid_graph.hpp&gt;</code><br />
-<code>#include &lt;boost/graph/graphviz.hpp&gt;</code><br />
-<code>#include &lt;boost/array.hpp&gt;</code><br />
-<code>#include &lt;boost/graph/graph_utility.hpp&gt;</code><br />
-<code>#include &lt;boost/container/vector.hpp&gt;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/generalHelperFunctions.hpp&quot;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/genericHelperFunctions/writeGraphGraphVizDotFile.hpp&quot;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphConstructions.hpp&quot;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/graphs/graphTraversalFlows.hpp&quot;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/flowMeasurements.hpp&quot;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/angleConstruction.hpp&quot;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/quantumGraphs/quantumGraphClusterStates.hpp&quot;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/generalAssertFunctions.hpp&quot;</code><br />
-<code>#include &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/src/testFunctions/graphAssertFunctions.hpp&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="../../de/d01/packages_8hpp_source.html">packages.hpp</a>&quot;</code><br />
 </div>
 <p><a href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:af845bf432b56cdda82dbde8011882168"><td class="memItemLeft" align="right" valign="top">typedef boost::adjacency_list&lt; boost::vecS, boost::vecS, boost::undirectedS &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp.html#af845bf432b56cdda82dbde8011882168">undirectedGraph</a></td></tr>
-<tr class="separator:af845bf432b56cdda82dbde8011882168"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad413424ad598fbd91fde4dffeceda3c0"><td class="memItemLeft" align="right" valign="top">typedef boost::graph_traits&lt; <a class="el" href="../../de/d01/packages_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a> &gt;<a class="el" href="../../d2/d00/test_flow_functions_8cpp.html#af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp.html#ad413424ad598fbd91fde4dffeceda3c0">edgeIterator</a></td></tr>
-<tr class="separator:ad413424ad598fbd91fde4dffeceda3c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad100606fc4950dfc094fc60544838351"><td class="memItemLeft" align="right" valign="top">typedef boost::graph_traits&lt; <a class="el" href="../../de/d01/packages_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a> &gt;<a class="el" href="../../d2/d00/test_flow_functions_8cpp.html#a9451df0dac964b257bedb5e60547824e">::vertex_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp.html#ad100606fc4950dfc094fc60544838351">vertexIterator</a></td></tr>
-<tr class="separator:ad100606fc4950dfc094fc60544838351"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0cab6d0005870e6df565f2397afff231"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp.html#a0cab6d0005870e6df565f2397afff231">assertFunc</a> (std::vector&lt; int &gt; measuredQubitsOutcomes, int assertValue)</td></tr>
-<tr class="separator:a0cab6d0005870e6df565f2397afff231"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab91620d08875164bce42bdc604224ed3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp.html#ab91620d08875164bce42bdc604224ed3">testEveryOtherAnlgeZeroResults</a> (int assertValue, int piDenominator, int numberCols)</td></tr>
-<tr class="separator:ab91620d08875164bce42bdc604224ed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="ad413424ad598fbd91fde4dffeceda3c0" name="ad413424ad598fbd91fde4dffeceda3c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad413424ad598fbd91fde4dffeceda3c0">&#9670;&#160;</a></span>edgeIterator</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef boost::graph_traits&lt;<a class="el" href="../../de/d01/packages_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>&gt;<a class="el" href="../../d2/d00/test_flow_functions_8cpp.html#af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</a> <a class="el" href="../../de/d01/packages_8hpp.html#afccd45e2973698c37e8379f6b25a82bc">edgeIterator</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp_source.html#l00067">67</a> of file <a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp_source.html">testOddNumberQubitsEverySecondsAngleZero.cpp</a>.</p>
-
-</div>
-</div>
-<a id="af845bf432b56cdda82dbde8011882168" name="af845bf432b56cdda82dbde8011882168"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af845bf432b56cdda82dbde8011882168">&#9670;&#160;</a></span>undirectedGraph</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef boost::adjacency_list&lt;boost::vecS, boost::vecS,boost::undirectedS&gt; <a class="el" href="../../de/d01/packages_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp_source.html#l00066">66</a> of file <a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp_source.html">testOddNumberQubitsEverySecondsAngleZero.cpp</a>.</p>
-
-</div>
-</div>
-<a id="ad100606fc4950dfc094fc60544838351" name="ad100606fc4950dfc094fc60544838351"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad100606fc4950dfc094fc60544838351">&#9670;&#160;</a></span>vertexIterator</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef boost::graph_traits&lt;<a class="el" href="../../de/d01/packages_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a>&gt;<a class="el" href="../../d2/d00/test_flow_functions_8cpp.html#a9451df0dac964b257bedb5e60547824e">::vertex_iterator</a> <a class="el" href="../../de/d01/packages_8hpp.html#aad3f8f6369da7f36e6266fdcb1991169">vertexIterator</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp_source.html#l00068">68</a> of file <a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp_source.html">testOddNumberQubitsEverySecondsAngleZero.cpp</a>.</p>
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a0cab6d0005870e6df565f2397afff231" name="a0cab6d0005870e6df565f2397afff231"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0cab6d0005870e6df565f2397afff231">&#9670;&#160;</a></span>assertFunc()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void assertFunc </td>
-          <td>(</td>
-          <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
-          <td class="paramname"><em>measuredQubitsOutcomes</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>assertValue</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp_source.html#l00070">70</a> of file <a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp_source.html">testOddNumberQubitsEverySecondsAngleZero.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>                                                                       {</div>
-<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">if</span> (measuredQubitsOutcomes.back() != assertValue) {</div>
-<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;The last qubit must be &quot;</span> + std::to_string(assertValue) + <span class="stringliteral">&quot;, it is not.&quot;</span>);</div>
-<div class="line"><span class="lineno">   73</span>    }</div>
-<div class="line"><span class="lineno">   74</span>}</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="ae66f6b31b5ad750f1fe042a706a4e3d4" name="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&#160;</a></span>main()</h2>
 
@@ -252,223 +128,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp_source.html#l00167">167</a> of file <a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp_source.html">testOddNumberQubitsEverySecondsAngleZero.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  167</span>           {</div>
-<div class="line"><span class="lineno">  168</span>    </div>
-<div class="line"><span class="lineno">  169</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0;i &lt; 1e1;i++){</div>
-<div class="line"><span class="lineno">  170</span>        <a class="code hl_function" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp.html#ab91620d08875164bce42bdc604224ed3">testEveryOtherAnlgeZeroResults</a>(0,4,7);</div>
-<div class="line"><span class="lineno">  171</span>        <a class="code hl_function" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp.html#ab91620d08875164bce42bdc604224ed3">testEveryOtherAnlgeZeroResults</a>(1,4,7);</div>
-<div class="line"><span class="lineno">  172</span>    }</div>
-<div class="line"><span class="lineno">  173</span>   <span class="comment">/*</span></div>
-<div class="line"><span class="lineno">  174</span><span class="comment">    for(int i = 0; i &lt; 1; i++)</span></div>
-<div class="line"><span class="lineno">  175</span><span class="comment">    {</span></div>
-<div class="line"><span class="lineno">  176</span><span class="comment">    // Initialise variable names and types</span></div>
-<div class="line"><span class="lineno">  177</span><span class="comment">    int numRows;</span></div>
-<div class="line"><span class="lineno">  178</span><span class="comment">    int numCols;</span></div>
-<div class="line"><span class="lineno">  179</span><span class="comment">    undirectedGraph latticeGraph;</span></div>
-<div class="line"><span class="lineno">  180</span><span class="comment">    int numVertices;</span></div>
-<div class="line"><span class="lineno">  181</span><span class="comment">    std::vector&lt;qreal&gt; qubitAngles;</span></div>
-<div class="line"><span class="lineno">  182</span><span class="comment">    std::vector&lt;int&gt; measuredQubitsOutcomes;</span></div>
-<div class="line"><span class="lineno">  183</span><span class="comment">    int piDenominator;</span></div>
-<div class="line"><span class="lineno">  184</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  185</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  186</span><span class="comment">    // Set values to variables</span></div>
-<div class="line"><span class="lineno">  187</span><span class="comment">    numRows = 1;</span></div>
-<div class="line"><span class="lineno">  188</span><span class="comment">    numCols = 7; // Test on an odd number of qubits</span></div>
-<div class="line"><span class="lineno">  189</span><span class="comment">    latticeGraph = createLatticeGraph(numRows,numCols);</span></div>
-<div class="line"><span class="lineno">  190</span><span class="comment">    numVertices = boost::num_vertices(latticeGraph);</span></div>
-<div class="line"><span class="lineno">  191</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  192</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  193</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  194</span><span class="comment">    // Print graph to file</span></div>
-<div class="line"><span class="lineno">  195</span><span class="comment">    // Update with desired directory to view graph.</span></div>
-<div class="line"><span class="lineno">  196</span><span class="comment">    std::string fileDir = &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;;</span></div>
-<div class="line"><span class="lineno">  197</span><span class="comment">    std::string graphName = &quot;1DLatticeOddQubitsAnglesEveryOther0And2PiMultiple&quot;;</span></div>
-<div class="line"><span class="lineno">  198</span><span class="comment">    std::string format = &quot;png&quot;;</span></div>
-<div class="line"><span class="lineno">  199</span><span class="comment">    printGraphToFile(latticeGraph,fileDir,graphName,format);</span></div>
-<div class="line"><span class="lineno">  200</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  201</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  202</span><span class="comment">    // load QuEST environment</span></div>
-<div class="line"><span class="lineno">  203</span><span class="comment">    QuESTEnv env = createQuESTEnv();</span></div>
-<div class="line"><span class="lineno">  204</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  205</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  206</span><span class="comment">    // create a quantum register</span></div>
-<div class="line"><span class="lineno">  207</span><span class="comment">    Qureg qureg = createQureg(numVertices, env);</span></div>
-<div class="line"><span class="lineno">  208</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  209</span><span class="comment">    </span></div>
-<div class="line"><span class="lineno">  210</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  211</span><span class="comment">    // set angles</span></div>
-<div class="line"><span class="lineno">  212</span><span class="comment">    piDenominator = 4;</span></div>
-<div class="line"><span class="lineno">  213</span><span class="comment">    //qubitAngles = initRandomPiOnNEveryOtherAnglesMod2kPi(numVertices,piDenominator); // end in 0</span></div>
-<div class="line"><span class="lineno">  214</span><span class="comment">    qubitAngles = initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi(numVertices,piDenominator);  // end in 1</span></div>
-<div class="line"><span class="lineno">  215</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  216</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  217</span><span class="comment">    // initialise in the plus state</span></div>
-<div class="line"><span class="lineno">  218</span><span class="comment">    initPlusState(qureg);</span></div>
-<div class="line"><span class="lineno">  219</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  220</span><span class="comment">    //Leave angle off qubits</span></div>
-<div class="line"><span class="lineno">  221</span><span class="comment">    // add angles to the qubits</span></div>
-<div class="line"><span class="lineno">  222</span><span class="comment">    //addAngleRotateZgate(qureg,qubitAngles);</span></div>
-<div class="line"><span class="lineno">  223</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  224</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  225</span><span class="comment">    // entangle graph</span></div>
-<div class="line"><span class="lineno">  226</span><span class="comment">    entangleGraph(qureg,latticeGraph);</span></div>
-<div class="line"><span class="lineno">  227</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  228</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  229</span><span class="comment">    // measure graph</span></div>
-<div class="line"><span class="lineno">  230</span><span class="comment">    measuredQubitsOutcomes = measureGraph(</span></div>
-<div class="line"><span class="lineno">  231</span><span class="comment">        qureg,</span></div>
-<div class="line"><span class="lineno">  232</span><span class="comment">        latticeGraph,</span></div>
-<div class="line"><span class="lineno">  233</span><span class="comment">        qubitAngles,</span></div>
-<div class="line"><span class="lineno">  234</span><span class="comment">        numRows);</span></div>
-<div class="line"><span class="lineno">  235</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  236</span><span class="comment">    assert((measuredQubitsOutcomes.back()==1) &amp;&amp; &quot;The last qubit must be 1, it is not.&quot;);</span></div>
-<div class="line"><span class="lineno">  237</span><span class="comment">    // print results to screen</span></div>
-<div class="line"><span class="lineno">  238</span><span class="comment">    printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);</span></div>
-<div class="line"><span class="lineno">  239</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  240</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  241</span><span class="comment"></span> </div>
-<div class="line"><span class="lineno">  242</span><span class="comment">    // unload QuEST</span></div>
-<div class="line"><span class="lineno">  243</span><span class="comment">    destroyQureg(qureg, env); </span></div>
-<div class="line"><span class="lineno">  244</span><span class="comment">    destroyQuESTEnv(env);</span></div>
-<div class="line"><span class="lineno">  245</span><span class="comment">    </span></div>
-<div class="line"><span class="lineno">  246</span><span class="comment">    }</span></div>
-<div class="line"><span class="lineno">  247</span><span class="comment">    */</span></div>
-<div class="line"><span class="lineno">  248</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  249</span>}</div>
-<div class="ttc" id="atest_odd_number_qubits_every_seconds_angle_zero_8cpp_html_ab91620d08875164bce42bdc604224ed3"><div class="ttname"><a href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp.html#ab91620d08875164bce42bdc604224ed3">testEveryOtherAnlgeZeroResults</a></div><div class="ttdeci">void testEveryOtherAnlgeZeroResults(int assertValue, int piDenominator, int numberCols)</div><div class="ttdef"><b>Definition</b> <a href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp_source.html#l00076">testOddNumberQubitsEverySecondsAngleZero.cpp:76</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ab91620d08875164bce42bdc604224ed3" name="ab91620d08875164bce42bdc604224ed3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab91620d08875164bce42bdc604224ed3">&#9670;&#160;</a></span>testEveryOtherAnlgeZeroResults()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void testEveryOtherAnlgeZeroResults </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>assertValue</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>piDenominator</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>numberCols</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp_source.html#l00076">76</a> of file <a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp_source.html">testOddNumberQubitsEverySecondsAngleZero.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   76</span>                                                                                     {</div>
-<div class="line"><span class="lineno">   77</span>    <span class="comment">// Initialise variable names and types</span></div>
-<div class="line"><span class="lineno">   78</span>    <span class="keywordtype">int</span> numRows;</div>
-<div class="line"><span class="lineno">   79</span>    <span class="keywordtype">int</span> numCols;</div>
-<div class="line"><span class="lineno">   80</span>    <a class="code hl_typedef" href="../../de/d01/packages_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a> latticeGraph;</div>
-<div class="line"><span class="lineno">   81</span>    <span class="keywordtype">int</span> numVertices;</div>
-<div class="line"><span class="lineno">   82</span>    std::vector&lt;qreal&gt; qubitAngles;</div>
-<div class="line"><span class="lineno">   83</span>    std::vector&lt;int&gt; measuredQubitsOutcomes;</div>
-<div class="line"><span class="lineno">   84</span>    </div>
-<div class="line"><span class="lineno">   85</span> </div>
-<div class="line"><span class="lineno">   86</span> </div>
-<div class="line"><span class="lineno">   87</span>    <span class="comment">// Set values to variables</span></div>
-<div class="line"><span class="lineno">   88</span>    numRows = 1;</div>
-<div class="line"><span class="lineno">   89</span>    numCols = numberCols; <span class="comment">// Test on an odd number of qubits</span></div>
-<div class="line"><span class="lineno">   90</span>    latticeGraph = <a class="code hl_function" href="../../db/d00/graph_constructions_8hpp.html#a74f9014929a19ec558c3bc766754f1c3">createLatticeGraph</a>(numRows,numCols);</div>
-<div class="line"><span class="lineno">   91</span>    numVertices = boost::num_vertices(latticeGraph);</div>
-<div class="line"><span class="lineno">   92</span> </div>
-<div class="line"><span class="lineno">   93</span> </div>
-<div class="line"><span class="lineno">   94</span> </div>
-<div class="line"><span class="lineno">   95</span>    <span class="comment">// Print graph to file</span></div>
-<div class="line"><span class="lineno">   96</span>    <span class="comment">// Update with desired directory to view graph.</span></div>
-<div class="line"><span class="lineno">   97</span>    <span class="comment">//std::string fileDir = &quot;/Users/jmille15/Projects/QuEST/QuEST/projects/MBQC/figs&quot;;</span></div>
-<div class="line"><span class="lineno">   98</span>    <span class="comment">//std::string graphName = &quot;1DLatticeOddQubitsAnglesEveryOther0And2PiMultiple&quot;;</span></div>
-<div class="line"><span class="lineno">   99</span>    <span class="comment">//std::string format = &quot;png&quot;;</span></div>
-<div class="line"><span class="lineno">  100</span>    <span class="comment">//printGraphToFile(latticeGraph,fileDir,graphName,format);</span></div>
-<div class="line"><span class="lineno">  101</span> </div>
-<div class="line"><span class="lineno">  102</span> </div>
-<div class="line"><span class="lineno">  103</span>    <span class="comment">// load QuEST environment</span></div>
-<div class="line"><span class="lineno">  104</span>    QuESTEnv env = createQuESTEnv();</div>
-<div class="line"><span class="lineno">  105</span> </div>
-<div class="line"><span class="lineno">  106</span> </div>
-<div class="line"><span class="lineno">  107</span>    <span class="comment">// create a quantum register</span></div>
-<div class="line"><span class="lineno">  108</span>    Qureg qureg = createQureg(numVertices, env);</div>
-<div class="line"><span class="lineno">  109</span> </div>
-<div class="line"><span class="lineno">  110</span>    </div>
-<div class="line"><span class="lineno">  111</span> </div>
-<div class="line"><span class="lineno">  112</span>    <span class="comment">// set angles</span></div>
-<div class="line"><span class="lineno">  113</span>    </div>
-<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">if</span> (assertValue == 0){</div>
-<div class="line"><span class="lineno">  115</span>        qubitAngles = <a class="code hl_function" href="../../d3/d00/angle_construction_8hpp.html#a0804b07ffb2bea2c7ac8cba482a88d62">initRandomPiOnNEveryOtherAnglesMod2kPi</a>(numVertices,piDenominator); <span class="comment">// end in 0</span></div>
-<div class="line"><span class="lineno">  116</span>    }<span class="keywordflow">else</span> <span class="keywordflow">if</span> (assertValue == 1){</div>
-<div class="line"><span class="lineno">  117</span>        qubitAngles = <a class="code hl_function" href="../../d3/d00/angle_construction_8hpp.html#ac35939429a8657a1f33dad419e7812c1">initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi</a>(numVertices,piDenominator);  <span class="comment">// end in 1</span></div>
-<div class="line"><span class="lineno">  118</span>    }<span class="keywordflow">else</span>{</div>
-<div class="line"><span class="lineno">  119</span>        <span class="comment">// Nothing</span></div>
-<div class="line"><span class="lineno">  120</span>    }</div>
-<div class="line"><span class="lineno">  121</span> </div>
-<div class="line"><span class="lineno">  122</span>    <a class="code hl_function" href="../../d8/d01/general_helper_functions_8hpp.html#a721cdbc6bd980bd328255feba8168f26">printVector</a>(qubitAngles);</div>
-<div class="line"><span class="lineno">  123</span>    <span class="comment">// initialise in the plus state</span></div>
-<div class="line"><span class="lineno">  124</span>    initPlusState(qureg);</div>
-<div class="line"><span class="lineno">  125</span> </div>
-<div class="line"><span class="lineno">  126</span>    <span class="comment">//Leave angle off qubits</span></div>
-<div class="line"><span class="lineno">  127</span>    <span class="comment">// add angles to the qubits</span></div>
-<div class="line"><span class="lineno">  128</span>    <span class="comment">//addAngleRotateZgate(qureg,qubitAngles);</span></div>
-<div class="line"><span class="lineno">  129</span> </div>
-<div class="line"><span class="lineno">  130</span> </div>
-<div class="line"><span class="lineno">  131</span>    <span class="comment">// entangle graph</span></div>
-<div class="line"><span class="lineno">  132</span>    <a class="code hl_function" href="../../dc/d00/quantum_graph_cluster_states_8hpp.html#a3f830234f9eb3a150a084b0f2b4aa056">entangleGraph</a>(qureg,latticeGraph);</div>
-<div class="line"><span class="lineno">  133</span> </div>
-<div class="line"><span class="lineno">  134</span> </div>
-<div class="line"><span class="lineno">  135</span>    <span class="comment">// measure graph</span></div>
-<div class="line"><span class="lineno">  136</span>    measuredQubitsOutcomes = <a class="code hl_function" href="../../de/d00/flow_measurements_8hpp.html#a7231be9a1c347894c1d01c349f4b41c7">measureGraph</a>(</div>
-<div class="line"><span class="lineno">  137</span>        qureg,</div>
-<div class="line"><span class="lineno">  138</span>        latticeGraph,</div>
-<div class="line"><span class="lineno">  139</span>        qubitAngles,</div>
-<div class="line"><span class="lineno">  140</span>        numRows);</div>
-<div class="line"><span class="lineno">  141</span> </div>
-<div class="line"><span class="lineno">  142</span>    </div>
-<div class="line"><span class="lineno">  143</span> </div>
-<div class="line"><span class="lineno">  144</span> </div>
-<div class="line"><span class="lineno">  145</span> </div>
-<div class="line"><span class="lineno">  146</span> </div>
-<div class="line"><span class="lineno">  147</span>    <span class="comment">/*</span></div>
-<div class="line"><span class="lineno">  148</span><span class="comment">    try {</span></div>
-<div class="line"><span class="lineno">  149</span><span class="comment">        assertFunc(measuredQubitsOutcomes,assertValue);</span></div>
-<div class="line"><span class="lineno">  150</span><span class="comment">    } catch (const std::runtime_error&amp; e) {</span></div>
-<div class="line"><span class="lineno">  151</span><span class="comment">        // Handle the exception</span></div>
-<div class="line"><span class="lineno">  152</span><span class="comment">        std::cout &lt;&lt; &quot;Exception caught: &quot; &lt;&lt; e.what() &lt;&lt; std::endl;</span></div>
-<div class="line"><span class="lineno">  153</span><span class="comment">    }</span></div>
-<div class="line"><span class="lineno">  154</span><span class="comment">*/</span></div>
-<div class="line"><span class="lineno">  155</span>    </div>
-<div class="line"><span class="lineno">  156</span>    <span class="comment">// print results to screen</span></div>
-<div class="line"><span class="lineno">  157</span>    <span class="comment">//printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);</span></div>
-<div class="line"><span class="lineno">  158</span> </div>
-<div class="line"><span class="lineno">  159</span> </div>
-<div class="line"><span class="lineno">  160</span> </div>
-<div class="line"><span class="lineno">  161</span>    <span class="comment">// unload QuEST</span></div>
-<div class="line"><span class="lineno">  162</span>    destroyQureg(qureg, env); </div>
-<div class="line"><span class="lineno">  163</span>    destroyQuESTEnv(env);</div>
-<div class="line"><span class="lineno">  164</span>}</div>
-<div class="ttc" id="aangle_construction_8hpp_html_a0804b07ffb2bea2c7ac8cba482a88d62"><div class="ttname"><a href="../../d3/d00/angle_construction_8hpp.html#a0804b07ffb2bea2c7ac8cba482a88d62">initRandomPiOnNEveryOtherAnglesMod2kPi</a></div><div class="ttdeci">std::vector&lt; qreal &gt; initRandomPiOnNEveryOtherAnglesMod2kPi(int numQubits, int piDenominator)</div><div class="ttdoc">Initializes a vector of qreal values with random angles, where every other angle is set to 0.</div><div class="ttdef"><b>Definition</b> <a href="../../d3/d00/angle_construction_8hpp_source.html#l00205">angleConstruction.hpp:205</a></div></div>
-<div class="ttc" id="aangle_construction_8hpp_html_ac35939429a8657a1f33dad419e7812c1"><div class="ttname"><a href="../../d3/d00/angle_construction_8hpp.html#ac35939429a8657a1f33dad419e7812c1">initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi</a></div><div class="ttdeci">std::vector&lt; qreal &gt; initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi(int numQubits, int piDenominator)</div><div class="ttdoc">Initializes a vector of qreal values with random angles, where every other angle is set to 0.</div><div class="ttdef"><b>Definition</b> <a href="../../d3/d00/angle_construction_8hpp_source.html#l00264">angleConstruction.hpp:264</a></div></div>
-<div class="ttc" id="aflow_measurements_8hpp_html_a7231be9a1c347894c1d01c349f4b41c7"><div class="ttname"><a href="../../de/d00/flow_measurements_8hpp.html#a7231be9a1c347894c1d01c349f4b41c7">measureGraph</a></div><div class="ttdeci">std::vector&lt; int &gt; measureGraph(Qureg qureg, const undirectedGraph &amp;graph, std::vector&lt; qreal &gt; qubitAngles, int numRows)</div><div class="ttdoc">Measures qubits in a graph-based quantum state.</div><div class="ttdef"><b>Definition</b> <a href="../../de/d00/flow_measurements_8hpp_source.html#l00057">flowMeasurements.hpp:57</a></div></div>
-<div class="ttc" id="ageneral_helper_functions_8hpp_html_a721cdbc6bd980bd328255feba8168f26"><div class="ttname"><a href="../../d8/d01/general_helper_functions_8hpp.html#a721cdbc6bd980bd328255feba8168f26">printVector</a></div><div class="ttdeci">void printVector(const std::vector&lt; T &gt; &amp;vec)</div><div class="ttdoc">Prints the elements of a vector.</div><div class="ttdef"><b>Definition</b> <a href="../../d8/d01/general_helper_functions_8hpp_source.html#l00195">generalHelperFunctions.hpp:195</a></div></div>
-<div class="ttc" id="agraph_constructions_8hpp_html_a74f9014929a19ec558c3bc766754f1c3"><div class="ttname"><a href="../../db/d00/graph_constructions_8hpp.html#a74f9014929a19ec558c3bc766754f1c3">createLatticeGraph</a></div><div class="ttdeci">undirectedGraph createLatticeGraph(int numRows, int numCols)</div><div class="ttdoc">Creates an undirected lattice graph with the specified number of rows and columns.</div><div class="ttdef"><b>Definition</b> <a href="../../db/d00/graph_constructions_8hpp_source.html#l00051">graphConstructions.hpp:51</a></div></div>
-<div class="ttc" id="apackages_8hpp_html_adb6c610c60479e8b904f5832786b4125"><div class="ttname"><a href="../../de/d01/packages_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a></div><div class="ttdeci">boost::adjacency_list&lt; boost::vecS, boost::vecS, boost::undirectedS &gt; undirectedGraph</div><div class="ttdoc">Alias for an undirected graph using boost::adjacency_list.</div><div class="ttdef"><b>Definition</b> <a href="../../de/d01/packages_8hpp_source.html#l00057">packages.hpp:57</a></div></div>
-<div class="ttc" id="aquantum_graph_cluster_states_8hpp_html_a3f830234f9eb3a150a084b0f2b4aa056"><div class="ttname"><a href="../../dc/d00/quantum_graph_cluster_states_8hpp.html#a3f830234f9eb3a150a084b0f2b4aa056">entangleGraph</a></div><div class="ttdeci">void entangleGraph(Qureg qureg, const undirectedGraph &amp;graph)</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d00/quantum_graph_cluster_states_8hpp_source.html#l00012">quantumGraphClusterStates.hpp:12</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp_source.html#l00019">19</a> of file <a class="el" href="../../df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp_source.html">testOddNumberQubitsEverySecondsAngleZero.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>           {</div>
+<div class="line"><span class="lineno">   20</span>    </div>
+<div class="line"><span class="lineno">   21</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0;i &lt; 1e6;i++){</div>
+<div class="line"><span class="lineno">   22</span>        <a class="code hl_function" href="../../d0/d01/graph_assert_functions_8hpp.html#ab91620d08875164bce42bdc604224ed3">testEveryOtherAnlgeZeroResults</a>(0,4,7);</div>
+<div class="line"><span class="lineno">   23</span>        <a class="code hl_function" href="../../d0/d01/graph_assert_functions_8hpp.html#ab91620d08875164bce42bdc604224ed3">testEveryOtherAnlgeZeroResults</a>(1,4,7);</div>
+<div class="line"><span class="lineno">   24</span>    }</div>
+<div class="line"><span class="lineno">   25</span> </div>
+<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   27</span>}</div>
+<div class="ttc" id="agraph_assert_functions_8hpp_html_ab91620d08875164bce42bdc604224ed3"><div class="ttname"><a href="../../d0/d01/graph_assert_functions_8hpp.html#ab91620d08875164bce42bdc604224ed3">testEveryOtherAnlgeZeroResults</a></div><div class="ttdeci">void testEveryOtherAnlgeZeroResults(int assertValue, int piDenominator, int numberCols)</div><div class="ttdoc">Tests the measurement outcomes with every other angle set to zero.</div><div class="ttdef"><b>Definition</b> <a href="../../d0/d01/graph_assert_functions_8hpp_source.html#l00240">graphAssertFunctions.hpp:240</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

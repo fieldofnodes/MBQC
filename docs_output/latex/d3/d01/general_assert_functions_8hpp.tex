@@ -10,10 +10,49 @@ int \mbox{\hyperlink{general_assert_functions_8hpp_aaa5eeda4e79aa986d57c3256556b
 int \mbox{\hyperlink{general_assert_functions_8hpp_af227e83a7360ec64f91773c37a905253}{get\+Max}} (const boost\+::container\+::vector$<$ int $>$ \&vec)
 \begin{DoxyCompactList}\small\item\em Retrieves the maximum value from a vector. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{general_assert_functions_8hpp_a4a6a933e01029d0c61bce553817a0feb}{is\+Int\+In\+Vector}} (int value, const std\+::vector$<$ int $>$ \&vec)
-\begin{DoxyCompactList}\small\item\em Checks if an integer value is present in a vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Checks if an integer value is present in a vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{general_assert_functions_8hpp_a0cab6d0005870e6df565f2397afff231}{assert\+Func}} (std\+::vector$<$ int $>$ measured\+Qubits\+Outcomes, int assert\+Value)
+\begin{DoxyCompactList}\small\item\em Asserts the value of the last qubit measurement outcome. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{general_assert_functions_8hpp_a0cab6d0005870e6df565f2397afff231}\label{general_assert_functions_8hpp_a0cab6d0005870e6df565f2397afff231} 
+\index{generalAssertFunctions.hpp@{generalAssertFunctions.hpp}!assertFunc@{assertFunc}}
+\index{assertFunc@{assertFunc}!generalAssertFunctions.hpp@{generalAssertFunctions.hpp}}
+\doxysubsubsection{\texorpdfstring{assertFunc()}{assertFunc()}}
+{\footnotesize\ttfamily void assert\+Func (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{measured\+Qubits\+Outcomes,  }\item[{int}]{assert\+Value }\end{DoxyParamCaption})}
+
+
+
+Asserts the value of the last qubit measurement outcome. 
+
+This function checks if the value of the last qubit measurement outcome matches the specified assert value. If the values do not match, it throws a runtime error with a descriptive message.
+
+
+\begin{DoxyParams}{Parameters}
+{\em measured\+Qubits\+Outcomes} & The vector of measured qubit outcomes. \\
+\hline
+{\em assert\+Value} & The expected value for the last qubit measurement outcome.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if the last qubit measurement outcome does not match the assert value. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{general_assert_functions_8hpp_source_l00106}{106}} of file \mbox{\hyperlink{general_assert_functions_8hpp_source}{general\+Assert\+Functions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{if}\ (measuredQubitsOutcomes.back()\ !=\ assertValue)\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}The\ last\ qubit\ must\ be\ "{}}\ +\ std::to\_string(assertValue)\ +\ \textcolor{stringliteral}{"{},\ it\ is\ not."{}});}
+\DoxyCodeLine{00109\ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \}}
+
+\end{DoxyCode}
 \Hypertarget{general_assert_functions_8hpp_af227e83a7360ec64f91773c37a905253}\label{general_assert_functions_8hpp_af227e83a7360ec64f91773c37a905253} 
 \index{generalAssertFunctions.hpp@{generalAssertFunctions.hpp}!getMax@{getMax}}
 \index{getMax@{getMax}!generalAssertFunctions.hpp@{generalAssertFunctions.hpp}}

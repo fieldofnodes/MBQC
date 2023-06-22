@@ -1,6 +1,6 @@
 \chapter{Tutorial 3\+: 1D Lattice}
 \hypertarget{tutorial03}{}\label{tutorial03}\index{Tutorial 3: 1D Lattice@{Tutorial 3: 1D Lattice}}
-\hypertarget{tutorial03_intro}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{tutorial03_intro}
+\hypertarget{tutorial04_intro}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{tutorial04_intro}
 This tutorial demonstrates some consequences of implementing a MBQC pattern on a one dimensional lattice graph.
 
 
@@ -17,7 +17,7 @@ By creating a quantum register, either with a state vector or density matrix in 
 \DoxyCodeLine{rotateZ(qureg,1,0);}
 \DoxyCodeLine{rotateZ(qureg,2,0);}
 \DoxyCodeLine{controlledPhaseFlip(qureg,0,1);}
-\DoxyCodeLine{controlledPhaseFlip(qureg,1,2);\ \ \ \ \ }
+\DoxyCodeLine{controlledPhaseFlip(qureg,1,2);\ \ \ \ \ \ }
 
 \end{DoxyCode}
 
@@ -103,3 +103,202 @@ The graph is entangled and measurements are performed on the lattice\+:
 
 
 This test indeen shows that the final qubit is always measured as a $0$ outcome.\hypertarget{tutorial03_twoQubiTsPi}{}\doxysubsection{\texorpdfstring{Two Qubits with angle Pi}{Two Qubits with angle Pi}}\label{tutorial03_twoQubiTsPi}
+This graph, a simple two vertex graph, where both angles $\theta = \pi/2$ is different from the above as
+\begin{DoxyItemize}
+\item There are only 2 qubits
+\item Each has a non-\/zero angle
+\item The angle is $\theta = \pi/2$
+\end{DoxyItemize}
+
+The outcome is that the second qubit is always measured a $0$. The script can be found here \doxylink{test_two_qubits_angles_pi_on_two_8cpp}{tests/test\+Two\+Qubits\+Angles\+Pi\+On\+Two.\+cpp}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Initialise\ variable\ names\ and\ types}}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ numRows;}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ numCols;}
+\DoxyCodeLine{\mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph;}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ numVertices;}
+\DoxyCodeLine{std::vector<qreal>\ qubitAngles;}
+\DoxyCodeLine{std::vector<int>\ measuredQubitsOutcomes;}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Set\ values\ to\ variables}}
+\DoxyCodeLine{numRows\ =\ 1;}
+\DoxyCodeLine{numCols\ =\ 2;\ \textcolor{comment}{//\ Test\ on\ an\ odd\ number\ of\ qubits}}
+\DoxyCodeLine{latticeGraph\ =\ \mbox{\hyperlink{graph_constructions_8hpp_a74f9014929a19ec558c3bc766754f1c3}{createLatticeGraph}}(numRows,numCols);}
+\DoxyCodeLine{numVertices\ =\ boost::num\_vertices(latticeGraph);}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ create\ a\ quantum\ register}}
+\DoxyCodeLine{Qureg\ qureg\ =\ createQureg(numVertices,\ env);}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ set\ angles}}
+\DoxyCodeLine{qubitAngles\ =\ \mbox{\hyperlink{angle_construction_8hpp_ac940c0b993f5f0e21dc74a2ac2f3fc7a}{initAllAnglesSame}}(numVertices,\ M\_PI/2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ initialise\ in\ the\ plus\ state}}
+\DoxyCodeLine{initPlusState(qureg);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//Leave\ angle\ off\ qubits}}
+\DoxyCodeLine{\textcolor{comment}{//\ add\ angles\ to\ the\ qubits}}
+\DoxyCodeLine{\textcolor{comment}{//addAngleRotateZgate(qureg,qubitAngles);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ entangle\ graph}}
+\DoxyCodeLine{\mbox{\hyperlink{quantum_graph_cluster_states_8hpp_a3f830234f9eb3a150a084b0f2b4aa056}{entangleGraph}}(qureg,latticeGraph);}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ measure\ graph}}
+\DoxyCodeLine{measuredQubitsOutcomes\ =\ \mbox{\hyperlink{flow_measurements_8hpp_a7231be9a1c347894c1d01c349f4b41c7}{measureGraph}}(}
+\DoxyCodeLine{\ \ \ \ qureg,}
+\DoxyCodeLine{\ \ \ \ latticeGraph,}
+\DoxyCodeLine{\ \ \ \ qubitAngles,}
+\DoxyCodeLine{\ \ \ \ numRows);}
+\DoxyCodeLine{}
+\DoxyCodeLine{assert((measuredQubitsOutcomes.back()==0)\ \&\&\ \textcolor{stringliteral}{"{}The\ last\ qubit\ must\ be\ 0,\ it\ is\ not."{}});}
+\DoxyCodeLine{\textcolor{comment}{//\ print\ results\ to\ screen}}
+\DoxyCodeLine{\textcolor{comment}{//printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{destroyQuESTEnv(env);}
+
+\end{DoxyCode}
+\hypertarget{tutorial03_oddQubitEveryOtherIsZero}{}\doxysubsection{\texorpdfstring{Odd number of qubits every other is zero}{Odd number of qubits every other is zero}}\label{tutorial03_oddQubitEveryOtherIsZero}
+This test has an odd number of qubits and
+\begin{DoxyItemize}
+\item Every other qubit, starting from the second qubit, is $0$
+\item When the sum of the angles is a multiple of $2k\pi$ then the last qubit is zero
+\item When the sum of the angles is a multiple of $2k\pi + \pi$ then the last qubit is one
+\end{DoxyItemize}
+
+This script performing this test is found here \doxylink{test_odd_number_qubits_every_seconds_angle_zero_8cpp}{tests/test\+Odd\+Number\+Qubits\+Every\+Seconds\+Angle\+Zero.\+cpp}
+
+To complete this test the {\ttfamily assert\+Func} was written
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{general_assert_functions_8hpp_a0cab6d0005870e6df565f2397afff231}{assertFunc}}(std::vector<int>\ measuredQubitsOutcomes,\textcolor{keywordtype}{int}\ assertValue)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (measuredQubitsOutcomes.back()\ !=\ assertValue)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}The\ last\ qubit\ must\ be\ "{}}\ +\ std::to\_string(assertValue)\ +\ \textcolor{stringliteral}{"{},\ it\ is\ not."{}});}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+As well to simplify the {\ttfamily main} function the {\ttfamily test\+Every\+Other\+Anlge\+Zero\+Results} function was written
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_assert_functions_8hpp_ab91620d08875164bce42bdc604224ed3}{testEveryOtherAnlgeZeroResults}}(\textcolor{keywordtype}{int}\ assertValue,\textcolor{keywordtype}{int}\ piDenominator,\textcolor{keywordtype}{int}\ numberCols)\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Initialise\ variable\ names\ and\ types}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ numRows;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ numCols;}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ numVertices;}
+\DoxyCodeLine{\ \ \ \ std::vector<qreal>\ qubitAngles;}
+\DoxyCodeLine{\ \ \ \ std::vector<int>\ measuredQubitsOutcomes;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Set\ values\ to\ variables}}
+\DoxyCodeLine{\ \ \ \ numRows\ =\ 1;}
+\DoxyCodeLine{\ \ \ \ numCols\ =\ numberCols;\ \textcolor{comment}{//\ Test\ on\ an\ odd\ number\ of\ qubits}}
+\DoxyCodeLine{\ \ \ \ latticeGraph\ =\ \mbox{\hyperlink{graph_constructions_8hpp_a74f9014929a19ec558c3bc766754f1c3}{createLatticeGraph}}(numRows,numCols);}
+\DoxyCodeLine{\ \ \ \ numVertices\ =\ boost::num\_vertices(latticeGraph);}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{\ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ create\ a\ quantum\ register}}
+\DoxyCodeLine{\ \ \ \ Qureg\ qureg\ =\ createQureg(numVertices,\ env);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ set\ angles}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (assertValue\ ==\ 0)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ qubitAngles\ =\ \mbox{\hyperlink{angle_construction_8hpp_a0804b07ffb2bea2c7ac8cba482a88d62}{initRandomPiOnNEveryOtherAnglesMod2kPi}}(numVertices,piDenominator);\ \textcolor{comment}{//\ end\ in\ 0}}
+\DoxyCodeLine{\ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (assertValue\ ==\ 1)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ qubitAngles\ =\ \mbox{\hyperlink{angle_construction_8hpp_ac35939429a8657a1f33dad419e7812c1}{initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi}}(numVertices,piDenominator);\ \ \textcolor{comment}{//\ end\ in\ 1}}
+\DoxyCodeLine{\ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Nothing}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ initialise\ in\ the\ plus\ state}}
+\DoxyCodeLine{\ \ \ \ initPlusState(qureg);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//Leave\ angle\ off\ qubits}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ add\ angles\ to\ the\ qubits}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//addAngleRotateZgate(qureg,qubitAngles);}}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ entangle\ graph}}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{quantum_graph_cluster_states_8hpp_a3f830234f9eb3a150a084b0f2b4aa056}{entangleGraph}}(qureg,latticeGraph);}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ measure\ graph}}
+\DoxyCodeLine{\ \ \ \ measuredQubitsOutcomes\ =\ \mbox{\hyperlink{flow_measurements_8hpp_a7231be9a1c347894c1d01c349f4b41c7}{measureGraph}}(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ qureg,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ latticeGraph,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ qubitAngles,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ numRows);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{\ \ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{\ \ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Finally, the test implemented
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Include\ package\ header\ file}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{packages_8hpp}{packages.hpp}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Set\ up\ the\ main\ function}}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{mbqc_starter_file_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\ \ \ }
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;i\ <\ 1e1;i++)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{graph_assert_functions_8hpp_ab91620d08875164bce42bdc604224ed3}{testEveryOtherAnlgeZeroResults}}(0,4,7);}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{graph_assert_functions_8hpp_ab91620d08875164bce42bdc604224ed3}{testEveryOtherAnlgeZeroResults}}(1,4,7);}
+\DoxyCodeLine{\ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+In all of these tests, the registers have been pure states and hence constructed with state vectors.
+
+This is how you run a file. For any help, questions or problems see the \href{https://github.com/ediparquantum/MBQC}{\texttt{ MBQC}} repository site to create an
+\begin{DoxyItemize}
+\item \href{https://github.com/ediparquantum/MBQC/issues}{\texttt{ issue}},
+\item \href{https://github.com/ediparquantum/MBQC/pulls}{\texttt{ pull-\/request}} or
+\item open a \href{https://github.com/ediparquantum/MBQC/discussions}{\texttt{ discussion}}. 
+\end{DoxyItemize}

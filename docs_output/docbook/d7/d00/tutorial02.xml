@@ -2,7 +2,7 @@
 <section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_tutorial02" xml:lang="en-US">
 <title>Tutorial 2: MBQC Starter</title>
 <indexterm><primary>Tutorial 2: MBQC Starter</primary></indexterm>
-<section xml:id="_tutorial03_1intro">
+<section xml:id="_tutorial04_1intro">
 <title>Introduction</title>
 
 <para>This tutorial provides an overview of the MBQC Starter File script. The script demonstrates the implementation of Measurement-Based Quantum Computing (MBQC) using the QuEST library. It creates a lattice graph, initializes a quantum register, applies rotations to the qubits, entangles the graph, performs measurements, and prints the results.</para>
@@ -181,7 +181,17 @@ measuredQubitsOutcomes&#32;=&#32;<link linkend="_flow_measurements_8hpp_1a7231be
 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
 }
-</computeroutput></literallayout> </para>
+</computeroutput></literallayout></para>
+
+<para>This is how you run a file. For any help, questions or problems see the <link xlink:href="https://github.com/ediparquantum/MBQC">MBQC</link> repository site to create an<itemizedlist>
+<listitem>
+<para><link xlink:href="https://github.com/ediparquantum/MBQC/issues">issue</link>,</para>
+</listitem><listitem>
+<para><link xlink:href="https://github.com/ediparquantum/MBQC/pulls">pull-request</link> or</para>
+</listitem><listitem>
+<para>open a <link xlink:href="https://github.com/ediparquantum/MBQC/discussions">discussion</link>. </para>
+</listitem></itemizedlist>
+</para>
 </section>
 </section>
 </section>

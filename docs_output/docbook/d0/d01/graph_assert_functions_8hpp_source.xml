@@ -163,4 +163,70 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assert((<emphasis role="stringliteral">&quot;New&#32;angle&#32;and&#32;original&#32;angle&#32;do&#32;not&#32;match&quot;</emphasis>&#32;&amp;&amp;&#32;computedCorrectedAngle&#32;==&#32;expectedCorrectedAngle));
 <anchor xml:id="_graph_assert_functions_8hpp_source_1l00226"/>00226 }
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00227"/>00227 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00228"/>00228 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00229"/>00229 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00230"/>00230 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00240"/><link linkend="_graph_assert_functions_8hpp_1ab91620d08875164bce42bdc604224ed3">00240</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_graph_assert_functions_8hpp_1ab91620d08875164bce42bdc604224ed3">testEveryOtherAnlgeZeroResults</link>(<emphasis role="keywordtype">int</emphasis>&#32;assertValue,<emphasis role="keywordtype">int</emphasis>&#32;piDenominator,<emphasis role="keywordtype">int</emphasis>&#32;numberCols){
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00241"/>00241 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00242"/>00242 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00243"/>00243 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00244"/>00244 &#32;&#32;&#32;&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00245"/>00245 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00246"/>00246 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00247"/>00247 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00248"/>00248 &#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00249"/>00249 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00250"/>00250 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00251"/>00251 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00252"/>00252 &#32;&#32;&#32;&#32;numRows&#32;=&#32;1;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00253"/>00253 &#32;&#32;&#32;&#32;numCols&#32;=&#32;numberCols;&#32;<emphasis role="comment">//&#32;Test&#32;on&#32;an&#32;odd&#32;number&#32;of&#32;qubits</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00254"/>00254 &#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;<link linkend="_graph_constructions_8hpp_1a74f9014929a19ec558c3bc766754f1c3">createLatticeGraph</link>(numRows,numCols);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00255"/>00255 &#32;&#32;&#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00256"/>00256 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00257"/>00257 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00258"/>00258 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00259"/>00259 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00260"/>00260 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00261"/>00261 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00262"/>00262 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00263"/>00263 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numVertices,&#32;env);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00264"/>00264 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00265"/>00265 &#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00266"/>00266 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00267"/>00267 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;angles</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00268"/>00268 &#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00269"/>00269 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(assertValue&#32;==&#32;0){
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00270"/>00270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles&#32;=&#32;<link linkend="_angle_construction_8hpp_1a0804b07ffb2bea2c7ac8cba482a88d62">initRandomPiOnNEveryOtherAnglesMod2kPi</link>(numVertices,piDenominator);&#32;<emphasis role="comment">//&#32;end&#32;in&#32;0</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00271"/>00271 &#32;&#32;&#32;&#32;}<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(assertValue&#32;==&#32;1){
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles&#32;=&#32;<link linkend="_angle_construction_8hpp_1ac35939429a8657a1f33dad419e7812c1">initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi</link>(numVertices,piDenominator);&#32;&#32;<emphasis role="comment">//&#32;end&#32;in&#32;1</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00273"/>00273 &#32;&#32;&#32;&#32;}<emphasis role="keywordflow">else</emphasis>{
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Nothing</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00275"/>00275 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00276"/>00276 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00277"/>00277 &#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00278"/>00278 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;initialise&#32;in&#32;the&#32;plus&#32;state</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00279"/>00279 &#32;&#32;&#32;&#32;initPlusState(qureg);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00280"/>00280 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00281"/>00281 &#32;&#32;&#32;&#32;<emphasis role="comment">//Leave&#32;angle&#32;off&#32;qubits</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00282"/>00282 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;add&#32;angles&#32;to&#32;the&#32;qubits</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00283"/>00283 &#32;&#32;&#32;&#32;<emphasis role="comment">//addAngleRotateZgate(qureg,qubitAngles);</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00284"/>00284 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00285"/>00285 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00286"/>00286 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;entangle&#32;graph</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00287"/>00287 &#32;&#32;&#32;&#32;<link linkend="_quantum_graph_cluster_states_8hpp_1a3f830234f9eb3a150a084b0f2b4aa056">entangleGraph</link>(qureg,latticeGraph);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00288"/>00288 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00289"/>00289 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00290"/>00290 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;graph</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00291"/>00291 &#32;&#32;&#32;&#32;measuredQubitsOutcomes&#32;=&#32;<link linkend="_flow_measurements_8hpp_1a7231be9a1c347894c1d01c349f4b41c7">measureGraph</link>(
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00292"/>00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qureg,
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00293"/>00293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;latticeGraph,
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00294"/>00294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles,
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00295"/>00295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numRows);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00296"/>00296 
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00297"/>00297 &#32;&#32;&#32;&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00298"/>00298 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00299"/>00299 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00300"/>00300 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+<anchor xml:id="_graph_assert_functions_8hpp_source_1l00301"/>00301 }
 </programlisting></section>

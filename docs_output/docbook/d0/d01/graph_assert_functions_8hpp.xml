@@ -33,6 +33,10 @@
 
 <para>Asserts that the computed corrected angle matches the expected corrected angle. </para>
 </listitem>
+            <listitem><para>void <link linkend="_graph_assert_functions_8hpp_1ab91620d08875164bce42bdc604224ed3">testEveryOtherAnlgeZeroResults</link> (int assertValue, int piDenominator, int numberCols)</para>
+
+<para>Tests the measurement outcomes with every other angle set to zero. </para>
+</listitem>
         </itemizedlist>
 </simplesect>
 <section>
@@ -571,6 +575,113 @@ Definition at line <link linkend="_graph_assert_functions_8hpp_source_1l00066">6
 00079 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;max_degree&#32;=&#32;<link linkend="_general_assert_functions_8hpp_1af227e83a7360ec64f91773c37a905253">getMax</link>(degree_vector);
 00080 &#32;&#32;&#32;&#32;assert((<emphasis role="stringliteral">&quot;maximum&#32;degree&#32;is&#32;2&quot;</emphasis>&#32;&amp;&amp;&#32;max_degree&#32;==&#32;2));
 00081 }
+</programlisting></section>
+<anchor xml:id="_graph_assert_functions_8hpp_1ab91620d08875164bce42bdc604224ed3"/><section>
+    <title>testEveryOtherAnlgeZeroResults()</title>
+<indexterm><primary>testEveryOtherAnlgeZeroResults</primary><secondary>graphAssertFunctions.hpp</secondary></indexterm>
+<indexterm><primary>graphAssertFunctions.hpp</primary><secondary>testEveryOtherAnlgeZeroResults</secondary></indexterm>
+<para><computeroutput>void testEveryOtherAnlgeZeroResults (int assertValue, int piDenominator, int numberCols)</computeroutput></para><para>
+
+<para>Tests the measurement outcomes with every other angle set to zero. </para>
+</para>
+
+<para>This function performs a test where the measurement outcomes are checked based on the specified assert value, pi denominator, and number of columns. The function initializes variables, sets values, creates a quantum register, sets angles, entangles the graph, measures the graph, and unloads QuEST.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>assertValue</entry><entry>
+<para>The expected value for the measurement outcomes. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>piDenominator</entry><entry>
+<para>The denominator for the angles in the range [0, 2*pi). </para>
+</entry>
+                            </row>
+                            <row>
+<entry>numberCols</entry><entry>
+<para>The number of columns in the lattice. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_graph_assert_functions_8hpp_source_1l00240">240</link> of file <link linkend="_graph_assert_functions_8hpp_source">graphAssertFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00241 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
+00242 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows;
+00243 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols;
+00244 &#32;&#32;&#32;&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+00245 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices;
+00246 &#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;
+00247 &#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;
+00248 &#32;&#32;&#32;&#32;
+00249 
+00250 
+00251 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
+00252 &#32;&#32;&#32;&#32;numRows&#32;=&#32;1;
+00253 &#32;&#32;&#32;&#32;numCols&#32;=&#32;numberCols;&#32;<emphasis role="comment">//&#32;Test&#32;on&#32;an&#32;odd&#32;number&#32;of&#32;qubits</emphasis>
+00254 &#32;&#32;&#32;&#32;latticeGraph&#32;=&#32;<link linkend="_graph_constructions_8hpp_1a74f9014929a19ec558c3bc766754f1c3">createLatticeGraph</link>(numRows,numCols);
+00255 &#32;&#32;&#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);
+00256 
+00257 
+00258 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+00259 &#32;&#32;&#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+00260 
+00261 
+00262 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+00263 &#32;&#32;&#32;&#32;Qureg&#32;qureg&#32;=&#32;createQureg(numVertices,&#32;env);
+00264 
+00265 &#32;&#32;&#32;&#32;
+00266 
+00267 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set&#32;angles</emphasis>
+00268 &#32;&#32;&#32;&#32;
+00269 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(assertValue&#32;==&#32;0){
+00270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles&#32;=&#32;<link linkend="_angle_construction_8hpp_1a0804b07ffb2bea2c7ac8cba482a88d62">initRandomPiOnNEveryOtherAnglesMod2kPi</link>(numVertices,piDenominator);&#32;<emphasis role="comment">//&#32;end&#32;in&#32;0</emphasis>
+00271 &#32;&#32;&#32;&#32;}<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">if</emphasis>&#32;(assertValue&#32;==&#32;1){
+00272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles&#32;=&#32;<link linkend="_angle_construction_8hpp_1ac35939429a8657a1f33dad419e7812c1">initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi</link>(numVertices,piDenominator);&#32;&#32;<emphasis role="comment">//&#32;end&#32;in&#32;1</emphasis>
+00273 &#32;&#32;&#32;&#32;}<emphasis role="keywordflow">else</emphasis>{
+00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Nothing</emphasis>
+00275 &#32;&#32;&#32;&#32;}
+00276 
+00277 &#32;&#32;&#32;&#32;
+00278 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;initialise&#32;in&#32;the&#32;plus&#32;state</emphasis>
+00279 &#32;&#32;&#32;&#32;initPlusState(qureg);
+00280 
+00281 &#32;&#32;&#32;&#32;<emphasis role="comment">//Leave&#32;angle&#32;off&#32;qubits</emphasis>
+00282 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;add&#32;angles&#32;to&#32;the&#32;qubits</emphasis>
+00283 &#32;&#32;&#32;&#32;<emphasis role="comment">//addAngleRotateZgate(qureg,qubitAngles);</emphasis>
+00284 
+00285 
+00286 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;entangle&#32;graph</emphasis>
+00287 &#32;&#32;&#32;&#32;<link linkend="_quantum_graph_cluster_states_8hpp_1a3f830234f9eb3a150a084b0f2b4aa056">entangleGraph</link>(qureg,latticeGraph);
+00288 
+00289 
+00290 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;measure&#32;graph</emphasis>
+00291 &#32;&#32;&#32;&#32;measuredQubitsOutcomes&#32;=&#32;<link linkend="_flow_measurements_8hpp_1a7231be9a1c347894c1d01c349f4b41c7">measureGraph</link>(
+00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qureg,
+00293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;latticeGraph,
+00294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles,
+00295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numRows);
+00296 
+00297 &#32;&#32;&#32;&#32;
+00298 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+00299 &#32;&#32;&#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+00300 &#32;&#32;&#32;&#32;destroyQuESTEnv(env);
+00301 }
 </programlisting></section>
 </section>
 </section>

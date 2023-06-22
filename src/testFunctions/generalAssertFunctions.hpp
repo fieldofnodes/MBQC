@@ -90,3 +90,22 @@ int getMax(const boost::container::vector<int>& vec) {
 bool isIntInVector(int value, const std::vector<int>& vec) {
     return std::find(vec.begin(), vec.end(), value) != vec.end();
 }
+
+
+
+/**
+ * @brief Asserts the value of the last qubit measurement outcome.
+ *
+ * This function checks if the value of the last qubit measurement outcome matches the specified assert value. If the values do not match, it throws a runtime error with a descriptive message.
+ *
+ * @param measuredQubitsOutcomes The vector of measured qubit outcomes.
+ * @param assertValue The expected value for the last qubit measurement outcome.
+ *
+ * @throws std::runtime_error if the last qubit measurement outcome does not match the assert value.
+ */
+void assertFunc(std::vector<int> measuredQubitsOutcomes,int assertValue) {
+    if (measuredQubitsOutcomes.back() != assertValue) {
+        throw std::runtime_error("The last qubit must be " + std::to_string(assertValue) + ", it is not.");
+    }
+}
+

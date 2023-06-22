@@ -163,5 +163,71 @@
 \DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00224}00224\ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00225}00225\ \ \ \ \ \ \ \ \ assert((\textcolor{stringliteral}{"{}New\ angle\ and\ original\ angle\ do\ not\ match"{}}\ \&\&\ computedCorrectedAngle\ ==\ expectedCorrectedAngle));}
 \DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00226}00226\ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00240}\mbox{\hyperlink{graph_assert_functions_8hpp_ab91620d08875164bce42bdc604224ed3}{00240}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{graph_assert_functions_8hpp_ab91620d08875164bce42bdc604224ed3}{testEveryOtherAnlgeZeroResults}}(\textcolor{keywordtype}{int}\ assertValue,\textcolor{keywordtype}{int}\ piDenominator,\textcolor{keywordtype}{int}\ numberCols)\{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00241}00241\ \ \ \ \ \textcolor{comment}{//\ Initialise\ variable\ names\ and\ types}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00242}00242\ \ \ \ \ \textcolor{keywordtype}{int}\ numRows;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00243}00243\ \ \ \ \ \textcolor{keywordtype}{int}\ numCols;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00244}00244\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00245}00245\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00246}00246\ \ \ \ \ std::vector<qreal>\ qubitAngles;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00247}00247\ \ \ \ \ std::vector<int>\ measuredQubitsOutcomes;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00248}00248\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00251}00251\ \ \ \ \ \textcolor{comment}{//\ Set\ values\ to\ variables}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00252}00252\ \ \ \ \ numRows\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00253}00253\ \ \ \ \ numCols\ =\ numberCols;\ \textcolor{comment}{//\ Test\ on\ an\ odd\ number\ of\ qubits}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00254}00254\ \ \ \ \ latticeGraph\ =\ \mbox{\hyperlink{graph_constructions_8hpp_a74f9014929a19ec558c3bc766754f1c3}{createLatticeGraph}}(numRows,numCols);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00255}00255\ \ \ \ \ numVertices\ =\ boost::num\_vertices(latticeGraph);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00258}00258\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00259}00259\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00262}00262\ \ \ \ \ \textcolor{comment}{//\ create\ a\ quantum\ register}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00263}00263\ \ \ \ \ Qureg\ qureg\ =\ createQureg(numVertices,\ env);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00265}00265\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00267}00267\ \ \ \ \ \textcolor{comment}{//\ set\ angles}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00268}00268\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00269}00269\ \ \ \ \ \textcolor{keywordflow}{if}\ (assertValue\ ==\ 0)\{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00270}00270\ \ \ \ \ \ \ \ \ qubitAngles\ =\ \mbox{\hyperlink{angle_construction_8hpp_a0804b07ffb2bea2c7ac8cba482a88d62}{initRandomPiOnNEveryOtherAnglesMod2kPi}}(numVertices,piDenominator);\ \textcolor{comment}{//\ end\ in\ 0}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00271}00271\ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (assertValue\ ==\ 1)\{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00272}00272\ \ \ \ \ \ \ \ \ qubitAngles\ =\ \mbox{\hyperlink{angle_construction_8hpp_ac35939429a8657a1f33dad419e7812c1}{initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi}}(numVertices,piDenominator);\ \ \textcolor{comment}{//\ end\ in\ 1}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00273}00273\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Nothing}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00275}00275\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00276}00276\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00277}00277\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00278}00278\ \ \ \ \ \textcolor{comment}{//\ initialise\ in\ the\ plus\ state}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00279}00279\ \ \ \ \ initPlusState(qureg);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00280}00280\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00281}00281\ \ \ \ \ \textcolor{comment}{//Leave\ angle\ off\ qubits}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00282}00282\ \ \ \ \ \textcolor{comment}{//\ add\ angles\ to\ the\ qubits}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00283}00283\ \ \ \ \ \textcolor{comment}{//addAngleRotateZgate(qureg,qubitAngles);}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00285}00285\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00286}00286\ \ \ \ \ \textcolor{comment}{//\ entangle\ graph}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00287}00287\ \ \ \ \ \mbox{\hyperlink{quantum_graph_cluster_states_8hpp_a3f830234f9eb3a150a084b0f2b4aa056}{entangleGraph}}(qureg,latticeGraph);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00290}00290\ \ \ \ \ \textcolor{comment}{//\ measure\ graph}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00291}00291\ \ \ \ \ measuredQubitsOutcomes\ =\ \mbox{\hyperlink{flow_measurements_8hpp_a7231be9a1c347894c1d01c349f4b41c7}{measureGraph}}(}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00292}00292\ \ \ \ \ \ \ \ \ qureg,}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00293}00293\ \ \ \ \ \ \ \ \ latticeGraph,}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00294}00294\ \ \ \ \ \ \ \ \ qubitAngles,}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00295}00295\ \ \ \ \ \ \ \ \ numRows);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00297}00297\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00298}00298\ \ \ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00299}00299\ \ \ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00300}00300\ \ \ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{\Hypertarget{graph_assert_functions_8hpp_source_l00301}00301\ \}}
 
 \end{DoxyCode}

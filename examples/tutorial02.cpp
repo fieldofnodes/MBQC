@@ -161,4 +161,9 @@
  *     return 0;
  * }
  * @endcode
+ * 
+ * This is how you run a file. For any help, questions or problems see the [MBQC](https://github.com/ediparquantum/MBQC) repository site to create an 
+ * - [issue](https://github.com/ediparquantum/MBQC/issues), 
+ * - [pull-request](https://github.com/ediparquantum/MBQC/pulls) or 
+ * - open a [discussion](https://github.com/ediparquantum/MBQC/discussions).
  */

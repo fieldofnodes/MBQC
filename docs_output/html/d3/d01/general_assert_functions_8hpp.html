@@ -120,8 +120,62 @@ Functions</h2></td></tr>
 <tr class="memitem:a4a6a933e01029d0c61bce553817a0feb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d01/general_assert_functions_8hpp.html#a4a6a933e01029d0c61bce553817a0feb">isIntInVector</a> (int value, const std::vector&lt; int &gt; &amp;vec)</td></tr>
 <tr class="memdesc:a4a6a933e01029d0c61bce553817a0feb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an integer value is present in a vector.  <br /></td></tr>
 <tr class="separator:a4a6a933e01029d0c61bce553817a0feb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cab6d0005870e6df565f2397afff231"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d01/general_assert_functions_8hpp.html#a0cab6d0005870e6df565f2397afff231">assertFunc</a> (std::vector&lt; int &gt; measuredQubitsOutcomes, int assertValue)</td></tr>
+<tr class="memdesc:a0cab6d0005870e6df565f2397afff231"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asserts the value of the last qubit measurement outcome.  <br /></td></tr>
+<tr class="separator:a0cab6d0005870e6df565f2397afff231"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a0cab6d0005870e6df565f2397afff231" name="a0cab6d0005870e6df565f2397afff231"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cab6d0005870e6df565f2397afff231">&#9670;&#160;</a></span>assertFunc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void assertFunc </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>measuredQubitsOutcomes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>assertValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Asserts the value of the last qubit measurement outcome. </p>
+<p>This function checks if the value of the last qubit measurement outcome matches the specified assert value. If the values do not match, it throws a runtime error with a descriptive message.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">measuredQubitsOutcomes</td><td>The vector of measured qubit outcomes. </td></tr>
+    <tr><td class="paramname">assertValue</td><td>The expected value for the last qubit measurement outcome.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if the last qubit measurement outcome does not match the assert value. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d01/general_assert_functions_8hpp_source.html#l00106">106</a> of file <a class="el" href="../../d3/d01/general_assert_functions_8hpp_source.html">generalAssertFunctions.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  106</span>                                                                       {</div>
+<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">if</span> (measuredQubitsOutcomes.back() != assertValue) {</div>
+<div class="line"><span class="lineno">  108</span>        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;The last qubit must be &quot;</span> + std::to_string(assertValue) + <span class="stringliteral">&quot;, it is not.&quot;</span>);</div>
+<div class="line"><span class="lineno">  109</span>    }</div>
+<div class="line"><span class="lineno">  110</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="af227e83a7360ec64f91773c37a905253" name="af227e83a7360ec64f91773c37a905253"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af227e83a7360ec64f91773c37a905253">&#9670;&#160;</a></span>getMax()</h2>
 

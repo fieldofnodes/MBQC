@@ -57,5 +57,14 @@
 \DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00090}\mbox{\hyperlink{general_assert_functions_8hpp_a4a6a933e01029d0c61bce553817a0feb}{00090}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{general_assert_functions_8hpp_a4a6a933e01029d0c61bce553817a0feb}{isIntInVector}}(\textcolor{keywordtype}{int}\ value,\ \textcolor{keyword}{const}\ std::vector<int>\&\ vec)\ \{}
 \DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00091}00091\ \ \ \ \ \textcolor{keywordflow}{return}\ std::find(vec.begin(),\ vec.end(),\ value)\ !=\ vec.end();}
 \DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00092}00092\ \}}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00106}\mbox{\hyperlink{general_assert_functions_8hpp_a0cab6d0005870e6df565f2397afff231}{00106}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{general_assert_functions_8hpp_a0cab6d0005870e6df565f2397afff231}{assertFunc}}(std::vector<int>\ measuredQubitsOutcomes,\textcolor{keywordtype}{int}\ assertValue)\ \{}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00107}00107\ \ \ \ \ \textcolor{keywordflow}{if}\ (measuredQubitsOutcomes.back()\ !=\ assertValue)\ \{}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}The\ last\ qubit\ must\ be\ "{}}\ +\ std::to\_string(assertValue)\ +\ \textcolor{stringliteral}{"{},\ it\ is\ not."{}});}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00109}00109\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00110}00110\ \}}
+\DoxyCodeLine{\Hypertarget{general_assert_functions_8hpp_source_l00111}00111\ }
 
 \end{DoxyCode}

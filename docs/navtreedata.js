@@ -58,11 +58,12 @@ var NAVTREE =
         [ "Unload QuEST", "d7/d00/tutorial02.html#unloadenv", null ]
       ] ]
     ] ],
-    [ "Tutorial 3: 1D Odd size angles 0", "d1/d00/tutorial03.html", [
-      [ "Code Description", "d1/d00/tutorial03.html#code", [
-        [ "The following code initializes the necessary variables and sets values for the 1D lattice:", "d1/d00/tutorial03.html#initValues", null ]
-      ] ],
-      [ "Conclusion", "d1/d00/tutorial03.html#conclusion", null ]
+    [ "Tutorial 3: 1D Lattice", "d1/d00/tutorial03.html", [
+      [ "One Dimensional Results", "d1/d00/tutorial03.html#oneDLatticeResults", [
+        [ "Odd number of qubits", "d1/d00/tutorial03.html#oddQubitsZeroAngles", null ],
+        [ "Two Qubits with angle Pi", "d1/d00/tutorial03.html#twoQubiTsPi", null ],
+        [ "Odd number of qubits every other is zero", "d1/d00/tutorial03.html#oddQubitEveryOtherIsZero", null ]
+      ] ]
     ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],

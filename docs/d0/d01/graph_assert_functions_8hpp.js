@@ -6,5 +6,6 @@ var graph_assert_functions_8hpp =
     [ "assertGraphNumVertices", "d0/d01/graph_assert_functions_8hpp.html#a026973ba07ba80213ede65e64a3eb614", null ],
     [ "assertHandShakeLemma", "d0/d01/graph_assert_functions_8hpp.html#a60966966368ac25fe48dbccd70490e98", null ],
     [ "assertNieghbours", "d0/d01/graph_assert_functions_8hpp.html#a5c3f8d6a6068b10ca7ca8f2f4515cbcd", null ],
-    [ "assertPathGraphMinMaxDegrees", "d0/d01/graph_assert_functions_8hpp.html#a781ea29934c2f8c5c65a73075bc13da1", null ]
+    [ "assertPathGraphMinMaxDegrees", "d0/d01/graph_assert_functions_8hpp.html#a781ea29934c2f8c5c65a73075bc13da1", null ],
+    [ "testEveryOtherAnlgeZeroResults", "d0/d01/graph_assert_functions_8hpp.html#ab91620d08875164bce42bdc604224ed3", null ]
 ];

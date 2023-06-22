@@ -95,4 +95,191 @@
  * This test indeen shows that the final qubit is always measured as a \f$0\f$ outcome.
  * 
  * @subsection twoQubiTsPi Two Qubits with angle Pi
+ * 
+ * This graph, a simple two vertex graph, where both angles \f$\theta = \pi/2\f$ is different from the above as
+ * - There are only 2 qubits
+ * - Each has a non-zero angle
+ * - The angle is \f$\theta = \pi/2\f$ 
+ * 
+ * The outcome is that the second qubit is always measured a \f$0\f$. The script can be found here @ref tests/testTwoQubitsAnglesPiOnTwo.cpp
+ * 
+ * @code{.cpp}
+ *  // Initialise variable names and types
+    int numRows;
+    int numCols;
+    undirectedGraph latticeGraph;
+    int numVertices;
+    std::vector<qreal> qubitAngles;
+    std::vector<int> measuredQubitsOutcomes;
+
+
+    // Set values to variables
+    numRows = 1;
+    numCols = 2; // Test on an odd number of qubits
+    latticeGraph = createLatticeGraph(numRows,numCols);
+    numVertices = boost::num_vertices(latticeGraph);
+
+
+
+    // load QuEST environment
+    QuESTEnv env = createQuESTEnv();
+
+
+    // create a quantum register
+    Qureg qureg = createQureg(numVertices, env);
+
+
+    // set angles
+    qubitAngles = initAllAnglesSame(numVertices, M_PI/2);
+
+
+    // initialise in the plus state
+    initPlusState(qureg);
+
+    //Leave angle off qubits
+    // add angles to the qubits
+    //addAngleRotateZgate(qureg,qubitAngles);
+
+
+    // entangle graph
+    entangleGraph(qureg,latticeGraph);
+
+
+    // measure graph
+    measuredQubitsOutcomes = measureGraph(
+        qureg,
+        latticeGraph,
+        qubitAngles,
+        numRows);
+
+    assert((measuredQubitsOutcomes.back()==0) && "The last qubit must be 0, it is not.");
+    // print results to screen
+    //printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);
+
+
+
+    // unload QuEST
+    destroyQureg(qureg, env); 
+    destroyQuESTEnv(env);
+ * @endcode
+ *
+ * @subsection oddQubitEveryOtherIsZero Odd number of qubits every other is zero
+ * 
+ * This test has an odd number of qubits and 
+ * - Every other qubit, starting from the second qubit, is \f$0\f$
+ * - When the sum of the angles is a multiple of \f$2k\pi\f$ then the last qubit is zero
+ * - When the sum of the angles is a multiple of \f$2k\pi + \pi\f$ then the last qubit is one
+ * 
+ * This script performing this test is found here @ref tests/testOddNumberQubitsEverySecondsAngleZero.cpp
+ * 
+ * To complete this test the `assertFunc` was written
+ * 
+ * @code{.cpp}
+ * void assertFunc(std::vector<int> measuredQubitsOutcomes,int assertValue) {
+    if (measuredQubitsOutcomes.back() != assertValue) {
+        throw std::runtime_error("The last qubit must be " + std::to_string(assertValue) + ", it is not.");
+    }
+}
+ * @endcode
+ *
+ * As well to simplify the `main` function the `testEveryOtherAnlgeZeroResults` function was written
+ * 
+ * @code{.cpp}
+ * void testEveryOtherAnlgeZeroResults(int assertValue,int piDenominator,int numberCols){
+    // Initialise variable names and types
+    int numRows;
+    int numCols;
+    undirectedGraph latticeGraph;
+    int numVertices;
+    std::vector<qreal> qubitAngles;
+    std::vector<int> measuredQubitsOutcomes;
+    
+
+
+    // Set values to variables
+    numRows = 1;
+    numCols = numberCols; // Test on an odd number of qubits
+    latticeGraph = createLatticeGraph(numRows,numCols);
+    numVertices = boost::num_vertices(latticeGraph);
+
+
+    // load QuEST environment
+    QuESTEnv env = createQuESTEnv();
+
+
+    // create a quantum register
+    Qureg qureg = createQureg(numVertices, env);
+
+    
+
+    // set angles
+    
+    if (assertValue == 0){
+        qubitAngles = initRandomPiOnNEveryOtherAnglesMod2kPi(numVertices,piDenominator); // end in 0
+    }else if (assertValue == 1){
+        qubitAngles = initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi(numVertices,piDenominator);  // end in 1
+    }else{
+        // Nothing
+    }
+
+    
+    // initialise in the plus state
+    initPlusState(qureg);
+
+    //Leave angle off qubits
+    // add angles to the qubits
+    //addAngleRotateZgate(qureg,qubitAngles);
+
+
+    // entangle graph
+    entangleGraph(qureg,latticeGraph);
+
+
+    // measure graph
+    measuredQubitsOutcomes = measureGraph(
+        qureg,
+        latticeGraph,
+        qubitAngles,
+        numRows);
+
+    
+
+
+
+
+
+    // unload QuEST
+    destroyQureg(qureg, env); 
+    destroyQuESTEnv(env);
+}
+ * @endcode
+ * 
+ * Finally, the test implemented
+ * 
+ * @code{.cpp}
+    // Include package header file
+   #include "packages.hpp"
+
+
+
+   // Set up the main function
+   int main() {
+      
+      for (int i = 0;i < 1e1;i++){
+         testEveryOtherAnlgeZeroResults(0,4,7);
+         testEveryOtherAnlgeZeroResults(1,4,7);
+      }
+   
+      return 0;
+   }
+   * @endcode
+ *
+ * In all of these tests, the registers have been pure states and hence constructed with state vectors.
+ * 
+ * This is how you run a file. For any help, questions or problems see the [MBQC](https://github.com/ediparquantum/MBQC) repository site to create an 
+ * - [issue](https://github.com/ediparquantum/MBQC/issues), 
+ * - [pull-request](https://github.com/ediparquantum/MBQC/pulls) or 
+ * - open a [discussion](https://github.com/ediparquantum/MBQC/discussions).
  */
+
+

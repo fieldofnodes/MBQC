@@ -224,3 +224,78 @@ void assertCorrection(
         
         assert(("New angle and original angle do not match" && computedCorrectedAngle == expectedCorrectedAngle));
 }
+
+
+
+
+/**
+ * @brief Tests the measurement outcomes with every other angle set to zero.
+ *
+ * This function performs a test where the measurement outcomes are checked based on the specified assert value, pi denominator, and number of columns. The function initializes variables, sets values, creates a quantum register, sets angles, entangles the graph, measures the graph, and unloads QuEST.
+ *
+ * @param assertValue The expected value for the measurement outcomes.
+ * @param piDenominator The denominator for the angles in the range [0, 2*pi).
+ * @param numberCols The number of columns in the lattice.
+ */
+void testEveryOtherAnlgeZeroResults(int assertValue,int piDenominator,int numberCols){
+    // Initialise variable names and types
+    int numRows;
+    int numCols;
+    undirectedGraph latticeGraph;
+    int numVertices;
+    std::vector<qreal> qubitAngles;
+    std::vector<int> measuredQubitsOutcomes;
+    
+
+
+    // Set values to variables
+    numRows = 1;
+    numCols = numberCols; // Test on an odd number of qubits
+    latticeGraph = createLatticeGraph(numRows,numCols);
+    numVertices = boost::num_vertices(latticeGraph);
+
+
+    // load QuEST environment
+    QuESTEnv env = createQuESTEnv();
+
+
+    // create a quantum register
+    Qureg qureg = createQureg(numVertices, env);
+
+    
+
+    // set angles
+    
+    if (assertValue == 0){
+        qubitAngles = initRandomPiOnNEveryOtherAnglesMod2kPi(numVertices,piDenominator); // end in 0
+    }else if (assertValue == 1){
+        qubitAngles = initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi(numVertices,piDenominator);  // end in 1
+    }else{
+        // Nothing
+    }
+
+    
+    // initialise in the plus state
+    initPlusState(qureg);
+
+    //Leave angle off qubits
+    // add angles to the qubits
+    //addAngleRotateZgate(qureg,qubitAngles);
+
+
+    // entangle graph
+    entangleGraph(qureg,latticeGraph);
+
+
+    // measure graph
+    measuredQubitsOutcomes = measureGraph(
+        qureg,
+        latticeGraph,
+        qubitAngles,
+        numRows);
+
+    
+    // unload QuEST
+    destroyQureg(qureg, env); 
+    destroyQuESTEnv(env);
+}

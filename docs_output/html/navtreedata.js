@@ -61,8 +61,12 @@ var NAVTREE =
     [ "Tutorial 3: 1D Lattice", "d1/d00/tutorial03.html", [
       [ "One Dimensional Results", "d1/d00/tutorial03.html#oneDLatticeResults", [
         [ "Odd number of qubits", "d1/d00/tutorial03.html#oddQubitsZeroAngles", null ],
-        [ "Two Qubits with angle Pi", "d1/d00/tutorial03.html#twoQubiTsPi", null ]
+        [ "Two Qubits with angle Pi", "d1/d00/tutorial03.html#twoQubiTsPi", null ],
+        [ "Odd number of qubits every other is zero", "d1/d00/tutorial03.html#oddQubitEveryOtherIsZero", null ]
       ] ]
+    ] ],
+    [ "Tutorial 4: Flow", "dc/d00/tutorial04.html", [
+      [ "Example", "dc/d00/tutorial04.html#example", null ]
     ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],

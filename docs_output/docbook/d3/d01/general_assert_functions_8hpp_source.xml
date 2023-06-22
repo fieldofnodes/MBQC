@@ -57,4 +57,13 @@ Go to the documentation of this file.<programlisting linenumbering="unnumbered">
 <anchor xml:id="_general_assert_functions_8hpp_source_1l00090"/><link linkend="_general_assert_functions_8hpp_1a4a6a933e01029d0c61bce553817a0feb">00090</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_general_assert_functions_8hpp_1a4a6a933e01029d0c61bce553817a0feb">isIntInVector</link>(<emphasis role="keywordtype">int</emphasis>&#32;value,&#32;<emphasis role="keyword">const</emphasis>&#32;std::vector&lt;int&gt;&amp;&#32;vec)&#32;{
 <anchor xml:id="_general_assert_functions_8hpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;std::find(vec.begin(),&#32;vec.end(),&#32;value)&#32;!=&#32;vec.end();
 <anchor xml:id="_general_assert_functions_8hpp_source_1l00092"/>00092 }
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00093"/>00093 
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00094"/>00094 
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00095"/>00095 
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00106"/><link linkend="_general_assert_functions_8hpp_1a0cab6d0005870e6df565f2397afff231">00106</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_general_assert_functions_8hpp_1a0cab6d0005870e6df565f2397afff231">assertFunc</link>(std::vector&lt;int&gt;&#32;measuredQubitsOutcomes,<emphasis role="keywordtype">int</emphasis>&#32;assertValue)&#32;{
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(measuredQubitsOutcomes.back()&#32;!=&#32;assertValue)&#32;{
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::runtime_error(<emphasis role="stringliteral">&quot;The&#32;last&#32;qubit&#32;must&#32;be&#32;&quot;</emphasis>&#32;+&#32;std::to_string(assertValue)&#32;+&#32;<emphasis role="stringliteral">&quot;,&#32;it&#32;is&#32;not.&quot;</emphasis>);
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00109"/>00109 &#32;&#32;&#32;&#32;}
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00110"/>00110 }
+<anchor xml:id="_general_assert_functions_8hpp_source_1l00111"/>00111 
 </programlisting></section>

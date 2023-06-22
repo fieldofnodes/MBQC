@@ -16,7 +16,9 @@ void \mbox{\hyperlink{graph_assert_functions_8hpp_a3241060bf4552dac98da626843460
 void \mbox{\hyperlink{graph_assert_functions_8hpp_a5c3f8d6a6068b10ca7ca8f2f4515cbcd}{assert\+Nieghbours}} (const \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&graph, std\+::vector$<$ std\+::vector$<$ int $>$ $>$ expected\+Neighbourhood)
 \begin{DoxyCompactList}\small\item\em Asserts that the computed neighborhood of each vertex in the graph matches the expected neighborhood. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{graph_assert_functions_8hpp_a67fc70f2265e3ca43a7871939ae44a95}{assert\+Correction}} (const \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \&graph, std\+::vector$<$ int $>$ outcome\+Vector, int vertex, int num\+Rows, qreal input\+Angle, qreal expected\+Corrected\+Angle)
-\begin{DoxyCompactList}\small\item\em Asserts that the computed corrected angle matches the expected corrected angle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Asserts that the computed corrected angle matches the expected corrected angle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{graph_assert_functions_8hpp_ab91620d08875164bce42bdc604224ed3}{test\+Every\+Other\+Anlge\+Zero\+Results}} (int assert\+Value, int pi\+Denominator, int number\+Cols)
+\begin{DoxyCompactList}\small\item\em Tests the measurement outcomes with every other angle set to zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -354,5 +356,96 @@ Definition at line \mbox{\hyperlink{graph_assert_functions_8hpp_source_l00066}{6
 \DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_degree\ =\ \mbox{\hyperlink{general_assert_functions_8hpp_af227e83a7360ec64f91773c37a905253}{getMax}}(degree\_vector);}
 \DoxyCodeLine{00080\ \ \ \ \ assert((\textcolor{stringliteral}{"{}maximum\ degree\ is\ 2"{}}\ \&\&\ max\_degree\ ==\ 2));}
 \DoxyCodeLine{00081\ \}}
+
+\end{DoxyCode}
+\Hypertarget{graph_assert_functions_8hpp_ab91620d08875164bce42bdc604224ed3}\label{graph_assert_functions_8hpp_ab91620d08875164bce42bdc604224ed3} 
+\index{graphAssertFunctions.hpp@{graphAssertFunctions.hpp}!testEveryOtherAnlgeZeroResults@{testEveryOtherAnlgeZeroResults}}
+\index{testEveryOtherAnlgeZeroResults@{testEveryOtherAnlgeZeroResults}!graphAssertFunctions.hpp@{graphAssertFunctions.hpp}}
+\doxysubsubsection{\texorpdfstring{testEveryOtherAnlgeZeroResults()}{testEveryOtherAnlgeZeroResults()}}
+{\footnotesize\ttfamily void test\+Every\+Other\+Anlge\+Zero\+Results (\begin{DoxyParamCaption}\item[{int}]{assert\+Value,  }\item[{int}]{pi\+Denominator,  }\item[{int}]{number\+Cols }\end{DoxyParamCaption})}
+
+
+
+Tests the measurement outcomes with every other angle set to zero. 
+
+This function performs a test where the measurement outcomes are checked based on the specified assert value, pi denominator, and number of columns. The function initializes variables, sets values, creates a quantum register, sets angles, entangles the graph, measures the graph, and unloads Qu\+EST.
+
+
+\begin{DoxyParams}{Parameters}
+{\em assert\+Value} & The expected value for the measurement outcomes. \\
+\hline
+{\em pi\+Denominator} & The denominator for the angles in the range \mbox{[}0, 2\texorpdfstring{$\ast$}{*}pi). \\
+\hline
+{\em number\+Cols} & The number of columns in the lattice. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{graph_assert_functions_8hpp_source_l00240}{240}} of file \mbox{\hyperlink{graph_assert_functions_8hpp_source}{graph\+Assert\+Functions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{comment}{//\ Initialise\ variable\ names\ and\ types}}
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordtype}{int}\ numRows;}
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keywordtype}{int}\ numCols;}
+\DoxyCodeLine{00244\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph;}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices;}
+\DoxyCodeLine{00246\ \ \ \ \ std::vector<qreal>\ qubitAngles;}
+\DoxyCodeLine{00247\ \ \ \ \ std::vector<int>\ measuredQubitsOutcomes;}
+\DoxyCodeLine{00248\ \ \ \ \ }
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{comment}{//\ Set\ values\ to\ variables}}
+\DoxyCodeLine{00252\ \ \ \ \ numRows\ =\ 1;}
+\DoxyCodeLine{00253\ \ \ \ \ numCols\ =\ numberCols;\ \textcolor{comment}{//\ Test\ on\ an\ odd\ number\ of\ qubits}}
+\DoxyCodeLine{00254\ \ \ \ \ latticeGraph\ =\ \mbox{\hyperlink{graph_constructions_8hpp_a74f9014929a19ec558c3bc766754f1c3}{createLatticeGraph}}(numRows,numCols);}
+\DoxyCodeLine{00255\ \ \ \ \ numVertices\ =\ boost::num\_vertices(latticeGraph);}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{00259\ \ \ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{comment}{//\ create\ a\ quantum\ register}}
+\DoxyCodeLine{00263\ \ \ \ \ Qureg\ qureg\ =\ createQureg(numVertices,\ env);}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \ \ \ \ }
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ \ \ \ \ \textcolor{comment}{//\ set\ angles}}
+\DoxyCodeLine{00268\ \ \ \ \ }
+\DoxyCodeLine{00269\ \ \ \ \ \textcolor{keywordflow}{if}\ (assertValue\ ==\ 0)\{}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ qubitAngles\ =\ \mbox{\hyperlink{angle_construction_8hpp_a0804b07ffb2bea2c7ac8cba482a88d62}{initRandomPiOnNEveryOtherAnglesMod2kPi}}(numVertices,piDenominator);\ \textcolor{comment}{//\ end\ in\ 0}}
+\DoxyCodeLine{00271\ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (assertValue\ ==\ 1)\{}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ qubitAngles\ =\ \mbox{\hyperlink{angle_construction_8hpp_ac35939429a8657a1f33dad419e7812c1}{initRandomPiOnNEveryOtherAnglesMod2kPiPlusPi}}(numVertices,piDenominator);\ \ \textcolor{comment}{//\ end\ in\ 1}}
+\DoxyCodeLine{00273\ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Nothing}}
+\DoxyCodeLine{00275\ \ \ \ \ \}}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00277\ \ \ \ \ }
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{comment}{//\ initialise\ in\ the\ plus\ state}}
+\DoxyCodeLine{00279\ \ \ \ \ initPlusState(qureg);}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{comment}{//Leave\ angle\ off\ qubits}}
+\DoxyCodeLine{00282\ \ \ \ \ \textcolor{comment}{//\ add\ angles\ to\ the\ qubits}}
+\DoxyCodeLine{00283\ \ \ \ \ \textcolor{comment}{//addAngleRotateZgate(qureg,qubitAngles);}}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ \ \ \ \ \textcolor{comment}{//\ entangle\ graph}}
+\DoxyCodeLine{00287\ \ \ \ \ \mbox{\hyperlink{quantum_graph_cluster_states_8hpp_a3f830234f9eb3a150a084b0f2b4aa056}{entangleGraph}}(qureg,latticeGraph);}
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00290\ \ \ \ \ \textcolor{comment}{//\ measure\ graph}}
+\DoxyCodeLine{00291\ \ \ \ \ measuredQubitsOutcomes\ =\ \mbox{\hyperlink{flow_measurements_8hpp_a7231be9a1c347894c1d01c349f4b41c7}{measureGraph}}(}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ qureg,}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ latticeGraph,}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ qubitAngles,}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ numRows);}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00297\ \ \ \ \ }
+\DoxyCodeLine{00298\ \ \ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{00299\ \ \ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{00300\ \ \ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{00301\ \}}
 
 \end{DoxyCode}

@@ -21,10 +21,79 @@
 
 <para>Checks if an integer value is present in a vector. </para>
 </listitem>
+            <listitem><para>void <link linkend="_general_assert_functions_8hpp_1a0cab6d0005870e6df565f2397afff231">assertFunc</link> (std::vector&lt; int &gt; measuredQubitsOutcomes, int assertValue)</para>
+
+<para>Asserts the value of the last qubit measurement outcome. </para>
+</listitem>
         </itemizedlist>
 </simplesect>
 <section>
 <title>Function Documentation</title>
+<anchor xml:id="_general_assert_functions_8hpp_1a0cab6d0005870e6df565f2397afff231"/><section>
+    <title>assertFunc()</title>
+<indexterm><primary>assertFunc</primary><secondary>generalAssertFunctions.hpp</secondary></indexterm>
+<indexterm><primary>generalAssertFunctions.hpp</primary><secondary>assertFunc</secondary></indexterm>
+<para><computeroutput>void assertFunc (std::vector&lt; int &gt; measuredQubitsOutcomes, int assertValue)</computeroutput></para><para>
+
+<para>Asserts the value of the last qubit measurement outcome. </para>
+</para>
+
+<para>This function checks if the value of the last qubit measurement outcome matches the specified assert value. If the values do not match, it throws a runtime error with a descriptive message.</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>measuredQubitsOutcomes</entry><entry>
+<para>The vector of measured qubit outcomes. </para>
+</entry>
+                            </row>
+                            <row>
+<entry>assertValue</entry><entry>
+<para>The expected value for the last qubit measurement outcome.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Exceptions</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>std::runtime_error</entry><entry>
+<para>if the last qubit measurement outcome does not match the assert value. </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<para>
+Definition at line <link linkend="_general_assert_functions_8hpp_source_1l00106">106</link> of file <link linkend="_general_assert_functions_8hpp_source">generalAssertFunctions.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00107 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(measuredQubitsOutcomes.back()&#32;!=&#32;assertValue)&#32;{
+00108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::runtime_error(<emphasis role="stringliteral">&quot;The&#32;last&#32;qubit&#32;must&#32;be&#32;&quot;</emphasis>&#32;+&#32;std::to_string(assertValue)&#32;+&#32;<emphasis role="stringliteral">&quot;,&#32;it&#32;is&#32;not.&quot;</emphasis>);
+00109 &#32;&#32;&#32;&#32;}
+00110 }
+</programlisting></section>
 <anchor xml:id="_general_assert_functions_8hpp_1af227e83a7360ec64f91773c37a905253"/><section>
     <title>getMax()</title>
 <indexterm><primary>getMax</primary><secondary>generalAssertFunctions.hpp</secondary></indexterm>
