@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_tutorial04" xml:lang="en-US">
+<title>Tutorial 4: Flow</title>
+<indexterm><primary>Tutorial 4: Flow</primary></indexterm>
+<section xml:id="_tutorial04_1intro">
+<title>Introduction</title>
+
+<para>Measurement-Based Quantum Computing (MBQC) is a paradigm that relies on the flow of measurements and adaptive operations to perform quantum computations. The concept of &quot;flow&quot; plays a crucial role in MBQC, shaping the sequence of actions performed on a quantum state represented by a graph or lattice.</para>
+
+<para>In MBQC, the flow is defined by a series of measurements and subsequent operations based on the measurement outcomes. Each measurement collapses a qubit or a group of qubits, yielding a classical outcome. These measurement outcomes guide the subsequent operations on the remaining qubits in the flow.</para>
+
+<para>The flow is typically determined by a specific MBQC protocol or algorithm. By carefully designing the flow, one can exploit the entanglement and correlations between the qubits to perform computational tasks efficiently and harness the power of quantum information processing.</para>
+
+<para>Understanding and controlling the flow is essential in MBQC, as it influences the order of measurements and operations, which, in turn, impacts the final computation or desired quantum state.</para>
+
+<para>By studying and optimizing the flow, researchers aim to develop efficient MBQC algorithms, explore new quantum computational models, and discover novel applications in quantum information processing.</para>
+</section>
+<section xml:id="_tutorial04_1example">
+<title>Example</title>
+
+<para>Here is an example</para>
+
+<para>For any help, questions or problems see the <link xlink:href="https://github.com/ediparquantum/MBQC">MBQC</link> repository site to create an<itemizedlist>
+<listitem>
+<para><link xlink:href="https://github.com/ediparquantum/MBQC/issues">issue</link>,</para>
+</listitem><listitem>
+<para><link xlink:href="https://github.com/ediparquantum/MBQC/pulls">pull-request</link> or</para>
+</listitem><listitem>
+<para>open a <link xlink:href="https://github.com/ediparquantum/MBQC/discussions">discussion</link>. </para>
+</listitem></itemizedlist>
+</para>
+</section>
+</section>
