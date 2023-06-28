@@ -241,7 +241,7 @@ MBQC_IS_TOP_LEVEL:STATIC=ON
 MBQC_SOURCE_DIR:STATIC=/Users/jmille15/Projects/MBQC
 
 //Executable to compile to
-OUTPUT_EXE:STRING=testOddNumberQubitsEverySecondsAngleZero
+OUTPUT_EXE:STRING=testReadingGraphFromFile
 
 //Path to a file.
 QUEST_INCLUDE_DIRS:PATH=/Users/jmille15/Projects/QuEST/QuEST/include
@@ -250,7 +250,7 @@ QUEST_INCLUDE_DIRS:PATH=/Users/jmille15/Projects/QuEST/QuEST/include
 QUEST_LIBRARY_DIRS:PATH=/Users/jmille15/Projects/QuEST/build/QuEST
 
 //Source to build with MBQC library
-USER_SOURCE:STRING=tests/testOddNumberQubitsEverySecondsAngleZero.cpp
+USER_SOURCE:STRING=tests/testReadingGraphFromFile.cpp
 
 //The directory containing a CMake configuration file for boost_headers.
 boost_headers_DIR:PATH=/opt/homebrew/lib/cmake/boost_headers-1.81.0

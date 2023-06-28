@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+run_script() {
+    local script_path="$1"
+    local script_name="$(basename "$script_path")"
+    
+    cmake .. -DUSER_SOURCE="$script_path" -DOUTPUT_EXE="${script_name%.*}" && make && "./${script_name%.*}"
+}
+
+run_script "$1"
+

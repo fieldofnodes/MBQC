@@ -117,41 +117,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named testOddNumberQubitsEverySecondsAngleZero
+# Target rules for targets named testReadingGraphFromFile
 
 # Build rule for target.
-testOddNumberQubitsEverySecondsAngleZero: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 testOddNumberQubitsEverySecondsAngleZero
-.PHONY : testOddNumberQubitsEverySecondsAngleZero
+testReadingGraphFromFile: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 testReadingGraphFromFile
+.PHONY : testReadingGraphFromFile
 
 # fast build rule for target.
-testOddNumberQubitsEverySecondsAngleZero/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build.make CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build
-.PHONY : testOddNumberQubitsEverySecondsAngleZero/fast
+testReadingGraphFromFile/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testReadingGraphFromFile.dir/build.make CMakeFiles/testReadingGraphFromFile.dir/build
+.PHONY : testReadingGraphFromFile/fast
 
-tests/testOddNumberQubitsEverySecondsAngleZero.o: tests/testOddNumberQubitsEverySecondsAngleZero.cpp.o
-.PHONY : tests/testOddNumberQubitsEverySecondsAngleZero.o
+tests/testReadingGraphFromFile.o: tests/testReadingGraphFromFile.cpp.o
+.PHONY : tests/testReadingGraphFromFile.o
 
 # target to build an object file
-tests/testOddNumberQubitsEverySecondsAngleZero.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build.make CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/tests/testOddNumberQubitsEverySecondsAngleZero.cpp.o
-.PHONY : tests/testOddNumberQubitsEverySecondsAngleZero.cpp.o
+tests/testReadingGraphFromFile.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testReadingGraphFromFile.dir/build.make CMakeFiles/testReadingGraphFromFile.dir/tests/testReadingGraphFromFile.cpp.o
+.PHONY : tests/testReadingGraphFromFile.cpp.o
 
-tests/testOddNumberQubitsEverySecondsAngleZero.i: tests/testOddNumberQubitsEverySecondsAngleZero.cpp.i
-.PHONY : tests/testOddNumberQubitsEverySecondsAngleZero.i
+tests/testReadingGraphFromFile.i: tests/testReadingGraphFromFile.cpp.i
+.PHONY : tests/testReadingGraphFromFile.i
 
 # target to preprocess a source file
-tests/testOddNumberQubitsEverySecondsAngleZero.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build.make CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/tests/testOddNumberQubitsEverySecondsAngleZero.cpp.i
-.PHONY : tests/testOddNumberQubitsEverySecondsAngleZero.cpp.i
+tests/testReadingGraphFromFile.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testReadingGraphFromFile.dir/build.make CMakeFiles/testReadingGraphFromFile.dir/tests/testReadingGraphFromFile.cpp.i
+.PHONY : tests/testReadingGraphFromFile.cpp.i
 
-tests/testOddNumberQubitsEverySecondsAngleZero.s: tests/testOddNumberQubitsEverySecondsAngleZero.cpp.s
-.PHONY : tests/testOddNumberQubitsEverySecondsAngleZero.s
+tests/testReadingGraphFromFile.s: tests/testReadingGraphFromFile.cpp.s
+.PHONY : tests/testReadingGraphFromFile.s
 
 # target to generate assembly for a file
-tests/testOddNumberQubitsEverySecondsAngleZero.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build.make CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/tests/testOddNumberQubitsEverySecondsAngleZero.cpp.s
-.PHONY : tests/testOddNumberQubitsEverySecondsAngleZero.cpp.s
+tests/testReadingGraphFromFile.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testReadingGraphFromFile.dir/build.make CMakeFiles/testReadingGraphFromFile.dir/tests/testReadingGraphFromFile.cpp.s
+.PHONY : tests/testReadingGraphFromFile.cpp.s
 
 # Help Target
 help:
@@ -161,10 +161,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... testOddNumberQubitsEverySecondsAngleZero"
-	@echo "... tests/testOddNumberQubitsEverySecondsAngleZero.o"
-	@echo "... tests/testOddNumberQubitsEverySecondsAngleZero.i"
-	@echo "... tests/testOddNumberQubitsEverySecondsAngleZero.s"
+	@echo "... testReadingGraphFromFile"
+	@echo "... tests/testReadingGraphFromFile.o"
+	@echo "... tests/testReadingGraphFromFile.i"
+	@echo "... tests/testReadingGraphFromFile.s"
 .PHONY : help
 
 

@@ -200,6 +200,56 @@ void printVector(const std::vector<T>& vec) {
 }
 
 
+/**
+ * @brief Creates an array of integers representing qubits.
+ *
+ * This function dynamically allocates an array of integers, where each element represents a qubit.
+ * The elements of the array range from 0 to N-1.
+ *
+ * @param N The number of qubits.
+ * @return A pointer to the dynamically allocated array of integers.
+ *         Returns NULL if the memory allocation fails.
+ */
+int* createQubitsArray(int N) {
+    int* qubits = (int*)malloc(N * sizeof(int));
+    if (qubits == NULL) {
+        // Handle memory allocation error
+        return NULL;
+    }
+
+    for (int i = 0; i < N; ++i) {
+        qubits[i] = i;
+    }
+
+    return qubits;
+}
+
+
+
+
+/**
+ * @brief Computes the probabilities of all outcomes and returns them as a vector.
+ *
+ * This function computes the probabilities of all possible outcomes for the given quantum register (`qureg`).
+ * The outcomes are represented as a vector of `qreal` values, where each element corresponds to the probability of a specific outcome.
+ *
+ * @param qureg The quantum register.
+ * @return A vector of `qreal` values representing the probabilities of all outcomes.
+ */
+std::vector<qreal> computeAllProbabilityOutcomesToVector(Qureg qureg) {
+    int numQubits = qureg.numQubitsRepresented;
+    int numProbs = 1 << numQubits;
+    qreal outcomeProbs[numProbs];
+    int* qubits = createQubitsArray(numQubits);
+    calcProbOfAllOutcomes(outcomeProbs, qureg, qubits, numQubits);    
+    
+    std::vector<qreal> outcomeProbabilities;
+    for (qreal i : outcomeProbs) {
+        outcomeProbabilities.push_back(i);
+    }
+  
+    return outcomeProbabilities;
+}
 
 
 

@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /Users/jmille15/Projects/MBQC/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/all
+all: CMakeFiles/testReadingGraphFromFile.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/clean
+clean: CMakeFiles/testReadingGraphFromFile.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir
+# Target rules for target CMakeFiles/testReadingGraphFromFile.dir
 
 # All Build rule for target.
-CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build.make CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build.make CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jmille15/Projects/MBQC/build/CMakeFiles --progress-num=1,2 "Built target testOddNumberQubitsEverySecondsAngleZero"
-.PHONY : CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/all
+CMakeFiles/testReadingGraphFromFile.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testReadingGraphFromFile.dir/build.make CMakeFiles/testReadingGraphFromFile.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testReadingGraphFromFile.dir/build.make CMakeFiles/testReadingGraphFromFile.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jmille15/Projects/MBQC/build/CMakeFiles --progress-num=1,2 "Built target testReadingGraphFromFile"
+.PHONY : CMakeFiles/testReadingGraphFromFile.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/rule: cmake_check_build_system
+CMakeFiles/testReadingGraphFromFile.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jmille15/Projects/MBQC/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/testReadingGraphFromFile.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jmille15/Projects/MBQC/build/CMakeFiles 0
-.PHONY : CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/rule
+.PHONY : CMakeFiles/testReadingGraphFromFile.dir/rule
 
 # Convenience name for target.
-testOddNumberQubitsEverySecondsAngleZero: CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/rule
-.PHONY : testOddNumberQubitsEverySecondsAngleZero
+testReadingGraphFromFile: CMakeFiles/testReadingGraphFromFile.dir/rule
+.PHONY : testReadingGraphFromFile
 
 # clean rule for target.
-CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/build.make CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/clean
-.PHONY : CMakeFiles/testOddNumberQubitsEverySecondsAngleZero.dir/clean
+CMakeFiles/testReadingGraphFromFile.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testReadingGraphFromFile.dir/build.make CMakeFiles/testReadingGraphFromFile.dir/clean
+.PHONY : CMakeFiles/testReadingGraphFromFile.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
