@@ -1,0 +1,190 @@
+\doxysection{test\+General\+Graph\+Constructions.\+cpp}
+\hypertarget{test_general_graph_constructions_8cpp_source}{}\label{test_general_graph_constructions_8cpp_source}\index{tests/testGeneralGraphConstructions.cpp@{tests/testGeneralGraphConstructions.cpp}}
+\mbox{\hyperlink{test_general_graph_constructions_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00002}00002\ \textcolor{comment}{//\ Filename\ \ :\ testGeneralGraphConstructions.cpp}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00003}00003\ \textcolor{comment}{//\ Author\ \ \ \ :\ Jonathan\ Miller}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00004}00004\ \textcolor{comment}{//\ Date\ \ \ \ \ \ :\ 2023-\/06-\/29}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00005}00005\ \textcolor{comment}{//\ Aim\ \ \ \ \ \ \ :\ Scripts\ and\ functioms\ to\ generate\ a}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00006}00006\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ variety\ of\ graph}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00007}00007\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ run\ tests\ on\ graph}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{packages_8hpp}{packages.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00016}\mbox{\hyperlink{test_general_graph_constructions_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00016}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{test_general_graph_constructions_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00017}00017\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//\ From\ a\ file}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{comment}{//std::string\ brickwork\_graph\ =\ "{}/Users/jmille15/Projects/MBQC/graphs\_file\_io/single\_brick\_work\_state.txt"{};}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//undirectedGraph\ graph\ =\ createGraphFromFile(brickwork\_graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00021}00021\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Complete\ graph}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//int\ numVertices\ =\ 4;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//int\ numEdges\ =\ 4;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//undirectedGraph\ graph\ =\ createCompleteGraph(6);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00026}00026\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ Random\ graph}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//undirectedGraph\ graph\ =\ generateRandomGraph(numVertices,numEdges);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//\ Bipartite\ graph}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//int\ n\ =\ 2;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//int\ m\ =\ 3;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//undirectedGraph\ graph\ =\ generateCompleteBipartiteGraph(n,\ m);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//\ Multipartite\ graph}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{comment}{//std::vector<int>\ partitions\ =\ \{1,\ 1,\ 1\};}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//undirectedGraph\ graph\ =\ createCompleteMultipartiteGraph(partitions);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00039}00039\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ Test\ for\ Planarity}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00043}00043\ \textcolor{comment}{\ \ \ \ undirectedGraph\ graph\ =\ createCompleteGraph(6);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00044}00044\ \textcolor{comment}{\ \ \ \ if\ (boyer\_myrvold\_planarity\_test(graph))}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00045}00045\ \textcolor{comment}{\ \ \ \ \ \ \ \ std::cout\ <<\ "{}ERROR!\ K\_6\ was\ recognized\ as\ planar!"{}\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00046}00046\ \textcolor{comment}{\ \ \ \ else}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00047}00047\ \textcolor{comment}{\ \ \ \ \ \ \ \ std::cout\ <<\ "{}K\_6\ is\ not\ planar."{}\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00048}00048\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00051}00051\ \textcolor{comment}{\ \ \ \ Add\ edges\ set\ to\ a\ graph\ to\ make\ it\ connected}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00052}00052\ \textcolor{comment}{\ \ \ \ undirectedGraph\ graph(11);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00053}00053\ \textcolor{comment}{\ \ \ \ add\_edge(0,1,graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00054}00054\ \textcolor{comment}{\ \ \ \ add\_edge(2,3,graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00055}00055\ \textcolor{comment}{\ \ \ \ add\_edge(3,4,graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00056}00056\ \textcolor{comment}{\ \ \ \ add\_edge(5,6,graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00057}00057\ \textcolor{comment}{\ \ \ \ add\_edge(6,7,graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00058}00058\ \textcolor{comment}{\ \ \ \ add\_edge(8,9,graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00059}00059\ \textcolor{comment}{\ \ \ \ add\_edge(9,10,graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00060}00060\ \textcolor{comment}{\ \ \ \ add\_edge(10,8,graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00061}00061\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00062}00062\ \textcolor{comment}{\ \ \ \ std::vector<\ graph\_traits<undirectedGraph>::vertices\_size\_type\ >\ }}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00063}00063\ \textcolor{comment}{\ \ \ \ component(num\_vertices(graph));}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00064}00064\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00065}00065\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}Before\ calling\ make\_connected,\ the\ graph\ has\ "{}}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00066}00066\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ connected\_components(graph,\ \&component[0])}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00067}00067\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ "{}\ connected\ components"{}\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00068}00068\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00069}00069\ \textcolor{comment}{\ \ \ \ make\_connected(graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00070}00070\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00071}00071\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}After\ calling\ make\_connected,\ the\ graph\ has\ "{}}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00072}00072\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ connected\_components(graph,\ \&component[0])}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00073}00073\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ "{}\ connected\ components"{}\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00074}00074\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00075}00075\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00077}00077\ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00078}00078\ \textcolor{comment}{\ \ \ \ Making\ a\ graph\ maximally\ planar}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00079}00079\ \textcolor{comment}{\ \ \ }}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00080}00080\ \textcolor{comment}{\ \ \ \ undirectedGraph\ graph(10);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00081}00081\ \textcolor{comment}{\ \ \ \ add\_edge(0,1,graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00082}00082\ \textcolor{comment}{\ \ \ \ add\_edge(1,2,graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00083}00083\ \textcolor{comment}{\ \ \ \ add\_edge(2,3,graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00084}00084\ \textcolor{comment}{\ \ \ \ add\_edge(3,4,graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00085}00085\ \textcolor{comment}{\ \ \ \ add\_edge(4,5,graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00086}00086\ \textcolor{comment}{\ \ \ \ add\_edge(5,6,graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00087}00087\ \textcolor{comment}{\ \ \ \ add\_edge(6,7,graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00088}00088\ \textcolor{comment}{\ \ \ \ add\_edge(7,8,graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00089}00089\ \textcolor{comment}{\ \ \ \ add\_edge(8,9,graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00090}00090\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00091}00091\ \textcolor{comment}{\ \ \ \ //std::vector<edgeDescriptor>\ embedding(num\_vertices(graph));}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00092}00092\ \textcolor{comment}{\ \ \ //\ make\_maximal\_planar(graph,\ \&embedding[0]);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00093}00093\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00094}00094\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}Since\ the\ input\ graph\ is\ planar\ with\ "{}\ <<\ num\_vertices(graph)\ }}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00095}00095\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ "{}\ vertices,"{}\ <<\ std::endl}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00096}00096\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ "{}The\ output\ graph\ should\ be\ planar\ with\ "{}\ }}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00097}00097\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ 3*num\_vertices(graph)\ -\/\ 6\ <<\ "{}\ edges\ and\ "{}}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00098}00098\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ 2*num\_vertices(graph)\ -\/\ 4\ <<\ "{}\ faces."{}\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00099}00099\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00100}00100\ \textcolor{comment}{\ \ \ \ //Initialize\ the\ interior\ edge\ index}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00101}00101\ \textcolor{comment}{\ \ \ \ property\_map<undirectedGraph,\ edge\_index\_t>::type\ e\_index\ =\ get(edge\_index,\ graph);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00102}00102\ \textcolor{comment}{\ \ \ \ graph\_traits<undirectedGraph>::edges\_size\_type\ edge\_count\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00103}00103\ \textcolor{comment}{\ \ \ \ graph\_traits<undirectedGraph>::edge\_iterator\ ei,\ ei\_end;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00104}00104\ \textcolor{comment}{\ \ \ \ for(tie(ei,\ ei\_end)\ =\ edges(graph);\ ei\ !=\ ei\_end;\ ++ei)}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00105}00105\ \textcolor{comment}{\ \ \ \ put(e\_index,\ *ei,\ edge\_count++);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00106}00106\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00107}00107\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00108}00108\ \textcolor{comment}{\ \ \ \ //Test\ for\ planarity;\ compute\ the\ planar\ embedding\ as\ a\ side-\/effect}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00109}00109\ \textcolor{comment}{\ \ \ \ std::vector<edgeDescriptor>\ embedding(num\_vertices(graph));}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00110}00110\ \textcolor{comment}{\ \ \ \ if\ (boyer\_myrvold\_planarity\_test(boyer\_myrvold\_params::graph\ =\ graph,}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00111}00111\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boyer\_myrvold\_params::embedding\ =\ }}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00112}00112\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&embedding[0]}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00113}00113\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00114}00114\ \textcolor{comment}{\ \ \ \ \ \ \ \ )}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00115}00115\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}Input\ graph\ is\ planar"{}\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00116}00116\ \textcolor{comment}{\ \ \ \ else}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00117}00117\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}Input\ graph\ is\ not\ planar"{}\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00118}00118\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00119}00119\ \textcolor{comment}{\ \ \ \ make\_biconnected\_planar(graph,\ \&embedding[0]);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00120}00120\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00121}00121\ \textcolor{comment}{\ \ \ \ //\ Re-\/initialize\ the\ edge\ index,\ since\ we\ just\ added\ a\ few\ edges}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00122}00122\ \textcolor{comment}{\ \ \ \ edge\_count\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00123}00123\ \textcolor{comment}{\ \ \ \ for(tie(ei,\ ei\_end)\ =\ edges(graph);\ ei\ !=\ ei\_end;\ ++ei)}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00124}00124\ \textcolor{comment}{\ \ \ \ put(e\_index,\ *ei,\ edge\_count++);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00125}00125\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00126}00126\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00127}00127\ \textcolor{comment}{\ \ \ \ //Test\ for\ planarity\ again;\ compute\ the\ planar\ embedding\ as\ a\ side-\/effect}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00128}00128\ \textcolor{comment}{\ \ \ \ if\ (boyer\_myrvold\_planarity\_test(boyer\_myrvold\_params::graph\ =\ graph,}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00129}00129\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boyer\_myrvold\_params::embedding\ =\ }}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00130}00130\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&embedding[0]}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00131}00131\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00132}00132\ \textcolor{comment}{\ \ \ \ \ \ \ \ )}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00133}00133\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}After\ calling\ make\_biconnected,\ the\ graph\ is\ still\ planar"{}\ }}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00134}00134\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00135}00135\ \textcolor{comment}{\ \ \ \ else}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00136}00136\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}After\ calling\ make\_biconnected,\ the\ graph\ is\ not\ planar"{}\ }}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00137}00137\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00138}00138\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00139}00139\ \textcolor{comment}{\ \ \ \ make\_maximal\_planar(graph,\ \&embedding[0]);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00140}00140\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00141}00141\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00142}00142\ \textcolor{comment}{\ \ \ \ //\ Re-\/initialize\ the\ edge\ index,\ since\ we\ just\ added\ a\ few\ edges}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00143}00143\ \textcolor{comment}{\ \ \ \ edge\_count\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00144}00144\ \textcolor{comment}{\ \ \ \ for(tie(ei,\ ei\_end)\ =\ edges(graph);\ ei\ !=\ ei\_end;\ ++ei)}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00145}00145\ \textcolor{comment}{\ \ \ \ put(e\_index,\ *ei,\ edge\_count++);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00146}00146\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00147}00147\ \textcolor{comment}{\ \ \ \ //\ Test\ for\ planarity\ one\ final\ time;\ compute\ the\ planar\ embedding\ as\ a\ }}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00148}00148\ \textcolor{comment}{\ \ \ \ //\ side-\/effect}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00149}00149\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}After\ calling\ make\_maximal\_planar,\ the\ final\ graph\ "{};}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00150}00150\ \textcolor{comment}{\ \ \ \ if\ (boyer\_myrvold\_planarity\_test(boyer\_myrvold\_params::graph\ =\ graph,}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00151}00151\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boyer\_myrvold\_params::embedding\ =\ }}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00152}00152\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&embedding[0]}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00153}00153\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00154}00154\ \textcolor{comment}{\ \ \ \ \ \ \ \ )}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00155}00155\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}is\ planar."{}\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00156}00156\ \textcolor{comment}{\ \ \ \ else}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00157}00157\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}is\ not\ planar."{}\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00158}00158\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00159}00159\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}The\ final\ graph\ has\ "{}\ <<\ num\_edges(graph)\ }}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00160}00160\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ "{}\ edges."{}\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00161}00161\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00162}00162\ \textcolor{comment}{\ \ \ \ face\_counter\ count\_visitor;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00163}00163\ \textcolor{comment}{\ \ \ \ planar\_face\_traversal(graph,\ \&embedding[0],\ count\_visitor);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00164}00164\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}The\ final\ graph\ has\ "{}\ <<\ count\_visitor.count\ <<\ "{}\ faces."{}\ }}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00165}00165\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00166}00166\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00167}00167\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00168}00168\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00169}00169\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00171}00171\ \ \ \ \ boost::print\_graph(graph);}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00175}00175\ \ \ \ \ \textcolor{comment}{//\ Print\ graph\ to\ file}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00176}00176\ \ \ \ \ \textcolor{comment}{//\ Update\ with\ desired\ directory\ to\ view\ graph.}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00177}00177\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00178}00178\ \textcolor{comment}{\ \ \ \ std::string\ figsDir\ =\ MBQC\_FIGS\_DIR;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00179}00179\ \textcolor{comment}{\ \ \ \ std::string\ graphName\ =\ "{}CompleteMultiPartiteGraph"{};}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00180}00180\ \textcolor{comment}{\ \ \ \ std::string\ format\ =\ PNG\_FORMAT;}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00181}00181\ \textcolor{comment}{\ \ \ \ printGraphToFile(graph,figsDir,graphName,format);}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00182}00182\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00184}00184\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{test_general_graph_constructions_8cpp_source_l00185}00185\ \}}
+
+\end{DoxyCode}

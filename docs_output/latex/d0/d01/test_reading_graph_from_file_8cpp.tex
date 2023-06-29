@@ -1,0 +1,42 @@
+\doxysection{tests/test\+Reading\+Graph\+From\+File.cpp File Reference}
+\hypertarget{test_reading_graph_from_file_8cpp}{}\label{test_reading_graph_from_file_8cpp}\index{tests/testReadingGraphFromFile.cpp@{tests/testReadingGraphFromFile.cpp}}
+{\ttfamily \#include \"{}packages.\+hpp\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{test_reading_graph_from_file_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{test_reading_graph_from_file_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{test_reading_graph_from_file_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{testReadingGraphFromFile.cpp@{testReadingGraphFromFile.cpp}!main@{main}}
+\index{main@{main}!testReadingGraphFromFile.cpp@{testReadingGraphFromFile.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test_reading_graph_from_file_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{test_reading_graph_from_file_8cpp_source}{test\+Reading\+Graph\+From\+File.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ From\ a\ file}}
+\DoxyCodeLine{00018\ \ \ \ \ std::string\ brickwork\_graph\ =\ \textcolor{stringliteral}{"{}/Users/jmille15/Projects/MBQC/graphs\_file\_io/single\_brick\_work\_state.txt"{}};}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ graph\ =\ \mbox{\hyperlink{graph_constructions_8hpp_ad98926f5eb7fb84b5b97dab2ecfb2cfd}{createGraphFromFile}}(brickwork\_graph);}
+\DoxyCodeLine{00020\ \ \ \ \ boost::print\_graph(graph);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ Print\ graph\ to\ file}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ Update\ with\ desired\ directory\ to\ view\ graph.}}
+\DoxyCodeLine{00024\ \ \ \ \ std::string\ figsDir\ =\ MBQC\_FIGS\_DIR;}
+\DoxyCodeLine{00025\ \ \ \ \ std::string\ graphName\ =\ \textcolor{stringliteral}{"{}GraphGeneratedFromFile"{}};}
+\DoxyCodeLine{00026\ \ \ \ \ std::string\ format\ =\ PNG\_FORMAT;}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_a3d553b54b16922ee146bfb33201a3993}{printGraphToFile}}(graph,figsDir,graphName,format);}
+\DoxyCodeLine{00028\ \ \ \ \ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00031\ \}}
+
+\end{DoxyCode}

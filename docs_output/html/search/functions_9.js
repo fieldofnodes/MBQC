@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['returnmeasqubitoutcomeslattice_0',['returnMeasQubitOutcomesLattice',['../de/d00/flow_measurements_8hpp.html#a794636e4b832401d96581e54141cbcba',1,'flowMeasurements.hpp']]]
+  ['outcomeprobabilitiessinglequbit_0',['outcomeProbabilitiesSingleQubit',['../d8/d01/general_helper_functions_8hpp.html#a3239399f882d9ea643c7862d70807d5c',1,'generalHelperFunctions.hpp']]]
 ];

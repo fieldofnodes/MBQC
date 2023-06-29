@@ -68,6 +68,15 @@ var NAVTREE =
     [ "Tutorial 4: Flow", "dc/d00/tutorial04.html", [
       [ "Example", "dc/d00/tutorial04.html#example", null ]
     ] ],
+    [ "Data Structures", "annotated.html", [
+      [ "Data Structures", "annotated.html", "annotated_dup" ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Data Fields", "functions.html", [
+        [ "All", "functions.html", null ],
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ]
+      ] ]
+    ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
       [ "Globals", "globals.html", [
@@ -81,7 +90,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"d0/d01/graph_assert_functions_8hpp.html"
+"annotated.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

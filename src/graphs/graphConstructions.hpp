@@ -9,6 +9,9 @@
 
 
 
+
+
+
 /**
  * @brief Creates a lattice graph from two integers
  *
@@ -68,4 +71,131 @@ undirectedGraph createLatticeGraph(int numRows, int numCols) {
     return latticeGraph;
 }
 
+
+/**
+ * Creates an undirected graph from a file.
+ *
+ * @param filePath The path to the input file.
+ * @return The created undirected graph.
+ */
+undirectedGraph createGraphFromFile(const std::string& filePath) {
+    std::ifstream file(filePath);
+    if (!file) {
+        std::cerr << "Failed to open the file." << std::endl;
+    }
+
+    int numVertices, numEdges;
+    file >> numVertices >> numEdges;
+
+    undirectedGraph graph(numVertices);
+
+    for (int i = 0; i < numEdges; ++i) {
+        int source, target;
+        file >> source >> target;
+        boost::add_edge(source, target, graph);
+    }
+
+    file.close();
+
+    return graph;
+}
+
+
+
+
+
+/**
+ * @brief Create a complete graph on N vertices.
+ *
+ * @param numVertices The number of vertices in the complete graph.
+ * @return The created complete graph.
+ */
+undirectedGraph createCompleteGraph(int numVertices) {
+    undirectedGraph graph(numVertices);
+
+    for (int i = 0; i < numVertices; ++i) {
+        for (int j = i + 1; j < numVertices; ++j) {
+            boost::add_edge(i, j, graph);
+        }
+    }
+
+    return graph;
+}
+
+
+
+/**
+ * @brief Generate a random graph with a specified number of vertices and edges.
+ *
+ * @param numVertices The number of vertices in the graph.
+ * @param numEdges The number of edges in the graph.
+ * @return The generated random graph.
+ */
+undirectedGraph generateRandomGraph(int numVertices, int numEdges) {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(0, numVertices - 1);
+
+    undirectedGraph graph(numVertices);
+
+    for (int i = 0; i < numEdges; ++i) {
+        int source = dis(gen);
+        int target = dis(gen);
+
+        boost::add_edge(source, target, graph);
+    }
+
+    return graph;
+}
+
+
+
+
+/**
+ * @brief Generate a complete bipartite graph with n vertices on one side and m vertices on the other side.
+ *
+ * @param n The number of vertices on one side.
+ * @param m The number of vertices on the other side.
+ * @return The generated complete bipartite graph.
+ */
+undirectedGraph generateCompleteBipartiteGraph(int n, int m) {
+    undirectedGraph graph(n + m);
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = n; j < n + m; ++j) {
+            boost::add_edge(i, j, graph);
+        }
+    }
+
+    return graph;
+}
+
+
+/**
+ * @brief Generate a complete multipartite graph with given partitions.
+ *
+ * @param partitions The number of vertices in each partition.
+ * @return The generated complete multipartite graph.
+ */
+undirectedGraph createCompleteMultipartiteGraph(const std::vector<int>& partitions) {
+    int numPartitions = partitions.size();
+    int numVertices = 0;
+    for (int partitionSize : partitions) {
+        numVertices += partitionSize;
+    }
+
+    undirectedGraph graph(numVertices);
+
+    int vertexOffset = 0;
+    for (int partitionSize : partitions) {
+        for (int i = vertexOffset; i < vertexOffset + partitionSize; ++i) {
+            for (int j = vertexOffset + partitionSize; j < numVertices; ++j) {
+                boost::add_edge(i, j, graph);
+            }
+        }
+        vertexOffset += partitionSize;
+    }
+
+    return graph;
+}
 

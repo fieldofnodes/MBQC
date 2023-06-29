@@ -99,6 +99,7 @@ $(document).ready(function(){initNavTree('de/d01/packages_8hpp.html','../../'); 
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle"><div class="title">packages.hpp File Reference</div></div>
 </div><!--header-->
@@ -134,6 +135,12 @@ $(document).ready(function(){initNavTree('de/d01/packages_8hpp.html','../../'); 
 <code>#include &lt;boost/range/algorithm.hpp&gt;</code><br />
 <code>#include &lt;boost/range/adaptor/filtered.hpp&gt;</code><br />
 <code>#include &lt;boost/range/adaptor/transformed.hpp&gt;</code><br />
+<code>#include &lt;boost/graph/boyer_myrvold_planar_test.hpp&gt;</code><br />
+<code>#include &lt;boost/graph/connected_components.hpp&gt;</code><br />
+<code>#include &lt;boost/graph/make_connected.hpp&gt;</code><br />
+<code>#include &lt;boost/graph/make_biconnected_planar.hpp&gt;</code><br />
+<code>#include &lt;boost/graph/make_maximal_planar.hpp&gt;</code><br />
+<code>#include &lt;boost/graph/planar_face_traversal.hpp&gt;</code><br />
 <code>#include &quot;<a class="el" href="../../d8/d01/general_helper_functions_8hpp_source.html">generalHelperFunctions.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../dd/d00/write_graph_graph_viz_dot_file_8hpp_source.html">writeGraphGraphVizDotFile.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../db/d00/graph_constructions_8hpp_source.html">graphConstructions.hpp</a>&quot;</code><br />
@@ -148,14 +155,23 @@ $(document).ready(function(){initNavTree('de/d01/packages_8hpp.html','../../'); 
 </div>
 <p><a href="../../de/d01/packages_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d00/structface__counter.html">face_counter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Visitor for counting the number of faces during planar face traversal.  <a href="../../dc/d00/structface__counter.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:adb6c610c60479e8b904f5832786b4125"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d01/packages_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a> = boost::adjacency_list&lt; boost::vecS, boost::vecS, boost::undirectedS &gt;</td></tr>
+<tr class="memitem:adb6c610c60479e8b904f5832786b4125"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d01/packages_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a> = boost::adjacency_list&lt; boost::vecS, boost::vecS, boost::undirectedS, boost::property&lt; boost::vertex_index_t, int &gt;, boost::property&lt; boost::edge_index_t, int &gt; &gt;</td></tr>
 <tr class="memdesc:adb6c610c60479e8b904f5832786b4125"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for an undirected graph using boost::adjacency_list.  <br /></td></tr>
 <tr class="separator:adb6c610c60479e8b904f5832786b4125"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afccd45e2973698c37e8379f6b25a82bc"><td class="memItemLeft" align="right" valign="top">typedef boost::graph_traits&lt; <a class="el" href="../../de/d01/packages_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a> &gt;<a class="el" href="../../d2/d00/test_flow_functions_8cpp.html#af04c50f717d4bda41f0c58fe0eece059">::edge_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d01/packages_8hpp.html#afccd45e2973698c37e8379f6b25a82bc">edgeIterator</a></td></tr>
 <tr class="memdesc:afccd45e2973698c37e8379f6b25a82bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator for traversing edges in an undirected graph.  <br /></td></tr>
 <tr class="separator:afccd45e2973698c37e8379f6b25a82bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4032f83b21bc8e890edeafe91fd311ec"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; graph_traits&lt; <a class="el" href="../../de/d01/packages_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a> &gt;::edge_descriptor &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d01/packages_8hpp.html#a4032f83b21bc8e890edeafe91fd311ec">edgeDescriptor</a></td></tr>
+<tr class="memdesc:a4032f83b21bc8e890edeafe91fd311ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Descriptor for an edge in an undirected graph.  <br /></td></tr>
+<tr class="separator:a4032f83b21bc8e890edeafe91fd311ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad3f8f6369da7f36e6266fdcb1991169"><td class="memItemLeft" align="right" valign="top">typedef boost::graph_traits&lt; <a class="el" href="../../de/d01/packages_8hpp.html#adb6c610c60479e8b904f5832786b4125">undirectedGraph</a> &gt;<a class="el" href="../../d2/d00/test_flow_functions_8cpp.html#a9451df0dac964b257bedb5e60547824e">::vertex_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d01/packages_8hpp.html#aad3f8f6369da7f36e6266fdcb1991169">vertexIterator</a></td></tr>
 <tr class="memdesc:aad3f8f6369da7f36e6266fdcb1991169"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator for traversing vertices in an undirected graph.  <br /></td></tr>
 <tr class="separator:aad3f8f6369da7f36e6266fdcb1991169"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,6 +181,26 @@ Typedefs</h2></td></tr>
 
 <p class="definition">Definition in file <a class="el" href="../../de/d01/packages_8hpp_source.html">packages.hpp</a>.</p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
+<a id="a4032f83b21bc8e890edeafe91fd311ec" name="a4032f83b21bc8e890edeafe91fd311ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4032f83b21bc8e890edeafe91fd311ec">&#9670;&#160;</a></span>edgeDescriptor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../de/d01/packages_8hpp.html#a4032f83b21bc8e890edeafe91fd311ec">edgeDescriptor</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Descriptor for an edge in an undirected graph. </p>
+<p>This typedef represents a descriptor for an edge in an undirected graph. It is used to reference and manipulate individual edges in an undirectedGraph.</p>
+<dl class="section note"><dt>Note</dt><dd>The edgeDescriptor type is defined as a std::vector&lt;graph_traits&lt;undirectedGraph&gt;::edge_descriptor&gt;. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../de/d01/packages_8hpp_source.html#l00096">96</a> of file <a class="el" href="../../de/d01/packages_8hpp_source.html">packages.hpp</a>.</p>
+
+</div>
+</div>
 <a id="afccd45e2973698c37e8379f6b25a82bc" name="afccd45e2973698c37e8379f6b25a82bc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afccd45e2973698c37e8379f6b25a82bc">&#9670;&#160;</a></span>edgeIterator</h2>
 
@@ -180,7 +216,7 @@ Typedefs</h2></td></tr>
 <p>Iterator for traversing edges in an undirected graph. </p>
 <p>This typedef represents an iterator for traversing edges in an undirected graph. It is used to iterate over the edges of an undirectedGraph. You can use it in conjunction with boost::edges() to traverse and operate on the edges of the graph. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../de/d01/packages_8hpp_source.html#l00067">67</a> of file <a class="el" href="../../de/d01/packages_8hpp_source.html">packages.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../de/d01/packages_8hpp_source.html#l00084">84</a> of file <a class="el" href="../../de/d01/packages_8hpp_source.html">packages.hpp</a>.</p>
 
 </div>
 </div>
@@ -197,9 +233,9 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Alias for an undirected graph using boost::adjacency_list. </p>
-<p>This typedef represents an undirected graph using the boost::adjacency_list data structure with boost::vecS as the vertex container and boost::undirectedS as the graph type. It provides an interface for creating and manipulating undirected graphs. </p>
+<p>This typedef represents an undirected graph using the boost::adjacency_list data structure with boost::vecS as the vertex container, boost::vecS as the edge container, and boost::undirectedS as the graph type. It includes additional properties for vertex and edge indices, specified by property&lt;vertex_index_t, int&gt; and property&lt;edge_index_t, int&gt; respectively. It provides an interface for creating and manipulating undirected graphs. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../de/d01/packages_8hpp_source.html#l00057">57</a> of file <a class="el" href="../../de/d01/packages_8hpp_source.html">packages.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../de/d01/packages_8hpp_source.html#l00067">67</a> of file <a class="el" href="../../de/d01/packages_8hpp_source.html">packages.hpp</a>.</p>
 
 </div>
 </div>
@@ -218,7 +254,7 @@ Typedefs</h2></td></tr>
 <p>Iterator for traversing vertices in an undirected graph. </p>
 <p>This typedef represents an iterator for traversing vertices in an undirected graph. It is used to iterate over the vertices of an undirectedGraph. You can use it in conjunction with boost::vertices() to traverse and operate on the vertices of the graph. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../de/d01/packages_8hpp_source.html#l00077">77</a> of file <a class="el" href="../../de/d01/packages_8hpp_source.html">packages.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../de/d01/packages_8hpp_source.html#l00108">108</a> of file <a class="el" href="../../de/d01/packages_8hpp_source.html">packages.hpp</a>.</p>
 
 </div>
 </div>

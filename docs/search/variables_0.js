@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['angle_0',['angle',['../d9/d00/struct_edge_properties.html#ab4b82d800607098e7c3bedce65bd9a75',1,'EdgeProperties']]]
+  ['count_0',['count',['../dc/d00/structface__counter.html#a4bcaa30dac2f86ff8e6617c229bb8f6e',1,'face_counter']]]
 ];

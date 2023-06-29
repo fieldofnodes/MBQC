@@ -1,0 +1,179 @@
+\doxysection{tests/test\+Damping\+MBQC.cpp File Reference}
+\hypertarget{test_damping_m_b_q_c_8cpp}{}\label{test_damping_m_b_q_c_8cpp}\index{tests/testDampingMBQC.cpp@{tests/testDampingMBQC.cpp}}
+{\ttfamily \#include \"{}packages.\+hpp\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{test_damping_m_b_q_c_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{test_damping_m_b_q_c_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{test_damping_m_b_q_c_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{testDampingMBQC.cpp@{testDampingMBQC.cpp}!main@{main}}
+\index{main@{main}!testDampingMBQC.cpp@{testDampingMBQC.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test_damping_m_b_q_c_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{test_damping_m_b_q_c_8cpp_source}{test\+Damping\+MBQC.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ }
+\DoxyCodeLine{00026\ \ \ \textcolor{comment}{//\ Initialise\ variable\ names\ and\ types}}
+\DoxyCodeLine{00027\ \ \ \textcolor{keywordtype}{int}\ numRows;}
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{int}\ numCols;}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph;}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{int}\ numVertices;}
+\DoxyCodeLine{00031\ \ \ std::vector<qreal>\ qubitAngles;}
+\DoxyCodeLine{00032\ \ \ std::vector<int>\ measuredQubitsOutcomes;}
+\DoxyCodeLine{00033\ \ \ std::vector<qreal>\ outcomeProbabilities;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ }
+\DoxyCodeLine{00037\ \ \ \textcolor{comment}{//\ Set\ values\ to\ variables}}
+\DoxyCodeLine{00038\ \ \ numRows\ =\ 1;}
+\DoxyCodeLine{00039\ \ \ numCols\ =\ 2;}
+\DoxyCodeLine{00040\ \ \ latticeGraph\ =\ \mbox{\hyperlink{graph_constructions_8hpp_a74f9014929a19ec558c3bc766754f1c3}{createLatticeGraph}}(numRows,numCols);}
+\DoxyCodeLine{00041\ \ \ numVertices\ =\ boost::num\_vertices(latticeGraph);}
+\DoxyCodeLine{00042\ \ \ }
+\DoxyCodeLine{00043\ \ \ }
+\DoxyCodeLine{00044\ \ \ }
+\DoxyCodeLine{00045\ \ \ \textcolor{comment}{//\ Print\ graph\ to\ file}}
+\DoxyCodeLine{00046\ \ \ \textcolor{comment}{//\ Update\ with\ desired\ directory\ to\ view\ graph.}}
+\DoxyCodeLine{00047\ \ \ std::string\ figsDir\ =\ MBQC\_FIGS\_DIR;}
+\DoxyCodeLine{00048\ \ \ std::string\ graphName\ =\ \textcolor{stringliteral}{"{}lattice1DDampingPerQubitGraph"{}};}
+\DoxyCodeLine{00049\ \ \ std::string\ format\ =\ PNG\_FORMAT;}
+\DoxyCodeLine{00050\ \ \ \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_a3d553b54b16922ee146bfb33201a3993}{printGraphToFile}}(latticeGraph,figsDir,graphName,format);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \textcolor{comment}{//\ load\ QuEST\ environment}}
+\DoxyCodeLine{00053\ \ \ QuESTEnv\ env\ =\ createQuESTEnv();}
+\DoxyCodeLine{00054\ \ \ }
+\DoxyCodeLine{00055\ \ \ \textcolor{comment}{//\ create\ a\ quantum\ register}}
+\DoxyCodeLine{00056\ \ \ Qureg\ qureg\ =\ createDensityQureg(numVertices,\ env);}
+\DoxyCodeLine{00057\ \ \ }
+\DoxyCodeLine{00058\ \ \ }
+\DoxyCodeLine{00059\ \ \ \textcolor{comment}{//qubitAngles\ =\ initRandomPiOnNAnglesMod2kPi(numVertices,\ 4);}}
+\DoxyCodeLine{00060\ \ \ qreal\ angle\ =\ 0.0;}
+\DoxyCodeLine{00061\ \ \ qubitAngles\ =\ \mbox{\hyperlink{angle_construction_8hpp_ac940c0b993f5f0e21dc74a2ac2f3fc7a}{initAllAnglesSame}}(numVertices,angle);}
+\DoxyCodeLine{00062\ \ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \textcolor{comment}{//\ initialise\ in\ the\ plus\ state}}
+\DoxyCodeLine{00065\ \ \ initPlusState(qureg);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ }
+\DoxyCodeLine{00068\ \ \ \textcolor{comment}{//\ add\ angles\ to\ the\ qubits}}
+\DoxyCodeLine{00069\ \ \ \mbox{\hyperlink{angle_construction_8hpp_a6647ed996ec54a9137e68e6c6317e8ee}{addAngleRotateZgate}}(qureg,qubitAngles);}
+\DoxyCodeLine{00070\ \ \ }
+\DoxyCodeLine{00071\ \ \ \ }
+\DoxyCodeLine{00072\ \ \ \textcolor{comment}{//\ entangle\ graph}}
+\DoxyCodeLine{00073\ \ \ \mbox{\hyperlink{quantum_graph_cluster_states_8hpp_a3f830234f9eb3a150a084b0f2b4aa056}{entangleGraph}}(qureg,latticeGraph);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \textcolor{comment}{//\ Display\ probabilities\ before\ damping}}
+\DoxyCodeLine{00076\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Outcome\ probs"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00077\ \ \ outcomeProbabilities\ =\ \mbox{\hyperlink{general_helper_functions_8hpp_a559bcd228214af8de060c2eea98269b5}{computeAllProbabilityOutcomesToVector}}(qureg);}
+\DoxyCodeLine{00078\ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a721cdbc6bd980bd328255feba8168f26}{printVector}}(outcomeProbabilities);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \textcolor{comment}{//\ Add\ damping\ to\ qubit\ after\ entanglement}}
+\DoxyCodeLine{00081\ \ \ qreal\ prob\ =\ 0.1;}
+\DoxyCodeLine{00082\ \ \ mixDamping(qureg,0,prob);}
+\DoxyCodeLine{00083\ \ \ mixDamping(qureg,1,prob);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \textcolor{comment}{//\ Display\ probabilities\ after\ damping}}
+\DoxyCodeLine{00087\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Outcome\ probs"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00088\ \ \ outcomeProbabilities\ =\ \mbox{\hyperlink{general_helper_functions_8hpp_a559bcd228214af8de060c2eea98269b5}{computeAllProbabilityOutcomesToVector}}(qureg);}
+\DoxyCodeLine{00089\ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a721cdbc6bd980bd328255feba8168f26}{printVector}}(outcomeProbabilities);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \textcolor{comment}{//\ Measure\ qubit\ at\ a\ time}}
+\DoxyCodeLine{00093\ \ rotateZ(qureg,0,\ (-\/1)*qubitAngles[0]);}
+\DoxyCodeLine{00094\ \ hadamard(qureg,0);}
+\DoxyCodeLine{00095\ \ \textcolor{keywordtype}{int}\ m0\ =\ measure(qureg,0);}
+\DoxyCodeLine{00096\ \ std::cout\ <<\ \textcolor{stringliteral}{"{}numQubits:\ "{}}\ <<\ qureg.numQubitsRepresented\ <<\ std::endl;}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \textcolor{comment}{//\ Display\ probabilities\ before\ damping}}
+\DoxyCodeLine{00099\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Outcome\ probs\ after\ 1\ measure"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00100\ \ \ outcomeProbabilities\ =\ \mbox{\hyperlink{general_helper_functions_8hpp_a559bcd228214af8de060c2eea98269b5}{computeAllProbabilityOutcomesToVector}}(qureg);}
+\DoxyCodeLine{00101\ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a721cdbc6bd980bd328255feba8168f26}{printVector}}(outcomeProbabilities);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \textcolor{comment}{//\ Measure\ qubit\ at\ a\ time\ }}
+\DoxyCodeLine{00105\ \ \ \textcolor{keywordtype}{int}\ exponent\ =\ m0;}
+\DoxyCodeLine{00106\ \ \ qreal\ xAngle\ =\ std::pow((-\/1),\ exponent)*qubitAngles[1];}
+\DoxyCodeLine{00107\ \ \ rotateZ(qureg,1,\ (-\/1)*xAngle);}
+\DoxyCodeLine{00108\ \ \ hadamard(qureg,1);}
+\DoxyCodeLine{00109\ \ \ \textcolor{keywordtype}{int}\ m\ =\ measure(qureg,0);}
+\DoxyCodeLine{00110\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}numQubits:\ "{}}\ <<\ qureg.numQubitsRepresented\ <<\ std::endl;}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \textcolor{comment}{//\ Display\ probabilities\ before\ damping}}
+\DoxyCodeLine{00113\ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Outcome\ probs\ after\ 1\ measure"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00114\ \ \ outcomeProbabilities\ =\ \mbox{\hyperlink{general_helper_functions_8hpp_a559bcd228214af8de060c2eea98269b5}{computeAllProbabilityOutcomesToVector}}(qureg);}
+\DoxyCodeLine{00115\ \ \ \mbox{\hyperlink{general_helper_functions_8hpp_a721cdbc6bd980bd328255feba8168f26}{printVector}}(outcomeProbabilities);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00119\ \textcolor{comment}{\ \ //\ measure\ graph}}
+\DoxyCodeLine{00120\ \textcolor{comment}{\ \ measuredQubitsOutcomes\ =\ measureGraph(}}
+\DoxyCodeLine{00121\ \textcolor{comment}{\ \ \ \ \ \ \ \ qureg,}}
+\DoxyCodeLine{00122\ \textcolor{comment}{\ \ \ \ \ \ \ \ latticeGraph,}}
+\DoxyCodeLine{00123\ \textcolor{comment}{\ \ \ \ \ \ \ \ qubitAngles,}}
+\DoxyCodeLine{00124\ \textcolor{comment}{\ \ \ \ \ \ \ \ numRows);}}
+\DoxyCodeLine{00125\ \textcolor{comment}{}}
+\DoxyCodeLine{00126\ \textcolor{comment}{}}
+\DoxyCodeLine{00127\ \textcolor{comment}{}}
+\DoxyCodeLine{00128\ \textcolor{comment}{std::vector<int>\ measureGraph(}}
+\DoxyCodeLine{00129\ \textcolor{comment}{\ \ \ \ Qureg\ qureg,}}
+\DoxyCodeLine{00130\ \textcolor{comment}{\ \ \ \ const\ undirectedGraph\&\ graph,}}
+\DoxyCodeLine{00131\ \textcolor{comment}{\ \ \ \ std::vector<qreal>\ qubitAngles,}}
+\DoxyCodeLine{00132\ \textcolor{comment}{\ \ \ \ int\ numRows)\{}}
+\DoxyCodeLine{00133\ \textcolor{comment}{}}
+\DoxyCodeLine{00134\ \textcolor{comment}{\ \ \ \ std::vector<int>\ measuredQubitsOutcomes;}}
+\DoxyCodeLine{00135\ \textcolor{comment}{\ \ \ \ undirectedGraph::vertex\_iterator\ vi,\ vi\_end;}}
+\DoxyCodeLine{00136\ \textcolor{comment}{\ \ \ \ for\ (boost::tie(vi,\ vi\_end)\ =\ boost::vertices(graph);\ vi\ !=\ vi\_end;\ vi++)\ \{}}
+\DoxyCodeLine{00137\ \textcolor{comment}{\ \ \ \ \ \ \ \ //\ skip\ vertices\ that\ are\ in\ the\ first\ column}}
+\DoxyCodeLine{00138\ \textcolor{comment}{\ \ \ \ \ \ \ \ if(*vi\ <\ numRows)\{}}
+\DoxyCodeLine{00139\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ rotateZ(qureg,*vi,\ (-\/1)*qubitAngles[*vi]);}}
+\DoxyCodeLine{00140\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ hadamard(qureg,*vi);}}
+\DoxyCodeLine{00141\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ int\ m\ =\ measure(qureg,*vi);}}
+\DoxyCodeLine{00142\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes.push\_back(m);}}
+\DoxyCodeLine{00143\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}else\ if(*vi\ >=\ numRows)\{}}
+\DoxyCodeLine{00144\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ qreal\ correctedAngle;}}
+\DoxyCodeLine{00145\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ correctedAngle\ =\ computeCorrectedAngle(graph,measuredQubitsOutcomes,*vi,numRows,qubitAngles[*vi]);}}
+\DoxyCodeLine{00146\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ rotateZ(qureg,*vi,\ (-\/1)*correctedAngle);}}
+\DoxyCodeLine{00147\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ hadamard(qureg,*vi);}}
+\DoxyCodeLine{00148\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ int\ m\ =\ measure(qureg,*vi);}}
+\DoxyCodeLine{00149\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ measuredQubitsOutcomes.push\_back(m);}}
+\DoxyCodeLine{00150\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}\ else\ \{}}
+\DoxyCodeLine{00151\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}attempting\ to\ measure\ nothing?"{};}}
+\DoxyCodeLine{00152\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00153\ \textcolor{comment}{\ \ \ \ \}}}
+\DoxyCodeLine{00154\ \textcolor{comment}{}}
+\DoxyCodeLine{00155\ \textcolor{comment}{}}
+\DoxyCodeLine{00156\ \textcolor{comment}{\ \ \ \ return\ measuredQubitsOutcomes;}}
+\DoxyCodeLine{00157\ \textcolor{comment}{\}}}
+\DoxyCodeLine{00158\ \textcolor{comment}{}}
+\DoxyCodeLine{00159\ \textcolor{comment}{}}
+\DoxyCodeLine{00160\ \textcolor{comment}{}}
+\DoxyCodeLine{00161\ \textcolor{comment}{}}
+\DoxyCodeLine{00162\ \textcolor{comment}{}}
+\DoxyCodeLine{00163\ \textcolor{comment}{}}
+\DoxyCodeLine{00164\ \textcolor{comment}{}}
+\DoxyCodeLine{00165\ \textcolor{comment}{\ \ //\ print\ results\ to\ screen}}
+\DoxyCodeLine{00166\ \textcolor{comment}{\ \ printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);}}
+\DoxyCodeLine{00167\ \textcolor{comment}{}}
+\DoxyCodeLine{00168\ \textcolor{comment}{\ \ }}
+\DoxyCodeLine{00169\ \textcolor{comment}{\ \ }}
+\DoxyCodeLine{00170\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{00171\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00172\ \ \ }
+\DoxyCodeLine{00173\ \ \ \textcolor{comment}{//\ unload\ QuEST}}
+\DoxyCodeLine{00174\ \ \ destroyQureg(qureg,\ env);\ }
+\DoxyCodeLine{00175\ \ \ destroyQuESTEnv(env);}
+\DoxyCodeLine{00176\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00177\ \}}
+
+\end{DoxyCode}

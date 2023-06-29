@@ -126,77 +126,108 @@
 \DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00200}00200\ \}}
 \DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00201}00201\ }
 \DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00202}00202\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00203}00203\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00204}00204\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00205}00205\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00206}00206\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00221}00221\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00222}\mbox{\hyperlink{general_helper_functions_8hpp_ac0434b40f8b6ac7962d760550c133c8f}{00222}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{general_helper_functions_8hpp_ac0434b40f8b6ac7962d760550c133c8f}{writeVectorToFile}}(\textcolor{keyword}{const}\ std::vector<T>\&\ values,\ \textcolor{keyword}{const}\ std::string\&\ filename,\textcolor{keyword}{const}\ std::string\&\ col\_name)\ \{}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00223}00223\ \ \ \ \ std::ofstream\ file(filename);}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00224}00224\ \ \ \ \ file\ <<\ col\_name\ <<\ std::endl;}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00225}00225\ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ T\&\ value\ :\ values)\ \{}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ value\ <<\ std::endl;}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00229}00229\ \ \ \ \ \ \ \ \ file.close();}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00230}00230\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00231}00231\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00232}00232\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ open\ the\ file."{}}\ <<\ std::endl;}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00233}00233\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00234}00234\ \}}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00235}00235\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00236}00236\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00237}00237\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00238}00238\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00239}00239\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00240}00240\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00256}00256\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00257}\mbox{\hyperlink{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}{00257}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}{writeArrayToFile}}(\textcolor{keyword}{const}\ T*\ values,\ \textcolor{keywordtype}{size\_t}\ size,\ \textcolor{keyword}{const}\ std::string\&\ filename,\textcolor{keyword}{const}\ std::string\&\ col\_name)\ \{}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00258}00258\ \ \ \ \ std::ofstream\ file(filename);}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00259}00259\ \ \ \ \ file\ <<\ col\_name\ <<\ std::endl;}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00260}00260\ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ size;\ ++i)\ \{}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ values[i]\ <<\ std::endl;}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00264}00264\ \ \ \ \ \ \ \ \ file.close();}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00265}00265\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00266}00266\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00267}00267\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ open\ the\ file."{}}\ <<\ std::endl;}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00268}00268\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00269}00269\ \}}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00270}00270\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00271}00271\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00272}00272\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00273}00273\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00274}00274\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00275}00275\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00291}\mbox{\hyperlink{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}{00291}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}{writeStateToFile}}(\textcolor{keyword}{const}\ Qureg\&\ qureg,\ \textcolor{keyword}{const}\ std::string\&\ filepath)\ \{}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00292}00292\ \ \ \ \ FILE*\ state\ =\ std::fopen(filepath.c\_str(),\ \textcolor{stringliteral}{"{}w"{}});}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00293}00293\ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ index;}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00294}00294\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \textcolor{keyword}{nullptr})\ \{}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00295}00295\ \ \ \ \ \ \ \ \ std::perror(\textcolor{stringliteral}{"{}Failed\ to\ open\ file"{}});}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00297}00297\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00298}00298\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00299}00299\ \ \ \ \ \textcolor{keywordflow}{if}\ (qureg.chunkId\ ==\ 0)\ \{}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00300}00300\ \ \ \ \ \ \ \ \ std::fprintf(state,\ \textcolor{stringliteral}{"{}real,\ imag\(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00301}00301\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00302}00302\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00303}00303\ \ \ \ \ \ \textcolor{keywordflow}{for}(index=0;\ index<qureg.numAmpsPerChunk;\ index++)\{}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00304}00304\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#\ if\ QuEST\_PREC==1\ ||\ QuEST\_PREC==2}}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \ fprintf(state,\ \textcolor{stringliteral}{"{}\%.12f,\ \%.12f\(\backslash\)n"{}},\ qureg.stateVec.real[index],\ qureg.stateVec.imag[index]);}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00306}00306\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#\ elif\ QuEST\_PREC\ ==\ 4}}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \ fprintf(state,\ \textcolor{stringliteral}{"{}\%.12Lf,\ \%.12Lf\(\backslash\)n"{}},\ qureg.stateVec.real[index],\ qureg.stateVec.imag[index]);}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00308}00308\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#endif}}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00309}00309\ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00310}00310\ \ \ \ \ \ fclose(state);}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00311}00311\ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00312}00312\ \}}
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00313}00313\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00314}00314\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00315}00315\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00316}00316\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00317}00317\ }
-\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00213}\mbox{\hyperlink{general_helper_functions_8hpp_a304f0e44472d2c746e328e345fb73caf}{00213}}\ \textcolor{keywordtype}{int}*\ \mbox{\hyperlink{general_helper_functions_8hpp_a304f0e44472d2c746e328e345fb73caf}{createQubitsArray}}(\textcolor{keywordtype}{int}\ N)\ \{}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00214}00214\ \ \ \ \ \textcolor{keywordtype}{int}*\ qubits\ =\ (\textcolor{keywordtype}{int}*)malloc(N\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00215}00215\ \ \ \ \ \textcolor{keywordflow}{if}\ (qubits\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ memory\ allocation\ error}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00218}00218\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00220}00220\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ N;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00221}00221\ \ \ \ \ \ \ \ \ qubits[i]\ =\ i;}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00222}00222\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00224}00224\ \ \ \ \ \textcolor{keywordflow}{return}\ qubits;}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00225}00225\ \}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00239}\mbox{\hyperlink{general_helper_functions_8hpp_a559bcd228214af8de060c2eea98269b5}{00239}}\ std::vector<qreal>\ \mbox{\hyperlink{general_helper_functions_8hpp_a559bcd228214af8de060c2eea98269b5}{computeAllProbabilityOutcomesToVector}}(Qureg\ qureg)\ \{}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00240}00240\ \ \ \ \ \textcolor{keywordtype}{int}\ numQubits\ =\ qureg.numQubitsRepresented;}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00241}00241\ \ \ \ \ \textcolor{keywordtype}{int}\ numProbs\ =\ 1\ <<\ numQubits;}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00242}00242\ \ \ \ \ qreal\ outcomeProbs[numProbs];}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00243}00243\ \ \ \ \ \textcolor{keywordtype}{int}*\ qubits\ =\ \mbox{\hyperlink{general_helper_functions_8hpp_a304f0e44472d2c746e328e345fb73caf}{createQubitsArray}}(numQubits);}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00244}00244\ \ \ \ \ calcProbOfAllOutcomes(outcomeProbs,\ qureg,\ qubits,\ numQubits);\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00245}00245\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00246}00246\ \ \ \ \ std::vector<qreal>\ outcomeProbabilities;}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00247}00247\ \ \ \ \ \textcolor{keywordflow}{for}\ (qreal\ i\ :\ outcomeProbs)\ \{}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00248}00248\ \ \ \ \ \ \ \ \ outcomeProbabilities.push\_back(i);}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00249}00249\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00250}00250\ \ \ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00251}00251\ \ \ \ \ \textcolor{keywordflow}{return}\ outcomeProbabilities;}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00252}00252\ \}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00271}00271\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00272}\mbox{\hyperlink{general_helper_functions_8hpp_ac0434b40f8b6ac7962d760550c133c8f}{00272}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{general_helper_functions_8hpp_ac0434b40f8b6ac7962d760550c133c8f}{writeVectorToFile}}(\textcolor{keyword}{const}\ std::vector<T>\&\ values,\ \textcolor{keyword}{const}\ std::string\&\ filename,\textcolor{keyword}{const}\ std::string\&\ col\_name)\ \{}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00273}00273\ \ \ \ \ std::ofstream\ file(filename);}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00274}00274\ \ \ \ \ file\ <<\ col\_name\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00275}00275\ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ T\&\ value\ :\ values)\ \{}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ value\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00279}00279\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00280}00280\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00281}00281\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00282}00282\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ open\ the\ file."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00283}00283\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00284}00284\ \}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00285}00285\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00286}00286\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00306}00306\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00307}\mbox{\hyperlink{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}{00307}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{general_helper_functions_8hpp_a41a7ac4a876af2866b1d6ab915ecdfb2}{writeArrayToFile}}(\textcolor{keyword}{const}\ T*\ values,\ \textcolor{keywordtype}{size\_t}\ size,\ \textcolor{keyword}{const}\ std::string\&\ filename,\textcolor{keyword}{const}\ std::string\&\ col\_name)\ \{}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00308}00308\ \ \ \ \ std::ofstream\ file(filename);}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00309}00309\ \ \ \ \ file\ <<\ col\_name\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00310}00310\ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ size;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ values[i]\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00314}00314\ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00315}00315\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00316}00316\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00317}00317\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Unable\ to\ open\ the\ file."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00318}00318\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00319}00319\ \}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00321}00321\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00322}00322\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00324}00324\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00341}\mbox{\hyperlink{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}{00341}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{general_helper_functions_8hpp_a7465cffdfd3bf3b9d59175e8194b4588}{writeStateToFile}}(\textcolor{keyword}{const}\ Qureg\&\ qureg,\ \textcolor{keyword}{const}\ std::string\&\ filepath)\ \{}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00342}00342\ \ \ \ \ FILE*\ state\ =\ std::fopen(filepath.c\_str(),\ \textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00343}00343\ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ index;}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00344}00344\ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ ==\ \textcolor{keyword}{nullptr})\ \{}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00345}00345\ \ \ \ \ \ \ \ \ std::perror(\textcolor{stringliteral}{"{}Failed\ to\ open\ file"{}});}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00346}00346\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00347}00347\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00349}00349\ \ \ \ \ \textcolor{keywordflow}{if}\ (qureg.chunkId\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00350}00350\ \ \ \ \ \ \ \ \ std::fprintf(state,\ \textcolor{stringliteral}{"{}real,\ imag\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00351}00351\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00352}00352\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00353}00353\ \ \ \ \ \ \textcolor{keywordflow}{for}(index=0;\ index<qureg.numAmpsPerChunk;\ index++)\{}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00354}00354\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#\ if\ QuEST\_PREC==1\ ||\ QuEST\_PREC==2}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00355}00355\ \ \ \ \ \ \ \ \ \ fprintf(state,\ \textcolor{stringliteral}{"{}\%.12f,\ \%.12f\(\backslash\)n"{}},\ qureg.stateVec.real[index],\ qureg.stateVec.imag[index]);}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00356}00356\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#\ elif\ QuEST\_PREC\ ==\ 4}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00357}00357\ \ \ \ \ \ \ \ \ \ fprintf(state,\ \textcolor{stringliteral}{"{}\%.12Lf,\ \%.12Lf\(\backslash\)n"{}},\ qureg.stateVec.real[index],\ qureg.stateVec.imag[index]);}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00358}00358\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00359}00359\ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00360}00360\ \ \ \ \ \ fclose(state);}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00361}00361\ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Values\ written\ to\ file\ successfully."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00362}00362\ \}}
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00363}00363\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00364}00364\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00365}00365\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00366}00366\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00367}00367\ }
+\DoxyCodeLine{\Hypertarget{general_helper_functions_8hpp_source_l00368}00368\ }
 
 \end{DoxyCode}

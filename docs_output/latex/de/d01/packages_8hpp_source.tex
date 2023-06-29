@@ -40,41 +40,74 @@
 \DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ <boost/range/algorithm.hpp>}\ }
 \DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ <boost/range/adaptor/filtered.hpp>}\ }
 \DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ <boost/range/adaptor/transformed.hpp>}\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00043}00043\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00044}00044\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00045}00045\ \textcolor{keyword}{using\ namespace\ }boost;}
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00046}00046\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00047}00047\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00057}\mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{00057}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ =\ boost::adjacency\_list<boost::vecS,\ boost::vecS,\ boost::undirectedS>;}
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00058}00058\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00067}\mbox{\hyperlink{packages_8hpp_afccd45e2973698c37e8379f6b25a82bc}{00067}}\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::edge\_iterator\ \mbox{\hyperlink{packages_8hpp_afccd45e2973698c37e8379f6b25a82bc}{edgeIterator}};}
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00068}00068\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00077}\mbox{\hyperlink{packages_8hpp_aad3f8f6369da7f36e6266fdcb1991169}{00077}}\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::vertex\_iterator\ \mbox{\hyperlink{packages_8hpp_aad3f8f6369da7f36e6266fdcb1991169}{vertexIterator}};}
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00078}00078\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00079}00079\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00080}00080\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00081}00081\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00082}00082\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00083}00083\ \textcolor{comment}{//\ Helper\ functions}}
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00084}00084\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{general_helper_functions_8hpp}{generalHelperFunctions.hpp}}"{}}\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00085}00085\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp}{writeGraphGraphVizDotFile.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ <boost/graph/boyer\_myrvold\_planar\_test.hpp>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ <boost/graph/connected\_components.hpp>}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ <boost/graph/make\_connected.hpp>}\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ <boost/graph/make\_biconnected\_planar.hpp>}\ \ \ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ <boost/graph/make\_maximal\_planar.hpp>}\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00048}00048\ \textcolor{preprocessor}{\#include\ <boost/graph/planar\_face\_traversal.hpp>}\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00052}00052\ \textcolor{keyword}{using\ namespace\ }boost;}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00067}\mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{00067}}\ \textcolor{keyword}{using\ }\mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ =\ boost::adjacency\_list<}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00068}00068\ \ \ \ \ boost::vecS,}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00069}00069\ \ \ \ \ boost::vecS,}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00070}00070\ \ \ \ \ boost::undirectedS,}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00071}00071\ \ \ \ \ boost::property<boost::vertex\_index\_t,\ int>,}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00072}00072\ \ \ \ \ boost::property<boost::edge\_index\_t,\ int>}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00073}00073\ >;}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00084}\mbox{\hyperlink{packages_8hpp_afccd45e2973698c37e8379f6b25a82bc}{00084}}\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::edge\_iterator\ \mbox{\hyperlink{packages_8hpp_afccd45e2973698c37e8379f6b25a82bc}{edgeIterator}};}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00085}00085\ }
 \DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00086}00086\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00087}00087\ \textcolor{comment}{//\ Graph\ functions}}
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00088}00088\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{graph_constructions_8hpp}{graphConstructions.hpp}}"{}}\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00089}00089\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{graph_traversal_flows_8hpp}{graphTraversalFlows.hpp}}"{}}\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00090}00090\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00091}00091\ \textcolor{comment}{//\ Quantum\ functions}}
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00092}00092\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{flow_measurements_8hpp}{flowMeasurements.hpp}}"{}}\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00093}00093\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{angle_construction_8hpp}{angleConstruction.hpp}}"{}}\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00094}00094\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{quantum_graph_cluster_states_8hpp}{quantumGraphClusterStates.hpp}}"{}}\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00095}00095\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00096}00096\ \textcolor{comment}{//\ Assert\ functions}}
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00097}00097\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{general_assert_functions_8hpp}{generalAssertFunctions.hpp}}"{}}\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00098}00098\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{graph_assert_functions_8hpp}{graphAssertFunctions.hpp}}"{}}\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00099}00099\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp}{probabilitiesAmplitudesNoNoiseCircuits.hpp}}"{}}\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00100}00100\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp}{probabilitiesAmplitudesDampingCircuits.hpp}}"{}}\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00101}00101\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00102}00102\ }
-\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00103}00103\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PACKAGES\_HPP}}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00096}\mbox{\hyperlink{packages_8hpp_a4032f83b21bc8e890edeafe91fd311ec}{00096}}\ \textcolor{keyword}{typedef}\ std::vector<graph\_traits<undirectedGraph>::edge\_descriptor>\ \mbox{\hyperlink{packages_8hpp_a4032f83b21bc8e890edeafe91fd311ec}{edgeDescriptor}};}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00108}\mbox{\hyperlink{packages_8hpp_aad3f8f6369da7f36e6266fdcb1991169}{00108}}\ \textcolor{keyword}{typedef}\ boost::graph\_traits<undirectedGraph>::vertex\_iterator\ \mbox{\hyperlink{packages_8hpp_aad3f8f6369da7f36e6266fdcb1991169}{vertexIterator}};}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00124}\mbox{\hyperlink{structface__counter}{00124}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structface__counter}{face\_counter}}\ :\ \textcolor{keyword}{public}\ planar\_face\_traversal\_visitor}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00125}00125\ \{}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00129}\mbox{\hyperlink{structface__counter_a2e8cd82b4f62a9398554219b006cb0ed}{00129}}\ \ \ \mbox{\hyperlink{structface__counter_a2e8cd82b4f62a9398554219b006cb0ed}{face\_counter}}()\ :\ \mbox{\hyperlink{structface__counter_a4bcaa30dac2f86ff8e6617c229bb8f6e}{count}}(0)\ \{\}}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00135}\mbox{\hyperlink{structface__counter_ab3d6c40775054d7575d84ce1a4d6914d}{00135}}\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structface__counter_ab3d6c40775054d7575d84ce1a4d6914d}{begin\_face}}()\ \{\ ++\mbox{\hyperlink{structface__counter_a4bcaa30dac2f86ff8e6617c229bb8f6e}{count}};\ \}}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00137}\mbox{\hyperlink{structface__counter_a4bcaa30dac2f86ff8e6617c229bb8f6e}{00137}}\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structface__counter_a4bcaa30dac2f86ff8e6617c229bb8f6e}{count}};\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00138}00138\ \};}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00144}00144\ \textcolor{comment}{//\ Helper\ functions}}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00145}00145\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{general_helper_functions_8hpp}{generalHelperFunctions.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00146}00146\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp}{writeGraphGraphVizDotFile.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00148}00148\ \textcolor{comment}{//\ Graph\ functions}}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00149}00149\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{graph_constructions_8hpp}{graphConstructions.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00150}00150\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{graph_traversal_flows_8hpp}{graphTraversalFlows.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00152}00152\ \textcolor{comment}{//\ Quantum\ functions}}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00153}00153\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{flow_measurements_8hpp}{flowMeasurements.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00154}00154\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{angle_construction_8hpp}{angleConstruction.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00155}00155\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{quantum_graph_cluster_states_8hpp}{quantumGraphClusterStates.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00157}00157\ \textcolor{comment}{//\ Assert\ functions}}
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00158}00158\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{general_assert_functions_8hpp}{generalAssertFunctions.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00159}00159\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{graph_assert_functions_8hpp}{graphAssertFunctions.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00160}00160\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{probabilities_amplitudes_no_noise_circuits_8hpp}{probabilitiesAmplitudesNoNoiseCircuits.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00161}00161\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{probabilities_amplitudes_damping_circuits_8hpp}{probabilitiesAmplitudesDampingCircuits.hpp}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{packages_8hpp_source_l00164}00164\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PACKAGES\_HPP}}
 
 \end{DoxyCode}

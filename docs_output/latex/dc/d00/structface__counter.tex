@@ -1,0 +1,109 @@
+\doxysection{face\+\_\+counter Struct Reference}
+\hypertarget{structface__counter}{}\label{structface__counter}\index{face\_counter@{face\_counter}}
+
+
+Visitor for counting the number of faces during planar face traversal.  
+
+
+
+
+{\ttfamily \#include $<$src/packages.\+hpp$>$}
+
+Inheritance diagram for face\+\_\+counter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{dc/d00/structface__counter}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structface__counter_a2e8cd82b4f62a9398554219b006cb0ed}{face\+\_\+counter}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{structface__counter}{face\+\_\+counter}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structface__counter_ab3d6c40775054d7575d84ce1a4d6914d}{begin\+\_\+face}} ()
+\begin{DoxyCompactList}\small\item\em Function called at the beginning of each face. It increments the face count. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structface__counter_a4bcaa30dac2f86ff8e6617c229bb8f6e}{count}}
+\begin{DoxyCompactList}\small\item\em The count of faces. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Visitor for counting the number of faces during planar face traversal. 
+
+This struct represents a visitor that is used with planar\+\_\+face\+\_\+traversal to count the number of faces in a graph. It inherits from planar\+\_\+face\+\_\+traversal\+\_\+visitor. The \doxylink{structface__counter_ab3d6c40775054d7575d84ce1a4d6914d}{begin\+\_\+face()} function is overridden to increment the face count.
+
+\begin{DoxyNote}{Note}
+The \doxylink{structface__counter}{face\+\_\+counter} struct is used in the context of planar face traversal. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{packages_8hpp_source_l00124}{124}} of file \mbox{\hyperlink{packages_8hpp_source}{packages.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{structface__counter_a2e8cd82b4f62a9398554219b006cb0ed}\label{structface__counter_a2e8cd82b4f62a9398554219b006cb0ed} 
+\index{face\_counter@{face\_counter}!face\_counter@{face\_counter}}
+\index{face\_counter@{face\_counter}!face\_counter@{face\_counter}}
+\doxysubsubsection{\texorpdfstring{face\_counter()}{face\_counter()}}
+{\footnotesize\ttfamily face\+\_\+counter\+::face\+\_\+counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor for \doxylink{structface__counter}{face\+\_\+counter}. 
+
+
+
+Definition at line \mbox{\hyperlink{packages_8hpp_source_l00129}{129}} of file \mbox{\hyperlink{packages_8hpp_source}{packages.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00129\ :\ \mbox{\hyperlink{structface__counter_a4bcaa30dac2f86ff8e6617c229bb8f6e}{count}}(0)\ \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{structface__counter_ab3d6c40775054d7575d84ce1a4d6914d}\label{structface__counter_ab3d6c40775054d7575d84ce1a4d6914d} 
+\index{face\_counter@{face\_counter}!begin\_face@{begin\_face}}
+\index{begin\_face@{begin\_face}!face\_counter@{face\_counter}}
+\doxysubsubsection{\texorpdfstring{begin\_face()}{begin\_face()}}
+{\footnotesize\ttfamily void face\+\_\+counter\+::begin\+\_\+face (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function called at the beginning of each face. It increments the face count. 
+
+
+
+Definition at line \mbox{\hyperlink{packages_8hpp_source_l00135}{135}} of file \mbox{\hyperlink{packages_8hpp_source}{packages.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00135\ \{\ ++\mbox{\hyperlink{structface__counter_a4bcaa30dac2f86ff8e6617c229bb8f6e}{count}};\ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{structface__counter_a4bcaa30dac2f86ff8e6617c229bb8f6e}\label{structface__counter_a4bcaa30dac2f86ff8e6617c229bb8f6e} 
+\index{face\_counter@{face\_counter}!count@{count}}
+\index{count@{count}!face\_counter@{face\_counter}}
+\doxysubsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily int face\+\_\+counter\+::count}
+
+
+
+The count of faces. 
+
+
+
+Definition at line \mbox{\hyperlink{packages_8hpp_source_l00137}{137}} of file \mbox{\hyperlink{packages_8hpp_source}{packages.\+hpp}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{packages_8hpp}{packages.\+hpp}}\end{DoxyCompactItemize}

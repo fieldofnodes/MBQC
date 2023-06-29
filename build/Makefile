@@ -117,41 +117,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named testReadingGraphFromFile
+# Target rules for targets named testGeneralGraphConstructions
 
 # Build rule for target.
-testReadingGraphFromFile: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 testReadingGraphFromFile
-.PHONY : testReadingGraphFromFile
+testGeneralGraphConstructions: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 testGeneralGraphConstructions
+.PHONY : testGeneralGraphConstructions
 
 # fast build rule for target.
-testReadingGraphFromFile/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testReadingGraphFromFile.dir/build.make CMakeFiles/testReadingGraphFromFile.dir/build
-.PHONY : testReadingGraphFromFile/fast
+testGeneralGraphConstructions/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testGeneralGraphConstructions.dir/build.make CMakeFiles/testGeneralGraphConstructions.dir/build
+.PHONY : testGeneralGraphConstructions/fast
 
-tests/testReadingGraphFromFile.o: tests/testReadingGraphFromFile.cpp.o
-.PHONY : tests/testReadingGraphFromFile.o
+tests/testGeneralGraphConstructions.o: tests/testGeneralGraphConstructions.cpp.o
+.PHONY : tests/testGeneralGraphConstructions.o
 
 # target to build an object file
-tests/testReadingGraphFromFile.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testReadingGraphFromFile.dir/build.make CMakeFiles/testReadingGraphFromFile.dir/tests/testReadingGraphFromFile.cpp.o
-.PHONY : tests/testReadingGraphFromFile.cpp.o
+tests/testGeneralGraphConstructions.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testGeneralGraphConstructions.dir/build.make CMakeFiles/testGeneralGraphConstructions.dir/tests/testGeneralGraphConstructions.cpp.o
+.PHONY : tests/testGeneralGraphConstructions.cpp.o
 
-tests/testReadingGraphFromFile.i: tests/testReadingGraphFromFile.cpp.i
-.PHONY : tests/testReadingGraphFromFile.i
+tests/testGeneralGraphConstructions.i: tests/testGeneralGraphConstructions.cpp.i
+.PHONY : tests/testGeneralGraphConstructions.i
 
 # target to preprocess a source file
-tests/testReadingGraphFromFile.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testReadingGraphFromFile.dir/build.make CMakeFiles/testReadingGraphFromFile.dir/tests/testReadingGraphFromFile.cpp.i
-.PHONY : tests/testReadingGraphFromFile.cpp.i
+tests/testGeneralGraphConstructions.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testGeneralGraphConstructions.dir/build.make CMakeFiles/testGeneralGraphConstructions.dir/tests/testGeneralGraphConstructions.cpp.i
+.PHONY : tests/testGeneralGraphConstructions.cpp.i
 
-tests/testReadingGraphFromFile.s: tests/testReadingGraphFromFile.cpp.s
-.PHONY : tests/testReadingGraphFromFile.s
+tests/testGeneralGraphConstructions.s: tests/testGeneralGraphConstructions.cpp.s
+.PHONY : tests/testGeneralGraphConstructions.s
 
 # target to generate assembly for a file
-tests/testReadingGraphFromFile.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testReadingGraphFromFile.dir/build.make CMakeFiles/testReadingGraphFromFile.dir/tests/testReadingGraphFromFile.cpp.s
-.PHONY : tests/testReadingGraphFromFile.cpp.s
+tests/testGeneralGraphConstructions.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testGeneralGraphConstructions.dir/build.make CMakeFiles/testGeneralGraphConstructions.dir/tests/testGeneralGraphConstructions.cpp.s
+.PHONY : tests/testGeneralGraphConstructions.cpp.s
 
 # Help Target
 help:
@@ -161,10 +161,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... testReadingGraphFromFile"
-	@echo "... tests/testReadingGraphFromFile.o"
-	@echo "... tests/testReadingGraphFromFile.i"
-	@echo "... tests/testReadingGraphFromFile.s"
+	@echo "... testGeneralGraphConstructions"
+	@echo "... tests/testGeneralGraphConstructions.o"
+	@echo "... tests/testGeneralGraphConstructions.i"
+	@echo "... tests/testGeneralGraphConstructions.s"
 .PHONY : help
 
 

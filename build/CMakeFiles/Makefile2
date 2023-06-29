@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /Users/jmille15/Projects/MBQC/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/testReadingGraphFromFile.dir/all
+all: CMakeFiles/testGeneralGraphConstructions.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/testReadingGraphFromFile.dir/clean
+clean: CMakeFiles/testGeneralGraphConstructions.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/testReadingGraphFromFile.dir
+# Target rules for target CMakeFiles/testGeneralGraphConstructions.dir
 
 # All Build rule for target.
-CMakeFiles/testReadingGraphFromFile.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testReadingGraphFromFile.dir/build.make CMakeFiles/testReadingGraphFromFile.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testReadingGraphFromFile.dir/build.make CMakeFiles/testReadingGraphFromFile.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jmille15/Projects/MBQC/build/CMakeFiles --progress-num=1,2 "Built target testReadingGraphFromFile"
-.PHONY : CMakeFiles/testReadingGraphFromFile.dir/all
+CMakeFiles/testGeneralGraphConstructions.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testGeneralGraphConstructions.dir/build.make CMakeFiles/testGeneralGraphConstructions.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testGeneralGraphConstructions.dir/build.make CMakeFiles/testGeneralGraphConstructions.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jmille15/Projects/MBQC/build/CMakeFiles --progress-num=1,2 "Built target testGeneralGraphConstructions"
+.PHONY : CMakeFiles/testGeneralGraphConstructions.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/testReadingGraphFromFile.dir/rule: cmake_check_build_system
+CMakeFiles/testGeneralGraphConstructions.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jmille15/Projects/MBQC/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/testReadingGraphFromFile.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/testGeneralGraphConstructions.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jmille15/Projects/MBQC/build/CMakeFiles 0
-.PHONY : CMakeFiles/testReadingGraphFromFile.dir/rule
+.PHONY : CMakeFiles/testGeneralGraphConstructions.dir/rule
 
 # Convenience name for target.
-testReadingGraphFromFile: CMakeFiles/testReadingGraphFromFile.dir/rule
-.PHONY : testReadingGraphFromFile
+testGeneralGraphConstructions: CMakeFiles/testGeneralGraphConstructions.dir/rule
+.PHONY : testGeneralGraphConstructions
 
 # clean rule for target.
-CMakeFiles/testReadingGraphFromFile.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/testReadingGraphFromFile.dir/build.make CMakeFiles/testReadingGraphFromFile.dir/clean
-.PHONY : CMakeFiles/testReadingGraphFromFile.dir/clean
+CMakeFiles/testGeneralGraphConstructions.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testGeneralGraphConstructions.dir/build.make CMakeFiles/testGeneralGraphConstructions.dir/clean
+.PHONY : CMakeFiles/testGeneralGraphConstructions.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

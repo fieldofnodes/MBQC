@@ -1,5 +1,4 @@
 var annotated_dup =
 [
-    [ "EdgeProperties", "d9/d00/struct_edge_properties.html", "d9/d00/struct_edge_properties" ],
-    [ "VertexProperties", "d4/d01/struct_vertex_properties.html", "d4/d01/struct_vertex_properties" ]
+    [ "face_counter", "dc/d00/structface__counter.html", "dc/d00/structface__counter" ]
 ];

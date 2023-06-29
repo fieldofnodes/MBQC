@@ -12,44 +12,142 @@
 \DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00009}00009\ \textcolor{comment}{}}
 \DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00010}00010\ }
 \DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00011}00011\ }
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00021}\mbox{\hyperlink{graph_constructions_8hpp_a6e0974be2fa2e599ab591aa02f1c9eb2}{00021}}\ std::vector<std::vector<int>>\ \mbox{\hyperlink{graph_constructions_8hpp_a6e0974be2fa2e599ab591aa02f1c9eb2}{create\_lattice}}(\textcolor{keywordtype}{int}\ numRows,\ \textcolor{keywordtype}{int}\ numCols)\ \{}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00022}00022\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ numRows\ *\ numCols;}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00023}00023\ \ \ \ \ std::vector<std::vector<int>>\ lattice(numRows,\ std::vector<int>(numCols,\ -\/1));}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00024}00024\ \ \ \ \ std::vector<int>\ numbers(numVertices);}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numVertices;\ i++)\ \{}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00026}00026\ \ \ \ \ \ \ \ \ numbers[i]\ =\ i;}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00027}00027\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00028}00028\ }
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ number\ :\ numbers)\ \{}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ row\ =\ number\ \%\ numRows;}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ col\ =\ number\ /\ numRows;}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00032}00032\ \ \ \ \ \ \ \ \ lattice[row][col]\ =\ number;}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00033}00033\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00034}00034\ }
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{return}\ lattice;}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00024}\mbox{\hyperlink{graph_constructions_8hpp_a6e0974be2fa2e599ab591aa02f1c9eb2}{00024}}\ std::vector<std::vector<int>>\ \mbox{\hyperlink{graph_constructions_8hpp_a6e0974be2fa2e599ab591aa02f1c9eb2}{create\_lattice}}(\textcolor{keywordtype}{int}\ numRows,\ \textcolor{keywordtype}{int}\ numCols)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ numRows\ *\ numCols;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00026}00026\ \ \ \ \ std::vector<std::vector<int>>\ lattice(numRows,\ std::vector<int>(numCols,\ -\/1));}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00027}00027\ \ \ \ \ std::vector<int>\ numbers(numVertices);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numVertices;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00029}00029\ \ \ \ \ \ \ \ \ numbers[i]\ =\ i;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00030}00030\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ number\ :\ numbers)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ row\ =\ number\ \%\ numRows;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ col\ =\ number\ /\ numRows;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00035}00035\ \ \ \ \ \ \ \ \ lattice[row][col]\ =\ number;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00036}00036\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00037}00037\ }
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00038}00038\ }
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00051}\mbox{\hyperlink{graph_constructions_8hpp_a74f9014929a19ec558c3bc766754f1c3}{00051}}\ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ \mbox{\hyperlink{graph_constructions_8hpp_a74f9014929a19ec558c3bc766754f1c3}{createLatticeGraph}}(\textcolor{keywordtype}{int}\ numRows,\ \textcolor{keywordtype}{int}\ numCols)\ \{\ }
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00052}00052\ \ \ \ \ std::vector<std::vector<int>>\ lattice\ =\ \mbox{\hyperlink{graph_constructions_8hpp_a6e0974be2fa2e599ab591aa02f1c9eb2}{create\_lattice}}(numRows,\ numCols);}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ numRows\ *\ numCols;}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00054}00054\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph(numVertices);}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00055}00055\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//\ Add\ edges\ to\ the\ graph}}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ row\ =\ 0;\ row\ <\ numRows;\ row++)\ \{}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ col\ =\ 0;\ col\ <\ numCols;\ col++)\ \{}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row\ +\ 1\ <\ numRows)\ \{}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(lattice[row][col],\ lattice[row\ +\ 1][col],\ latticeGraph);}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (col\ +\ 1\ <\ numCols)\ \{}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(lattice[row][col],\ lattice[row][col\ +\ 1],\ latticeGraph);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{return}\ lattice;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00054}\mbox{\hyperlink{graph_constructions_8hpp_a74f9014929a19ec558c3bc766754f1c3}{00054}}\ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ \mbox{\hyperlink{graph_constructions_8hpp_a74f9014929a19ec558c3bc766754f1c3}{createLatticeGraph}}(\textcolor{keywordtype}{int}\ numRows,\ \textcolor{keywordtype}{int}\ numCols)\ \{\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00055}00055\ \ \ \ \ std::vector<std::vector<int>>\ lattice\ =\ \mbox{\hyperlink{graph_constructions_8hpp_a6e0974be2fa2e599ab591aa02f1c9eb2}{create\_lattice}}(numRows,\ numCols);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ numRows\ *\ numCols;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00057}00057\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph(numVertices);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00058}00058\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00059}00059\ \ \ \ \ \textcolor{comment}{//\ Add\ edges\ to\ the\ graph}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ row\ =\ 0;\ row\ <\ numRows;\ row++)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ col\ =\ 0;\ col\ <\ numCols;\ col++)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row\ +\ 1\ <\ numRows)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(lattice[row][col],\ lattice[row\ +\ 1][col],\ latticeGraph);}
 \DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00066}00066\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00067}00067\ }
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{return}\ latticeGraph;}
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00069}00069\ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (col\ +\ 1\ <\ numCols)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(lattice[row][col],\ lattice[row][col\ +\ 1],\ latticeGraph);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00069}00069\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00070}00070\ }
-\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{return}\ latticeGraph;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00072}00072\ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00081}\mbox{\hyperlink{graph_constructions_8hpp_ad98926f5eb7fb84b5b97dab2ecfb2cfd}{00081}}\ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ \mbox{\hyperlink{graph_constructions_8hpp_ad98926f5eb7fb84b5b97dab2ecfb2cfd}{createGraphFromFile}}(\textcolor{keyword}{const}\ std::string\&\ filePath)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00082}00082\ \ \ \ \ std::ifstream\ file(filePath);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (!file)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00084}00084\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ open\ the\ file."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00087}00087\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices,\ numEdges;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00088}00088\ \ \ \ \ file\ >>\ numVertices\ >>\ numEdges;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00090}00090\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ graph(numVertices);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00092}00092\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numEdges;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ source,\ target;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00094}00094\ \ \ \ \ \ \ \ \ file\ >>\ source\ >>\ target;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00095}00095\ \ \ \ \ \ \ \ \ boost::add\_edge(source,\ target,\ graph);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00096}00096\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00098}00098\ \ \ \ \ file.close();}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00100}00100\ \ \ \ \ \textcolor{keywordflow}{return}\ graph;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00101}00101\ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00113}\mbox{\hyperlink{graph_constructions_8hpp_a70437089483619704433833029d11f37}{00113}}\ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ \mbox{\hyperlink{graph_constructions_8hpp_a70437089483619704433833029d11f37}{createCompleteGraph}}(\textcolor{keywordtype}{int}\ numVertices)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00114}00114\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ graph(numVertices);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00116}00116\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numVertices;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ i\ +\ 1;\ j\ <\ numVertices;\ ++j)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(i,\ j,\ graph);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00120}00120\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00122}00122\ \ \ \ \ \textcolor{keywordflow}{return}\ graph;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00134}\mbox{\hyperlink{graph_constructions_8hpp_adcbe67f3268e7329117899193f291541}{00134}}\ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ \mbox{\hyperlink{graph_constructions_8hpp_adcbe67f3268e7329117899193f291541}{generateRandomGraph}}(\textcolor{keywordtype}{int}\ numVertices,\ \textcolor{keywordtype}{int}\ numEdges)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00135}00135\ \ \ \ \ std::random\_device\ rd;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00136}00136\ \ \ \ \ std::mt19937\ gen(rd());}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00137}00137\ \ \ \ \ std::uniform\_int\_distribution<>\ dis(0,\ numVertices\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00139}00139\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ graph(numVertices);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00141}00141\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numEdges;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ source\ =\ dis(gen);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ target\ =\ dis(gen);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00145}00145\ \ \ \ \ \ \ \ \ boost::add\_edge(source,\ target,\ graph);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00146}00146\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00148}00148\ \ \ \ \ \textcolor{keywordflow}{return}\ graph;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00149}00149\ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00161}\mbox{\hyperlink{graph_constructions_8hpp_a37c654fe4ab57a0b23bfca64a19855d7}{00161}}\ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ \mbox{\hyperlink{graph_constructions_8hpp_a37c654fe4ab57a0b23bfca64a19855d7}{generateCompleteBipartiteGraph}}(\textcolor{keywordtype}{int}\ n,\ \textcolor{keywordtype}{int}\ m)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00162}00162\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ graph(n\ +\ m);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00164}00164\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ n;\ j\ <\ n\ +\ m;\ ++j)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(i,\ j,\ graph);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00168}00168\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00170}00170\ \ \ \ \ \textcolor{keywordflow}{return}\ graph;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00171}00171\ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00180}\mbox{\hyperlink{graph_constructions_8hpp_af7834390f429aec77b9fd4d1fd706a9c}{00180}}\ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ \mbox{\hyperlink{graph_constructions_8hpp_af7834390f429aec77b9fd4d1fd706a9c}{createCompleteMultipartiteGraph}}(\textcolor{keyword}{const}\ std::vector<int>\&\ partitions)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00181}00181\ \ \ \ \ \textcolor{keywordtype}{int}\ numPartitions\ =\ partitions.size();}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00182}00182\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00183}00183\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ partitionSize\ :\ partitions)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00184}00184\ \ \ \ \ \ \ \ \ numVertices\ +=\ partitionSize;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00185}00185\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00187}00187\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ graph(numVertices);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00189}00189\ \ \ \ \ \textcolor{keywordtype}{int}\ vertexOffset\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00190}00190\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ partitionSize\ :\ partitions)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ vertexOffset;\ i\ <\ vertexOffset\ +\ partitionSize;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ vertexOffset\ +\ partitionSize;\ j\ <\ numVertices;\ ++j)\ \{}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(i,\ j,\ graph);}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00196}00196\ \ \ \ \ \ \ \ \ vertexOffset\ +=\ partitionSize;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00197}00197\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00199}00199\ \ \ \ \ \textcolor{keywordflow}{return}\ graph;}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00200}00200\ \}}
+\DoxyCodeLine{\Hypertarget{graph_constructions_8hpp_source_l00201}00201\ }
 
 \end{DoxyCode}

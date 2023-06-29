@@ -33,6 +33,12 @@ Contains the inclusion of various packages and libraries used in the project.
 {\ttfamily \#include $<$boost/range/algorithm.\+hpp$>$}\newline
 {\ttfamily \#include $<$boost/range/adaptor/filtered.\+hpp$>$}\newline
 {\ttfamily \#include $<$boost/range/adaptor/transformed.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/boyer\+\_\+myrvold\+\_\+planar\+\_\+test.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/connected\+\_\+components.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/make\+\_\+connected.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/make\+\_\+biconnected\+\_\+planar.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/make\+\_\+maximal\+\_\+planar.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/graph/planar\+\_\+face\+\_\+traversal.\+hpp$>$}\newline
 {\ttfamily \#include \"{}general\+Helper\+Functions.\+hpp\"{}}\newline
 {\ttfamily \#include \"{}write\+Graph\+Graph\+Viz\+Dot\+File.\+hpp\"{}}\newline
 {\ttfamily \#include \"{}graph\+Constructions.\+hpp\"{}}\newline
@@ -44,13 +50,20 @@ Contains the inclusion of various packages and libraries used in the project.
 {\ttfamily \#include \"{}graph\+Assert\+Functions.\+hpp\"{}}\newline
 {\ttfamily \#include \"{}probabilities\+Amplitudes\+No\+Noise\+Circuits.\+hpp\"{}}\newline
 {\ttfamily \#include \"{}probabilities\+Amplitudes\+Damping\+Circuits.\+hpp\"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structface__counter}{face\+\_\+counter}}
+\begin{DoxyCompactList}\small\item\em Visitor for counting the number of faces during planar face traversal. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-using \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} = boost\+::adjacency\+\_\+list$<$ boost\+::vecS, boost\+::vecS, boost\+::undirectedS $>$
+using \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} = boost\+::adjacency\+\_\+list$<$ boost\+::vecS, boost\+::vecS, boost\+::undirectedS, boost\+::property$<$ boost\+::vertex\+\_\+index\+\_\+t, int $>$, boost\+::property$<$ boost\+::edge\+\_\+index\+\_\+t, int $>$ $>$
 \begin{DoxyCompactList}\small\item\em Alias for an undirected graph using boost\+::adjacency\+\_\+list. \end{DoxyCompactList}\item 
 typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{test_flow_functions_8cpp_af04c50f717d4bda41f0c58fe0eece059}{\+::edge\+\_\+iterator}} \mbox{\hyperlink{packages_8hpp_afccd45e2973698c37e8379f6b25a82bc}{edge\+Iterator}}
 \begin{DoxyCompactList}\small\item\em Iterator for traversing edges in an undirected graph. \end{DoxyCompactList}\item 
+typedef std\+::vector$<$ graph\+\_\+traits$<$ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\+::edge\+\_\+descriptor $>$ \mbox{\hyperlink{packages_8hpp_a4032f83b21bc8e890edeafe91fd311ec}{edge\+Descriptor}}
+\begin{DoxyCompactList}\small\item\em Descriptor for an edge in an undirected graph. \end{DoxyCompactList}\item 
 typedef boost\+::graph\+\_\+traits$<$ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} $>$\mbox{\hyperlink{test_flow_functions_8cpp_a9451df0dac964b257bedb5e60547824e}{\+::vertex\+\_\+iterator}} \mbox{\hyperlink{packages_8hpp_aad3f8f6369da7f36e6266fdcb1991169}{vertex\+Iterator}}
 \begin{DoxyCompactList}\small\item\em Iterator for traversing vertices in an undirected graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -65,6 +78,25 @@ Definition in file \mbox{\hyperlink{packages_8hpp_source}{packages.\+hpp}}.
 
 
 \doxysubsection{Typedef Documentation}
+\Hypertarget{packages_8hpp_a4032f83b21bc8e890edeafe91fd311ec}\label{packages_8hpp_a4032f83b21bc8e890edeafe91fd311ec} 
+\index{packages.hpp@{packages.hpp}!edgeDescriptor@{edgeDescriptor}}
+\index{edgeDescriptor@{edgeDescriptor}!packages.hpp@{packages.hpp}}
+\doxysubsubsection{\texorpdfstring{edgeDescriptor}{edgeDescriptor}}
+{\footnotesize\ttfamily \mbox{\hyperlink{packages_8hpp_a4032f83b21bc8e890edeafe91fd311ec}{edge\+Descriptor}}}
+
+
+
+Descriptor for an edge in an undirected graph. 
+
+This typedef represents a descriptor for an edge in an undirected graph. It is used to reference and manipulate individual edges in an undirected\+Graph.
+
+\begin{DoxyNote}{Note}
+The edge\+Descriptor type is defined as a std\+::vector\texorpdfstring{$<$}{<}graph\+\_\+traits$<$undirected\+Graph$>$\+::edge\+\_\+descriptor\texorpdfstring{$>$}{>}. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{packages_8hpp_source_l00096}{96}} of file \mbox{\hyperlink{packages_8hpp_source}{packages.\+hpp}}.
+
 \Hypertarget{packages_8hpp_afccd45e2973698c37e8379f6b25a82bc}\label{packages_8hpp_afccd45e2973698c37e8379f6b25a82bc} 
 \index{packages.hpp@{packages.hpp}!edgeIterator@{edgeIterator}}
 \index{edgeIterator@{edgeIterator}!packages.hpp@{packages.hpp}}
@@ -77,7 +109,7 @@ Iterator for traversing edges in an undirected graph.
 
 This typedef represents an iterator for traversing edges in an undirected graph. It is used to iterate over the edges of an undirected\+Graph. You can use it in conjunction with boost\+::edges() to traverse and operate on the edges of the graph. 
 
-Definition at line \mbox{\hyperlink{packages_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{packages_8hpp_source}{packages.\+hpp}}.
+Definition at line \mbox{\hyperlink{packages_8hpp_source_l00084}{84}} of file \mbox{\hyperlink{packages_8hpp_source}{packages.\+hpp}}.
 
 \Hypertarget{packages_8hpp_adb6c610c60479e8b904f5832786b4125}\label{packages_8hpp_adb6c610c60479e8b904f5832786b4125} 
 \index{packages.hpp@{packages.hpp}!undirectedGraph@{undirectedGraph}}
@@ -89,9 +121,9 @@ Definition at line \mbox{\hyperlink{packages_8hpp_source_l00067}{67}} of file \m
 
 Alias for an undirected graph using boost\+::adjacency\+\_\+list. 
 
-This typedef represents an undirected graph using the boost\+::adjacency\+\_\+list data structure with boost\+::vecS as the vertex container and boost\+::undirectedS as the graph type. It provides an interface for creating and manipulating undirected graphs. 
+This typedef represents an undirected graph using the boost\+::adjacency\+\_\+list data structure with boost\+::vecS as the vertex container, boost\+::vecS as the edge container, and boost\+::undirectedS as the graph type. It includes additional properties for vertex and edge indices, specified by property$<$vertex\+\_\+index\+\_\+t, int$>$ and property$<$edge\+\_\+index\+\_\+t, int$>$ respectively. It provides an interface for creating and manipulating undirected graphs. 
 
-Definition at line \mbox{\hyperlink{packages_8hpp_source_l00057}{57}} of file \mbox{\hyperlink{packages_8hpp_source}{packages.\+hpp}}.
+Definition at line \mbox{\hyperlink{packages_8hpp_source_l00067}{67}} of file \mbox{\hyperlink{packages_8hpp_source}{packages.\+hpp}}.
 
 \Hypertarget{packages_8hpp_aad3f8f6369da7f36e6266fdcb1991169}\label{packages_8hpp_aad3f8f6369da7f36e6266fdcb1991169} 
 \index{packages.hpp@{packages.hpp}!vertexIterator@{vertexIterator}}
@@ -105,5 +137,5 @@ Iterator for traversing vertices in an undirected graph.
 
 This typedef represents an iterator for traversing vertices in an undirected graph. It is used to iterate over the vertices of an undirected\+Graph. You can use it in conjunction with boost\+::vertices() to traverse and operate on the vertices of the graph. 
 
-Definition at line \mbox{\hyperlink{packages_8hpp_source_l00077}{77}} of file \mbox{\hyperlink{packages_8hpp_source}{packages.\+hpp}}.
+Definition at line \mbox{\hyperlink{packages_8hpp_source_l00108}{108}} of file \mbox{\hyperlink{packages_8hpp_source}{packages.\+hpp}}.
 

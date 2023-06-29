@@ -1,0 +1,36 @@
+\doxysection{test\+Reading\+Graph\+From\+File.\+cpp}
+\hypertarget{test_reading_graph_from_file_8cpp_source}{}\label{test_reading_graph_from_file_8cpp_source}\index{tests/testReadingGraphFromFile.cpp@{tests/testReadingGraphFromFile.cpp}}
+\mbox{\hyperlink{test_reading_graph_from_file_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00002}00002\ \textcolor{comment}{//\ Filename\ \ :\ testReadingGraphFromFile.cpp}}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00003}00003\ \textcolor{comment}{//\ Author\ \ \ \ :\ Jonathan\ Miller}}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00004}00004\ \textcolor{comment}{//\ Date\ \ \ \ \ \ :\ 2023-\/06-\/28}}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00005}00005\ \textcolor{comment}{//\ Aim\ \ \ \ \ \ \ :\ aim\_script}}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00006}00006\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :\ Read\ a\ graph\ in\ from\ file.}}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00007}00007\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ :}}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{packages_8hpp}{packages.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00015}\mbox{\hyperlink{test_reading_graph_from_file_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00015}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{test_reading_graph_from_file_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00016}00016\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ From\ a\ file}}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00018}00018\ \ \ \ \ std::string\ brickwork\_graph\ =\ \textcolor{stringliteral}{"{}/Users/jmille15/Projects/MBQC/graphs\_file\_io/single\_brick\_work\_state.txt"{}};}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00019}00019\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ graph\ =\ \mbox{\hyperlink{graph_constructions_8hpp_ad98926f5eb7fb84b5b97dab2ecfb2cfd}{createGraphFromFile}}(brickwork\_graph);}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00020}00020\ \ \ \ \ boost::print\_graph(graph);}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Print\ graph\ to\ file}}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//\ Update\ with\ desired\ directory\ to\ view\ graph.}}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00024}00024\ \ \ \ \ std::string\ figsDir\ =\ MBQC\_FIGS\_DIR;}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00025}00025\ \ \ \ \ std::string\ graphName\ =\ \textcolor{stringliteral}{"{}GraphGeneratedFromFile"{}};}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00026}00026\ \ \ \ \ std::string\ format\ =\ PNG\_FORMAT;}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00027}00027\ \ \ \ \ \mbox{\hyperlink{write_graph_graph_viz_dot_file_8hpp_a3d553b54b16922ee146bfb33201a3993}{printGraphToFile}}(graph,figsDir,graphName,format);}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00028}00028\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{test_reading_graph_from_file_8cpp_source_l00031}00031\ \}}
+
+\end{DoxyCode}

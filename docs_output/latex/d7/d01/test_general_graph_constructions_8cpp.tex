@@ -1,0 +1,195 @@
+\doxysection{tests/test\+General\+Graph\+Constructions.cpp File Reference}
+\hypertarget{test_general_graph_constructions_8cpp}{}\label{test_general_graph_constructions_8cpp}\index{tests/testGeneralGraphConstructions.cpp@{tests/testGeneralGraphConstructions.cpp}}
+{\ttfamily \#include \"{}packages.\+hpp\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{test_general_graph_constructions_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{test_general_graph_constructions_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{test_general_graph_constructions_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{testGeneralGraphConstructions.cpp@{testGeneralGraphConstructions.cpp}!main@{main}}
+\index{main@{main}!testGeneralGraphConstructions.cpp@{testGeneralGraphConstructions.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{test_general_graph_constructions_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{test_general_graph_constructions_8cpp_source}{test\+General\+Graph\+Constructions.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ From\ a\ file}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//std::string\ brickwork\_graph\ =\ "{}/Users/jmille15/Projects/MBQC/graphs\_file\_io/single\_brick\_work\_state.txt"{};}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//undirectedGraph\ graph\ =\ createGraphFromFile(brickwork\_graph);}}
+\DoxyCodeLine{00021\ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ Complete\ graph}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//int\ numVertices\ =\ 4;}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//int\ numEdges\ =\ 4;}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//undirectedGraph\ graph\ =\ createCompleteGraph(6);}}
+\DoxyCodeLine{00026\ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Random\ graph}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//undirectedGraph\ graph\ =\ generateRandomGraph(numVertices,numEdges);}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ Bipartite\ graph}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//int\ n\ =\ 2;}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//int\ m\ =\ 3;}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//undirectedGraph\ graph\ =\ generateCompleteBipartiteGraph(n,\ m);}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ Multipartite\ graph}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//std::vector<int>\ partitions\ =\ \{1,\ 1,\ 1\};}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//undirectedGraph\ graph\ =\ createCompleteMultipartiteGraph(partitions);}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ Test\ for\ Planarity}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ \ \ \ undirectedGraph\ graph\ =\ createCompleteGraph(6);}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ \ \ \ if\ (boyer\_myrvold\_planarity\_test(graph))}}
+\DoxyCodeLine{00045\ \textcolor{comment}{\ \ \ \ \ \ \ \ std::cout\ <<\ "{}ERROR!\ K\_6\ was\ recognized\ as\ planar!"{}\ <<\ std::endl;}}
+\DoxyCodeLine{00046\ \textcolor{comment}{\ \ \ \ else}}
+\DoxyCodeLine{00047\ \textcolor{comment}{\ \ \ \ \ \ \ \ std::cout\ <<\ "{}K\_6\ is\ not\ planar."{}\ <<\ std::endl;}}
+\DoxyCodeLine{00048\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\ \ \ \ Add\ edges\ set\ to\ a\ graph\ to\ make\ it\ connected}}
+\DoxyCodeLine{00052\ \textcolor{comment}{\ \ \ \ undirectedGraph\ graph(11);}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ \ \ \ add\_edge(0,1,graph);}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ \ \ \ add\_edge(2,3,graph);}}
+\DoxyCodeLine{00055\ \textcolor{comment}{\ \ \ \ add\_edge(3,4,graph);}}
+\DoxyCodeLine{00056\ \textcolor{comment}{\ \ \ \ add\_edge(5,6,graph);}}
+\DoxyCodeLine{00057\ \textcolor{comment}{\ \ \ \ add\_edge(6,7,graph);}}
+\DoxyCodeLine{00058\ \textcolor{comment}{\ \ \ \ add\_edge(8,9,graph);}}
+\DoxyCodeLine{00059\ \textcolor{comment}{\ \ \ \ add\_edge(9,10,graph);}}
+\DoxyCodeLine{00060\ \textcolor{comment}{\ \ \ \ add\_edge(10,8,graph);}}
+\DoxyCodeLine{00061\ \textcolor{comment}{}}
+\DoxyCodeLine{00062\ \textcolor{comment}{\ \ \ \ std::vector<\ graph\_traits<undirectedGraph>::vertices\_size\_type\ >\ }}
+\DoxyCodeLine{00063\ \textcolor{comment}{\ \ \ \ component(num\_vertices(graph));}}
+\DoxyCodeLine{00064\ \textcolor{comment}{}}
+\DoxyCodeLine{00065\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}Before\ calling\ make\_connected,\ the\ graph\ has\ "{}}}
+\DoxyCodeLine{00066\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ connected\_components(graph,\ \&component[0])}}
+\DoxyCodeLine{00067\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ "{}\ connected\ components"{}\ <<\ std::endl;}}
+\DoxyCodeLine{00068\ \textcolor{comment}{}}
+\DoxyCodeLine{00069\ \textcolor{comment}{\ \ \ \ make\_connected(graph);}}
+\DoxyCodeLine{00070\ \textcolor{comment}{}}
+\DoxyCodeLine{00071\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}After\ calling\ make\_connected,\ the\ graph\ has\ "{}}}
+\DoxyCodeLine{00072\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ connected\_components(graph,\ \&component[0])}}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ "{}\ connected\ components"{}\ <<\ std::endl;}}
+\DoxyCodeLine{00074\ \textcolor{comment}{}}
+\DoxyCodeLine{00075\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00078\ \textcolor{comment}{\ \ \ \ Making\ a\ graph\ maximally\ planar}}
+\DoxyCodeLine{00079\ \textcolor{comment}{\ \ \ }}
+\DoxyCodeLine{00080\ \textcolor{comment}{\ \ \ \ undirectedGraph\ graph(10);}}
+\DoxyCodeLine{00081\ \textcolor{comment}{\ \ \ \ add\_edge(0,1,graph);}}
+\DoxyCodeLine{00082\ \textcolor{comment}{\ \ \ \ add\_edge(1,2,graph);}}
+\DoxyCodeLine{00083\ \textcolor{comment}{\ \ \ \ add\_edge(2,3,graph);}}
+\DoxyCodeLine{00084\ \textcolor{comment}{\ \ \ \ add\_edge(3,4,graph);}}
+\DoxyCodeLine{00085\ \textcolor{comment}{\ \ \ \ add\_edge(4,5,graph);}}
+\DoxyCodeLine{00086\ \textcolor{comment}{\ \ \ \ add\_edge(5,6,graph);}}
+\DoxyCodeLine{00087\ \textcolor{comment}{\ \ \ \ add\_edge(6,7,graph);}}
+\DoxyCodeLine{00088\ \textcolor{comment}{\ \ \ \ add\_edge(7,8,graph);}}
+\DoxyCodeLine{00089\ \textcolor{comment}{\ \ \ \ add\_edge(8,9,graph);}}
+\DoxyCodeLine{00090\ \textcolor{comment}{}}
+\DoxyCodeLine{00091\ \textcolor{comment}{\ \ \ \ //std::vector<edgeDescriptor>\ embedding(num\_vertices(graph));}}
+\DoxyCodeLine{00092\ \textcolor{comment}{\ \ \ //\ make\_maximal\_planar(graph,\ \&embedding[0]);}}
+\DoxyCodeLine{00093\ \textcolor{comment}{}}
+\DoxyCodeLine{00094\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}Since\ the\ input\ graph\ is\ planar\ with\ "{}\ <<\ num\_vertices(graph)\ }}
+\DoxyCodeLine{00095\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ "{}\ vertices,"{}\ <<\ std::endl}}
+\DoxyCodeLine{00096\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ "{}The\ output\ graph\ should\ be\ planar\ with\ "{}\ }}
+\DoxyCodeLine{00097\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ 3*num\_vertices(graph)\ -\/\ 6\ <<\ "{}\ edges\ and\ "{}}}
+\DoxyCodeLine{00098\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ 2*num\_vertices(graph)\ -\/\ 4\ <<\ "{}\ faces."{}\ <<\ std::endl;}}
+\DoxyCodeLine{00099\ \textcolor{comment}{}}
+\DoxyCodeLine{00100\ \textcolor{comment}{\ \ \ \ //Initialize\ the\ interior\ edge\ index}}
+\DoxyCodeLine{00101\ \textcolor{comment}{\ \ \ \ property\_map<undirectedGraph,\ edge\_index\_t>::type\ e\_index\ =\ get(edge\_index,\ graph);}}
+\DoxyCodeLine{00102\ \textcolor{comment}{\ \ \ \ graph\_traits<undirectedGraph>::edges\_size\_type\ edge\_count\ =\ 0;}}
+\DoxyCodeLine{00103\ \textcolor{comment}{\ \ \ \ graph\_traits<undirectedGraph>::edge\_iterator\ ei,\ ei\_end;}}
+\DoxyCodeLine{00104\ \textcolor{comment}{\ \ \ \ for(tie(ei,\ ei\_end)\ =\ edges(graph);\ ei\ !=\ ei\_end;\ ++ei)}}
+\DoxyCodeLine{00105\ \textcolor{comment}{\ \ \ \ put(e\_index,\ *ei,\ edge\_count++);}}
+\DoxyCodeLine{00106\ \textcolor{comment}{}}
+\DoxyCodeLine{00107\ \textcolor{comment}{}}
+\DoxyCodeLine{00108\ \textcolor{comment}{\ \ \ \ //Test\ for\ planarity;\ compute\ the\ planar\ embedding\ as\ a\ side-\/effect}}
+\DoxyCodeLine{00109\ \textcolor{comment}{\ \ \ \ std::vector<edgeDescriptor>\ embedding(num\_vertices(graph));}}
+\DoxyCodeLine{00110\ \textcolor{comment}{\ \ \ \ if\ (boyer\_myrvold\_planarity\_test(boyer\_myrvold\_params::graph\ =\ graph,}}
+\DoxyCodeLine{00111\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boyer\_myrvold\_params::embedding\ =\ }}
+\DoxyCodeLine{00112\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&embedding[0]}}
+\DoxyCodeLine{00113\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}}
+\DoxyCodeLine{00114\ \textcolor{comment}{\ \ \ \ \ \ \ \ )}}
+\DoxyCodeLine{00115\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}Input\ graph\ is\ planar"{}\ <<\ std::endl;}}
+\DoxyCodeLine{00116\ \textcolor{comment}{\ \ \ \ else}}
+\DoxyCodeLine{00117\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}Input\ graph\ is\ not\ planar"{}\ <<\ std::endl;}}
+\DoxyCodeLine{00118\ \textcolor{comment}{}}
+\DoxyCodeLine{00119\ \textcolor{comment}{\ \ \ \ make\_biconnected\_planar(graph,\ \&embedding[0]);}}
+\DoxyCodeLine{00120\ \textcolor{comment}{}}
+\DoxyCodeLine{00121\ \textcolor{comment}{\ \ \ \ //\ Re-\/initialize\ the\ edge\ index,\ since\ we\ just\ added\ a\ few\ edges}}
+\DoxyCodeLine{00122\ \textcolor{comment}{\ \ \ \ edge\_count\ =\ 0;}}
+\DoxyCodeLine{00123\ \textcolor{comment}{\ \ \ \ for(tie(ei,\ ei\_end)\ =\ edges(graph);\ ei\ !=\ ei\_end;\ ++ei)}}
+\DoxyCodeLine{00124\ \textcolor{comment}{\ \ \ \ put(e\_index,\ *ei,\ edge\_count++);}}
+\DoxyCodeLine{00125\ \textcolor{comment}{}}
+\DoxyCodeLine{00126\ \textcolor{comment}{}}
+\DoxyCodeLine{00127\ \textcolor{comment}{\ \ \ \ //Test\ for\ planarity\ again;\ compute\ the\ planar\ embedding\ as\ a\ side-\/effect}}
+\DoxyCodeLine{00128\ \textcolor{comment}{\ \ \ \ if\ (boyer\_myrvold\_planarity\_test(boyer\_myrvold\_params::graph\ =\ graph,}}
+\DoxyCodeLine{00129\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boyer\_myrvold\_params::embedding\ =\ }}
+\DoxyCodeLine{00130\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&embedding[0]}}
+\DoxyCodeLine{00131\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}}
+\DoxyCodeLine{00132\ \textcolor{comment}{\ \ \ \ \ \ \ \ )}}
+\DoxyCodeLine{00133\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}After\ calling\ make\_biconnected,\ the\ graph\ is\ still\ planar"{}\ }}
+\DoxyCodeLine{00134\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::endl;}}
+\DoxyCodeLine{00135\ \textcolor{comment}{\ \ \ \ else}}
+\DoxyCodeLine{00136\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}After\ calling\ make\_biconnected,\ the\ graph\ is\ not\ planar"{}\ }}
+\DoxyCodeLine{00137\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::endl;}}
+\DoxyCodeLine{00138\ \textcolor{comment}{}}
+\DoxyCodeLine{00139\ \textcolor{comment}{\ \ \ \ make\_maximal\_planar(graph,\ \&embedding[0]);}}
+\DoxyCodeLine{00140\ \textcolor{comment}{}}
+\DoxyCodeLine{00141\ \textcolor{comment}{}}
+\DoxyCodeLine{00142\ \textcolor{comment}{\ \ \ \ //\ Re-\/initialize\ the\ edge\ index,\ since\ we\ just\ added\ a\ few\ edges}}
+\DoxyCodeLine{00143\ \textcolor{comment}{\ \ \ \ edge\_count\ =\ 0;}}
+\DoxyCodeLine{00144\ \textcolor{comment}{\ \ \ \ for(tie(ei,\ ei\_end)\ =\ edges(graph);\ ei\ !=\ ei\_end;\ ++ei)}}
+\DoxyCodeLine{00145\ \textcolor{comment}{\ \ \ \ put(e\_index,\ *ei,\ edge\_count++);}}
+\DoxyCodeLine{00146\ \textcolor{comment}{}}
+\DoxyCodeLine{00147\ \textcolor{comment}{\ \ \ \ //\ Test\ for\ planarity\ one\ final\ time;\ compute\ the\ planar\ embedding\ as\ a\ }}
+\DoxyCodeLine{00148\ \textcolor{comment}{\ \ \ \ //\ side-\/effect}}
+\DoxyCodeLine{00149\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}After\ calling\ make\_maximal\_planar,\ the\ final\ graph\ "{};}}
+\DoxyCodeLine{00150\ \textcolor{comment}{\ \ \ \ if\ (boyer\_myrvold\_planarity\_test(boyer\_myrvold\_params::graph\ =\ graph,}}
+\DoxyCodeLine{00151\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boyer\_myrvold\_params::embedding\ =\ }}
+\DoxyCodeLine{00152\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&embedding[0]}}
+\DoxyCodeLine{00153\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}}
+\DoxyCodeLine{00154\ \textcolor{comment}{\ \ \ \ \ \ \ \ )}}
+\DoxyCodeLine{00155\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}is\ planar."{}\ <<\ std::endl;}}
+\DoxyCodeLine{00156\ \textcolor{comment}{\ \ \ \ else}}
+\DoxyCodeLine{00157\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}is\ not\ planar."{}\ <<\ std::endl;}}
+\DoxyCodeLine{00158\ \textcolor{comment}{}}
+\DoxyCodeLine{00159\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}The\ final\ graph\ has\ "{}\ <<\ num\_edges(graph)\ }}
+\DoxyCodeLine{00160\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ "{}\ edges."{}\ <<\ std::endl;}}
+\DoxyCodeLine{00161\ \textcolor{comment}{}}
+\DoxyCodeLine{00162\ \textcolor{comment}{\ \ \ \ face\_counter\ count\_visitor;}}
+\DoxyCodeLine{00163\ \textcolor{comment}{\ \ \ \ planar\_face\_traversal(graph,\ \&embedding[0],\ count\_visitor);}}
+\DoxyCodeLine{00164\ \textcolor{comment}{\ \ \ \ std::cout\ <<\ "{}The\ final\ graph\ has\ "{}\ <<\ count\_visitor.count\ <<\ "{}\ faces."{}\ }}
+\DoxyCodeLine{00165\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ <<\ std::endl;}}
+\DoxyCodeLine{00166\ \textcolor{comment}{}}
+\DoxyCodeLine{00167\ \textcolor{comment}{}}
+\DoxyCodeLine{00168\ \textcolor{comment}{}}
+\DoxyCodeLine{00169\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ boost::print\_graph(graph);}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{comment}{//\ Print\ graph\ to\ file}}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{comment}{//\ Update\ with\ desired\ directory\ to\ view\ graph.}}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00178\ \textcolor{comment}{\ \ \ \ std::string\ figsDir\ =\ MBQC\_FIGS\_DIR;}}
+\DoxyCodeLine{00179\ \textcolor{comment}{\ \ \ \ std::string\ graphName\ =\ "{}CompleteMultiPartiteGraph"{};}}
+\DoxyCodeLine{00180\ \textcolor{comment}{\ \ \ \ std::string\ format\ =\ PNG\_FORMAT;}}
+\DoxyCodeLine{00181\ \textcolor{comment}{\ \ \ \ printGraphToFile(graph,figsDir,graphName,format);}}
+\DoxyCodeLine{00182\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00185\ \}}
+
+\end{DoxyCode}

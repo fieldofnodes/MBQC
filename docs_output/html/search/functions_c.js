@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['writearraytofile_0',['writeArrayToFile',['../d8/d01/general_helper_functions_8hpp.html#a41a7ac4a876af2866b1d6ab915ecdfb2',1,'generalHelperFunctions.hpp']]],
-  ['writestatetofile_1',['writeStateToFile',['../d8/d01/general_helper_functions_8hpp.html#a7465cffdfd3bf3b9d59175e8194b4588',1,'generalHelperFunctions.hpp']]],
-  ['writevectortofile_2',['writeVectorToFile',['../d8/d01/general_helper_functions_8hpp.html#ac0434b40f8b6ac7962d760550c133c8f',1,'generalHelperFunctions.hpp']]]
+  ['testeveryotheranlgezeroresults_0',['testEveryOtherAnlgeZeroResults',['../d0/d01/graph_assert_functions_8hpp.html#ab91620d08875164bce42bdc604224ed3',1,'graphAssertFunctions.hpp']]],
+  ['testtwovalueequate_1',['testTwoValueEquate',['../d3/d01/general_assert_functions_8hpp.html#ab8bc2aa68695d561b6a3d544658b5c70',1,'generalAssertFunctions.hpp']]]
 ];

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test_reading_graph_from_file_8cpp_source" xml:lang="en-US">
+<title>testReadingGraphFromFile.cpp</title>
+<indexterm><primary>tests/testReadingGraphFromFile.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00001"/>00001 
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Filename&#32;&#32;:&#32;testReadingGraphFromFile.cpp</emphasis>
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00003"/>00003 <emphasis role="comment">//&#32;Author&#32;&#32;&#32;&#32;:&#32;Jonathan&#32;Miller</emphasis>
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00004"/>00004 <emphasis role="comment">//&#32;Date&#32;&#32;&#32;&#32;&#32;&#32;:&#32;2023-06-28</emphasis>
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00005"/>00005 <emphasis role="comment">//&#32;Aim&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;aim_script</emphasis>
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00006"/>00006 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Read&#32;a&#32;graph&#32;in&#32;from&#32;file.</emphasis>
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00007"/>00007 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:</emphasis>
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00009"/>00009 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00010"/>00010 
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00011"/>00011 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_packages_8hpp">packages.hpp</link>&quot;</emphasis>
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00012"/>00012 
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00013"/>00013 
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00014"/>00014 
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00015"/><link linkend="_test_reading_graph_from_file_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00015</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_test_reading_graph_from_file_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00016"/>00016 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00017"/>00017 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;From&#32;a&#32;file</emphasis>
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00018"/>00018 &#32;&#32;&#32;&#32;std::string&#32;brickwork_graph&#32;=&#32;<emphasis role="stringliteral">&quot;/Users/jmille15/Projects/MBQC/graphs_file_io/single_brick_work_state.txt&quot;</emphasis>;
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00019"/>00019 &#32;&#32;&#32;&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;graph&#32;=&#32;<link linkend="_graph_constructions_8hpp_1ad98926f5eb7fb84b5b97dab2ecfb2cfd">createGraphFromFile</link>(brickwork_graph);
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00020"/>00020 &#32;&#32;&#32;&#32;boost::print_graph(graph);
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00021"/>00021 
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00022"/>00022 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00023"/>00023 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Update&#32;with&#32;desired&#32;directory&#32;to&#32;view&#32;graph.</emphasis>
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00024"/>00024 &#32;&#32;&#32;&#32;std::string&#32;figsDir&#32;=&#32;MBQC_FIGS_DIR;
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00025"/>00025 &#32;&#32;&#32;&#32;std::string&#32;graphName&#32;=&#32;<emphasis role="stringliteral">&quot;GraphGeneratedFromFile&quot;</emphasis>;
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00026"/>00026 &#32;&#32;&#32;&#32;std::string&#32;format&#32;=&#32;PNG_FORMAT;
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00027"/>00027 &#32;&#32;&#32;&#32;<link linkend="_write_graph_graph_viz_dot_file_8hpp_1a3d553b54b16922ee146bfb33201a3993">printGraphToFile</link>(graph,figsDir,graphName,format);
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00028"/>00028 &#32;&#32;&#32;&#32;
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00029"/>00029 
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00030"/>00030 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_test_reading_graph_from_file_8cpp_source_1l00031"/>00031 }
+</programlisting></section>

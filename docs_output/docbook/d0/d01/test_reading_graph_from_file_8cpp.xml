@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test_reading_graph_from_file_8cpp" xml:lang="en-US">
+<title>tests/testReadingGraphFromFile.cpp File Reference</title>
+<indexterm><primary>tests/testReadingGraphFromFile.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;packages.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_test_reading_graph_from_file_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_test_reading_graph_from_file_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>testReadingGraphFromFile.cpp</secondary></indexterm>
+<indexterm><primary>testReadingGraphFromFile.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_test_reading_graph_from_file_8cpp_source_1l00015">15</link> of file <link linkend="_test_reading_graph_from_file_8cpp_source">testReadingGraphFromFile.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00016 &#32;&#32;&#32;&#32;
+00017 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;From&#32;a&#32;file</emphasis>
+00018 &#32;&#32;&#32;&#32;std::string&#32;brickwork_graph&#32;=&#32;<emphasis role="stringliteral">&quot;/Users/jmille15/Projects/MBQC/graphs_file_io/single_brick_work_state.txt&quot;</emphasis>;
+00019 &#32;&#32;&#32;&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;graph&#32;=&#32;<link linkend="_graph_constructions_8hpp_1ad98926f5eb7fb84b5b97dab2ecfb2cfd">createGraphFromFile</link>(brickwork_graph);
+00020 &#32;&#32;&#32;&#32;boost::print_graph(graph);
+00021 
+00022 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
+00023 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Update&#32;with&#32;desired&#32;directory&#32;to&#32;view&#32;graph.</emphasis>
+00024 &#32;&#32;&#32;&#32;std::string&#32;figsDir&#32;=&#32;MBQC_FIGS_DIR;
+00025 &#32;&#32;&#32;&#32;std::string&#32;graphName&#32;=&#32;<emphasis role="stringliteral">&quot;GraphGeneratedFromFile&quot;</emphasis>;
+00026 &#32;&#32;&#32;&#32;std::string&#32;format&#32;=&#32;PNG_FORMAT;
+00027 &#32;&#32;&#32;&#32;<link linkend="_write_graph_graph_viz_dot_file_8hpp_1a3d553b54b16922ee146bfb33201a3993">printGraphToFile</link>(graph,figsDir,graphName,format);
+00028 &#32;&#32;&#32;&#32;
+00029 
+00030 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+00031 }
+</programlisting></section>
+</section>
+</section>

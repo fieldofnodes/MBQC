@@ -9,6 +9,10 @@
     <xi:include href="d1/d00/tutorial03.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="dc/d00/tutorial04.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 <chapter>
+    <title>Data Structure Documentation</title>
+    <xi:include href="dc/d00/structface__counter.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<chapter>
     <title>File Documentation</title>
     <xi:include href="dc/d00/mainpage_8md.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="df/d00/mbqc_starter_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
@@ -59,18 +63,26 @@
     <xi:include href="df/d00/test_angle_update_probabilites_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d7/d01/test_brick_works_graph_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d7/d01/test_brick_works_graph_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d0/d00/test_damping_m_b_q_c_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d0/d00/test_damping_m_b_q_c_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="de/d01/test_damping_simple_circuits_qu_e_s_t_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="de/d01/test_damping_simple_circuits_qu_e_s_t_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d2/d00/test_flow_functions_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d2/d00/test_flow_functions_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d7/d01/test_general_graph_constructions_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d7/d01/test_general_graph_constructions_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d1/d01/test_graph_properties_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="d1/d01/test_graph_properties_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="db/d01/test_mix_density_matrices_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="db/d01/test_mix_density_matrices_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="df/d01/test_no_noise_simple_circuits_qu_e_s_t_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="df/d01/test_no_noise_simple_circuits_qu_e_s_t_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="de/d01/test_odd_number_qubit_angles_all_zero_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="de/d01/test_odd_number_qubit_angles_all_zero_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="df/d01/test_odd_number_qubits_every_seconds_angle_zero_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d0/d01/test_reading_graph_from_file_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="d0/d01/test_reading_graph_from_file_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="dd/d00/test_two_qubits_angles_pi_on_two_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="dd/d00/test_two_qubits_angles_pi_on_two_8cpp_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 </chapter>

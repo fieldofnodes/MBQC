@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['edgeproperties_0',['EdgeProperties',['../d9/d00/struct_edge_properties.html',1,'']]]
+  ['face_5fcounter_0',['face_counter',['../dc/d00/structface__counter.html',1,'']]]
 ];

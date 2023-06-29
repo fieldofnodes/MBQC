@@ -6,7 +6,17 @@
 std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \mbox{\hyperlink{graph_constructions_8hpp_a6e0974be2fa2e599ab591aa02f1c9eb2}{create\+\_\+lattice}} (int num\+Rows, int num\+Cols)
 \begin{DoxyCompactList}\small\item\em Creates a lattice graph from two integers. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \mbox{\hyperlink{graph_constructions_8hpp_a74f9014929a19ec558c3bc766754f1c3}{create\+Lattice\+Graph}} (int num\+Rows, int num\+Cols)
-\begin{DoxyCompactList}\small\item\em Creates an undirected lattice graph with the specified number of rows and columns. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Creates an undirected lattice graph with the specified number of rows and columns. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \mbox{\hyperlink{graph_constructions_8hpp_ad98926f5eb7fb84b5b97dab2ecfb2cfd}{create\+Graph\+From\+File}} (const std\+::string \&file\+Path)
+\item 
+\mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \mbox{\hyperlink{graph_constructions_8hpp_a70437089483619704433833029d11f37}{create\+Complete\+Graph}} (int num\+Vertices)
+\begin{DoxyCompactList}\small\item\em Create a complete graph on N vertices. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \mbox{\hyperlink{graph_constructions_8hpp_adcbe67f3268e7329117899193f291541}{generate\+Random\+Graph}} (int num\+Vertices, int num\+Edges)
+\begin{DoxyCompactList}\small\item\em Generate a random graph with a specified number of vertices and edges. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \mbox{\hyperlink{graph_constructions_8hpp_a37c654fe4ab57a0b23bfca64a19855d7}{generate\+Complete\+Bipartite\+Graph}} (int n, int m)
+\begin{DoxyCompactList}\small\item\em Generate a complete bipartite graph with n vertices on one side and m vertices on the other side. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} \mbox{\hyperlink{graph_constructions_8hpp_af7834390f429aec77b9fd4d1fd706a9c}{create\+Complete\+Multipartite\+Graph}} (const std\+::vector$<$ int $>$ \&partitions)
+\begin{DoxyCompactList}\small\item\em Generate a complete multipartite graph with given partitions. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -34,26 +44,155 @@ A lattice graph.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{graph_constructions_8hpp_source_l00021}{21}} of file \mbox{\hyperlink{graph_constructions_8hpp_source}{graph\+Constructions.\+hpp}}.
+Definition at line \mbox{\hyperlink{graph_constructions_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{graph_constructions_8hpp_source}{graph\+Constructions.\+hpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ numRows\ *\ numCols;}
-\DoxyCodeLine{00023\ \ \ \ \ std::vector<std::vector<int>>\ lattice(numRows,\ std::vector<int>(numCols,\ -\/1));}
-\DoxyCodeLine{00024\ \ \ \ \ std::vector<int>\ numbers(numVertices);}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numVertices;\ i++)\ \{}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ numbers[i]\ =\ i;}
-\DoxyCodeLine{00027\ \ \ \ \ \}}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ number\ :\ numbers)\ \{}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ row\ =\ number\ \%\ numRows;}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ col\ =\ number\ /\ numRows;}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ lattice[row][col]\ =\ number;}
-\DoxyCodeLine{00033\ \ \ \ \ \}}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{return}\ lattice;}
-\DoxyCodeLine{00036\ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ numRows\ *\ numCols;}
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<std::vector<int>>\ lattice(numRows,\ std::vector<int>(numCols,\ -\/1));}
+\DoxyCodeLine{00027\ \ \ \ \ std::vector<int>\ numbers(numVertices);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numVertices;\ i++)\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ numbers[i]\ =\ i;}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ number\ :\ numbers)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ row\ =\ number\ \%\ numRows;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ col\ =\ number\ /\ numRows;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ lattice[row][col]\ =\ number;}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{return}\ lattice;}
+\DoxyCodeLine{00039\ \}}
+
+\end{DoxyCode}
+\Hypertarget{graph_constructions_8hpp_a70437089483619704433833029d11f37}\label{graph_constructions_8hpp_a70437089483619704433833029d11f37} 
+\index{graphConstructions.hpp@{graphConstructions.hpp}!createCompleteGraph@{createCompleteGraph}}
+\index{createCompleteGraph@{createCompleteGraph}!graphConstructions.hpp@{graphConstructions.hpp}}
+\doxysubsubsection{\texorpdfstring{createCompleteGraph()}{createCompleteGraph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} create\+Complete\+Graph (\begin{DoxyParamCaption}\item[{int}]{num\+Vertices }\end{DoxyParamCaption})}
+
+
+
+Create a complete graph on N vertices. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+Vertices} & The number of vertices in the complete graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created complete graph. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graph_constructions_8hpp_source_l00113}{113}} of file \mbox{\hyperlink{graph_constructions_8hpp_source}{graph\+Constructions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ graph(numVertices);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numVertices;\ ++i)\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ i\ +\ 1;\ j\ <\ numVertices;\ ++j)\ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(i,\ j,\ graph);}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \ \ \}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordflow}{return}\ graph;}
+\DoxyCodeLine{00123\ \}}
+
+\end{DoxyCode}
+\Hypertarget{graph_constructions_8hpp_af7834390f429aec77b9fd4d1fd706a9c}\label{graph_constructions_8hpp_af7834390f429aec77b9fd4d1fd706a9c} 
+\index{graphConstructions.hpp@{graphConstructions.hpp}!createCompleteMultipartiteGraph@{createCompleteMultipartiteGraph}}
+\index{createCompleteMultipartiteGraph@{createCompleteMultipartiteGraph}!graphConstructions.hpp@{graphConstructions.hpp}}
+\doxysubsubsection{\texorpdfstring{createCompleteMultipartiteGraph()}{createCompleteMultipartiteGraph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} create\+Complete\+Multipartite\+Graph (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ int $>$ \&}]{partitions }\end{DoxyParamCaption})}
+
+
+
+Generate a complete multipartite graph with given partitions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em partitions} & The number of vertices in each partition. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The generated complete multipartite graph. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graph_constructions_8hpp_source_l00180}{180}} of file \mbox{\hyperlink{graph_constructions_8hpp_source}{graph\+Constructions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordtype}{int}\ numPartitions\ =\ partitions.size();}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ 0;}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ partitionSize\ :\ partitions)\ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ numVertices\ +=\ partitionSize;}
+\DoxyCodeLine{00185\ \ \ \ \ \}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ graph(numVertices);}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordtype}{int}\ vertexOffset\ =\ 0;}
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ partitionSize\ :\ partitions)\ \{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ vertexOffset;\ i\ <\ vertexOffset\ +\ partitionSize;\ ++i)\ \{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ vertexOffset\ +\ partitionSize;\ j\ <\ numVertices;\ ++j)\ \{}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(i,\ j,\ graph);}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ vertexOffset\ +=\ partitionSize;}
+\DoxyCodeLine{00197\ \ \ \ \ \}}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \textcolor{keywordflow}{return}\ graph;}
+\DoxyCodeLine{00200\ \}}
+
+\end{DoxyCode}
+\Hypertarget{graph_constructions_8hpp_ad98926f5eb7fb84b5b97dab2ecfb2cfd}\label{graph_constructions_8hpp_ad98926f5eb7fb84b5b97dab2ecfb2cfd} 
+\index{graphConstructions.hpp@{graphConstructions.hpp}!createGraphFromFile@{createGraphFromFile}}
+\index{createGraphFromFile@{createGraphFromFile}!graphConstructions.hpp@{graphConstructions.hpp}}
+\doxysubsubsection{\texorpdfstring{createGraphFromFile()}{createGraphFromFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} create\+Graph\+From\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path }\end{DoxyParamCaption})}
+
+Creates an undirected graph from a file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & The path to the input file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created undirected graph. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graph_constructions_8hpp_source_l00081}{81}} of file \mbox{\hyperlink{graph_constructions_8hpp_source}{graph\+Constructions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ std::ifstream\ file(filePath);}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (!file)\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ open\ the\ file."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices,\ numEdges;}
+\DoxyCodeLine{00088\ \ \ \ \ file\ >>\ numVertices\ >>\ numEdges;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ graph(numVertices);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numEdges;\ ++i)\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ source,\ target;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ file\ >>\ source\ >>\ target;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ boost::add\_edge(source,\ target,\ graph);}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ file.close();}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordflow}{return}\ graph;}
+\DoxyCodeLine{00101\ \}}
 
 \end{DoxyCode}
 \Hypertarget{graph_constructions_8hpp_a74f9014929a19ec558c3bc766754f1c3}\label{graph_constructions_8hpp_a74f9014929a19ec558c3bc766754f1c3} 
@@ -80,28 +219,111 @@ The created undirected lattice graph represented by an undirected\+Graph.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{graph_constructions_8hpp_source_l00051}{51}} of file \mbox{\hyperlink{graph_constructions_8hpp_source}{graph\+Constructions.\+hpp}}.
+Definition at line \mbox{\hyperlink{graph_constructions_8hpp_source_l00054}{54}} of file \mbox{\hyperlink{graph_constructions_8hpp_source}{graph\+Constructions.\+hpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ }
-\DoxyCodeLine{00052\ \ \ \ \ std::vector<std::vector<int>>\ lattice\ =\ \mbox{\hyperlink{graph_constructions_8hpp_a6e0974be2fa2e599ab591aa02f1c9eb2}{create\_lattice}}(numRows,\ numCols);}
-\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ numRows\ *\ numCols;}
-\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph(numVertices);}
-\DoxyCodeLine{00055\ \ \ \ \ }
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ Add\ edges\ to\ the\ graph}}
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ row\ =\ 0;\ row\ <\ numRows;\ row++)\ \{}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ col\ =\ 0;\ col\ <\ numCols;\ col++)\ \{}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row\ +\ 1\ <\ numRows)\ \{}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(lattice[row][col],\ lattice[row\ +\ 1][col],\ latticeGraph);}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (col\ +\ 1\ <\ numCols)\ \{}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(lattice[row][col],\ lattice[row][col\ +\ 1],\ latticeGraph);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{00055\ \ \ \ \ std::vector<std::vector<int>>\ lattice\ =\ \mbox{\hyperlink{graph_constructions_8hpp_a6e0974be2fa2e599ab591aa02f1c9eb2}{create\_lattice}}(numRows,\ numCols);}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ numVertices\ =\ numRows\ *\ numCols;}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ latticeGraph(numVertices);}
+\DoxyCodeLine{00058\ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ Add\ edges\ to\ the\ graph}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ row\ =\ 0;\ row\ <\ numRows;\ row++)\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ col\ =\ 0;\ col\ <\ numCols;\ col++)\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (row\ +\ 1\ <\ numRows)\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(lattice[row][col],\ lattice[row\ +\ 1][col],\ latticeGraph);}
 \DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00066\ \ \ \ \ \}}
-\DoxyCodeLine{00067\ }
-\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{return}\ latticeGraph;}
-\DoxyCodeLine{00069\ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (col\ +\ 1\ <\ numCols)\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(lattice[row][col],\ lattice[row][col\ +\ 1],\ latticeGraph);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordflow}{return}\ latticeGraph;}
+\DoxyCodeLine{00072\ \}}
+
+\end{DoxyCode}
+\Hypertarget{graph_constructions_8hpp_a37c654fe4ab57a0b23bfca64a19855d7}\label{graph_constructions_8hpp_a37c654fe4ab57a0b23bfca64a19855d7} 
+\index{graphConstructions.hpp@{graphConstructions.hpp}!generateCompleteBipartiteGraph@{generateCompleteBipartiteGraph}}
+\index{generateCompleteBipartiteGraph@{generateCompleteBipartiteGraph}!graphConstructions.hpp@{graphConstructions.hpp}}
+\doxysubsubsection{\texorpdfstring{generateCompleteBipartiteGraph()}{generateCompleteBipartiteGraph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} generate\+Complete\+Bipartite\+Graph (\begin{DoxyParamCaption}\item[{int}]{n,  }\item[{int}]{m }\end{DoxyParamCaption})}
+
+
+
+Generate a complete bipartite graph with n vertices on one side and m vertices on the other side. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & The number of vertices on one side. \\
+\hline
+{\em m} & The number of vertices on the other side. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The generated complete bipartite graph. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graph_constructions_8hpp_source_l00161}{161}} of file \mbox{\hyperlink{graph_constructions_8hpp_source}{graph\+Constructions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ graph(n\ +\ m);}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ ++i)\ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ n;\ j\ <\ n\ +\ m;\ ++j)\ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ boost::add\_edge(i,\ j,\ graph);}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00168\ \ \ \ \ \}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordflow}{return}\ graph;}
+\DoxyCodeLine{00171\ \}}
+
+\end{DoxyCode}
+\Hypertarget{graph_constructions_8hpp_adcbe67f3268e7329117899193f291541}\label{graph_constructions_8hpp_adcbe67f3268e7329117899193f291541} 
+\index{graphConstructions.hpp@{graphConstructions.hpp}!generateRandomGraph@{generateRandomGraph}}
+\index{generateRandomGraph@{generateRandomGraph}!graphConstructions.hpp@{graphConstructions.hpp}}
+\doxysubsubsection{\texorpdfstring{generateRandomGraph()}{generateRandomGraph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirected\+Graph}} generate\+Random\+Graph (\begin{DoxyParamCaption}\item[{int}]{num\+Vertices,  }\item[{int}]{num\+Edges }\end{DoxyParamCaption})}
+
+
+
+Generate a random graph with a specified number of vertices and edges. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+Vertices} & The number of vertices in the graph. \\
+\hline
+{\em num\+Edges} & The number of edges in the graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The generated random graph. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graph_constructions_8hpp_source_l00134}{134}} of file \mbox{\hyperlink{graph_constructions_8hpp_source}{graph\+Constructions.\+hpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00135\ \ \ \ \ std::random\_device\ rd;}
+\DoxyCodeLine{00136\ \ \ \ \ std::mt19937\ gen(rd());}
+\DoxyCodeLine{00137\ \ \ \ \ std::uniform\_int\_distribution<>\ dis(0,\ numVertices\ -\/\ 1);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \mbox{\hyperlink{packages_8hpp_adb6c610c60479e8b904f5832786b4125}{undirectedGraph}}\ graph(numVertices);}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numEdges;\ ++i)\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ source\ =\ dis(gen);}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ target\ =\ dis(gen);}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ boost::add\_edge(source,\ target,\ graph);}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordflow}{return}\ graph;}
+\DoxyCodeLine{00149\ \}}
 
 \end{DoxyCode}

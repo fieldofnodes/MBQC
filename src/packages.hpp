@@ -40,9 +40,17 @@
 #include <boost/range/algorithm.hpp> ///< Provides various range algorithms.
 #include <boost/range/adaptor/filtered.hpp> ///< Provides range adaptors for filtering.
 #include <boost/range/adaptor/transformed.hpp> ///< Provides range adaptors for transformation.
+#include <boost/graph/boyer_myrvold_planar_test.hpp> ///< Provides the Boyer-Myrvold planarity testing algorithm.
+#include <boost/graph/connected_components.hpp> ///< Provides functions for computing connected components in a graph.
+#include <boost/graph/make_connected.hpp>     ///< Provides functions for making a graph connected.
+#include <boost/graph/make_biconnected_planar.hpp>   ///< Provides functions for making a graph biconnected and planar.
+#include <boost/graph/make_maximal_planar.hpp>       ///< Provides functions for making a graph maximal planar.
+#include <boost/graph/planar_face_traversal.hpp>     ///< Provides functions for traversing the faces of a planar graph.
+
 
 
 using namespace boost;
+
 
 
 /**
@@ -50,11 +58,20 @@ using namespace boost;
  * @brief Alias for an undirected graph using boost::adjacency_list.
  *
  * This typedef represents an undirected graph using the boost::adjacency_list
- * data structure with boost::vecS as the vertex container and boost::undirectedS
- * as the graph type. It provides an interface for creating and manipulating
- * undirected graphs.
+ * data structure with boost::vecS as the vertex container, boost::vecS as the edge
+ * container, and boost::undirectedS as the graph type. It includes additional
+ * properties for vertex and edge indices, specified by property<vertex_index_t, int>
+ * and property<edge_index_t, int> respectively. It provides an interface for creating
+ * and manipulating undirected graphs.
  */
-using undirectedGraph = boost::adjacency_list<boost::vecS, boost::vecS, boost::undirectedS>;
+using undirectedGraph = boost::adjacency_list<
+    boost::vecS,
+    boost::vecS,
+    boost::undirectedS,
+    boost::property<boost::vertex_index_t, int>,
+    boost::property<boost::edge_index_t, int>
+>;
+
 
 /**
  * @typedef edgeIterator
@@ -66,6 +83,20 @@ using undirectedGraph = boost::adjacency_list<boost::vecS, boost::vecS, boost::u
  */
 typedef boost::graph_traits<undirectedGraph>::edge_iterator edgeIterator;
 
+
+/**
+ * @typedef edgeDescriptor
+ * @brief Descriptor for an edge in an undirected graph.
+ *
+ * This typedef represents a descriptor for an edge in an undirected graph.
+ * It is used to reference and manipulate individual edges in an undirectedGraph.
+ *
+ * @note The edgeDescriptor type is defined as a std::vector<graph_traits<undirectedGraph>::edge_descriptor>.
+ */
+typedef std::vector<graph_traits<undirectedGraph>::edge_descriptor> edgeDescriptor;
+
+
+
 /**
  * @typedef vertexIterator
  * @brief Iterator for traversing vertices in an undirected graph.
@@ -75,6 +106,36 @@ typedef boost::graph_traits<undirectedGraph>::edge_iterator edgeIterator;
  * conjunction with boost::vertices() to traverse and operate on the vertices of the graph.
  */
 typedef boost::graph_traits<undirectedGraph>::vertex_iterator vertexIterator;
+
+
+
+
+
+/**
+ * @struct face_counter
+ * @brief Visitor for counting the number of faces during planar face traversal.
+ *
+ * This struct represents a visitor that is used with planar_face_traversal to count
+ * the number of faces in a graph. It inherits from planar_face_traversal_visitor.
+ * The begin_face() function is overridden to increment the face count.
+ *
+ * @note The face_counter struct is used in the context of planar face traversal.
+ */
+struct face_counter : public planar_face_traversal_visitor
+{
+  /**
+   * @brief Default constructor for face_counter.
+   */
+  face_counter() : count(0) {}
+
+  /**
+   * @brief Function called at the beginning of each face.
+   * It increments the face count.
+   */
+  void begin_face() { ++count; }
+
+  int count; ///< The count of faces.
+};
 
 
 

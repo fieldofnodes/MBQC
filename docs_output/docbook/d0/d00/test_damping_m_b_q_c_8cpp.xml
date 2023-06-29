@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test_damping_m_b_q_c_8cpp" xml:lang="en-US">
+<title>tests/testDampingMBQC.cpp File Reference</title>
+<indexterm><primary>tests/testDampingMBQC.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;packages.hpp&quot;<?linebreak?></programlisting><simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_test_damping_m_b_q_c_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4"/><section>
+    <title>main()</title>
+<indexterm><primary>main</primary><secondary>testDampingMBQC.cpp</secondary></indexterm>
+<indexterm><primary>testDampingMBQC.cpp</primary><secondary>main</secondary></indexterm>
+<para><computeroutput>int main ( )</computeroutput></para><para>
+Definition at line <link linkend="_test_damping_m_b_q_c_8cpp_source_1l00024">24</link> of file <link linkend="_test_damping_m_b_q_c_8cpp_source">testDampingMBQC.cpp</link>.</para>
+<programlisting linenumbering="unnumbered">00024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+00025 &#32;&#32;
+00026 &#32;&#32;<emphasis role="comment">//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
+00027 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows;
+00028 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols;
+00029 &#32;&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+00030 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices;
+00031 &#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;
+00032 &#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;
+00033 &#32;&#32;std::vector&lt;qreal&gt;&#32;outcomeProbabilities;
+00034 
+00035 
+00036 &#32;&#32;
+00037 &#32;&#32;<emphasis role="comment">//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
+00038 &#32;&#32;numRows&#32;=&#32;1;
+00039 &#32;&#32;numCols&#32;=&#32;2;
+00040 &#32;&#32;latticeGraph&#32;=&#32;<link linkend="_graph_constructions_8hpp_1a74f9014929a19ec558c3bc766754f1c3">createLatticeGraph</link>(numRows,numCols);
+00041 &#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);
+00042 &#32;&#32;
+00043 &#32;&#32;
+00044 &#32;&#32;
+00045 &#32;&#32;<emphasis role="comment">//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
+00046 &#32;&#32;<emphasis role="comment">//&#32;Update&#32;with&#32;desired&#32;directory&#32;to&#32;view&#32;graph.</emphasis>
+00047 &#32;&#32;std::string&#32;figsDir&#32;=&#32;MBQC_FIGS_DIR;
+00048 &#32;&#32;std::string&#32;graphName&#32;=&#32;<emphasis role="stringliteral">&quot;lattice1DDampingPerQubitGraph&quot;</emphasis>;
+00049 &#32;&#32;std::string&#32;format&#32;=&#32;PNG_FORMAT;
+00050 &#32;&#32;<link linkend="_write_graph_graph_viz_dot_file_8hpp_1a3d553b54b16922ee146bfb33201a3993">printGraphToFile</link>(latticeGraph,figsDir,graphName,format);
+00051 
+00052 &#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+00053 &#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+00054 &#32;&#32;
+00055 &#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+00056 &#32;&#32;Qureg&#32;qureg&#32;=&#32;createDensityQureg(numVertices,&#32;env);
+00057 &#32;&#32;
+00058 &#32;&#32;
+00059 &#32;&#32;<emphasis role="comment">//qubitAngles&#32;=&#32;initRandomPiOnNAnglesMod2kPi(numVertices,&#32;4);</emphasis>
+00060 &#32;&#32;qreal&#32;angle&#32;=&#32;0.0;
+00061 &#32;&#32;qubitAngles&#32;=&#32;<link linkend="_angle_construction_8hpp_1ac940c0b993f5f0e21dc74a2ac2f3fc7a">initAllAnglesSame</link>(numVertices,angle);
+00062 &#32;
+00063 
+00064 &#32;&#32;<emphasis role="comment">//&#32;initialise&#32;in&#32;the&#32;plus&#32;state</emphasis>
+00065 &#32;&#32;initPlusState(qureg);
+00066 
+00067 &#32;&#32;
+00068 &#32;&#32;<emphasis role="comment">//&#32;add&#32;angles&#32;to&#32;the&#32;qubits</emphasis>
+00069 &#32;&#32;<link linkend="_angle_construction_8hpp_1a6647ed996ec54a9137e68e6c6317e8ee">addAngleRotateZgate</link>(qureg,qubitAngles);
+00070 &#32;&#32;
+00071 &#32;&#32;&#32;
+00072 &#32;&#32;<emphasis role="comment">//&#32;entangle&#32;graph</emphasis>
+00073 &#32;&#32;<link linkend="_quantum_graph_cluster_states_8hpp_1a3f830234f9eb3a150a084b0f2b4aa056">entangleGraph</link>(qureg,latticeGraph);
+00074 
+00075 &#32;&#32;<emphasis role="comment">//&#32;Display&#32;probabilities&#32;before&#32;damping</emphasis>
+00076 &#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Outcome&#32;probs&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00077 &#32;&#32;outcomeProbabilities&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a559bcd228214af8de060c2eea98269b5">computeAllProbabilityOutcomesToVector</link>(qureg);
+00078 &#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(outcomeProbabilities);
+00079 
+00080 &#32;&#32;<emphasis role="comment">//&#32;Add&#32;damping&#32;to&#32;qubit&#32;after&#32;entanglement</emphasis>
+00081 &#32;&#32;qreal&#32;prob&#32;=&#32;0.1;
+00082 &#32;&#32;mixDamping(qureg,0,prob);
+00083 &#32;&#32;mixDamping(qureg,1,prob);
+00084 
+00085 
+00086 &#32;&#32;<emphasis role="comment">//&#32;Display&#32;probabilities&#32;after&#32;damping</emphasis>
+00087 &#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Outcome&#32;probs&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00088 &#32;&#32;outcomeProbabilities&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a559bcd228214af8de060c2eea98269b5">computeAllProbabilityOutcomesToVector</link>(qureg);
+00089 &#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(outcomeProbabilities);
+00090 
+00091 
+00092 &#32;<emphasis role="comment">//&#32;Measure&#32;qubit&#32;at&#32;a&#32;time</emphasis>
+00093 &#32;rotateZ(qureg,0,&#32;(-1)*qubitAngles[0]);
+00094 &#32;hadamard(qureg,0);
+00095 &#32;<emphasis role="keywordtype">int</emphasis>&#32;m0&#32;=&#32;measure(qureg,0);
+00096 &#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;numQubits:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;qureg.numQubitsRepresented&#32;&lt;&lt;&#32;std::endl;
+00097 
+00098 &#32;&#32;<emphasis role="comment">//&#32;Display&#32;probabilities&#32;before&#32;damping</emphasis>
+00099 &#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Outcome&#32;probs&#32;after&#32;1&#32;measure&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00100 &#32;&#32;outcomeProbabilities&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a559bcd228214af8de060c2eea98269b5">computeAllProbabilityOutcomesToVector</link>(qureg);
+00101 &#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(outcomeProbabilities);
+00102 
+00103 
+00104 &#32;&#32;<emphasis role="comment">//&#32;Measure&#32;qubit&#32;at&#32;a&#32;time&#32;</emphasis>
+00105 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;exponent&#32;=&#32;m0;
+00106 &#32;&#32;qreal&#32;xAngle&#32;=&#32;std::pow((-1),&#32;exponent)*qubitAngles[1];
+00107 &#32;&#32;rotateZ(qureg,1,&#32;(-1)*xAngle);
+00108 &#32;&#32;hadamard(qureg,1);
+00109 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;m&#32;=&#32;measure(qureg,0);
+00110 &#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;numQubits:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;qureg.numQubitsRepresented&#32;&lt;&lt;&#32;std::endl;
+00111 
+00112 &#32;&#32;<emphasis role="comment">//&#32;Display&#32;probabilities&#32;before&#32;damping</emphasis>
+00113 &#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Outcome&#32;probs&#32;after&#32;1&#32;measure&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+00114 &#32;&#32;outcomeProbabilities&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a559bcd228214af8de060c2eea98269b5">computeAllProbabilityOutcomesToVector</link>(qureg);
+00115 &#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(outcomeProbabilities);
+00116 
+00117 
+00118 <emphasis role="comment">/*</emphasis>
+00119 <emphasis role="comment">&#32;&#32;//&#32;measure&#32;graph</emphasis>
+00120 <emphasis role="comment">&#32;&#32;measuredQubitsOutcomes&#32;=&#32;measureGraph(</emphasis>
+00121 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qureg,</emphasis>
+00122 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;latticeGraph,</emphasis>
+00123 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles,</emphasis>
+00124 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numRows);</emphasis>
+00125 <emphasis role="comment"></emphasis>
+00126 <emphasis role="comment"></emphasis>
+00127 <emphasis role="comment"></emphasis>
+00128 <emphasis role="comment">std::vector&lt;int&gt;&#32;measureGraph(</emphasis>
+00129 <emphasis role="comment">&#32;&#32;&#32;&#32;Qureg&#32;qureg,</emphasis>
+00130 <emphasis role="comment">&#32;&#32;&#32;&#32;const&#32;undirectedGraph&amp;&#32;graph,</emphasis>
+00131 <emphasis role="comment">&#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles,</emphasis>
+00132 <emphasis role="comment">&#32;&#32;&#32;&#32;int&#32;numRows){</emphasis>
+00133 <emphasis role="comment"></emphasis>
+00134 <emphasis role="comment">&#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;</emphasis>
+00135 <emphasis role="comment">&#32;&#32;&#32;&#32;undirectedGraph::vertex_iterator&#32;vi,&#32;vi_end;</emphasis>
+00136 <emphasis role="comment">&#32;&#32;&#32;&#32;for&#32;(boost::tie(vi,&#32;vi_end)&#32;=&#32;boost::vertices(graph);&#32;vi&#32;!=&#32;vi_end;&#32;vi++)&#32;{</emphasis>
+00137 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;skip&#32;vertices&#32;that&#32;are&#32;in&#32;the&#32;first&#32;column</emphasis>
+00138 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if(*vi&#32;&lt;&#32;numRows){</emphasis>
+00139 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rotateZ(qureg,*vi,&#32;(-1)*qubitAngles[*vi]);</emphasis>
+00140 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hadamard(qureg,*vi);</emphasis>
+00141 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;int&#32;m&#32;=&#32;measure(qureg,*vi);</emphasis>
+00142 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;measuredQubitsOutcomes.push_back(m);</emphasis>
+00143 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}else&#32;if(*vi&#32;&gt;=&#32;numRows){</emphasis>
+00144 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;correctedAngle;</emphasis>
+00145 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;correctedAngle&#32;=&#32;computeCorrectedAngle(graph,measuredQubitsOutcomes,*vi,numRows,qubitAngles[*vi]);</emphasis>
+00146 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rotateZ(qureg,*vi,&#32;(-1)*correctedAngle);</emphasis>
+00147 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hadamard(qureg,*vi);</emphasis>
+00148 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;int&#32;m&#32;=&#32;measure(qureg,*vi);</emphasis>
+00149 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;measuredQubitsOutcomes.push_back(m);</emphasis>
+00150 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;else&#32;{</emphasis>
+00151 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;attempting&#32;to&#32;measure&#32;nothing?&quot;;</emphasis>
+00152 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+00153 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+00154 <emphasis role="comment"></emphasis>
+00155 <emphasis role="comment"></emphasis>
+00156 <emphasis role="comment">&#32;&#32;&#32;&#32;return&#32;measuredQubitsOutcomes;</emphasis>
+00157 <emphasis role="comment">}</emphasis>
+00158 <emphasis role="comment"></emphasis>
+00159 <emphasis role="comment"></emphasis>
+00160 <emphasis role="comment"></emphasis>
+00161 <emphasis role="comment"></emphasis>
+00162 <emphasis role="comment"></emphasis>
+00163 <emphasis role="comment"></emphasis>
+00164 <emphasis role="comment"></emphasis>
+00165 <emphasis role="comment">&#32;&#32;//&#32;print&#32;results&#32;to&#32;screen</emphasis>
+00166 <emphasis role="comment">&#32;&#32;printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);</emphasis>
+00167 <emphasis role="comment"></emphasis>
+00168 <emphasis role="comment">&#32;&#32;</emphasis>
+00169 <emphasis role="comment">&#32;&#32;</emphasis>
+00170 <emphasis role="comment">&#32;&#32;&#32;&#32;</emphasis>
+00171 <emphasis role="comment">*/</emphasis>
+00172 &#32;&#32;
+00173 &#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+00174 &#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+00175 &#32;&#32;destroyQuESTEnv(env);
+00176 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+00177 }
+</programlisting></section>
+</section>
+</section>

@@ -11,6 +11,7 @@
         "cstring": "cpp",
         "ctime": "cpp",
         "cwchar": "cpp",
-        "cwctype": "cpp"
+        "cwctype": "cpp",
+        "*.ipp": "cpp"
     }
 }

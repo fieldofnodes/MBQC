@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structface__counter" xml:lang="en-US">
+<title>face_counter Struct Reference</title>
+<indexterm><primary>face_counter</primary></indexterm>
+<para>
+
+<para>Visitor for counting the number of faces during planar face traversal. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;src/packages.hpp&gt;</computeroutput>
+</para>
+<para>Inheritance diagram for face_counter:    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="../../dc/d00/structface__counter.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_structface__counter_1a2e8cd82b4f62a9398554219b006cb0ed">face_counter</link> ()</para>
+
+<para>Default constructor for <link linkend="_structface__counter">face_counter</link>. </para>
+</listitem>
+            <listitem><para>void <link linkend="_structface__counter_1ab3d6c40775054d7575d84ce1a4d6914d">begin_face</link> ()</para>
+
+<para>Function called at the beginning of each face. It increments the face count. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Data Fields    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_structface__counter_1a4bcaa30dac2f86ff8e6617c229bb8f6e">count</link></para>
+
+<para>The count of faces. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>Visitor for counting the number of faces during planar face traversal. </para>
+
+
+
+<para>This struct represents a visitor that is used with planar_face_traversal to count the number of faces in a graph. It inherits from planar_face_traversal_visitor. The <link linkend="_structface__counter_1ab3d6c40775054d7575d84ce1a4d6914d">begin_face()</link> function is overridden to increment the face count.</para>
+
+<para><note><title>Note</title>
+
+<para>The <link linkend="_structface__counter">face_counter</link> struct is used in the context of planar face traversal. </para>
+</note>
+</para>
+<para>
+Definition at line <link linkend="_packages_8hpp_source_1l00124">124</link> of file <link linkend="_packages_8hpp_source">packages.hpp</link>.</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_structface__counter_1a2e8cd82b4f62a9398554219b006cb0ed"/><section>
+    <title>face_counter()</title>
+<indexterm><primary>face_counter</primary><secondary>face_counter</secondary></indexterm>
+<indexterm><primary>face_counter</primary><secondary>face_counter</secondary></indexterm>
+<para><computeroutput>face_counter::face_counter ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Default constructor for <link linkend="_structface__counter">face_counter</link>. </para>
+</para>
+<para>
+Definition at line <link linkend="_packages_8hpp_source_1l00129">129</link> of file <link linkend="_packages_8hpp_source">packages.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00129 :&#32;<link linkend="_structface__counter_1a4bcaa30dac2f86ff8e6617c229bb8f6e">count</link>(0)&#32;{}
+</programlisting></section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_structface__counter_1ab3d6c40775054d7575d84ce1a4d6914d"/><section>
+    <title>begin_face()</title>
+<indexterm><primary>begin_face</primary><secondary>face_counter</secondary></indexterm>
+<indexterm><primary>face_counter</primary><secondary>begin_face</secondary></indexterm>
+<para><computeroutput>void face_counter::begin_face ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Function called at the beginning of each face. It increments the face count. </para>
+</para>
+<para>
+Definition at line <link linkend="_packages_8hpp_source_1l00135">135</link> of file <link linkend="_packages_8hpp_source">packages.hpp</link>.</para>
+<programlisting linenumbering="unnumbered">00135 {&#32;++<link linkend="_structface__counter_1a4bcaa30dac2f86ff8e6617c229bb8f6e">count</link>;&#32;}
+</programlisting></section>
+</section>
+<section>
+<title>Field Documentation</title>
+<anchor xml:id="_structface__counter_1a4bcaa30dac2f86ff8e6617c229bb8f6e"/><section>
+    <title>count</title>
+<indexterm><primary>count</primary><secondary>face_counter</secondary></indexterm>
+<indexterm><primary>face_counter</primary><secondary>count</secondary></indexterm>
+<para><computeroutput>int face_counter::count</computeroutput></para><para>
+
+<para>The count of faces. </para>
+</para>
+<para>
+Definition at line <link linkend="_packages_8hpp_source_1l00137">137</link> of file <link linkend="_packages_8hpp_source">packages.hpp</link>.</para>
+</section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+src/<link linkend="_packages_8hpp">packages.hpp</link></section>
+</section>

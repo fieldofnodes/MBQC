@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test_damping_m_b_q_c_8cpp_source" xml:lang="en-US">
+<title>testDampingMBQC.cpp</title>
+<indexterm><primary>tests/testDampingMBQC.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00001"/>00001 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00002"/>00002 <emphasis role="comment">//&#32;Filename&#32;&#32;:&#32;testDampingMBQC.cpp</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00003"/>00003 <emphasis role="comment">//&#32;Author&#32;&#32;&#32;&#32;:&#32;Jonathan&#32;Miller</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00004"/>00004 <emphasis role="comment">//&#32;Date&#32;&#32;&#32;&#32;&#32;&#32;:&#32;2023-06-28</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00005"/>00005 <emphasis role="comment">//&#32;Aim&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Build&#32;GHZ&#32;state</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00006"/>00006 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Testing&#32;damping&#32;at&#32;various&#32;phases&#32;of&#32;</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00007"/>00007 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;implementation</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00008"/>00008 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Script&#32;not&#32;done</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00009"/>00009 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Make&#32;function&#32;to&#32;add&#32;any&#32;single&#32;qubit&#32;noise&#32;</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00010"/>00010 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;every&#32;time&#32;a&#32;gate&#32;is&#32;applied?</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00011"/>00011 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;some&#32;modularity&#32;needs&#32;to&#32;be&#32;added&#32;into&#32;the&#32;</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00012"/>00012 <emphasis role="comment">//&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;measurement&#32;process</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00014"/>00014 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00015"/>00015 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00016"/>00016 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00017"/>00017 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00018"/>00018 <emphasis role="comment">//&#32;Include&#32;package&#32;header&#32;file</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00019"/>00019 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_packages_8hpp">packages.hpp</link>&quot;</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00020"/>00020 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00021"/>00021 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00022"/>00022 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00023"/>00023 <emphasis role="comment">//&#32;Set&#32;up&#32;the&#32;main&#32;function</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00024"/><link linkend="_test_damping_m_b_q_c_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00024</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_test_damping_m_b_q_c_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00025"/>00025 &#32;&#32;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00026"/>00026 &#32;&#32;<emphasis role="comment">//&#32;Initialise&#32;variable&#32;names&#32;and&#32;types</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00027"/>00027 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numRows;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00028"/>00028 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numCols;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00029"/>00029 &#32;&#32;<link linkend="_packages_8hpp_1adb6c610c60479e8b904f5832786b4125">undirectedGraph</link>&#32;latticeGraph;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00030"/>00030 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;numVertices;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00031"/>00031 &#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00032"/>00032 &#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00033"/>00033 &#32;&#32;std::vector&lt;qreal&gt;&#32;outcomeProbabilities;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00034"/>00034 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00035"/>00035 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00036"/>00036 &#32;&#32;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00037"/>00037 &#32;&#32;<emphasis role="comment">//&#32;Set&#32;values&#32;to&#32;variables</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00038"/>00038 &#32;&#32;numRows&#32;=&#32;1;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00039"/>00039 &#32;&#32;numCols&#32;=&#32;2;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00040"/>00040 &#32;&#32;latticeGraph&#32;=&#32;<link linkend="_graph_constructions_8hpp_1a74f9014929a19ec558c3bc766754f1c3">createLatticeGraph</link>(numRows,numCols);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00041"/>00041 &#32;&#32;numVertices&#32;=&#32;boost::num_vertices(latticeGraph);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00042"/>00042 &#32;&#32;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00043"/>00043 &#32;&#32;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00044"/>00044 &#32;&#32;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00045"/>00045 &#32;&#32;<emphasis role="comment">//&#32;Print&#32;graph&#32;to&#32;file</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00046"/>00046 &#32;&#32;<emphasis role="comment">//&#32;Update&#32;with&#32;desired&#32;directory&#32;to&#32;view&#32;graph.</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00047"/>00047 &#32;&#32;std::string&#32;figsDir&#32;=&#32;MBQC_FIGS_DIR;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00048"/>00048 &#32;&#32;std::string&#32;graphName&#32;=&#32;<emphasis role="stringliteral">&quot;lattice1DDampingPerQubitGraph&quot;</emphasis>;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00049"/>00049 &#32;&#32;std::string&#32;format&#32;=&#32;PNG_FORMAT;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00050"/>00050 &#32;&#32;<link linkend="_write_graph_graph_viz_dot_file_8hpp_1a3d553b54b16922ee146bfb33201a3993">printGraphToFile</link>(latticeGraph,figsDir,graphName,format);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00051"/>00051 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00052"/>00052 &#32;&#32;<emphasis role="comment">//&#32;load&#32;QuEST&#32;environment</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00053"/>00053 &#32;&#32;QuESTEnv&#32;env&#32;=&#32;createQuESTEnv();
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00054"/>00054 &#32;&#32;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00055"/>00055 &#32;&#32;<emphasis role="comment">//&#32;create&#32;a&#32;quantum&#32;register</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00056"/>00056 &#32;&#32;Qureg&#32;qureg&#32;=&#32;createDensityQureg(numVertices,&#32;env);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00057"/>00057 &#32;&#32;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00058"/>00058 &#32;&#32;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00059"/>00059 &#32;&#32;<emphasis role="comment">//qubitAngles&#32;=&#32;initRandomPiOnNAnglesMod2kPi(numVertices,&#32;4);</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00060"/>00060 &#32;&#32;qreal&#32;angle&#32;=&#32;0.0;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00061"/>00061 &#32;&#32;qubitAngles&#32;=&#32;<link linkend="_angle_construction_8hpp_1ac940c0b993f5f0e21dc74a2ac2f3fc7a">initAllAnglesSame</link>(numVertices,angle);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00062"/>00062 &#32;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00063"/>00063 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00064"/>00064 &#32;&#32;<emphasis role="comment">//&#32;initialise&#32;in&#32;the&#32;plus&#32;state</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00065"/>00065 &#32;&#32;initPlusState(qureg);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00066"/>00066 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00067"/>00067 &#32;&#32;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00068"/>00068 &#32;&#32;<emphasis role="comment">//&#32;add&#32;angles&#32;to&#32;the&#32;qubits</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00069"/>00069 &#32;&#32;<link linkend="_angle_construction_8hpp_1a6647ed996ec54a9137e68e6c6317e8ee">addAngleRotateZgate</link>(qureg,qubitAngles);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00070"/>00070 &#32;&#32;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00071"/>00071 &#32;&#32;&#32;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00072"/>00072 &#32;&#32;<emphasis role="comment">//&#32;entangle&#32;graph</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00073"/>00073 &#32;&#32;<link linkend="_quantum_graph_cluster_states_8hpp_1a3f830234f9eb3a150a084b0f2b4aa056">entangleGraph</link>(qureg,latticeGraph);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00074"/>00074 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00075"/>00075 &#32;&#32;<emphasis role="comment">//&#32;Display&#32;probabilities&#32;before&#32;damping</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00076"/>00076 &#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Outcome&#32;probs&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00077"/>00077 &#32;&#32;outcomeProbabilities&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a559bcd228214af8de060c2eea98269b5">computeAllProbabilityOutcomesToVector</link>(qureg);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00078"/>00078 &#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(outcomeProbabilities);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00079"/>00079 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00080"/>00080 &#32;&#32;<emphasis role="comment">//&#32;Add&#32;damping&#32;to&#32;qubit&#32;after&#32;entanglement</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00081"/>00081 &#32;&#32;qreal&#32;prob&#32;=&#32;0.1;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00082"/>00082 &#32;&#32;mixDamping(qureg,0,prob);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00083"/>00083 &#32;&#32;mixDamping(qureg,1,prob);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00084"/>00084 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00085"/>00085 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00086"/>00086 &#32;&#32;<emphasis role="comment">//&#32;Display&#32;probabilities&#32;after&#32;damping</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00087"/>00087 &#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Outcome&#32;probs&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00088"/>00088 &#32;&#32;outcomeProbabilities&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a559bcd228214af8de060c2eea98269b5">computeAllProbabilityOutcomesToVector</link>(qureg);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00089"/>00089 &#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(outcomeProbabilities);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00090"/>00090 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00091"/>00091 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00092"/>00092 &#32;<emphasis role="comment">//&#32;Measure&#32;qubit&#32;at&#32;a&#32;time</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00093"/>00093 &#32;rotateZ(qureg,0,&#32;(-1)*qubitAngles[0]);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00094"/>00094 &#32;hadamard(qureg,0);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00095"/>00095 &#32;<emphasis role="keywordtype">int</emphasis>&#32;m0&#32;=&#32;measure(qureg,0);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00096"/>00096 &#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;numQubits:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;qureg.numQubitsRepresented&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00097"/>00097 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00098"/>00098 &#32;&#32;<emphasis role="comment">//&#32;Display&#32;probabilities&#32;before&#32;damping</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00099"/>00099 &#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Outcome&#32;probs&#32;after&#32;1&#32;measure&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00100"/>00100 &#32;&#32;outcomeProbabilities&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a559bcd228214af8de060c2eea98269b5">computeAllProbabilityOutcomesToVector</link>(qureg);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00101"/>00101 &#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(outcomeProbabilities);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00102"/>00102 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00103"/>00103 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00104"/>00104 &#32;&#32;<emphasis role="comment">//&#32;Measure&#32;qubit&#32;at&#32;a&#32;time&#32;</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00105"/>00105 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;exponent&#32;=&#32;m0;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00106"/>00106 &#32;&#32;qreal&#32;xAngle&#32;=&#32;std::pow((-1),&#32;exponent)*qubitAngles[1];
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00107"/>00107 &#32;&#32;rotateZ(qureg,1,&#32;(-1)*xAngle);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00108"/>00108 &#32;&#32;hadamard(qureg,1);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00109"/>00109 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;m&#32;=&#32;measure(qureg,0);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00110"/>00110 &#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;numQubits:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;qureg.numQubitsRepresented&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00111"/>00111 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00112"/>00112 &#32;&#32;<emphasis role="comment">//&#32;Display&#32;probabilities&#32;before&#32;damping</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00113"/>00113 &#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Outcome&#32;probs&#32;after&#32;1&#32;measure&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00114"/>00114 &#32;&#32;outcomeProbabilities&#32;=&#32;<link linkend="_general_helper_functions_8hpp_1a559bcd228214af8de060c2eea98269b5">computeAllProbabilityOutcomesToVector</link>(qureg);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00115"/>00115 &#32;&#32;<link linkend="_general_helper_functions_8hpp_1a721cdbc6bd980bd328255feba8168f26">printVector</link>(outcomeProbabilities);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00116"/>00116 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00117"/>00117 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00118"/>00118 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00119"/>00119 <emphasis role="comment">&#32;&#32;//&#32;measure&#32;graph</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00120"/>00120 <emphasis role="comment">&#32;&#32;measuredQubitsOutcomes&#32;=&#32;measureGraph(</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00121"/>00121 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qureg,</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00122"/>00122 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;latticeGraph,</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00123"/>00123 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qubitAngles,</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00124"/>00124 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;numRows);</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00125"/>00125 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00126"/>00126 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00127"/>00127 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00128"/>00128 <emphasis role="comment">std::vector&lt;int&gt;&#32;measureGraph(</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00129"/>00129 <emphasis role="comment">&#32;&#32;&#32;&#32;Qureg&#32;qureg,</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00130"/>00130 <emphasis role="comment">&#32;&#32;&#32;&#32;const&#32;undirectedGraph&amp;&#32;graph,</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00131"/>00131 <emphasis role="comment">&#32;&#32;&#32;&#32;std::vector&lt;qreal&gt;&#32;qubitAngles,</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00132"/>00132 <emphasis role="comment">&#32;&#32;&#32;&#32;int&#32;numRows){</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00133"/>00133 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00134"/>00134 <emphasis role="comment">&#32;&#32;&#32;&#32;std::vector&lt;int&gt;&#32;measuredQubitsOutcomes;</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00135"/>00135 <emphasis role="comment">&#32;&#32;&#32;&#32;undirectedGraph::vertex_iterator&#32;vi,&#32;vi_end;</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00136"/>00136 <emphasis role="comment">&#32;&#32;&#32;&#32;for&#32;(boost::tie(vi,&#32;vi_end)&#32;=&#32;boost::vertices(graph);&#32;vi&#32;!=&#32;vi_end;&#32;vi++)&#32;{</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00137"/>00137 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;//&#32;skip&#32;vertices&#32;that&#32;are&#32;in&#32;the&#32;first&#32;column</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00138"/>00138 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if(*vi&#32;&lt;&#32;numRows){</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00139"/>00139 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rotateZ(qureg,*vi,&#32;(-1)*qubitAngles[*vi]);</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00140"/>00140 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hadamard(qureg,*vi);</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00141"/>00141 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;int&#32;m&#32;=&#32;measure(qureg,*vi);</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00142"/>00142 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;measuredQubitsOutcomes.push_back(m);</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00143"/>00143 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}else&#32;if(*vi&#32;&gt;=&#32;numRows){</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00144"/>00144 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;qreal&#32;correctedAngle;</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00145"/>00145 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;correctedAngle&#32;=&#32;computeCorrectedAngle(graph,measuredQubitsOutcomes,*vi,numRows,qubitAngles[*vi]);</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00146"/>00146 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;rotateZ(qureg,*vi,&#32;(-1)*correctedAngle);</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00147"/>00147 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hadamard(qureg,*vi);</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00148"/>00148 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;int&#32;m&#32;=&#32;measure(qureg,*vi);</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00149"/>00149 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;measuredQubitsOutcomes.push_back(m);</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00150"/>00150 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;else&#32;{</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00151"/>00151 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;&quot;attempting&#32;to&#32;measure&#32;nothing?&quot;;</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00152"/>00152 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00153"/>00153 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00154"/>00154 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00155"/>00155 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00156"/>00156 <emphasis role="comment">&#32;&#32;&#32;&#32;return&#32;measuredQubitsOutcomes;</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00157"/>00157 <emphasis role="comment">}</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00158"/>00158 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00159"/>00159 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00160"/>00160 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00161"/>00161 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00162"/>00162 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00163"/>00163 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00164"/>00164 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00165"/>00165 <emphasis role="comment">&#32;&#32;//&#32;print&#32;results&#32;to&#32;screen</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00166"/>00166 <emphasis role="comment">&#32;&#32;printResultsToScreen(measuredQubitsOutcomes,numRows,numCols);</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00167"/>00167 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00168"/>00168 <emphasis role="comment">&#32;&#32;</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00169"/>00169 <emphasis role="comment">&#32;&#32;</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00170"/>00170 <emphasis role="comment">&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00171"/>00171 <emphasis role="comment">*/</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00172"/>00172 &#32;&#32;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00173"/>00173 &#32;&#32;<emphasis role="comment">//&#32;unload&#32;QuEST</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00174"/>00174 &#32;&#32;destroyQureg(qureg,&#32;env);&#32;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00175"/>00175 &#32;&#32;destroyQuESTEnv(env);
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00176"/>00176 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00177"/>00177 }
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00178"/>00178 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00179"/>00179 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00180"/>00180 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00181"/>00181 
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00182"/>00182 <emphasis role="comment">/*</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00183"/>00183 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00184"/>00184 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00185"/>00185 <emphasis role="comment">printArray(float*&#32;array,&#32;int&#32;size)</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00186"/>00186 <emphasis role="comment">void&#32;printArray(float*&#32;array,&#32;int&#32;size)&#32;{</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00187"/>00187 <emphasis role="comment">&#32;&#32;&#32;&#32;printf(&quot;outcomeProbs[]&#32;=&#32;{&quot;);</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00188"/>00188 <emphasis role="comment">&#32;&#32;&#32;&#32;for&#32;(int&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;size;&#32;i++)&#32;{</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00189"/>00189 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(&quot;%.2f&quot;,&#32;array[i]);</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00190"/>00190 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if&#32;(i&#32;&lt;&#32;size&#32;-&#32;1)&#32;{</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00191"/>00191 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printf(&quot;,&#32;&quot;);</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00192"/>00192 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00193"/>00193 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00194"/>00194 <emphasis role="comment">&#32;&#32;&#32;&#32;printf(&quot;}\n&quot;);</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00195"/>00195 <emphasis role="comment">}</emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00196"/>00196 <emphasis role="comment"></emphasis>
+<anchor xml:id="_test_damping_m_b_q_c_8cpp_source_1l00197"/>00197 <emphasis role="comment">*/</emphasis>
+</programlisting></section>
